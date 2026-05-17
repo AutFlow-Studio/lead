@@ -52,9 +52,6 @@ a{color:var(--green);text-decoration:none;transition:var(--transition);}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 @keyframes borderRun{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
 @keyframes goldPulse{0%,100%{opacity:0.7;}50%{opacity:1;}}
-@keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(0.97);}to{opacity:1;transform:translateY(0) scale(1);}}
-@keyframes overlayIn{from{opacity:0;}to{opacity:1;}}
-@keyframes spinGlow{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
 /* INTRO LOADER */
 #intro-loader{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;}
@@ -94,13 +91,16 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .nav-cta-btn{color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:9px 18px;font-family:var(--font-mono);font-size:var(--fz-xs);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;box-shadow:0 0 20px rgba(77,255,195,0.2);}
 .nav-cta-btn:hover{background:rgba(77,255,195,0.85);box-shadow:0 0 32px rgba(77,255,195,0.35);transform:translateY(-1px);}
 
-/* SIDE ICONS */
-.side-el{position:fixed;bottom:0;z-index:10;width:40px;}.side-el.left{left:40px;}
+/* FLOATING SIDE ICONS */
+.side-el{position:fixed;bottom:0;z-index:10;width:40px;}
+.side-el.left{left:40px;}
 .side-el::after{content:'';display:block;width:1px;height:90px;margin:0 auto;background:var(--slate);}
 .social-list{list-style:none;display:flex;flex-direction:column;align-items:center;gap:14px;margin:0 auto;padding:0;opacity:0;animation:sideUp 0.6s var(--ease) 2.7s forwards;}
-.social-list a{color:var(--slate);display:inline-block;transition:var(--transition);}
+.social-list a{color:var(--slate);display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius);transition:var(--transition);}
 .social-list a:hover{color:var(--green);transform:translateY(-3px);}
-.social-list svg{width:19px;height:19px;}
+.social-list svg{width:18px;height:18px;}
+/* Fiverr icon special sizing */
+.social-list .fiverr-icon svg{width:16px;height:16px;}
 @media(max-width:1080px){.side-el{display:none;}}
 
 /* SECTIONS */
@@ -149,7 +149,6 @@ section{max-width:920px;padding:110px 0;}
 .video-wrap{position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(77,255,195,0.15);background:var(--navy-light);box-shadow:0 32px 80px -20px rgba(0,0,0,0.7);}
 .video-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);background-size:200% 100%;animation:borderRun 3s linear infinite;z-index:1;}
 .video-wrap video{width:100%;display:block;max-height:520px;object-fit:cover;}
-/* Custom video controls */
 .video-controls{position:absolute;bottom:0;left:0;right:0;z-index:3;padding:10px 16px 14px;background:linear-gradient(to top,rgba(8,15,30,0.92) 0%,transparent 100%);display:flex;flex-direction:column;gap:8px;}
 .video-progress-wrap{width:100%;height:3px;background:rgba(255,255,255,0.15);border-radius:2px;cursor:pointer;position:relative;transition:height 0.15s ease;}
 .video-progress-wrap:hover{height:5px;}
@@ -242,15 +241,12 @@ section{max-width:920px;padding:110px 0;}
 .pricing-include-marker{color:var(--green);font-family:var(--font-mono);font-size:10px;flex-shrink:0;padding-top:2px;}
 .pricing-footer{padding:18px 24px;border:1px solid var(--navy-mid);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:rgba(13,27,48,0.5);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .pricing-footer-note{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.04em;}
-
-/* SECOND PRICING CARD */
 .pricing-card-premium{border:1px solid rgba(240,192,96,0.3);background:linear-gradient(135deg,var(--navy-light),rgba(240,192,96,0.03));border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;margin-top:24px;}
 .pricing-card-premium .pricing-plan{color:var(--gold);}
 .pricing-card-premium .pricing-amount{color:var(--gold);}
 .pricing-card-premium .pricing-include-marker{color:var(--gold);}
 .pricing-card-premium .pricing-includes-label{color:var(--gold);}
 .pricing-card-premium .pricing-includes{border-top:1px solid rgba(240,192,96,0.15);}
-.pricing-card-premium{border-top:1px solid rgba(240,192,96,0.3);}
 
 /* GUARANTEE */
 .guarantee-block{margin-top:28px;max-width:720px;background:rgba(77,255,195,0.04);border:1px solid rgba(77,255,195,0.18);border-radius:var(--radius);padding:28px 32px;display:flex;gap:20px;align-items:flex-start;}
@@ -276,10 +272,6 @@ section{max-width:920px;padding:110px 0;}
 /* FOOTER */
 footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-align:center;}
 .footer-text{font-family:var(--font-mono);font-size:var(--fz-xxs);line-height:2.8;color:var(--slate);}
-.footer-fiverr{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:16px;}
-.footer-fiverr a{display:inline-flex;align-items:center;gap:7px;color:var(--slate);font-family:var(--font-mono);font-size:var(--fz-xxs);letter-spacing:0.08em;text-decoration:none;transition:var(--transition);border:1px solid rgba(26,45,74,0.8);border-radius:100px;padding:6px 14px;}
-.footer-fiverr a:hover{color:var(--green);border-color:rgba(77,255,195,0.3);}
-.footer-fiverr svg{width:14px;height:14px;flex-shrink:0;}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -389,7 +381,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   <a href="#contact" class="nav-cta-btn js-scroll-contact">Get Your Brand Website &#8594;</a>
 </nav>
 
-<!-- SIDE — WhatsApp icon -->
+<!-- FLOATING SIDE ICONS — WhatsApp + Fiverr -->
 <div class="side-el left" aria-orientation="vertical">
   <ul class="social-list" aria-label="Contact">
     <li>
@@ -397,6 +389,14 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <title>WhatsApp</title>
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+      </a>
+    </li>
+    <li class="fiverr-icon">
+      <a href="https://www.fiverr.com/levxrone" aria-label="View Fiverr profile" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <title>Fiverr</title>
+          <path d="M23 9.92h-4.44V7.74c0-.73.6-1.32 1.33-1.32h1.55V2.08h-2.22c-2.2 0-3.99 1.78-3.99 3.99v3.85H13v4.16h2.23V22h4.16v-7.92H22l1-4.16zM8.89 2.08C6.69 2.08 4.9 3.87 4.9 6.07v.65H2.67v4.16H4.9V22h4.16V10.88h2.22V6.72H9.06v-.65c0-.73.6-1.32 1.33-1.32h.89V2.08h-2.4z"/>
         </svg>
       </a>
     </li>
@@ -449,13 +449,13 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       </div>
     </div>
 
-    <span class="hero-eyebrow fade-up d2">Personal Brand Websites for Fiverr Freelancers — Built to Attract Higher-Value Clients Outside the Platform</span>
+    <span class="hero-eyebrow fade-up d2">Personal Brand Websites for Fiverr Freelancers — Built to Win Clients Outside the Platform</span>
 
-    <p class="hero-h1 fade-up d3">You have the skills, the reviews, the proof of work.</p>
-    <p class="hero-problem fade-up d3">But high-ticket clients aren't finding you — because you don't exist <em>outside Fiverr</em>.</p>
+    <p class="hero-h1 fade-up d3">Your skills, reviews, and results are real.</p>
+    <p class="hero-problem fade-up d3">But premium clients aren't finding you — because you don't exist <em>outside Fiverr</em>.</p>
 
     <p class="hero-sub fade-up d4">
-      Premium clients — the ones who pay $2,000, $5,000, or more for a project — don't search Fiverr. They search Google. They check LinkedIn. They look for a professional website that tells them who you are, what you've built, and why you're worth it. <strong>If that page doesn't exist, they move on to someone who has one.</strong>
+      High-ticket clients — the ones who pay $2,000, $5,000, or more — don't search Fiverr. They search Google. They look for a professional website that tells them who you are and why you're worth it. <strong>If that page doesn't exist, they move on.</strong>
     </p>
 
     <div class="hero-cta-group fade-up d5">
@@ -470,17 +470,17 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       <div class="proof-strip-body">
         <div class="proof-item">
           <span class="proof-item-num">Custom</span>
-          <span class="proof-item-label">Built around your work, your brand, and your target clients — not a template</span>
+          <span class="proof-item-label">Built around your work, niche, and target clients — not a template</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
           <span class="proof-item-num">$350–$750</span>
-          <span class="proof-item-label">Two clear packages — pay only after you're completely satisfied</span>
+          <span class="proof-item-label">Two clear packages — pay only once you're satisfied</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
           <span class="proof-item-num">Yours</span>
-          <span class="proof-item-label">Full ownership — no platform dependency, no recurring fees, ever</span>
+          <span class="proof-item-label">Full ownership — no platform lock-in, no recurring fees, ever</span>
         </div>
       </div>
     </div>
@@ -553,8 +553,8 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <h2 class="numbered-heading fade-up">About</h2>
     <div class="about-block fade-up d1">
       <span class="about-tag">// The designer behind the work</span>
-      <p>I'm <strong>Anes Hass</strong> — a web designer who works specifically with skilled freelancers who have outgrown what Fiverr can offer them. Not beginners. Not agencies. Freelancers who have earned strong reviews, developed a recognizable style, and quietly hit a ceiling — because the platform they built on was never designed to let them charge what they're actually worth.</p>
-      <p>The pattern I see constantly: a designer, copywriter, or consultant with 200 five-star reviews and real, verifiable skill — but their entire professional identity lives inside a marketplace that signals "affordable" to every client who finds them. Premium clients don't trust that context. They need to find a professional outside of it.</p>
+      <p>I'm <strong>Anes Hass</strong> — a web designer who works exclusively with skilled freelancers who've outgrown what Fiverr can offer. Not beginners. Freelancers with real reviews, a recognizable style, and a quiet ceiling — because the platform they built on was never designed to let them charge what they're actually worth.</p>
+      <p>The pattern is consistent: a designer, copywriter, or consultant with 200 five-star reviews and verifiable skill — but their entire professional identity lives inside a marketplace that signals "affordable" to every client who lands there. Premium clients don't trust that context.</p>
       <p><strong>That's the gap I close.</strong> I build personal brand websites that position you as a high-caliber independent professional — someone worth hiring at rates that reflect your actual ability, not Fiverr's price floor.</p>
     </div>
   </section>
@@ -566,16 +566,16 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       <div class="service-card fade-left d1">
         <span class="service-label">// Why your skills aren't translating into higher rates</span>
         <h4>Fiverr Was Never Built to Make You Look Premium.</h4>
-        <p>The platform commoditizes talent by design. Clients arrive expecting a deal. You compete in a search result next to sellers charging a fraction of your rate. No matter how good your work is, the context around it signals "affordable marketplace" — not "senior professional." A personal brand website removes you from that context entirely. It's the difference between being found on a price-comparison platform and being found as the clear expert in your field.</p>
+        <p>The platform commoditizes talent by design. Clients arrive expecting a deal. You compete next to sellers charging a fraction of your rate. No matter how strong your work is, the context signals "affordable marketplace" — not "senior professional." A personal brand website removes you from that context entirely. It's the difference between being found on a price-comparison platform and being found as the clear expert in your field.</p>
       </div>
       <div class="service-card fade-right d2">
         <span class="service-label">// What a high-caliber freelancer's website actually needs</span>
         <h4>Four Things a Fiverr Profile Will Never Give You</h4>
         <p>
-          <strong style="color:var(--slate-white);">A positioning statement that commands premium rates</strong> — the first sentence a potential client reads should immediately communicate your specific expertise and who you serve best. Not a generic tagline.<br><br>
-          <strong style="color:var(--slate-white);">A portfolio that tells the story behind the work</strong> — results, context, and process. Not just images in a gallery. Clients paying $3,000+ make decisions based on understanding, not aesthetics alone.<br><br>
-          <strong style="color:var(--slate-white);">Social proof presented on your terms</strong> — your best reviews, testimonials, and case studies, curated and structured to answer the questions high-value clients ask before they reach out.<br><br>
-          <strong style="color:var(--slate-white);">A direct path to contact — outside any platform's control</strong> — your own page, your own domain, your own client pipeline. No algorithm changes, no account restrictions, no 20% cut.
+          <strong style="color:var(--slate-white);">A positioning statement that commands premium rates</strong> — the first line a client reads should immediately establish your expertise and who you serve.<br><br>
+          <strong style="color:var(--slate-white);">A portfolio that tells the story behind the work</strong> — results, context, and process. Clients paying $3,000+ decide based on understanding, not aesthetics alone.<br><br>
+          <strong style="color:var(--slate-white);">Social proof on your terms</strong> — your best reviews and case studies, structured to answer the questions high-value clients ask before they reach out.<br><br>
+          <strong style="color:var(--slate-white);">A direct path to contact — outside any platform's control</strong> — your domain, your pipeline. No algorithm changes, no account restrictions, no 20% cut.
         </p>
       </div>
     </div>
@@ -588,9 +588,9 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
       <div class="offer-card-header">
         <span class="offer-scope-tag">Simple, focused, and built entirely around your professional identity</span>
-        <h3>Your Personal Brand Website — Custom Built. Clear Pricing. You Pay Only When You're Satisfied.</h3>
+        <h3>Custom-Built. Clear Pricing. Pay Only When You're Satisfied.</h3>
         <p class="offer-lead-text">
-          Tell me about your niche, your best work, and the clients you want to attract. I'll handle the rest — strategy, design, copy, and build. You'll receive a professional website that reflects the level you're already at and positions you for the level you're moving toward. Review it, request any changes, and we refine it together until it's exactly right. You don't pay a single dollar until the work is finished and you're genuinely satisfied with what you see.
+          Tell me your niche, your best work, and the clients you want. I handle the rest — strategy, design, copy, and build. You review it, request changes, and we refine until it's exactly right. You don't pay until the site is finished and you're genuinely satisfied.
         </p>
       </div>
 
@@ -599,23 +599,23 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <ul class="offer-points">
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>A positioning strategy built around your specific niche</strong> — before a single page is designed, I define how you should be presented to attract the clients you actually want. Your niche, your tone, your competitive edge — made clear and compelling.</span>
+            <span><strong>Positioning strategy built around your niche</strong> — before a single page is designed, I define how you should be presented to attract the clients you actually want.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Copy written to convert high-value visitors</strong> — every headline, bio, and service description is written to speak directly to premium clients: what you do, who it's for, and why you're the right choice. No filler, no fluff.</span>
+            <span><strong>Copy written to convert high-value visitors</strong> — every headline, bio, and service description speaks directly to premium clients. No filler.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>A portfolio that makes your work impossible to overlook</strong> — structured to showcase your best projects with context and results, not just screenshots. Designed to build the kind of trust that leads to direct outreach.</span>
+            <span><strong>A portfolio that makes your work impossible to overlook</strong> — structured with context and results, not just screenshots. Built to earn direct outreach.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Clean code — fully owned by you, hosted wherever you choose</strong> — no third-party platform, no monthly subscription, no dependency. Your brand infrastructure belongs to you from day one.</span>
+            <span><strong>Clean code — fully owned by you, hosted wherever you choose</strong> — no third-party platform, no monthly subscription, no dependency.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Fast, mobile-optimized, and built to rank</strong> — a site that loads instantly on any device, with basic on-page SEO so clients searching for your specific skills can find you without a paid ad in sight.</span>
+            <span><strong>Fast, mobile-optimized, and built to rank</strong> — instant on any device, with on-page SEO so the right clients can find you without a single paid ad.</span>
           </li>
         </ul>
       </div>
@@ -623,7 +623,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       <div class="offer-footer">
         <div class="offer-next-label">
           Ready to exist outside Fiverr as the professional you already are?
-          <span>Send me a message with a brief description of your work, your niche, and the type of clients you want to reach. I'll come back with a clear plan and show you exactly what your site will look like — before you commit to anything. You pay only once you've seen the result and are satisfied with it.</span>
+          <span>Send me a brief description of your work, your niche, and the clients you want to reach. I'll come back with a clear plan — before you commit to anything.</span>
         </div>
       </div>
 
@@ -645,7 +645,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <div class="pricing-card-top">
           <div class="pricing-name-group">
             <span class="pricing-plan">Starter Package</span>
-            <span class="pricing-desc">A clean, professional personal website that establishes your brand outside Fiverr. Ideal for freelancers who want a polished online presence and a strong portfolio hub to share with potential clients.</span>
+            <span class="pricing-desc">A clean, professional personal website that establishes your brand outside Fiverr. For freelancers who want a polished presence and a strong portfolio hub to share with direct clients.</span>
           </div>
           <div class="pricing-amount-group">
             <span class="pricing-amount">$350</span>
@@ -675,7 +675,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <div class="pricing-card-top">
           <div class="pricing-name-group">
             <span class="pricing-plan">Premium Brand Website</span>
-            <span class="pricing-desc">A fully custom personal brand system built to attract high-ticket direct clients. Deeper strategy, stronger positioning, advanced layout — designed for freelancers ready to charge what they're actually worth.</span>
+            <span class="pricing-desc">A fully custom brand system built to attract high-ticket direct clients. Deeper strategy, stronger positioning, advanced layout — for freelancers ready to charge what they're actually worth.</span>
           </div>
           <div class="pricing-amount-group">
             <span class="pricing-amount" style="color:var(--gold);">$750</span>
@@ -697,7 +697,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       </div>
 
       <div class="pricing-footer">
-        <span class="pricing-footer-note">Clients paying $3,000–$10,000 for a project judge you on your website before they ever reply. This is that site.</span>
+        <span class="pricing-footer-note">Clients paying $3,000–$10,000 judge you on your website before they ever reply. This is that site.</span>
       </div>
 
     </div>
@@ -705,8 +705,8 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <div class="guarantee-block fade-up d2">
       <div class="guarantee-icon">&#9679;</div>
       <div class="guarantee-text">
-        <h4>You pay nothing until the website is finished and you're completely satisfied with it.</h4>
-        <p>This isn't a discount or a promotion — it's how I work with every client. I build the site, you review it, we refine it together through as many rounds as needed. Once it's exactly what you envisioned and you're proud to share it with clients, that's when you pay. No risk. No pressure. No money upfront. Just a finished website that reflects the professional you already are.</p>
+        <h4>You pay nothing until the website is finished and you're completely satisfied.</h4>
+        <p>This is how I work with every client. I build, you review, we refine — as many rounds as needed. Once it's exactly what you envisioned, that's when you pay. No upfront cost. No risk. Just a finished website that reflects the professional you already are.</p>
       </div>
     </div>
   </section>
@@ -715,10 +715,10 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   <section id="contact" class="contact-section">
     <span class="contact-label fade-up">Your professional identity — outside any platform</span>
 
-    <h2 class="contact-h2 fade-up d1">You've already done<br>the hard work.<br>Now let's make sure<br><span>the right clients find you.</span></h2>
+    <h2 class="contact-h2 fade-up d1">You've done the hard work.<br>Now let's make sure<br><span>the right clients find you.</span></h2>
 
     <p class="contact-sub fade-up d2">
-      Tell me about your niche and your best work. I'll show you exactly how your personal brand website will be structured — before you commit to anything. <strong>Starting at $350. Pay only after you're satisfied. Full ownership from day one.</strong>
+      Tell me your niche and your best work. I'll show you exactly how your site will be structured — before you commit to anything. <strong>Starting at $350. Pay only after you're satisfied. Full ownership from day one.</strong>
     </p>
 
     <div class="contact-cta-wrap fade-up d3">
@@ -728,22 +728,13 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         </svg>
         Get Started <span class="arrow">&#8594;</span>
       </a>
-      <span class="contact-caveat">·&nbsp; I work with a limited number of clients at a time — reach out today to check availability</span>
+      <span class="contact-caveat">·&nbsp; Limited availability — reach out today to check your spot</span>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <div class="footer-fiverr fade-up">
-    <a href="https://www.fiverr.com/levxrone" target="_blank" rel="noreferrer" aria-label="View Fiverr profile">
-      <!-- Fiverr icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M23 9.92h-4.44V7.74c0-.73.6-1.32 1.33-1.32h1.55V2.08h-2.22c-2.2 0-3.99 1.78-3.99 3.99v3.85H13v4.16h2.23V22h4.16v-7.92H22l1-4.16zM8.89 2.08C6.69 2.08 4.9 3.87 4.9 6.07v.65H2.67v4.16H4.9V22h4.16V10.88h2.22V6.72H9.06v-.65c0-.73.6-1.32 1.33-1.32h.89V2.08h-2.4z"/>
-      </svg>
-      View my Fiverr profile — levxrone
-    </a>
-  </div>
   <div class="footer-text fade-up">
     <div>Designed &amp; Built by AutFlow Studio</div>
     <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Personal Brand Websites for Fiverr Freelancers &middot; Designers &middot; Copywriters &middot; UI/UX &middot; Marketers &middot; Consultants</div>
@@ -777,7 +768,7 @@ function scanVisible(){
 }
 document.addEventListener('DOMContentLoaded', scanVisible);
 
-/* SMOOTH SCROLL — How It Works link */
+/* SMOOTH SCROLL */
 document.querySelectorAll('.js-scroll-offer').forEach(function(a){
   a.addEventListener('click', function(e){
     e.preventDefault();
@@ -785,8 +776,6 @@ document.querySelectorAll('.js-scroll-offer').forEach(function(a){
     if(t){ t.scrollIntoView({behavior:'smooth', block:'start'}); }
   });
 });
-
-/* SMOOTH SCROLL — Nav CTA → contact section */
 document.querySelectorAll('.js-scroll-contact').forEach(function(a){
   a.addEventListener('click', function(e){
     e.preventDefault();
@@ -794,8 +783,6 @@ document.querySelectorAll('.js-scroll-contact').forEach(function(a){
     if(t){ t.scrollIntoView({behavior:'smooth', block:'start'}); }
   });
 });
-
-/* OTHER ANCHOR LINKS */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   if(a.classList.contains('js-scroll-offer') || a.classList.contains('js-scroll-contact')) return;
   a.addEventListener('click', function(e){
@@ -804,7 +791,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   });
 });
 
-/* ===== CUSTOM VIDEO CONTROLS ===== */
+/* VIDEO CONTROLS */
 (function(){
   var vid    = document.getElementById('heroVideo');
   var bar    = document.getElementById('videoBar');
@@ -818,91 +805,34 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   var iconMuted = document.getElementById('iconMuted');
   var iconSound = document.getElementById('iconSound');
   var volSlider = document.getElementById('videoVol');
-
   if(!vid) return;
-
-  function fmt(s){
-    var m = Math.floor(s/60);
-    var sec = Math.floor(s%60);
-    return m+':'+(sec<10?'0':'')+sec;
-  }
-
-  function updateProgress(){
-    if(!vid.duration) return;
-    var pct = (vid.currentTime / vid.duration) * 100;
-    bar.style.width = pct+'%';
-    thumb.style.left = pct+'%';
-    timeEl.textContent = fmt(vid.currentTime)+' / '+fmt(vid.duration);
-  }
-
+  function fmt(s){ var m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
+  function updateProgress(){ if(!vid.duration) return; var pct=(vid.currentTime/vid.duration)*100; bar.style.width=pct+'%'; thumb.style.left=pct+'%'; timeEl.textContent=fmt(vid.currentTime)+' / '+fmt(vid.duration); }
   vid.addEventListener('timeupdate', updateProgress);
   vid.addEventListener('loadedmetadata', updateProgress);
-
-  /* Play / Pause */
-  playBtn.addEventListener('click', function(){
-    if(vid.paused){ vid.play(); } else { vid.pause(); }
-  });
-  vid.addEventListener('play', function(){
-    iconPause.style.display=''; iconPlay.style.display='none';
-  });
-  vid.addEventListener('pause', function(){
-    iconPause.style.display='none'; iconPlay.style.display='';
-  });
-
-  /* Scrub */
-  var scrubbing = false;
-  function scrubTo(e){
-    var rect = prog.getBoundingClientRect();
-    var x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-    var pct = x / rect.width;
-    vid.currentTime = pct * vid.duration;
-  }
+  playBtn.addEventListener('click', function(){ if(vid.paused){ vid.play(); } else { vid.pause(); } });
+  vid.addEventListener('play', function(){ iconPause.style.display=''; iconPlay.style.display='none'; });
+  vid.addEventListener('pause', function(){ iconPause.style.display='none'; iconPlay.style.display=''; });
+  var scrubbing=false;
+  function scrubTo(e){ var rect=prog.getBoundingClientRect(),x=Math.max(0,Math.min(e.clientX-rect.left,rect.width)),pct=x/rect.width; vid.currentTime=pct*vid.duration; }
   prog.addEventListener('mousedown', function(e){ scrubbing=true; scrubTo(e); });
   document.addEventListener('mousemove', function(e){ if(scrubbing) scrubTo(e); });
   document.addEventListener('mouseup', function(){ scrubbing=false; });
-  /* Touch scrub */
   prog.addEventListener('touchstart', function(e){ scrubbing=true; scrubTo(e.touches[0]); },{passive:true});
   document.addEventListener('touchmove', function(e){ if(scrubbing) scrubTo(e.touches[0]); },{passive:true});
   document.addEventListener('touchend', function(){ scrubbing=false; });
-
-  /* Mute toggle */
-  muteBtn.addEventListener('click', function(){
-    vid.muted = !vid.muted;
-    if(vid.muted){
-      iconMuted.style.display=''; iconSound.style.display='none';
-      volSlider.value=0;
-    } else {
-      iconMuted.style.display='none'; iconSound.style.display='';
-      volSlider.value = vid.volume||1;
-    }
-  });
-
-  /* Volume slider */
-  volSlider.addEventListener('input', function(){
-    vid.volume = parseFloat(this.value);
-    vid.muted = (vid.volume === 0);
-    if(vid.muted){ iconMuted.style.display=''; iconSound.style.display='none'; }
-    else { iconMuted.style.display='none'; iconSound.style.display=''; }
-  });
+  muteBtn.addEventListener('click', function(){ vid.muted=!vid.muted; if(vid.muted){ iconMuted.style.display=''; iconSound.style.display='none'; volSlider.value=0; } else { iconMuted.style.display='none'; iconSound.style.display=''; volSlider.value=vid.volume||1; } });
+  volSlider.addEventListener('input', function(){ vid.volume=parseFloat(this.value); vid.muted=(vid.volume===0); if(vid.muted){ iconMuted.style.display=''; iconSound.style.display='none'; } else { iconMuted.style.display='none'; iconSound.style.display=''; } });
 })();
 
 /* CURSOR */
-var dot  = document.getElementById('cursorDot');
-var ring = document.getElementById('cursorRing');
-var mx=0, my=0, rx=0, ry=0;
-if(window.innerWidth > 768){
-  document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-  (function anim(){
-    rx += (mx-rx)*0.1; ry += (my-ry)*0.1;
-    ring.style.left=rx+'px'; ring.style.top=ry+'px';
-    requestAnimationFrame(anim);
-  })();
-  document.querySelectorAll('a,button,.service-card,.pricing-card,.offer-card,.cta-primary,.cta-secondary').forEach(function(el){
-    el.addEventListener('mouseenter', function(){ ring.classList.add('hovered'); });
-    el.addEventListener('mouseleave', function(){ ring.classList.remove('hovered'); });
-  });
-  document.addEventListener('mouseleave', function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
-  document.addEventListener('mouseenter', function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
+var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),mx=0,my=0,rx=0,ry=0;
+if(window.innerWidth>768){
+  document.addEventListener('mousemove',function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+  (function anim(){ rx+=(mx-rx)*0.1; ry+=(my-ry)*0.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); })();
+  document.querySelectorAll('a,button,.service-card,.pricing-card,.offer-card,.cta-primary,.cta-secondary').forEach(function(el){ el.addEventListener('mouseenter',function(){ ring.classList.add('hovered'); }); el.addEventListener('mouseleave',function(){ ring.classList.remove('hovered'); }); });
+  document.addEventListener('mouseleave',function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
+  document.addEventListener('mouseenter',function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
 }
 </script>
 </body>

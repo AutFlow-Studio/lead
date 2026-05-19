@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Personal Brand Websites for Upwork Freelancers</title>
+<title>AutFlow Studio — Premium Websites for Independent Professionals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,6 +52,7 @@ a{color:var(--green);text-decoration:none;transition:var(--transition);}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 @keyframes borderRun{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
 @keyframes goldPulse{0%,100%{opacity:0.7;}50%{opacity:1;}}
+@keyframes floatIn{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
 
 /* INTRO LOADER */
 #intro-loader{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;}
@@ -99,7 +100,7 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .social-list a{color:var(--slate);display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius);transition:var(--transition);}
 .social-list a:hover{color:var(--green);transform:translateY(-3px);}
 .social-list svg{width:18px;height:18px;}
-.social-list .upwork-icon svg{width:16px;height:16px;}
+.social-list .fiverr-icon svg{width:16px;height:16px;}
 @media(max-width:1080px){.side-el{display:none;}}
 
 /* SECTIONS */
@@ -380,7 +381,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   <a href="#contact" class="nav-cta-btn js-scroll-contact">Get Your Brand Website &#8594;</a>
 </nav>
 
-<!-- FLOATING SIDE ICONS — WhatsApp + Upwork -->
+<!-- FLOATING SIDE ICONS — WhatsApp + Fiverr -->
 <div class="side-el left" aria-orientation="vertical">
   <ul class="social-list" aria-label="Contact">
     <li>
@@ -391,11 +392,12 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         </svg>
       </a>
     </li>
-    <li class="upwork-icon">
-      <a href="https://www.upwork.com/freelancers/~01c2c1cf2d6c972916?mp_source=share" aria-label="View Upwork profile" target="_blank" rel="noreferrer">
+    <li class="fiverr-icon">
+      <a href="https://www.fiverr.com/levxrone" aria-label="View Fiverr profile" target="_blank" rel="noreferrer">
+        <!-- Fiverr "f" logomark -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-          <title>Upwork</title>
-          <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H8.445v7.111c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H1.236v7.111c0 2.914 2.37 5.303 5.29 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.566l1.213-5.71c1.pivot 1.026 2.373 1.632 3.842 1.632 2.586 0 4.699-2.084 4.699-4.644-.001-2.573-2.114-4.657-4.699-4.657z"/>
+          <title>Fiverr</title>
+          <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-1.102c-.107 0-.2.085-.2.2v5.606h1.302V11.883zm-3.024 0h-1.3v5.806h1.3v-5.806zm-.649-1.5a.745.745 0 1 0 0-1.49.745.745 0 0 0 0 1.49zM16.1 11.552c-.6 0-1.1.201-1.5.502v-.37H13.3v5.806h1.3v-3.305c0-.7.5-1.2 1.2-1.2.7 0 1.2.5 1.2 1.2v3.305h1.3v-3.606c0-1.302-.901-2.332-2.2-2.332zm-5.199.33H9.6v-1.5H8.3v1.5H7.5v1.2H8.3v4.606h1.3V13.08h1.301v-1.2zm-3.905-.33c-.6 0-1.1.2-1.5.5v-.37H4.2v5.806h1.3v-3.305c0-.7.5-1.2 1.2-1.2.7 0 1.2.5 1.2 1.2v3.305h1.3v-3.606c0-1.302-.901-2.332-2.204-2.332zm-4.196 0C1.2 11.552 0 12.752 0 14.484c0 1.702 1.2 2.903 2.8 2.903.9 0 1.7-.4 2.2-1.001l-.9-.801c-.3.4-.8.601-1.3.601-.9 0-1.5-.601-1.5-1.402h4v-.3c0-1.702-1.1-2.902-2.7-2.902zm-1.4 2.302c.1-.8.7-1.201 1.4-1.201.7 0 1.3.4 1.4 1.201H1.4z"/>
         </svg>
       </a>
     </li>
@@ -448,13 +450,13 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       </div>
     </div>
 
-    <span class="hero-eyebrow fade-up d2">Personal Brand Websites for Upwork Freelancers — Built to Win Clients Outside the Platform</span>
+    <span class="hero-eyebrow fade-up d2">Personal Brand Websites for Independent Professionals — Built to Win Clients on Your Terms</span>
 
-    <p class="hero-h1 fade-up d3">Your skills, track record, and results are real.</p>
-    <p class="hero-problem fade-up d3">But premium clients aren't finding you — because you don't exist <em>outside Upwork</em>.</p>
+    <p class="hero-h1 fade-up d3">Your skills, results, and reputation are real.</p>
+    <p class="hero-problem fade-up d3">But premium clients can't find you — because you have no <em>presence of your own</em>.</p>
 
     <p class="hero-sub fade-up d4">
-      High-ticket clients — the ones who pay $2,000, $5,000, or more — don't browse Upwork. They search Google. They look for a professional website that tells them who you are and why you're worth it. <strong>If that page doesn't exist, they move on.</strong>
+      High-value clients — the ones who allocate $2,000, $5,000, or more — don't search through crowded marketplaces. They search Google. They expect a professional website that tells them who you are and why you're worth it. <strong>If that page doesn't exist, they move on to someone who has one.</strong>
     </p>
 
     <div class="hero-cta-group fade-up d5">
@@ -469,17 +471,17 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       <div class="proof-strip-body">
         <div class="proof-item">
           <span class="proof-item-num">Custom</span>
-          <span class="proof-item-label">Built around your expertise, niche, and ideal clients — not a template</span>
+          <span class="proof-item-label">Built around your expertise, niche, and ideal clients — never a template</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
           <span class="proof-item-num">$350–$600</span>
-          <span class="proof-item-label">Two clear packages — pay only once you're satisfied</span>
+          <span class="proof-item-label">Two clear packages — pay only once you're completely satisfied</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
           <span class="proof-item-num">Yours</span>
-          <span class="proof-item-label">Full ownership — no platform lock-in, no recurring fees, ever</span>
+          <span class="proof-item-label">Full ownership — no platform dependency, no recurring fees, ever</span>
         </div>
       </div>
     </div>
@@ -525,25 +527,25 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   <div class="trust-bar fade-up">
     <div class="trust-item"><span class="trust-dot"></span>Personal Brand Identity</div>
     <div class="trust-item"><span class="trust-dot"></span>Portfolio Showcase</div>
-    <div class="trust-item"><span class="trust-dot"></span>Off-Platform Clients</div>
+    <div class="trust-item"><span class="trust-dot"></span>Direct Client Acquisition</div>
     <div class="trust-item"><span class="trust-dot"></span>Pay After Approval</div>
   </div>
 
   <!-- METRICS TICKER -->
   <div class="metrics-ticker-wrap fade-up">
     <div class="metrics-ticker" id="ticker">
-      <div class="ticker-item"><span class="ticker-num">$350</span><span class="ticker-label">Starter Brand Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">$600</span><span class="ticker-label">Premium Brand System</span></div>
+      <div class="ticker-item"><span class="ticker-num">$350</span><span class="ticker-label">Basic Brand Website</span></div>
+      <div class="ticker-item"><span class="ticker-num">$600</span><span class="ticker-label">Full Brand Website</span></div>
       <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Payment Until You're Satisfied</span></div>
       <div class="ticker-item"><span class="ticker-num">100%</span><span class="ticker-label">Full Ownership — No Subscriptions</span></div>
       <div class="ticker-item"><span class="ticker-num">Custom</span><span class="ticker-label">Built Around Your Work &amp; Niche</span></div>
-      <div class="ticker-item"><span class="ticker-num">Direct</span><span class="ticker-label">Clients Who Find You on Google</span></div>
-      <div class="ticker-item"><span class="ticker-num">$350</span><span class="ticker-label">Starter Brand Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">$600</span><span class="ticker-label">Premium Brand System</span></div>
+      <div class="ticker-item"><span class="ticker-num">Direct</span><span class="ticker-label">Clients Who Find You — Anywhere</span></div>
+      <div class="ticker-item"><span class="ticker-num">$350</span><span class="ticker-label">Basic Brand Website</span></div>
+      <div class="ticker-item"><span class="ticker-num">$600</span><span class="ticker-label">Full Brand Website</span></div>
       <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Payment Until You're Satisfied</span></div>
       <div class="ticker-item"><span class="ticker-num">100%</span><span class="ticker-label">Full Ownership — No Subscriptions</span></div>
       <div class="ticker-item"><span class="ticker-num">Custom</span><span class="ticker-label">Built Around Your Work &amp; Niche</span></div>
-      <div class="ticker-item"><span class="ticker-num">Direct</span><span class="ticker-label">Clients Who Find You on Google</span></div>
+      <div class="ticker-item"><span class="ticker-num">Direct</span><span class="ticker-label">Clients Who Find You — Anywhere</span></div>
     </div>
   </div>
 
@@ -552,9 +554,9 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <h2 class="numbered-heading fade-up">About</h2>
     <div class="about-block fade-up d1">
       <span class="about-tag">// The designer behind the work</span>
-      <p>I'm <strong>Anes Hass</strong> — a web designer who works exclusively with skilled freelancers and independent professionals who've outgrown what Upwork can offer. Not beginners. Consultants, designers, copywriters, and agencies with strong track records, verified results, and a quiet ceiling — because the platform they built on was never designed to let them charge what they're actually worth.</p>
-      <p>The pattern is consistent: a developer, strategist, or creative with dozens of five-star contracts and a highly rated profile — but their entire professional identity lives inside a marketplace that signals "vetted contractor" to every client who lands there. Enterprise clients and high-budget decision makers don't trust that context when they're allocating serious budget.</p>
-      <p><strong>That's the gap I close.</strong> I build personal brand websites that position you as a high-caliber independent professional — someone worth hiring at rates that reflect your actual ability, not Upwork's competitive price dynamics.</p>
+      <p>I'm <strong>Anes Hass</strong> — a web designer who works exclusively with skilled independents and service professionals who've hit a ceiling they can't explain. Not beginners. Consultants, developers, designers, copywriters, and specialists with strong track records, verified results, and a quiet frustration — their work is excellent, but the way they present themselves online doesn't reflect it.</p>
+      <p>The pattern is consistent: a professional with years of experience and a portfolio full of strong work — but their entire online identity is either scattered, dated, or buried inside a third-party platform that signals "available contractor" rather than "trusted expert." High-budget decision makers and enterprise clients don't make that read the same way.</p>
+      <p><strong>That's the gap I close.</strong> I build personal brand websites that position you as a high-caliber independent professional — someone worth hiring at rates that reflect your actual expertise, not the dynamics of a crowded marketplace.</p>
     </div>
   </section>
 
@@ -563,18 +565,18 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <h2 class="numbered-heading fade-up">The Real Problem</h2>
     <div class="services-grid">
       <div class="service-card fade-left d1">
-        <span class="service-label">// Why your skills aren't translating into higher rates</span>
-        <h4>Upwork Was Never Built to Make You Look Premium.</h4>
-        <p>The platform commoditizes talent by design. Clients arrive with budgets pre-set and comparison tools at hand. You compete next to equally rated freelancers at a fraction of your rate. No matter how strong your work is, the context signals "hire from a marketplace" — not "retain a senior expert." A personal brand website removes you from that context entirely. It's the difference between being one of many search results and being the undeniable authority in your field.</p>
+        <span class="service-label">// Why strong work doesn't always command strong rates</span>
+        <h4>Your Online Presence Was Never Designed to Make You Look Premium.</h4>
+        <p>Marketplaces and profile pages commoditize talent by design — clients arrive with pre-set budgets, comparison tools, and zero context about who you really are. No matter how strong your deliverables, the medium itself signals "vendor" instead of "expert." A personal brand website removes you from that context entirely. It's the difference between being found in a list of results and being the undeniable authority in your field.</p>
       </div>
       <div class="service-card fade-right d2">
-        <span class="service-label">// What a high-caliber freelancer's website actually needs</span>
-        <h4>Four Things an Upwork Profile Will Never Give You</h4>
+        <span class="service-label">// What a serious professional's website actually needs</span>
+        <h4>Four Things a Generic Profile Will Never Give You</h4>
         <p>
-          <strong style="color:var(--slate-white);">A positioning statement that commands premium rates</strong> — the first line a client reads should immediately establish your expertise and who you serve.<br><br>
-          <strong style="color:var(--slate-white);">A portfolio that tells the story behind the work</strong> — results, context, and process. Clients allocating $5,000+ decide based on understanding, not bullet points alone.<br><br>
-          <strong style="color:var(--slate-white);">Social proof on your terms</strong> — your best testimonials and case studies, structured to answer the questions serious buyers ask before they reach out.<br><br>
-          <strong style="color:var(--slate-white);">A direct path to contact — outside any platform's control</strong> — your domain, your pipeline. No algorithm changes, no account restrictions, no 20% service fee.
+          <strong style="color:var(--slate-white);">A positioning statement that earns premium rates</strong> — the first line a client reads should immediately establish your expertise and who you serve.<br><br>
+          <strong style="color:var(--slate-white);">A portfolio that tells the story behind the work</strong> — results, context, and process. Clients allocating serious budget decide based on understanding, not screenshots alone.<br><br>
+          <strong style="color:var(--slate-white);">Social proof on your terms</strong> — your strongest testimonials and case studies, structured to answer the questions serious buyers ask before they reach out.<br><br>
+          <strong style="color:var(--slate-white);">A direct pipeline — fully under your control</strong> — your domain, your inbox. No algorithm changes, no account restrictions, no commission cut from anyone.
         </p>
       </div>
     </div>
@@ -589,7 +591,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <span class="offer-scope-tag">Simple, focused, and built entirely around your professional identity</span>
         <h3>Custom-Built. Clear Pricing. Pay Only When You're Satisfied.</h3>
         <p class="offer-lead-text">
-          Tell me your niche, your strongest work, and the clients you want to attract. I handle the rest — strategy, design, copy, and build. You review it, request changes, and we refine until it's exactly right. You don't pay until the site is finished and you're genuinely satisfied.
+          Tell me your niche, your strongest work, and the clients you want to attract. I handle the rest — strategy, design, copy, and build. You review it, request changes, and we refine until it's exactly right. You don't pay a single cent until the site is finished and you're genuinely satisfied with it.
         </p>
       </div>
 
@@ -602,26 +604,26 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Copy written to convert high-value visitors</strong> — every headline, bio, and service description speaks directly to premium clients. No filler.</span>
+            <span><strong>Copy written to convert high-value visitors</strong> — every headline, bio, and service description speaks directly to premium clients. No filler, no vague claims.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>A portfolio that makes your work impossible to overlook</strong> — structured with context and results, not just screenshots. Built to earn direct outreach.</span>
+            <span><strong>A portfolio that makes your work impossible to overlook</strong> — structured with context and results, not just visuals. Built to earn direct outreach from serious buyers.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Clean code — fully owned by you, hosted wherever you choose</strong> — no third-party platform, no monthly subscription, no dependency.</span>
+            <span><strong>Clean code — fully owned by you, hosted wherever you choose</strong> — no third-party dependency, no monthly subscription, no lock-in of any kind.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Fast, mobile-optimized, and built to rank</strong> — instant on any device, with on-page SEO so the right clients can find you without a single paid ad.</span>
+            <span><strong>Fast, mobile-optimized, and built to rank</strong> — instant on any device, with on-page SEO so the right clients find you through search — without a single paid ad.</span>
           </li>
         </ul>
       </div>
 
       <div class="offer-footer">
         <div class="offer-next-label">
-          Ready to exist outside Upwork as the professional you already are?
+          Ready to own your professional identity — on your own terms?
           <span>Send me a brief description of your work, your niche, and the clients you want to reach. I'll come back with a clear plan — before you commit to anything.</span>
         </div>
       </div>
@@ -639,12 +641,12 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <span class="pricing-badge-text">Two Packages — One Clear Goal</span>
       </div>
 
-      <!-- STARTER PACKAGE -->
+      <!-- BASIC PACKAGE -->
       <div class="pricing-card">
         <div class="pricing-card-top">
           <div class="pricing-name-group">
-            <span class="pricing-plan">Starter Package</span>
-            <span class="pricing-desc">A clean, professional personal website that establishes your brand outside Upwork. For freelancers and consultants who want a polished presence and a strong portfolio hub to share with direct clients.</span>
+            <span class="pricing-plan">Basic Package</span>
+            <span class="pricing-desc">A clean, professional personal website that establishes your brand and gives you a credible home online. For independent professionals who need a polished presence and a strong portfolio hub to share with clients — on their own domain.</span>
           </div>
           <div class="pricing-amount-group">
             <span class="pricing-amount">$350</span>
@@ -669,12 +671,12 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <span class="pricing-footer-note">One direct client from this site covers the investment many times over.</span>
       </div>
 
-      <!-- PREMIUM PACKAGE -->
+      <!-- BRAND WEBSITE PACKAGE -->
       <div class="pricing-card pricing-card-premium" style="margin-top:32px;">
         <div class="pricing-card-top">
           <div class="pricing-name-group">
-            <span class="pricing-plan">Premium Brand Website</span>
-            <span class="pricing-desc">A fully custom brand system built to attract high-ticket direct clients. Deeper strategy, stronger positioning, advanced layout — for freelancers and agencies ready to charge what they're actually worth.</span>
+            <span class="pricing-plan">Brand Website Package</span>
+            <span class="pricing-desc">A fully custom brand-focused website with advanced structure, stronger storytelling, and conversion optimization throughout — built for professionals ready to charge what they're actually worth and attract clients who expect a certain caliber.</span>
           </div>
           <div class="pricing-amount-group">
             <span class="pricing-amount" style="color:var(--gold);">$600</span>
@@ -683,10 +685,10 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         </div>
 
         <div class="pricing-includes" style="border-top:1px solid rgba(240,192,96,0.15);">
-          <span class="pricing-includes-label" style="color:var(--gold);">// Everything in Starter, plus</span>
+          <span class="pricing-includes-label" style="color:var(--gold);">// Everything in Basic, plus</span>
           <div class="pricing-includes-grid">
             <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Brand positioning strategy session</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Advanced layout built for high-ticket clients</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Advanced layout built for high-value clients</span></div>
             <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Case study pages with results &amp; context</span></div>
             <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Testimonials &amp; social proof system</span></div>
             <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Conversion-focused copywriting throughout</span></div>
@@ -704,15 +706,15 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <div class="guarantee-block fade-up d2">
       <div class="guarantee-icon">&#9679;</div>
       <div class="guarantee-text">
-        <h4>You pay nothing until the website is finished and you're completely satisfied.</h4>
-        <p>This is how I work with every client. I build, you review, we refine — as many rounds as needed. Once it's exactly what you envisioned, that's when you pay. No upfront cost. No risk. Just a finished website that reflects the professional you already are.</p>
+        <h4>No payment is required until you are fully satisfied with the website design.</h4>
+        <p>This is how I work with every single client. I build, you review, we refine — as many rounds as needed until it's exactly what you envisioned. Once you're completely happy with the result, that's when you pay. No upfront cost. No risk. Just a finished website that truly reflects the professional you already are.</p>
       </div>
     </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="contact-section">
-    <span class="contact-label fade-up">Your professional identity — outside any platform</span>
+    <span class="contact-label fade-up">Your professional identity — independent &amp; fully yours</span>
 
     <h2 class="contact-h2 fade-up d1">You've built the expertise.<br>Now let's make sure<br><span>the right clients find you.</span></h2>
 
@@ -736,7 +738,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 <footer>
   <div class="footer-text fade-up">
     <div>Designed &amp; Built by AutFlow Studio</div>
-    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Personal Brand Websites for Upwork Freelancers &middot; Consultants &middot; Designers &middot; Copywriters &middot; Agencies &middot; Independent Professionals</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Personal Brand Websites for Independent Professionals &middot; Consultants &middot; Designers &middot; Copywriters &middot; Developers &middot; Agencies</div>
     <div style="font-size:10px;margin-top:4px;opacity:0.4;">&copy; 2026 AutFlow Studio. All rights reserved.</div>
   </div>
 </footer>

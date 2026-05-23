@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Personal Brand Websites for Creative Freelancers</title>
+<title>AutFlow Studio — Conversion-Optimized Landing Pages for Media Buyers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -225,12 +225,20 @@ section{max-width:920px;padding:110px 0;}
 .pricing-include-marker{color:var(--green);font-family:var(--font-mono);font-size:10px;flex-shrink:0;padding-top:2px;}
 .pricing-footer{padding:18px 24px;border:1px solid var(--navy-mid);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:rgba(13,27,48,0.5);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .pricing-footer-note{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.04em;}
+
+/* Most Popular badge */
+.most-popular-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(77,255,195,0.12);border:1px solid rgba(77,255,195,0.35);border-radius:100px;padding:4px 12px;font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;}
+
 .pricing-card-premium{border:1px solid rgba(240,192,96,0.3);background:linear-gradient(135deg,var(--navy-light),rgba(240,192,96,0.03));border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;margin-top:24px;}
 .pricing-card-premium .pricing-plan{color:var(--gold);}
 .pricing-card-premium .pricing-amount{color:var(--gold);}
 .pricing-card-premium .pricing-include-marker{color:var(--gold);}
 .pricing-card-premium .pricing-includes-label{color:var(--gold);}
 .pricing-card-premium .pricing-includes{border-top:1px solid rgba(240,192,96,0.15);}
+
+/* Featured/main offer highlight */
+.pricing-card-featured{border:2px solid rgba(77,255,195,0.45);background:linear-gradient(135deg,var(--navy-light),rgba(77,255,195,0.05));border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;margin-top:24px;position:relative;}
+.pricing-card-featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);background-size:200% 100%;animation:borderRun 3s linear infinite;}
 
 .guarantee-block{margin-top:28px;max-width:720px;background:rgba(77,255,195,0.04);border:1px solid rgba(77,255,195,0.18);border-radius:var(--radius);padding:28px 32px;display:flex;gap:20px;align-items:flex-start;}
 .guarantee-icon{font-size:28px;flex-shrink:0;line-height:1;}
@@ -252,6 +260,10 @@ section{max-width:920px;padding:110px 0;}
 
 footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-align:center;}
 .footer-text{font-family:var(--font-mono);font-size:var(--fz-xxs);line-height:2.8;color:var(--slate);}
+.footer-social{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px;}
+.footer-social a{color:var(--slate);display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:var(--fz-xxs);letter-spacing:0.08em;transition:var(--transition);}
+.footer-social a:hover{color:var(--green);}
+.footer-social svg{width:14px;height:14px;}
 
 @media(max-width:768px){
   nav{padding:0 18px;}
@@ -355,7 +367,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       <span class="logo-letter">A</span>
     </a>
   </div>
-  <a href="#contact" class="nav-cta-btn js-scroll-contact">Claim Your Brand Website &#8594;</a>
+  <a href="https://wa.me/213676127853" class="nav-cta-btn" target="_blank" rel="noreferrer">Contact on WhatsApp &#8599;</a>
 </nav>
 
 <div class="side-el left" aria-orientation="vertical">
@@ -424,49 +436,55 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       </div>
     </div>
 
-    <span class="hero-eyebrow fade-up d2">Personal Brand Websites for Creative Freelancers — Built to Position You as the Premium Choice</span>
+    <span class="hero-eyebrow fade-up d2">Conversion-Optimized Landing Pages for Media Buyers &amp; Performance Marketers</span>
 
-    <p class="hero-h1 fade-up d3">Your creative work is exceptional.</p>
-    <p class="hero-problem fade-up d3">But you're still being treated like <em>just another freelancer</em>.</p>
+    <p class="hero-h1 fade-up d3">Your ad spend is working.</p>
+    <p class="hero-problem fade-up d3">Your landing page is <em>killing your ROAS</em>.</p>
 
     <p class="hero-sub fade-up d4">
-      Premium clients — the ones with real budgets who value craft over the cheapest bid — don't scroll through Upwork listings. They search for someone who looks like an authority. They land on a website, read the first two lines, and decide in seconds. <strong>If that website doesn't exist, they move on to a competitor who has one.</strong>
+      Most media buyers optimize bids, creatives, and audiences — then send traffic to a page that was never engineered to convert. Every click that doesn't convert is money left on the table. <strong>A landing page built around your funnel, your offer, and your audience can lower your CPA and improve ROAS without touching a single ad setting.</strong>
     </p>
 
     <div class="hero-cta-group fade-up d5">
+      <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        Contact on WhatsApp <span class="arrow">&#8594;</span>
+      </a>
       <a href="#offer" class="cta-secondary js-scroll-offer">See How It Works &#8594;</a>
     </div>
 
     <div class="hero-proof-strip fade-up d6">
       <div class="proof-strip-header">
         <div class="proof-strip-dot"></div>
-        <span class="proof-strip-label">// What every project delivers</span>
+        <span class="proof-strip-label">// What every page is engineered to deliver</span>
       </div>
       <div class="proof-strip-body">
         <div class="proof-item">
-          <span class="proof-item-num">Custom</span>
-          <span class="proof-item-label">Built around your creative discipline, niche, and ideal clients — never a template</span>
+          <span class="proof-item-num">Lower CPA</span>
+          <span class="proof-item-label">More conversions from the same traffic — your cost per acquisition drops without raising your budget</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <span class="proof-item-num">$350–$600</span>
-          <span class="proof-item-label">Two clear packages — you don't pay a cent until you're completely satisfied</span>
+          <span class="proof-item-num">Higher ROAS</span>
+          <span class="proof-item-label">Every dollar you spend on ads works harder when the page it lands on was built to convert</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <span class="proof-item-num">Yours</span>
-          <span class="proof-item-label">Full ownership — no platform dependency, no recurring fees, no algorithm deciding your reach</span>
+          <span class="proof-item-num">Full Control</span>
+          <span class="proof-item-label">No page-builder lock-in. Clean, deployable code — hosted wherever your stack lives</span>
         </div>
       </div>
     </div>
 
     <div class="video-section fade-up d7">
-      <span class="video-section-label">Real Work</span>
-      <p class="video-section-title">A Personal Brand Website I Built for a Creative Freelancer</p>
+      <span class="video-section-label">Live Build</span>
+      <p class="video-section-title">A Conversion-Optimized Landing Page — Built From Scratch</p>
       <div class="video-wrap">
         <div class="video-overlay-badge">
           <span class="video-badge-dot"></span>
-          <span class="video-badge-text">Live Build</span>
+          <span class="video-badge-text">Real Build</span>
         </div>
         <video id="heroVideo" autoplay muted playsinline>
           <source src="mr.mp4" type="video/mp4">
@@ -497,36 +515,36 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   </section>
 
   <div class="trust-bar fade-up">
-    <div class="trust-item"><span class="trust-dot"></span>Premium Brand Identity</div>
-    <div class="trust-item"><span class="trust-dot"></span>Portfolio That Converts</div>
-    <div class="trust-item"><span class="trust-dot"></span>Direct Client Pipeline</div>
-    <div class="trust-item"><span class="trust-dot"></span>Pay After You Approve</div>
+    <div class="trust-item"><span class="trust-dot"></span>Meta &amp; Google Funnel Ready</div>
+    <div class="trust-item"><span class="trust-dot"></span>CPA-Reducing Architecture</div>
+    <div class="trust-item"><span class="trust-dot"></span>A/B Variant Available</div>
+    <div class="trust-item"><span class="trust-dot"></span>Zero Page-Builder Dependency</div>
   </div>
 
   <div class="metrics-ticker-wrap fade-up">
     <div class="metrics-ticker" id="ticker">
-      <div class="ticker-item"><span class="ticker-num">$350</span><span class="ticker-label">Essential Brand Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">$600</span><span class="ticker-label">Full Brand Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Payment Until You're Satisfied</span></div>
-      <div class="ticker-item"><span class="ticker-num">100%</span><span class="ticker-label">Full Ownership — No Subscriptions</span></div>
-      <div class="ticker-item"><span class="ticker-num">Custom</span><span class="ticker-label">Built Around Your Creative Niche</span></div>
-      <div class="ticker-item"><span class="ticker-num">Direct</span><span class="ticker-label">Premium Clients Who Find You First</span></div>
-      <div class="ticker-item"><span class="ticker-num">$350</span><span class="ticker-label">Essential Brand Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">$600</span><span class="ticker-label">Full Brand Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Payment Until You're Satisfied</span></div>
-      <div class="ticker-item"><span class="ticker-num">100%</span><span class="ticker-label">Full Ownership — No Subscriptions</span></div>
-      <div class="ticker-item"><span class="ticker-num">Custom</span><span class="ticker-label">Built Around Your Creative Niche</span></div>
-      <div class="ticker-item"><span class="ticker-num">Direct</span><span class="ticker-label">Premium Clients Who Find You First</span></div>
+      <div class="ticker-item"><span class="ticker-num">$800</span><span class="ticker-label">Basic Landing Page</span></div>
+      <div class="ticker-item"><span class="ticker-num">$1,500</span><span class="ticker-label">Conversion Optimized Page</span></div>
+      <div class="ticker-item"><span class="ticker-num">$2,500</span><span class="ticker-label">CRO Page + A/B Variant</span></div>
+      <div class="ticker-item"><span class="ticker-num">Lower</span><span class="ticker-label">Cost Per Acquisition</span></div>
+      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Return on Ad Spend</span></div>
+      <div class="ticker-item"><span class="ticker-num">Clean</span><span class="ticker-label">Code — No Platform Lock-In</span></div>
+      <div class="ticker-item"><span class="ticker-num">$800</span><span class="ticker-label">Basic Landing Page</span></div>
+      <div class="ticker-item"><span class="ticker-num">$1,500</span><span class="ticker-label">Conversion Optimized Page</span></div>
+      <div class="ticker-item"><span class="ticker-num">$2,500</span><span class="ticker-label">CRO Page + A/B Variant</span></div>
+      <div class="ticker-item"><span class="ticker-num">Lower</span><span class="ticker-label">Cost Per Acquisition</span></div>
+      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Return on Ad Spend</span></div>
+      <div class="ticker-item"><span class="ticker-num">Clean</span><span class="ticker-label">Code — No Platform Lock-In</span></div>
     </div>
   </div>
 
   <section id="about" style="padding-bottom:0;">
     <h2 class="numbered-heading fade-up">About</h2>
     <div class="about-block fade-up d1">
-      <span class="about-tag">// The designer behind the work</span>
-      <p>I'm <strong>Anes Hass</strong> — a web designer who builds personal brand websites exclusively for creative freelancers who've outgrown the platforms they started on. Not beginners. Video editors, motion designers, UX/UI designers, brand designers, and creative directors with real craft, real results, and one persistent frustration — their work speaks for itself, but their online presence doesn't.</p>
-      <p>The pattern is always the same: a skilled creative with years of experience, a portfolio full of standout work, and an online identity that's either scattered across social profiles, buried inside a marketplace listing, or sitting on a generic template that could belong to anyone. Decision-makers with serious budgets don't read that as "talented" — they read it as "available" — and availability doesn't command premium rates.</p>
-      <p><strong>That's the gap I close.</strong> I build personal brand websites that transform how you're perceived — turning your expertise and aesthetic into a presence that attracts clients who already respect you before the first conversation.</p>
+      <span class="about-tag">// The builder behind the pages</span>
+      <p>I'm <strong>Anes Hass</strong> — a conversion-focused landing page builder working exclusively with media buyers, performance marketing teams, and growth operators who are already spending on paid traffic and want to extract more revenue from every dollar of it.</p>
+      <p>I don't build websites. I build revenue infrastructure for paid funnels. The distinction matters: a website is a presence — a landing page is a conversion mechanism. Every layout decision, every headline, every CTA placement is made with one variable in mind: does this increase the probability a visitor takes the action you're paying for?</p>
+      <p><strong>The pages I build are engineered to lower your CPA, improve your ROAS, and give you a conversion asset you fully own — no drag-and-drop builder, no monthly subscription, no platform you can't migrate off the moment it stops serving you.</strong></p>
     </div>
   </section>
 
@@ -534,18 +552,18 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <h2 class="numbered-heading fade-up">The Real Problem</h2>
     <div class="services-grid">
       <div class="service-card fade-left d1">
-        <span class="service-label">// Why strong creative work doesn't always command strong rates</span>
-        <h4>Clients Judge Your Positioning Before They Ever See Your Portfolio.</h4>
-        <p>Marketplaces and social profiles commoditize creative talent by design — visitors arrive with comparison tools, preset budgets, and no context for who you actually are. No matter how strong your reel or how refined your case studies, the medium itself signals "contractor" rather than "creative authority." A personal brand website removes you from that context entirely. It's the difference between being one option in a grid and being the obvious choice before the conversation even starts.</p>
+        <span class="service-label">// Where paid traffic actually bleeds money</span>
+        <h4>You're Paying for Traffic That a Weak Landing Page Is Wasting.</h4>
+        <p>Most performance marketers invest heavily in creative testing, audience segmentation, and bid strategy — then route that traffic to a page built on a generic template with no conversion architecture. The result: high CPMs, acceptable CTRs, and a conversion rate that quietly destroys your unit economics. The ad account isn't your leak. The post-click experience is. A properly engineered landing page — with a clear value proposition, friction-free flow, and conversion copy calibrated to your traffic source — is the single highest-leverage fix available to most active ad buyers.</p>
       </div>
       <div class="service-card fade-right d2">
-        <span class="service-label">// What a serious creative professional's website actually needs</span>
-        <h4>Four Things a Generic Profile Will Never Give You</h4>
+        <span class="service-label">// What a page built for paid traffic actually requires</span>
+        <h4>Four Conversion Levers Most Pages Leave Untouched</h4>
         <p>
-          <strong style="color:var(--slate-white);">A positioning statement that earns premium rates</strong> — the moment someone lands on your site, they should immediately understand what you do, who you serve, and why you're the best at it.<br><br>
-          <strong style="color:var(--slate-white);">A portfolio that tells the story behind the work</strong> — the brief, the challenge, the thinking, the result. Clients allocating serious budget make decisions based on your process, not just the final frame.<br><br>
-          <strong style="color:var(--slate-white);">Social proof that does the selling for you</strong> — your strongest testimonials and outcomes, structured to answer the questions premium buyers ask before they reach out.<br><br>
-          <strong style="color:var(--slate-white);">A direct pipeline — fully under your control</strong> — your domain, your inbox, your terms. No algorithm throttling your reach, no account restrictions, no platform taking a cut of the relationship.
+          <strong style="color:var(--slate-white);">Message-to-market match from the first line</strong> — the page must continue the exact conversation your ad started. Any gap between ad promise and page headline causes immediate bounce and wasted spend.<br><br>
+          <strong style="color:var(--slate-white);">Friction-free conversion path</strong> — every element either moves the visitor toward the conversion action or it's eliminated. No distractions, no navigation, no competing CTAs diluting intent.<br><br>
+          <strong style="color:var(--slate-white);">Trust architecture calibrated to cold traffic</strong> — objection-handling copy, social proof, and risk-reversal elements placed where cold visitors need reassurance before they'll commit.<br><br>
+          <strong style="color:var(--slate-white);">Speed and mobile performance as conversion variables</strong> — a one-second delay in load time measurably reduces conversion rate. Every page is built for sub-second load, especially on mobile where your Meta and TikTok traffic arrives.
         </p>
       </div>
     </div>
@@ -556,44 +574,50 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <div class="offer-card fade-up d1">
 
       <div class="offer-card-header">
-        <span class="offer-scope-tag">Built entirely around your creative identity — not a template, not a theme</span>
-        <h3>Custom-Built. Clear Pricing. You Don't Pay Until It's Perfect.</h3>
+        <span class="offer-scope-tag">Built around your funnel, your offer, and your traffic source — not a template</span>
+        <h3>I Audit Your Funnel, Identify the Conversion Gap, and Build the Page That Closes It.</h3>
         <p class="offer-lead-text">
-          Tell me your discipline, your strongest work, and the clients you want to be known for attracting. I handle the rest — positioning strategy, design direction, copy, and build. You review every detail, request changes, and we refine until it's a true reflection of who you are at your best. Not a single payment changes hands until the site is finished and you're genuinely proud of it.
+          Send me your current page URL, your traffic source, and your offer. I'll identify exactly where the conversion drop-off is happening and build a page engineered to fix it — with conversion copy, CRO-tested layout, and a structure that maps directly to your buyer psychology. No guesswork. No generic templates. A page purpose-built to reduce your CPA and increase your ROAS from the moment it goes live.
         </p>
       </div>
 
       <div class="offer-specifics">
-        <span class="offer-specifics-label">// What every project includes</span>
+        <span class="offer-specifics-label">// What every page includes</span>
         <ul class="offer-points">
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Positioning strategy built around your creative niche</strong> — before a single screen is designed, I define exactly how you should be presented to attract the clients worth working with.</span>
+            <span><strong>Funnel audit before a single pixel is placed</strong> — I analyze your current page, your traffic source, and your offer to identify the exact conversion gaps your page is creating. The build begins with a diagnosis, not a guess.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Copy written to resonate with high-value buyers</strong> — every headline, bio, and service description speaks the language of premium clients. Nothing vague, nothing generic, nothing that sounds like everyone else.</span>
+            <span><strong>Conversion copy written for your specific traffic temperature</strong> — cold Meta traffic needs different copy than warm Google search traffic. Every headline, subhead, and CTA is calibrated to the awareness level of the audience you're paying to send.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>A portfolio that makes your work impossible to scroll past</strong> — structured with context, process, and results that turn visitors into warm leads before they ever hit the contact button.</span>
+            <span><strong>CRO layout built around your conversion action</strong> — whether you're driving leads, purchases, bookings, or trials, the page layout is structured to eliminate friction and move visitors toward one action.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Clean code — fully owned by you, hosted wherever you choose</strong> — no third-party dependency, no monthly subscription, no platform you can't leave. Your site, your asset, forever.</span>
+            <span><strong>Clean, deployable code — no page-builder dependency</strong> — fully owned, deployable on any hosting stack. No Webflow. No ClickFunnels. No Wix. A standalone asset that performs and that you control entirely.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Fast, mobile-optimized, and built to rank on Google</strong> — instant on any device, with on-page SEO so the right clients find you organically — without spending a cent on ads.</span>
+            <span><strong>Sub-second load speed — optimized for paid traffic sources</strong> — performance-optimized for mobile, where the majority of Meta, TikTok, and Instagram traffic lands. Load speed is a conversion variable, and it's treated as one.</span>
           </li>
         </ul>
       </div>
 
       <div class="offer-footer">
         <div class="offer-next-label">
-          Ready to stop looking like a profile and start looking like a brand?
-          <span>Send me a brief description of your discipline, your best work, and the clients you want to attract. I'll come back with a clear direction — before you commit to anything.</span>
+          Ready to stop losing conversions after the click?
+          <span>Send me your current page, your traffic source, and what you're trying to convert. I'll come back with a specific diagnosis — before you commit to anything.</span>
         </div>
+        <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer" style="white-space:nowrap;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          Contact on WhatsApp <span class="arrow">&#8594;</span>
+        </a>
       </div>
 
     </div>
@@ -605,65 +629,98 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
       <div class="pricing-badge">
         <span class="pricing-badge-dot"></span>
-        <span class="pricing-badge-text">Two Packages — One Clear Goal</span>
+        <span class="pricing-badge-text">Three Tiers — One Outcome: More Revenue Per Click</span>
       </div>
 
+      <!-- Tier 1: Basic -->
       <div class="pricing-card">
         <div class="pricing-card-top">
           <div class="pricing-name-group">
-            <span class="pricing-plan">Essential Package</span>
-            <span class="pricing-desc">A clean, authoritative personal website that establishes your brand identity and gives you a credible home of your own. For creative freelancers who are ready to stop relying on marketplace profiles and start being found — on their terms, on their domain.</span>
+            <span class="pricing-plan">Basic Landing Page</span>
+            <span class="pricing-desc">A focused, fast-loading landing page built for a single offer and a single conversion action. For media buyers running a straightforward funnel who need a page that doesn't leak — built to spec, not off a template.</span>
           </div>
           <div class="pricing-amount-group">
-            <span class="pricing-amount">$350</span>
-            <span class="pricing-amount-note">Pay after you're satisfied.</span>
+            <span class="pricing-amount">$800</span>
+            <span class="pricing-amount-note">One investment. Zero recurring fees.</span>
           </div>
         </div>
 
         <div class="pricing-includes">
           <span class="pricing-includes-label">// What's included</span>
           <div class="pricing-includes-grid">
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Custom personal brand design</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Portfolio section showcasing your best work</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Professional bio and positioning copy</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Contact &amp; client inquiry section</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Mobile-optimized, fast-loading code</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Full ownership — no recurring fees, ever</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Single-offer, single-CTA page architecture</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Conversion copy for your offer and traffic source</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Mobile-first, sub-second load performance</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Clean deployable code — no page-builder dependency</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>On-page SEO + meta tags for paid &amp; organic</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Full ownership — yours permanently</span></div>
           </div>
         </div>
       </div>
 
       <div class="pricing-footer" style="margin-bottom:0;border-radius:0;">
-        <span class="pricing-footer-note">One inbound client from this site covers the investment many times over.</span>
+        <span class="pricing-footer-note">The average media buyer spends this in a single day of ad spend. One extra conversion covers it many times over.</span>
       </div>
 
-      <div class="pricing-card pricing-card-premium" style="margin-top:32px;">
+      <!-- Tier 2: Main Offer (Featured) -->
+      <div class="pricing-card-featured" style="margin-top:32px;border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;border:2px solid rgba(77,255,195,0.45);background:linear-gradient(135deg,var(--navy-light),rgba(77,255,195,0.05));">
         <div class="pricing-card-top">
           <div class="pricing-name-group">
-            <span class="pricing-plan">Signature Brand Package</span>
-            <span class="pricing-desc">A fully custom, brand-forward website with deeper storytelling, advanced portfolio architecture, and conversion strategy throughout — built for creative professionals who are ready to charge rates that actually reflect their skill level and attract clients who expect a certain standard.</span>
+            <span class="most-popular-badge">&#9658;&nbsp; Most Chosen</span>
+            <span class="pricing-plan">Conversion Optimized Page</span>
+            <span class="pricing-desc">Full CRO treatment — funnel audit, message-to-market copy, objection-handling architecture, and conversion rate optimization baked into every section. Built for performance marketers running consistent ad spend who need a page that compounds returns over time.</span>
           </div>
           <div class="pricing-amount-group">
-            <span class="pricing-amount" style="color:var(--gold);">$600</span>
-            <span class="pricing-amount-note">Pay after you're satisfied.</span>
+            <span class="pricing-amount">$1,500</span>
+            <span class="pricing-amount-note">The highest-leverage spend in your funnel.</span>
           </div>
         </div>
 
-        <div class="pricing-includes" style="border-top:1px solid rgba(240,192,96,0.15);">
-          <span class="pricing-includes-label" style="color:var(--gold);">// Everything in Essential, plus</span>
+        <div class="pricing-includes">
+          <span class="pricing-includes-label">// Everything in Basic, plus</span>
           <div class="pricing-includes-grid">
-            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Brand positioning strategy session</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Advanced layout designed for premium buyers</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Case study pages with process &amp; results</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Testimonials &amp; social proof architecture</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Conversion-focused copywriting throughout</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Lead capture &amp; direct inquiry flow</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Pre-build funnel audit &amp; conversion gap analysis</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Full CRO layout — friction removed at every step</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Traffic-temperature copy (cold vs warm vs retargeting)</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Trust architecture &amp; objection-handling sections</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Social proof &amp; risk-reversal positioning</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Conversion-focused above-the-fold structure</span></div>
           </div>
         </div>
       </div>
 
       <div class="pricing-footer">
-        <span class="pricing-footer-note">Clients allocating $5,000–$20,000 for creative work judge your positioning before they judge your portfolio. This is that site.</span>
+        <span class="pricing-footer-note">Media buyers spending $5K–$50K/month on ads recover this in a single week of improved conversion rate. This is the default choice for anyone running consistent paid traffic.</span>
+      </div>
+
+      <!-- Tier 3: Premium -->
+      <div class="pricing-card pricing-card-premium" style="margin-top:32px;">
+        <div class="pricing-card-top">
+          <div class="pricing-name-group">
+            <span class="pricing-plan">Premium CRO Page + A/B Variant</span>
+            <span class="pricing-desc">The full system — a primary conversion page plus a complete A/B variant built around a different hypothesis. For performance marketers who understand that the highest-converting page is the one that's been tested, not assumed.</span>
+          </div>
+          <div class="pricing-amount-group">
+            <span class="pricing-amount" style="color:var(--gold);">$2,500</span>
+            <span class="pricing-amount-note">Two pages. One winning conversion rate.</span>
+          </div>
+        </div>
+
+        <div class="pricing-includes" style="border-top:1px solid rgba(240,192,96,0.15);">
+          <span class="pricing-includes-label" style="color:var(--gold);">// Everything in Conversion Optimized, plus</span>
+          <div class="pricing-includes-grid">
+            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Complete A/B variant built to a defined test hypothesis</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Alternate value proposition &amp; headline structure</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Different layout logic for the same conversion action</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Split-test ready — deploy to any A/B testing tool</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>CRO brief documenting what each variant tests and why</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker" style="color:var(--gold);">&#9658;</span><span>Priority delivery — fastest turnaround available</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-footer">
+        <span class="pricing-footer-note">Agencies and in-house growth teams running six-figure monthly budgets: this is the asset that compounds. A/B data from a properly structured test is worth multiples of the page cost.</span>
       </div>
 
     </div>
@@ -671,19 +728,19 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <div class="guarantee-block fade-up d2">
       <div class="guarantee-icon">&#9679;</div>
       <div class="guarantee-text">
-        <h4>Zero payment until you're completely satisfied with every detail.</h4>
-        <p>This is how I work with every single client — no exceptions. I build, you review, we refine — as many rounds as it takes until the site is a true reflection of your professional identity. Once you're genuinely proud of what you see, that's when you pay. No deposit. No risk. Just a finished website that finally matches the caliber of work you've already been doing.</p>
+        <h4>You don't pay until the page is ready to go live and you're satisfied with every conversion element.</h4>
+        <p>Every engagement works the same way: I build, you review, we refine. No deposit. No upfront risk. Revisions continue until the page is exactly what you'd be confident sending paid traffic to. When you're ready to deploy — that's when payment happens. Your only risk is staying on the page you have now.</p>
       </div>
     </div>
   </section>
 
   <section id="contact" class="contact-section">
-    <span class="contact-label fade-up">Stop looking like a profile. Start looking like a brand.</span>
+    <span class="contact-label fade-up">Stop losing conversions after the click.</span>
 
-    <h2 class="contact-h2 fade-up d1">You've put in the work.<br>It's time your presence<br><span>reflected it.</span></h2>
+    <h2 class="contact-h2 fade-up d1">Your traffic is buying.<br>Your page is the reason<br><span>they're not converting.</span></h2>
 
     <p class="contact-sub fade-up d2">
-      Tell me your discipline and your strongest work. I'll show you exactly how your brand site will be structured — before you commit to a thing. <strong>Starting at $350. Pay only after you're completely satisfied. Full ownership from day one.</strong>
+      Send me your current page URL, your traffic source, and your conversion goal. I'll tell you exactly what's leaking and how to fix it — before you commit to anything. <strong>Starting at $800. No page-builder lock-in. Full ownership from day one.</strong>
     </p>
 
     <div class="contact-cta-wrap fade-up d3">
@@ -691,18 +748,28 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
         </svg>
-        Let's Build Your Brand Website <span class="arrow">&#8594;</span>
+        Contact on WhatsApp <span class="arrow">&#8594;</span>
       </a>
-      <span class="contact-caveat">·&nbsp; Limited spots available — reach out today to secure yours</span>
+      <span class="contact-caveat">·&nbsp; Limited capacity — reply within 24 hours guaranteed</span>
     </div>
   </section>
 
 </main>
 
 <footer>
+  <div class="footer-social fade-up">
+    <a href="https://wa.me/213676127853" target="_blank" rel="noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.linkedin.com/in/anes-hass/" target="_blank" rel="noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+  </div>
   <div class="footer-text fade-up">
     <div>Designed &amp; Built by AutFlow Studio</div>
-    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Personal Brand Websites for Creative Freelancers &middot; Video Editors &middot; Motion Designers &middot; UX/UI Designers &middot; Brand Designers &middot; Creative Directors</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Conversion-Optimized Landing Pages for Media Buyers &middot; Performance Marketers &middot; Growth Teams &middot; SaaS Founders &middot; Affiliate Marketers</div>
     <div style="font-size:10px;margin-top:4px;opacity:0.4;">&copy; 2026 AutFlow Studio. All rights reserved.</div>
   </div>
 </footer>
@@ -790,7 +857,7 @@ var dot=document.getElementById('cursorDot'),ring=document.getElementById('curso
 if(window.innerWidth>768){
   document.addEventListener('mousemove',function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
   (function anim(){ rx+=(mx-rx)*0.1; ry+=(my-ry)*0.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); })();
-  document.querySelectorAll('a,button,.service-card,.pricing-card,.offer-card,.cta-primary,.cta-secondary').forEach(function(el){ el.addEventListener('mouseenter',function(){ ring.classList.add('hovered'); }); el.addEventListener('mouseleave',function(){ ring.classList.remove('hovered'); }); });
+  document.querySelectorAll('a,button,.service-card,.pricing-card,.pricing-card-featured,.pricing-card-premium,.offer-card,.cta-primary,.cta-secondary').forEach(function(el){ el.addEventListener('mouseenter',function(){ ring.classList.add('hovered'); }); el.addEventListener('mouseleave',function(){ ring.classList.remove('hovered'); }); });
   document.addEventListener('mouseleave',function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
   document.addEventListener('mouseenter',function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
 }

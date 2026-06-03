@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Landing Pages Built for Paid Traffic Performance</title>
-<meta name="description" content="I build conversion-focused landing pages for media buyers and performance marketers. Lower CPA. Improve ROAS. Full ownership. No page-builder lock-in.">
+<title>AutFlow Studio — Landing Pages That Convert Paid Traffic</title>
+<meta name="description" content="Struggling with low CVR on your paid campaigns? I build post-click landing pages engineered to lower your CPA and improve ROAS. Pay only after you approve the build.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -52,7 +52,6 @@ a{color:var(--green);text-decoration:none;transition:var(--transition);}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 @keyframes borderRun{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
 @keyframes goldPulse{0%,100%{opacity:0.7;}50%{opacity:1;}}
-@keyframes floatIn{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
 
 #intro-loader{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;}
 .intro-svg-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
@@ -101,6 +100,7 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 
 section{max-width:920px;padding:110px 0;}
 
+/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:var(--nav-h) 0 0;max-width:1000px;position:relative;}
 .hero-mark{display:flex;align-items:flex-start;margin-bottom:44px;}
 .mark-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:16px 20px;border-radius:10px;background:rgba(77,255,195,0.04);border:1px solid rgba(77,255,195,0.14);transition:all 0.3s ease;cursor:default;animation:glow-pulse 5s ease-in-out infinite;}
@@ -111,7 +111,7 @@ section{max-width:920px;padding:110px 0;}
 .hero-problem{font-size:clamp(30px,5.5vw,66px);font-weight:700;color:var(--slate-white);line-height:1.08;letter-spacing:-0.03em;margin-bottom:36px;}
 .hero-problem em{font-style:normal;color:var(--green);position:relative;display:inline-block;}
 .hero-problem em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;animation:underlineGrow 0.8s var(--ease) 3.2s forwards;}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--slate-light);line-height:1.7;max-width:580px;margin-bottom:48px;font-weight:400;}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--slate-light);line-height:1.7;max-width:600px;margin-bottom:48px;font-weight:400;}
 .hero-sub strong{color:var(--slate-white);font-weight:500;}
 
 .cta-primary{display:inline-flex;align-items:center;gap:10px;color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:20px 32px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);box-shadow:0 0 40px rgba(77,255,195,0.25);letter-spacing:0.02em;}
@@ -130,7 +130,7 @@ section{max-width:920px;padding:110px 0;}
 .proof-item-num{font-family:var(--font-mono);font-size:clamp(20px,2.5vw,28px);font-weight:500;color:var(--green);}
 .proof-item-label{font-size:var(--fz-xs);color:var(--slate);line-height:1.5;}
 
-/* VIDEO SECTION */
+/* VIDEO */
 .video-section{margin-top:60px;max-width:900px;}
 .video-section-label{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--green);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .video-section-label::before{content:'';width:18px;height:1px;background:var(--green);display:inline-block;}
@@ -180,6 +180,7 @@ section{max-width:920px;padding:110px 0;}
 .ticker-num{font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:500;color:var(--green);}
 .ticker-label{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.07em;text-transform:uppercase;}
 
+/* ABOUT */
 .about-block{border:1px solid var(--navy-mid);border-radius:var(--radius);background:var(--navy-light);padding:36px 40px;position:relative;overflow:hidden;max-width:820px;}
 .about-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--green);}
 .about-tag{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--green);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;display:block;}
@@ -187,6 +188,7 @@ section{max-width:920px;padding:110px 0;}
 .about-block p+p{margin-top:14px;}
 .about-block p strong{color:var(--slate-white);}
 
+/* PAIN SECTION */
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:4px;}
 .service-card{background:var(--navy-light);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:1.75rem 1.5rem;position:relative;overflow:hidden;transition:var(--transition);}
 .service-card:hover{transform:translateY(-4px);border-color:rgba(77,255,195,0.25);}
@@ -196,6 +198,7 @@ section{max-width:920px;padding:110px 0;}
 .service-card h4{color:var(--slate-white);font-size:var(--fz-md);font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;}
 .service-card p{color:var(--slate);font-size:var(--fz-xs);line-height:1.65;margin:0;}
 
+/* OFFER */
 .offer-card{border:1px solid rgba(77,255,195,0.2);border-radius:var(--radius);background:var(--navy-light);padding:0;position:relative;overflow:hidden;max-width:820px;}
 .offer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);background-size:200% 100%;animation:borderRun 3s linear infinite;}
 .offer-card-header{padding:2.5rem 2.5rem 2rem;border-bottom:1px solid rgba(26,45,74,0.7);}
@@ -234,7 +237,6 @@ section{max-width:920px;padding:110px 0;}
 .pricing-footer{padding:18px 24px;border:1px solid var(--navy-mid);border-top:none;border-radius:0 0 var(--radius) var(--radius);background:rgba(13,27,48,0.5);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .pricing-footer-note{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.04em;}
 
-/* Upsell */
 .upsell-block{margin-top:28px;border:1px solid rgba(240,192,96,0.25);border-radius:var(--radius);background:linear-gradient(135deg,var(--navy-light),rgba(240,192,96,0.03));padding:28px 32px;position:relative;overflow:hidden;}
 .upsell-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);background-size:200% 100%;animation:borderRun 4s linear infinite;}
 .upsell-label{font-family:var(--font-mono);font-size:10px;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;display:block;}
@@ -262,6 +264,7 @@ section{max-width:920px;padding:110px 0;}
 .guarantee-statement-text p{color:var(--slate-light);font-size:var(--fz-sm);line-height:1.7;margin:0;}
 .guarantee-statement-text p+p{margin-top:10px;}
 
+/* CONTACT */
 .contact-section{max-width:760px;text-align:center;margin:0 auto;padding:100px 0 200px;}
 .contact-label{display:inline-block;font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--green);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:24px;padding:6px 14px;border:1px solid rgba(77,255,196,0.2);border-radius:100px;}
 .contact-h2{font-size:clamp(34px,5.5vw,68px);font-weight:700;color:var(--slate-white);margin-bottom:20px;letter-spacing:-0.03em;line-height:1.05;}
@@ -389,25 +392,19 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       <span class="logo-letter">A</span>
     </a>
   </div>
-  <button class="nav-cta-btn js-scroll-contact" aria-label="Start the build">Start the Build &#8599;</button>
+  <button class="nav-cta-btn js-scroll-contact" aria-label="Fix my landing page">Fix My Landing Page &#8599;</button>
 </nav>
 
 <div class="side-el left" aria-orientation="vertical">
   <ul class="social-list" aria-label="Contact">
     <li>
       <a href="https://wa.me/213676127853" aria-label="Chat on WhatsApp" target="_blank" rel="noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <title>WhatsApp</title>
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>WhatsApp</title><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
       </a>
     </li>
     <li class="linkedin-icon">
       <a href="https://www.linkedin.com/in/anes-hass/" aria-label="View LinkedIn profile" target="_blank" rel="noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-          <title>LinkedIn</title>
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
     </li>
   </ul>
@@ -459,51 +456,51 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       </div>
     </div>
 
-    <span class="hero-eyebrow fade-up d2">Landing Page Specialist for Media Buyers &amp; Performance Marketers</span>
+    <span class="hero-eyebrow fade-up d2">For Media Buyers Running Meta, Google &amp; TikTok Ads</span>
 
-    <p class="hero-h1 fade-up d3">You're paying for every click.</p>
-    <p class="hero-problem fade-up d3">Your landing page is where <em>ROAS goes to die</em>.</p>
+    <p class="hero-h1 fade-up d3">Your ads are working.</p>
+    <p class="hero-problem fade-up d3">Your landing page is <em>killing your ROAS</em>.</p>
 
     <p class="hero-sub fade-up d4">
-      You've dialed in your creatives, tightened your audiences, and optimized your bids. Your CPMs are efficient. Your CTRs are solid. But your post-click CVR is still dragging your unit economics down — and no amount of ad-side optimization will fix a broken landing page. <strong>I build landing pages that close the gap between click and conversion, engineered specifically for cold paid traffic.</strong>
+      You've tested creatives, tightened your audiences, and your CPMs are efficient. But after the click — nothing converts the way it should. The problem isn't your ad account. <strong>It's the page your traffic lands on. I build conversion-engineered landing pages specifically for paid traffic — so every click you buy has a real shot at becoming a lead, a sale, or a booking.</strong>
     </p>
 
     <div class="hero-proof-strip fade-up d6">
       <div class="proof-strip-header">
         <div class="proof-strip-dot"></div>
-        <span class="proof-strip-label">// Built for paid traffic performance — not aesthetics</span>
+        <span class="proof-strip-label">// Engineered to convert cold paid traffic — not just look good</span>
       </div>
       <div class="proof-strip-body">
         <div class="proof-item">
           <span class="proof-item-num">Lower CPA</span>
-          <span class="proof-item-label">More conversions from the same traffic volume — your acquisition cost drops without increasing spend</span>
+          <span class="proof-item-label">More conversions from the same ad spend. Your cost-per-acquisition drops without touching your campaigns.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
           <span class="proof-item-num">Higher ROAS</span>
-          <span class="proof-item-label">Every dollar of ad spend works harder when the post-click experience is engineered to convert cold traffic</span>
+          <span class="proof-item-label">Every dollar you put into Meta, Google, or TikTok works harder when the post-click experience is built to convert.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
           <span class="proof-item-num">Full Ownership</span>
-          <span class="proof-item-label">No page-builder lock-in. Clean deployable code — runs on whatever infrastructure your stack uses</span>
+          <span class="proof-item-label">No Clickfunnels. No Webflow. Clean deployable code — yours permanently, on whatever stack you use.</span>
         </div>
       </div>
     </div>
 
-    <!-- VIDEO SECTION — CRO Walkthrough -->
+    <!-- VIDEO -->
     <div class="video-section fade-up d7">
       <span class="video-section-label">CRO Walkthrough</span>
-      <p class="video-section-title">This is how I structure landing pages for paid traffic.</p>
+      <p class="video-section-title">See exactly how I build pages that convert cold traffic.</p>
       <p class="video-section-sub">
-        Every section in this build has a specific conversion rationale — not a design preference. Watch how message match, trust hierarchy, CTA flow, and mobile-first structure work together to reduce funnel friction from the first pixel.
+        Every section you see here has a specific conversion rationale — not a design preference. Message match, trust hierarchy, CTA flow, and mobile-first structure all working together to turn paid clicks into revenue.
       </p>
       <div class="video-cro-tags">
-        <span class="video-cro-tag">Message Match</span>
-        <span class="video-cro-tag">Trust Hierarchy</span>
-        <span class="video-cro-tag">CTA Flow</span>
-        <span class="video-cro-tag">Cold Traffic Architecture</span>
+        <span class="video-cro-tag">Ad-to-Page Message Match</span>
+        <span class="video-cro-tag">Cold Traffic Trust Architecture</span>
+        <span class="video-cro-tag">Single-Action CTA Flow</span>
         <span class="video-cro-tag">Mobile-First CVR</span>
+        <span class="video-cro-tag">Objection Handling</span>
         <span class="video-cro-tag">Friction Reduction</span>
       </div>
       <div class="video-wrap">
@@ -536,34 +533,33 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         </div>
       </div>
 
-      <!-- CRO Callout Cards -->
       <div class="video-cro-callouts">
         <div class="video-callout">
           <span class="video-callout-icon">&#9658;</span>
           <div class="video-callout-content">
-            <strong>Message-to-Market Match</strong>
-            <span>The page opens with the exact promise your ad made. No gap between ad creative and landing page headline — which is where most paid traffic budgets quietly bleed out.</span>
+            <strong>Ad-to-Page Message Match</strong>
+            <span>The page opens with the exact promise your ad made. No disconnect between your creative and the landing page headline — which is the #1 reason cold traffic bounces without converting.</span>
           </div>
         </div>
         <div class="video-callout">
           <span class="video-callout-icon">&#9658;</span>
           <div class="video-callout-content">
-            <strong>Trust Architecture for Cold Traffic</strong>
-            <span>Cold visitors from Meta or TikTok arrive skeptical. Social proof, objection-handling, and risk reversal are placed where cold traffic needs reassurance — before the CTA, not after.</span>
+            <strong>Cold Traffic Trust Architecture</strong>
+            <span>Someone who clicked a Meta or TikTok ad has never heard of you. Social proof, objection answers, and risk reversal are positioned before the CTA — not hidden at the bottom where cold traffic never scrolls.</span>
           </div>
         </div>
         <div class="video-callout">
           <span class="video-callout-icon">&#9658;</span>
           <div class="video-callout-content">
-            <strong>Single-Action CTA Flow</strong>
-            <span>No navigation. No competing links. No diluted intent. Every element funnels toward one conversion action — the one you're paying to generate.</span>
+            <strong>One Action. No Distractions.</strong>
+            <span>No navigation. No external links. No competing CTAs splitting intent. Everything on the page points to one action — the conversion you're paying to generate.</span>
           </div>
         </div>
         <div class="video-callout">
           <span class="video-callout-icon">&#9658;</span>
           <div class="video-callout-content">
-            <strong>Mobile-First CVR Structure</strong>
-            <span>The majority of Meta, TikTok, and Instagram traffic lands on mobile. Sub-second load and thumb-friendly layout are treated as conversion variables, because a one-second delay measurably reduces CVR.</span>
+            <strong>Mobile-First — Because That's Where Your Traffic Lands</strong>
+            <span>The majority of Meta, TikTok, and Instagram traffic hits mobile. Sub-second load and thumb-optimized layout are conversion variables — not finishing touches.</span>
           </div>
         </div>
       </div>
@@ -571,9 +567,9 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   </section>
 
   <div class="trust-bar fade-up">
-    <div class="trust-item"><span class="trust-dot"></span>Meta &amp; Google Funnel Ready</div>
-    <div class="trust-item"><span class="trust-dot"></span>Cold Traffic CVR Optimization</div>
-    <div class="trust-item"><span class="trust-dot"></span>Message-to-Market Match</div>
+    <div class="trust-item"><span class="trust-dot"></span>Meta &amp; TikTok Funnel Ready</div>
+    <div class="trust-item"><span class="trust-dot"></span>Coaches &amp; Info-Product Sellers</div>
+    <div class="trust-item"><span class="trust-dot"></span>Ecommerce &amp; Lead Gen</div>
     <div class="trust-item"><span class="trust-dot"></span>Zero Page-Builder Dependency</div>
   </div>
 
@@ -581,15 +577,15 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <div class="metrics-ticker" id="ticker">
       <div class="ticker-item"><span class="ticker-num">$800</span><span class="ticker-label">Landing Page Build</span></div>
       <div class="ticker-item"><span class="ticker-num">+$400</span><span class="ticker-label">CRO Upgrade + A/B Variant</span></div>
-      <div class="ticker-item"><span class="ticker-num">Lower</span><span class="ticker-label">Cost Per Acquisition</span></div>
+      <div class="ticker-item"><span class="ticker-num">Lower</span><span class="ticker-label">Cost Per Lead / Acquisition</span></div>
       <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Return on Ad Spend</span></div>
-      <div class="ticker-item"><span class="ticker-num">Clean</span><span class="ticker-label">Code — No Platform Lock-In</span></div>
+      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Build</span></div>
       <div class="ticker-item"><span class="ticker-num">Built</span><span class="ticker-label">for Cold Paid Traffic</span></div>
       <div class="ticker-item"><span class="ticker-num">$800</span><span class="ticker-label">Landing Page Build</span></div>
       <div class="ticker-item"><span class="ticker-num">+$400</span><span class="ticker-label">CRO Upgrade + A/B Variant</span></div>
-      <div class="ticker-item"><span class="ticker-num">Lower</span><span class="ticker-label">Cost Per Acquisition</span></div>
+      <div class="ticker-item"><span class="ticker-num">Lower</span><span class="ticker-label">Cost Per Lead / Acquisition</span></div>
       <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Return on Ad Spend</span></div>
-      <div class="ticker-item"><span class="ticker-num">Clean</span><span class="ticker-label">Code — No Platform Lock-In</span></div>
+      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Build</span></div>
       <div class="ticker-item"><span class="ticker-num">Built</span><span class="ticker-label">for Cold Paid Traffic</span></div>
     </div>
   </div>
@@ -598,30 +594,30 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   <section id="about" style="padding-bottom:0;">
     <h2 class="numbered-heading fade-up">About</h2>
     <div class="about-block fade-up d1">
-      <span class="about-tag">// The specialist behind the builds</span>
-      <p>I'm <strong>Anes Hass</strong> — a landing page specialist working exclusively with media buyers, performance marketing operators, and growth teams who are already spending on paid traffic and need to extract more revenue from every click they're buying.</p>
-      <p>I don't build websites. I build post-click conversion infrastructure for paid funnels. The distinction matters to your ROAS: a website is a presence — a landing page is a conversion mechanism. Every layout decision, every headline placement, every CTA position is made with one variable in mind: does this increase the probability a cold visitor takes the action you're paying to generate?</p>
-      <p><strong>I only work on the front-end layer — design, conversion architecture, copy structure, and performance. If I don't believe I can meaningfully improve your current page's conversion performance, I won't take the project. No wasted time for either of us.</strong></p>
+      <span class="about-tag">// Who builds your pages</span>
+      <p>I'm <strong>Anes Hass</strong> — a landing page specialist who works exclusively with people running paid ads. Media buyers, coaches, info-product sellers, and ecommerce operators who are already spending money on traffic and need the post-click experience to actually convert it.</p>
+      <p>I don't build websites or branding. I build conversion infrastructure for paid funnels. The difference matters: a website exists to inform — a landing page exists to convert a specific visitor into a specific action. Every decision I make is evaluated through one lens: does this increase the probability that a cold, skeptical visitor clicks, submits, or buys?</p>
+      <p><strong>I only take on projects I genuinely believe I can improve. If I look at your current setup and don't think a new page will move your numbers, I'll tell you that before either of us spends a minute on it.</strong></p>
     </div>
   </section>
 
-  <!-- THE REAL PROBLEM -->
+  <!-- THE PROBLEM -->
   <section id="services" style="padding-top:80px;padding-bottom:0;">
-    <h2 class="numbered-heading fade-up">The Conversion Gap</h2>
+    <h2 class="numbered-heading fade-up">Why Your CVR Is Low</h2>
     <div class="services-grid">
       <div class="service-card fade-left d1">
-        <span class="service-label">// Where paid spend leaks after the click</span>
-        <h4>Your Ad Spend Is Efficient. Your Post-Click CVR Is Destroying Your Unit Economics.</h4>
-        <p>Most performance operators invest heavily in creative testing, audience segmentation, and bid strategy — then route that traffic to a page with no conversion architecture. The result: optimized CPMs, reasonable CTRs, and a CVR that quietly collapses your ROAS. The ad account isn't your problem. Every visitor who lands and doesn't convert is money you paid for and didn't recover. The post-click experience is where your funnel either works or doesn't.</p>
+        <span class="service-label">// The real leak in your funnel</span>
+        <h4>You've Optimized Everything Except the Part That Actually Converts.</h4>
+        <p>Most advertisers running Meta, Google, or TikTok invest heavily in creative testing, audience strategy, and bid optimization — then route all that traffic to a page with no conversion architecture. You've tightened your CPMs and improved your CTRs. But if the page doesn't convert cold traffic, you're paying for clicks you can't recover. The ad account isn't your problem. The post-click experience is where your ROAS lives or dies.</p>
       </div>
       <div class="service-card fade-right d2">
-        <span class="service-label">// Four conversion levers most pages never activate</span>
-        <h4>What a Page Built for Paid Traffic Actually Requires</h4>
+        <span class="service-label">// What actually moves the conversion rate</span>
+        <h4>Four Things Every High-Converting Paid Traffic Page Gets Right</h4>
         <p>
-          <strong style="color:var(--slate-white);">Message match from the first line</strong> — the page must continue the exact conversation your ad opened. Any gap between ad promise and page headline triggers an immediate bounce and zero chance of recovery.<br><br>
-          <strong style="color:var(--slate-white);">A frictionless conversion path</strong> — every element either moves the visitor toward the conversion action or it doesn't belong on the page. No navigation. No competing CTAs diluting intent.<br><br>
-          <strong style="color:var(--slate-white);">Trust architecture calibrated to cold traffic temperature</strong> — objection-handling copy, social proof, and risk reversal placed where cold visitors need them: before they're asked to commit.<br><br>
-          <strong style="color:var(--slate-white);">Load speed as a CVR variable</strong> — a one-second delay measurably reduces conversion rate. Every page is performance-optimized for mobile, where Meta and TikTok traffic lands.
+          <strong style="color:var(--slate-white);">1. The headline matches the ad exactly.</strong> Any gap between what the ad promised and what the page says triggers an immediate bounce. No second chances with cold traffic.<br><br>
+          <strong style="color:var(--slate-white);">2. There's only one thing to do on the page.</strong> No nav links. No footer. No social embeds. One offer, one CTA, one outcome. Everything else is conversion dilution.<br><br>
+          <strong style="color:var(--slate-white);">3. Trust comes before the ask.</strong> Cold visitors are skeptical. Social proof, objection handling, and risk reversal must appear before you ask them to commit — not as an afterthought.<br><br>
+          <strong style="color:var(--slate-white);">4. It loads fast on mobile.</strong> A one-second delay measurably drops CVR. Most paid traffic lands on a phone. Build accordingly or leave money on the table.
         </p>
       </div>
     </div>
@@ -632,10 +628,10 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <h2 class="numbered-heading fade-up">How It Works</h2>
     <div class="offer-card fade-up d1">
       <div class="offer-card-header">
-        <span class="offer-scope-tag">Built around your funnel, your offer, and your traffic source — not a template</span>
-        <h3>You See the Page Before You Pay a Single Dollar.</h3>
+        <span class="offer-scope-tag">Built for your offer, your traffic source, your conversion goal — not a template</span>
+        <h3>You See the Full Page Before You Pay a Single Dollar.</h3>
         <p class="offer-lead-text">
-          Share your current page, your traffic source, and your conversion goal. I'll map the conversion architecture, build the page, and deliver it for your review. You evaluate every element — copy, layout, CTA flow, trust structure — and we refine until it's exactly what you'd be confident sending paid traffic to. Payment happens at approval. Not before. This isn't a free service. It's a confident specialist removing upfront financial risk because the work speaks for itself.
+          Tell me your current page, where your traffic comes from (Meta, Google, TikTok), and what conversion action you're after. I'll audit the gaps, build the page, and deliver it for your full review. You evaluate the copy, layout, CTA flow, and trust structure. We refine until it's exactly what you'd be confident sending paid traffic to. You pay at approval — not before. This isn't a free service. It's a specialist who's confident enough in the work to remove the financial risk from your side of the table.
         </p>
       </div>
 
@@ -644,31 +640,31 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <ul class="offer-points">
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Funnel audit before a single element is placed</strong> — I analyze your current page, your traffic source, and your offer to map the exact conversion gaps. The build begins with a diagnosis, not assumptions.</span>
+            <span><strong>Conversion audit before anything gets built</strong> — I analyze your current page, your traffic source, and your offer to map exactly where your funnel is leaking. The build starts with a diagnosis, not assumptions.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Conversion copy written for your traffic temperature</strong> — cold Meta traffic requires different copy than warm Google search intent. Every headline, subhead, and CTA is calibrated to the awareness level of the audience you're paying to reach.</span>
+            <span><strong>Copy calibrated to your traffic temperature</strong> — cold Meta traffic requires different copy than warm Google search intent. Headlines, subheads, and CTAs are written for the awareness level of the people you're actually paying to reach.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>CRO layout structured around your single conversion action</strong> — whether you're driving leads, purchases, bookings, or trials, the page architecture eliminates friction and channels every visitor toward one outcome.</span>
+            <span><strong>Conversion layout built around one action</strong> — whether you're generating leads, sales, bookings, or trial signups, the page architecture removes every distraction and channels every visitor toward that single outcome.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Clean, deployable code — zero page-builder dependency</strong> — fully owned, deployable on any infrastructure. No Webflow. No ClickFunnels. No Wix. A conversion asset you control completely and permanently.</span>
+            <span><strong>Clean code — no page-builder, no platform risk</strong> — fully yours, deployable on any server or stack. No Webflow subscription. No ClickFunnels plan. No tool that can break, update, or price-hike your live funnel.</span>
           </li>
           <li class="offer-point">
             <span class="offer-point-marker">&#9658;</span>
-            <span><strong>Sub-second load performance — optimized for paid traffic sources</strong> — built for mobile, where the majority of Meta, TikTok, and Instagram traffic arrives. Load speed is a CVR variable and treated accordingly.</span>
+            <span><strong>Sub-second mobile load — built for where your traffic actually lands</strong> — Meta, TikTok, and Instagram traffic is predominantly mobile. Load speed is treated as a conversion variable, not an afterthought.</span>
           </li>
         </ul>
       </div>
 
       <div class="offer-footer">
         <div class="offer-next-label">
-          Ready to build a higher-converting page?
-          <span>Share your current page, your traffic source, and your conversion goal. I'll take it from there — no upfront payment, no financial risk on your side until you've reviewed and approved the final build.</span>
+          Ready to stop bleeding ad spend on a page that doesn't convert?
+          <span>Share your current page, your traffic source, and what you're trying to convert. I'll build the page, you review every element, and you pay only when you're satisfied with what you see.</span>
         </div>
       </div>
     </div>
@@ -681,106 +677,105 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
       <div class="pricing-badge">
         <span class="pricing-badge-dot"></span>
-        <span class="pricing-badge-text">One Core Build. One Optional CRO Upgrade. One Outcome: More Revenue Per Click.</span>
+        <span class="pricing-badge-text">One Build. One Optional Upgrade. One Goal: More Revenue Per Ad Dollar.</span>
       </div>
 
       <div class="pricing-card">
         <div class="pricing-card-top">
           <div class="pricing-name-group">
-            <span class="pricing-plan">Landing Page</span>
-            <span class="pricing-desc">A conversion-focused landing page built for your specific offer, traffic source, and conversion action. Engineered to lower CPA and improve ROAS — not assembled from a template.</span>
+            <span class="pricing-plan">Landing Page Build</span>
+            <span class="pricing-desc">A conversion-focused page built for your specific offer, traffic source, and conversion action. Designed to lower your CPA and improve ROAS — not assembled from a template or a drag-and-drop tool.</span>
           </div>
           <div class="pricing-amount-group">
             <span class="pricing-amount">$800</span>
-            <span class="pricing-amount-note">One investment. Zero recurring fees.</span>
+            <span class="pricing-amount-note">One-time. No recurring fees. Full ownership.</span>
           </div>
         </div>
 
         <div class="pricing-includes">
           <span class="pricing-includes-label">// What's included</span>
           <div class="pricing-includes-grid">
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Pre-build funnel audit &amp; CVR gap analysis</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Conversion copy calibrated to traffic temperature</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Pre-build conversion audit &amp; funnel gap analysis</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Copy written for your traffic temperature &amp; offer</span></div>
             <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>CRO layout — single offer, single conversion action</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Trust architecture &amp; objection-handling structure</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Cold traffic trust architecture &amp; objection handling</span></div>
             <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Mobile-first, sub-second load performance</span></div>
             <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Clean deployable code — zero page-builder dependency</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>On-page SEO + meta tags for paid &amp; organic</span></div>
-            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Full ownership — yours permanently, no platform risk</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>On-page SEO &amp; meta tags included</span></div>
+            <div class="pricing-include-item"><span class="pricing-include-marker">&#9658;</span><span>Full permanent ownership — no platform lock-in risk</span></div>
           </div>
         </div>
       </div>
 
       <div class="pricing-footer">
-        <span class="pricing-footer-note">The average media buyer spends this in a single day of ad spend. One percentage point of CVR improvement recovers it many times over.</span>
+        <span class="pricing-footer-note">Most media buyers spend this in a single day of ad spend. One percentage-point increase in CVR pays this back many times over.</span>
       </div>
 
-      <!-- Upsell -->
       <div class="upsell-block fade-up d2">
-        <span class="upsell-label">// Optional — available with any build</span>
+        <span class="upsell-label">// Optional upgrade — available with any build</span>
         <div class="upsell-header">
           <span class="upsell-title">+ CRO Upgrade &amp; A/B Variant</span>
           <span class="upsell-price">+$400</span>
         </div>
         <p class="upsell-desc">
-          The highest-converting page is the one that's been tested, not assumed. This upgrade adds a complete A/B variant built to a defined test hypothesis — alternate value proposition structure, different headline logic, or a distinct layout approach for the same conversion action. Serious operators test variants. This is how you turn a single build into a compounding conversion asset.
+          The highest-converting page is the one that's been tested, not the one that looked best in a mockup. This upgrade adds a complete A/B variant built to a defined test hypothesis — a different value proposition angle, alternate headline logic, or a distinct layout approach for the same conversion action. Serious operators split test. This is how a single build becomes a compounding conversion asset.
         </p>
         <ul class="upsell-points">
           <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Full A/B variant built to a defined test hypothesis</span></li>
-          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Stronger CRO structure — deeper conversion architecture</span></li>
-          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Alternate value proposition &amp; headline logic</span></li>
-          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Stronger messaging &amp; objection-handling copy</span></li>
-          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Split-test ready — deploy to any A/B testing platform</span></li>
+          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Deeper CRO structure — stronger conversion architecture</span></li>
+          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Alternate value prop framing &amp; headline logic</span></li>
+          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Stronger objection handling &amp; copy refinement</span></li>
+          <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>Split-test ready — drop into any A/B testing platform</span></li>
           <li class="upsell-point"><span class="upsell-point-marker">&#9658;</span><span>CRO brief documenting what each variant tests and why</span></li>
         </ul>
       </div>
 
     </div>
 
-    <!-- GUARANTEE SECTION -->
+    <!-- GUARANTEE -->
     <div class="guarantee-section fade-up d3">
-      <span class="guarantee-header-tag">// How I approach every engagement</span>
+      <span class="guarantee-header-tag">// How every engagement works</span>
       <div class="guarantee-grid">
         <div class="guarantee-card">
-          <span class="guarantee-card-icon">// Selective by design</span>
-          <h4>I only take projects I believe in.</h4>
-          <p>If I don't think I can meaningfully improve your current page's conversion performance, I'll tell you upfront — before either of us spends time on it. I'd rather be honest than take money for work that won't move your ROAS.</p>
+          <span class="guarantee-card-icon">// Selective intake</span>
+          <h4>I only take on projects I believe will move the numbers.</h4>
+          <p>If I look at your current page and traffic setup and don't think a rebuild will meaningfully improve your CVR, I'll say so upfront — before either of us wastes time on it. I'd rather lose the project than deliver work that doesn't improve your ROAS.</p>
         </div>
         <div class="guarantee-card">
-          <span class="guarantee-card-icon">// Built around measurable logic</span>
-          <h4>Every decision has a conversion rationale.</h4>
-          <p>Nothing is placed for aesthetics. Every layout choice, headline, and CTA position is grounded in conversion psychology and cold traffic behavior — not personal taste or design trends.</p>
+          <span class="guarantee-card-icon">// Conversion rationale on every decision</span>
+          <h4>Nothing is placed for aesthetics. Every element earns its position.</h4>
+          <p>Layout choices, headline placement, CTA position, trust signals — each one is grounded in how cold paid traffic actually behaves, not in design trends or personal taste. If it doesn't serve the conversion, it doesn't go on the page.</p>
         </div>
         <div class="guarantee-card">
-          <span class="guarantee-card-icon">// Built-first, paid-after</span>
-          <h4>No upfront payment. Review before you commit.</h4>
-          <p>I build the page. You review every conversion element. We refine until it's exactly what you'd confidently send paid traffic to. Payment happens at approval — not before. This isn't a free service. It's a specialist confident enough in the work to remove the financial risk of the first engagement.</p>
+          <span class="guarantee-card-icon">// Built first. Paid after.</span>
+          <h4>Review every element before you pay a cent.</h4>
+          <p>I build the page. You review the copy, layout, CTA flow, and trust structure in full. We refine until it's exactly what you'd confidently route paid traffic to. Payment happens at your approval — not before. This is a specialist removing your financial risk because the work speaks for itself.</p>
         </div>
         <div class="guarantee-card">
-          <span class="guarantee-card-icon">// Full ownership</span>
-          <h4>No platform dependency. Ever.</h4>
-          <p>You receive clean, deployable code — no Webflow subscription, no ClickFunnels billing, no page-builder that can change pricing or deprecate features on your live funnel. Once built, it's entirely yours.</p>
+          <span class="guarantee-card-icon">// Permanent full ownership</span>
+          <h4>No subscriptions. No platform dependency. Ever.</h4>
+          <p>You receive clean deployable code. No Webflow billing, no ClickFunnels monthly, no page-builder that can deprecate features on your live funnel or hold your asset hostage. Once built, it's entirely yours.</p>
         </div>
       </div>
       <div class="guarantee-statement">
         <div class="guarantee-statement-icon">&#9679;</div>
         <div class="guarantee-statement-text">
-          <h4>The process is simple: I build it, you review it, you approve it, then you pay.</h4>
-          <p>Every page is built around conversion psychology and paid traffic behavior — not aesthetics. The goal is measurable: more of your paid clicks become leads, signups, or booked calls.</p>
-          <p>Clear scope. Clear communication. No surprises. A specialist-level build with the financial risk removed from your side of the table.</p>
+          <h4>Simple process: I build it, you review it, you approve it, then you pay.</h4>
+          <p>Every page is built around conversion psychology and paid traffic behavior. The goal is measurable: more of the clicks you're already buying become leads, sales, or booked calls.</p>
+          <p>Clear scope. Direct communication. No surprises. Specialist-level work with the financial risk removed from your side of the table.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT — Scroll target for nav CTA -->
+  <!-- CONTACT -->
   <section id="contact" class="contact-section">
-    <span class="contact-label fade-up">No upfront payment. Review before you pay.</span>
+    <span class="contact-label fade-up">No upfront payment. You review before you pay.</span>
 
-    <h2 class="contact-h2 fade-up d1">Built first.<br>Reviewed by you.<br><span>Paid at approval.</span></h2>
+    <h2 class="contact-h2 fade-up d1">I build it.<br>You review it.<br><span>You pay at approval.</span></h2>
 
     <p class="contact-sub fade-up d2">
-      Share your current page, your traffic source, and your conversion goal. I'll build a conversion-focused landing page engineered for your paid traffic — and you pay only once you've reviewed it and are satisfied with every element. <strong>Starting at $800. No upfront payment. No page-builder dependency. Full ownership from day one.</strong>
+      Tell me your current page, your traffic source, and what you're trying to convert. I'll build a landing page engineered to lower your CPA and improve your ROAS — and you pay only once you've reviewed and approved every element. <strong>Starting at $800. No upfront payment. No page-builder lock-in. Full ownership from day one.</strong>
     </p>
 
     <div class="contact-cta-wrap fade-up d3">
@@ -788,9 +783,9 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
         </svg>
-        Let's Build Your Landing Page <span class="arrow">&#8594;</span>
+        Fix My Landing Page <span class="arrow">&#8594;</span>
       </a>
-      <span class="contact-caveat">Limited capacity — reply within 24 hours</span>
+      <span class="contact-caveat">Limited spots — reply within 24 hours</span>
     </div>
   </section>
 
@@ -809,7 +804,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   </div>
   <div class="footer-text fade-up">
     <div>Designed &amp; Built by Anes Hass</div>
-    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Landing Page Specialist &middot; Media Buyers &middot; Performance Marketers &middot; Paid Traffic &middot; CRO &middot; CVR Optimization</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Landing Page Specialist &middot; Meta Ads &middot; Google Ads &middot; TikTok Ads &middot; CRO &middot; CVR Optimization &middot; Coaches &middot; Info Products &middot; Ecommerce</div>
     <div style="font-size:10px;margin-top:4px;opacity:0.4;">&copy; 2026 AutFlow Studio. All rights reserved.</div>
   </div>
 </footer>
@@ -817,90 +812,83 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
 <script>
 (function(){
-  var loader = document.getElementById('intro-loader');
+  var loader=document.getElementById('intro-loader');
   setTimeout(function(){
     loader.classList.add('hide');
-    setTimeout(function(){
-      loader.style.display = 'none';
-      scanVisible();
-    }, 500);
-  }, 2400);
+    setTimeout(function(){loader.style.display='none';scanVisible();},500);
+  },2400);
 })();
 
 function scanVisible(){
-  var els = document.querySelectorAll('.fade-up,.fade-left,.fade-right');
-  var obs = new IntersectionObserver(function(entries){
+  var els=document.querySelectorAll('.fade-up,.fade-left,.fade-right');
+  var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('appeared'); obs.unobserve(e.target); }
+      if(e.isIntersecting){e.target.classList.add('appeared');obs.unobserve(e.target);}
     });
-  }, {threshold:0.1, rootMargin:'0px 0px -36px 0px'});
-  els.forEach(function(el){ obs.observe(el); });
+  },{threshold:0.1,rootMargin:'0px 0px -36px 0px'});
+  els.forEach(function(el){obs.observe(el);});
 }
-document.addEventListener('DOMContentLoaded', scanVisible);
+document.addEventListener('DOMContentLoaded',scanVisible);
 
-// Nav CTA scrolls to #contact
 document.querySelectorAll('.js-scroll-contact').forEach(function(el){
-  el.addEventListener('click', function(e){
+  el.addEventListener('click',function(e){
     e.preventDefault();
-    var t = document.querySelector('#contact');
-    if(t){ t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    var t=document.querySelector('#contact');
+    if(t){t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
 
-// Smooth scroll all internal anchors
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   if(a.classList.contains('js-scroll-contact')) return;
-  a.addEventListener('click', function(e){
-    var t = document.querySelector(a.getAttribute('href'));
-    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
 
-// Video player
 (function(){
-  var vid    = document.getElementById('heroVideo');
-  var bar    = document.getElementById('videoBar');
-  var thumb  = document.getElementById('videoThumb');
-  var prog   = document.getElementById('videoProgress');
-  var timeEl = document.getElementById('videoTime');
-  var playBtn= document.getElementById('videoPlayBtn');
-  var iconPause = document.getElementById('iconPause');
-  var iconPlay  = document.getElementById('iconPlay');
-  var muteBtn= document.getElementById('videoMuteBtn');
-  var iconMuted = document.getElementById('iconMuted');
-  var iconSound = document.getElementById('iconSound');
-  var volSlider = document.getElementById('videoVol');
+  var vid=document.getElementById('heroVideo');
+  var bar=document.getElementById('videoBar');
+  var thumb=document.getElementById('videoThumb');
+  var prog=document.getElementById('videoProgress');
+  var timeEl=document.getElementById('videoTime');
+  var playBtn=document.getElementById('videoPlayBtn');
+  var iconPause=document.getElementById('iconPause');
+  var iconPlay=document.getElementById('iconPlay');
+  var muteBtn=document.getElementById('videoMuteBtn');
+  var iconMuted=document.getElementById('iconMuted');
+  var iconSound=document.getElementById('iconSound');
+  var volSlider=document.getElementById('videoVol');
   if(!vid) return;
-  function fmt(s){ var m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
-  function updateProgress(){ if(!vid.duration) return; var pct=(vid.currentTime/vid.duration)*100; bar.style.width=pct+'%'; thumb.style.left=pct+'%'; timeEl.textContent=fmt(vid.currentTime)+' / '+fmt(vid.duration); }
-  vid.addEventListener('timeupdate', updateProgress);
-  vid.addEventListener('loadedmetadata', updateProgress);
-  playBtn.addEventListener('click', function(){ if(vid.paused){ vid.play(); } else { vid.pause(); } });
-  vid.addEventListener('play', function(){ iconPause.style.display=''; iconPlay.style.display='none'; });
-  vid.addEventListener('pause', function(){ iconPause.style.display='none'; iconPlay.style.display=''; });
+  function fmt(s){var m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+  function updateProgress(){if(!vid.duration) return;var pct=(vid.currentTime/vid.duration)*100;bar.style.width=pct+'%';thumb.style.left=pct+'%';timeEl.textContent=fmt(vid.currentTime)+' / '+fmt(vid.duration);}
+  vid.addEventListener('timeupdate',updateProgress);
+  vid.addEventListener('loadedmetadata',updateProgress);
+  playBtn.addEventListener('click',function(){if(vid.paused){vid.play();}else{vid.pause();}});
+  vid.addEventListener('play',function(){iconPause.style.display='';iconPlay.style.display='none';});
+  vid.addEventListener('pause',function(){iconPause.style.display='none';iconPlay.style.display='';});
   var scrubbing=false;
-  function scrubTo(e){ var rect=prog.getBoundingClientRect(),x=Math.max(0,Math.min(e.clientX-rect.left,rect.width)),pct=x/rect.width; vid.currentTime=pct*vid.duration; }
-  prog.addEventListener('mousedown', function(e){ scrubbing=true; scrubTo(e); });
-  document.addEventListener('mousemove', function(e){ if(scrubbing) scrubTo(e); });
-  document.addEventListener('mouseup', function(){ scrubbing=false; });
-  prog.addEventListener('touchstart', function(e){ scrubbing=true; scrubTo(e.touches[0]); },{passive:true});
-  document.addEventListener('touchmove', function(e){ if(scrubbing) scrubTo(e.touches[0]); },{passive:true});
-  document.addEventListener('touchend', function(){ scrubbing=false; });
-  muteBtn.addEventListener('click', function(){ vid.muted=!vid.muted; if(vid.muted){ iconMuted.style.display=''; iconSound.style.display='none'; volSlider.value=0; } else { iconMuted.style.display='none'; iconSound.style.display=''; volSlider.value=vid.volume||1; } });
-  volSlider.addEventListener('input', function(){ vid.volume=parseFloat(this.value); vid.muted=(vid.volume===0); if(vid.muted){ iconMuted.style.display=''; iconSound.style.display='none'; } else { iconMuted.style.display='none'; iconSound.style.display=''; } });
+  function scrubTo(e){var rect=prog.getBoundingClientRect(),x=Math.max(0,Math.min(e.clientX-rect.left,rect.width)),pct=x/rect.width;vid.currentTime=pct*vid.duration;}
+  prog.addEventListener('mousedown',function(e){scrubbing=true;scrubTo(e);});
+  document.addEventListener('mousemove',function(e){if(scrubbing) scrubTo(e);});
+  document.addEventListener('mouseup',function(){scrubbing=false;});
+  prog.addEventListener('touchstart',function(e){scrubbing=true;scrubTo(e.touches[0]);},{passive:true});
+  document.addEventListener('touchmove',function(e){if(scrubbing) scrubTo(e.touches[0]);},{passive:true});
+  document.addEventListener('touchend',function(){scrubbing=false;});
+  muteBtn.addEventListener('click',function(){vid.muted=!vid.muted;if(vid.muted){iconMuted.style.display='';iconSound.style.display='none';volSlider.value=0;}else{iconMuted.style.display='none';iconSound.style.display='';volSlider.value=vid.volume||1;}});
+  volSlider.addEventListener('input',function(){vid.volume=parseFloat(this.value);vid.muted=(vid.volume===0);if(vid.muted){iconMuted.style.display='';iconSound.style.display='none';}else{iconMuted.style.display='none';iconSound.style.display='';}});
 })();
 
-// Custom cursor
 var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),mx=0,my=0,rx=0,ry=0;
 if(window.innerWidth>768){
-  document.addEventListener('mousemove',function(e){ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
-  (function anim(){ rx+=(mx-rx)*0.1; ry+=(my-ry)*0.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(anim); })();
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function anim(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
   document.querySelectorAll('a,button,.service-card,.pricing-card,.upsell-block,.offer-card,.guarantee-card,.cta-primary').forEach(function(el){
-    el.addEventListener('mouseenter',function(){ ring.classList.add('hovered'); });
-    el.addEventListener('mouseleave',function(){ ring.classList.remove('hovered'); });
+    el.addEventListener('mouseenter',function(){ring.classList.add('hovered');});
+    el.addEventListener('mouseleave',function(){ring.classList.remove('hovered');});
   });
-  document.addEventListener('mouseleave',function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
-  document.addEventListener('mouseenter',function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
+  document.addEventListener('mouseleave',function(){dot.style.opacity='0';ring.style.opacity='0';});
+  document.addEventListener('mouseenter',function(){dot.style.opacity='1';ring.style.opacity='1';});
 }
 </script>
 </body>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — More Customers for Your Local Business</title>
-<meta name="description" content="We build landing pages that turn visitors into bookings, calls, and paying customers. You review before you pay.">
+<title>AutFlow Studio — High-Conversion Landing Pages for Aesthetic & Medical Clinics</title>
+<meta name="description" content="We build landing pages that turn clinic website visitors into booked appointments. Designed for aesthetic, dermatology, and laser clinics. Review before you pay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -73,6 +73,9 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .nav-logo{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;}
 .nav-logo svg.hex-bg{position:absolute;top:0;left:0;width:40px;height:40px;color:var(--green);transition:var(--transition);}
 .nav-logo .logo-letter{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:17px;font-weight:500;color:var(--green);}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+.nav-link-btn{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate-light);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:9px 16px;letter-spacing:0.04em;text-decoration:none;transition:var(--transition);}
+.nav-link-btn:hover{color:var(--green);border-color:rgba(77,255,195,0.3);}
 .nav-cta-btn{color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:9px 18px;font-family:var(--font-mono);font-size:var(--fz-xs);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;box-shadow:0 0 20px rgba(77,255,195,0.2);}
 .nav-cta-btn:hover{background:rgba(77,255,195,0.85);box-shadow:0 0 32px rgba(77,255,195,0.35);transform:translateY(-1px);}
 
@@ -95,11 +98,21 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .hero-sub{font-size:clamp(16px,2vw,20px);color:var(--slate-light);line-height:1.7;max-width:600px;margin-bottom:48px;font-weight:400;}
 .hero-sub strong{color:var(--slate-white);font-weight:500;}
 
+.hero-cta-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:0;}
 .cta-primary{display:inline-flex;align-items:center;gap:10px;color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:20px 32px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);box-shadow:0 0 40px rgba(77,255,195,0.25);letter-spacing:0.02em;}
 .cta-primary:hover{background:rgba(77,255,195,0.88);box-shadow:0 0 60px rgba(77,255,195,0.4);transform:translateY(-3px);}
 .cta-primary .arrow{transition:transform 0.2s ease;}
 .cta-primary:hover .arrow{transform:translateX(4px);}
 .cta-primary svg{width:16px;height:16px;flex-shrink:0;}
+
+/* CASE STUDIES BUTTON */
+.cta-secondary{display:inline-flex;align-items:center;gap:10px;color:var(--slate-white);background:transparent;border:1px solid rgba(77,255,195,0.25);border-radius:var(--radius);padding:20px 32px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;position:relative;overflow:hidden;}
+.cta-secondary::before{content:'';position:absolute;inset:0;background:var(--green-tint);transform:translateX(-100%);transition:transform 0.3s var(--ease);}
+.cta-secondary:hover{color:var(--green);border-color:rgba(77,255,195,0.6);transform:translateY(-3px);}
+.cta-secondary:hover::before{transform:translateX(0);}
+.cta-secondary span{position:relative;z-index:1;}
+.cta-secondary .arrow{transition:transform 0.2s ease;position:relative;z-index:1;}
+.cta-secondary:hover .arrow{transform:translateX(4px);}
 
 .hero-proof-strip{margin-top:52px;border:1px solid rgba(77,255,195,0.12);border-radius:10px;background:rgba(13,27,48,0.7);overflow:hidden;box-shadow:0 32px 80px -20px rgba(0,0,0,0.6);}
 .proof-strip-header{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--navy-mid);}
@@ -156,6 +169,23 @@ body{counter-reset:section;}
 .guarantee-card h4{color:var(--slate-white);font-size:var(--fz-sm);font-weight:600;margin-bottom:6px;line-height:1.3;}
 .guarantee-card p{color:var(--slate);font-size:var(--fz-xs);line-height:1.65;margin:0;}
 
+/* CASE STUDIES PROMO SECTION */
+.case-studies-promo{max-width:920px;padding:80px 0 0;}
+.case-promo-inner{border:1px solid rgba(77,255,195,0.15);border-radius:10px;background:linear-gradient(135deg,rgba(13,27,48,0.9) 0%,rgba(8,15,30,0.95) 100%);padding:3rem 3rem 3rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.case-promo-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(77,255,195,0.4),transparent);}
+.case-promo-inner::after{content:'';position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(77,255,195,0.04) 0%,transparent 70%);pointer-events:none;}
+.case-promo-text{flex:1;}
+.case-promo-tag{font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:14px;display:block;}
+.case-promo-title{color:var(--slate-white);font-size:clamp(18px,2.5vw,26px);font-weight:700;margin-bottom:12px;letter-spacing:-0.02em;line-height:1.2;}
+.case-promo-desc{color:var(--slate-light);font-size:var(--fz-sm);line-height:1.7;max-width:480px;}
+.case-promo-action{flex-shrink:0;}
+.cta-view-cases{display:inline-flex;align-items:center;gap:12px;color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:18px 28px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);box-shadow:0 0 32px rgba(77,255,195,0.25);letter-spacing:0.02em;white-space:nowrap;}
+.cta-view-cases:hover{background:rgba(77,255,195,0.88);box-shadow:0 0 50px rgba(77,255,195,0.4);transform:translateY(-2px);}
+.cta-view-cases .arrow{transition:transform 0.2s ease;}
+.cta-view-cases:hover .arrow{transform:translateX(4px);}
+.case-preview-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.case-chip{font-family:var(--font-mono);font-size:10px;color:var(--slate);border:1px solid var(--navy-mid);border-radius:100px;padding:4px 10px;letter-spacing:0.06em;}
+
 /* CONTACT */
 .contact-section{max-width:760px;text-align:center;margin:0 auto;padding:80px 0 160px;}
 .contact-label{display:inline-block;font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--green);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:24px;padding:6px 14px;border:1px solid rgba(77,255,196,0.2);border-radius:100px;}
@@ -181,6 +211,8 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
 @media(max-width:768px){
   nav{padding:0 18px;}
+  .nav-actions{gap:8px;}
+  .nav-link-btn{display:none;}
   .nav-cta-btn{font-size:10px;padding:8px 12px;}
   section{padding:60px 0 0;max-width:100%;}
   .numbered-heading{white-space:normal;font-size:clamp(18px,5vw,22px);}
@@ -188,16 +220,21 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   .hero{padding-top:calc(var(--nav-h) + 16px);}
   .hero-h1,.hero-problem{font-size:clamp(28px,7vw,44px);}
   .hero-sub{font-size:var(--fz-md);}
+  .hero-cta-group{flex-direction:column;align-items:flex-start;}
+  .cta-primary,.cta-secondary{width:100%;justify-content:center;}
   .trust-item{padding:0 14px;font-size:10px;}
   .offer-card-header{padding:1.75rem 1.25rem 1.5rem;}
   .offer-specifics{padding:1.25rem 1.25rem;}
   .contact-section{padding:60px 0 100px;}
   .contact-h2{font-size:clamp(28px,7vw,44px);}
-  .cta-primary{width:100%;justify-content:center;}
   .guarantee-grid{grid-template-columns:1fr;}
   .proof-strip-body{grid-template-columns:1fr;gap:0;}
   .proof-divider{width:100%;height:1px;align-self:auto;}
   .proof-item{padding:18px 20px;}
+  .case-promo-inner{flex-direction:column;padding:2rem 1.5rem;gap:24px;}
+  .case-promo-action{width:100%;}
+  .cta-view-cases{width:100%;justify-content:center;}
+  .case-studies-promo{padding:60px 0 0;}
 }
 @media(max-width:480px){
   nav{padding:0 14px;}
@@ -268,7 +305,10 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       <span class="logo-letter">A</span>
     </a>
   </div>
-  <button class="nav-cta-btn js-scroll-contact" aria-label="Get More Customers">Get More Customers &#8599;</button>
+  <div class="nav-actions">
+    <a href="projects.html" class="nav-link-btn">Case Studies</a>
+    <button class="nav-cta-btn js-scroll-contact" aria-label="Book a Clinic Page">Book a Clinic Page &#8599;</button>
+  </div>
 </nav>
 
 <div class="side-el left" aria-orientation="vertical">
@@ -291,27 +331,38 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
   <!-- HERO -->
   <section class="hero" aria-label="Hero">
-    <span class="hero-eyebrow fade-up d1">For Clinics, Salons, Gyms, Restaurants &amp; Local Service Businesses</span>
-    <p class="hero-h1 fade-up d2">People find your business.</p>
-    <p class="hero-problem fade-up d2">But they're not <em>becoming customers</em>.</p>
+    <span class="hero-eyebrow fade-up d1">Specialist in Aesthetic, Dermatology &amp; Laser Clinic Landing Pages</span>
+    <p class="hero-h1 fade-up d2">Patients find your clinic online.</p>
+    <p class="hero-problem fade-up d2">But they're not <em>booking appointments</em>.</p>
     <p class="hero-sub fade-up d3">
-      Your business deserves more than a website that just exists. <strong>Every visitor who leaves without booking, calling, or inquiring is a customer you didn't get.</strong> I build landing pages designed to turn visitors into real paying customers — more bookings, more calls, more inquiries.
+      Most clinic websites look professional — but they're built to be seen, not to convert. <strong>Every patient who leaves without booking is revenue your clinic never earned.</strong> I build high-conversion landing pages exclusively for aesthetic, dermatology, and laser clinics — engineered to turn first-time visitors into confirmed appointments.
     </p>
+
+    <div class="hero-cta-group fade-up d4">
+      <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Get My Clinic's Booking Page <span class="arrow">&#8594;</span>
+      </a>
+      <a href="projects.html" class="cta-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>View Case Studies</span> <span class="arrow">&#8594;</span>
+      </a>
+    </div>
 
     <div class="hero-proof-strip fade-up d5">
       <div class="proof-strip-header">
         <div class="proof-strip-dot"></div>
-        <span class="proof-strip-label">// Built to turn visitors into customers — not just look good</span>
+        <span class="proof-strip-label">// Built to book patients — not just showcase your clinic</span>
       </div>
       <div class="proof-strip-body">
         <div class="proof-item">
           <span class="proof-item-num">More Bookings</span>
-          <span class="proof-item-label">More people take action — book, call, or inquire — from the same number of visitors.</span>
+          <span class="proof-item-label">More patients book, call, or inquire from the same website traffic you already have.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <span class="proof-item-num">More Inquiries</span>
-          <span class="proof-item-label">Every visit works harder. Visitors become leads. Leads become paying customers.</span>
+          <span class="proof-item-num">Clinic-Specific</span>
+          <span class="proof-item-label">Every page is built for your specific niche — not adapted from a generic template.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
@@ -323,26 +374,26 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   </section>
 
   <div class="trust-bar fade-up">
-    <div class="trust-item"><span class="trust-dot"></span>Clinics &amp; Health Providers</div>
-    <div class="trust-item"><span class="trust-dot"></span>Salons &amp; Beauty Studios</div>
-    <div class="trust-item"><span class="trust-dot"></span>Gyms &amp; Fitness Centers</div>
-    <div class="trust-item"><span class="trust-dot"></span>Restaurants &amp; Local Services</div>
+    <div class="trust-item"><span class="trust-dot"></span>Aesthetic Clinics</div>
+    <div class="trust-item"><span class="trust-dot"></span>Dermatology Centers</div>
+    <div class="trust-item"><span class="trust-dot"></span>Laser Hair Removal</div>
+    <div class="trust-item"><span class="trust-dot"></span>Skin &amp; Anti-Aging Clinics</div>
   </div>
 
   <div class="metrics-ticker-wrap fade-up">
     <div class="metrics-ticker" id="ticker">
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Bookings &amp; Appointments</span></div>
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Calls &amp; Inquiries</span></div>
-      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Visitor-to-Customer Rate</span></div>
+      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Booked Appointments</span></div>
+      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Patient Conversion Rate</span></div>
+      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Aesthetic &amp; Laser Clinics</span></div>
       <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees</span></div>
       <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Result</span></div>
-      <div class="ticker-item"><span class="ticker-num">Built</span><span class="ticker-label">for Real Local Businesses</span></div>
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Bookings &amp; Appointments</span></div>
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Calls &amp; Inquiries</span></div>
-      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Visitor-to-Customer Rate</span></div>
+      <div class="ticker-item"><span class="ticker-num">Trust-First</span><span class="ticker-label">Medical-Grade Design Language</span></div>
+      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Booked Appointments</span></div>
+      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Patient Conversion Rate</span></div>
+      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Aesthetic &amp; Laser Clinics</span></div>
       <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees</span></div>
       <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Result</span></div>
-      <div class="ticker-item"><span class="ticker-num">Built</span><span class="ticker-label">for Real Local Businesses</span></div>
+      <div class="ticker-item"><span class="ticker-num">Trust-First</span><span class="ticker-label">Medical-Grade Design Language</span></div>
     </div>
   </div>
 
@@ -351,46 +402,67 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <h2 class="numbered-heading fade-up">How It Works</h2>
     <div class="offer-card fade-up d1">
       <div class="offer-card-header">
-        <span class="offer-scope-tag">Built around your business, your customers, and your one conversion goal</span>
-        <h3>You See the Full Page Before You Pay Anything.</h3>
-        <p class="offer-lead-text">Tell me about your business and what you want visitors to do. I build the page from scratch, then deliver it for your full review. You only pay once you're completely satisfied — not before.</p>
+        <span class="offer-scope-tag">Built around your clinic, your patients, and one conversion goal</span>
+        <h3>Your Clinic Page — Reviewed in Full Before You Pay a Single Dirham.</h3>
+        <p class="offer-lead-text">Tell me about your clinic and what you want patients to do. I build the landing page from scratch — copy, design, and layout — then deliver it for your full review. Payment only once you're completely satisfied. Not before.</p>
       </div>
       <div class="offer-specifics">
-        <span class="offer-specifics-label">// What every build includes</span>
+        <span class="offer-specifics-label">// What every clinic landing page includes</span>
         <ul class="offer-points">
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>A clear single goal</strong> — one page, one action. Book. Call. Inquire. No confusion, no distractions.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Copy that speaks to your customers</strong> — written to address their real questions and push them to act.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Trust-building design</strong> — the page feels professional, credible, and reassuring from the very first look.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Fast on every device</strong> — most local customers browse on their phones. Speed directly affects whether they stay or leave.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Clean code you fully own</strong> — no monthly platform fees, no subscriptions. Yours forever, on any hosting you choose.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>One clear conversion goal</strong> — book, call, or WhatsApp. One page, one action. No distractions pulling patients away.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Trust-engineered copy</strong> — written to address the exact hesitations patients feel before booking a medical aesthetic treatment.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Medical credibility design</strong> — the visual language signals authority, safety, and professionalism — essential for health-related services.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Mobile-first, fast-loading</strong> — over 70% of clinic searches happen on mobile. Speed and mobile experience directly impact whether patients book or leave.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Clean code, full ownership</strong> — no monthly platform fees. Host it on your existing domain or anywhere you choose. Yours permanently.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- GUARANTEE -->
+  <!-- GUARANTEE / WHY IT WORKS -->
   <section id="guarantee">
-    <h2 class="numbered-heading fade-up">Why It Works</h2>
+    <h2 class="numbered-heading fade-up">Why Clinics Need This</h2>
     <div class="guarantee-grid fade-up d1" style="max-width:720px;">
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// One clear action</span>
-        <h4>Every element on the page points to one outcome.</h4>
-        <p>Book. Call. Send a message. The entire page is built to guide your visitor toward a single decision — without distraction or confusion.</p>
+        <span class="guarantee-card-icon">// The booking problem</span>
+        <h4>Beautiful clinic websites that don't convert are expensive decoration.</h4>
+        <p>Generic clinic websites look polished but are built for branding, not bookings. A landing page engineered for one action — one appointment — performs entirely differently.</p>
       </div>
       <div class="guarantee-card">
         <span class="guarantee-card-icon">// Built first. Paid after.</span>
-        <h4>Review everything before you pay a single dirham.</h4>
-        <p>I build the page. You review the copy, design, and layout in full. We refine until it's exactly right. Payment only at your approval — never before.</p>
+        <h4>Review the full page before paying a single dirham.</h4>
+        <p>I build the complete landing page. You review every line of copy, every design decision, the full layout. We refine until it's exactly right. Payment only at your approval.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Made for your customers</span>
-        <h4>Nothing generic. Nothing copy-pasted from a template.</h4>
-        <p>Every word and layout decision is made with your specific customer in mind — what they need to see, read, and feel before they take action.</p>
+        <span class="guarantee-card-icon">// Medical trust signals</span>
+        <h4>Patients judge credibility in the first 3 seconds. Make them count.</h4>
+        <p>Aesthetic and medical patients are more hesitant than typical buyers. Every visual choice, every word is designed to reduce anxiety and build the trust that makes patients book.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Permanent full ownership</span>
-        <h4>No subscriptions. No platform dependency. Ever.</h4>
-        <p>Once built, the page is entirely yours. No Webflow billing. No ClickFunnels monthly. Host it anywhere. Change anything. No permission needed.</p>
+        <span class="guarantee-card-icon">// Permanent ownership</span>
+        <h4>No subscriptions. No platform dependency. No permissions needed.</h4>
+        <p>Once built, the page is entirely yours. No Webflow billing. No ClickFunnels monthly. Host it anywhere, edit anything, for as long as you operate your clinic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES PROMO -->
+  <section class="case-studies-promo">
+    <div class="case-promo-inner fade-up">
+      <div class="case-promo-text">
+        <span class="case-promo-tag">// Client Work</span>
+        <h3 class="case-promo-title">See Real Clinic Landing Pages in Action</h3>
+        <p class="case-promo-desc">Explore the landing pages I've built for aesthetic, laser, and dermatology clinics — with full breakdowns of the conversion strategy, design decisions, and results behind each project.</p>
+        <div class="case-preview-chips">
+          <span class="case-chip">Luxury Aesthetic Clinic</span>
+          <span class="case-chip">Laser Hair Removal</span>
+          <span class="case-chip">Dermatology Center</span>
+        </div>
+      </div>
+      <div class="case-promo-action">
+        <a href="projects.html" class="cta-view-cases">
+          View Case Studies <span class="arrow">&#8594;</span>
+        </a>
       </div>
     </div>
   </section>
@@ -400,12 +472,12 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     <span class="contact-label fade-up">Zero risk. You approve before you pay.</span>
     <h2 class="contact-h2 fade-up d1">I build it.<br>You review it.<br><span>You approve it.</span></h2>
     <p class="contact-sub fade-up d2">
-      Tell me about your business and what you want your page to do. I'll build a landing page that turns visitors into customers — more bookings, more calls, more inquiries. <strong>No upfront payment. No lock-in. Full ownership.</strong>
+      Tell me about your clinic and what you want patients to do. I'll build a landing page that turns visitors into booked appointments — more consultations, more calls, more patients walking through your door. <strong>No upfront payment. No lock-in. Full ownership.</strong>
     </p>
     <div class="contact-cta-wrap fade-up d3">
       <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        Get My Customer-Winning Page <span class="arrow">&#8594;</span>
+        Book My Clinic's Landing Page <span class="arrow">&#8594;</span>
       </a>
       <span class="contact-caveat">Limited availability — reply within 24 hours</span>
       <div class="payment-note fade-up d4">
@@ -419,7 +491,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 <footer>
   <div class="footer-text fade-up">
     <div>Designed &amp; Built by Anes Hass</div>
-    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Landing Page Specialist &middot; Local Business Growth &middot; Conversion Rate Optimization &middot; Lead Generation</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Clinic Landing Page Specialist &middot; Aesthetic &amp; Medical Niche &middot; Conversion Rate Optimization &middot; Patient Acquisition</div>
     <div style="font-size:10px;margin-top:4px;opacity:0.4;">&copy; 2026 AutFlow Studio. All rights reserved.</div>
   </div>
 </footer>
@@ -457,7 +529,7 @@ var dot=document.getElementById('cursorDot'),ring=document.getElementById('curso
 if(window.innerWidth>768){
   document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
   (function anim(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
-  document.querySelectorAll('a,button,.guarantee-card,.offer-card,.cta-primary').forEach(function(el){
+  document.querySelectorAll('a,button,.guarantee-card,.offer-card,.cta-primary,.cta-secondary').forEach(function(el){
     el.addEventListener('mouseenter',function(){ring.classList.add('hovered');});
     el.addEventListener('mouseleave',function(){ring.classList.remove('hovered');});
   });

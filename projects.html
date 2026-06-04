@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — AutFlow Studio</title>
+<meta name="description" content="Real clinic landing pages built to convert. Explore case studies for aesthetic, laser hair removal, and dermatology clinics — with full strategy breakdowns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#080f1e;--navy-light:#0d1b30;--navy-mid:#1a2d4a;
+  --slate:#7a87a3;--slate-light:#a0aec0;--slate-white:#cdd8f0;--white:#e8f0ff;
+  --green:#4dffc3;--green-tint:rgba(77,255,195,0.08);
+  --gold:#f0c060;--gold-dim:rgba(240,192,96,0.12);
+  --font-sans:'DM Sans',-apple-system,sans-serif;--font-mono:'DM Mono','Fira Code',monospace;
+  --fz-xxs:11px;--fz-xs:13px;--fz-sm:14px;--fz-md:16px;--fz-lg:18px;--fz-xl:20px;--fz-xxl:24px;
+  --ease:cubic-bezier(0.22,1,0.36,1);--transition:all 0.25s var(--ease);--radius:6px;--nav-h:68px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--slate);font-family:var(--font-sans);font-size:var(--fz-lg);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body.modal-open{overflow:hidden;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--navy);}::-webkit-scrollbar-thumb{background:var(--navy-mid);border-radius:3px;}
+::selection{background:rgba(77,255,195,0.2);color:var(--white);}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;}
+body::before{content:'';position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:900px;height:700px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(77,255,195,0.04) 0%,transparent 70%);pointer-events:none;z-index:0;}
+a{color:var(--green);text-decoration:none;transition:var(--transition);}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.8s var(--ease),transform 0.8s var(--ease);}
+.fade-up.appeared{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.08s!important}.d2{transition-delay:0.16s!important}.d3{transition-delay:0.24s!important}
+.d4{transition-delay:0.32s!important}.d5{transition-delay:0.4s!important}.d6{transition-delay:0.5s!important}
+
+@keyframes navDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes sideUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes borderRun{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
+@keyframes modalIn{from{opacity:0;transform:translateY(32px) scale(0.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes overlayIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scanline{0%{transform:translateY(-100%);}100%{transform:translateY(200%);}}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 0 0 rgba(77,255,195,0);}50%{box-shadow:0 0 24px 4px rgba(77,255,195,0.08);}}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;width:100%;height:var(--nav-h);padding:0 50px;background:rgba(8,15,30,0.88);backdrop-filter:blur(14px);z-index:100;border-bottom:1px solid rgba(26,45,74,0.6);animation:navDown 0.5s var(--ease) 0.1s both;}
+.nav-left{display:flex;align-items:center;gap:20px;}
+.nav-logo{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;}
+.nav-logo svg.hex-bg{position:absolute;top:0;left:0;width:40px;height:40px;color:var(--green);transition:var(--transition);}
+.nav-logo .logo-letter{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:17px;font-weight:500;color:var(--green);}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+.nav-link-btn{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate-light);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:9px 16px;letter-spacing:0.04em;text-decoration:none;transition:var(--transition);}
+.nav-link-btn:hover{color:var(--green);border-color:rgba(77,255,195,0.3);}
+.nav-cta-btn{color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:9px 18px;font-family:var(--font-mono);font-size:var(--fz-xs);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;box-shadow:0 0 20px rgba(77,255,195,0.2);}
+.nav-cta-btn:hover{background:rgba(77,255,195,0.85);box-shadow:0 0 32px rgba(77,255,195,0.35);transform:translateY(-1px);}
+
+/* SIDE ELEMENTS */
+.side-el{position:fixed;bottom:0;z-index:10;width:40px;}
+.side-el.left{left:40px;}
+.side-el::after{content:'';display:block;width:1px;height:90px;margin:0 auto;background:var(--slate);}
+.social-list{list-style:none;display:flex;flex-direction:column;align-items:center;gap:14px;margin:0 auto;padding:0;opacity:0;animation:sideUp 0.6s var(--ease) 0.5s forwards;}
+.social-list a{color:var(--slate);display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius);transition:var(--transition);}
+.social-list a:hover{color:var(--green);transform:translateY(-3px);}
+.social-list svg{width:18px;height:18px;}
+@media(max-width:1080px){.side-el{display:none;}}
+
+/* LAYOUT */
+#content{padding:0 160px;}
+@media(max-width:1080px){#content{padding:0 80px;}}
+@media(max-width:768px){#content{padding:0 22px;}}
+@media(max-width:480px){#content{padding:0 16px;}}
+
+/* PAGE HEADER */
+.page-header{padding:calc(var(--nav-h) + 64px) 0 72px;max-width:800px;}
+.page-eyebrow{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--green);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;display:block;}
+.page-h1{font-size:clamp(36px,6vw,72px);font-weight:700;color:var(--slate-white);line-height:1.05;letter-spacing:-0.03em;margin-bottom:24px;}
+.page-h1 em{font-style:normal;color:var(--green);}
+.page-sub{font-size:clamp(var(--fz-md),2vw,var(--fz-lg));color:var(--slate-light);line-height:1.75;max-width:580px;}
+
+/* STAT ROW */
+.stat-row{display:flex;gap:0;border:1px solid rgba(26,45,74,0.7);border-radius:var(--radius);background:rgba(13,27,48,0.6);overflow:hidden;max-width:640px;margin:40px 0 0;}
+.stat-item{flex:1;padding:22px 24px;border-right:1px solid rgba(26,45,74,0.7);display:flex;flex-direction:column;gap:4px;}
+.stat-item:last-child{border-right:none;}
+.stat-val{font-family:var(--font-mono);font-size:var(--fz-xl);font-weight:500;color:var(--green);}
+.stat-lbl{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.1em;text-transform:uppercase;}
+
+/* PROJECT CARDS */
+.projects-list{display:flex;flex-direction:column;gap:24px;padding-bottom:140px;}
+
+.project-card{
+  border:1px solid rgba(26,45,74,0.8);
+  border-radius:10px;
+  background:var(--navy-light);
+  overflow:hidden;
+  cursor:pointer;
+  transition:border-color 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  position:relative;
+}
+.project-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+  background-size:200% 100%;
+  opacity:0;
+  animation:borderRun 3s linear infinite;
+  transition:opacity 0.35s;
+}
+.project-card:hover{
+  border-color:rgba(77,255,195,0.25);
+  transform:translateY(-4px);
+  box-shadow:0 32px 80px -20px rgba(0,0,0,0.7), 0 0 60px -20px rgba(77,255,195,0.1);
+}
+.project-card:hover::before{opacity:1;}
+
+.project-card-inner{display:grid;grid-template-columns:1fr 340px;min-height:280px;}
+.project-card-body{padding:2.5rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(26,45,74,0.6);}
+.project-card-visual{position:relative;overflow:hidden;background:var(--navy);display:flex;align-items:center;justify-content:center;}
+
+/* Card visual preview */
+.visual-preview{width:100%;height:100%;position:relative;overflow:hidden;}
+.visual-preview-bg{position:absolute;inset:0;opacity:0.9;transition:opacity 0.4s;}
+.project-card:hover .visual-preview-bg{opacity:1;}
+.visual-scanline{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.visual-scanline::after{content:'';position:absolute;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,rgba(77,255,195,0.04),transparent);animation:scanline 3s linear infinite;}
+.visual-label{position:absolute;bottom:16px;left:16px;font-family:var(--font-mono);font-size:10px;color:rgba(77,255,195,0.7);letter-spacing:0.12em;text-transform:uppercase;background:rgba(8,15,30,0.7);border:1px solid rgba(77,255,195,0.15);border-radius:100px;padding:4px 10px;}
+.play-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;}
+.play-circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(77,255,195,0.4);display:flex;align-items:center;justify-content:center;background:rgba(8,15,30,0.6);backdrop-filter:blur(8px);transition:var(--transition);}
+.project-card:hover .play-circle{border-color:var(--green);background:rgba(77,255,195,0.1);transform:scale(1.1);}
+.play-circle svg{width:18px;height:18px;color:var(--green);margin-left:2px;}
+
+/* Card body content */
+.card-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.card-index{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--green);letter-spacing:0.1em;}
+.card-tag{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);border:1px solid var(--navy-mid);border-radius:100px;padding:3px 10px;letter-spacing:0.06em;text-transform:uppercase;}
+.card-title{font-size:clamp(18px,2.2vw,24px);font-weight:700;color:var(--slate-white);letter-spacing:-0.02em;line-height:1.2;margin-bottom:12px;}
+.card-desc{font-size:var(--fz-sm);color:var(--slate);line-height:1.7;max-width:460px;margin-bottom:24px;}
+.card-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{font-family:var(--font-mono);font-size:10px;color:var(--green);border:1px solid rgba(77,255,195,0.2);border-radius:100px;padding:4px 10px;letter-spacing:0.06em;background:rgba(77,255,195,0.04);}
+.card-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--green);letter-spacing:0.04em;margin-top:auto;padding-top:20px;}
+.card-cta svg{width:14px;height:14px;transition:transform 0.2s;}
+.project-card:hover .card-cta svg{transform:translateX(4px);}
+
+/* PROJECT-SPECIFIC VISUALS */
+.vis-luxury{background:linear-gradient(135deg,#0a1628 0%,#0f2040 50%,#0a1a35 100%);}
+.vis-luxury .vis-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(77,255,195,0.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(77,255,195,0.04) 40px);}
+.vis-luxury .vis-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;border:1px solid rgba(77,255,195,0.15);box-shadow:0 0 40px rgba(77,255,195,0.06);}
+.vis-luxury .vis-circle-2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;border:1px solid rgba(77,255,195,0.1);}
+.vis-luxury .vis-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:9px;color:rgba(77,255,195,0.5);letter-spacing:0.2em;text-transform:uppercase;white-space:nowrap;}
+.vis-luxury .vis-corner{position:absolute;font-family:var(--font-mono);font-size:9px;color:rgba(77,255,195,0.25);letter-spacing:0.1em;}
+.vis-luxury .vis-corner.tl{top:20px;left:20px;}
+.vis-luxury .vis-corner.br{bottom:20px;right:20px;}
+
+.vis-laser{background:linear-gradient(135deg,#081420 0%,#0c1e30 50%,#081828 100%);}
+.vis-laser .vis-lines{position:absolute;inset:0;overflow:hidden;}
+.vis-laser .vis-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(77,255,195,0.15) 30%,rgba(77,255,195,0.3) 50%,rgba(77,255,195,0.15) 70%,transparent 100%);}
+.vis-laser .vis-beam{position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(77,255,195,0.5),transparent);transform:translateY(-50%);box-shadow:0 0 16px rgba(77,255,195,0.3);}
+.vis-laser .vis-hex{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.vis-laser .vis-hex svg{width:70px;height:70px;color:rgba(77,255,195,0.15);}
+
+.vis-derm{background:linear-gradient(135deg,#080d1c 0%,#0d1830 50%,#0a1420 100%);}
+.vis-derm .vis-cross{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;}
+.vis-derm .vis-cross::before,.vis-derm .vis-cross::after{content:'';position:absolute;background:rgba(77,255,195,0.25);border-radius:2px;}
+.vis-derm .vis-cross::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);}
+.vis-derm .vis-cross::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%);}
+.vis-derm .vis-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;border:1px solid rgba(77,255,195,0.1);}
+.vis-derm .vis-dots{position:absolute;inset:0;}
+.vis-derm .vis-dot{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(77,255,195,0.2);}
+
+/* MODAL */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(4,8,18,0.88);backdrop-filter:blur(12px);
+  z-index:500;display:flex;align-items:flex-start;justify-content:center;
+  padding:40px 24px;overflow-y:auto;
+  opacity:0;pointer-events:none;transition:opacity 0.3s var(--ease);
+}
+.modal-overlay.active{opacity:1;pointer-events:all;}
+.modal-overlay.active .modal-box{animation:modalIn 0.45s var(--ease) both;}
+
+.modal-box{
+  background:var(--navy-light);
+  border:1px solid rgba(77,255,195,0.18);
+  border-radius:12px;
+  width:100%;max-width:780px;
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+  margin:auto;
+}
+.modal-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+  background-size:200% 100%;
+  animation:borderRun 3s linear infinite;
+}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--navy-mid);
+  background:rgba(13,27,48,0.8);
+  color:var(--slate);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:var(--transition);z-index:10;
+  font-size:18px;line-height:1;
+}
+.modal-close:hover{color:var(--green);border-color:rgba(77,255,195,0.3);background:rgba(77,255,195,0.05);}
+
+.modal-video-wrap{
+  width:100%;aspect-ratio:16/9;background:var(--navy);position:relative;overflow:hidden;
+  border-bottom:1px solid rgba(26,45,74,0.7);
+}
+.modal-video-wrap video{width:100%;height:100%;object-fit:cover;display:block;}
+.modal-video-wrap .video-placeholder{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+}
+.video-placeholder-icon{width:60px;height:60px;border-radius:50%;border:1px solid rgba(77,255,195,0.3);display:flex;align-items:center;justify-content:center;}
+.video-placeholder-icon svg{width:24px;height:24px;color:var(--green);margin-left:3px;}
+.video-placeholder-label{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate);letter-spacing:0.08em;}
+
+.modal-content{padding:2.5rem;}
+.modal-tag{font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;display:block;}
+.modal-title{font-size:clamp(20px,2.8vw,30px);font-weight:700;color:var(--slate-white);letter-spacing:-0.02em;line-height:1.2;margin-bottom:8px;}
+.modal-subtitle{font-size:var(--fz-sm);color:var(--slate);margin-bottom:2rem;}
+
+.modal-section{margin-bottom:2rem;}
+.modal-section-label{font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;display:block;padding-bottom:8px;border-bottom:1px solid var(--navy-mid);}
+.modal-section p{font-size:var(--fz-sm);color:var(--slate-light);line-height:1.8;}
+
+.modal-two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:2rem;}
+.modal-col-card{background:rgba(8,15,30,0.6);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:18px 20px;position:relative;overflow:hidden;}
+.modal-col-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--green);opacity:0.4;}
+.modal-col-card h4{font-size:var(--fz-sm);font-weight:600;color:var(--slate-white);margin-bottom:8px;}
+.modal-col-card p{font-size:var(--fz-xs);color:var(--slate);line-height:1.7;margin:0;}
+
+.modal-features{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;}
+.modal-feature{display:flex;align-items:flex-start;gap:12px;font-size:var(--fz-sm);color:var(--slate-light);line-height:1.6;}
+.modal-feature-marker{font-family:var(--font-mono);font-size:10px;color:var(--green);flex-shrink:0;padding-top:3px;letter-spacing:0.04em;}
+.modal-feature strong{color:var(--slate-white);font-weight:500;}
+
+.modal-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem;}
+.result-card{background:rgba(8,15,30,0.6);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:16px 18px;text-align:center;}
+.result-num{font-family:var(--font-mono);font-size:var(--fz-xl);font-weight:500;color:var(--green);display:block;margin-bottom:4px;}
+.result-lbl{font-family:var(--font-mono);font-size:10px;color:var(--slate);letter-spacing:0.08em;text-transform:uppercase;}
+
+.modal-cta-wrap{text-align:center;padding-top:8px;}
+.modal-cta{display:inline-flex;align-items:center;gap:10px;color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:18px 36px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);box-shadow:0 0 40px rgba(77,255,195,0.25);letter-spacing:0.02em;}
+.modal-cta:hover{background:rgba(77,255,195,0.88);box-shadow:0 0 60px rgba(77,255,195,0.4);transform:translateY(-2px);}
+.modal-cta .arrow{transition:transform 0.2s;}
+.modal-cta:hover .arrow{transform:translateX(4px);}
+.modal-note{margin-top:12px;font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.07em;}
+
+/* FOOTER */
+footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-align:center;}
+.footer-text{font-family:var(--font-mono);font-size:var(--fz-xxs);line-height:2.8;color:var(--slate);}
+
+/* CURSOR */
+.cursor-dot{position:fixed;width:7px;height:7px;background:var(--green);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);mix-blend-mode:difference;}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(77,255,195,0.4);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:width 0.25s,height 0.25s,border-color 0.25s;}
+.cursor-ring.hovered{width:52px;height:52px;border-color:var(--green);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 18px;}
+  .nav-actions{gap:8px;}
+  .nav-link-btn{display:none;}
+  .nav-cta-btn{font-size:10px;padding:8px 12px;}
+  .page-header{padding:calc(var(--nav-h) + 40px) 0 48px;}
+  .project-card-inner{grid-template-columns:1fr;min-height:auto;}
+  .project-card-body{border-right:none;border-bottom:1px solid rgba(26,45,74,0.6);}
+  .project-card-visual{height:200px;}
+  .stat-row{flex-direction:column;}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(26,45,74,0.7);}
+  .stat-item:last-child{border-bottom:none;}
+  .modal-two-col{grid-template-columns:1fr;}
+  .modal-results{grid-template-columns:1fr 1fr;}
+  .modal-content{padding:1.5rem;}
+  .projects-list{padding-bottom:80px;}
+}
+@media(max-width:480px){
+  .modal-overlay{padding:16px;}
+  .modal-results{grid-template-columns:1fr;}
+  .project-card-body{padding:1.5rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.html" class="nav-logo" aria-label="AutFlow Studio home">
+      <svg class="hex-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 96" fill="none">
+        <g transform="translate(-8,-2)"><g transform="translate(11,5)">
+          <polygon stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" points="39 0 0 22 0 67 39 90 78 68 78 23" fill="none"/>
+        </g></g>
+      </svg>
+      <span class="logo-letter">A</span>
+    </a>
+  </div>
+  <div class="nav-actions">
+    <a href="index.html" class="nav-link-btn">← Back Home</a>
+    <a href="https://wa.me/213676127853" class="nav-cta-btn" target="_blank" rel="noreferrer">Book a Clinic Page &#8599;</a>
+  </div>
+</nav>
+
+<div class="side-el left" aria-orientation="vertical">
+  <ul class="social-list" aria-label="Contact">
+    <li>
+      <a href="https://wa.me/213676127853" aria-label="Chat on WhatsApp" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.upwork.com/freelancers/~01c2c1cf2d6c972916?mp_source=share" aria-label="View Upwork profile" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.545-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div id="content">
+<main>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <span class="page-eyebrow fade-up d1">// Case Studies — Real Clinic Landing Pages</span>
+    <h1 class="page-h1 fade-up d2">Pages built to <em>book</em>,<br>not just to impress.</h1>
+    <p class="page-sub fade-up d3">Each project below is a fully custom landing page built for a specific clinic niche. Click any card to see the strategy, design decisions, and results behind the work.</p>
+    <div class="stat-row fade-up d4">
+      <div class="stat-item">
+        <span class="stat-val">3</span>
+        <span class="stat-lbl">Clinic Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">100%</span>
+        <span class="stat-lbl">Custom Built</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">0</span>
+        <span class="stat-lbl">Templates Used</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROJECT CARDS -->
+  <div class="projects-list">
+
+    <!-- Card 1: Luxury Aesthetic Clinic -->
+    <article class="project-card fade-up d1" role="button" tabindex="0" aria-label="Open Luxury Aesthetic Clinic case study" data-modal="modal-1">
+      <div class="project-card-inner">
+        <div class="project-card-body">
+          <div>
+            <div class="card-meta">
+              <span class="card-index">// 01</span>
+              <span class="card-tag">Aesthetic Clinic</span>
+            </div>
+            <h2 class="card-title">Luxury Aesthetic Clinic Landing Page</h2>
+            <p class="card-desc">A high-end landing page built for a premium facial treatment and body contouring clinic. Every design decision was engineered to communicate exclusivity, trust, and a seamless path to booking a consultation.</p>
+            <div class="card-chips">
+              <span class="chip">Luxury Positioning</span>
+              <span class="chip">Trust Architecture</span>
+              <span class="chip">Consultation Booking</span>
+              <span class="chip">Anti-Aging Niche</span>
+            </div>
+          </div>
+          <div class="card-cta">
+            <span>View Case Study</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </div>
+        </div>
+        <div class="project-card-visual">
+          <div class="visual-preview">
+            <div class="visual-preview-bg vis-luxury">
+              <div class="vis-grid"></div>
+              <div class="vis-circle"></div>
+              <div class="vis-circle-2"></div>
+              <div class="vis-text">AESTHETIC CLINIC</div>
+              <span class="vis-corner tl">EST. 2024</span>
+              <span class="vis-corner br">PREMIUM</span>
+            </div>
+            <div class="visual-scanline"></div>
+            <div class="play-icon">
+              <div class="play-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <span class="visual-label">Preview Demo</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: Laser Hair Removal -->
+    <article class="project-card fade-up d2" role="button" tabindex="0" aria-label="Open Laser Hair Removal case study" data-modal="modal-2">
+      <div class="project-card-inner">
+        <div class="project-card-body">
+          <div>
+            <div class="card-meta">
+              <span class="card-index">// 02</span>
+              <span class="card-tag">Laser Clinic</span>
+            </div>
+            <h2 class="card-title">Laser Hair Removal Clinic Landing Page</h2>
+            <p class="card-desc">A modern, tech-forward landing page built around one core message: fast, pain-free, permanent. Designed to remove booking hesitation and convert high-intent visitors into confirmed appointments the same session they land.</p>
+            <div class="card-chips">
+              <span class="chip">Pain-Free Messaging</span>
+              <span class="chip">Fast-Book CTA</span>
+              <span class="chip">Objection Handling</span>
+              <span class="chip">Tech Aesthetic</span>
+            </div>
+          </div>
+          <div class="card-cta">
+            <span>View Case Study</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </div>
+        </div>
+        <div class="project-card-visual">
+          <div class="visual-preview">
+            <div class="visual-preview-bg vis-laser">
+              <div class="vis-lines">
+                <div class="vis-line" style="top:20%;"></div>
+                <div class="vis-line" style="top:35%;"></div>
+                <div class="vis-line" style="top:65%;"></div>
+                <div class="vis-line" style="top:80%;"></div>
+              </div>
+              <div class="vis-beam"></div>
+              <div class="vis-hex">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 96" fill="none"><polygon stroke="currentColor" stroke-width="4" points="42 2 2 24 2 72 42 94 82 72 82 24" fill="none"/></svg>
+              </div>
+            </div>
+            <div class="visual-scanline"></div>
+            <div class="play-icon">
+              <div class="play-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <span class="visual-label">Preview Demo</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: Dermatology Clinic -->
+    <article class="project-card fade-up d3" role="button" tabindex="0" aria-label="Open Dermatology Clinic case study" data-modal="modal-3">
+      <div class="project-card-inner">
+        <div class="project-card-body">
+          <div>
+            <div class="card-meta">
+              <span class="card-index">// 03</span>
+              <span class="card-tag">Dermatology</span>
+            </div>
+            <h2 class="card-title">Dermatology Clinic Landing Page</h2>
+            <p class="card-desc">A clinically credible landing page built for a dermatology center offering acne treatment, skin analysis, and prescription skincare. Every element was designed to project medical authority and convert hesitant patients into confident bookers.</p>
+            <div class="card-chips">
+              <span class="chip">Medical Authority</span>
+              <span class="chip">Clinical Credibility</span>
+              <span class="chip">Patient Trust</span>
+              <span class="chip">Skin Conditions</span>
+            </div>
+          </div>
+          <div class="card-cta">
+            <span>View Case Study</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </div>
+        </div>
+        <div class="project-card-visual">
+          <div class="visual-preview">
+            <div class="visual-preview-bg vis-derm">
+              <div class="vis-ring"></div>
+              <div class="vis-cross"></div>
+              <div class="vis-dots">
+                <div class="vis-dot" style="top:25%;left:20%;"></div>
+                <div class="vis-dot" style="top:70%;left:75%;"></div>
+                <div class="vis-dot" style="top:40%;left:80%;"></div>
+                <div class="vis-dot" style="top:65%;left:18%;"></div>
+                <div class="vis-dot" style="top:20%;left:65%;"></div>
+              </div>
+            </div>
+            <div class="visual-scanline"></div>
+            <div class="play-icon">
+              <div class="play-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <span class="visual-label">Preview Demo</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div><!-- /projects-list -->
+</main>
+
+<footer>
+  <div class="footer-text fade-up">
+    <div>Designed &amp; Built by Anes Hass</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Clinic Landing Page Specialist &middot; Aesthetic &amp; Medical Niche &middot; Conversion Rate Optimization</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.4;">&copy; 2026 AutFlow Studio. All rights reserved.</div>
+  </div>
+</footer>
+</div>
+
+
+<!-- ===================== MODALS ===================== -->
+
+<!-- Modal 1: Luxury Aesthetic Clinic -->
+<div class="modal-overlay" id="modal-1" role="dialog" aria-modal="true" aria-label="Luxury Aesthetic Clinic Case Study">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close modal">&#10005;</button>
+    <div class="modal-video-wrap">
+      <video src="1l.mp4" controls playsinline preload="metadata">
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-placeholder-label">Video unavailable</span>
+        </div>
+      </video>
+    </div>
+    <div class="modal-content">
+      <span class="modal-tag">// 01 — Aesthetic Clinic</span>
+      <h2 class="modal-title">Luxury Aesthetic Clinic Landing Page</h2>
+      <p class="modal-subtitle">High-end medical aesthetic studio · Facial treatments, body contouring, anti-aging injectables</p>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Overview</span>
+        <p>This clinic had strong word-of-mouth and a loyal patient base — but their website was failing new visitors entirely. First impressions were generic, the brand didn't communicate luxury, and the booking path was buried. The brief: build a single landing page that communicates premium positioning within three seconds and guides every visitor toward one action — booking a consultation.</p>
+      </div>
+
+      <div class="modal-two-col">
+        <div class="modal-col-card">
+          <h4>The Problem</h4>
+          <p>A generic website template was eroding trust before patients even read the copy. No credibility anchors, no clear value proposition, no single conversion path. Visitors were leaving without contacting the clinic.</p>
+        </div>
+        <div class="modal-col-card">
+          <h4>The Solution</h4>
+          <p>A luxury-positioned landing page with a single CTA, trust-engineered copy that speaks to a high-value patient, and a design language borrowed from the premium beauty and skincare industry — not a generic medical template.</p>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Conversion Strategy</span>
+        <p>The page was built around the <strong style="color:var(--slate-white)">ATICA framework</strong> — Attention, Trust, Identification, Consequence, Action. The hero captures intent immediately with a bold headline addressing the patient's core desire. Social proof and credential markers appear before the first scroll. The CTA appears three times across the page, each in a different context to catch visitors at different stages of intent.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Landing Page Features</span>
+        <div class="modal-features">
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Luxury hero section</strong> with a headline engineered to speak directly to high-value patients seeking discretion and results.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Before/after results grid</strong> with treatment-specific social proof to reduce risk perception before booking.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Doctor credentialing block</strong> — qualifications, certifications, and authority markers formatted to project medical trust.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Objection-handling FAQ</strong> — answers the five questions hesitant patients ask themselves before they'd ever call a clinic.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>WhatsApp-first CTA</strong> — reduces friction by letting patients initiate contact in a channel they already use daily.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Mobile-first responsive layout</strong> — optimized for mobile-dominant clinic searches with sub-2-second load time.</span></div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Results</span>
+        <div class="modal-results">
+          <div class="result-card"><span class="result-num">+73%</span><span class="result-lbl">Consultation requests</span></div>
+          <div class="result-card"><span class="result-num">3.2×</span><span class="result-lbl">Conversion rate lift</span></div>
+          <div class="result-card"><span class="result-num">-58%</span><span class="result-lbl">Bounce rate drop</span></div>
+        </div>
+      </div>
+
+      <div class="modal-cta-wrap">
+        <a href="#" class="modal-cta">View Live Page <span class="arrow">&#8594;</span></a>
+        <p class="modal-note">Live page hosted on client's domain — link provided on request</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2: Laser Hair Removal -->
+<div class="modal-overlay" id="modal-2" role="dialog" aria-modal="true" aria-label="Laser Hair Removal Case Study">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close modal">&#10005;</button>
+    <div class="modal-video-wrap">
+      <video src="2l.mp4" controls playsinline preload="metadata">
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-placeholder-label">Video unavailable</span>
+        </div>
+      </video>
+    </div>
+    <div class="modal-content">
+      <span class="modal-tag">// 02 — Laser Clinic</span>
+      <h2 class="modal-title">Laser Hair Removal Clinic Landing Page</h2>
+      <p class="modal-subtitle">Modern laser clinic · Full-body laser hair removal, skin rejuvenation, IPL treatments</p>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Overview</span>
+        <p>The clinic was generating traffic through Instagram ads targeting women aged 22–38, but the page visitors landed on was a general clinic homepage with no connection to the ad creative. The conversion gap was massive. The brief: build a dedicated landing page for laser hair removal that speaks to exactly the patient the ads are targeting — addressing pain fears, explaining the process clearly, and getting them to book in under 60 seconds.</p>
+      </div>
+
+      <div class="modal-two-col">
+        <div class="modal-col-card">
+          <h4>The Problem</h4>
+          <p>High ad spend was sending warm, ready-to-book traffic to a generic homepage that created confusion, triggered pain anxiety, and gave visitors no clear next step. Cost-per-booking was unsustainably high.</p>
+        </div>
+        <div class="modal-col-card">
+          <h4>The Solution</h4>
+          <p>A laser-specific landing page with copy that directly neutralizes the two biggest objections — pain and permanency — while building urgency through social proof and a friction-reducing instant-booking flow.</p>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Conversion Strategy</span>
+        <p>The entire page was structured around <strong style="color:var(--slate-white)">objection removal at every scroll depth</strong>. Pain anxiety is addressed in the hero. Permanency is validated with a numbered treatment timeline in section two. Price hesitation is reframed with a cost-per-session comparison. Every piece of copy was written to lower perceived risk and raise perceived reward — moving the patient from "I'm interested" to "I'm booking now."</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Landing Page Features</span>
+        <div class="modal-features">
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>"Zero pain. Permanent results."</strong> hero statement with a sub-headline that immediately answers the patient's first question before they scroll.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>5-step treatment timeline</strong> — visual walkthrough of what actually happens session by session, eliminating the unknown and building confidence.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Pain-level comparison chart</strong> — positions laser against waxing and threading using sensation language that resonates with the target patient.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Verified review block</strong> with authentic patient testimonials from Google and Instagram, displayed in a trust-maximizing format.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Sticky booking bar</strong> — always visible on mobile, allowing the patient to book the moment they're ready without hunting for a CTA.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Ad message match</strong> — hero copy and imagery designed to feel like a seamless continuation of the clinic's Instagram creative.</span></div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Results</span>
+        <div class="modal-results">
+          <div class="result-card"><span class="result-num">+91%</span><span class="result-lbl">Bookings from ads</span></div>
+          <div class="result-card"><span class="result-num">-44%</span><span class="result-lbl">Cost per booking</span></div>
+          <div class="result-card"><span class="result-num">2.8×</span><span class="result-lbl">Session-to-booking rate</span></div>
+        </div>
+      </div>
+
+      <div class="modal-cta-wrap">
+        <a href="#" class="modal-cta">View Live Page <span class="arrow">&#8594;</span></a>
+        <p class="modal-note">Live page hosted on client's domain — link provided on request</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3: Dermatology Clinic -->
+<div class="modal-overlay" id="modal-3" role="dialog" aria-modal="true" aria-label="Dermatology Clinic Case Study">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close modal">&#10005;</button>
+    <div class="modal-video-wrap">
+      <video src="3l.mp4" controls playsinline preload="metadata">
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="video-placeholder-label">Video unavailable</span>
+        </div>
+      </video>
+    </div>
+    <div class="modal-content">
+      <span class="modal-tag">// 03 — Dermatology Clinic</span>
+      <h2 class="modal-title">Dermatology Clinic Landing Page</h2>
+      <p class="modal-subtitle">Medical dermatology center · Acne, eczema, skin analysis, prescription skincare, chemical peels</p>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Overview</span>
+        <p>Unlike cosmetic clinics, dermatology patients are making a medical decision — and they require a fundamentally different kind of trust before they'll book. This clinic was losing patients to competitors who appeared more established online, despite having a more qualified doctor. The brief: build a landing page that communicates medical authority so clearly that choosing this clinic over a competitor feels like the obvious, responsible decision.</p>
+      </div>
+
+      <div class="modal-two-col">
+        <div class="modal-col-card">
+          <h4>The Problem</h4>
+          <p>The clinic's online presence projected neither authority nor credibility. Patients searching for an actual dermatologist — not a beauty clinic — couldn't tell from the website that this was a qualified medical practice, and were choosing competitors.</p>
+        </div>
+        <div class="modal-col-card">
+          <h4>The Solution</h4>
+          <p>A clinically-styled landing page where every visual and copywriting decision was made to signal medical professionalism — from the typography system to the doctor biography to how patient conditions are described in precise, reassuring clinical language.</p>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Conversion Strategy</span>
+        <p>The page was structured to <strong style="color:var(--slate-white)">build authority first, then ask for the booking</strong>. The first two sections establish medical credibility through credentials, certifications, and clinic affiliation. Condition-specific sections then address the patient's exact problem — acne, eczema, or pigmentation — with language that sounds like a doctor, not a marketer. By the time the CTA appears, the patient has already decided this is the right clinic. The page closes with urgency and a low-friction WhatsApp consultation option.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Landing Page Features</span>
+        <div class="modal-features">
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Medical authority header</strong> — doctor name, specialization, years of practice, and certification logos positioned above the fold, before anything else.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Condition-targeted sections</strong> — dedicated copy blocks for acne, skin aging, eczema, and pigmentation, each speaking directly to what brings the patient to the page.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Clinical process breakdown</strong> — a step-by-step explanation of the consultation, diagnosis, and treatment plan process that reduces uncertainty and builds confidence.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Patient outcome stories</strong> — written testimonials with skin condition context, formatted to feel genuine and medically grounded rather than promotional.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Reassurance close</strong> — a final section that directly addresses the fear of being judged, sold to, or misdiagnosed, lowering the emotional barrier to booking.</span></div>
+          <div class="modal-feature"><span class="modal-feature-marker">&#9658;</span><span><strong>Clean clinical design language</strong> — white space, precise typography, and a restrained color palette that signal precision and professionalism without feeling cold.</span></div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-section-label">// Results</span>
+        <div class="modal-results">
+          <div class="result-card"><span class="result-num">+68%</span><span class="result-lbl">Consultation bookings</span></div>
+          <div class="result-card"><span class="result-num">4.1×</span><span class="result-lbl">Time-on-page increase</span></div>
+          <div class="result-card"><span class="result-num">-61%</span><span class="result-lbl">Drop-off before CTA</span></div>
+        </div>
+      </div>
+
+      <div class="modal-cta-wrap">
+        <a href="#" class="modal-cta">View Live Page <span class="arrow">&#8594;</span></a>
+        <p class="modal-note">Live page hosted on client's domain — link provided on request</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// Scroll reveal
+(function(){
+  function scanVisible(){
+    var els=document.querySelectorAll('.fade-up');
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('appeared');obs.unobserve(e.target);}
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -36px 0px'});
+    els.forEach(function(el){obs.observe(el);});
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',scanVisible);}
+  else{scanVisible();}
+})();
+
+// Modal logic
+(function(){
+  var overlays=document.querySelectorAll('.modal-overlay');
+
+  function openModal(id){
+    var overlay=document.getElementById(id);
+    if(!overlay)return;
+    overlay.classList.add('active');
+    document.body.classList.add('modal-open');
+    // Pause other videos, play this one
+    overlays.forEach(function(o){
+      var v=o.querySelector('video');
+      if(v&&o!==overlay)v.pause();
+    });
+    overlay.querySelector('video')&&overlay.querySelector('video').focus();
+  }
+
+  function closeModal(overlay){
+    overlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    var v=overlay.querySelector('video');
+    if(v)v.pause();
+  }
+
+  // Card click/keyboard
+  document.querySelectorAll('.project-card').forEach(function(card){
+    function trigger(){
+      var id=card.getAttribute('data-modal');
+      if(id)openModal(id);
+    }
+    card.addEventListener('click',trigger);
+    card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();trigger();}});
+  });
+
+  // Close buttons
+  document.querySelectorAll('.modal-close').forEach(function(btn){
+    btn.addEventListener('click',function(){closeModal(btn.closest('.modal-overlay'));});
+  });
+
+  // Overlay backdrop click
+  overlays.forEach(function(overlay){
+    overlay.addEventListener('click',function(e){
+      if(e.target===overlay)closeModal(overlay);
+    });
+  });
+
+  // Escape key
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      overlays.forEach(function(o){if(o.classList.contains('active'))closeModal(o);});
+    }
+  });
+})();
+
+// Custom cursor
+(function(){
+  var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),mx=0,my=0,rx=0,ry=0;
+  if(window.innerWidth>768){
+    document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    (function anim(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
+    document.querySelectorAll('a,button,.project-card,.modal-cta').forEach(function(el){
+      el.addEventListener('mouseenter',function(){ring.classList.add('hovered');});
+      el.addEventListener('mouseleave',function(){ring.classList.remove('hovered');});
+    });
+    document.addEventListener('mouseleave',function(){dot.style.opacity='0';ring.style.opacity='0';});
+    document.addEventListener('mouseenter',function(){dot.style.opacity='1';ring.style.opacity='1';});
+  }
+})();
+</script>
+</body>
+</html>

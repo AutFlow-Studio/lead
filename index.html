@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Clinic Landing Pages for Gulf Clinics | Saudi Arabia · UAE · Kuwait</title>
-<meta name="description" content="High-conversion landing pages built exclusively for Gulf clinic owners. Laser, aesthetic, botox, hair transplant clinics in Saudi Arabia, UAE, and Kuwait. Review before you pay. Starting at $600.">
+<title>AutFlow Studio — High-Conversion Landing Pages for Aesthetic & Medical Clinics</title>
+<meta name="description" content="We build landing pages that turn clinic website visitors into booked appointments. Designed for aesthetic, dermatology, and laser clinics. Review before you pay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -45,7 +45,6 @@ a{color:var(--green);text-decoration:none;transition:var(--transition);}
 @keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 @keyframes borderRun{0%{background-position:0% 0%;}100%{background-position:200% 0%;}}
 @keyframes goldPulse{0%,100%{opacity:0.7;}50%{opacity:1;}}
-@keyframes stepIn{from{opacity:0;transform:translateX(-12px);}to{opacity:1;transform:translateX(0);}}
 
 #intro-loader{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;}
 .intro-svg-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
@@ -89,35 +88,15 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .social-list svg{width:18px;height:18px;}
 @media(max-width:1080px){.side-el{display:none;}}
 
-/* TRUST BANNER */
-.trust-banner{background:rgba(77,255,195,0.06);border-bottom:1px solid rgba(77,255,195,0.15);padding:10px 0;text-align:center;position:fixed;top:var(--nav-h);left:0;right:0;z-index:99;opacity:0;animation:navDown 0.5s var(--ease) 2.6s forwards;}
-.trust-banner-inner{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--green);letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
-.trust-banner-inner span{display:flex;align-items:center;gap:6px;}
-.trust-banner-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;}
-.trust-banner-sep{color:var(--navy-mid);}
-
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--nav-h) + 40px) 0 60px;max-width:1000px;position:relative;}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:var(--nav-h) 0 60px;max-width:1000px;position:relative;}
 .hero-eyebrow{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--green);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;display:block;}
-
-/* PAYMENT-FIRST BADGE */
-.payment-first-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(77,255,195,0.07);border:1px solid rgba(77,255,195,0.3);border-radius:var(--radius);padding:12px 18px;margin-bottom:28px;position:relative;overflow:hidden;}
-.payment-first-badge::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);background-size:200% 100%;animation:borderRun 2.5s linear infinite;}
-.payment-first-badge-icon{width:28px;height:28px;border-radius:50%;background:rgba(77,255,195,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.payment-first-badge-icon svg{width:14px;height:14px;color:var(--green);}
-.payment-first-badge-text{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate-white);letter-spacing:0.04em;}
-.payment-first-badge-text strong{color:var(--green);}
-
 .hero-h1{font-size:clamp(30px,5.5vw,66px);font-weight:700;color:var(--slate-white);line-height:1.08;letter-spacing:-0.03em;margin-bottom:8px;}
 .hero-problem{font-size:clamp(30px,5.5vw,66px);font-weight:700;color:var(--slate-white);line-height:1.08;letter-spacing:-0.03em;margin-bottom:36px;}
 .hero-problem em{font-style:normal;color:var(--green);position:relative;display:inline-block;}
 .hero-problem em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;animation:underlineGrow 0.8s var(--ease) 3.2s forwards;}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--slate-light);line-height:1.7;max-width:620px;margin-bottom:16px;font-weight:400;}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--slate-light);line-height:1.7;max-width:600px;margin-bottom:48px;font-weight:400;}
 .hero-sub strong{color:var(--slate-white);font-weight:500;}
-
-.hero-price-line{display:flex;align-items:center;gap:12px;margin-bottom:36px;}
-.price-tag{font-family:var(--font-mono);font-size:var(--fz-sm);color:var(--navy);background:var(--green);border-radius:var(--radius);padding:6px 14px;font-weight:600;letter-spacing:0.02em;}
-.price-note{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.08em;}
 
 .hero-cta-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:0;}
 .cta-primary{display:inline-flex;align-items:center;gap:10px;color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:20px 32px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);box-shadow:0 0 40px rgba(77,255,195,0.25);letter-spacing:0.02em;}
@@ -126,6 +105,7 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .cta-primary:hover .arrow{transform:translateX(4px);}
 .cta-primary svg{width:16px;height:16px;flex-shrink:0;}
 
+/* CASE STUDIES BUTTON */
 .cta-secondary{display:inline-flex;align-items:center;gap:10px;color:var(--slate-white);background:transparent;border:1px solid rgba(77,255,195,0.25);border-radius:var(--radius);padding:20px 32px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;position:relative;overflow:hidden;}
 .cta-secondary::before{content:'';position:absolute;inset:0;background:var(--green-tint);transform:translateX(-100%);transition:transform 0.3s var(--ease);}
 .cta-secondary:hover{color:var(--green);border-color:rgba(77,255,195,0.6);transform:translateY(-3px);}
@@ -159,14 +139,13 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .ticker-num{font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:500;color:var(--green);}
 .ticker-label{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.07em;text-transform:uppercase;}
 
-/* SECTIONS */
+/* OFFER */
 section{max-width:920px;padding:80px 0 0;}
 .numbered-heading{display:flex;align-items:center;position:relative;margin:0 0 36px;width:100%;font-size:clamp(20px,3.5vw,28px);white-space:nowrap;color:var(--slate-white);font-weight:600;letter-spacing:-0.01em;}
 body{counter-reset:section;}
 .numbered-heading::before{position:relative;counter-increment:section;content:'0' counter(section) '.';margin-right:12px;color:var(--green);font-family:var(--font-mono);font-size:clamp(var(--fz-sm),2.5vw,var(--fz-lg));font-weight:400;}
 .numbered-heading::after{content:'';display:block;position:relative;top:-3px;flex:1;max-width:260px;height:1px;margin-left:20px;background:var(--navy-mid);}
 
-/* OFFER / HOW IT WORKS */
 .offer-card{border:1px solid rgba(77,255,195,0.2);border-radius:var(--radius);background:var(--navy-light);overflow:hidden;position:relative;}
 .offer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);background-size:200% 100%;animation:borderRun 3s linear infinite;}
 .offer-card-header{padding:2.5rem 2.5rem 2rem;border-bottom:1px solid rgba(26,45,74,0.7);}
@@ -181,32 +160,6 @@ body{counter-reset:section;}
 .offer-point-marker{font-family:var(--font-mono);font-size:10px;color:var(--green);flex-shrink:0;padding-top:3px;letter-spacing:0.04em;}
 .offer-point strong{color:var(--slate-white);font-weight:500;}
 
-/* PAYMENT PROCESS — new section */
-.payment-process-section{max-width:920px;padding:80px 0 0;}
-.payment-steps{display:flex;flex-direction:column;gap:0;border:1px solid rgba(77,255,195,0.15);border-radius:10px;overflow:hidden;background:var(--navy-light);}
-.payment-step{display:flex;align-items:flex-start;gap:24px;padding:28px 32px;border-bottom:1px solid rgba(26,45,74,0.7);position:relative;transition:var(--transition);}
-.payment-step:last-child{border-bottom:none;}
-.payment-step:hover{background:rgba(77,255,195,0.02);}
-.payment-step-num{font-family:var(--font-mono);font-size:clamp(28px,4vw,44px);font-weight:500;color:rgba(77,255,195,0.12);flex-shrink:0;line-height:1;min-width:56px;}
-.payment-step-body{}
-.payment-step-title{font-size:var(--fz-md);font-weight:600;color:var(--slate-white);margin-bottom:6px;}
-.payment-step-title strong{color:var(--green);}
-.payment-step-desc{font-size:var(--fz-sm);color:var(--slate);line-height:1.7;}
-.payment-step-connector{position:absolute;left:55px;bottom:0;width:1px;height:1px;background:transparent;}
-
-/* WHY GULF CLINICS LOSE PATIENTS — new section */
-.why-section{max-width:920px;padding:80px 0 0;}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.why-card{background:var(--navy-light);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:24px 26px;position:relative;overflow:hidden;transition:var(--transition);}
-.why-card:hover{border-color:rgba(77,255,195,0.2);transform:translateY(-2px);}
-.why-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:rgba(240,96,96,0.5);}
-.why-card-icon{font-family:var(--font-mono);font-size:var(--fz-xxs);color:rgba(240,96,96,0.7);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;display:block;}
-.why-card h4{color:var(--slate-white);font-size:var(--fz-sm);font-weight:600;margin-bottom:8px;line-height:1.3;}
-.why-card p{color:var(--slate);font-size:var(--fz-xs);line-height:1.65;margin:0;}
-.why-card-fix{background:rgba(77,255,195,0.03);border-color:rgba(77,255,195,0.18);}
-.why-card-fix::before{background:var(--green);}
-.why-card-fix .why-card-icon{color:var(--green);}
-
 /* GUARANTEE */
 .guarantee-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;}
 .guarantee-card{background:var(--navy-light);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:22px 24px;position:relative;overflow:hidden;transition:var(--transition);}
@@ -216,26 +169,7 @@ body{counter-reset:section;}
 .guarantee-card h4{color:var(--slate-white);font-size:var(--fz-sm);font-weight:600;margin-bottom:6px;line-height:1.3;}
 .guarantee-card p{color:var(--slate);font-size:var(--fz-xs);line-height:1.65;margin:0;}
 
-/* PRICING SECTION */
-.pricing-section{max-width:920px;padding:80px 0 0;}
-.pricing-card{border:1px solid rgba(77,255,195,0.2);border-radius:10px;background:var(--navy-light);overflow:hidden;position:relative;}
-.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);background-size:200% 100%;animation:borderRun 3s linear infinite;}
-.pricing-inner{display:grid;grid-template-columns:1fr 1px 1fr;align-items:stretch;}
-.pricing-divider{width:1px;background:rgba(26,45,74,0.7);}
-.pricing-col{padding:2.5rem;}
-.pricing-col-label{font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:16px;display:block;}
-.pricing-amount{font-family:var(--font-mono);font-size:clamp(36px,5vw,56px);font-weight:500;color:var(--green);line-height:1;margin-bottom:8px;}
-.pricing-amount sup{font-size:0.45em;vertical-align:super;}
-.pricing-from{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate);letter-spacing:0.06em;margin-bottom:20px;display:block;}
-.pricing-includes{display:flex;flex-direction:column;gap:10px;list-style:none;}
-.pricing-include{display:flex;align-items:flex-start;gap:10px;font-size:var(--fz-sm);color:var(--slate-light);line-height:1.5;}
-.pricing-include-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:7px;}
-.pricing-col-right{padding:2.5rem;display:flex;flex-direction:column;justify-content:center;gap:16px;}
-.pricing-col-right p{font-size:var(--fz-sm);color:var(--slate-light);line-height:1.7;}
-.pricing-col-right strong{color:var(--slate-white);}
-.pricing-note{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.07em;padding-top:8px;border-top:1px solid var(--navy-mid);}
-
-/* CASE STUDIES PROMO */
+/* CASE STUDIES PROMO SECTION */
 .case-studies-promo{max-width:920px;padding:80px 0 0;}
 .case-promo-inner{border:1px solid rgba(77,255,195,0.15);border-radius:10px;background:linear-gradient(135deg,rgba(13,27,48,0.9) 0%,rgba(8,15,30,0.95) 100%);padding:3rem 3rem 3rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:40px;}
 .case-promo-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(77,255,195,0.4),transparent);}
@@ -264,13 +198,16 @@ body{counter-reset:section;}
 .payment-note{margin-top:28px;padding:18px 24px;border:1px solid rgba(77,255,195,0.15);border-radius:var(--radius);background:rgba(13,27,48,0.5);font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate-light);line-height:1.7;text-align:center;}
 .payment-note strong{color:var(--green);}
 
-/* CURSOR */
 .cursor-dot{position:fixed;width:7px;height:7px;background:var(--green);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);mix-blend-mode:difference;}
 .cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(77,255,195,0.4);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:width 0.25s,height 0.25s,border-color 0.25s;}
 .cursor-ring.hovered{width:52px;height:52px;border-color:var(--green);}
 
 footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-align:center;}
 .footer-text{font-family:var(--font-mono);font-size:var(--fz-xxs);line-height:2.8;color:var(--slate);}
+.footer-social{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px;}
+.footer-social a{color:var(--slate);display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:var(--fz-xxs);letter-spacing:0.08em;transition:var(--transition);}
+.footer-social a:hover{color:var(--green);}
+.footer-social svg{width:14px;height:14px;}
 
 @media(max-width:768px){
   nav{padding:0 18px;}
@@ -278,10 +215,9 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   .nav-link-btn{display:none;}
   .nav-cta-btn{font-size:10px;padding:8px 12px;}
   section{padding:60px 0 0;max-width:100%;}
-  .why-section,.payment-process-section,.pricing-section{padding:60px 0 0;}
   .numbered-heading{white-space:normal;font-size:clamp(18px,5vw,22px);}
   .numbered-heading::after{display:none;}
-  .hero{padding-top:calc(var(--nav-h) + 52px);}
+  .hero{padding-top:calc(var(--nav-h) + 16px);}
   .hero-h1,.hero-problem{font-size:clamp(28px,7vw,44px);}
   .hero-sub{font-size:var(--fz-md);}
   .hero-cta-group{flex-direction:column;align-items:flex-start;}
@@ -292,7 +228,6 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   .contact-section{padding:60px 0 100px;}
   .contact-h2{font-size:clamp(28px,7vw,44px);}
   .guarantee-grid{grid-template-columns:1fr;}
-  .why-grid{grid-template-columns:1fr;}
   .proof-strip-body{grid-template-columns:1fr;gap:0;}
   .proof-divider{width:100%;height:1px;align-self:auto;}
   .proof-item{padding:18px 20px;}
@@ -300,13 +235,6 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   .case-promo-action{width:100%;}
   .cta-view-cases{width:100%;justify-content:center;}
   .case-studies-promo{padding:60px 0 0;}
-  .payment-step{padding:20px 20px;}
-  .pricing-inner{grid-template-columns:1fr;}
-  .pricing-divider{width:100%;height:1px;}
-  .pricing-col,.pricing-col-right{padding:1.5rem 1.5rem;}
-  .trust-banner-inner{gap:10px;padding:0 16px;}
-  .trust-banner-sep{display:none;}
-  .payment-first-badge{flex-direction:column;gap:8px;text-align:center;}
 }
 @media(max-width:480px){
   nav{padding:0 14px;}
@@ -378,22 +306,9 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
     </a>
   </div>
   <div class="nav-actions">
-    <a href="projects.html" class="nav-link-btn">Case Studies</a>
-    <button class="nav-cta-btn js-scroll-contact" aria-label="Get Your Clinic Page">Get Your Clinic Page &#8599;</button>
+    <button class="nav-cta-btn js-scroll-contact" aria-label="Book a Clinic Page">Book a Clinic Page &#8599;</button>
   </div>
 </nav>
-
-<div class="trust-banner" id="trustBanner" aria-hidden="true">
-  <div class="trust-banner-inner">
-    <span><span class="trust-banner-dot"></span>Review the full page first</span>
-    <span class="trust-banner-sep">·</span>
-    <span><span class="trust-banner-dot"></span>Pay only if you're satisfied</span>
-    <span class="trust-banner-sep">·</span>
-    <span><span class="trust-banner-dot"></span>Starting at $600</span>
-    <span class="trust-banner-sep">·</span>
-    <span><span class="trust-banner-dot"></span>Saudi Arabia · UAE · Kuwait</span>
-  </div>
-</div>
 
 <div class="side-el left" aria-orientation="vertical">
   <ul class="social-list" aria-label="Contact">
@@ -410,247 +325,105 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
   <!-- HERO -->
   <section class="hero" aria-label="Hero">
-    <span class="hero-eyebrow fade-up d1">Gulf Clinic Landing Pages · Saudi Arabia · UAE · Kuwait</span>
-
-    <div class="payment-first-badge fade-up d1">
-      <div class="payment-first-badge-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <span class="payment-first-badge-text"><strong>Zero risk.</strong> You review the complete page — pay only after you approve it.</span>
-    </div>
-
-    <p class="hero-h1 fade-up d2">Your Gulf clinic deserves a page</p>
-    <p class="hero-problem fade-up d2">that actually <em>books appointments</em>.</p>
+    <span class="hero-eyebrow fade-up d1">Specialist in Aesthetic, Dermatology &amp; Laser Clinic Landing Pages</span>
+    <p class="hero-h1 fade-up d2">Patients find your clinic online.</p>
+    <p class="hero-problem fade-up d2">But they're not <em>booking appointments</em>.</p>
     <p class="hero-sub fade-up d3">
-      I build high-conversion landing pages exclusively for laser, aesthetic, botox, and hair transplant clinics across <strong>Saudi Arabia, UAE, and Kuwait</strong> — engineered to turn Instagram traffic and Google searches into confirmed bookings and WhatsApp leads. No upfront payment. No templates. No guesswork.
+      Most clinic websites look professional — but they're built to be seen, not to convert. <strong>Every patient who leaves without booking is revenue your clinic never earned.</strong> I build high-conversion landing pages exclusively for aesthetic, dermatology, and laser clinics — engineered to turn first-time visitors into confirmed appointments.
     </p>
-
-    <div class="hero-price-line fade-up d4">
-      <span class="price-tag">Starting at $600</span>
-      <span class="price-note">// Custom clinic pages · Full ownership · No subscription fees</span>
-    </div>
-
-    <div class="hero-cta-group fade-up d4">
-      <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        Get My Clinic Page on WhatsApp <span class="arrow">&#8594;</span>
-      </a>
-      <a href="projects.html" class="cta-secondary">
-        <span>See Gulf Clinic Examples</span> <span class="arrow">&#8594;</span>
-      </a>
-    </div>
-
     <div class="hero-proof-strip fade-up d5">
       <div class="proof-strip-header">
         <div class="proof-strip-dot"></div>
-        <span class="proof-strip-label">// Built for Gulf clinics — engineered to book patients, not just look good</span>
+        <span class="proof-strip-label">// Built to book patients — not just showcase your clinic</span>
       </div>
       <div class="proof-strip-body">
         <div class="proof-item">
           <span class="proof-item-num">More Bookings</span>
-          <span class="proof-item-label">More patients book, call, or message on WhatsApp — from the same Instagram and Google traffic you already pay for.</span>
+          <span class="proof-item-label">More patients book, call, or inquire from the same website traffic you already have.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <span class="proof-item-num">Gulf-Specific</span>
-          <span class="proof-item-label">Every page is built for clinic patients in Saudi Arabia, UAE, and Kuwait — not adapted from a Western template.</span>
+          <span class="proof-item-num">Clinic-Specific</span>
+          <span class="proof-item-label">Every page is built for your specific niche — not adapted from a generic template.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <span class="proof-item-num">Pay After Approval</span>
-          <span class="proof-item-label">You review every line of copy and every design decision in full. Payment only once you're 100% satisfied.</span>
+          <span class="proof-item-num">Full Ownership</span>
+          <span class="proof-item-label">Clean deployable code. No monthly subscriptions. No platform lock-in. Yours permanently.</span>
         </div>
       </div>
     </div>
   </section>
 
   <div class="trust-bar fade-up">
-    <div class="trust-item"><span class="trust-dot"></span>Laser Hair Removal</div>
     <div class="trust-item"><span class="trust-dot"></span>Aesthetic Clinics</div>
-    <div class="trust-item"><span class="trust-dot"></span>Botox &amp; Fillers</div>
-    <div class="trust-item"><span class="trust-dot"></span>Hair Transplant</div>
+    <div class="trust-item"><span class="trust-dot"></span>Dermatology Centers</div>
+    <div class="trust-item"><span class="trust-dot"></span>Laser Hair Removal</div>
+    <div class="trust-item"><span class="trust-dot"></span>Skin &amp; Anti-Aging Clinics</div>
   </div>
 
   <div class="metrics-ticker-wrap fade-up">
     <div class="metrics-ticker" id="ticker">
-      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve — Zero Upfront Risk</span></div>
-      <div class="ticker-item"><span class="ticker-num">From $600</span><span class="ticker-label">Full Custom Clinic Page</span></div>
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">WhatsApp Leads &amp; Booked Appointments</span></div>
-      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Saudi Arabia · UAE · Kuwait</span></div>
-      <div class="ticker-item"><span class="ticker-num">Convert</span><span class="ticker-label">Instagram Traffic Into Clinic Bookings</span></div>
-      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees — Full Ownership</span></div>
-      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve — Zero Upfront Risk</span></div>
-      <div class="ticker-item"><span class="ticker-num">From $600</span><span class="ticker-label">Full Custom Clinic Page</span></div>
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">WhatsApp Leads &amp; Booked Appointments</span></div>
-      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Saudi Arabia · UAE · Kuwait</span></div>
-      <div class="ticker-item"><span class="ticker-num">Convert</span><span class="ticker-label">Instagram Traffic Into Clinic Bookings</span></div>
-      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees — Full Ownership</span></div>
+      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Booked Appointments</span></div>
+      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Patient Conversion Rate</span></div>
+      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Aesthetic &amp; Laser Clinics</span></div>
+      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees</span></div>
+      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Result</span></div>
+      <div class="ticker-item"><span class="ticker-num">Trust-First</span><span class="ticker-label">Medical-Grade Design Language</span></div>
+      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Booked Appointments</span></div>
+      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Patient Conversion Rate</span></div>
+      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Aesthetic &amp; Laser Clinics</span></div>
+      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees</span></div>
+      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Result</span></div>
+      <div class="ticker-item"><span class="ticker-num">Trust-First</span><span class="ticker-label">Medical-Grade Design Language</span></div>
     </div>
   </div>
 
-  <!-- WHY GULF CLINICS LOSE PATIENTS ONLINE -->
-  <section class="why-section" id="why">
-    <h2 class="numbered-heading fade-up">Why Gulf Clinics Lose Patients Online</h2>
-    <div class="why-grid fade-up d1" style="max-width:840px;">
-      <div class="why-card">
-        <span class="why-card-icon">// The Instagram gap</span>
-        <h4>You pay for Instagram ads. Patients land on a page that wasn't built to convert them.</h4>
-        <p>Gulf clinic owners spend thousands monthly on Instagram campaigns — but the page patients land on is a general homepage with no clear next step. Every click that doesn't book is money wasted.</p>
-      </div>
-      <div class="why-card">
-        <span class="why-card-icon">// The trust deficit</span>
-        <h4>Patients in Saudi Arabia, UAE, and Kuwait are selective. They judge your credibility in 3 seconds.</h4>
-        <p>A generic-looking clinic page signals low quality — even if your doctors are among the best in the region. The visual impression you make online determines whether patients call you or your competitor.</p>
-      </div>
-      <div class="why-card">
-        <span class="why-card-icon">// The WhatsApp dead end</span>
-        <h4>Your WhatsApp number is on the page. But patients aren't messaging — because the page never convinced them to.</h4>
-        <p>Gulf patients prefer WhatsApp for clinic inquiries. But they only message when they trust what they've seen. A page without trust architecture sends them to a competitor who has it.</p>
-      </div>
-      <div class="why-card">
-        <span class="why-card-icon">// The mobile penalty</span>
-        <h4>Over 80% of Gulf clinic searches happen on mobile. Most clinic websites lose those patients immediately.</h4>
-        <p>Slow load times, broken layouts, and un-tappable CTAs are costing you bookings every single day. Mobile-first design isn't optional in Saudi Arabia, UAE, and Kuwait — it's everything.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:20px;" class="fade-up d2">
-      <div class="why-grid" style="max-width:840px;">
-        <div class="why-card why-card-fix">
-          <span class="why-card-icon">// The fix</span>
-          <h4>A dedicated landing page built around one goal — booking — solves all four problems simultaneously.</h4>
-          <p>Not a redesign of your full website. A single, purpose-built page that captures patient intent, builds trust fast, and delivers one clear action: book, call, or message on WhatsApp.</p>
-        </div>
-        <div class="why-card why-card-fix">
-          <span class="why-card-icon">// Gulf-specific approach</span>
-          <h4>Copy, design, and conversion strategy built for how Gulf patients actually make clinic decisions.</h4>
-          <p>Patient psychology in Saudi Arabia, UAE, and Kuwait is specific. The language, trust signals, and social proof that convert Gulf patients are different from generic Western clinic marketing.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- HOW IT WORKS -->
   <section id="offer">
-    <h2 class="numbered-heading fade-up">What You Get</h2>
+    <h2 class="numbered-heading fade-up">How It Works</h2>
     <div class="offer-card fade-up d1">
       <div class="offer-card-header">
-        <span class="offer-scope-tag">Built for your specific clinic type and Gulf market — not adapted from a template</span>
-        <h3>A Clinic Landing Page That Turns Instagram Visitors Into Booked Appointments.</h3>
-        <p class="offer-lead-text">Tell me about your clinic — the treatment, the city, the patients you want to attract. I build the landing page from scratch, optimized for bookings from Instagram traffic, Google search, and WhatsApp. You review everything before paying a single dollar.</p>
+        <span class="offer-scope-tag">Built around your clinic, your patients, and one conversion goal</span>
+        <h3>Your Clinic Page — Reviewed in Full Before You Pay a Single Dirham.</h3>
+        <p class="offer-lead-text">Tell me about your clinic and what you want patients to do. I build the landing page from scratch — copy, design, and layout — then deliver it for your full review. Payment only once you're completely satisfied. Not before.</p>
       </div>
       <div class="offer-specifics">
-        <span class="offer-specifics-label">// What every Gulf clinic landing page includes</span>
+        <span class="offer-specifics-label">// What every clinic landing page includes</span>
         <ul class="offer-points">
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Single conversion goal</strong> — book via WhatsApp, call, or online form. One page, one action. Built to match your exact booking flow.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Gulf-patient copy</strong> — written to address the exact hesitations laser, aesthetic, botox, and hair transplant patients feel before booking in the Gulf region.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Instagram traffic optimization</strong> — if you're running Instagram ads, the page is built to feel like a seamless extension of your creative — matching message, tone, and visual language.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>WhatsApp-first CTA architecture</strong> — designed around how Gulf patients prefer to initiate contact, with low-friction entry points at every scroll depth.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Medical credibility design</strong> — the visual language signals authority, safety, and professionalism — essential for patients making health decisions.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Mobile-first, fast-loading</strong> — built for the mobile-dominant Gulf market. Optimized for sub-2-second load times on mobile networks in Saudi Arabia, UAE, and Kuwait.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Clean code, full ownership</strong> — no monthly platform fees. Host on your domain. No Webflow. No Wix. Yours permanently.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>One clear conversion goal</strong> — book, call, or WhatsApp. One page, one action. No distractions pulling patients away.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Trust-engineered copy</strong> — written to address the exact hesitations patients feel before booking a medical aesthetic treatment.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Medical credibility design</strong> — the visual language signals authority, safety, and professionalism — essential for health-related services.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Mobile-first, fast-loading</strong> — over 70% of clinic searches happen on mobile. Speed and mobile experience directly impact whether patients book or leave.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Clean code, full ownership</strong> — no monthly platform fees. Host it on your existing domain or anywhere you choose. Yours permanently.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- PAYMENT PROCESS -->
-  <section class="payment-process-section" id="process">
-    <h2 class="numbered-heading fade-up">How the Payment-After-Approval Process Works</h2>
-    <div class="payment-steps fade-up d1">
-      <div class="payment-step">
-        <span class="payment-step-num">01</span>
-        <div class="payment-step-body">
-          <div class="payment-step-title">You tell me about your clinic on <strong>WhatsApp</strong></div>
-          <p class="payment-step-desc">Send me your clinic name, the treatment you want to promote, your target patient, and any reference pages you like. No forms, no calls required — a WhatsApp conversation is all it takes to get started. I respond within 24 hours.</p>
-        </div>
-      </div>
-      <div class="payment-step">
-        <span class="payment-step-num">02</span>
-        <div class="payment-step-body">
-          <div class="payment-step-title">I build the <strong>complete landing page from scratch</strong></div>
-          <p class="payment-step-desc">I write every line of copy, design the full layout, and build the page — all before you pay anything. This is a complete, production-ready page built specifically for your clinic and your Gulf market. Not a mockup. Not a wireframe. The real thing.</p>
-        </div>
-      </div>
-      <div class="payment-step">
-        <span class="payment-step-num">03</span>
-        <div class="payment-step-body">
-          <div class="payment-step-title">You <strong>review everything</strong> — copy, design, layout, CTAs</div>
-          <p class="payment-step-desc">I send you the full page for review. Read every word. Check every design decision. Test it on your phone. If anything needs to change — the headline, the color, the CTA flow — we revise until it's exactly right. No restrictions on feedback rounds.</p>
-        </div>
-      </div>
-      <div class="payment-step">
-        <span class="payment-step-num">04</span>
-        <div class="payment-step-body">
-          <div class="payment-step-title"><strong>Payment only after your full approval</strong></div>
-          <p class="payment-step-desc">Once you're completely satisfied with the page — every section, every word, every element — you confirm approval and payment is made. Starting at $600. Not before. This is not a standard industry practice. It's how I choose to work with Gulf clinic owners because it puts the risk entirely on my side.</p>
-        </div>
-      </div>
-      <div class="payment-step">
-        <span class="payment-step-num">05</span>
-        <div class="payment-step-body">
-          <div class="payment-step-title">You receive <strong>clean deployable code</strong> — deploy anywhere, own it permanently</div>
-          <p class="payment-step-desc">I deliver the complete files. Your developer or hosting provider deploys the page to your domain in minutes. No platform dependency. No monthly subscription. No permission required to edit it in future. It's yours — as long as your clinic operates.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY IT WORKS / GUARANTEE -->
+  <!-- GUARANTEE / WHY IT WORKS -->
   <section id="guarantee">
-    <h2 class="numbered-heading fade-up">Why This Works for Gulf Clinics</h2>
-    <div class="guarantee-grid fade-up d1" style="max-width:840px;">
+    <h2 class="numbered-heading fade-up">Why Clinics Need This</h2>
+    <div class="guarantee-grid fade-up d1" style="max-width:720px;">
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Laser clinics</span>
-        <h4>Laser hair removal pages that neutralize pain anxiety and convert hesitation into bookings.</h4>
-        <p>Gulf patients researching laser treatments have specific fears — pain, permanency, skin type suitability. A page engineered around these objections converts dramatically better than a generic services page.</p>
+        <span class="guarantee-card-icon">// The booking problem</span>
+        <h4>Beautiful clinic websites that don't convert are expensive decoration.</h4>
+        <p>Generic clinic websites look polished but are built for branding, not bookings. A landing page engineered for one action — one appointment — performs entirely differently.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Aesthetic clinics</span>
-        <h4>Premium aesthetic pages that communicate exclusivity and make luxury patients choose you first.</h4>
-        <p>High-value aesthetic patients in Saudi Arabia and UAE judge quality instantly. The visual language, typography, and credentialing on your page determines whether they book a consultation — or leave.</p>
+        <span class="guarantee-card-icon">// Built first. Paid after.</span>
+        <h4>Review the full page before paying a single dirham.</h4>
+        <p>I build the complete landing page. You review every line of copy, every design decision, the full layout. We refine until it's exactly right. Payment only at your approval.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Botox &amp; fillers</span>
-        <h4>Botox and filler pages that project medical trust and reduce the hesitation that stops patients booking.</h4>
-        <p>Injectables require a specific type of trust-building. Patients need to believe in your doctor's qualifications and your safety standards before they'll consider making contact. The page either builds that trust — or it doesn't.</p>
+        <span class="guarantee-card-icon">// Medical trust signals</span>
+        <h4>Patients judge credibility in the first 3 seconds. Make them count.</h4>
+        <p>Aesthetic and medical patients are more hesitant than typical buyers. Every visual choice, every word is designed to reduce anxiety and build the trust that makes patients book.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Hair transplant clinics</span>
-        <h4>Hair transplant pages that establish medical authority and convert high-intent patients at the decision moment.</h4>
-        <p>Hair transplant patients research for months before making contact. A page that positions your clinic as the credible authority — with procedure clarity, doctor credentials, and result documentation — closes patients who are ready to commit.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing-section" id="pricing">
-    <h2 class="numbered-heading fade-up">Pricing</h2>
-    <div class="pricing-card fade-up d1">
-      <div class="pricing-inner">
-        <div class="pricing-col">
-          <span class="pricing-col-label">// Clinic Landing Page</span>
-          <div class="pricing-amount"><sup>$</sup>600</div>
-          <span class="pricing-from">Starting price · Custom quotes available</span>
-          <ul class="pricing-includes">
-            <li class="pricing-include"><span class="pricing-include-dot"></span>Complete custom landing page — copy, design, and code</li>
-            <li class="pricing-include"><span class="pricing-include-dot"></span>Gulf-patient conversion strategy built in</li>
-            <li class="pricing-include"><span class="pricing-include-dot"></span>WhatsApp CTA architecture</li>
-            <li class="pricing-include"><span class="pricing-include-dot"></span>Mobile-first responsive layout</li>
-            <li class="pricing-include"><span class="pricing-include-dot"></span>Full ownership — no platform fees ever</li>
-            <li class="pricing-include"><span class="pricing-include-dot"></span>Unlimited revisions until you approve</li>
-            <li class="pricing-include"><span class="pricing-include-dot"></span>Deployable code files delivered</li>
-          </ul>
-        </div>
-        <div class="pricing-divider"></div>
-        <div class="pricing-col-right">
-          <p><strong>Payment is made only after you review the complete page and are fully satisfied.</strong> Not before. There is no deposit, no partial payment, and no lock-in of any kind before you see the finished result.</p>
-          <p>Final price depends on the scope of the page — the number of sections, treatments covered, and any additional elements like booking integrations. Every quote is provided upfront on WhatsApp before work begins.</p>
-          <p class="pricing-note">// Available for clinics in Saudi Arabia · UAE · Kuwait · Bahrain · Qatar</p>
-          <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer" style="margin-top:8px;width:fit-content;">
-            Get a Custom Quote &#8594;
-          </a>
-        </div>
+        <span class="guarantee-card-icon">// Permanent ownership</span>
+        <h4>No subscriptions. No platform dependency. No permissions needed.</h4>
+        <p>Once built, the page is entirely yours. No Webflow billing. No ClickFunnels monthly. Host it anywhere, edit anything, for as long as you operate your clinic.</p>
       </div>
     </div>
   </section>
@@ -659,14 +432,13 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   <section class="case-studies-promo">
     <div class="case-promo-inner fade-up">
       <div class="case-promo-text">
-        <span class="case-promo-tag">// Real Clinic Work</span>
-        <h3 class="case-promo-title">See Real Gulf Clinic Landing Pages in Action</h3>
-        <p class="case-promo-desc">Explore landing pages built for laser, aesthetic, and dermatology clinics — with full breakdowns of the conversion strategy, copy decisions, and results behind each project.</p>
+        <span class="case-promo-tag">// Client Work</span>
+        <h3 class="case-promo-title">See Real Clinic Landing Pages in Action</h3>
+        <p class="case-promo-desc">Explore the landing pages I've built for aesthetic, laser, and dermatology clinics — with full breakdowns of the conversion strategy, design decisions, and results behind each project.</p>
         <div class="case-preview-chips">
           <span class="case-chip">Luxury Aesthetic Clinic</span>
           <span class="case-chip">Laser Hair Removal</span>
           <span class="case-chip">Dermatology Center</span>
-          <span class="case-chip">Hair Transplant</span>
         </div>
       </div>
       <div class="case-promo-action">
@@ -679,19 +451,19 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
   <!-- CONTACT -->
   <section id="contact" class="contact-section">
-    <span class="contact-label fade-up">Zero upfront risk. Review first. Pay after.</span>
-    <h2 class="contact-h2 fade-up d1">I build it.<br>You review it.<br><span>You approve it. Then you pay.</span></h2>
+    <span class="contact-label fade-up">Zero risk. You approve before you pay.</span>
+    <h2 class="contact-h2 fade-up d1">I build it.<br>You review it.<br><span>You approve it.</span></h2>
     <p class="contact-sub fade-up d2">
-      Tell me about your clinic on WhatsApp — the treatment, the city, the patients you want. I'll build a landing page engineered to turn Instagram traffic into booked appointments and WhatsApp leads. <strong>No upfront payment. No lock-in. Starting at $600. Full ownership.</strong>
+      Tell me about your clinic and what you want patients to do. I'll build a landing page that turns visitors into booked appointments — more consultations, more calls, more patients walking through your door. <strong>No upfront payment. No lock-in. Full ownership.</strong>
     </p>
     <div class="contact-cta-wrap fade-up d3">
       <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        Start on WhatsApp — Free Consultation <span class="arrow">&#8594;</span>
+        Book My Clinic's Landing Page <span class="arrow">&#8594;</span>
       </a>
-      <span class="contact-caveat">Available for Saudi Arabia · UAE · Kuwait · Bahrain · Qatar — reply within 24 hours</span>
+      <span class="contact-caveat">Limited availability — reply within 24 hours</span>
       <div class="payment-note fade-up d4">
-        <strong>You see the complete landing page before paying a single dollar. Payment is made only after you review everything and confirm you're fully satisfied with the result.</strong>
+        <strong>Payment is only made after you review the final landing page and are fully satisfied with the result.</strong>
       </div>
     </div>
   </section>
@@ -701,7 +473,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 <footer>
   <div class="footer-text fade-up">
     <div>Designed &amp; Built by Anes Hass</div>
-    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Gulf Clinic Landing Page Specialist &middot; Saudi Arabia · UAE · Kuwait &middot; Laser · Aesthetic · Botox · Hair Transplant</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Clinic Landing Page Specialist &middot; Aesthetic &amp; Medical Niche &middot; Conversion Rate Optimization &middot; Patient Acquisition</div>
     <div style="font-size:10px;margin-top:4px;opacity:0.4;">&copy; 2026 AutFlow Studio. All rights reserved.</div>
   </div>
 </footer>
@@ -739,7 +511,7 @@ var dot=document.getElementById('cursorDot'),ring=document.getElementById('curso
 if(window.innerWidth>768){
   document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
   (function anim(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
-  document.querySelectorAll('a,button,.guarantee-card,.offer-card,.cta-primary,.cta-secondary,.why-card,.payment-step').forEach(function(el){
+  document.querySelectorAll('a,button,.guarantee-card,.offer-card,.cta-primary,.cta-secondary').forEach(function(el){
     el.addEventListener('mouseenter',function(){ring.classList.add('hovered');});
     el.addEventListener('mouseleave',function(){ring.classList.remove('hovered');});
   });

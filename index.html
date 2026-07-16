@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Premium Websites for Aesthetic & Medical Clinics</title>
-<meta name="description" content="We design premium, conversion-focused websites for aesthetic, dermatology, and laser clinics — built to turn visitors into booked appointments. Review the full website before you pay.">
+<title>AutFlow Studio — The All-in-One Operating System for Agency Owners</title>
+<meta name="description" content="AutFlow Studio replaces your CRM, project tracker, invoicing app and calendar with one connected system built for agency owners. Deployed for you. One-time payment. Message @autflow.studio on Instagram.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -73,11 +73,13 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .nav-logo{position:relative;width:40px;height:40px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;}
 .nav-logo svg.hex-bg{position:absolute;top:0;left:0;width:40px;height:40px;color:var(--green);transition:var(--transition);}
 .nav-logo .logo-letter{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:17px;font-weight:500;color:var(--green);}
+.nav-wordmark{font-family:var(--font-mono);font-size:var(--fz-sm);color:var(--slate-white);letter-spacing:0.02em;font-weight:500;}
 .nav-actions{display:flex;align-items:center;gap:12px;}
 .nav-link-btn{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate-light);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:9px 16px;letter-spacing:0.04em;text-decoration:none;transition:var(--transition);}
 .nav-link-btn:hover{color:var(--green);border-color:rgba(77,255,195,0.3);}
-.nav-cta-btn{color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:9px 18px;font-family:var(--font-mono);font-size:var(--fz-xs);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;box-shadow:0 0 20px rgba(77,255,195,0.2);}
+.nav-cta-btn{display:inline-flex;align-items:center;gap:8px;color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:9px 18px;font-family:var(--font-mono);font-size:var(--fz-xs);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;box-shadow:0 0 20px rgba(77,255,195,0.2);}
 .nav-cta-btn:hover{background:rgba(77,255,195,0.85);box-shadow:0 0 32px rgba(77,255,195,0.35);transform:translateY(-1px);}
+.nav-cta-btn svg{width:14px;height:14px;flex-shrink:0;}
 
 .side-el{position:fixed;bottom:0;z-index:10;width:40px;}
 .side-el.left{left:40px;}
@@ -95,7 +97,7 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .hero-problem{font-size:clamp(30px,5.5vw,66px);font-weight:700;color:var(--slate-white);line-height:1.08;letter-spacing:-0.03em;margin-bottom:36px;}
 .hero-problem em{font-style:normal;color:var(--green);position:relative;display:inline-block;}
 .hero-problem em::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;animation:underlineGrow 0.8s var(--ease) 3.2s forwards;}
-.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--slate-light);line-height:1.7;max-width:600px;margin-bottom:48px;font-weight:400;}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--slate-light);line-height:1.7;max-width:620px;margin-bottom:48px;font-weight:400;}
 .hero-sub strong{color:var(--slate-white);font-weight:500;}
 
 .hero-cta-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:0;}
@@ -105,15 +107,6 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .cta-primary:hover .arrow{transform:translateX(4px);}
 .cta-primary svg{width:16px;height:16px;flex-shrink:0;}
 
-/* CASE STUDIES BUTTON */
-.cta-secondary{display:inline-flex;align-items:center;gap:10px;color:var(--slate-white);background:transparent;border:1px solid rgba(77,255,195,0.25);border-radius:var(--radius);padding:20px 32px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:500;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);letter-spacing:0.02em;position:relative;overflow:hidden;}
-.cta-secondary::before{content:'';position:absolute;inset:0;background:var(--green-tint);transform:translateX(-100%);transition:transform 0.3s var(--ease);}
-.cta-secondary:hover{color:var(--green);border-color:rgba(77,255,195,0.6);transform:translateY(-3px);}
-.cta-secondary:hover::before{transform:translateX(0);}
-.cta-secondary span{position:relative;z-index:1;}
-.cta-secondary .arrow{transition:transform 0.2s ease;position:relative;z-index:1;}
-.cta-secondary:hover .arrow{transform:translateX(4px);}
-
 .hero-proof-strip{margin-top:52px;border:1px solid rgba(77,255,195,0.12);border-radius:10px;background:rgba(13,27,48,0.7);overflow:hidden;box-shadow:0 32px 80px -20px rgba(0,0,0,0.6);}
 .proof-strip-header{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--navy-mid);}
 .proof-strip-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(77,255,195,0.5);}
@@ -121,7 +114,7 @@ nav{display:flex;justify-content:space-between;align-items:center;position:fixed
 .proof-strip-body{display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;align-items:center;}
 .proof-divider{width:1px;height:100%;background:var(--navy-mid);align-self:stretch;}
 .proof-item{padding:24px 28px;display:flex;flex-direction:column;gap:6px;}
-.proof-item-num{font-family:var(--font-mono);font-size:clamp(20px,2.5vw,28px);font-weight:500;color:var(--green);}
+.proof-item-num{font-family:var(--font-mono);font-size:clamp(18px,2.2vw,24px);font-weight:500;color:var(--green);}
 .proof-item-label{font-size:var(--fz-xs);color:var(--slate);line-height:1.5;}
 
 .trust-bar{border-top:1px solid var(--navy-mid);border-bottom:1px solid var(--navy-mid);padding:20px 0;display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;background:rgba(13,27,48,0.6);}
@@ -152,7 +145,7 @@ body{counter-reset:section;}
 .offer-scope-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);border:1px solid var(--navy-mid);border-radius:100px;padding:5px 14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:22px;}
 .offer-scope-tag::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;}
 .offer-card h3{color:var(--slate-white);font-size:clamp(var(--fz-xl),2.5vw,28px);font-weight:700;margin-bottom:16px;line-height:1.25;letter-spacing:-0.02em;}
-.offer-lead-text{color:var(--slate-light);font-size:var(--fz-md);line-height:1.75;max-width:640px;}
+.offer-lead-text{color:var(--slate-light);font-size:var(--fz-md);line-height:1.75;max-width:660px;}
 .offer-specifics{padding:1.75rem 2.5rem;}
 .offer-specifics-label{font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:18px;display:block;}
 .offer-points{display:flex;flex-direction:column;gap:13px;list-style:none;}
@@ -160,7 +153,7 @@ body{counter-reset:section;}
 .offer-point-marker{font-family:var(--font-mono);font-size:10px;color:var(--green);flex-shrink:0;padding-top:3px;letter-spacing:0.04em;}
 .offer-point strong{color:var(--slate-white);font-weight:500;}
 
-/* GUARANTEE */
+/* GUARANTEE / CARD GRIDS */
 .guarantee-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;}
 .guarantee-card{background:var(--navy-light);border:1px solid var(--navy-mid);border-radius:var(--radius);padding:22px 24px;position:relative;overflow:hidden;transition:var(--transition);}
 .guarantee-card:hover{border-color:rgba(77,255,195,0.2);transform:translateY(-2px);}
@@ -169,32 +162,23 @@ body{counter-reset:section;}
 .guarantee-card h4{color:var(--slate-white);font-size:var(--fz-sm);font-weight:600;margin-bottom:6px;line-height:1.3;}
 .guarantee-card p{color:var(--slate);font-size:var(--fz-xs);line-height:1.65;margin:0;}
 
-/* CASE STUDIES PROMO SECTION */
-.case-studies-promo{max-width:920px;padding:80px 0 0;}
-.case-promo-inner{border:1px solid rgba(77,255,195,0.15);border-radius:10px;background:linear-gradient(135deg,rgba(13,27,48,0.9) 0%,rgba(8,15,30,0.95) 100%);padding:3rem 3rem 3rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:40px;}
-.case-promo-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(77,255,195,0.4),transparent);}
-.case-promo-inner::after{content:'';position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(77,255,195,0.04) 0%,transparent 70%);pointer-events:none;}
-.case-promo-text{flex:1;}
-.case-promo-tag{font-family:var(--font-mono);font-size:10px;color:var(--green);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:14px;display:block;}
-.case-promo-title{color:var(--slate-white);font-size:clamp(18px,2.5vw,26px);font-weight:700;margin-bottom:12px;letter-spacing:-0.02em;line-height:1.2;}
-.case-promo-desc{color:var(--slate-light);font-size:var(--fz-sm);line-height:1.7;max-width:480px;}
-.case-promo-action{flex-shrink:0;}
-.cta-view-cases{display:inline-flex;align-items:center;gap:12px;color:var(--navy);background:var(--green);border:none;border-radius:var(--radius);padding:18px 28px;font-family:var(--font-mono);font-size:var(--fz-sm);font-weight:600;line-height:1;text-decoration:none;cursor:pointer;transition:var(--transition);box-shadow:0 0 32px rgba(77,255,195,0.25);letter-spacing:0.02em;white-space:nowrap;}
-.cta-view-cases:hover{background:rgba(77,255,195,0.88);box-shadow:0 0 50px rgba(77,255,195,0.4);transform:translateY(-2px);}
-.cta-view-cases .arrow{transition:transform 0.2s ease;}
-.cta-view-cases:hover .arrow{transform:translateX(4px);}
-.case-preview-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
-.case-chip{font-family:var(--font-mono);font-size:10px;color:var(--slate);border:1px solid var(--navy-mid);border-radius:100px;padding:4px 10px;letter-spacing:0.06em;}
+/* PRICING */
+.pricing-note{color:var(--slate-light);font-size:var(--fz-md);line-height:1.75;max-width:660px;margin-bottom:32px;}
+.pricing-note strong{color:var(--slate-white);font-weight:500;}
+.pricing-card{border-color:rgba(240,192,96,0.25);}
+.pricing-card::before{background:var(--gold);opacity:0.6;}
+.pricing-card .guarantee-card-icon{color:var(--gold);}
 
 /* CONTACT */
 .contact-section{max-width:760px;text-align:center;margin:0 auto;padding:80px 0 160px;}
 .contact-label{display:inline-block;font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--green);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:24px;padding:6px 14px;border:1px solid rgba(77,255,196,0.2);border-radius:100px;}
 .contact-h2{font-size:clamp(34px,5.5vw,68px);font-weight:700;color:var(--slate-white);margin-bottom:20px;letter-spacing:-0.03em;line-height:1.05;}
 .contact-h2 span{color:var(--green);}
-.contact-sub{color:var(--slate-light);font-size:clamp(var(--fz-md),1.8vw,var(--fz-lg));line-height:1.7;margin-bottom:44px;max-width:540px;margin-left:auto;margin-right:auto;}
+.contact-sub{color:var(--slate-light);font-size:clamp(var(--fz-md),1.8vw,var(--fz-lg));line-height:1.7;margin-bottom:44px;max-width:560px;margin-left:auto;margin-right:auto;}
 .contact-sub strong{color:var(--slate-white);}
 .contact-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
 .contact-caveat{font-family:var(--font-mono);font-size:var(--fz-xxs);color:var(--slate);letter-spacing:0.07em;}
+.contact-handle{font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate-light);letter-spacing:0.04em;}
 .payment-note{margin-top:28px;padding:18px 24px;border:1px solid rgba(77,255,195,0.15);border-radius:var(--radius);background:rgba(13,27,48,0.5);font-family:var(--font-mono);font-size:var(--fz-xs);color:var(--slate-light);line-height:1.7;text-align:center;}
 .payment-note strong{color:var(--green);}
 
@@ -221,7 +205,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   .hero-h1,.hero-problem{font-size:clamp(28px,7vw,44px);}
   .hero-sub{font-size:var(--fz-md);}
   .hero-cta-group{flex-direction:column;align-items:flex-start;}
-  .cta-primary,.cta-secondary{width:100%;justify-content:center;}
+  .cta-primary{width:100%;justify-content:center;}
   .trust-item{padding:0 14px;font-size:10px;}
   .offer-card-header{padding:1.75rem 1.25rem 1.5rem;}
   .offer-specifics{padding:1.25rem 1.25rem;}
@@ -231,10 +215,6 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
   .proof-strip-body{grid-template-columns:1fr;gap:0;}
   .proof-divider{width:100%;height:1px;align-self:auto;}
   .proof-item{padding:18px 20px;}
-  .case-promo-inner{flex-direction:column;padding:2rem 1.5rem;gap:24px;}
-  .case-promo-action{width:100%;}
-  .cta-view-cases{width:100%;justify-content:center;}
-  .case-studies-promo{padding:60px 0 0;}
 }
 @media(max-width:480px){
   nav{padding:0 14px;}
@@ -304,17 +284,21 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
       </svg>
       <span class="logo-letter">A</span>
     </a>
+    <span class="nav-wordmark">AutFlow Studio</span>
   </div>
   <div class="nav-actions">
-    <button class="nav-cta-btn js-scroll-contact" aria-label="Book Your Clinic Website">Book Your Clinic Website &#8599;</button>
+    <a class="nav-cta-btn" href="https://instagram.com/autflow.studio" target="_blank" rel="noreferrer" aria-label="Message AutFlow Studio on Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      Message on Instagram
+    </a>
   </div>
 </nav>
 
 <div class="side-el left" aria-orientation="vertical">
   <ul class="social-list" aria-label="Contact">
     <li>
-      <a href="https://wa.me/213676127853" aria-label="Chat on WhatsApp" target="_blank" rel="noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>WhatsApp</title><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <a href="https://instagram.com/autflow.studio" aria-label="Message AutFlow Studio on Instagram" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Instagram</title><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
       </a>
     </li>
   </ul>
@@ -325,145 +309,161 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 
   <!-- HERO -->
   <section class="hero" aria-label="Hero">
-    <span class="hero-eyebrow fade-up d1">Premium Website Design for Aesthetic, Dermatology &amp; Laser Clinics</span>
-    <p class="hero-h1 fade-up d2">Your clinic deserves more than a website.</p>
-    <p class="hero-problem fade-up d2">It deserves a <em>booking engine</em>.</p>
+    <span class="hero-eyebrow fade-up d1">The All-in-One Operating System for Agency Owners</span>
+    <p class="hero-h1 fade-up d2">Stop juggling six different tools.</p>
+    <p class="hero-problem fade-up d2">Run your agency from <em>one dashboard</em>.</p>
     <p class="hero-sub fade-up d3">
-      Most clinics are represented online by a generic template that looks fine and converts nothing. <strong>Every visitor who leaves without booking is revenue your clinic never captured.</strong> I design premium, full-scale websites exclusively for aesthetic, dermatology, and laser clinics — built to establish medical-grade authority and convert visitors into confirmed patients.
+      Most agency owners are stitching together a CRM, a project tracker, an invoicing app, a notes app and a calendar just to keep the business running. <strong>Every extra tool is another login, another subscription, and another place your data goes missing.</strong> AutFlow Studio replaces all of it with one connected system — deployed and configured for your agency, ready to use.
     </p>
+    <div class="hero-cta-group fade-up d4">
+      <a href="https://instagram.com/autflow.studio" class="cta-primary" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        Message @autflow.studio to Book a Demo <span class="arrow">&#8594;</span>
+      </a>
+    </div>
     <div class="hero-proof-strip fade-up d5">
       <div class="proof-strip-header">
         <div class="proof-strip-dot"></div>
-        <span class="proof-strip-label">// Engineered to book patients — not just represent your clinic</span>
+        <span class="proof-strip-label">// Built to run your agency — not just track it</span>
       </div>
       <div class="proof-strip-body">
         <div class="proof-item">
-          <span class="proof-item-num">More Bookings</span>
-          <span class="proof-item-label">A structure and message hierarchy built to convert the traffic your clinic already receives into booked consultations.</span>
+          <span class="proof-item-num">One Dashboard</span>
+          <span class="proof-item-label">Clients, projects, invoices, tasks, meetings and documents — all visible from a single command center, updated in real time.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <span class="proof-item-num">Built for Your Clinic</span>
-          <span class="proof-item-label">Every website is designed around your specific specialty, treatments, and patient profile — never a recycled template.</span>
+          <span class="proof-item-num">Deployed For You</span>
+          <span class="proof-item-label">I set up and configure the entire system for your agency. No installation, no technical work on your end.</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <span class="proof-item-num">Full Ownership</span>
-          <span class="proof-item-label">Clean, deployable code with no monthly platform fees and no lock-in. The website belongs to your clinic, permanently.</span>
+          <span class="proof-item-num">One-Time Payment</span>
+          <span class="proof-item-label">A single upfront investment — no monthly subscription for the software itself, no per-seat pricing.</span>
         </div>
       </div>
     </div>
   </section>
 
   <div class="trust-bar fade-up">
-    <div class="trust-item"><span class="trust-dot"></span>Aesthetic Clinics</div>
-    <div class="trust-item"><span class="trust-dot"></span>Dermatology Centers</div>
-    <div class="trust-item"><span class="trust-dot"></span>Laser Hair Removal</div>
-    <div class="trust-item"><span class="trust-dot"></span>Skin &amp; Anti-Aging Clinics</div>
+    <div class="trust-item"><span class="trust-dot"></span>Marketing Agencies</div>
+    <div class="trust-item"><span class="trust-dot"></span>Web &amp; Design Studios</div>
+    <div class="trust-item"><span class="trust-dot"></span>Consulting Firms</div>
+    <div class="trust-item"><span class="trust-dot"></span>Content &amp; Production Studios</div>
   </div>
 
   <div class="metrics-ticker-wrap fade-up">
     <div class="metrics-ticker" id="ticker">
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Booked Consultations</span></div>
-      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Patient Conversion Rate</span></div>
-      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Aesthetic &amp; Laser Clinics</span></div>
-      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees</span></div>
-      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Final Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">Premium</span><span class="ticker-label">Medical-Grade Design Language</span></div>
-      <div class="ticker-item"><span class="ticker-num">More</span><span class="ticker-label">Booked Consultations</span></div>
-      <div class="ticker-item"><span class="ticker-num">Higher</span><span class="ticker-label">Patient Conversion Rate</span></div>
-      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Aesthetic &amp; Laser Clinics</span></div>
-      <div class="ticker-item"><span class="ticker-num">Zero</span><span class="ticker-label">Platform Subscription Fees</span></div>
-      <div class="ticker-item"><span class="ticker-num">Pay</span><span class="ticker-label">After You Approve the Final Website</span></div>
-      <div class="ticker-item"><span class="ticker-num">Premium</span><span class="ticker-label">Medical-Grade Design Language</span></div>
+      <div class="ticker-item"><span class="ticker-num">All-in-One</span><span class="ticker-label">CRM, Projects &amp; Invoicing</span></div>
+      <div class="ticker-item"><span class="ticker-num">Real-Time</span><span class="ticker-label">Activity Feed &amp; Notifications</span></div>
+      <div class="ticker-item"><span class="ticker-num">One-Time</span><span class="ticker-label">Payment — No Subscription</span></div>
+      <div class="ticker-item"><span class="ticker-num">Fully</span><span class="ticker-label">Deployed &amp; Configured For You</span></div>
+      <div class="ticker-item"><span class="ticker-num">7 Days</span><span class="ticker-label">Free Revisions After Delivery</span></div>
+      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Agency Owners &amp; Consultants</span></div>
+      <div class="ticker-item"><span class="ticker-num">All-in-One</span><span class="ticker-label">CRM, Projects &amp; Invoicing</span></div>
+      <div class="ticker-item"><span class="ticker-num">Real-Time</span><span class="ticker-label">Activity Feed &amp; Notifications</span></div>
+      <div class="ticker-item"><span class="ticker-num">One-Time</span><span class="ticker-label">Payment — No Subscription</span></div>
+      <div class="ticker-item"><span class="ticker-num">Fully</span><span class="ticker-label">Deployed &amp; Configured For You</span></div>
+      <div class="ticker-item"><span class="ticker-num">7 Days</span><span class="ticker-label">Free Revisions After Delivery</span></div>
+      <div class="ticker-item"><span class="ticker-num">Built For</span><span class="ticker-label">Agency Owners &amp; Consultants</span></div>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
+  <!-- WHAT'S INCLUDED -->
   <section id="offer">
-    <h2 class="numbered-heading fade-up">How It Works</h2>
+    <h2 class="numbered-heading fade-up">What's Included</h2>
     <div class="offer-card fade-up d1">
       <div class="offer-card-header">
-        <span class="offer-scope-tag">Built around your clinic, your patients, and one goal — more bookings</span>
-        <h3>Your Clinic's Premium Website — Reviewed in Full Before You Pay a Single Dirham.</h3>
-        <p class="offer-lead-text">Tell me about your clinic, your specialties, and how you want patients to reach you. I design and build the complete website from scratch — copy, structure, visuals, and every interaction — then deliver it for your full review. Payment only once you're completely satisfied. Not before.</p>
+        <span class="offer-scope-tag">Built around how agencies actually run — clients, money, and delivery</span>
+        <h3>AutFlow Studio — Your Agency's Complete Operating System, Deployed and Ready.</h3>
+        <p class="offer-lead-text">Tell me about your agency and how you currently manage clients, projects and invoicing. I deploy and configure the complete AutFlow Studio system for your business — CRM, project tracking, invoicing, tasks, meetings, documents, calendar and reporting — fully set up and ready to use. You see the live system before you're asked to commit to anything.</p>
       </div>
       <div class="offer-specifics">
-        <span class="offer-specifics-label">// What every clinic website includes</span>
+        <span class="offer-specifics-label">// What's included in every deployment</span>
         <ul class="offer-points">
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Conversion-first architecture</strong> — every page, section, and CTA is sequenced to move a visitor toward booking a consultation.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Trust-engineered copy</strong> — written to address the exact hesitations patients feel before committing to a medical aesthetic treatment.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Modern UI/UX with 3D &amp; motion design</strong> — visual sophistication that signals authority, safety, and a genuinely premium clinic brand.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Mobile-first, high-performance build</strong> — over 70% of clinic searches happen on mobile. Speed and mobile experience directly determine whether patients book or leave.</span></li>
-          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Clean code, full ownership</strong> — no monthly platform fees. Host it on your existing domain or anywhere you choose. Yours permanently.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Client CRM</strong> — full client profiles with contacts, contract value, retainer, tags and notes. Every relationship in one place.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Project &amp; deliverable tracking</strong> — status, priority, progress and deadlines for every project, with automatic at-risk detection.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Invoicing &amp; revenue tracking</strong> — every invoice, payment status and outstanding balance, with revenue reports by month and by client.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Tasks, meetings &amp; documents</strong> — a shared home for your to-do list, meeting notes, action items and every client document.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Unified calendar &amp; global search</strong> — every deadline, meeting and invoice due date in one calendar, plus instant search across your business.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>Real-time activity feed &amp; notifications</strong> — always know what changed and when, without checking six different apps.</span></li>
+          <li class="offer-point"><span class="offer-point-marker">&#9658;</span><span><strong>White-labeled to your agency</strong> — your agency name, logo and branding throughout the entire system.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- GUARANTEE / WHY IT WORKS -->
+  <!-- WHY AGENCIES SWITCH -->
   <section id="guarantee">
-    <h2 class="numbered-heading fade-up">Why Clinics Need This</h2>
+    <h2 class="numbered-heading fade-up">Why Agencies Switch</h2>
     <div class="guarantee-grid fade-up d1" style="max-width:720px;">
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// The booking problem</span>
-        <h4>A polished website that doesn't convert is expensive decoration.</h4>
-        <p>Template-based clinic websites look presentable but are built for branding, not bookings. A website engineered around a single outcome — more booked consultations — performs in an entirely different category.</p>
+        <span class="guarantee-card-icon">// The tool-juggling problem</span>
+        <h4>Six subscriptions. Six logins. Zero single source of truth.</h4>
+        <p>CRM in one app, projects in another, invoices in a third — and none of them talk to each other. AutFlow Studio puts your entire agency in one connected system.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Built first. Paid after.</span>
-        <h4>Review the full website before paying a single dirham.</h4>
-        <p>I design and build the complete website. You review every page, every line of copy, every design decision. We refine until it's exactly right. Payment only at your approval.</p>
+        <span class="guarantee-card-icon">// Deployed, not DIY</span>
+        <h4>You don't set it up. I do.</h4>
+        <p>I configure and deploy the complete system for your agency before you touch it. You get a live, working operating system — not a template to assemble yourself.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Medical trust signals</span>
-        <h4>Patients judge credibility in the first 3 seconds. Make them count.</h4>
-        <p>Aesthetic and medical patients are more cautious than typical buyers. Every visual choice and every word is designed to reduce hesitation and build the trust that turns visitors into booked patients.</p>
+        <span class="guarantee-card-icon">// Pay once</span>
+        <h4>One investment, not another monthly bill.</h4>
+        <p>No per-seat pricing and no monthly software subscription. You pay once for a system built to run your agency for years.</p>
       </div>
       <div class="guarantee-card">
-        <span class="guarantee-card-icon">// Permanent ownership</span>
-        <h4>No subscriptions. No platform dependency. No permissions needed.</h4>
-        <p>Once built, the website is entirely yours. No Webflow billing. No template-builder monthly fees. Host it anywhere, edit anything, for as long as your clinic operates.</p>
+        <span class="guarantee-card-icon">// Real ownership</span>
+        <h4>Your business data lives in your system, not a stranger's platform.</h4>
+        <p>No depending on a SaaS vendor's uptime, pricing changes or feature paywalls. Your clients, projects and revenue history belong to your agency.</p>
       </div>
     </div>
   </section>
 
-  <!-- CASE STUDIES PROMO -->
-  <section class="case-studies-promo">
-    <div class="case-promo-inner fade-up">
-      <div class="case-promo-text">
-        <span class="case-promo-tag">// Client Work</span>
-        <h3 class="case-promo-title">See Real Clinic Websites in Action</h3>
-        <p class="case-promo-desc">Explore the premium websites I've designed and built for aesthetic, laser, and dermatology clinics — with full breakdowns of the conversion strategy, design decisions, and results behind each project.</p>
-        <div class="case-preview-chips">
-          <span class="case-chip">Luxury Aesthetic Clinic</span>
-          <span class="case-chip">Laser Hair Removal</span>
-          <span class="case-chip">Dermatology Center</span>
-        </div>
+  <!-- PRICING & PROCESS -->
+  <section id="pricing">
+    <h2 class="numbered-heading fade-up">Pricing &amp; Process</h2>
+    <p class="pricing-note fade-up d1"><strong>Simple and transparent, on purpose.</strong> No tiered plans, no seat-based pricing, no fine print. You pay once, I deploy the full system for your agency, and you're covered for a week after launch.</p>
+    <div class="guarantee-grid fade-up d2" style="max-width:720px;">
+      <div class="guarantee-card pricing-card">
+        <span class="guarantee-card-icon">// Payment</span>
+        <h4>One-time payment.</h4>
+        <p>A single upfront cost for your fully configured system — no recurring subscription for the software itself.</p>
       </div>
-      <div class="case-promo-action">
-        <a href="projects.html" class="cta-view-cases">
-          View Case Studies <span class="arrow">&#8594;</span>
-        </a>
+      <div class="guarantee-card pricing-card">
+        <span class="guarantee-card-icon">// Delivery</span>
+        <h4>Fully deployed for you.</h4>
+        <p>The system is installed, configured and delivered live and ready to use — set up around your agency from day one.</p>
+      </div>
+      <div class="guarantee-card pricing-card">
+        <span class="guarantee-card-icon">// After launch</span>
+        <h4>One week of free revisions.</h4>
+        <p>For a full week after delivery, I fine-tune anything you need — configuration, branding, or setup details — at no extra cost.</p>
+      </div>
+      <div class="guarantee-card pricing-card">
+        <span class="guarantee-card-icon">// Ongoing cost</span>
+        <h4>No monthly software fees.</h4>
+        <p>Your agency owns the system going forward, with no ongoing subscription cost for the software itself.</p>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="contact-section">
-    <span class="contact-label fade-up">Zero risk. You approve before you pay.</span>
-    <h2 class="contact-h2 fade-up d1">I design it.<br>You review it.<br><span>You approve it.</span></h2>
+    <span class="contact-label fade-up">No contract page. No sales calls needed to start.</span>
+    <h2 class="contact-h2 fade-up d1">I'll deploy it.<br>You review it.<br><span>You approve it.</span></h2>
     <p class="contact-sub fade-up d2">
-      Tell me about your clinic and how you want patients to reach you. I'll design and build a premium website that turns visitors into booked appointments — more consultations, more calls, more patients walking through your door. <strong>No upfront payment. No lock-in. Full ownership.</strong>
+      Message me on Instagram to walk through your agency's setup and see if AutFlow Studio is the right fit. I'll show you the live system before you commit to anything. <strong>One-time payment. Fully deployed. No lock-in.</strong>
     </p>
     <div class="contact-cta-wrap fade-up d3">
-      <a href="https://wa.me/213676127853" class="cta-primary" target="_blank" rel="noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        Book My Clinic's Premium Website <span class="arrow">&#8594;</span>
+      <a href="https://instagram.com/autflow.studio" class="cta-primary" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;flex-shrink:0;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        Message @autflow.studio on Instagram <span class="arrow">&#8594;</span>
       </a>
-      <span class="contact-caveat">Limited availability — reply within 24 hours</span>
+      <span class="contact-handle">@autflow.studio</span>
+      <span class="contact-caveat">Usually replies within 24 hours</span>
       <div class="payment-note fade-up d4">
-        <strong>Payment is only made after you review the final website and are fully satisfied with the result.</strong>
+        <strong>Payment is only requested after your system is fully deployed and you've reviewed it live.</strong>
       </div>
     </div>
   </section>
@@ -473,7 +473,7 @@ footer{display:flex;flex-direction:column;align-items:center;padding:20px;text-a
 <footer>
   <div class="footer-text fade-up">
     <div>Designed &amp; Built by Anes Hass</div>
-    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">Premium Clinic Website Specialist &middot; Aesthetic &amp; Medical Niche &middot; Conversion Rate Optimization &middot; Patient Acquisition</div>
+    <div style="font-size:10px;margin-top:4px;opacity:0.5;letter-spacing:0.04em;">AutFlow Studio &middot; Agency Operating System &middot; CRM &middot; Projects &middot; Invoicing &middot; Deployed For You</div>
     <div style="font-size:10px;margin-top:4px;opacity:0.4;">&copy; 2026 AutFlow Studio. All rights reserved.</div>
   </div>
 </footer>
@@ -499,19 +499,11 @@ function scanVisible(){
 }
 document.addEventListener('DOMContentLoaded',scanVisible);
 
-document.querySelectorAll('.js-scroll-contact').forEach(function(el){
-  el.addEventListener('click',function(e){
-    e.preventDefault();
-    var t=document.querySelector('#contact');
-    if(t){t.scrollIntoView({behavior:'smooth',block:'start'});}
-  });
-});
-
 var dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing'),mx=0,my=0,rx=0,ry=0;
 if(window.innerWidth>768){
   document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
   (function anim(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
-  document.querySelectorAll('a,button,.guarantee-card,.offer-card,.cta-primary,.cta-secondary').forEach(function(el){
+  document.querySelectorAll('a,button,.guarantee-card,.offer-card,.cta-primary').forEach(function(el){
     el.addEventListener('mouseenter',function(){ring.classList.add('hovered');});
     el.addEventListener('mouseleave',function(){ring.classList.remove('hovered');});
   });

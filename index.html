@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AutFlow Studio — A Private Operating System for Modern Agencies</title>
-<meta name="description" content="AutFlow Studio is a private operating system for agencies — clients, projects, tasks, deliverables and payment status, all connected in one dashboard, deployed and configured for your agency. Founding Agency Program: $1,200 one-time.">
+<meta name="description" content="AutFlow Studio is a private operating system for agencies — clients, projects, tasks, deliverables and payment status, all connected in one dashboard, deployed and configured for your agency. Two founding options: Studio Access from $800, or a fully custom Private Agency Setup at $1,200.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -167,14 +167,14 @@ h2.section-title{font-size:clamp(28px,3.6vw,42px);font-weight:700;color:var(--in
 }
 
 /* OFFER */
-.offer-wrap{display:flex;justify-content:center;}
-.offer-card{max-width:640px;width:100%;border:1px solid rgba(240,192,96,0.28);border-radius:14px;background:linear-gradient(180deg,var(--navy-panel),var(--navy-panel-2));overflow:hidden;position:relative;box-shadow:0 40px 100px -30px rgba(0,0,0,0.7);}
+.offer-wrap{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:stretch;}
+.offer-card{max-width:520px;width:100%;border:1px solid rgba(240,192,96,0.28);border-radius:14px;background:linear-gradient(180deg,var(--navy-panel),var(--navy-panel-2));overflow:hidden;position:relative;box-shadow:0 40px 100px -30px rgba(0,0,0,0.7);display:flex;flex-direction:column;}
 .offer-top{padding:38px 40px 30px;border-bottom:1px solid var(--line-soft);text-align:center;}
 .offer-tag{display:inline-flex;font-family:var(--mono);font-size:11.5px;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(240,192,96,0.3);border-radius:100px;padding:6px 14px;margin-bottom:22px;}
 .offer-price{font-size:clamp(44px,7vw,60px);font-weight:800;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
 .offer-price sup{font-size:22px;font-weight:600;top:-1.4em;color:var(--ink-dim);}
 .offer-price-note{font-family:var(--mono);font-size:13px;color:var(--slate-dim);margin-top:10px;letter-spacing:0.02em;}
-.offer-body{padding:30px 40px 36px;}
+.offer-body{padding:30px 40px 36px;display:flex;flex-direction:column;flex:1;}
 .offer-list{display:flex;flex-direction:column;gap:15px;margin-bottom:28px;}
 .offer-list li{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:var(--ink-dim);line-height:1.6;}
 .offer-list li svg{width:16px;height:16px;color:var(--mint);flex-shrink:0;margin-top:3px;}
@@ -544,32 +544,58 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
   <!-- OFFER -->
   <section id="offer">
     <div class="wrap">
-      <span class="eyebrow gold fade-up" style="justify-content:center;display:flex;">The Founding Agency Program</span>
-      <h2 class="section-title fade-up d1" style="margin:0 auto 18px;text-align:center;max-width:600px;">Your agency's private operating system, set up and deployed by hand.</h2>
-      <p class="section-lead fade-up d1" style="margin:0 auto 56px;text-align:center;">A hands-on implementation, not a self-serve signup. No tiers, no per-seat pricing, and no recurring bill for the software itself.</p>
+      <span class="eyebrow gold fade-up" style="justify-content:center;display:flex;">Founding Access</span>
+      <h2 class="section-title fade-up d1" style="margin:0 auto 18px;text-align:center;max-width:680px;">Two ways to get your agency running on AutFlow Studio.</h2>
+      <p class="section-lead fade-up d1" style="margin:0 auto 56px;text-align:center;max-width:640px;">Both are private, hands-on deployments — never a self-serve signup, never rented software. Choose the level of customization your agency needs.</p>
 
       <div class="offer-wrap fade-up d2">
+
+        <!-- OPTION 1 — STUDIO ACCESS -->
         <div class="offer-card">
           <div class="offer-top">
-            <span class="offer-tag">Founding Agency Program</span>
-            <div class="offer-price"><sup>$</sup>1,200</div>
-            <p class="offer-price-note">Private setup &amp; white-glove deployment — no recurring software fee</p>
+            <span class="offer-tag" style="color:var(--mint);border-color:rgba(77,255,195,0.3);">AutFlow Studio Access</span>
+            <div class="offer-price"><sup>$</sup>800</div>
+            <p class="offer-price-note">Your private system, deployed and ready — no recurring software fee</p>
           </div>
           <div class="offer-body">
             <ul class="offer-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A private AutFlow Studio instance, mapped to how your agency actually operates</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Hands-on deployment — live, tested and ready the day you get access, not a template you assemble yourself</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A private AutFlow Studio instance, deployed and ready to run your agency</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Every module included: clients, projects, tasks, deliverables, payment status, documents, calendar, meetings, reports, activity feed and notifications</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fully white-labeled — your agency's name, logo and colors throughout</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Branded with your agency's name, logo and colors</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Configured and handed to you ready to use — the fastest way to get your agency off spreadsheets and onto one system</li>
             </ul>
             <div class="offer-guarantee">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-              <div><h5>1 week of free revisions</h5><p>For a full week after launch, I fine-tune configuration, branding and setup details with you at no extra cost — until it fits exactly how you work.</p></div>
+              <div><h5>Best for agencies who want to move fast</h5><p>You get the full system, live and branded, without a deep workflow-mapping process. Ideal if your operation is straightforward and you want to be running this week.</p></div>
             </div>
-            <button class="cta-primary" type="button" data-cta>Request Founding Access <span class="arrow">→</span></button>
-            <p class="offer-fine">Anything beyond the revision week — custom features, integrations — we can scope separately.</p>
+            <button class="cta-primary" type="button" data-cta>Request Studio Access <span class="arrow">→</span></button>
+            <p class="offer-fine">Need deeper workflow customization? See Private Agency Setup.</p>
           </div>
         </div>
+
+        <!-- OPTION 2 — PRIVATE AGENCY SETUP -->
+        <div class="offer-card" style="border-color:rgba(240,192,96,0.45);">
+          <div class="offer-top">
+            <span class="offer-tag">Private Agency Setup</span>
+            <div class="offer-price"><sup>$</sup>1,200</div>
+            <p class="offer-price-note">Full white-glove deployment, built around your agency — no recurring software fee</p>
+          </div>
+          <div class="offer-body">
+            <ul class="offer-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Everything in Studio Access, plus a system mapped to how your agency specifically operates</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Workflow configured around your actual client, project and delivery process — not a generic default</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Full branding customization, personalized setup and one-on-one onboarding</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom adjustments within the agreed scope, handled directly with you</li>
+            </ul>
+            <div class="offer-guarantee">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+              <div><h5>1 week of free revisions</h5><p>For a full week after launch, I fine-tune configuration, branding and workflow details with you at no extra cost — until it fits exactly how your agency runs.</p></div>
+            </div>
+            <button class="cta-primary" type="button" data-cta>Request Private Setup <span class="arrow">→</span></button>
+            <p class="offer-fine">Anything beyond the revision week — custom features, integrations — we scope separately.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -611,10 +637,10 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
       <div class="final-cta">
         <span class="eyebrow fade-up" style="justify-content:center;display:flex;">Get Started</span>
         <h2 class="final-h2 fade-up d1">I'll set it up. <span class="accent">You decide if it fits.</span></h2>
-        <p class="final-sub fade-up d2">Message me and I'll walk you through exactly how AutFlow Studio would be set up for your agency. <strong>You'll see the live system running before you're asked to commit to anything.</strong></p>
+        <p class="final-sub fade-up d2">Message me and I'll walk you through both options and how each would be set up for your agency. <strong>You'll see the live system running before you're asked to commit to anything.</strong></p>
         <div class="final-cta-wrap fade-up d3">
           <button class="cta-primary" type="button" data-cta>Request Founding Access <span class="arrow">→</span></button>
-          <span class="final-note">Usually replies within 24 hours · $1,200 one-time · You pay only after reviewing the live system</span>
+          <span class="final-note">Usually replies within 24 hours · Studio Access from $800 · Private Agency Setup at $1,200 · You pay only after reviewing the live system</span>
         </div>
       </div>
     </div>

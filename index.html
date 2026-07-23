@@ -31,9 +31,32 @@ ul{list-style:none;}
 
 body::before{content:'';position:fixed;top:-10%;left:50%;transform:translateX(-50%);width:1100px;height:800px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(77,255,195,0.05) 0%,transparent 68%);pointer-events:none;z-index:0;}
 
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
-.fade-up.in{opacity:1;transform:translateY(0);}
+.fade-up{opacity:0;transform:translateY(26px) scale(0.98);filter:blur(6px);transition:opacity .65s var(--ease),transform .65s var(--ease),filter .65s var(--ease);will-change:opacity,transform,filter;}
+.fade-up.in{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
 .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}.d5{transition-delay:.3s}
+
+/* Card stagger — used within grids so items reveal one after another */
+.feature-grid .feature-card:nth-child(1){transition-delay:.05s;}
+.feature-grid .feature-card:nth-child(2){transition-delay:.13s;}
+.feature-grid .feature-card:nth-child(3){transition-delay:.21s;}
+.feature-grid .feature-card:nth-child(4){transition-delay:.29s;}
+.trust-grid .trust-card:nth-child(1){transition-delay:.05s;}
+.trust-grid .trust-card:nth-child(2){transition-delay:.13s;}
+.trust-grid .trust-card:nth-child(3){transition-delay:.21s;}
+.trust-grid .trust-card:nth-child(4){transition-delay:.29s;}
+.workflow-track .workflow-step:nth-child(1){transition-delay:.04s;}
+.workflow-track .workflow-step:nth-child(2){transition-delay:.10s;}
+.workflow-track .workflow-step:nth-child(3){transition-delay:.16s;}
+.workflow-track .workflow-step:nth-child(4){transition-delay:.22s;}
+.workflow-track .workflow-step:nth-child(5){transition-delay:.28s;}
+.workflow-track .workflow-step:nth-child(6){transition-delay:.34s;}
+.pain-list .pain-item:nth-child(1){transition-delay:.05s;}
+.pain-list .pain-item:nth-child(2){transition-delay:.14s;}
+.pain-list .pain-item:nth-child(3){transition-delay:.23s;}
+
+/* Subtle floating for the dashboard-style panels */
+@keyframes panelFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+.system-panel{animation:panelFloat 7s ease-in-out infinite;}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
@@ -55,7 +78,7 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:200;backgrou
 .brand-mark svg{width:100%;height:100%;}
 .brand-name{font-family:var(--mono);font-size:14.5px;color:var(--ink-dim);letter-spacing:0.01em;font-weight:500;}
 .nav-cta{display:inline-flex;align-items:center;gap:9px;background:var(--mint);color:#03110c;border:none;border-radius:var(--radius-sm);padding:10px 18px;font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:0.01em;cursor:pointer;transition:all .2s var(--ease);box-shadow:0 0 0 0 rgba(77,255,195,0);}
-.nav-cta:hover{background:#6dffd1;box-shadow:0 6px 24px -6px rgba(77,255,195,0.5);transform:translateY(-1px);}
+.nav-cta:hover{background:#6dffd1;box-shadow:0 6px 24px -6px rgba(77,255,195,0.5);transform:translateY(-1px) scale(1.02);}
 @media(max-width:640px){.nav-inner{padding:0 18px;}.nav-cta{padding:9px 14px;font-size:12px;}.nav-cta .cta-sub{display:none;}}
 
 main{position:relative;z-index:1;}
@@ -85,13 +108,13 @@ h2.section-title{font-size:clamp(28px,3.6vw,42px);font-weight:700;color:var(--in
 
 .cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:44px;}
 .cta-primary{display:inline-flex;align-items:center;gap:10px;background:var(--mint);color:#03110c;border:none;border-radius:var(--radius-sm);padding:17px 26px;font-family:var(--mono);font-size:14.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:all .22s var(--ease);box-shadow:0 8px 32px -8px rgba(77,255,195,0.35);}
-.cta-primary:hover{background:#6dffd1;box-shadow:0 12px 40px -6px rgba(77,255,195,0.5);transform:translateY(-2px);}
+.cta-primary:hover{background:#6dffd1;box-shadow:0 12px 40px -6px rgba(77,255,195,0.5);transform:translateY(-2px) scale(1.015);}
 .cta-primary .arrow{transition:transform .2s ease;}
 .cta-primary:hover .arrow{transform:translateX(3px);}
 .cta-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.03em;}
 
 .cta-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink-dim);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px 25px;font-family:var(--mono);font-size:14.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:all .22s var(--ease);}
-.cta-secondary:hover{border-color:var(--mint-soft);color:var(--ink);background:var(--mint-dim);transform:translateY(-2px);}
+.cta-secondary:hover{border-color:var(--mint-soft);color:var(--ink);background:var(--mint-dim);transform:translateY(-2px) scale(1.015);}
 .cta-secondary .play-ico{width:16px;height:16px;color:var(--mint);flex-shrink:0;}
 @media(max-width:480px){.cta-secondary{padding:14px 20px;font-size:13px;}}
 
@@ -164,6 +187,18 @@ h2.section-title{font-size:clamp(28px,3.6vw,42px);font-weight:700;color:var(--in
   .workflow-step{padding:0;}
   .workflow-step:not(:last-child)::after,.workflow-step:not(:last-child)::before{display:none;}
 }
+
+/* FREE VIDEO OFFER */
+.free-video-card{position:relative;border:1px solid var(--mint-soft);border-radius:14px;background:linear-gradient(180deg,var(--navy-panel),var(--navy-panel-2));overflow:hidden;padding:64px 60px;text-align:center;box-shadow:0 40px 100px -30px rgba(0,0,0,0.7);}
+.free-video-card::before{content:'';position:absolute;top:-45%;left:50%;transform:translateX(-50%);width:640px;height:420px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(77,255,195,0.09) 0%,transparent 70%);pointer-events:none;}
+.free-video-card .eyebrow{justify-content:center;}
+.free-video-card .section-title{margin:0 auto 16px;text-align:center;max-width:600px;}
+.free-video-card .section-lead{margin:0 auto 22px;text-align:center;max-width:560px;}
+.free-video-fine{position:relative;font-family:var(--mono);font-size:12.5px;color:var(--slate-dim);line-height:1.85;letter-spacing:0.01em;margin-bottom:34px;}
+
+/* PRICING BADGE */
+.pricing-badge-row{display:flex;justify-content:center;}
+.pricing-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:var(--gold);border:1px solid rgba(240,192,96,0.35);background:var(--gold-dim);border-radius:100px;padding:8px 16px;letter-spacing:0.03em;}
 
 /* OFFER */
 .offer-wrap{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:stretch;}
@@ -303,16 +338,16 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
           <span class="eyebrow gold fade-up">The Problem</span>
           <h2 class="section-title fade-up d1">Great products still lose people in the first ten seconds.</h2>
           <p class="section-lead fade-up d1">Nobody reads your documentation before deciding whether to care. They scroll, they glance, they decide. If your product needs a paragraph to explain, you're losing people who would've said yes — <strong>if they'd only understood it fast enough</strong>.</p>
-          <div class="pain-list fade-up d2">
-            <div class="pain-item">
+          <div class="pain-list">
+            <div class="pain-item fade-up">
               <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="0.5" fill="currentColor"/><path d="M10.3 3.9 2.5 17.5A1.5 1.5 0 0 0 3.8 20h16.4a1.5 1.5 0 0 0 1.3-2.5L13.7 3.9a1.5 1.5 0 0 0-2.6 0Z"/></svg></span>
               <div><h4>Your product is smarter than your pitch</h4><p>Dense features and technical depth don't translate through a static screenshot or a wall of bullet points.</p></div>
             </div>
-            <div class="pain-item">
+            <div class="pain-item fade-up">
               <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="0.5" fill="currentColor"/><path d="M10.3 3.9 2.5 17.5A1.5 1.5 0 0 0 3.8 20h16.4a1.5 1.5 0 0 0 1.3-2.5L13.7 3.9a1.5 1.5 0 0 0-2.6 0Z"/></svg></span>
               <div><h4>Visitors decide before they read</h4><p>Investors, customers and hiring panels form an impression in seconds — long before anyone gets to your copy.</p></div>
             </div>
-            <div class="pain-item">
+            <div class="pain-item fade-up">
               <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="0.5" fill="currentColor"/><path d="M10.3 3.9 2.5 17.5A1.5 1.5 0 0 0 3.8 20h16.4a1.5 1.5 0 0 0 1.3-2.5L13.7 3.9a1.5 1.5 0 0 0-2.6 0Z"/></svg></span>
               <div><h4>Screenshots can't carry momentum</h4><p>A launch, a demo, a pitch deck — they all need something that moves, builds, and lands. Stills just sit there.</p></div>
             </div>
@@ -382,23 +417,23 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
       <h2 class="section-title fade-up d1">Built around one job: make people understand you faster.</h2>
       <p class="section-lead fade-up d1">Every project starts with the outcome — a landing page that converts, a launch that lands, a pitch that clicks — and works backward to the video.</p>
 
-      <div class="feature-grid fade-up d2">
-        <div class="feature-card">
+      <div class="feature-grid">
+        <div class="feature-card fade-up">
           <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 6l2.5-3h13L21 6"/></svg></span>
           <h4>Product Demo Videos</h4>
           <p>Show your product doing the thing, instead of describing it in slides — the fastest way to move a visitor from confused to convinced.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card fade-up">
           <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l1.5 1.5L15 6M9 15l1.5 1.5L15 12"/></svg></span>
           <h4>Explainer Videos</h4>
           <p>Turn a complicated idea, model, or workflow into sixty seconds anyone can follow — no technical background required.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card fade-up">
           <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-13h-8z"/></svg></span>
           <h4>Launch Videos</h4>
           <p>Make the moment your product goes live feel like an event — built to headline your site, your announcement, and your socials.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card fade-up">
           <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a5 5 0 0 0 0 18 2 2 0 0 0 0-4h-.5a1.5 1.5 0 0 1 0-3H14a2 2 0 0 0 2-2 2 2 0 0 0-2-2h-1"/></svg></span>
           <h4>Animated Brand Visuals</h4>
           <p>Give your brand motion — loops, stingers, and visual identity that carry across your site, decks, and social presence.</p>
@@ -414,13 +449,26 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
       <h2 class="section-title fade-up d1">From your idea to a finished video — one continuous line.</h2>
       <p class="section-lead fade-up d1">This is the actual path a project takes through AutFlow Studio — nothing gets reworked from scratch, and nothing gets lost between steps.</p>
 
-      <div class="workflow-track fade-up d2">
-        <div class="workflow-step"><span class="wf-num">1</span><h5>Brief</h5><p>You tell us the product, the audience, and the goal.</p></div>
-        <div class="workflow-step"><span class="wf-num">2</span><h5>Story</h5><p>We shape the idea into a story worth watching.</p></div>
-        <div class="workflow-step"><span class="wf-num">3</span><h5>Script</h5><p>The story becomes a tight, watchable script.</p></div>
-        <div class="workflow-step"><span class="wf-num">4</span><h5>Storyboard</h5><p>Every scene is planned before a frame is animated.</p></div>
-        <div class="workflow-step"><span class="wf-num">5</span><h5>Animation</h5><p>The video is built, scene by scene, in your style.</p></div>
-        <div class="workflow-step"><span class="wf-num">6</span><h5>Delivery</h5><p>You get a finished video, ready to publish.</p></div>
+      <div class="workflow-track">
+        <div class="workflow-step fade-up"><span class="wf-num">1</span><h5>Brief</h5><p>You tell us the product, the audience, and the goal.</p></div>
+        <div class="workflow-step fade-up"><span class="wf-num">2</span><h5>Story</h5><p>We shape the idea into a story worth watching.</p></div>
+        <div class="workflow-step fade-up"><span class="wf-num">3</span><h5>Script</h5><p>The story becomes a tight, watchable script.</p></div>
+        <div class="workflow-step fade-up"><span class="wf-num">4</span><h5>Storyboard</h5><p>Every scene is planned before a frame is animated.</p></div>
+        <div class="workflow-step fade-up"><span class="wf-num">5</span><h5>Animation</h5><p>The video is built, scene by scene, in your style.</p></div>
+        <div class="workflow-step fade-up"><span class="wf-num">6</span><h5>Delivery</h5><p>You get a finished video, ready to publish.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREE VIDEO OFFER -->
+  <section id="free-video">
+    <div class="wrap">
+      <div class="free-video-card fade-up">
+        <span class="eyebrow gold">Exclusive Offer</span>
+        <h2 class="section-title">🎁 Get Your First Video FREE</h2>
+        <p class="section-lead">If you're unsure whether premium motion graphics are right for your business, I'll create your first short promotional video completely free.</p>
+        <p class="free-video-fine">No commitment.<br>No hidden fees.<br>If you love it, we can discuss the full project.</p>
+        <button class="cta-primary" type="button" data-cta>Claim Your Free Video <span class="arrow">→</span></button>
       </div>
     </div>
   </section>
@@ -430,7 +478,11 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
     <div class="wrap">
       <span class="eyebrow gold fade-up" style="justify-content:center;display:flex;">Pricing</span>
       <h2 class="section-title fade-up d1" style="margin:0 auto 18px;text-align:center;max-width:680px;">One package. Nothing to configure.</h2>
-      <p class="section-lead fade-up d1" style="margin:0 auto 56px;text-align:center;max-width:640px;">This isn't cheap stock-template content — it's a premium, fully custom production built around your brand, your goals, and your audience.</p>
+      <p class="section-lead fade-up d1" style="margin:0 auto 24px;text-align:center;max-width:640px;">This isn't cheap stock-template content — it's a premium, fully custom production built around your brand, your goals, and your audience.</p>
+
+      <div class="pricing-badge-row fade-up d1" style="margin-bottom:40px;">
+        <span class="pricing-badge">✨ Limited to the first 3 clients</span>
+      </div>
 
       <div class="offer-wrap fade-up d2">
 
@@ -471,23 +523,23 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
       <span class="eyebrow fade-up">Why Companies Work With Us</span>
       <h2 class="section-title fade-up d1">This isn't a video service. It's a way to be understood.</h2>
 
-      <div class="trust-grid fade-up d2">
-        <div class="trust-card">
+      <div class="trust-grid">
+        <div class="trust-card fade-up">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
           <h4>Built around your product and audience</h4>
           <p>Every video is scoped to the people you're actually trying to reach — not a template stretched to fit.</p>
         </div>
-        <div class="trust-card">
+        <div class="trust-card fade-up">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 13l3 3 5-6"/></svg>
           <h4>Strategy, storytelling and animation — together</h4>
           <p>We don't just animate a script you hand us. We help shape what's worth saying before a single frame gets made.</p>
         </div>
-        <div class="trust-card">
+        <div class="trust-card fade-up">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg>
           <h4>Designed to make complex ideas simple</h4>
           <p>Whatever your product does, the video's only job is to make that instantly obvious to someone seeing it cold.</p>
         </div>
-        <div class="trust-card">
+        <div class="trust-card fade-up">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="5"/></svg>
           <h4>Premium visuals without building a team</h4>
           <p>Get agency-grade motion design on demand — no in-house hire, no software licenses, no production overhead.</p>

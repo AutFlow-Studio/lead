@@ -3,243 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Motion Graphics for SaaS, AI & Tech Brands</title>
-<meta name="description" content="AutFlow Studio is a premium motion graphics studio for SaaS founders, AI startups, and growing brands. We turn complex products into visuals people instantly understand — product demos, explainers, launch films, and brand motion.">
+<title>AutFlow Studio — Conversion Systems for Clinics, Agencies &amp; High-Ticket Brands</title>
+<meta name="description" content="AutFlow Studio designs and builds complete conversion systems — landing pages, motion ads, lead capture, booking funnels and automation — that turn visitors into paying customers.">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ============ TOKENS ============ */
 :root{
-  --navy:#070b14;--navy-panel:#0e1726;--navy-panel-2:#111d33;
-  --line:#1c2942;--line-soft:#141f36;
-  --mint:#4dffc3;--mint-dim:rgba(77,255,195,0.09);--mint-soft:rgba(77,255,195,0.22);
-  --gold:#f0c060;--gold-dim:rgba(240,192,96,0.1);
-  --ink:#eef3ff;--ink-dim:#c3cee6;--slate:#8b96ad;--slate-dim:#5b6683;
-  --sans:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;
-  --mono:'DM Mono','SF Mono',monospace;
-  --ease:cubic-bezier(0.22,1,0.36,1);--radius:10px;--radius-sm:6px;--nav-h:72px;
+  --black:#0a0a0a;
+  --panel:#111111;
+  --panel-2:#141414;
+  --line:rgba(255,255,255,0.09);
+  --line-strong:rgba(255,255,255,0.18);
+  --white:#fafafa;
+  --white-dim:#cfcfcf;
+  --gray:#8f8f8f;
+  --gray-dim:#5c5c5c;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --radius:14px;
+  --radius-sm:8px;
+  --nav-h:68px;
+  --container:1180px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--navy);color:var(--slate);font-family:var(--sans);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body{
+  background:var(--black);color:var(--gray);font-family:var(--sans);
+  font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
 img,svg{display:block;max-width:100%;}
-a{color:var(--mint);text-decoration:none;}
+a{color:inherit;text-decoration:none;}
 ul{list-style:none;}
-::selection{background:rgba(77,255,195,0.22);color:var(--ink);}
-::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:var(--navy);}::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
-:focus-visible{outline:2px solid var(--mint);outline-offset:3px;}
+button{font:inherit;}
+::selection{background:var(--white);color:var(--black);}
+::-webkit-scrollbar{width:9px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:5px;}
+:focus-visible{outline:2px solid var(--white);outline-offset:3px;border-radius:2px;}
 
-body::before{content:'';position:fixed;top:-10%;left:50%;transform:translateX(-50%);width:1100px;height:800px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(77,255,195,0.05) 0%,transparent 68%);pointer-events:none;z-index:0;}
+/* faint fixed grid backdrop */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 78%);
+}
 
-.fade-up{opacity:0;transform:translateY(26px) scale(0.98);filter:blur(6px);transition:opacity .65s var(--ease),transform .65s var(--ease),filter .65s var(--ease);will-change:opacity,transform,filter;}
-.fade-up.in{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
-.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}.d5{transition-delay:.3s}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px;}
+@media(min-width:768px){.wrap{padding:0 40px;}}
 
-/* Card stagger — used within grids so items reveal one after another */
-.feature-grid .feature-card:nth-child(1){transition-delay:.05s;}
-.feature-grid .feature-card:nth-child(2){transition-delay:.13s;}
-.feature-grid .feature-card:nth-child(3){transition-delay:.21s;}
-.feature-grid .feature-card:nth-child(4){transition-delay:.29s;}
-.trust-grid .trust-card:nth-child(1){transition-delay:.05s;}
-.trust-grid .trust-card:nth-child(2){transition-delay:.13s;}
-.trust-grid .trust-card:nth-child(3){transition-delay:.21s;}
-.trust-grid .trust-card:nth-child(4){transition-delay:.29s;}
-.workflow-track .workflow-step:nth-child(1){transition-delay:.04s;}
-.workflow-track .workflow-step:nth-child(2){transition-delay:.10s;}
-.workflow-track .workflow-step:nth-child(3){transition-delay:.16s;}
-.workflow-track .workflow-step:nth-child(4){transition-delay:.22s;}
-.workflow-track .workflow-step:nth-child(5){transition-delay:.28s;}
-.workflow-track .workflow-step:nth-child(6){transition-delay:.34s;}
-.pain-list .pain-item:nth-child(1){transition-delay:.05s;}
-.pain-list .pain-item:nth-child(2){transition-delay:.14s;}
-.pain-list .pain-item:nth-child(3){transition-delay:.23s;}
+/* ============ REVEAL ============ */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);will-change:opacity,transform;}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv-1{transition-delay:.08s}.rv-2{transition-delay:.16s}.rv-3{transition-delay:.24s}.rv-4{transition-delay:.32s}.rv-5{transition-delay:.4s}.rv-6{transition-delay:.48s}
 
-/* Subtle floating for the dashboard-style panels */
-@keyframes panelFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
-.system-panel{animation:panelFloat 7s ease-in-out infinite;}
-
-@media (prefers-reduced-motion: reduce){
+@media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
-  .fade-up{opacity:1!important;transform:none!important;transition:none!important;}
+  .rv{opacity:1!important;transform:none!important;transition:none!important;}
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;}
 }
 
 .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;}
-.skip-link:focus{position:fixed;top:14px;left:14px;z-index:999;width:auto;height:auto;padding:14px 18px;background:var(--mint);color:var(--navy);font-family:var(--mono);font-size:13px;border-radius:var(--radius-sm);font-weight:500;}
+.skip-link:focus{position:fixed;top:14px;left:14px;z-index:999;width:auto;height:auto;padding:12px 18px;background:var(--white);color:var(--black);font-family:var(--mono);font-size:13px;border-radius:var(--radius-sm);font-weight:600;}
 
-.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-@media(max-width:768px){.wrap{padding:0 20px;}}
+/* ============ SHARED TYPE ============ */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;
+  color:var(--gray);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--gray-dim);flex-shrink:0;}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:200;background:rgba(7,11,20,0.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft);}
-.nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;justify-content:space-between;}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
-.brand-mark{width:34px;height:34px;flex-shrink:0;position:relative;}
-.brand-mark svg{width:100%;height:100%;}
-.brand-name{font-family:var(--mono);font-size:14.5px;color:var(--ink-dim);letter-spacing:0.01em;font-weight:500;}
-.nav-cta{display:inline-flex;align-items:center;gap:9px;background:var(--mint);color:#03110c;border:none;border-radius:var(--radius-sm);padding:10px 18px;font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:0.01em;cursor:pointer;transition:all .2s var(--ease);box-shadow:0 0 0 0 rgba(77,255,195,0);}
-.nav-cta:hover{background:#6dffd1;box-shadow:0 6px 24px -6px rgba(77,255,195,0.5);transform:translateY(-1px) scale(1.02);}
-@media(max-width:640px){.nav-inner{padding:0 18px;}.nav-cta{padding:9px 14px;font-size:12px;}.nav-cta .cta-sub{display:none;}}
+h2.section-title{
+  font-size:clamp(28px,4.4vw,46px);font-weight:700;color:var(--white);
+  letter-spacing:-0.03em;line-height:1.12;margin-bottom:18px;max-width:680px;
+}
+.section-lead{font-size:17px;color:var(--gray);line-height:1.7;max-width:560px;}
+.section-lead strong{color:var(--white-dim);font-weight:500;}
+.section-head{margin-bottom:56px;}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto;}
+.section-head.center .section-title{margin-left:auto;margin-right:auto;}
+.section-head.center .section-lead{margin-left:auto;margin-right:auto;}
+.section-head.center .eyebrow{justify-content:center;width:100%;}
+
+section{padding:96px 0;position:relative;z-index:1;}
+@media(min-width:768px){section{padding:140px 0;}}
+.divider{border-top:1px solid var(--line);}
+
+/* ============ NAV ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:300;
+  background:rgba(10,10,10,0.72);backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between;}
+@media(min-width:768px){.nav-inner{padding:0 40px;}}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-mark{width:26px;height:26px;flex-shrink:0;}
+.brand-name{font-size:15px;font-weight:700;color:var(--white);letter-spacing:-0.01em;}
+.nav-links{display:none;align-items:center;gap:34px;}
+.nav-links a{font-size:13.5px;color:var(--gray);transition:color .2s ease;position:relative;}
+.nav-links a:hover{color:var(--white);}
+@media(min-width:960px){.nav-links{display:flex;}}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--black);
+  border:none;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:600;
+  letter-spacing:-0.01em;cursor:pointer;transition:transform .2s var(--ease),background .2s ease;
+}
+.nav-cta:hover{transform:translateY(-1px) scale(1.02);background:#e8e8e8;}
+.nav-burger{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;
+  background:transparent;border:1px solid var(--line-strong);border-radius:8px;cursor:pointer;
+}
+@media(min-width:960px){.nav-burger{display:none;}}
+.nav-burger span{display:block;height:1px;background:var(--white-dim);margin:0 8px;transition:transform .25s ease,opacity .25s ease;}
+.nav-burger.open span:nth-child(1){transform:translateY(3px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-3px) rotate(-45deg);}
+.mobile-menu{
+  position:fixed;top:var(--nav-h);left:0;right:0;z-index:290;background:var(--black);
+  border-bottom:1px solid var(--line);padding:8px 24px 28px;
+  display:flex;flex-direction:column;gap:2px;
+  max-height:0;overflow:hidden;transition:max-height .35s var(--ease);
+}
+.mobile-menu.open{max-height:420px;}
+.mobile-menu a{padding:14px 4px;font-size:15px;color:var(--white-dim);border-bottom:1px solid var(--line);}
+.mobile-menu a:last-child{border-bottom:none;}
 
 main{position:relative;z-index:1;}
-section{padding:128px 0;}
-section.tight{padding:96px 0 0;}
-@media(max-width:768px){section{padding:84px 0;}}
 
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;color:var(--mint);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:22px;}
-.eyebrow::before{content:'';width:6px;height:6px;border-radius:1px;background:var(--mint);flex-shrink:0;transform:rotate(45deg);}
-.eyebrow.gold{color:var(--gold);}
-.eyebrow.gold::before{background:var(--gold);}
-
-h2.section-title{font-size:clamp(28px,3.6vw,42px);font-weight:700;color:var(--ink);letter-spacing:-0.025em;line-height:1.15;margin-bottom:18px;max-width:640px;}
-.section-lead{font-size:18px;color:var(--slate);line-height:1.7;max-width:560px;margin-bottom:56px;}
-.section-lead strong{color:var(--ink-dim);font-weight:500;}
-
-/* HERO */
-.hero{padding:calc(var(--nav-h) + 76px) 0 40px;}
-.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
-@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:52px;}}
-.hero-h1{font-size:clamp(32px,4.6vw,54px);font-weight:800;color:var(--ink);line-height:1.08;letter-spacing:-0.03em;margin-bottom:22px;}
-.hero-h1 .accent{color:var(--mint);}
-.hero-sub{font-size:18px;color:var(--slate);line-height:1.75;max-width:520px;margin-bottom:16px;}
-.hero-sub strong{color:var(--ink-dim);font-weight:500;}
-.hero-who{font-size:15px;color:var(--slate-dim);line-height:1.7;max-width:520px;margin-bottom:38px;}
-.hero-who strong{color:var(--slate);font-weight:500;}
-
-.cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:44px;}
-.cta-primary{display:inline-flex;align-items:center;gap:10px;background:var(--mint);color:#03110c;border:none;border-radius:var(--radius-sm);padding:17px 26px;font-family:var(--mono);font-size:14.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:all .22s var(--ease);box-shadow:0 8px 32px -8px rgba(77,255,195,0.35);}
-.cta-primary:hover{background:#6dffd1;box-shadow:0 12px 40px -6px rgba(77,255,195,0.5);transform:translateY(-2px) scale(1.015);}
+/* ============ HERO ============ */
+.hero{padding:calc(var(--nav-h) + 64px) 0 60px;}
+@media(min-width:768px){.hero{padding:calc(var(--nav-h) + 100px) 0 40px;}}
+.hero-inner{text-align:center;max-width:840px;margin:0 auto;}
+.hero-h1{
+  font-size:clamp(34px,7.2vw,72px);font-weight:800;color:var(--white);
+  line-height:1.04;letter-spacing:-0.04em;margin-bottom:24px;
+}
+.hero-h1 .dim{color:var(--gray-dim);}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--gray);line-height:1.7;max-width:600px;margin:0 auto 40px;}
+.hero-sub strong{color:var(--white-dim);font-weight:500;}
+.cta-row{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:22px;}
+.cta-primary{
+  display:inline-flex;align-items:center;gap:9px;background:var(--white);color:var(--black);
+  border:none;border-radius:100px;padding:16px 28px;font-size:14.5px;font-weight:700;
+  letter-spacing:-0.01em;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.cta-primary:hover{transform:translateY(-2px) scale(1.015);box-shadow:0 20px 50px -18px rgba(255,255,255,0.28);}
 .cta-primary .arrow{transition:transform .2s ease;}
 .cta-primary:hover .arrow{transform:translateX(3px);}
-.cta-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.03em;}
+.cta-secondary{
+  display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--white-dim);
+  border:1px solid var(--line-strong);border-radius:100px;padding:15px 26px;font-size:14.5px;
+  font-weight:600;cursor:pointer;transition:all .25s var(--ease);
+}
+.cta-secondary:hover{border-color:rgba(255,255,255,0.4);color:var(--white);background:rgba(255,255,255,0.03);transform:translateY(-2px);}
+.cta-note{font-family:var(--mono);font-size:11.5px;color:var(--gray-dim);letter-spacing:0.04em;}
 
-.cta-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink-dim);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px 25px;font-family:var(--mono);font-size:14.5px;font-weight:600;letter-spacing:0.01em;cursor:pointer;transition:all .22s var(--ease);}
-.cta-secondary:hover{border-color:var(--mint-soft);color:var(--ink);background:var(--mint-dim);transform:translateY(-2px) scale(1.015);}
-.cta-secondary .play-ico{width:16px;height:16px;color:var(--mint);flex-shrink:0;}
-@media(max-width:480px){.cta-secondary{padding:14px 20px;font-size:13px;}}
+/* hero flow diagram */
+.flow-wrap{margin-top:76px;position:relative;}
+.flow-svg{width:100%;height:auto;overflow:visible;}
+.flow-node-label{font-family:var(--mono);font-size:11px;fill:var(--gray);letter-spacing:0.03em;}
+.flow-node-label.strong{fill:var(--white-dim);}
+.flow-scroll-hint{margin-top:44px;display:flex;justify-content:center;}
+.scroll-hint-dot{width:22px;height:34px;border:1px solid var(--line-strong);border-radius:100px;display:flex;justify-content:center;padding-top:7px;}
+.scroll-hint-dot span{width:3px;height:6px;border-radius:2px;background:var(--gray);animation:scrollDot 2s ease-in-out infinite;}
+@keyframes scrollDot{0%{opacity:1;transform:translateY(0);}60%{opacity:0;transform:translateY(9px);}100%{opacity:0;transform:translateY(9px);}}
 
-.hero-tags{display:flex;flex-wrap:wrap;gap:9px;}
-.hero-tag{font-family:var(--mono);font-size:12px;color:var(--slate);border:1px solid var(--line);border-radius:100px;padding:7px 13px;letter-spacing:0.02em;}
+/* logo / capability strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0;}
+.strip-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;}
+.strip-item{font-family:var(--mono);font-size:12px;color:var(--gray-dim);letter-spacing:0.08em;text-transform:uppercase;}
 
-/* SYSTEM VISUAL (signature element) */
-.system-panel{position:relative;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--navy-panel),var(--navy-panel-2));overflow:hidden;box-shadow:0 40px 100px -30px rgba(0,0,0,0.7);}
-.panel-chrome{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line-soft);}
-.chrome-dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
-.chrome-dot.on{background:var(--mint);box-shadow:0 0 8px rgba(77,255,195,0.5);}
-.panel-chrome-label{font-family:var(--mono);font-size:11px;color:var(--slate-dim);letter-spacing:0.06em;margin-left:6px;}
-.panel-body{padding:22px;}
-.panel-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 15px;border-radius:8px;background:rgba(255,255,255,0.015);border:1px solid var(--line-soft);margin-bottom:9px;}
-.panel-row:last-child{margin-bottom:0;}
-.panel-row-left{display:flex;align-items:center;gap:11px;min-width:0;}
-.panel-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:var(--mint);}
-.panel-dot.gold{background:var(--gold);}
-.panel-dot.slate{background:var(--slate-dim);}
-.panel-row-title{font-size:13.5px;color:var(--ink-dim);font-weight:500;}
-.panel-row-sub{font-family:var(--mono);font-size:11px;color:var(--slate-dim);}
-.panel-row-val{font-family:var(--mono);font-size:12.5px;color:var(--slate);white-space:nowrap;}
-.panel-row-val.mint{color:var(--mint);}
-.panel-row-val.gold{color:var(--gold);}
-.panel-footer{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11px;color:var(--slate-dim);letter-spacing:0.04em;}
+/* ============ PROBLEM ============ */
+.problem-grid{display:grid;gap:52px;}
+@media(min-width:900px){.problem-grid{grid-template-columns:0.9fr 1.1fr;align-items:start;gap:72px;}}
+.pain-list{display:flex;flex-direction:column;}
+.pain-item{
+  display:grid;grid-template-columns:auto 1fr;gap:20px;padding:26px 0;border-top:1px solid var(--line);
+}
+.pain-item:last-child{border-bottom:1px solid var(--line);}
+.pain-num{font-family:var(--mono);font-size:12px;color:var(--gray-dim);padding-top:2px;}
+.pain-item h4{font-size:17px;color:var(--white);font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;}
+.pain-item p{font-size:14.5px;color:var(--gray);line-height:1.7;max-width:480px;}
 
-/* PROBLEM: scattered chaos visual */
-.problem-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:64px;align-items:center;}
-@media(max-width:980px){.problem-grid{grid-template-columns:1fr;gap:48px;}.problem-grid .chaos-wrap{order:2;}}
-.pain-list{display:flex;flex-direction:column;gap:22px;}
-.pain-item{display:flex;gap:16px;align-items:flex-start;}
-.pain-mark{flex-shrink:0;width:26px;height:26px;border-radius:6px;border:1px solid rgba(240,192,96,0.3);background:var(--gold-dim);display:flex;align-items:center;justify-content:center;margin-top:2px;}
-.pain-mark svg{width:13px;height:13px;color:var(--gold);}
-.pain-item h4{font-size:16px;color:var(--ink-dim);font-weight:600;margin-bottom:4px;}
-.pain-item p{font-size:14.5px;color:var(--slate);line-height:1.65;}
+/* ============ SYSTEM PANEL (solution + included visuals) ============ */
+.system-card{
+  border:1px solid var(--line-strong);border-radius:var(--radius);background:var(--panel);
+  overflow:hidden;
+}
+.system-chrome{display:flex;align-items:center;gap:9px;padding:16px 20px;border-bottom:1px solid var(--line);}
+.chrome-dot{width:7px;height:7px;border-radius:50%;background:var(--line-strong);}
+.chrome-label{font-family:var(--mono);font-size:11px;color:var(--gray-dim);letter-spacing:0.06em;margin-left:4px;}
+.system-body{padding:26px;}
+.stage-row{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 16px;
+  border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:10px;background:var(--panel-2);
+}
+.stage-row:last-child{margin-bottom:0;}
+.stage-left{display:flex;align-items:center;gap:12px;min-width:0;}
+.stage-dot{width:6px;height:6px;border-radius:50%;background:var(--white);flex-shrink:0;}
+.stage-dot.off{background:var(--gray-dim);}
+.stage-title{font-size:13.5px;color:var(--white-dim);font-weight:500;}
+.stage-val{font-family:var(--mono);font-size:11.5px;color:var(--gray);white-space:nowrap;}
+.stage-val.on{color:var(--white);}
 
-.chaos-wrap{position:relative;height:420px;display:flex;align-items:center;justify-content:center;}
-.chaos-chip{position:absolute;font-family:var(--mono);font-size:12px;color:var(--slate);background:var(--navy-panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 12px 30px -10px rgba(0,0,0,0.6);}
-.chaos-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:0.6;}
-.chaos-line{position:absolute;stroke:var(--line);stroke-width:1.3;stroke-dasharray:3 5;fill:none;}
-.chaos-center{position:absolute;width:64px;height:64px;border-radius:50%;background:var(--gold-dim);border:1px dashed rgba(240,192,96,0.35);display:flex;align-items:center;justify-content:center;}
-.chaos-center svg{width:24px;height:24px;color:var(--gold);opacity:0.75;}
-
-/* SOLUTION visual reused system-panel, plus flow arrow */
-.solution-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center;}
-@media(max-width:980px){.solution-grid{grid-template-columns:1fr;gap:48px;}}
-.solution-note{margin-top:28px;padding:18px 20px;border-left:2px solid var(--mint);background:var(--mint-dim);border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink-dim);line-height:1.7;}
-
-/* FEATURES */
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
-@media(max-width:900px){.feature-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.feature-grid{grid-template-columns:1fr;}}
-.feature-card{background:var(--navy-panel);padding:30px 26px;transition:background .2s ease;}
-.feature-card:hover{background:var(--navy-panel-2);}
-.feature-icon{width:36px;height:36px;border-radius:8px;background:var(--mint-dim);border:1px solid rgba(77,255,195,0.18);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-.feature-icon svg{width:17px;height:17px;color:var(--mint);}
-.feature-card h4{font-size:15.5px;color:var(--ink-dim);font-weight:600;margin-bottom:7px;letter-spacing:-0.01em;}
-.feature-card p{font-size:13.5px;color:var(--slate);line-height:1.65;}
-
-/* WORKFLOW */
-.workflow-track{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding-bottom:8px;margin:0 -4px;}
-.workflow-step{flex:1 1 0;min-width:150px;position:relative;padding:0 20px;}
-.workflow-step:not(:last-child)::after{content:'';position:absolute;top:22px;right:-4px;width:24px;height:1px;background:var(--line);}
-.workflow-step:not(:last-child)::before{content:'';position:absolute;top:19px;right:2px;width:6px;height:6px;border-top:1px solid var(--slate-dim);border-right:1px solid var(--slate-dim);transform:rotate(45deg);}
-.wf-num{font-family:var(--mono);font-size:12px;color:var(--mint);border:1px solid var(--mint-soft);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0;}
-.workflow-step h5{font-size:14.5px;color:var(--ink-dim);font-weight:600;margin-bottom:6px;}
-.workflow-step p{font-size:12.5px;color:var(--slate-dim);line-height:1.55;}
-@media(max-width:900px){
-  .workflow-track{flex-direction:column;gap:22px;}
-  .workflow-step{padding:0;}
-  .workflow-step:not(:last-child)::after,.workflow-step:not(:last-child)::before{display:none;}
+.solution-grid{display:grid;gap:56px;}
+@media(min-width:960px){.solution-grid{grid-template-columns:1fr 1fr;align-items:center;gap:72px;}}
+.solution-note{
+  margin-top:26px;padding:18px 20px;border-left:2px solid var(--white);background:rgba(255,255,255,0.03);
+  border-radius:0 8px 8px 0;font-size:14.5px;color:var(--white-dim);line-height:1.7;
 }
 
-/* FREE VIDEO OFFER */
-.free-video-card{position:relative;border:1px solid var(--mint-soft);border-radius:14px;background:linear-gradient(180deg,var(--navy-panel),var(--navy-panel-2));overflow:hidden;padding:64px 60px;text-align:center;box-shadow:0 40px 100px -30px rgba(0,0,0,0.7);}
-.free-video-card::before{content:'';position:absolute;top:-45%;left:50%;transform:translateX(-50%);width:640px;height:420px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(77,255,195,0.09) 0%,transparent 70%);pointer-events:none;}
-.free-video-card .eyebrow{justify-content:center;}
-.free-video-card .section-title{margin:0 auto 16px;text-align:center;max-width:600px;}
-.free-video-card .section-lead{margin:0 auto 22px;text-align:center;max-width:560px;}
-.free-video-fine{position:relative;font-family:var(--mono);font-size:12.5px;color:var(--slate-dim);line-height:1.85;letter-spacing:0.01em;margin-bottom:34px;}
+/* ============ INCLUDED GRID ============ */
+.feature-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+@media(min-width:640px){.feature-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1000px){.feature-grid{grid-template-columns:repeat(3,1fr);}}
+.feature-card{background:var(--panel);padding:32px 28px;transition:background .25s ease;}
+.feature-card:hover{background:var(--panel-2);}
+.feature-icon{width:38px;height:38px;border-radius:9px;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.feature-icon svg{width:17px;height:17px;color:var(--white-dim);}
+.feature-card h4{font-size:16px;color:var(--white);font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;}
+.feature-card p{font-size:13.5px;color:var(--gray);line-height:1.65;}
 
-/* PRICING BADGE */
-.pricing-badge-row{display:flex;justify-content:center;}
-.pricing-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:var(--gold);border:1px solid rgba(240,192,96,0.35);background:var(--gold-dim);border-radius:100px;padding:8px 16px;letter-spacing:0.03em;}
+/* ============ PROCESS ============ */
+.process-track{display:grid;gap:0;grid-template-columns:1fr;}
+@media(min-width:900px){.process-track{grid-template-columns:repeat(4,1fr);}}
+.process-step{position:relative;padding:28px 0;border-top:1px solid var(--line);}
+@media(min-width:900px){
+  .process-step{padding:0 28px 0 0;border-top:none;border-left:1px solid var(--line);}
+  .process-step:first-child{border-left:none;padding-left:0;}
+  .process-step:not(:first-child){padding-left:28px;}
+}
+.process-step:last-child{border-bottom:1px solid var(--line);}
+@media(min-width:900px){.process-step:last-child{border-bottom:none;}}
+.proc-num{font-family:var(--mono);font-size:13px;color:var(--gray-dim);margin-bottom:18px;letter-spacing:0.04em;}
+.process-step h5{font-size:16px;color:var(--white);font-weight:600;margin-bottom:9px;letter-spacing:-0.01em;}
+.process-step p{font-size:13.5px;color:var(--gray);line-height:1.65;max-width:260px;}
 
-/* OFFER */
-.offer-wrap{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:stretch;}
-.offer-card{max-width:520px;width:100%;border:1px solid rgba(240,192,96,0.28);border-radius:14px;background:linear-gradient(180deg,var(--navy-panel),var(--navy-panel-2));overflow:hidden;position:relative;box-shadow:0 40px 100px -30px rgba(0,0,0,0.7);display:flex;flex-direction:column;}
-.offer-top{padding:38px 40px 30px;border-bottom:1px solid var(--line-soft);text-align:center;}
-.offer-tag{display:inline-flex;font-family:var(--mono);font-size:11.5px;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(240,192,96,0.3);border-radius:100px;padding:6px 14px;margin-bottom:22px;}
-.offer-price{font-size:clamp(44px,7vw,60px);font-weight:800;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
-.offer-price sup{font-size:22px;font-weight:600;top:-1.4em;color:var(--ink-dim);}
-.offer-price-note{font-family:var(--mono);font-size:13px;color:var(--slate-dim);margin-top:10px;letter-spacing:0.02em;}
-.offer-body{padding:30px 40px 36px;display:flex;flex-direction:column;flex:1;}
-.offer-list{display:flex;flex-direction:column;gap:15px;margin-bottom:28px;}
-.offer-list li{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:var(--ink-dim);line-height:1.6;}
-.offer-list li svg{width:16px;height:16px;color:var(--mint);flex-shrink:0;margin-top:3px;}
-.offer-guarantee{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:var(--mint-dim);border:1px solid rgba(77,255,195,0.18);border-radius:8px;margin-bottom:26px;}
-.offer-guarantee svg{width:20px;height:20px;color:var(--mint);flex-shrink:0;margin-top:1px;}
-.offer-guarantee h5{font-size:14px;color:var(--ink-dim);font-weight:600;margin-bottom:4px;}
-.offer-guarantee p{font-size:13px;color:var(--slate);line-height:1.6;}
-.offer-fine{font-size:12.5px;color:var(--slate-dim);line-height:1.6;text-align:center;margin-top:18px;}
-.offer-body .cta-primary{width:100%;justify-content:center;}
+/* ============ WHY ============ */
+.trust-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+@media(min-width:640px){.trust-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1000px){.trust-grid{grid-template-columns:repeat(4,1fr);}}
+.trust-card{background:var(--panel);padding:30px 26px;}
+.trust-card svg{width:19px;height:19px;color:var(--white-dim);margin-bottom:18px;}
+.trust-card h4{font-size:14.5px;color:var(--white);font-weight:600;margin-bottom:9px;letter-spacing:-0.01em;}
+.trust-card p{font-size:13px;color:var(--gray);line-height:1.65;}
 
-/* TRUST */
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
-@media(max-width:900px){.trust-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.trust-grid{grid-template-columns:1fr;}}
-.trust-card{background:var(--navy-panel);padding:28px 24px;}
-.trust-card svg{width:20px;height:20px;color:var(--mint);margin-bottom:16px;}
-.trust-card h4{font-size:14.5px;color:var(--ink-dim);font-weight:600;margin-bottom:8px;}
-.trust-card p{font-size:13px;color:var(--slate);line-height:1.65;}
+/* ============ INDUSTRIES ============ */
+.industry-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+@media(min-width:640px){.industry-grid{grid-template-columns:repeat(2,1fr);}}
+.industry-card{background:var(--panel);padding:36px 30px;position:relative;transition:background .25s ease;}
+.industry-card:hover{background:var(--panel-2);}
+.industry-num{font-family:var(--mono);font-size:11.5px;color:var(--gray-dim);letter-spacing:0.06em;margin-bottom:22px;display:block;}
+.industry-card h4{font-size:19px;color:var(--white);font-weight:700;margin-bottom:10px;letter-spacing:-0.02em;}
+.industry-card p{font-size:14px;color:var(--gray);line-height:1.7;max-width:400px;}
 
-/* FINAL CTA */
-.final-cta{max-width:760px;margin:0 auto;text-align:center;padding:100px 0 140px;}
-.final-h2{font-size:clamp(32px,5.5vw,56px);font-weight:800;color:var(--ink);letter-spacing:-0.03em;line-height:1.1;margin-bottom:20px;}
-.final-h2 .accent{color:var(--mint);}
-.final-sub{font-size:17.5px;color:var(--slate);line-height:1.75;max-width:520px;margin:0 auto 40px;}
-.final-sub strong{color:var(--ink-dim);font-weight:500;}
-.final-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
-.final-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.03em;}
+/* ============ FAQ ============ */
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border-top:1px solid var(--line);}
+.faq-item:last-child{border-bottom:1px solid var(--line);}
+.faq-item summary{
+  list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:24px 4px;cursor:pointer;font-size:16px;color:var(--white-dim);font-weight:500;letter-spacing:-0.005em;
+  transition:color .2s ease;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary:hover{color:var(--white);}
+.faq-plus{position:relative;width:18px;height:18px;flex-shrink:0;}
+.faq-plus::before,.faq-plus::after{content:'';position:absolute;background:var(--gray);transition:transform .3s var(--ease),opacity .3s var(--ease);}
+.faq-plus::before{top:50%;left:0;width:100%;height:1px;transform:translateY(-50%);}
+.faq-plus::after{left:50%;top:0;height:100%;width:1px;transform:translateX(-50%);}
+.faq-item[open] .faq-plus::after{opacity:0;transform:translateX(-50%) rotate(90deg);}
+.faq-answer{padding:0 4px 26px;font-size:14.5px;color:var(--gray);line-height:1.75;max-width:640px;}
 
-footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
-.footer-text{font-family:var(--mono);font-size:11.5px;color:var(--slate-dim);line-height:2;}
-.footer-text a{color:var(--mint);}
+/* ============ FINAL CTA ============ */
+.final-cta{max-width:760px;margin:0 auto;text-align:center;}
+.final-h2{font-size:clamp(30px,5.6vw,54px);font-weight:800;color:var(--white);letter-spacing:-0.035em;line-height:1.1;margin-bottom:20px;}
+.final-h2 .dim{color:var(--gray-dim);}
+.final-sub{font-size:17px;color:var(--gray);line-height:1.75;max-width:520px;margin:0 auto 40px;}
+.final-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:56px 0 32px;}
+.footer-grid{display:grid;gap:40px;margin-bottom:48px;}
+@media(min-width:768px){.footer-grid{grid-template-columns:1.4fr repeat(3,1fr);gap:24px;}}
+.footer-brand p{font-size:13.5px;color:var(--gray);line-height:1.7;max-width:280px;margin-top:14px;}
+.footer-col h6{font-family:var(--mono);font-size:11px;color:var(--gray-dim);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;}
+.footer-col a{display:block;font-size:13.5px;color:var(--gray);padding:6px 0;transition:color .2s ease;}
+.footer-col a:hover{color:var(--white);}
+.footer-bottom{display:flex;flex-direction:column;gap:14px;padding-top:28px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--gray-dim);letter-spacing:0.02em;}
+@media(min-width:768px){.footer-bottom{flex-direction:row;justify-content:space-between;align-items:center;}}
 </style>
 </head>
 <body>
@@ -248,129 +309,152 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
 
 <nav>
   <div class="nav-inner">
-    <a href="#top" class="brand" aria-label="AutFlow Studio">
+    <a href="#top" class="brand" aria-label="AutFlow Studio home">
       <span class="brand-mark">
-        <svg viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="24 1 46 13 46 40 24 52 2 40 2 13" stroke="#4dffc3" stroke-width="2.4" fill="none"/>
-          <path d="M24 15 L33 20 V32 L24 37 L15 32 V20 Z" stroke="#4dffc3" stroke-width="1.6" fill="none" opacity="0.55"/>
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="15" stroke="#fafafa" stroke-width="1.4"/>
+          <path d="M9 20 L15 12 L19 17 L23 10" stroke="#fafafa" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="23" cy="10" r="1.6" fill="#fafafa"/>
         </svg>
       </span>
       <span class="brand-name">AutFlow Studio</span>
     </a>
-    <button class="nav-cta" id="navCtaBtn" type="button" data-cta>
-      Start a Project <span class="cta-sub">→</span>
-    </button>
+
+    <div class="nav-links">
+      <a href="#solution">System</a>
+      <a href="#included">Services</a>
+      <a href="#process">Process</a>
+      <a href="#industries">Industries</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-cta" type="button" data-cta>Book a Strategy Call</button>
+      <button class="nav-burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#solution">System</a>
+  <a href="#included">Services</a>
+  <a href="#process">Process</a>
+  <a href="#industries">Industries</a>
+  <a href="#faq">FAQ</a>
+</div>
 
 <main id="main">
 
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <span class="eyebrow fade-up">Motion Design for SaaS, AI &amp; Tech Brands</span>
-          <h1 class="hero-h1 fade-up d1">Turn complex products into visuals people <span class="accent">instantly understand.</span></h1>
-          <p class="hero-sub fade-up d2">We're a premium motion graphics studio for <strong>SaaS founders</strong>, <strong>AI startups</strong>, and growing brands. We turn dense ideas and busy dashboards into visual stories that make people understand — and want — what you've built, in seconds.</p>
-          <p class="hero-who fade-up d2">Built for <strong>SaaS companies</strong>, <strong>AI startups</strong>, <strong>tech companies</strong>, and <strong>marketing agencies</strong> who need a launch, a demo, or a pitch to land the first time — not the third.</p>
-          <div class="cta-row fade-up d3">
-            <button class="cta-primary" type="button" data-cta>
-              Start a Project <span class="arrow">→</span>
-            </button>
-            <a class="cta-secondary" href="https://instagram.com/r0shd" target="_blank" rel="noopener">
-              <svg class="play-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              View Portfolio on Instagram
-            </a>
-          </div>
-          <p class="cta-note fade-up d3" style="margin-bottom:38px;display:block;">Full reels and client work are posted on our Instagram — @r0shd</p>
-          <div class="hero-tags fade-up d4">
-            <span class="hero-tag">Product Demos</span>
-            <span class="hero-tag">Explainer Videos</span>
-            <span class="hero-tag">Launch Films</span>
-            <span class="hero-tag">Brand Motion</span>
-          </div>
+      <div class="hero-inner">
+        <span class="eyebrow rv" style="justify-content:center;">Conversion Systems Agency</span>
+        <h1 class="hero-h1 rv rv-1">Visitors are cheap. <span class="dim">Customers are the point.</span></h1>
+        <p class="hero-sub rv rv-2">AutFlow Studio designs and builds the complete system behind your growth — the page that convinces, the ad that stops the scroll, and the automation that books the call while you're doing something else.</p>
+        <div class="cta-row rv rv-3">
+          <button class="cta-primary" type="button" data-cta>Book a Strategy Call <span class="arrow">→</span></button>
+          <button class="cta-secondary" type="button" data-scroll="#solution">See how it works</button>
         </div>
+        <p class="cta-note rv rv-3">No generic templates. Every system is built around one offer — yours.</p>
+      </div>
 
-        <div class="fade-up d3">
-          <div class="system-panel" role="img" aria-label="AutFlow Studio production panel showing a project moving from concept through delivery">
-            <div class="panel-chrome">
-              <span class="chrome-dot on"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-              <span class="panel-chrome-label">// your product, in motion</span>
-            </div>
-            <div class="panel-body">
-              <div class="panel-row">
-                <div class="panel-row-left"><span class="panel-dot"></span><span class="panel-row-title">Concept</span></div>
-                <span class="panel-row-val mint">Locked</span>
-              </div>
-              <div class="panel-row">
-                <div class="panel-row-left"><span class="panel-dot"></span><span class="panel-row-title">Script</span></div>
-                <span class="panel-row-val">Approved</span>
-              </div>
-              <div class="panel-row">
-                <div class="panel-row-left"><span class="panel-dot gold"></span><span class="panel-row-title">Storyboard</span></div>
-                <span class="panel-row-val gold">In review</span>
-              </div>
-              <div class="panel-row">
-                <div class="panel-row-left"><span class="panel-dot slate"></span><span class="panel-row-title">Animation</span></div>
-                <span class="panel-row-val">Rendering</span>
-              </div>
-              <div class="panel-row">
-                <div class="panel-row-left"><span class="panel-dot"></span><span class="panel-row-title">Delivery</span></div>
-                <span class="panel-row-val">On schedule</span>
-              </div>
-            </div>
-            <div class="panel-footer">
-              <span>Built around your product</span>
-              <span>Delivered ready to publish</span>
-            </div>
-          </div>
+      <div class="flow-wrap rv rv-4" aria-hidden="true">
+        <svg class="flow-svg" viewBox="0 0 1040 200" preserveAspectRatio="xMidYMid meet">
+          <!-- connecting line -->
+          <path id="flowPath" d="M 60 100 L 270 100 L 480 100 L 690 100 L 900 100" stroke="rgba(255,255,255,0.14)" stroke-width="1.2" fill="none"/>
+          <!-- nodes -->
+          <g>
+            <circle cx="60" cy="100" r="5" fill="#fafafa"/>
+            <text x="60" y="140" text-anchor="middle" class="flow-node-label">VISITOR</text>
+          </g>
+          <g>
+            <circle cx="270" cy="100" r="5" fill="none" stroke="#fafafa" stroke-width="1.3"/>
+            <text x="270" y="140" text-anchor="middle" class="flow-node-label">LANDING PAGE</text>
+          </g>
+          <g>
+            <circle cx="480" cy="100" r="5" fill="none" stroke="#fafafa" stroke-width="1.3"/>
+            <text x="480" y="140" text-anchor="middle" class="flow-node-label">LEAD CAPTURE</text>
+          </g>
+          <g>
+            <circle cx="690" cy="100" r="5" fill="none" stroke="#fafafa" stroke-width="1.3"/>
+            <text x="690" y="140" text-anchor="middle" class="flow-node-label">BOOKING</text>
+          </g>
+          <g>
+            <circle cx="900" cy="100" r="6.5" fill="#fafafa"/>
+            <text x="900" y="140" text-anchor="middle" class="flow-node-label strong">CUSTOMER</text>
+          </g>
+
+          <!-- traveling dots -->
+          <circle r="3.2" fill="#fafafa">
+            <animateMotion dur="4s" repeatCount="indefinite" begin="0s" path="M 60 100 L 270 100 L 480 100 L 690 100 L 900 100"/>
+            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.9;1" dur="4s" repeatCount="indefinite"/>
+          </circle>
+          <circle r="3.2" fill="#fafafa">
+            <animateMotion dur="4s" repeatCount="indefinite" begin="1.3s" path="M 60 100 L 270 100 L 480 100 L 690 100 L 900 100"/>
+            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.9;1" dur="4s" repeatCount="indefinite" begin="1.3s"/>
+          </circle>
+          <circle r="3.2" fill="#fafafa">
+            <animateMotion dur="4s" repeatCount="indefinite" begin="2.6s" path="M 60 100 L 270 100 L 480 100 L 690 100 L 900 100"/>
+            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.9;1" dur="4s" repeatCount="indefinite" begin="2.6s"/>
+          </circle>
+        </svg>
+        <div class="flow-scroll-hint">
+          <div class="scroll-hint-dot"><span></span></div>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- CAPABILITY STRIP -->
+  <div class="strip">
+    <div class="wrap">
+      <div class="strip-row">
+        <span class="strip-item">Landing Pages</span>
+        <span class="strip-item">Motion Ads</span>
+        <span class="strip-item">Lead Capture</span>
+        <span class="strip-item">Booking Funnels</span>
+        <span class="strip-item">Automation</span>
+        <span class="strip-item">AI Workflows</span>
+      </div>
+    </div>
+  </div>
 
   <!-- PROBLEM -->
   <section id="problem">
     <div class="wrap">
       <div class="problem-grid">
         <div>
-          <span class="eyebrow gold fade-up">The Problem</span>
-          <h2 class="section-title fade-up d1">Great products still lose people in the first ten seconds.</h2>
-          <p class="section-lead fade-up d1">Nobody reads your documentation before deciding whether to care. They scroll, they glance, they decide. If your product needs a paragraph to explain, you're losing people who would've said yes — <strong>if they'd only understood it fast enough</strong>.</p>
-          <div class="pain-list">
-            <div class="pain-item fade-up">
-              <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="0.5" fill="currentColor"/><path d="M10.3 3.9 2.5 17.5A1.5 1.5 0 0 0 3.8 20h16.4a1.5 1.5 0 0 0 1.3-2.5L13.7 3.9a1.5 1.5 0 0 0-2.6 0Z"/></svg></span>
-              <div><h4>Your product is smarter than your pitch</h4><p>Dense features and technical depth don't translate through a static screenshot or a wall of bullet points.</p></div>
-            </div>
-            <div class="pain-item fade-up">
-              <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="0.5" fill="currentColor"/><path d="M10.3 3.9 2.5 17.5A1.5 1.5 0 0 0 3.8 20h16.4a1.5 1.5 0 0 0 1.3-2.5L13.7 3.9a1.5 1.5 0 0 0-2.6 0Z"/></svg></span>
-              <div><h4>Visitors decide before they read</h4><p>Investors, customers and hiring panels form an impression in seconds — long before anyone gets to your copy.</p></div>
-            </div>
-            <div class="pain-item fade-up">
-              <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="8" x2="12" y2="13"/><circle cx="12" cy="16.5" r="0.5" fill="currentColor"/><path d="M10.3 3.9 2.5 17.5A1.5 1.5 0 0 0 3.8 20h16.4a1.5 1.5 0 0 0 1.3-2.5L13.7 3.9a1.5 1.5 0 0 0-2.6 0Z"/></svg></span>
-              <div><h4>Screenshots can't carry momentum</h4><p>A launch, a demo, a pitch deck — they all need something that moves, builds, and lands. Stills just sit there.</p></div>
-            </div>
-          </div>
+          <span class="eyebrow rv">The Problem</span>
+          <h2 class="section-title rv rv-1">Traffic isn't your bottleneck. What happens after the click is.</h2>
+          <p class="section-lead rv rv-1">Most businesses spend their budget getting people to a website and stop there. The page loads, the visitor looks around, and <strong>nothing captures them, follows up with them, or gets them on a call</strong>. That's not a marketing problem. It's a missing system.</p>
         </div>
 
-        <div class="chaos-wrap fade-up d2" aria-hidden="true">
-          <svg width="100%" height="100%" viewBox="0 0 380 420" style="position:absolute;inset:0;">
-            <line class="chaos-line" x1="70" y1="70" x2="190" y2="210"/>
-            <line class="chaos-line" x1="310" y1="60" x2="190" y2="210"/>
-            <line class="chaos-line" x1="40" y1="220" x2="190" y2="210"/>
-            <line class="chaos-line" x1="330" y1="230" x2="190" y2="210"/>
-            <line class="chaos-line" x1="90" y1="350" x2="190" y2="210"/>
-            <line class="chaos-line" x1="290" y1="360" x2="190" y2="210"/>
-          </svg>
-          <span class="chaos-chip" style="top:38px;left:14px;transform:rotate(-4deg);"><span class="dot"></span>Feature list</span>
-          <span class="chaos-chip" style="top:22px;right:10px;transform:rotate(3deg);"><span class="dot"></span>Product screenshots</span>
-          <span class="chaos-chip" style="top:196px;left:-4px;transform:rotate(2deg);"><span class="dot"></span>Pitch deck</span>
-          <span class="chaos-chip" style="top:210px;right:-8px;transform:rotate(-3deg);"><span class="dot"></span>Onboarding docs</span>
-          <span class="chaos-chip" style="bottom:36px;left:20px;transform:rotate(3deg);"><span class="dot"></span>Landing page copy</span>
-          <span class="chaos-chip" style="bottom:24px;right:14px;transform:rotate(-2deg);"><span class="dot"></span>Launch announcement</span>
-          <div class="chaos-center">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+        <div class="pain-list">
+          <div class="pain-item rv rv-1">
+            <span class="pain-num">01</span>
+            <div>
+              <h4>The website has one job: exist</h4>
+              <p>It describes the business instead of moving someone toward a decision. There's no path from "interested" to "booked."</p>
+            </div>
+          </div>
+          <div class="pain-item rv rv-2">
+            <span class="pain-num">02</span>
+            <div>
+              <h4>Leads arrive and then go quiet</h4>
+              <p>A form gets submitted, an inbox gets a notification, and by the time anyone replies, the moment of interest has already passed.</p>
+            </div>
+          </div>
+          <div class="pain-item rv rv-3">
+            <span class="pain-num">03</span>
+            <div>
+              <h4>Follow-up depends on someone remembering</h4>
+              <p>Without automation, every lead relies on a human being available, organized, and fast — every single time. That doesn't scale.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -381,166 +465,209 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
   <section id="solution">
     <div class="wrap">
       <div class="solution-grid">
-        <div class="fade-up" style="order:2;">
-          <div class="system-panel" role="img" aria-label="AutFlow Studio process turning a product idea into a finished video">
-            <div class="panel-chrome">
-              <span class="chrome-dot on"></span><span class="chrome-dot on"></span><span class="chrome-dot on"></span>
-              <span class="panel-chrome-label">// autflow studio — the story</span>
-            </div>
-            <div class="panel-body">
-              <div class="panel-row"><div class="panel-row-left"><span class="panel-dot"></span><span class="panel-row-title">Your idea</span></div><span class="panel-row-sub">→ Story</span></div>
-              <div class="panel-row"><div class="panel-row-left"><span class="panel-dot"></span><span class="panel-row-title">Story</span></div><span class="panel-row-sub">→ Script &amp; storyboard</span></div>
-              <div class="panel-row"><div class="panel-row-left"><span class="panel-dot gold"></span><span class="panel-row-title">Storyboard</span></div><span class="panel-row-sub">→ Motion design</span></div>
-              <div class="panel-row"><div class="panel-row-left"><span class="panel-dot gold"></span><span class="panel-row-title">Motion design</span></div><span class="panel-row-sub">→ Finished video</span></div>
-              <div class="panel-row"><div class="panel-row-left"><span class="panel-dot slate"></span><span class="panel-row-title">Finished video</span></div><span class="panel-row-sub">People get it, instantly</span></div>
-            </div>
-            <div class="panel-footer"><span>One clear story</span><span>Built for your product</span></div>
-          </div>
+        <div class="rv">
+          <span class="eyebrow">The System</span>
+          <h2 class="section-title">The AutFlow Conversion System</h2>
+          <p class="section-lead" style="margin-bottom:0;">One connected system replaces the disconnected mess of a website, a form, and an inbox. Every stage is built to hand the visitor cleanly to the next one — until they're a booked, qualified customer.</p>
+          <div class="solution-note">We're not selling a website. We're selling <strong>what happens after someone lands on it.</strong></div>
         </div>
 
-        <div style="order:1;">
-          <span class="eyebrow fade-up">The Solution</span>
-          <h2 class="section-title fade-up d1">Motion turns explanation into experience.</h2>
-          <p class="section-lead fade-up d1" style="margin-bottom:0;">Custom motion graphics take your most complicated idea — a workflow, a model, a dashboard — and turn it into something anyone can watch, follow, and immediately get. No jargon to decode, no docs to read first.</p>
-          <div class="solution-note fade-up d2">
-            We don't sell animation techniques or software. We sell the moment a visitor watches ten seconds of your video and finally says <strong>"oh — that's what it does."</strong>
+        <div class="rv rv-2">
+          <div class="system-card">
+            <div class="system-chrome">
+              <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+              <span class="chrome-label">// conversion_system.status</span>
+            </div>
+            <div class="system-body">
+              <div class="stage-row">
+                <div class="stage-left"><span class="stage-dot"></span><span class="stage-title">Attract</span></div>
+                <span class="stage-val on">Live</span>
+              </div>
+              <div class="stage-row">
+                <div class="stage-left"><span class="stage-dot"></span><span class="stage-title">Convert — Landing Page</span></div>
+                <span class="stage-val on">Live</span>
+              </div>
+              <div class="stage-row">
+                <div class="stage-left"><span class="stage-dot"></span><span class="stage-title">Capture — Lead System</span></div>
+                <span class="stage-val on">Live</span>
+              </div>
+              <div class="stage-row">
+                <div class="stage-left"><span class="stage-dot"></span><span class="stage-title">Book — Funnel</span></div>
+                <span class="stage-val on">Live</span>
+              </div>
+              <div class="stage-row">
+                <div class="stage-left"><span class="stage-dot off"></span><span class="stage-title">Automate — Follow-up</span></div>
+                <span class="stage-val">Running 24/7</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services">
+  <!-- WHAT'S INCLUDED -->
+  <section id="included">
     <div class="wrap">
-      <span class="eyebrow fade-up">What We Make</span>
-      <h2 class="section-title fade-up d1">Built around one job: make people understand you faster.</h2>
-      <p class="section-lead fade-up d1">Every project starts with the outcome — a landing page that converts, a launch that lands, a pitch that clicks — and works backward to the video.</p>
+      <div class="section-head">
+        <span class="eyebrow rv">What's Included</span>
+        <h2 class="section-title rv rv-1">Six pieces. One system.</h2>
+        <p class="section-lead rv rv-1">Every project draws from the same toolkit — assembled around your offer, not a template.</p>
+      </div>
 
       <div class="feature-grid">
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 6l2.5-3h13L21 6"/></svg></span>
-          <h4>Product Demo Videos</h4>
-          <p>Show your product doing the thing, instead of describing it in slides — the fastest way to move a visitor from confused to convinced.</p>
+        <div class="feature-card rv">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 14h5"/></svg></span>
+          <h4>Landing Pages</h4>
+          <p>Built to move one visitor toward one decision — not to look impressive in a portfolio.</p>
         </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l1.5 1.5L15 6M9 15l1.5 1.5L15 12"/></svg></span>
-          <h4>Explainer Videos</h4>
-          <p>Turn a complicated idea, model, or workflow into sixty seconds anyone can follow — no technical background required.</p>
+        <div class="feature-card rv rv-1">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m9 10 2.5 2L15 8"/></svg></span>
+          <h4>Motion Design Ads</h4>
+          <p>Video ads engineered to stop the scroll and hold attention long enough to make the offer land.</p>
         </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-13h-8z"/></svg></span>
-          <h4>Launch Videos</h4>
-          <p>Make the moment your product goes live feel like an event — built to headline your site, your announcement, and your socials.</p>
+        <div class="feature-card rv rv-2">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15V6a2 2 0 0 0-2-2H8L4 8v10a2 2 0 0 0 2 2h5"/><path d="m17 21 4-4"/><path d="M14 21v-4h4"/></svg></span>
+          <h4>Lead Capture Systems</h4>
+          <p>Every visitor who shows interest is identified, tagged, and routed — nothing depends on a shared inbox.</p>
         </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a5 5 0 0 0 0 18 2 2 0 0 0 0-4h-.5a1.5 1.5 0 0 1 0-3H14a2 2 0 0 0 2-2 2 2 0 0 0-2-2h-1"/></svg></span>
-          <h4>Animated Brand Visuals</h4>
-          <p>Give your brand motion — loops, stingers, and visual identity that carry across your site, decks, and social presence.</p>
+        <div class="feature-card rv">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/><path d="m9 15 2 2 4-4"/></svg></span>
+          <h4>Booking Funnels</h4>
+          <p>A guided path from "interested" to "on the calendar" — no back-and-forth emails required.</p>
+        </div>
+        <div class="feature-card rv rv-1">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg></span>
+          <h4>Marketing Automation</h4>
+          <p>Follow-up sequences that respond the moment someone acts — every time, without a person watching.</p>
+        </div>
+        <div class="feature-card rv rv-2">
+          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
+          <h4>AI Business Workflows</h4>
+          <p>Custom systems that qualify leads, answer questions, and route the right people to your calendar automatically.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WORKFLOW -->
-  <section id="workflow">
+  <!-- PROCESS -->
+  <section id="process">
     <div class="wrap">
-      <span class="eyebrow fade-up">How We Work</span>
-      <h2 class="section-title fade-up d1">From your idea to a finished video — one continuous line.</h2>
-      <p class="section-lead fade-up d1">This is the actual path a project takes through AutFlow Studio — nothing gets reworked from scratch, and nothing gets lost between steps.</p>
+      <div class="section-head">
+        <span class="eyebrow rv">How We Work</span>
+        <h2 class="section-title rv rv-1">Four steps. No guesswork.</h2>
+        <p class="section-lead rv rv-1">The same process runs behind every project, in this order, every time.</p>
+      </div>
 
-      <div class="workflow-track">
-        <div class="workflow-step fade-up"><span class="wf-num">1</span><h5>Brief</h5><p>You tell us the product, the audience, and the goal.</p></div>
-        <div class="workflow-step fade-up"><span class="wf-num">2</span><h5>Story</h5><p>We shape the idea into a story worth watching.</p></div>
-        <div class="workflow-step fade-up"><span class="wf-num">3</span><h5>Script</h5><p>The story becomes a tight, watchable script.</p></div>
-        <div class="workflow-step fade-up"><span class="wf-num">4</span><h5>Storyboard</h5><p>Every scene is planned before a frame is animated.</p></div>
-        <div class="workflow-step fade-up"><span class="wf-num">5</span><h5>Animation</h5><p>The video is built, scene by scene, in your style.</p></div>
-        <div class="workflow-step fade-up"><span class="wf-num">6</span><h5>Delivery</h5><p>You get a finished video, ready to publish.</p></div>
+      <div class="process-track">
+        <div class="process-step rv"><span class="proc-num">01</span><h5>Audit</h5><p>We map your current funnel and find exactly where visitors are dropping off.</p></div>
+        <div class="process-step rv rv-1"><span class="proc-num">02</span><h5>Design</h5><p>We build the landing pages, ads, and funnel around the offer you actually sell.</p></div>
+        <div class="process-step rv rv-2"><span class="proc-num">03</span><h5>Automate</h5><p>Capture, booking, and follow-up get connected into a single running system.</p></div>
+        <div class="process-step rv rv-3"><span class="proc-num">04</span><h5>Optimize</h5><p>We track what converts and refine the system on real performance data.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- FREE VIDEO OFFER -->
-  <section id="free-video">
+  <!-- WHY CHOOSE US -->
+  <section id="why">
     <div class="wrap">
-      <div class="free-video-card fade-up">
-        <span class="eyebrow gold">Exclusive Offer</span>
-        <h2 class="section-title">🎁 Get Your First Video FREE</h2>
-        <p class="section-lead">If you're unsure whether premium motion graphics are right for your business, I'll create your first short promotional video completely free.</p>
-        <p class="free-video-fine">No commitment.<br>No hidden fees.<br>If you love it, we can discuss the full project.</p>
-        <button class="cta-primary" type="button" data-cta>Claim Your Free Video <span class="arrow">→</span></button>
+      <div class="section-head">
+        <span class="eyebrow rv">Why Choose Us</span>
+        <h2 class="section-title rv rv-1">A system, not a stack of freelancers.</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- OFFER -->
-  <section id="offer">
-    <div class="wrap">
-      <span class="eyebrow gold fade-up" style="justify-content:center;display:flex;">Pricing</span>
-      <h2 class="section-title fade-up d1" style="margin:0 auto 18px;text-align:center;max-width:680px;">One package. Nothing to configure.</h2>
-      <p class="section-lead fade-up d1" style="margin:0 auto 24px;text-align:center;max-width:640px;">This isn't cheap stock-template content — it's a premium, fully custom production built around your brand, your goals, and your audience.</p>
-
-      <div class="pricing-badge-row fade-up d1" style="margin-bottom:40px;">
-        <span class="pricing-badge">🔥 Limited Launch Offer</span>
-      </div>
-
-      <div class="offer-wrap fade-up d2">
-
-        <!-- PREMIUM MOTION GRAPHICS PACKAGE -->
-        <div class="offer-card" style="border-color:rgba(240,192,96,0.45);">
-          <div class="offer-top">
-            <span class="offer-tag">Premium Motion Graphics Package</span>
-            <div class="offer-price"><sup>$</sup>1,200–1,800</div>
-            <p class="offer-price-note">5 fully custom premium motion graphics videos tailored to your business and marketing goals.</p>
-          </div>
-          <div class="offer-body">
-            <ul class="offer-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>5 Premium Motion Graphics Videos</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom Scriptwriting</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Full Brand Adaptation</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Commercial License Included</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1-Week Revision Guarantee</li>
-            </ul>
-            <div class="offer-guarantee">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-              <div><h5>Built for brands that want premium, not cheap</h5><p>Perfect for businesses that need high-converting promotional videos without hiring an in-house motion design team.</p></div>
-            </div>
-            <button class="cta-primary" type="button" data-cta>Book Your Package <span class="arrow">→</span></button>
-            <p class="offer-fine">Custom projects available depending on scope.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST -->
-  <section id="trust">
-    <div class="wrap">
-      <span class="eyebrow fade-up">Why Companies Work With Us</span>
-      <h2 class="section-title fade-up d1">This isn't a video service. It's a way to be understood.</h2>
 
       <div class="trust-grid">
-        <div class="trust-card fade-up">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
-          <h4>Built around your product and audience</h4>
-          <p>Every video is scoped to the people you're actually trying to reach — not a template stretched to fit.</p>
+        <div class="trust-card rv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <h4>Built for outcomes, not deliverables</h4>
+          <p>We're measured by booked calls and closed customers — not pages shipped or hours logged.</p>
         </div>
-        <div class="trust-card fade-up">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 13l3 3 5-6"/></svg>
-          <h4>Strategy, storytelling and animation — together</h4>
-          <p>We don't just animate a script you hand us. We help shape what's worth saying before a single frame gets made.</p>
+        <div class="trust-card rv rv-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <h4>One team, one system</h4>
+          <p>No juggling a designer, a video editor, and an automation freelancer who've never spoken to each other.</p>
         </div>
-        <div class="trust-card fade-up">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg>
-          <h4>Designed to make complex ideas simple</h4>
-          <p>Whatever your product does, the video's only job is to make that instantly obvious to someone seeing it cold.</p>
+        <div class="trust-card rv rv-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg>
+          <h4>Enterprise-grade execution</h4>
+          <p>The same rigor and craft used on Fortune-500 growth teams, sized for a business your scale.</p>
         </div>
-        <div class="trust-card fade-up">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="5"/></svg>
-          <h4>Premium visuals without building a team</h4>
-          <p>Get agency-grade motion design on demand — no in-house hire, no software licenses, no production overhead.</p>
+        <div class="trust-card rv rv-3">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-5 3 3 5-7"/></svg>
+          <h4>Iteration backed by data</h4>
+          <p>Every stage of the system is tracked, so decisions come from what's actually converting — not opinion.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow rv">Industries</span>
+        <h2 class="section-title rv rv-1">Built for businesses where every lead matters.</h2>
+        <p class="section-lead rv rv-1">We focus on categories where a missed follow-up is a lost customer, not a rounding error.</p>
+      </div>
+
+      <div class="industry-grid">
+        <div class="industry-card rv">
+          <span class="industry-num">Aesthetic Clinics</span>
+          <h4>Fill the calendar, not just the inbox</h4>
+          <p>Turn treatment inquiries into booked consultations with a funnel built for high-consideration decisions.</p>
+        </div>
+        <div class="industry-card rv rv-1">
+          <span class="industry-num">Marketing Agencies</span>
+          <h4>Systems you can put your name on</h4>
+          <p>White-label conversion systems your agency can resell to clients under your own brand.</p>
+        </div>
+        <div class="industry-card rv rv-2">
+          <span class="industry-num">Real Estate</span>
+          <h4>Turn listing views into showings</h4>
+          <p>Capture buyer and seller interest the moment it happens, and route it straight into a booked showing.</p>
+        </div>
+        <div class="industry-card rv rv-3">
+          <span class="industry-num">High-Ticket Service Businesses</span>
+          <h4>Built for offers that need trust first</h4>
+          <p>A system designed for decisions that take more than one visit — and more than one touchpoint — to close.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow rv">FAQ</span>
+        <h2 class="section-title rv rv-1">Questions, answered directly.</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item rv">
+          <summary>How is this different from hiring a normal web agency?<span class="faq-plus"></span></summary>
+          <div class="faq-answer">A normal agency hands you a website and moves on. We build and connect the pieces that come after it — capture, booking, and follow-up — so the page is one part of a working system, not the entire deliverable.</div>
+        </details>
+        <details class="faq-item rv">
+          <summary>How long does a project take?<span class="faq-plus"></span></summary>
+          <div class="faq-answer">Most systems go from audit to live in a few weeks, depending on scope. We'll give you an exact timeline after the initial call, once we understand your offer and current setup.</div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Do you create the ad creative too?<span class="faq-plus"></span></summary>
+          <div class="faq-answer">Yes. Motion design ads are part of the system — built to send traffic into the same landing page and funnel, so the message stays consistent from the first frame to the booked call.</div>
+        </details>
+        <details class="faq-item rv">
+          <summary>We already have a website. Do we need a new one?<span class="faq-plus"></span></summary>
+          <div class="faq-answer">Not always. Sometimes the fix is adding capture, booking, and automation around what you already have. We'll tell you honestly whether a rebuild is worth it before we recommend one.</div>
+        </details>
+        <details class="faq-item rv">
+          <summary>Will this work with our existing CRM or booking tools?<span class="faq-plus"></span></summary>
+          <div class="faq-answer">In most cases, yes. We build systems to connect with the tools you already use rather than forcing you onto new software.</div>
+        </details>
+        <details class="faq-item rv">
+          <summary>What's the investment?<span class="faq-plus"></span></summary>
+          <div class="faq-answer">It depends on which pieces of the system you need. We'll scope it precisely on a strategy call once we understand your goals — no generic package pricing.</div>
+        </details>
       </div>
     </div>
   </section>
@@ -549,12 +676,12 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
   <section id="contact">
     <div class="wrap">
       <div class="final-cta">
-        <span class="eyebrow fade-up" style="justify-content:center;display:flex;">Get Started</span>
-        <h2 class="final-h2 fade-up d1">Have a product that's hard to explain? <span class="accent">Let's turn it into a visual story.</span></h2>
-        <p class="final-sub fade-up d2">Message us and tell us what you're building. We'll tell you exactly what it would look like as a video — <strong>and you can see our full portfolio on Instagram before you commit to anything.</strong></p>
-        <div class="final-cta-wrap fade-up d3">
-          <button class="cta-primary" type="button" data-cta>Start a Project <span class="arrow">→</span></button>
-          <span class="final-note">View our portfolio on Instagram — @r0shd · We take on a limited number of projects each month</span>
+        <span class="eyebrow rv" style="justify-content:center;">Get Started</span>
+        <h2 class="final-h2 rv rv-1">Your competitors are still just <span class="dim">building websites.</span></h2>
+        <p class="final-sub rv rv-2">You could be building the system that turns every visitor into a customer — automatically, on repeat.</p>
+        <div class="final-cta-wrap rv rv-3">
+          <button class="cta-primary" type="button" data-cta>Book a Strategy Call <span class="arrow">→</span></button>
+          <span class="cta-note">30 minutes. No obligation. We take on a limited number of projects each month.</span>
         </div>
       </div>
     </div>
@@ -564,36 +691,103 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
 
 <footer>
   <div class="wrap">
-    <div class="footer-text">
-      <div>AutFlow Studio — Motion Graphics for SaaS, AI &amp; Tech Brands</div>
-      <div style="opacity:0.6;">Product Demos · Explainers · Launch Films · Brand Motion</div>
-      <div>Portfolio on Instagram: <a href="https://instagram.com/r0shd" target="_blank" rel="noopener">@r0shd</a></div>
-      <div style="opacity:0.5;">© 2026 AutFlow Studio. All rights reserved.</div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="15" stroke="#fafafa" stroke-width="1.4"/>
+              <path d="M9 20 L15 12 L19 17 L23 10" stroke="#fafafa" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="23" cy="10" r="1.6" fill="#fafafa"/>
+            </svg>
+          </span>
+          <span class="brand-name">AutFlow Studio</span>
+        </div>
+        <p>We build the systems that turn visitors into paying customers — for clinics, agencies, real estate and high-ticket brands.</p>
+      </div>
+      <div class="footer-col">
+        <h6>System</h6>
+        <a href="#solution">The Conversion System</a>
+        <a href="#included">What's Included</a>
+        <a href="#process">Process</a>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <a href="#why">Why Us</a>
+        <a href="#industries">Industries</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h6>Connect</h6>
+        <a href="https://instagram.com/r0shd" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" data-cta>Book a Call</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AutFlow Studio. All rights reserved.</span>
+      <span>Conversion Systems for Clinics, Agencies &amp; High-Ticket Brands</span>
     </div>
   </div>
 </footer>
 
 <script>
 (function(){
-  // All primary CTAs open a DM to Instagram, where the full portfolio also lives.
-  var IG_URL = "https://instagram.com/r0shd";
+  // CTA click -> external booking link (Instagram DM as contact channel)
+  var CONTACT_URL = "https://instagram.com/r0shd";
   document.querySelectorAll('[data-cta]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      window.open(IG_URL, '_blank', 'noopener');
+      window.open(CONTACT_URL, '_blank', 'noopener');
     });
   });
 
-  var els = document.querySelectorAll('.fade-up');
+  // smooth internal scroll for data-scroll buttons
+  document.querySelectorAll('[data-scroll]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = document.querySelector(btn.getAttribute('data-scroll'));
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  // mobile menu toggle
+  var burger = document.getElementById('burgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // scroll reveal
+  var revealEls = document.querySelectorAll('.rv');
   if('IntersectionObserver' in window){
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
       });
-    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    els.forEach(function(el){ obs.observe(el); });
+    }, {threshold:0.14, rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){ obs.observe(el); });
   } else {
-    els.forEach(function(el){ el.classList.add('in'); });
+    revealEls.forEach(function(el){ el.classList.add('in'); });
   }
+
+  // only one FAQ item open at a time
+  var faqs = document.querySelectorAll('.faq-item');
+  faqs.forEach(function(item){
+    item.addEventListener('toggle', function(){
+      if(item.open){
+        faqs.forEach(function(other){
+          if(other !== item) other.open = false;
+        });
+      }
+    });
+  });
 })();
 </script>
 </body>

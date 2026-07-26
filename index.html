@@ -94,7 +94,8 @@ h2.section-title.light{color:var(--on-dark);}
 
 /* ============ HERO ============ */
 .hero{background:var(--ink);color:var(--on-dark-dim);padding:170px 0 0;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(90,76,255,0.16) 0%,transparent 70%);pointer-events:none;}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(90,76,255,0.16) 0%,transparent 70%);pointer-events:none;will-change:transform;}
+.hero-glow-2{position:absolute;bottom:-25%;left:-8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(169,130,47,0.1) 0%,transparent 70%);pointer-events:none;will-change:transform;}
 .hero-inner{max-width:780px;margin:0 auto;text-align:center;position:relative;z-index:1;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--gold);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:28px;padding:8px 16px;border:1px solid rgba(169,130,47,0.35);border-radius:100px;background:var(--gold-soft);}
 .hero h1{font-family:var(--display);font-size:clamp(38px,6.2vw,68px);font-weight:800;color:var(--on-dark);letter-spacing:-0.03em;line-height:1.06;margin-bottom:26px;}
@@ -107,7 +108,8 @@ h2.section-title.light{color:var(--on-dark);}
 .cta-primary:hover .arrow{transform:translateX(3px);}
 .cta-note{font-family:var(--mono);font-size:12px;color:var(--on-dark-dim);letter-spacing:0.02em;opacity:0.75;}
 
-.hero-visual{position:relative;height:190px;display:flex;align-items:center;justify-content:center;margin-bottom:30px;}
+.hero-visual{position:relative;height:190px;display:flex;align-items:center;justify-content:center;margin-bottom:30px;will-change:transform;}
+[data-parallax]{will-change:transform;}
 .hero-chain{width:280px;height:150px;}
 .hero-chain path{fill:none;stroke:var(--on-dark);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
 .hero-chain path.c2{stroke:var(--accent-2);}
@@ -255,6 +257,8 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:44px 
 
   <!-- HERO -->
   <section class="hero" id="top">
+    <div class="hero-glow" data-parallax="0.25" aria-hidden="true"></div>
+    <div class="hero-glow-2" data-parallax="0.4" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-inner">
         <span class="hero-eyebrow r-up">A Conversion Systems Agency</span>
@@ -266,7 +270,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:44px 
           <span class="cta-note">For clinics, agencies &amp; high-ticket service businesses</span>
         </div>
 
-        <div class="hero-visual r-scale d4" aria-hidden="true">
+        <div class="hero-visual r-scale d4" data-parallax="0.15" aria-hidden="true">
           <svg class="hero-chain" viewBox="0 0 280 150" xmlns="http://www.w3.org/2000/svg">
             <path class="c1" d="M20 60 C20 30 40 18 65 18 C90 18 108 36 108 62 L108 88 C108 114 90 132 65 132 C40 132 20 120 20 100"/>
             <path class="c2" d="M95 60 C95 30 115 18 140 18 C165 18 183 36 183 62 L183 88 C183 114 165 132 140 132 C115 132 95 120 95 100"/>
@@ -307,7 +311,7 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:44px 
           </div>
         </div>
 
-        <div class="funnel-wrap r-scale d2">
+        <div class="funnel-wrap r-scale d2" data-parallax="0.08">
           <div class="funnel-card">
             <div class="funnel-row">
               <span class="funnel-label">Website visitors</span>
@@ -514,6 +518,34 @@ footer{background:var(--ink);border-top:1px solid var(--line-dark);padding:44px 
   }
   document.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+
+  // parallax: elements drift at a fraction of scroll speed, driven by rAF for smoothness
+  var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]')).map(function(el){
+    return { el: el, speed: parseFloat(el.getAttribute('data-parallax')) || 0.2 };
+  });
+  var ticking = false;
+  function updateParallax(){
+    var y = window.scrollY || window.pageYOffset;
+    parallaxEls.forEach(function(item){
+      item.el.style.transform = 'translateY(' + (y * item.speed * -1) + 'px)';
+    });
+    ticking = false;
+  }
+  function requestParallax(){
+    if(!ticking){ window.requestAnimationFrame(updateParallax); ticking = true; }
+  }
+  window.addEventListener('scroll', requestParallax, {passive:true});
+  updateParallax();
+
+  // scroll cue: smooth-scroll to the next section on click, with a keyboard-accessible fallback
+  var scrollCue = document.querySelector('.scroll-cue');
+  if(scrollCue){
+    scrollCue.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(scrollCue.getAttribute('href'));
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  }
 
   // reveal on scroll
   var els = document.querySelectorAll('.r-up, .r-scale');

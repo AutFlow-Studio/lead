@@ -3,64 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — The Business Operating System for Service Businesses</title>
-<meta name="description" content="AutFlow Studio brings your clients, projects, tasks, documents, payments, and meetings into one connected workspace. A professional operating system for clinics, consultants, agencies, and service businesses.">
-<link rel="icon" type="image/png" href="AutFlow-logo.png">
-<link rel="apple-touch-icon" href="AutFlow-logo.png">
+<title>Forge — Clinic Growth Systems</title>
+<meta name="description" content="Forge builds the brand, website, marketing content, and software clinics need to attract more patients and run smoother — as one connected growth system.">
+<link rel="icon" type="image/png" href="forge-logo.png">
+<link rel="apple-touch-icon" href="forge-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#faf9f6;--panel:#ffffff;--panel-2:#f4f3ef;
-  --line:#e6e4de;--line-soft:#efeee9;
-  --ink:#14151a;--ink-dim:#3d3e45;--slate:#6b6c74;--slate-dim:#9a9aa1;
-  --accent:#33409e;--accent-2:#4a56b8;--accent-soft:rgba(51,64,158,0.07);--accent-line:rgba(51,64,158,0.28);
-  --good:#2f6f52;--good-soft:rgba(47,111,82,0.08);
-  --display:'Space Grotesk',sans-serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--mono:'IBM Plex Mono','SF Mono',monospace;
-  --ease:cubic-bezier(0.22,1,0.36,1);--radius:14px;--radius-sm:8px;--nav-h:76px;
+  --ink:#12141a;--ink-dim:#3c3e46;--paper:#faf9f5;--panel:#ffffff;--panel-2:#f1efe7;
+  --line:#e3e0d5;--line-soft:#ecead f;--slate:#63656d;--slate-dim:#96979d;
+  --teal:#1f6f62;--teal-2:#154f45;--teal-soft:rgba(31,111,98,0.08);--teal-line:rgba(31,111,98,0.3);
+  --gold:#ac8548;--gold-soft:rgba(172,133,72,0.1);--gold-line:rgba(172,133,72,0.4);
+  --display:'Bricolage Grotesque',sans-serif;--body:'IBM Plex Sans',-apple-system,sans-serif;--mono:'IBM Plex Mono','SF Mono',monospace;
+  --ease:cubic-bezier(0.22,1,0.36,1);--radius:16px;--radius-sm:9px;--nav-h:78px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--paper);color:var(--slate);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body{background:var(--paper);color:var(--slate);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 img,svg{display:block;max-width:100%;}
-a{color:var(--accent);text-decoration:none;}
+a{color:var(--teal);text-decoration:none;}
 ul{list-style:none;}
-::selection{background:rgba(51,64,158,0.16);color:var(--ink);}
+::selection{background:rgba(31,111,98,0.18);color:var(--ink);}
 ::-webkit-scrollbar{width:8px;}::-webkit-scrollbar-track{background:var(--paper);}::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
 
-body::before{content:'';position:fixed;top:-8%;left:50%;transform:translateX(-50%);width:1200px;height:760px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(51,64,158,0.06) 0%,transparent 68%);pointer-events:none;z-index:0;}
+body::before{content:'';position:fixed;top:-10%;left:50%;transform:translateX(-50%);width:1300px;height:820px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(31,111,98,0.07) 0%,transparent 68%);pointer-events:none;z-index:0;}
 
-.fade-up{opacity:0;transform:translateY(24px);filter:blur(5px);transition:opacity .6s var(--ease),transform .6s var(--ease),filter .6s var(--ease);will-change:opacity,transform,filter;}
+.fade-up{opacity:0;transform:translateY(26px);filter:blur(5px);transition:opacity .65s var(--ease),transform .65s var(--ease),filter .65s var(--ease);will-change:opacity,transform,filter;}
 .fade-up.in{opacity:1;transform:translateY(0);filter:blur(0);}
 .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}.d5{transition-delay:.3s}
 
-.feature-grid .feature-card:nth-child(1){transition-delay:.04s;}
-.feature-grid .feature-card:nth-child(2){transition-delay:.09s;}
-.feature-grid .feature-card:nth-child(3){transition-delay:.14s;}
-.feature-grid .feature-card:nth-child(4){transition-delay:.19s;}
-.feature-grid .feature-card:nth-child(5){transition-delay:.24s;}
-.feature-grid .feature-card:nth-child(6){transition-delay:.29s;}
-.feature-grid .feature-card:nth-child(7){transition-delay:.34s;}
-.feature-grid .feature-card:nth-child(8){transition-delay:.39s;}
-.step-track .step:nth-child(1){transition-delay:.05s;}
-.step-track .step:nth-child(2){transition-delay:.15s;}
-.step-track .step:nth-child(3){transition-delay:.25s;}
-.pain-list .pain-item:nth-child(1){transition-delay:.05s;}
-.pain-list .pain-item:nth-child(2){transition-delay:.14s;}
-.pain-list .pain-item:nth-child(3){transition-delay:.23s;}
-.pain-list .pain-item:nth-child(4){transition-delay:.32s;}
-.faq-list .faq-item:nth-child(1){transition-delay:.05s;}
-.faq-list .faq-item:nth-child(2){transition-delay:.11s;}
-.faq-list .faq-item:nth-child(3){transition-delay:.17s;}
-.faq-list .faq-item:nth-child(4){transition-delay:.23s;}
-.scatter-wrap .scatter-chip:nth-child(1){transition-delay:.03s;}
-.scatter-wrap .scatter-chip:nth-child(2){transition-delay:.08s;}
-.scatter-wrap .scatter-chip:nth-child(3){transition-delay:.13s;}
-.scatter-wrap .scatter-chip:nth-child(4){transition-delay:.18s;}
-.scatter-wrap .scatter-chip:nth-child(5){transition-delay:.23s;}
-.scatter-wrap .scatter-chip:nth-child(6){transition-delay:.28s;}
+.service-grid .service-card:nth-child(1){transition-delay:.05s;}
+.service-grid .service-card:nth-child(2){transition-delay:.14s;}
+.service-grid .service-card:nth-child(3){transition-delay:.23s;}
+.chain-row .chain-stop:nth-child(1){transition-delay:.04s;}
+.chain-row .chain-stop:nth-child(2){transition-delay:.11s;}
+.chain-row .chain-stop:nth-child(3){transition-delay:.18s;}
+.chain-row .chain-stop:nth-child(4){transition-delay:.25s;}
+.chain-row .chain-stop:nth-child(5){transition-delay:.32s;}
+.process-grid .process-item:nth-child(1){transition-delay:.05s;}
+.process-grid .process-item:nth-child(2){transition-delay:.13s;}
+.process-grid .process-item:nth-child(3){transition-delay:.21s;}
+.process-grid .process-item:nth-child(4){transition-delay:.29s;}
+.offer-list li:nth-child(1){transition-delay:.03s;}
+.offer-list li:nth-child(2){transition-delay:.07s;}
+.offer-list li:nth-child(3){transition-delay:.11s;}
+.offer-list li:nth-child(4){transition-delay:.15s;}
+.offer-list li:nth-child(5){transition-delay:.19s;}
+.offer-list li:nth-child(6){transition-delay:.23s;}
+.offer-list li:nth-child(7){transition-delay:.27s;}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
@@ -69,185 +62,182 @@ body::before{content:'';position:fixed;top:-8%;left:50%;transform:translateX(-50
 }
 
 .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;}
-.skip-link:focus{position:fixed;top:14px;left:14px;z-index:999;width:auto;height:auto;padding:14px 18px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:13px;border-radius:var(--radius-sm);font-weight:500;}
+.skip-link:focus{position:fixed;top:14px;left:14px;z-index:999;width:auto;height:auto;padding:14px 18px;background:var(--teal);color:#fff;font-family:var(--mono);font-size:13px;border-radius:var(--radius-sm);font-weight:500;}
 
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
 @media(max-width:768px){.wrap{padding:0 20px;}}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:200;background:rgba(250,249,246,0.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft);}
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:200;background:rgba(250,249,245,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft);}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
-.brand-mark{width:34px;height:34px;flex-shrink:0;border-radius:9px;overflow:hidden;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;}
+.brand-mark{width:36px;height:36px;flex-shrink:0;border-radius:10px;overflow:hidden;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;}
 .brand-mark img{width:100%;height:100%;object-fit:cover;}
-.brand-name{font-family:var(--display);font-size:16px;color:var(--ink);letter-spacing:-0.01em;font-weight:600;}
+.brand-name{font-family:var(--display);font-size:18px;color:var(--ink);letter-spacing:-0.01em;font-weight:700;}
+.brand-tag{font-family:var(--mono);font-size:10.5px;color:var(--slate-dim);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-top:-1px;}
 .nav-links{display:flex;align-items:center;gap:30px;}
 .nav-links a{font-size:14px;color:var(--slate);font-weight:500;transition:color .18s ease;}
 .nav-links a:hover{color:var(--ink);}
-.nav-cta{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border:none;border-radius:var(--radius-sm);padding:11px 19px;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.005em;cursor:pointer;transition:all .2s var(--ease);}
-.nav-cta:hover{background:var(--accent);box-shadow:0 8px 24px -8px rgba(51,64,158,0.45);transform:translateY(-1px);}
+.nav-cta{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border:none;border-radius:var(--radius-sm);padding:11px 19px;font-family:var(--body);font-size:14px;font-weight:600;letter-spacing:0.005em;cursor:pointer;transition:all .2s var(--ease);}
+.nav-cta:hover{background:var(--teal);box-shadow:0 8px 24px -8px rgba(31,111,98,0.45);transform:translateY(-1px);}
 @media(max-width:900px){.nav-links{display:none;}}
 @media(max-width:640px){.nav-inner{padding:0 18px;}.nav-cta{padding:10px 15px;font-size:13px;}}
 
 main{position:relative;z-index:1;}
-section{padding:120px 0;}
-@media(max-width:768px){section{padding:80px 0;}}
+section{padding:126px 0;}
+@media(max-width:768px){section{padding:84px 0;}}
 
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;}
-.eyebrow::before{content:'';width:14px;height:2px;background:var(--accent);flex-shrink:0;}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;}
+.eyebrow::before{content:'';width:14px;height:2px;background:var(--teal);flex-shrink:0;}
 .eyebrow.muted{color:var(--slate-dim);}
 .eyebrow.muted::before{background:var(--slate-dim);}
+.eyebrow.gold{color:var(--gold);}
+.eyebrow.gold::before{background:var(--gold);}
 
-h2.section-title{font-family:var(--display);font-size:clamp(28px,3.4vw,40px);font-weight:600;color:var(--ink);letter-spacing:-0.02em;line-height:1.18;margin-bottom:18px;max-width:640px;}
-.section-lead{font-size:17.5px;color:var(--slate);line-height:1.75;max-width:560px;margin-bottom:54px;}
+h2.section-title{font-family:var(--display);font-size:clamp(29px,3.4vw,42px);font-weight:700;color:var(--ink);letter-spacing:-0.02em;line-height:1.16;margin-bottom:18px;max-width:660px;}
+.section-lead{font-size:17.5px;color:var(--slate);line-height:1.75;max-width:580px;margin-bottom:54px;}
 .section-lead strong{color:var(--ink-dim);font-weight:600;}
 
 /* HERO */
-.hero{padding:calc(var(--nav-h) + 68px) 0 32px;}
+.hero{padding:calc(var(--nav-h) + 70px) 0 30px;}
 .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
-.hero-h1{font-family:var(--display);font-size:clamp(32px,4.4vw,52px);font-weight:600;color:var(--ink);line-height:1.1;letter-spacing:-0.025em;margin-bottom:22px;}
-.hero-h1 .accent{color:var(--accent);}
-.hero-sub{font-size:18px;color:var(--slate);line-height:1.75;max-width:520px;margin-bottom:16px;}
+.hero-h1{font-family:var(--display);font-size:clamp(33px,4.4vw,54px);font-weight:700;color:var(--ink);line-height:1.08;letter-spacing:-0.025em;margin-bottom:22px;}
+.hero-h1 .accent{color:var(--teal);}
+.hero-sub{font-size:18px;color:var(--slate);line-height:1.75;max-width:530px;margin-bottom:34px;}
 .hero-sub strong{color:var(--ink-dim);font-weight:600;}
-.hero-who{font-size:15px;color:var(--slate-dim);line-height:1.7;max-width:520px;margin-bottom:36px;}
-.hero-who strong{color:var(--slate);font-weight:600;}
 
 .cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px;}
-.cta-primary{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--radius-sm);padding:16px 25px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .22s var(--ease);box-shadow:0 10px 28px -10px rgba(20,21,26,0.35);}
-.cta-primary:hover{background:var(--accent);box-shadow:0 14px 34px -8px rgba(51,64,158,0.4);transform:translateY(-2px);}
+.cta-primary{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--radius-sm);padding:16px 25px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer;transition:all .22s var(--ease);box-shadow:0 10px 28px -10px rgba(18,20,26,0.35);}
+.cta-primary:hover{background:var(--teal);box-shadow:0 14px 34px -8px rgba(31,111,98,0.4);transform:translateY(-2px);}
 .cta-primary .arrow{transition:transform .2s ease;}
 .cta-primary:hover .arrow{transform:translateX(3px);}
 
-.cta-demo{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink-dim);border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:14.5px 22px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .22s var(--ease);}
-.cta-demo:hover{border-color:var(--accent-line);color:var(--accent);background:var(--accent-soft);transform:translateY(-2px);}
+.cta-demo{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink-dim);border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:14.5px 22px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer;transition:all .22s var(--ease);}
+.cta-demo:hover{border-color:var(--teal-line);color:var(--teal);background:var(--teal-soft);transform:translateY(-2px);}
 .cta-demo .play-ico{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .cta-demo .play-ico svg{width:9px;height:9px;margin-left:1px;}
-.cta-demo:hover .play-ico{background:var(--accent);}
-.cta-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.02em;}
+.cta-demo:hover .play-ico{background:var(--teal);}
+.cta-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.02em;margin-bottom:34px;display:block;}
 
 .hero-tags{display:flex;flex-wrap:wrap;gap:8px;}
 .hero-tag{font-family:var(--mono);font-size:12px;color:var(--ink-dim);border:1px solid var(--line);border-radius:100px;padding:7px 13px;letter-spacing:0.01em;background:var(--panel);}
 
-/* SIGNATURE: interlocked module chain (hero) */
-.chain-hero{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);overflow:hidden;box-shadow:0 40px 90px -42px rgba(20,21,26,0.25),0 0 0 1px rgba(20,21,26,0.02);}
+/* SIGNATURE: forged link motif, reused across the page */
+.link-loop{border-radius:19px;border-style:solid;flex-shrink:0;}
+.chain-hero{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);overflow:hidden;box-shadow:0 40px 90px -42px rgba(18,20,26,0.25),0 0 0 1px rgba(18,20,26,0.02);}
 .chain-hero-chrome{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line-soft);}
 .chrome-dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
-.chrome-dot.on{background:var(--accent);}
+.chrome-dot.on{background:var(--teal);}
 .chrome-label{font-family:var(--mono);font-size:11px;color:var(--slate-dim);letter-spacing:0.05em;margin-left:6px;}
 .chain-hero-body{padding:34px 26px 30px;}
-.link-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;margin-bottom:26px;}
-.link-pill{width:64px;height:38px;border-radius:19px;border:5px solid var(--ink);background:transparent;flex-shrink:0;}
-.link-pill:nth-child(odd){transform:rotate(-9deg);margin-right:-16px;}
-.link-pill:nth-child(even){transform:rotate(9deg);margin-right:-16px;border-color:var(--accent);}
+.link-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;margin-bottom:28px;}
+.link-pill{width:64px;height:38px;border:5px solid var(--ink);margin-right:-16px;}
+.link-pill:nth-child(1){transform:rotate(-9deg);}
+.link-pill:nth-child(2){transform:rotate(9deg);border-color:var(--teal);}
+.link-pill:nth-child(3){transform:rotate(-9deg);}
 .link-pill:last-child{margin-right:0;}
 .chain-hero-rows{display:flex;flex-direction:column;gap:8px;}
 .mini-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:8px;background:var(--panel-2);border:1px solid var(--line-soft);}
 .mini-row-left{display:flex;align-items:center;gap:10px;min-width:0;}
-.mini-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.mini-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;}
 .mini-title{font-size:13.5px;color:var(--ink-dim);font-weight:600;}
 .mini-val{font-family:var(--mono);font-size:12px;color:var(--slate-dim);white-space:nowrap;}
-.mini-val.good{color:var(--good);}
+.mini-val.good{color:var(--teal-2);}
 .chain-hero-footer{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:11px;color:var(--slate-dim);letter-spacing:0.03em;}
 
-/* PROBLEM: scattered tools */
-.problem-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:60px;align-items:center;}
-@media(max-width:980px){.problem-grid{grid-template-columns:1fr;gap:44px;}.problem-grid .scatter-wrap{order:2;}}
-.pain-list{display:flex;flex-direction:column;gap:22px;}
-.pain-item{display:flex;gap:16px;align-items:flex-start;}
-.pain-mark{flex-shrink:0;width:26px;height:26px;border-radius:7px;border:1px solid var(--accent-line);background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-top:2px;}
-.pain-mark svg{width:13px;height:13px;color:var(--accent);}
-.pain-item h4{font-size:16px;color:var(--ink);font-weight:600;margin-bottom:4px;font-family:var(--display);letter-spacing:-0.01em;}
-.pain-item p{font-size:14.5px;color:var(--slate);line-height:1.65;}
+/* SERVICES */
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+@media(max-width:880px){.service-grid{grid-template-columns:1fr;}}
+.service-card{background:var(--panel);padding:36px 32px;display:flex;flex-direction:column;transition:background .2s ease;}
+.service-card:hover{background:var(--panel-2);}
+.service-icon-row{display:flex;align-items:center;gap:0;margin-bottom:22px;}
+.service-loop{width:46px;height:28px;border:4px solid var(--ink);border-radius:14px;}
+.service-card:nth-child(2) .service-loop{border-color:var(--teal);}
+.service-card:nth-child(3) .service-loop{border-color:var(--gold);}
+.service-name{font-family:var(--display);font-size:19px;color:var(--ink);font-weight:700;letter-spacing:-0.01em;margin-bottom:10px;}
+.service-desc{font-size:14.5px;color:var(--slate);line-height:1.7;margin-bottom:22px;flex:1;}
+.service-bullets{display:flex;flex-direction:column;gap:10px;margin-bottom:26px;}
+.service-bullets li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink-dim);line-height:1.55;}
+.service-bullets li svg{width:14px;height:14px;color:var(--teal);flex-shrink:0;margin-top:2.5px;}
+.service-price-row{display:flex;align-items:baseline;gap:6px;padding-top:20px;border-top:1px solid var(--line-soft);}
+.service-price{font-family:var(--display);font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-0.02em;}
+.service-price-unit{font-family:var(--mono);font-size:12px;color:var(--slate-dim);}
+.service-price-from{font-family:var(--mono);font-size:11px;color:var(--slate-dim);text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:2px;}
 
-.scatter-wrap{position:relative;height:380px;display:flex;align-items:center;justify-content:center;}
-.scatter-chip{position:absolute;font-family:var(--mono);font-size:12px;color:var(--slate-dim);background:var(--panel);border:1.5px dashed var(--line);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 26px -14px rgba(20,21,26,0.2);}
-.scatter-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--slate-dim);opacity:0.6;}
-.scatter-center{position:absolute;width:60px;height:60px;border-radius:50%;background:var(--panel-2);border:1.5px dashed var(--line);display:flex;align-items:center;justify-content:center;}
-.scatter-center svg{width:22px;height:22px;color:var(--slate-dim);}
-
-/* SOLUTION: reformed chain */
-.solution-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:60px;align-items:center;}
-@media(max-width:980px){.solution-grid{grid-template-columns:1fr;gap:44px;}}
-.solution-note{margin-top:26px;padding:18px 20px;border-left:2px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink-dim);line-height:1.7;}
-.chain-solved{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0 2px;}
-.chain-node{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px;}
-.chain-node-shape{width:58px;height:58px;border-radius:14px;border:2.5px solid var(--ink);background:var(--panel);display:flex;align-items:center;justify-content:center;}
-.chain-node-shape svg{width:22px;height:22px;color:var(--ink);}
-.chain-node span{font-family:var(--mono);font-size:11px;color:var(--ink-dim);font-weight:500;text-align:center;max-width:74px;}
-.chain-link-bridge{width:22px;height:6px;border-radius:3px;background:var(--accent);flex-shrink:0;margin-top:-30px;}
-.chain-link-bridge:nth-of-type(odd){transform:rotate(10deg);}
-@media(max-width:600px){.chain-link-bridge{display:none;}}
-
-/* FEATURES */
-.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
-@media(max-width:920px){.feature-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:520px){.feature-grid{grid-template-columns:1fr;}}
-.feature-card{background:var(--panel);padding:28px 24px;transition:background .2s ease;}
-.feature-card:hover{background:var(--panel-2);}
-.feature-icon{width:36px;height:36px;border-radius:9px;background:var(--accent-soft);border:1px solid var(--accent-line);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
-.feature-icon svg{width:17px;height:17px;color:var(--accent);}
-.feature-card h4{font-family:var(--display);font-size:15px;color:var(--ink);font-weight:600;margin-bottom:7px;letter-spacing:-0.01em;}
-.feature-card p{font-size:13px;color:var(--slate);line-height:1.65;}
-.feature-card.upcoming{background:repeating-linear-gradient(135deg,var(--panel),var(--panel) 10px,var(--panel-2) 10px,var(--panel-2) 11px);}
-.feature-card.upcoming .feature-icon{background:transparent;border:1.5px dashed var(--line);}
-.feature-card.upcoming .feature-icon svg{color:var(--slate-dim);}
-.feature-card.upcoming h4{color:var(--slate);}
-.upcoming-badge{display:inline-block;font-family:var(--mono);font-size:10.5px;color:var(--slate-dim);border:1px solid var(--line);border-radius:100px;padding:3px 9px;margin-top:10px;letter-spacing:0.03em;}
-
-/* HOW IT WORKS */
-.step-track{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-@media(max-width:820px){.step-track{grid-template-columns:1fr;gap:36px;}}
-.step{position:relative;}
-.step-num{font-family:var(--display);font-size:15px;color:var(--accent);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
-.step-num::after{content:'';flex:1;height:1px;background:var(--line);}
-.step h4{font-family:var(--display);font-size:19px;color:var(--ink);font-weight:600;margin-bottom:9px;letter-spacing:-0.01em;}
-.step p{font-size:14.5px;color:var(--slate);line-height:1.7;}
-
-/* PRICING */
-.pricing-badge-row{display:flex;justify-content:center;}
-.pricing-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:100px;padding:8px 16px;letter-spacing:0.02em;}
+/* OFFER (main package) */
+.offer-section{position:relative;}
+.offer-section::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--panel-2) 0%,var(--paper) 100%);z-index:-1;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+.offer-intro{max-width:680px;margin:0 auto 56px;text-align:center;}
+.offer-intro .eyebrow{justify-content:center;}
+.offer-intro .section-title{margin:0 auto 18px;max-width:100%;}
+.offer-intro .section-lead{margin:0 auto;max-width:100%;}
 .offer-wrap{display:flex;justify-content:center;}
-.offer-card{max-width:540px;width:100%;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);overflow:hidden;position:relative;box-shadow:0 40px 90px -42px rgba(20,21,26,0.22),0 0 0 1px rgba(20,21,26,0.02);}
-.offer-top{padding:38px 40px 30px;border-bottom:1px solid var(--line-soft);text-align:center;background:var(--panel-2);}
-.offer-tag{display:inline-flex;font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--accent-line);border-radius:100px;padding:6px 14px;margin-bottom:22px;background:var(--panel);}
-.offer-price{font-family:var(--display);font-size:clamp(44px,7vw,58px);font-weight:700;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
-.offer-price sup{font-size:22px;font-weight:600;top:-1.4em;color:var(--ink-dim);}
-.offer-price-note{font-family:var(--mono);font-size:13px;color:var(--slate-dim);margin-top:10px;letter-spacing:0.01em;}
-.offer-body{padding:30px 40px 36px;display:flex;flex-direction:column;}
-.offer-list{display:flex;flex-direction:column;gap:15px;margin-bottom:24px;}
+.offer-card{max-width:700px;width:100%;border:1.5px solid var(--gold-line);border-radius:calc(var(--radius) + 4px);background:var(--panel);overflow:hidden;position:relative;box-shadow:0 50px 110px -46px rgba(18,20,26,0.3),0 0 0 1px rgba(172,133,72,0.06);}
+.offer-ribbon{position:absolute;top:22px;right:-46px;transform:rotate(40deg);background:var(--ink);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 56px;z-index:2;}
+.offer-top{padding:44px 44px 32px;border-bottom:1px solid var(--line-soft);text-align:center;background:linear-gradient(180deg,var(--panel-2) 0%,var(--panel) 100%);}
+.offer-tag{display:inline-flex;font-family:var(--display);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;margin-bottom:22px;}
+.offer-value-row{display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+.offer-was{font-family:var(--mono);font-size:16px;color:var(--slate-dim);text-decoration:line-through;text-decoration-color:var(--slate-dim);}
+.offer-price{font-family:var(--display);font-size:clamp(46px,7vw,62px);font-weight:800;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
+.offer-price sup{font-size:22px;font-weight:600;top:-1.5em;color:var(--ink-dim);}
+.offer-save{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;color:var(--gold);background:var(--gold-soft);border:1px solid var(--gold-line);border-radius:100px;padding:6px 14px;margin-top:12px;letter-spacing:0.02em;}
+.offer-price-note{font-family:var(--mono);font-size:12.5px;color:var(--slate-dim);margin-top:14px;letter-spacing:0.01em;}
+.offer-body{padding:36px 44px 40px;display:flex;flex-direction:column;}
+.offer-why{font-size:14.5px;color:var(--slate);line-height:1.75;margin-bottom:28px;padding-bottom:28px;border-bottom:1px dashed var(--line);}
+.offer-why strong{color:var(--ink-dim);font-weight:600;}
+.offer-list{display:flex;flex-direction:column;gap:15px;margin-bottom:30px;}
 .offer-list li{display:flex;align-items:flex-start;gap:12px;font-size:14.5px;color:var(--ink-dim);line-height:1.6;}
-.offer-list li svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:3px;}
-.offer-ai-note{display:flex;gap:12px;align-items:flex-start;padding:15px 18px;background:var(--panel-2);border:1px dashed var(--line);border-radius:8px;margin-bottom:26px;}
-.offer-ai-note svg{width:17px;height:17px;color:var(--slate-dim);flex-shrink:0;margin-top:2px;}
-.offer-ai-note p{font-size:13px;color:var(--slate);line-height:1.6;}
-.offer-ai-note strong{color:var(--ink-dim);}
+.offer-list li svg{width:16px;height:16px;color:var(--teal);flex-shrink:0;margin-top:3px;}
 .offer-fine{font-size:12.5px;color:var(--slate-dim);line-height:1.6;text-align:center;margin-top:16px;}
 .offer-body .cta-primary{width:100%;justify-content:center;}
 
-/* FAQ */
-.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:760px;}
-.faq-item{background:var(--panel);padding:26px 28px;}
-.faq-item h4{font-family:var(--display);font-size:15.5px;color:var(--ink);font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;}
-.faq-item p{font-size:14.5px;color:var(--slate);line-height:1.7;}
+/* JOURNEY / VALUE */
+.chain-row{display:flex;align-items:flex-start;justify-content:space-between;gap:0;position:relative;margin-top:8px;}
+.chain-row::before{content:'';position:absolute;top:29px;left:29px;right:29px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px);z-index:0;}
+@media(max-width:900px){.chain-row{flex-wrap:wrap;row-gap:40px;}.chain-row::before{display:none;}}
+.chain-stop{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:190px;flex:1;}
+@media(max-width:900px){.chain-stop{max-width:44%;flex:0 0 44%;}}
+.chain-link-icon{width:58px;height:58px;border-radius:16px;border:2.5px solid var(--ink);background:var(--panel);display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0;}
+.chain-link-icon svg{width:22px;height:22px;color:var(--ink);}
+.chain-stop:nth-child(odd) .chain-link-icon{border-color:var(--teal);}
+.chain-stop:nth-child(odd) .chain-link-icon svg{color:var(--teal);}
+.chain-stop h4{font-family:var(--display);font-size:15.5px;color:var(--ink);font-weight:700;margin-bottom:8px;letter-spacing:-0.01em;}
+.chain-stop p{font-size:13px;color:var(--slate);line-height:1.6;}
+.journey-note{margin-top:56px;padding:22px 26px;border-left:2px solid var(--teal);background:var(--teal-soft);border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink-dim);line-height:1.7;max-width:720px;}
+
+/* PROCESS / TRUST */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+@media(max-width:920px){.process-grid{grid-template-columns:repeat(2,1fr);gap:36px;}}
+@media(max-width:560px){.process-grid{grid-template-columns:1fr;}}
+.process-item{position:relative;padding-top:22px;border-top:2px solid var(--line);}
+.process-item .p-label{font-family:var(--mono);font-size:11.5px;color:var(--teal);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;display:block;}
+.process-item h4{font-family:var(--display);font-size:17.5px;color:var(--ink);font-weight:700;margin-bottom:9px;letter-spacing:-0.01em;}
+.process-item p{font-size:14px;color:var(--slate);line-height:1.7;}
+.guarantee-strip{margin-top:60px;display:flex;align-items:center;gap:22px;padding:26px 30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);flex-wrap:wrap;}
+.guarantee-icon{width:48px;height:48px;border-radius:12px;background:var(--teal-soft);border:1px solid var(--teal-line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.guarantee-icon svg{width:22px;height:22px;color:var(--teal);}
+.guarantee-strip h4{font-family:var(--display);font-size:16px;color:var(--ink);font-weight:700;margin-bottom:4px;letter-spacing:-0.01em;}
+.guarantee-strip p{font-size:13.5px;color:var(--slate);line-height:1.6;}
+.guarantee-text{flex:1;min-width:240px;}
 
 /* FINAL CTA */
-.final-cta{max-width:740px;margin:0 auto;text-align:center;padding:96px 0 130px;}
-.final-h2{font-family:var(--display);font-size:clamp(30px,5vw,50px);font-weight:600;color:var(--ink);letter-spacing:-0.025em;line-height:1.12;margin-bottom:20px;}
-.final-h2 .accent{color:var(--accent);}
-.final-sub{font-size:17px;color:var(--slate);line-height:1.75;max-width:520px;margin:0 auto 38px;}
+.final-cta{max-width:740px;margin:0 auto;text-align:center;padding:98px 0 134px;}
+.final-h2{font-family:var(--display);font-size:clamp(30px,5vw,50px);font-weight:700;color:var(--ink);letter-spacing:-0.025em;line-height:1.12;margin-bottom:20px;}
+.final-h2 .accent{color:var(--teal);}
+.final-sub{font-size:17px;color:var(--slate);line-height:1.75;max-width:530px;margin:0 auto 38px;}
 .final-sub strong{color:var(--ink-dim);font-weight:600;}
 .final-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
 .final-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.02em;}
 
-footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
+footer{border-top:1px solid var(--line-soft);padding:38px 0;text-align:center;}
 .footer-text{font-family:var(--mono);font-size:11.5px;color:var(--slate-dim);line-height:2;}
-.footer-text a{color:var(--accent);}
-.footer-mark{width:26px;height:26px;border-radius:7px;overflow:hidden;margin:0 auto 14px;background:var(--panel);border:1px solid var(--line);}
+.footer-text a{color:var(--teal);}
+.footer-mark{width:28px;height:28px;border-radius:8px;overflow:hidden;margin:0 auto 14px;background:var(--panel);border:1px solid var(--line);}
 .footer-mark img{width:100%;height:100%;object-fit:cover;}
 
 /* VIDEO MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(20,21,26,0.6);backdrop-filter:blur(6px);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .28s var(--ease);}
+.modal-overlay{position:fixed;inset:0;background:rgba(18,20,26,0.62);backdrop-filter:blur(6px);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .28s var(--ease);}
 .modal-overlay.open{opacity:1;visibility:visible;}
 .modal-box{width:100%;max-width:860px;background:var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 60px 120px -30px rgba(0,0,0,0.5);transform:scale(0.94) translateY(10px);transition:transform .32s var(--ease);border:1px solid rgba(255,255,255,0.08);}
 .modal-overlay.open .modal-box{transform:scale(1) translateY(0);}
@@ -268,17 +258,20 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
 
 <nav>
   <div class="nav-inner">
-    <a href="#top" class="brand" aria-label="AutFlow Studio">
-      <span class="brand-mark"><img src="AutFlow-logo.png" alt="" width="34" height="34"></span>
-      <span class="brand-name">AutFlow Studio</span>
+    <a href="#top" class="brand" aria-label="Forge">
+      <span class="brand-mark"><img src="forge-logo.png" alt="" width="36" height="36"></span>
+      <span>
+        <span class="brand-name">Forge</span>
+        <span class="brand-tag">Clinic Growth Systems</span>
+      </span>
     </a>
     <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+      <a href="#services">Services</a>
+      <a href="#offer">Growth System</a>
+      <a href="#process">How We Work</a>
+      <a href="#contact">Contact</a>
     </div>
-    <button class="nav-cta" type="button" data-cta>Get Your Workspace</button>
+    <button class="nav-cta" type="button" data-cta>Book a Consultation</button>
   </div>
 </nav>
 
@@ -289,50 +282,45 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow fade-up">The Business Operating System</span>
-          <h1 class="hero-h1 fade-up d1">Your business, finally <span class="accent">in one place.</span></h1>
-          <p class="hero-sub fade-up d2">AutFlow Studio replaces the spreadsheets, sticky notes, and scattered folders with <strong>a single connected workspace</strong> for your clients, projects, tasks, documents, payments, and meetings.</p>
-          <p class="hero-who fade-up d2">Built for <strong>clinics</strong>, <strong>freelancers</strong>, <strong>consultants</strong>, <strong>agencies</strong>, and other service businesses ready to run things properly.</p>
+          <span class="eyebrow fade-up">Clinic Growth Systems</span>
+          <h1 class="hero-h1 fade-up d1">Turn your clinic into the practice patients <span class="accent">choose first.</span></h1>
+          <p class="hero-sub fade-up d2">We build the brand, the marketing content, the website, and the software your clinic needs to attract more patients and run smoother — <strong>designed and delivered as one connected system</strong>, not six disconnected vendors.</p>
           <div class="cta-row fade-up d3">
-            <button class="cta-primary" type="button" data-cta>Get Your Workspace Set Up <span class="arrow">→</span></button>
+            <button class="cta-primary" type="button" data-cta-offer>See the Growth System <span class="arrow">→</span></button>
             <button class="cta-demo" type="button" id="watchDemoBtn">
               <span class="play-ico"><svg viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg></span>
               Watch Demo
             </button>
           </div>
-          <p class="cta-note fade-up d3" style="margin-bottom:34px;display:block;">One flat setup fee. Configured around your business, not a template you assemble yourself.</p>
+          <span class="cta-note fade-up d3">Individual services from $199 · Complete system from $1,499</span>
           <div class="hero-tags fade-up d4">
-            <span class="hero-tag">Clients</span>
-            <span class="hero-tag">Projects</span>
-            <span class="hero-tag">Tasks</span>
-            <span class="hero-tag">Documents</span>
-            <span class="hero-tag">Payments</span>
-            <span class="hero-tag">Meetings</span>
-            <span class="hero-tag">Reports</span>
+            <span class="hero-tag">Motion Graphics Ads</span>
+            <span class="hero-tag">Website &amp; Booking</span>
+            <span class="hero-tag">Clinic Software</span>
+            <span class="hero-tag">Brand System</span>
           </div>
         </div>
 
         <div class="fade-up d3">
-          <div class="chain-hero" role="img" aria-label="AutFlow Studio workspace showing every part of the business linked together">
+          <div class="chain-hero" role="img" aria-label="Forge growth system linking marketing, website, and software together">
             <div class="chain-hero-chrome">
               <span class="chrome-dot on"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
-              <span class="chrome-label">// your workspace</span>
+              <span class="chrome-label">// clinic growth system</span>
             </div>
             <div class="chain-hero-body">
               <div class="link-row" aria-hidden="true">
                 <div class="link-pill"></div><div class="link-pill"></div><div class="link-pill"></div>
-                <div class="link-pill"></div><div class="link-pill"></div>
               </div>
               <div class="chain-hero-rows">
-                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Clients</span></div><span class="mini-val">128 active</span></div>
-                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Projects</span></div><span class="mini-val good">14 on track</span></div>
-                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Documents</span></div><span class="mini-val">Attached to clients</span></div>
-                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Payments</span></div><span class="mini-val good">Up to date</span></div>
+                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Motion Graphics Ads</span></div><span class="mini-val">3 videos delivered</span></div>
+                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Website &amp; Booking</span></div><span class="mini-val good">Live &amp; converting</span></div>
+                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Clinic Software</span></div><span class="mini-val good">Bookings syncing</span></div>
+                <div class="mini-row"><div class="mini-row-left"><span class="mini-dot"></span><span class="mini-title">Patient Pipeline</span></div><span class="mini-val good">Growing weekly</span></div>
               </div>
             </div>
             <div class="chain-hero-footer">
               <span>Every part linked</span>
-              <span>One workspace</span>
+              <span>One build, one team</span>
             </div>
           </div>
         </div>
@@ -340,242 +328,169 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
     </div>
   </section>
 
-  <!-- PROBLEM -->
-  <section id="problem">
+  <!-- SERVICES -->
+  <section id="services">
     <div class="wrap">
-      <div class="problem-grid">
-        <div>
-          <span class="eyebrow muted fade-up">The Problem</span>
-          <h2 class="section-title fade-up d1">Your business isn't messy. Your tools are.</h2>
-          <p class="section-lead fade-up d1">Most service businesses aren't short on effort — they're running on a pile of disconnected tools that were never meant to work together.</p>
-          <div class="pain-list">
-            <div class="pain-item fade-up">
-              <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>
-              <div><h4>Client details live in five places</h4><p>Notes in one app, contact info in another, history in your memory — nothing connected to the client it belongs to.</p></div>
-            </div>
-            <div class="pain-item fade-up">
-              <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3v5h5"/><path d="M6 21h12a2 2 0 0 0 2-2V8l-5-5H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z"/></svg></span>
-              <div><h4>Documents get lost between drives</h4><p>Contracts and proposals end up buried in email threads or a shared drive nobody can search properly.</p></div>
-            </div>
-            <div class="pain-item fade-up">
-              <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
-              <div><h4>Deadlines slip without one calendar</h4><p>Meetings and due dates are scattered across apps, so something always falls through unnoticed.</p></div>
-            </div>
-            <div class="pain-item fade-up">
-              <span class="pain-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg></span>
-              <div><h4>No real view of the business</h4><p>You can't see revenue, project status, or workload at a glance — just a feeling that something's behind.</p></div>
-            </div>
-          </div>
+      <span class="eyebrow fade-up">Choose What You Need</span>
+      <h2 class="section-title fade-up d1">Three specialized services. Priced on their own.</h2>
+      <p class="section-lead fade-up d1">Each one solves a specific gap in how clinics attract and manage patients. Book them separately, or combine all three below at a lower total cost.</p>
+
+      <div class="service-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon-row"><div class="service-loop"></div></div>
+          <h3 class="service-name">Motion Graphics Ads</h3>
+          <p class="service-desc">Scroll-stopping animated ads built specifically for clinic promotions — not stock templates with your logo dropped in.</p>
+          <ul class="service-bullets">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Professional animation, built around your offer</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Customized to your clinic's brand</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ready to run on social and paid media</li>
+          </ul>
+          <div class="service-price-row"><div><span class="service-price-from">Per video</span><span class="service-price">$199</span></div></div>
         </div>
 
-        <div class="scatter-wrap fade-up d2" aria-hidden="true">
-          <span class="scatter-chip" style="top:30px;left:6px;transform:rotate(-5deg);"><span class="dot"></span>Spreadsheet</span>
-          <span class="scatter-chip" style="top:14px;right:0px;transform:rotate(3deg);"><span class="dot"></span>Notion page</span>
-          <span class="scatter-chip" style="top:180px;left:-10px;transform:rotate(2deg);"><span class="dot"></span>WhatsApp thread</span>
-          <span class="scatter-chip" style="top:196px;right:-14px;transform:rotate(-3deg);"><span class="dot"></span>Email attachment</span>
-          <span class="scatter-chip" style="bottom:34px;left:24px;transform:rotate(3deg);"><span class="dot"></span>Google Drive folder</span>
-          <span class="scatter-chip" style="bottom:20px;right:20px;transform:rotate(-2deg);"><span class="dot"></span>Sticky note</span>
-          <div class="scatter-center">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
-          </div>
+        <div class="service-card fade-up">
+          <div class="service-icon-row"><div class="service-loop"></div></div>
+          <h3 class="service-name">Landing Page / Website</h3>
+          <p class="service-desc">A site engineered to turn visitors into booked appointments — not just something that looks good.</p>
+          <ul class="service-bullets">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>High-converting design and structure</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fully mobile optimized</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fully customized, built around bookings</li>
+          </ul>
+          <div class="service-price-row"><div><span class="service-price-from">One-time</span><span class="service-price">$499</span></div></div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon-row"><div class="service-loop"></div></div>
+          <h3 class="service-name">Custom Clinic Software</h3>
+          <p class="service-desc">Booking systems, patient management, and dashboards built around how your clinic actually runs.</p>
+          <ul class="service-bullets">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom booking systems</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Patient management tools</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dashboards built around your workflow</li>
+          </ul>
+          <div class="service-price-row"><div><span class="service-price-from">Starting from</span><span class="service-price">$899</span></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOLUTION -->
-  <section id="solution">
+  <!-- MAIN OFFER -->
+  <section id="offer" class="offer-section">
     <div class="wrap">
-      <div class="solution-grid">
-        <div class="fade-up" style="order:2;">
-          <div class="chain-hero" role="img" aria-label="Every module of AutFlow Studio linked into one system">
-            <div class="chain-hero-chrome">
-              <span class="chrome-dot on"></span><span class="chrome-dot on"></span><span class="chrome-dot on"></span>
-              <span class="chrome-label">// one connected workspace</span>
-            </div>
-            <div class="chain-hero-body" style="padding-top:30px;">
-              <div class="chain-solved" aria-hidden="true">
-                <div class="chain-node"><div class="chain-node-shape"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></div><span>Clients</span></div>
-                <div class="chain-link-bridge"></div>
-                <div class="chain-node"><div class="chain-node-shape"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div><span>Projects</span></div>
-                <div class="chain-link-bridge"></div>
-                <div class="chain-node"><div class="chain-node-shape"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 12.5l2 2 5-5"/></svg></div><span>Tasks</span></div>
-                <div class="chain-link-bridge"></div>
-                <div class="chain-node"><div class="chain-node-shape"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 3v5h5"/><path d="M6 21h12a2 2 0 0 0 2-2V8l-5-5H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z"/></svg></div><span>Documents</span></div>
-                <div class="chain-link-bridge"></div>
-                <div class="chain-node"><div class="chain-node-shape"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><span>Payments</span></div>
-                <div class="chain-link-bridge"></div>
-                <div class="chain-node"><div class="chain-node-shape"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></div><span>Meetings</span></div>
-                <div class="chain-link-bridge"></div>
-                <div class="chain-node"><div class="chain-node-shape"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 20h18M6 20V10M12 20V4M18 20v7"/></svg></div><span>Reports</span></div>
-              </div>
-            </div>
-            <div class="chain-hero-footer"><span>Nothing stands alone</span><span>Everything references everything</span></div>
-          </div>
-        </div>
-
-        <div style="order:1;">
-          <span class="eyebrow fade-up">The Solution</span>
-          <h2 class="section-title fade-up d1">One workspace. Every part of your business, linked.</h2>
-          <p class="section-lead fade-up d1" style="margin-bottom:0;">AutFlow Studio connects your client records, projects, tasks, documents, payments, and meetings into a single system — so nothing depends on you remembering which app you put it in.</p>
-          <div class="solution-note fade-up d2">
-            We don't hand you another app to configure. We build the whole workspace <strong>around your business</strong>, ready to use from day one.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features">
-    <div class="wrap">
-      <span class="eyebrow fade-up">What's Included</span>
-      <h2 class="section-title fade-up d1">Every part of running a service business, in one system.</h2>
-      <p class="section-lead fade-up d1">Each module is built to reference the others — a client's projects, documents, and payments all sit together, not in separate silos.</p>
-
-      <div class="feature-grid">
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></span>
-          <h4>Client Management</h4>
-          <p>Store every client's information, history, and notes in one record you can find in seconds.</p>
-        </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
-          <h4>Project Management</h4>
-          <p>Track every project from start to completion, with progress, deadlines, and deliverables always visible.</p>
-        </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 12.5l2 2 5-5"/></svg></span>
-          <h4>Task Management</h4>
-          <p>Turn projects into structured daily work, organized into clear workflows your team can follow.</p>
-        </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 3v5h5"/><path d="M6 21h12a2 2 0 0 0 2-2V8l-5-5H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z"/></svg></span>
-          <h4>Documents</h4>
-          <p>Keep contracts, proposals, and reports attached directly to the client and project they belong to.</p>
-        </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
-          <h4>Payments &amp; Invoices</h4>
-          <p>Track invoices, payments, and revenue, with a clear financial overview of the whole business.</p>
-        </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span>
-          <h4>Meetings &amp; Calendar</h4>
-          <p>Every meeting and deadline in one calendar, instead of spread across separate apps.</p>
-        </div>
-        <div class="feature-card fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 20h18M6 20V10M12 20V4M18 20v7"/></svg></span>
-          <h4>Reports &amp; Dashboard</h4>
-          <p>A complete, real-time overview of how the business is actually performing.</p>
-        </div>
-        <div class="feature-card upcoming fade-up">
-          <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></span>
-          <h4>AI Assistant</h4>
-          <p>An assistant that works inside your workspace — reading your data and helping you act on it.</p>
-          <span class="upcoming-badge">Coming soon</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section id="how">
-    <div class="wrap">
-      <span class="eyebrow fade-up">How It Works</span>
-      <h2 class="section-title fade-up d1">From scattered tools to one workspace, in three steps.</h2>
-      <p class="section-lead fade-up d1">You don't configure anything yourself. We set it up around how your business already runs.</p>
-
-      <div class="step-track">
-        <div class="step fade-up">
-          <div class="step-num">01</div>
-          <h4>Setup</h4>
-          <p>We configure your workspace around your business — your services, your clients, and how you actually work day to day.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">02</div>
-          <h4>Organize</h4>
-          <p>Your clients, projects, tasks, documents, and payments get structured into the system from day one — nothing left to migrate yourself.</p>
-        </div>
-        <div class="step fade-up">
-          <div class="step-num">03</div>
-          <h4>Manage</h4>
-          <p>Run your business from one dashboard, instead of switching between spreadsheets, chats, and shared drives.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing">
-    <div class="wrap">
-      <span class="eyebrow muted fade-up" style="justify-content:center;display:flex;">Pricing</span>
-      <h2 class="section-title fade-up d1" style="margin:0 auto 18px;text-align:center;max-width:680px;">One setup. A workspace built around your business.</h2>
-      <p class="section-lead fade-up d1" style="margin:0 auto 24px;text-align:center;max-width:640px;">This isn't software you configure yourself — it's a complete, personalized workspace, set up once and ready to run your business from day one.</p>
-
-      <div class="pricing-badge-row fade-up d1" style="margin-bottom:40px;">
-        <span class="pricing-badge">Personalized setup for your business</span>
+      <div class="offer-intro">
+        <span class="eyebrow gold fade-up">The Complete System</span>
+        <h2 class="section-title fade-up d1">Why hire four vendors when one system does it all?</h2>
+        <p class="section-lead fade-up d1">Branding, marketing content, a website, and clinic software are normally four separate contracts, four different standards of quality, and four things that don't talk to each other. The Clinic Growth System replaces all of it with one connected build.</p>
       </div>
 
       <div class="offer-wrap fade-up d2">
         <div class="offer-card">
+          <span class="offer-ribbon">Most Chosen</span>
           <div class="offer-top">
-            <span class="offer-tag">AutFlow Studio Setup Package</span>
-            <div class="offer-price"><sup>$</sup>599</div>
-            <p class="offer-price-note">One-time payment for your complete workspace, configured and ready to use.</p>
+            <span class="offer-tag">Clinic Growth System</span>
+            <div class="offer-value-row">
+              <span class="offer-was">$2,000+</span>
+              <div class="offer-price"><sup>$</sup>1,499</div>
+            </div>
+            <span class="offer-save">Save $496 · about 25% less than booking separately</span>
+            <p class="offer-price-note">One-time payment for your complete, connected growth system.</p>
           </div>
           <div class="offer-body">
+            <p class="offer-why"><strong>Instead of hiring separate providers</strong> for branding, ad content, a website, and software, your clinic gets one team building all of it to the same standard — so every piece is built to work with the others from day one.</p>
             <ul class="offer-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fully customized workspace for your business</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Complete branding customization</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Client, project, task, document &amp; payment management</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Meetings, calendar &amp; reports built in</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Secure login &amp; a private workspace, just for you</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fast, responsive dashboard on any device</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited revisions for 7 days after handover</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>3 professional motion graphics videos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom landing page or website</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom clinic software system</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Full brand customization</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Professional UI/UX design throughout</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Setup and launch support</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>7-day refinement period, unlimited adjustments</li>
             </ul>
-            <div class="offer-ai-note">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
-              <p><strong>AI Features — coming soon.</strong> Not included in the current setup; it will be introduced as an addition once available.</p>
-            </div>
-            <button class="cta-primary" type="button" data-cta>Get Your Setup <span class="arrow">→</span></button>
-            <p class="offer-fine">You pay once and receive your own fully configured business operating system. No subscription. Larger teams or multi-location businesses — reach out for custom scope.</p>
+            <button class="cta-primary" type="button" data-cta>Start Your Growth System <span class="arrow">→</span></button>
+            <p class="offer-fine">No subscription — you own what's built. Larger teams or multi-location clinics: reach out for custom scope.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq">
+  <!-- VALUE / JOURNEY -->
+  <section id="journey">
     <div class="wrap">
-      <span class="eyebrow fade-up">Common Questions</span>
-      <h2 class="section-title fade-up d1">Before you reach out.</h2>
+      <span class="eyebrow fade-up">Why One System</span>
+      <h2 class="section-title fade-up d1">Every part of clinic growth, linked.</h2>
+      <p class="section-lead fade-up d1">A clinic doesn't grow from one good asset. It grows when brand, marketing, the website, and booking all move as one connected system instead of five separate efforts.</p>
 
-      <div class="faq-list fade-up d1">
-        <div class="faq-item">
-          <h4>Why is this a one-time payment instead of a subscription?</h4>
-          <p>You're paying once to receive your own fully configured business operating system — not renting access to a shared tool. Every workspace is manually set up and customized for your business, so the value is delivered upfront, once.</p>
+      <div class="chain-row fade-up d2" aria-hidden="false">
+        <div class="chain-stop">
+          <div class="chain-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+          <h4>Brand</h4>
+          <p>A consistent identity your clinic actually looks like it belongs to.</p>
         </div>
-        <div class="faq-item">
-          <h4>Can it be customized to how I work?</h4>
-          <p>Yes. Branding, structure, and workflows are all configured around your business specifically — this isn't a one-size-fits-all template.</p>
+        <div class="chain-stop">
+          <div class="chain-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div>
+          <h4>Website</h4>
+          <p>A site built to convert visits into booked appointments.</p>
         </div>
-        <div class="faq-item">
-          <h4>Will it work for my type of business?</h4>
-          <p>The platform is built for service businesses — clinics, marketing agencies, consulting firms, freelancers, design studios, and similar — and each gets its own tailored workspace.</p>
+        <div class="chain-stop">
+          <div class="chain-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19h16M6 19V9l6-5 6 5v10"/></svg></div>
+          <h4>Patient Acquisition</h4>
+          <p>Ads that bring the right people to that website, consistently.</p>
         </div>
-        <div class="faq-item">
-          <h4>Can I request changes after setup?</h4>
-          <p>Yes. You get an unlimited revision guarantee for 7 days after handover, so we can fine-tune the workspace until it fits exactly right.</p>
+        <div class="chain-stop">
+          <div class="chain-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></div>
+          <h4>Booking</h4>
+          <p>A scheduling system that turns interest into a confirmed visit.</p>
         </div>
-        <div class="faq-item">
-          <h4>How long does setup take?</h4>
-          <p>Because every workspace is manually configured for your business, timelines vary with scope. Reach out and we'll give you a clear estimate for your specific setup.</p>
+        <div class="chain-stop">
+          <div class="chain-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 20h18M6 20V10M12 20V4M18 20v7"/></svg></div>
+          <h4>Management</h4>
+          <p>Dashboards showing exactly how the clinic is performing.</p>
         </div>
-        <div class="faq-item">
-          <h4>Is AI included?</h4>
-          <p>Not yet. The full operating system — clients, projects, tasks, documents, payments, meetings, and reports — is available today. AI Features are coming soon, and will be added on top of your existing workspace.</p>
+      </div>
+
+      <div class="journey-note fade-up d3">
+        Break any link and the chain loses tension: a great ad sending traffic to a weak site, or a strong site with no booking flow behind it. Forge builds every link at once, so growth doesn't depend on the one piece you happened to get right.
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <span class="eyebrow muted fade-up">How We Work</span>
+      <h2 class="section-title fade-up d1">A deliberate process, not a template pipeline.</h2>
+      <p class="section-lead fade-up d1">Every clinic runs differently, so nothing here starts from a template — it starts from how your practice actually operates.</p>
+
+      <div class="process-grid">
+        <div class="process-item fade-up">
+          <span class="p-label">Discovery</span>
+          <h4>Understand your clinic</h4>
+          <p>We map your services, your patients, and where your current setup is losing time or bookings.</p>
+        </div>
+        <div class="process-item fade-up">
+          <span class="p-label">Build</span>
+          <h4>Design and development together</h4>
+          <p>Brand, content, website, and software are built in parallel, to the same standard, by one team.</p>
+        </div>
+        <div class="process-item fade-up">
+          <span class="p-label">Launch</span>
+          <h4>Set up and trained</h4>
+          <p>We configure and launch everything, and walk your team through running it day to day.</p>
+        </div>
+        <div class="process-item fade-up">
+          <span class="p-label">Refine</span>
+          <h4>Quality guarantee</h4>
+          <p>Seven days of unlimited adjustments after handover, so the system fits exactly right.</p>
+        </div>
+      </div>
+
+      <div class="guarantee-strip fade-up d2">
+        <span class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div class="guarantee-text">
+          <h4>Built to last, not just to launch</h4>
+          <p>Custom solutions for your workflow, backed by a 7-day refinement guarantee — we don't consider it finished until it fits your clinic exactly.</p>
         </div>
       </div>
     </div>
@@ -586,11 +501,11 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
     <div class="wrap">
       <div class="final-cta">
         <span class="eyebrow fade-up" style="justify-content:center;display:flex;">Get Started</span>
-        <h2 class="final-h2 fade-up d1">Stop running your business through six different tabs. <span class="accent">Get it into one workspace.</span></h2>
-        <p class="final-sub fade-up d2">Send us a message and tell us about your business. We'll map out exactly what your AutFlow Studio workspace would look like — <strong>no pressure, no obligation to move forward.</strong></p>
+        <h2 class="final-h2 fade-up d1">Your clinic's growth starts with <span class="accent">one conversation.</span></h2>
+        <p class="final-sub fade-up d2">Tell us about your clinic and we'll map out exactly what your Growth System would include, what it replaces, and what it costs — <strong>no pressure, no obligation to move forward.</strong></p>
         <div class="final-cta-wrap fade-up d3">
-          <button class="cta-primary" type="button" data-cta>Get Your Setup <span class="arrow">→</span></button>
-          <span class="final-note">One package · $599 one-time · Personalized setup</span>
+          <button class="cta-primary" type="button" data-cta>Book Your Consultation <span class="arrow">→</span></button>
+          <span class="final-note">Individual services from $199 · Complete system $1,499 one-time</span>
         </div>
       </div>
     </div>
@@ -599,7 +514,7 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
 </main>
 
 <!-- DEMO VIDEO MODAL -->
-<div class="modal-overlay" id="demoModal" role="dialog" aria-modal="true" aria-label="AutFlow Studio product demo">
+<div class="modal-overlay" id="demoModal" role="dialog" aria-modal="true" aria-label="Forge product demo">
   <div class="modal-box">
     <div class="modal-head">
       <span>// product demo</span>
@@ -608,7 +523,7 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
       </button>
     </div>
     <div class="modal-video-wrap">
-      <video id="demoVideo" controls playsinline preload="none" poster="AutFlow-logo.png">
+      <video id="demoVideo" controls playsinline preload="none" poster="forge-logo.png">
         <source src="loomvp.mp4" type="video/mp4">
       </video>
       <div class="modal-fallback" id="modalFallback">
@@ -621,22 +536,28 @@ footer{border-top:1px solid var(--line-soft);padding:36px 0;text-align:center;}
 
 <footer>
   <div class="wrap">
-    <div class="footer-mark"><img src="AutFlow-logo.png" alt="" width="26" height="26"></div>
+    <div class="footer-mark"><img src="forge-logo.png" alt="" width="28" height="28"></div>
     <div class="footer-text">
-      <div>AutFlow Studio — The Business Operating System</div>
-      <div style="opacity:0.65;">Clients · Projects · Tasks · Documents · Payments · Meetings · Reports</div>
-      <div><a href="https://www.instagram.com/autflow.studio" target="_blank" rel="noopener">@autflow.studio</a></div>
-      <div style="opacity:0.5;">© 2026 AutFlow Studio. All rights reserved.</div>
+      <div>Forge — Clinic Growth Systems</div>
+      <div style="opacity:0.65;">Brand · Motion Ads · Website · Software · Booking · Management</div>
+      <div style="opacity:0.5;">© 2026 Forge. All rights reserved.</div>
     </div>
   </div>
 </footer>
 
 <script>
 (function(){
-  // Primary CTAs -> contact channel.
+  // Primary CTAs -> scroll to consultation section. Wire this to your booking link or mailto address.
   document.querySelectorAll('[data-cta]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      window.open('https://www.instagram.com/autflow.studio', '_blank', 'noopener');
+      var target = document.getElementById('contact');
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  document.querySelectorAll('[data-cta-offer]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = document.getElementById('offer');
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
 

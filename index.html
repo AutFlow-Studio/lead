@@ -1,20 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Your Business Deserves Its Own Operating System</title>
-<meta name="description" content="AutFlow Studio builds custom software around how your business actually works — with an AI assistant that understands your business context. Customize the Studio, own the source code, or apply for a limited MVP build.">
+<title>AutFlow Studio — An Existing AI Business Operating System</title>
+<meta name="description" content="AutFlow Studio is a working AI business operating system, already built and running. Customize it around your workflow, or acquire it outright as a SaaS or source-code asset.">
 <meta name="theme-color" content="#08090c">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="AutFlow Studio — Your Business Deserves Its Own Operating System">
-<meta property="og:description" content="Custom software built around your business, with an AI assistant that understands your business context.">
+<meta property="og:title" content="AutFlow Studio — An Existing AI Business Operating System">
+<meta property="og:description" content="A working AI business operating system you can customize or acquire as a SaaS / source-code asset.">
 <meta property="og:image" content="og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AutFlow Studio — Your Business Deserves Its Own Operating System">
-<meta name="twitter:description" content="Custom software built around your business, with an AI assistant that understands your business context.">
+<meta name="twitter:title" content="AutFlow Studio — An Existing AI Business Operating System">
+<meta name="twitter:description" content="A working AI business operating system you can customize or acquire as a SaaS / source-code asset.">
 
 <link rel="icon" type="image/png" href="AutFlow-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,20 +121,52 @@ h2.section-title{font-family:var(--display);font-size:clamp(28px,3.4vw,42px);fon
 .cta-secondary:hover{border-color:var(--current-line);color:var(--current);background:var(--current-soft);transform:translateY(-2px);}
 .cta-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.02em;display:block;}
 
-/* VIDEO */
+/* DEMO — live product tour */
 #demo{padding-top:6px;}
-.video-frame{position:relative;max-width:980px;margin:0 auto;border-radius:calc(var(--radius) + 6px);padding:1px;background:linear-gradient(160deg,rgba(92,141,255,0.5),rgba(79,216,196,0.22) 45%,var(--line) 78%);box-shadow:0 60px 130px -50px rgba(0,0,0,0.75);}
-.video-frame-inner{position:relative;border-radius:calc(var(--radius) + 5px);overflow:hidden;background:#040507;aspect-ratio:16/9;}
-.video-frame-inner video{width:100%;height:100%;object-fit:cover;display:block;}
-.demo-video{display:block!important;position:relative;z-index:2;width:100%!important;height:100%!important;min-height:220px;aspect-ratio:16/9;object-fit:cover;opacity:1!important;visibility:visible!important;pointer-events:auto;background:#040507;}
-.video-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px;background:linear-gradient(160deg,#10131b,#040507);}
-.video-fallback strong{font-family:var(--display);font-size:15px;color:var(--ink-dim);font-weight:600;}
-.video-fallback span{font-family:var(--mono);font-size:12px;color:var(--slate-dim);max-width:320px;}
-.video-glow{position:absolute;inset:-42px;z-index:-1;background:radial-gradient(ellipse at 50% 30%,rgba(92,141,255,0.18),transparent 65%);filter:blur(22px);}
-.video-caption{text-align:center;margin-top:26px;}
-.video-caption p{font-size:14.5px;color:var(--slate);}
-.video-caption p strong{color:var(--ink-dim);font-weight:600;}
-.video-caption .sub{font-family:var(--mono);font-size:12px;color:var(--slate-dim);margin-top:6px;}
+.demo-frame{position:relative;max-width:980px;margin:0 auto;border-radius:calc(var(--radius) + 6px);padding:1px;background:linear-gradient(160deg,rgba(92,141,255,0.5),rgba(79,216,196,0.22) 45%,var(--line) 78%);box-shadow:0 60px 130px -50px rgba(0,0,0,0.75);}
+.demo-frame-inner{position:relative;border-radius:calc(var(--radius) + 5px);overflow:hidden;background:#0a0c12;}
+.demo-glow{position:absolute;inset:-42px;z-index:-1;background:radial-gradient(ellipse at 50% 30%,rgba(92,141,255,0.18),transparent 65%);filter:blur(22px);}
+.demo-caption{text-align:center;margin-top:26px;}
+.demo-caption p{font-size:14.5px;color:var(--slate);}
+.demo-caption p strong{color:var(--ink-dim);font-weight:600;}
+.demo-caption .sub{font-family:var(--mono);font-size:12px;color:var(--slate-dim);margin-top:6px;}
+
+.demo-tabbar{display:flex;align-items:center;gap:4px;padding:12px 14px;border-bottom:1px solid var(--line);overflow-x:auto;}
+.demo-tab{display:flex;align-items:center;gap:8px;padding:9px 15px;border-radius:9px;font-family:var(--body);font-size:13px;font-weight:600;color:var(--slate);white-space:nowrap;transition:background .18s ease,color .18s ease;}
+.demo-tab .dot{width:6px;height:6px;border-radius:50%;background:var(--slate-dim);flex-shrink:0;transition:background .18s ease;}
+.demo-tab:hover{color:var(--ink-dim);}
+.demo-tab.active{background:var(--signal-soft);color:var(--ink);}
+.demo-tab.active .dot{background:var(--current);box-shadow:0 0 0 3px var(--current-soft);}
+
+.demo-panel{display:none;padding:28px;min-height:340px;}
+.demo-panel.active{display:block;}
+.demo-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap;}
+.demo-panel-head h4{font-family:var(--display);font-size:15px;color:var(--ink);font-weight:600;letter-spacing:-0.01em;}
+.demo-panel-head span{font-family:var(--mono);font-size:11px;color:var(--slate-dim);}
+
+.demo-module-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+@media(max-width:560px){.demo-module-grid{grid-template-columns:1fr;}}
+.demo-module{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);}
+.demo-module .name{font-size:13.5px;color:var(--ink-dim);font-weight:500;}
+.demo-module .status{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;color:var(--current);text-transform:uppercase;letter-spacing:0.05em;}
+.demo-module .status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--current);box-shadow:0 0 0 3px var(--current-soft);}
+
+.demo-client-list{display:flex;flex-direction:column;gap:9px;}
+.demo-client{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);}
+@media(max-width:560px){.demo-client{grid-template-columns:1fr;gap:6px;}}
+.demo-client .avatar{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--signal),var(--current));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:12px;font-weight:700;color:#04060a;flex-shrink:0;}
+.demo-client .info strong{display:block;font-size:13.5px;color:var(--ink);font-weight:600;}
+.demo-client .info span{font-size:12px;color:var(--slate);}
+.demo-client .stage{justify-self:end;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;padding:4px 10px;border-radius:100px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--signal-line);white-space:nowrap;}
+@media(max-width:560px){.demo-client .stage{justify-self:start;}}
+
+.demo-timeline{display:flex;flex-direction:column;gap:0;}
+.demo-tl-item{position:relative;padding:0 0 22px 26px;border-left:1.5px solid var(--line);}
+.demo-tl-item:last-child{border-left-color:transparent;padding-bottom:0;}
+.demo-tl-item::before{content:'';position:absolute;left:-5px;top:2px;width:9px;height:9px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 3px var(--signal-soft);}
+.demo-tl-item .when{display:block;font-family:var(--mono);font-size:10.5px;color:var(--slate-dim);margin-bottom:4px;}
+.demo-tl-item .what{font-size:13.5px;color:var(--ink-dim);line-height:1.5;}
+.demo-tl-item .what strong{color:var(--ink);font-weight:600;}
 
 /* PROBLEM */
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
@@ -302,12 +333,12 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
       <span class="brand-name">AutFlow Studio</span>
     </a>
     <div class="nav-links">
-      <button type="button" data-scroll="#demo">Demo</button>
+      <button type="button" data-scroll="#demo">Product</button>
       <button type="button" data-scroll="#ai">AI</button>
-      <button type="button" data-scroll="#offers">Offers</button>
-      <button type="button" data-scroll="#limited">Limited Offer</button>
+      <button type="button" data-scroll="#offers">Ownership</button>
+      <button type="button" data-scroll="#limited">MVP Program</button>
     </div>
-    <button type="button" class="nav-cta" data-scroll="#get-started" aria-label="Get started — scroll to the final call to action">Get Started</button>
+    <button type="button" class="nav-cta" data-scroll="#offers" aria-label="Discuss ownership or acquisition — scroll to the offers section">Discuss Ownership</button>
   </div>
 </nav>
 
@@ -316,43 +347,90 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="wrap">
-      <span class="eyebrow center fade-up">Custom Business Software</span>
+      <span class="eyebrow center fade-up">An Existing AI Business Operating System</span>
       <h1 class="hero-h1 fade-up d1">Your Business Deserves Its Own <span class="accent">Operating System.</span></h1>
-      <p class="hero-sub fade-up d2">Custom software built around the way your business actually works — with an AI assistant that understands your business context.</p>
+      <p class="hero-sub fade-up d2">AutFlow Studio is a working business system, built and running today — with an AI assistant that understands your business context. Customize it around your workflow, or acquire the source code and make it yours.</p>
       <div class="cta-row fade-up d3">
-        <button type="button" class="cta-primary" data-scroll="#get-started" aria-label="Get started — scroll to the final call to action">Get Started <span class="arrow">→</span></button>
+        <button type="button" class="cta-primary" data-scroll="#demo" aria-label="View the product — scroll to the live demo">View the Product <span class="arrow">→</span></button>
+        <button type="button" class="cta-secondary" data-scroll="#offers" aria-label="Discuss ownership or acquisition — scroll to the offers section">Discuss Ownership &amp; Acquisition</button>
       </div>
-      <span class="cta-note fade-up d3">Custom systems. SaaS builds. Limited outcome-based projects.</span>
+      <span class="cta-note fade-up d3">Customize the Studio, or acquire it as a SaaS / source-code asset.</span>
     </div>
   </section>
 
-  <!-- VIDEO -->
+  <!-- DEMO -->
   <section id="demo">
     <div class="wrap">
-      <span class="eyebrow center fade-up">Live System</span>
-      <h2 class="section-title center fade-up d1" style="max-width:100%;">See the System in Action.</h2>
-      <div class="video-frame fade-up d1">
-        <div class="video-glow" aria-hidden="true"></div>
-        <div class="video-frame-inner">
-          <video
-            id="demoVideo"
-            class="demo-video"
-            controls
-            playsinline
-            preload="metadata"
-            muted
-            aria-label="Demo of a configured AutFlow Studio business workspace">
-            <source src="./lom.mp4" type="video/mp4">
-          </video>
-          <div class="video-fallback" id="videoFallback" hidden>
-            <strong>lom.mp4</strong>
-            <span>Place lom.mp4 alongside this page to play the configured business workspace demo here.</span>
+      <span class="eyebrow center fade-up">Live Product, Not A Concept</span>
+      <h2 class="section-title center fade-up d1" style="max-width:100%;">AutFlow Studio already exists. Here's what's running today.</h2>
+      <p class="section-lead center fade-up d1">This is the actual product — a configured workspace, not a mockup. Customization and acquisition both start from what you see here.</p>
+
+      <div class="demo-frame fade-up d1">
+        <div class="demo-glow" aria-hidden="true"></div>
+        <div class="demo-frame-inner">
+          <div class="demo-tabbar" role="tablist" aria-label="Product tour">
+            <button type="button" class="demo-tab active" data-panel="panel-workspace" role="tab" aria-selected="true"><span class="dot" aria-hidden="true"></span>Workspace</button>
+            <button type="button" class="demo-tab" data-panel="panel-clients" role="tab" aria-selected="false"><span class="dot" aria-hidden="true"></span>Clients &amp; Projects</button>
+            <button type="button" class="demo-tab" data-panel="panel-activity" role="tab" aria-selected="false"><span class="dot" aria-hidden="true"></span>Activity Log</button>
+          </div>
+
+          <div class="demo-panel active" id="panel-workspace" role="tabpanel">
+            <div class="demo-panel-head">
+              <h4>Business modules — live in this workspace</h4>
+              <span>Configured for a service business</span>
+            </div>
+            <div class="demo-module-grid">
+              <div class="demo-module"><span class="name">Clients &amp; CRM</span><span class="status">Live</span></div>
+              <div class="demo-module"><span class="name">Projects &amp; Tasks</span><span class="status">Live</span></div>
+              <div class="demo-module"><span class="name">Invoicing</span><span class="status">Live</span></div>
+              <div class="demo-module"><span class="name">Forms &amp; Approvals</span><span class="status">Live</span></div>
+              <div class="demo-module"><span class="name">Documents</span><span class="status">Live</span></div>
+              <div class="demo-module"><span class="name">AI Business Assistant</span><span class="status">Live</span></div>
+            </div>
+          </div>
+
+          <div class="demo-panel" id="panel-clients" role="tabpanel">
+            <div class="demo-panel-head">
+              <h4>Clients &amp; projects, in one view</h4>
+              <span>3 of 14 shown</span>
+            </div>
+            <div class="demo-client-list">
+              <div class="demo-client">
+                <span class="avatar" aria-hidden="true">HC</span>
+                <span class="info"><strong>Harborview Co.</strong><span>Website rebuild — proposal stage</span></span>
+                <span class="stage">Proposal sent</span>
+              </div>
+              <div class="demo-client">
+                <span class="avatar" aria-hidden="true">NF</span>
+                <span class="info"><strong>Nettle &amp; Finch</strong><span>Ongoing retainer — milestone 2 of 4</span></span>
+                <span class="stage">In progress</span>
+              </div>
+              <div class="demo-client">
+                <span class="avatar" aria-hidden="true">AS</span>
+                <span class="info"><strong>Ardent Supply</strong><span>Onboarding — assets pending</span></span>
+                <span class="stage">Blocked</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-panel" id="panel-activity" role="tabpanel">
+            <div class="demo-panel-head">
+              <h4>What the system logged today</h4>
+              <span>Auto-tracked</span>
+            </div>
+            <div class="demo-timeline">
+              <div class="demo-tl-item"><span class="when">9:14 AM</span><span class="what"><strong>Invoice sent</strong> to Nettle &amp; Finch for milestone 2</span></div>
+              <div class="demo-tl-item"><span class="when">11:02 AM</span><span class="what"><strong>Proposal opened</strong> by Harborview Co. — no reply yet</span></div>
+              <div class="demo-tl-item"><span class="when">2:40 PM</span><span class="what">AI assistant <strong>drafted a follow-up</strong> for Ardent Supply's pending assets</span></div>
+              <div class="demo-tl-item"><span class="when">4:55 PM</span><span class="what"><strong>Task completed</strong> — homepage copy, Harborview Co.</span></div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="video-caption fade-up d2">
-        <p><strong>See what a fully configured business system can look like.</strong></p>
-        <p class="sub">This is a configured business workspace. Your version is adapted around your own workflow.</p>
+
+      <div class="demo-caption fade-up d2">
+        <p><strong>What you see here is what already exists.</strong> Customizing it adapts these modules to your workflow. Acquiring it hands you the source code to build on.</p>
+        <p class="sub">Sample workspace shown for illustration. Your data and modules are your own.</p>
       </div>
     </div>
   </section>
@@ -508,9 +586,9 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
   <!-- TWO MAIN WAYS TO WORK WITH US -->
   <section id="offers">
     <div class="wrap">
-      <span class="eyebrow center fade-up">Two Ways To Work With Us</span>
+      <span class="eyebrow center fade-up">The Main Offer</span>
       <h2 class="section-title center fade-up d1">Adapt the Studio, or own the code outright.</h2>
-      <p class="section-lead center fade-up d1">These are two distinct product paths — not pricing tiers of the same thing.</p>
+      <p class="section-lead center fade-up d1">AutFlow Studio already exists and runs live workspaces like the one shown above. From here, there are two distinct paths — not pricing tiers of the same thing.</p>
 
       <div class="options-grid">
         <div class="option-card fade-up">
@@ -533,9 +611,9 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
 
         <div class="option-card option-alt fade-up d1">
           <span class="option-tag">Option 2</span>
-          <h3>Own the Source Code</h3>
-          <p class="option-kicker">From adapting Studio to building something fundamentally different.</p>
-          <p class="option-desc">If you don't just want a customized Studio — but want to own and shape the product itself — we can modify the source code substantially around your requirements, including major architecture and workflow changes.</p>
+          <h3>Acquire the Source Code</h3>
+          <p class="option-kicker">From adapting Studio to owning it outright, as a SaaS or source-code asset.</p>
+          <p class="option-desc">If you don't just want a customized Studio — but want to own and shape the product itself — we transfer and modify the source code substantially around your requirements, including major architecture and workflow changes.</p>
           <ul class="option-list">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Major architecture &amp; workflow changes</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>New modules, branding &amp; AI functionality</li>
@@ -545,7 +623,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
           <span class="option-warranty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Includes 7-day adjustment guarantee</span>
           <div class="option-foot">
             <span class="option-price">Custom project</span>
-            <button type="button" class="option-cta" data-scroll="#get-started" aria-label="Discuss your SaaS — scroll to the final call to action">Discuss Your SaaS</button>
+            <button type="button" class="option-cta" data-scroll="#get-started" aria-label="Discuss acquisition — scroll to the final call to action">Discuss Acquisition</button>
           </div>
         </div>
       </div>
@@ -557,9 +635,9 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
     <div class="wrap">
       <div class="limited-panel fade-up">
         <div class="limited-top">
-          <span class="limited-badge">Limited Offer</span>
+          <span class="limited-badge">Separate Program — New MVP Builds Only</span>
           <h2>Build Now. Pay the Main Fee Later.</h2>
-          <p class="limited-lead">For a very limited number of qualified projects, you can start an MVP SaaS build with only a small initial fee. Instead of paying the full project fee upfront, selected projects can start with a small initial fee and defer the main payment until the agreed MVP criteria have been met.</p>
+          <p class="limited-lead">This is a different program from customizing or acquiring AutFlow Studio above — it's for founders who need a brand-new MVP built from scratch, not the existing Studio. For a very limited number of qualified projects, you can start that build with only a small initial fee, deferring the main payment until the agreed MVP criteria have been met.</p>
         </div>
 
         <div class="limited-steps" role="list" aria-label="Limited offer process">
@@ -646,10 +724,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
       <div class="final-cta">
         <span class="eyebrow center fade-up">Get Started</span>
         <h2 class="final-h2 fade-up d1">Stop Adapting Your Business to Software.</h2>
-        <p class="final-sub fade-up d2">Build software around your business instead.</p>
+        <p class="final-sub fade-up d2">See the product, then talk to us about customizing it or acquiring it outright.</p>
         <div class="final-cta-wrap fade-up d3">
-          <a class="cta-primary" href="https://www.instagram.com/autflow_studio/" target="_blank" rel="noopener noreferrer" aria-label="Build My Custom System — opens Instagram in a new tab">Build My Custom System <span class="arrow">→</span></a>
-          <span class="final-note">Limited custom builds available.</span>
+          <a class="cta-primary" href="https://www.instagram.com/autflow_studio/" target="_blank" rel="noopener noreferrer" aria-label="Discuss customizing or acquiring AutFlow Studio — opens Instagram in a new tab">Discuss Customizing or Acquiring AutFlow Studio <span class="arrow">→</span></a>
+          <span class="final-note">Existing product. Limited availability for new engagements.</span>
         </div>
       </div>
     </div>
@@ -715,24 +793,18 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
     revealTargets.forEach(function(el){ el.classList.add('in'); });
   }
 
-  // Video fallback if lom.mp4 is missing or fails to load.
-  var video = document.getElementById('demoVideo');
-  var fallback = document.getElementById('videoFallback');
-  if(video){
-    video.addEventListener('error', function(){
-      video.hidden = true;
-      if(fallback) fallback.hidden = false;
+  // Product tour tabs.
+  var demoTabs = document.querySelectorAll('.demo-tab');
+  demoTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      demoTabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.demo-panel').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      var panel = document.getElementById(tab.getAttribute('data-panel'));
+      if(panel) panel.classList.add('active');
     });
-    // Also check the <source> child directly — some browsers fire the error
-    // on the source element rather than bubbling it to the video element.
-    var src = video.querySelector('source');
-    if(src){
-      src.addEventListener('error', function(){
-        video.hidden = true;
-        if(fallback) fallback.hidden = false;
-      });
-    }
-  }
+  });
 })();
 </script>
 </body>

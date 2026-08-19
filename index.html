@@ -3,731 +3,1320 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — An Existing AI Business Operating System</title>
-<meta name="description" content="AutFlow Studio is a working AI business operating system, already built and running. Customize it around your workflow, or acquire it outright as a SaaS or source-code asset.">
-<meta name="theme-color" content="#08090c">
-
+<title>Cadence — Luxury Property Content Pack | Cinematic Content for Premium Villas &amp; Airbnbs</title>
+<meta name="description" content="A cinematic property film, three social reels, ad creative and marketing assets — one $500 content pack built for luxury villas, Airbnbs and boutique rentals.">
+<meta property="og:title" content="Cadence — Luxury Property Content Pack">
+<meta property="og:description" content="Turn your property into a cinematic content package for listings, social media and advertising. One package, $500.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AutFlow Studio — An Existing AI Business Operating System">
-<meta property="og:description" content="A working AI business operating system you can customize or acquire as a SaaS / source-code asset.">
-<meta property="og:image" content="og-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AutFlow Studio — An Existing AI Business Operating System">
-<meta name="twitter:description" content="A working AI business operating system you can customize or acquire as a SaaS / source-code asset.">
-
-<link rel="icon" type="image/png" href="AutFlow-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#08090c; --bg-2:#0b0d12; --panel:#111319; --panel-2:#161922; --glass:rgba(255,255,255,0.035);
-  --line:rgba(230,231,234,0.08); --line-strong:rgba(230,231,234,0.15);
-  --ink:#eceef2; --ink-dim:#c2c5d1; --slate:#8b8f9c; --slate-dim:#565a6a;
-  --signal:#5c8dff; --signal-2:#3a63d8; --signal-soft:rgba(92,141,255,0.1); --signal-line:rgba(92,141,255,0.32);
-  --current:#4fd8c4; --current-soft:rgba(79,216,196,0.1); --current-line:rgba(79,216,196,0.3);
-  --bad:#e0806a;
-  --display:'Space Grotesk',sans-serif; --body:'Inter',-apple-system,sans-serif; --mono:'JetBrains Mono','SF Mono',monospace;
-  --ease:cubic-bezier(0.19,1,0.22,1); --radius:20px; --radius-sm:12px; --nav-h:72px;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--slate);font-family:var(--body);font-size:16.5px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-img,svg,video{display:block;max-width:100%;}
-a{color:inherit;text-decoration:none;}
-ul{list-style:none;}
-button{font:inherit;background:none;border:none;color:inherit;cursor:pointer;}
-::selection{background:rgba(92,141,255,0.28);color:var(--ink);}
-::-webkit-scrollbar{width:9px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:5px;}
-:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:4px;}
+  :root{
+    --ink:#0f0d0b;
+    --ink-2:#161310;
+    --ink-3:#1d1914;
+    --bone:#f4efe4;
+    --bone-dim:#a89a84;
+    --bone-faint:#6f6558;
+    --gold:#c8a15c;
+    --gold-dim:#8f7440;
+    --teal:#3c5c5a;
+    --line: rgba(244,239,228,0.13);
+    --line-strong: rgba(244,239,228,0.24);
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --ease: cubic-bezier(.22,1,.36,1);
+  }
 
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(230,231,234,0.024) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(230,231,234,0.024) 1px,transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,#000 40%,transparent 100%);
-}
-body::after{
-  content:'';position:fixed;top:-22%;left:50%;transform:translateX(-50%);width:1500px;height:950px;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(92,141,255,0.1) 0%,rgba(79,216,196,0.04) 42%,transparent 70%);
-}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important;}
+  }
 
-.fade-up{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);will-change:opacity,transform;}
-.fade-up.in{opacity:1;transform:translateY(0);}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  .fade-up,.node,.link,.particle,.pulse-ring{opacity:1!important;transform:none!important;transition:none!important;animation:none!important;}
-  *{animation-duration:.01ms!important;animation-iteration-count:1!important;}
-}
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;}
+  ul{list-style:none;}
 
-.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;}
-.skip-link:focus{position:fixed;top:14px;left:14px;z-index:999;width:auto;height:auto;padding:14px 18px;background:var(--signal);color:#050608;font-family:var(--mono);font-size:13px;border-radius:var(--radius-sm);font-weight:600;}
+  ::selection{background:var(--gold);color:var(--ink);}
 
-.wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
-@media(max-width:768px){.wrap{padding:0 20px;}}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:200;background:rgba(8,9,12,0.7);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,background .3s ease;}
-nav.scrolled{border-bottom-color:var(--line);background:rgba(8,9,12,0.92);}
-.nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;justify-content:space-between;}
-.brand{display:flex;align-items:center;gap:11px;}
-.brand-mark{width:32px;height:32px;flex-shrink:0;border-radius:9px;background:linear-gradient(135deg,var(--signal),var(--signal-2));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:14px;color:#fff;}
-.brand-name{font-family:var(--display);font-size:16px;color:var(--ink);letter-spacing:-0.01em;font-weight:600;}
-.nav-links{display:flex;align-items:center;gap:30px;}
-.nav-links button{font-size:14px;color:var(--slate);font-weight:500;transition:color .18s ease;}
-.nav-links button:hover{color:var(--ink);}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);border-radius:var(--radius-sm);padding:10.5px 18px;font-family:var(--body);font-size:13.5px;font-weight:700;transition:transform .22s var(--ease),box-shadow .22s var(--ease),background .22s var(--ease);}
-.nav-cta:hover{background:var(--signal);color:#fff;box-shadow:0 8px 24px -8px rgba(92,141,255,0.5);transform:translateY(-1px);}
-@media(max-width:900px){.nav-links{display:none;}}
-@media(max-width:640px){.nav-inner{padding:0 18px;}}
+  .wrap{
+    max-width:1220px;
+    margin:0 auto;
+    padding:0 32px;
+  }
 
-main{position:relative;z-index:1;}
-section{padding:100px 0;position:relative;}
-@media(max-width:768px){section{padding:66px 0;}}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:16px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
 
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--signal);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;}
-.eyebrow::before{content:'';width:14px;height:1.5px;background:var(--signal);flex-shrink:0;}
-.eyebrow.current{color:var(--current);}
-.eyebrow.current::before{background:var(--current);}
-.eyebrow.bad{color:var(--bad);}
-.eyebrow.bad::before{background:var(--bad);}
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:-.01em;
+    color:var(--bone);
+  }
+  em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--gold);
+  }
 
-h2.section-title{font-family:var(--display);font-size:clamp(28px,3.4vw,42px);font-weight:600;color:var(--ink);letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px;max-width:660px;}
-.section-lead{font-size:16.5px;color:var(--slate);line-height:1.75;max-width:560px;margin-bottom:44px;}
-.section-lead strong{color:var(--ink-dim);font-weight:600;}
-.center{text-align:center;margin-left:auto;margin-right:auto;}
-.center .eyebrow{justify-content:center;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    border-radius:2px;
+    border:1px solid transparent;
+    transition:all .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--bone);
+    color:var(--ink);
+  }
+  .btn-primary:hover{
+    background:var(--gold);
+    color:var(--ink);
+    transform:translateY(-2px);
+  }
+  .btn-ghost{
+    border-color:var(--line-strong);
+    color:var(--bone);
+  }
+  .btn-ghost:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+  .btn-arrow{transition:transform .35s var(--ease);}
+  .btn:hover .btn-arrow{transform:translateX(3px);}
 
-/* HERO */
-.hero{padding:calc(var(--nav-h) + 70px) 0 36px;text-align:center;}
-.hero-h1{font-family:var(--display);font-size:clamp(34px,5.2vw,62px);font-weight:600;color:var(--ink);line-height:1.07;letter-spacing:-0.03em;margin:0 auto 22px;max-width:860px;}
-.hero-h1 .accent{color:var(--signal);}
-.hero-sub{font-size:18px;color:var(--slate);line-height:1.7;max-width:560px;margin:0 auto 34px;}
-.hero-sub strong{color:var(--ink-dim);font-weight:600;}
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    padding:26px 0;
+    transition:padding .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:16px 0;
+    background:rgba(15,13,11,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:var(--serif);
+    font-size:19px;
+    letter-spacing:.02em;
+  }
+  .brand img{
+    height:26px;width:auto;
+    filter:invert(1) brightness(1.6);
+  }
+  .brand span{padding-top:2px;}
 
-.cta-row{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
-.cta-primary{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:#fff;border-radius:var(--radius-sm);padding:15px 26px;font-family:var(--body);font-size:15px;font-weight:700;cursor:pointer;transition:transform .24s var(--ease),box-shadow .24s var(--ease),background .24s var(--ease);box-shadow:0 14px 32px -12px rgba(92,141,255,0.55);}
-.cta-primary:hover{background:#7aa0ff;box-shadow:0 18px 42px -10px rgba(92,141,255,0.6);transform:translateY(-2px);}
-.cta-primary:active{transform:translateY(0);}
-.cta-primary .arrow{transition:transform .2s ease;}
-.cta-primary:hover .arrow{transform:translateX(3px);}
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:40px;
+  }
+  .nav-links a:not(.btn){
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+    position:relative;
+    padding-bottom:3px;
+  }
+  .nav-links a:not(.btn)::after{
+    content:'';
+    position:absolute;left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--gold);
+    transition:width .3s var(--ease);
+  }
+  .nav-links a:not(.btn):hover{color:var(--bone);}
+  .nav-links a:not(.btn):hover::after{width:100%;}
 
-.cta-secondary{display:inline-flex;align-items:center;gap:9px;background:var(--glass);color:var(--ink-dim);border:1.5px solid var(--line-strong);border-radius:var(--radius-sm);padding:13.5px 24px;font-family:var(--body);font-size:15px;font-weight:600;cursor:pointer;transition:transform .24s var(--ease),border-color .24s var(--ease),color .24s var(--ease),background .24s var(--ease);}
-.cta-secondary:hover{border-color:var(--current-line);color:var(--current);background:var(--current-soft);transform:translateY(-2px);}
-.cta-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.02em;display:block;}
+  .nav-cta{display:flex;align-items:center;gap:28px;}
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;border:none;
+    padding:6px;
+  }
+  .hamburger span{
+    width:22px;height:1px;background:var(--bone);
+    transition:transform .3s var(--ease), opacity .3s var(--ease);
+  }
 
-/* DEMO — live product tour */
-#demo{padding-top:6px;}
-.demo-frame{position:relative;max-width:980px;margin:0 auto;border-radius:calc(var(--radius) + 6px);padding:1px;background:linear-gradient(160deg,rgba(92,141,255,0.5),rgba(79,216,196,0.22) 45%,var(--line) 78%);box-shadow:0 60px 130px -50px rgba(0,0,0,0.75);}
-.demo-frame-inner{position:relative;border-radius:calc(var(--radius) + 5px);overflow:hidden;background:#0a0c12;}
-.demo-glow{position:absolute;inset:-42px;z-index:-1;background:radial-gradient(ellipse at 50% 30%,rgba(92,141,255,0.18),transparent 65%);filter:blur(22px);}
-.demo-caption{text-align:center;margin-top:26px;}
-.demo-caption p{font-size:14.5px;color:var(--slate);}
-.demo-caption p strong{color:var(--ink-dim);font-weight:600;}
-.demo-caption .sub{font-family:var(--mono);font-size:12px;color:var(--slate-dim);margin-top:6px;}
+  .mobile-menu{
+    position:fixed;inset:0;
+    background:var(--ink);
+    z-index:99;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:28px;
+    padding:32px;
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(-8px);
+    transition:opacity .4s var(--ease), transform .4s var(--ease);
+  }
+  .mobile-menu.open{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .mobile-menu a{
+    font-family:var(--serif);
+    font-size:32px;
+    color:var(--bone);
+    border-bottom:1px solid var(--line);
+    padding-bottom:18px;
+  }
+  .mobile-menu .btn{align-self:flex-start;margin-top:8px;}
 
-.demo-tabbar{display:flex;align-items:center;gap:4px;padding:12px 14px;border-bottom:1px solid var(--line);overflow-x:auto;}
-.demo-tab{display:flex;align-items:center;gap:8px;padding:9px 15px;border-radius:9px;font-family:var(--body);font-size:13px;font-weight:600;color:var(--slate);white-space:nowrap;transition:background .18s ease,color .18s ease;}
-.demo-tab .dot{width:6px;height:6px;border-radius:50%;background:var(--slate-dim);flex-shrink:0;transition:background .18s ease;}
-.demo-tab:hover{color:var(--ink-dim);}
-.demo-tab.active{background:var(--signal-soft);color:var(--ink);}
-.demo-tab.active .dot{background:var(--current);box-shadow:0 0 0 3px var(--current-soft);}
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-media{
+    position:absolute;inset:0;
+    z-index:0;
+  }
+  .hero-media img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transform:scale(1.08);
+    transition:transform 1.6s var(--ease);
+  }
+  .hero.loaded .hero-media img{transform:scale(1);}
+  .hero-media::after{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(15,13,11,.55) 0%, rgba(15,13,11,.15) 32%, rgba(15,13,11,.55) 78%, var(--ink) 100%),
+      linear-gradient(90deg, rgba(15,13,11,.5) 0%, rgba(15,13,11,0) 40%);
+  }
 
-.demo-panel{display:none;padding:28px;min-height:340px;}
-.demo-panel.active{display:block;}
-.demo-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap;}
-.demo-panel-head h4{font-family:var(--display);font-size:15px;color:var(--ink);font-weight:600;letter-spacing:-0.01em;}
-.demo-panel-head span{font-family:var(--mono);font-size:11px;color:var(--slate-dim);}
+  .hero-content{
+    position:relative;z-index:2;
+    width:100%;
+    padding:170px 0 84px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:flex-end;
+    gap:40px;
+  }
+  .hero h1{
+    font-size:clamp(38px, 6vw, 76px);
+    line-height:1.04;
+    max-width:15ch;
+    opacity:0;
+    transform:translateY(18px);
+    animation:reveal 1s var(--ease) .35s forwards;
+  }
+  .hero .eyebrow{
+    margin-bottom:22px;
+    opacity:0;
+    transform:translateY(10px);
+    animation:reveal .8s var(--ease) .1s forwards;
+  }
+  .hero-sub{
+    margin-top:26px;
+    max-width:46ch;
+    color:var(--bone-dim);
+    font-size:16.5px;
+    line-height:1.65;
+    opacity:0;
+    transform:translateY(14px);
+    animation:reveal 1s var(--ease) .55s forwards;
+  }
+  .hero-ctas{
+    margin-top:38px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:18px;
+    opacity:0;
+    transform:translateY(14px);
+    animation:reveal 1s var(--ease) .75s forwards;
+  }
+  .hero-price{
+    text-align:right;
+    opacity:0;
+    animation:reveal 1s var(--ease) .9s forwards;
+  }
+  .hero-price .amount{
+    font-family:var(--serif);
+    font-size:56px;
+    color:var(--bone);
+    line-height:1;
+  }
+  .hero-price .amount sup{font-size:22px;top:-1.6em;color:var(--gold);}
+  .hero-price .label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+    margin-top:8px;
+  }
 
-.demo-module-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
-@media(max-width:560px){.demo-module-grid{grid-template-columns:1fr;}}
-.demo-module{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);}
-.demo-module .name{font-size:13.5px;color:var(--ink-dim);font-weight:500;}
-.demo-module .status{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;color:var(--current);text-transform:uppercase;letter-spacing:0.05em;}
-.demo-module .status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--current);box-shadow:0 0 0 3px var(--current-soft);}
+  .hero-scrub{
+    position:absolute;
+    left:32px;right:32px;
+    bottom:28px;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--bone-faint);
+  }
+  .hero-scrub .bar{
+    flex:1;
+    height:1px;
+    background:var(--line-strong);
+    position:relative;
+  }
+  .hero-scrub .bar::before{
+    content:'';
+    position:absolute;left:0;top:-1px;
+    height:3px;width:22%;
+    background:var(--gold);
+  }
 
-.demo-client-list{display:flex;flex-direction:column;gap:9px;}
-.demo-client{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);}
-@media(max-width:560px){.demo-client{grid-template-columns:1fr;gap:6px;}}
-.demo-client .avatar{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--signal),var(--current));display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:12px;font-weight:700;color:#04060a;flex-shrink:0;}
-.demo-client .info strong{display:block;font-size:13.5px;color:var(--ink);font-weight:600;}
-.demo-client .info span{font-size:12px;color:var(--slate);}
-.demo-client .stage{justify-self:end;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;padding:4px 10px;border-radius:100px;color:var(--signal);background:var(--signal-soft);border:1px solid var(--signal-line);white-space:nowrap;}
-@media(max-width:560px){.demo-client .stage{justify-self:start;}}
+  @keyframes reveal{to{opacity:1;transform:translateY(0);}}
 
-.demo-timeline{display:flex;flex-direction:column;gap:0;}
-.demo-tl-item{position:relative;padding:0 0 22px 26px;border-left:1.5px solid var(--line);}
-.demo-tl-item:last-child{border-left-color:transparent;padding-bottom:0;}
-.demo-tl-item::before{content:'';position:absolute;left:-5px;top:2px;width:9px;height:9px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 3px var(--signal-soft);}
-.demo-tl-item .when{display:block;font-family:var(--mono);font-size:10.5px;color:var(--slate-dim);margin-bottom:4px;}
-.demo-tl-item .what{font-size:13.5px;color:var(--ink-dim);line-height:1.5;}
-.demo-tl-item .what strong{color:var(--ink);font-weight:600;}
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{position:relative;}
+  .panel{padding:120px 0;}
+  .panel-tight{padding:88px 0;}
+  .divider{border-top:1px solid var(--line);}
+  .alt{background:var(--ink-2);}
 
-/* PROBLEM */
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-@media(max-width:900px){.problem-grid{grid-template-columns:1fr;gap:40px;}}
-.tool-stack{display:flex;flex-direction:column;gap:10px;}
-.tool-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;border-radius:var(--radius-sm);background:var(--panel);border:1px solid var(--line);opacity:0;transform:translateX(-14px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
-.tool-row.in{opacity:1;transform:translateX(0);}
-.tool-row .name{font-size:14px;color:var(--ink-dim);font-weight:500;}
-.tool-row .tag{font-family:var(--mono);font-size:11px;color:var(--bad);text-decoration:line-through;opacity:.7;}
-.tool-row:nth-child(2){transition-delay:.05s}
-.tool-row:nth-child(3){transition-delay:.1s}
-.tool-row:nth-child(4){transition-delay:.15s}
-.tool-row:nth-child(5){transition-delay:.2s}
-.tool-row:nth-child(6){transition-delay:.25s}
-.problem-final{margin-top:18px;padding:16px 18px;border-radius:var(--radius-sm);background:var(--signal-soft);border:1px solid var(--signal-line);display:flex;align-items:center;justify-content:space-between;gap:14px;}
-.problem-final .name{font-size:14px;color:var(--ink);font-weight:600;}
-.problem-final .tag{font-family:var(--mono);font-size:11px;color:var(--signal);}
-.problem-copy p{font-size:16px;color:var(--slate);line-height:1.75;margin-bottom:16px;max-width:480px;}
-.problem-copy p.solution-line{font-family:var(--display);font-size:20px;color:var(--ink);font-weight:600;letter-spacing:-0.01em;margin-top:24px;}
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .9s var(--ease), transform .9s var(--ease);
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-d1{transition-delay:.08s;}
+  .reveal-d2{transition-delay:.16s;}
+  .reveal-d3{transition-delay:.24s;}
+  .reveal-d4{transition-delay:.32s;}
+  .reveal-d5{transition-delay:.4s;}
 
-/* AI CONTEXT — premium assistant dashboard */
-.ai-section{background:radial-gradient(ellipse 90% 70% at 50% 15%,rgba(79,216,196,0.05),transparent 60%);}
+  .section-head{
+    max-width:640px;
+    margin-bottom:64px;
+  }
+  .section-head h2{
+    font-size:clamp(28px, 3.4vw, 42px);
+    line-height:1.15;
+    margin-top:18px;
+  }
+  .section-head p{
+    margin-top:18px;
+    color:var(--bone-dim);
+    font-size:15.5px;
+    line-height:1.7;
+    max-width:52ch;
+  }
 
-.ai-dashboard{max-width:820px;margin:0 auto;}
-.dash-frame{border-radius:var(--radius);border:1px solid var(--line-strong);background:linear-gradient(165deg,rgba(255,255,255,0.035),rgba(255,255,255,0.008));backdrop-filter:blur(14px);overflow:hidden;box-shadow:0 40px 90px -40px rgba(0,0,0,0.7);}
+  /* ---------- TRUST ---------- */
+  .trust{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .trust h2{
+    font-size:clamp(24px,3vw,34px);
+    line-height:1.25;
+  }
+  .trust-copy p{
+    color:var(--bone-dim);
+    font-size:15px;
+    line-height:1.75;
+    margin-top:16px;
+  }
+  .format-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:28px;
+  }
+  .format-tag{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--bone-dim);
+    border:1px solid var(--line-strong);
+    padding:8px 14px;
+    border-radius:2px;
+  }
 
-.dash-titlebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;border-bottom:1px solid var(--line);}
-.dash-titlebar-left{display:flex;align-items:center;gap:10px;}
-.dash-dot{width:8px;height:8px;border-radius:50%;background:var(--current);box-shadow:0 0 0 3px var(--current-soft);flex-shrink:0;}
-.dash-title{font-family:var(--display);font-size:14px;color:var(--ink);font-weight:600;letter-spacing:-0.01em;}
-.dash-status{font-family:var(--mono);font-size:11px;color:var(--slate-dim);letter-spacing:0.03em;white-space:nowrap;}
-@media(max-width:600px){.dash-status{display:none;}}
+  /* ---------- TRANSFORMATION ---------- */
+  .transform-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .transform-cell{
+    background:var(--ink);
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+  }
+  .transform-cell img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(.85);
+    transition:transform 1.1s var(--ease), filter 1.1s var(--ease);
+  }
+  .transform-cell.final img{filter:saturate(1.15) contrast(1.06);}
+  .transform-cell:hover img{transform:scale(1.05);}
+  .transform-tag{
+    position:absolute;top:20px;left:20px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--bone);
+    background:rgba(15,13,11,.55);
+    backdrop-filter:blur(4px);
+    padding:6px 12px;
+    border:1px solid var(--line-strong);
+  }
+  .transform-cell.final .transform-tag{
+    color:var(--ink);
+    background:var(--gold);
+    border-color:var(--gold);
+  }
+  .transform-caption{
+    position:absolute;bottom:20px;left:20px;right:20px;
+    font-size:13px;color:var(--bone-dim);
+  }
+  .transform-arrows{
+    display:flex;
+    justify-content:space-between;
+    padding:0 8px;
+    margin-top:-1px;
+  }
+  .transform-arrows span{
+    font-family:var(--mono);
+    font-size:20px;
+    color:var(--gold-dim);
+  }
 
-.dash-body{display:grid;grid-template-columns:194px 1fr;}
-@media(max-width:680px){.dash-body{grid-template-columns:1fr;}}
+  /* ---------- PACKAGE ---------- */
+  .package-shell{
+    border:1px solid var(--line-strong);
+    background:linear-gradient(180deg, var(--ink-3), var(--ink-2));
+    padding:0;
+  }
+  .package-top{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    padding:44px 44px 36px;
+    border-bottom:1px solid var(--line);
+  }
+  .package-top h3{
+    font-size:clamp(24px,2.6vw,32px);
+  }
+  .package-price{
+    text-align:right;
+  }
+  .package-price .num{
+    font-family:var(--serif);
+    font-size:44px;
+  }
+  .package-price .sub{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+  }
 
-.dash-rail{padding:20px 14px;border-right:1px solid var(--line);background:rgba(255,255,255,0.012);}
-@media(max-width:680px){.dash-rail{border-right:none;border-bottom:1px solid var(--line);}}
-.rail-label{display:block;font-family:var(--mono);font-size:10px;color:var(--slate-dim);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:12px;padding-left:8px;}
-.rail-list{display:flex;flex-direction:column;gap:2px;}
-@media(max-width:680px){.rail-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px;}}
-.rail-item{display:flex;align-items:center;gap:10px;padding:8px 8px;border-radius:8px;font-size:13px;color:var(--slate);font-weight:500;opacity:0;transform:translateX(-8px);transition:opacity .45s var(--ease),transform .45s var(--ease),background .18s ease,color .18s ease;}
-.rail-item.in{opacity:1;transform:translateX(0);}
-.rail-item svg{width:15px;height:15px;color:var(--slate-dim);flex-shrink:0;transition:color .18s ease;}
-.rail-item:hover{background:var(--current-soft);color:var(--ink-dim);}
-.rail-item:hover svg{color:var(--current);}
+  .reel{
+    position:relative;
+    padding:8px 44px 44px;
+  }
+  .reel::before{
+    content:'';
+    position:absolute;
+    left:64px;top:0;bottom:44px;
+    width:1px;
+    background:var(--line-strong);
+  }
+  .reel-playhead{
+    position:absolute;
+    left:64px;top:0;
+    width:1px;
+    background:var(--gold);
+    transform-origin:top;
+    transform:scaleY(0);
+    transition:transform .1s linear;
+  }
+  .reel-item{
+    position:relative;
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:28px;
+    padding:26px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .reel-item:last-child{border-bottom:none;}
+  .reel-time{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--gold);
+    padding-top:3px;
+    text-align:right;
+  }
+  .reel-time::after{
+    content:'';
+    position:absolute;
+    left:60px;top:14px;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--ink-2);
+    border:1px solid var(--gold);
+  }
+  .reel-body h4{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:19px;
+    color:var(--bone);
+  }
+  .reel-body .meta{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.06em;
+    color:var(--bone-faint);
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+  .reel-body p{
+    margin-top:10px;
+    font-size:14px;
+    color:var(--bone-dim);
+    max-width:52ch;
+    line-height:1.65;
+  }
 
-.dash-main{padding:26px 26px 28px;display:flex;flex-direction:column;gap:20px;}
-.dash-query{display:flex;align-items:center;gap:12px;}
-.query-avatar{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--signal),var(--current));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.query-avatar svg{width:15px;height:15px;color:#04060a;}
-.query-text{font-family:var(--body);font-size:16px;color:var(--ink);font-weight:600;letter-spacing:-0.01em;}
+  .package-foot{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:32px 44px;
+    border-top:1px solid var(--line);
+  }
+  .package-foot p{
+    font-size:13.5px;
+    color:var(--bone-faint);
+    max-width:40ch;
+  }
 
-.dash-answer{display:flex;flex-direction:column;gap:9px;padding-left:40px;}
-@media(max-width:480px){.dash-answer{padding-left:0;}}
-.answer-row{display:grid;grid-template-columns:92px auto 1fr;align-items:center;gap:14px;padding:13px 15px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .2s ease;}
-.answer-row.in{opacity:1;transform:translateY(0);}
-.answer-row:hover{border-color:var(--line-strong);}
-@media(max-width:560px){.answer-row{grid-template-columns:1fr;gap:5px;}}
-.answer-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.05em;text-transform:uppercase;padding:4px 9px;border-radius:100px;justify-self:start;white-space:nowrap;}
-.answer-tag.risk{color:var(--bad);background:rgba(224,128,106,0.1);border:1px solid rgba(224,128,106,0.28);}
-.answer-tag.due{color:var(--signal);background:var(--signal-soft);border:1px solid var(--signal-line);}
-.answer-tag.blocked{color:var(--current);background:var(--current-soft);border:1px solid var(--current-line);}
-.answer-client{font-size:13.5px;color:var(--ink);font-weight:600;white-space:nowrap;}
-.answer-detail{font-size:12.5px;color:var(--slate);line-height:1.5;}
+  /* ---------- WHY IT MATTERS ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:72px;
+  }
+  .why-copy p{
+    color:var(--bone-dim);
+    font-size:15.5px;
+    line-height:1.75;
+    margin-top:18px;
+    max-width:44ch;
+  }
+  .channel-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .channel-item{
+    background:var(--ink);
+    padding:22px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .channel-item span{font-size:14.5px;color:var(--bone);}
+  .channel-item small{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--bone-faint);
+  }
+  .disclaimer{
+    margin-top:28px;
+    font-size:12.5px;
+    color:var(--bone-faint);
+    border-left:2px solid var(--line-strong);
+    padding-left:16px;
+    line-height:1.6;
+  }
 
-.ai-explain{text-align:center;max-width:600px;margin:30px auto 0;}
-.ai-explain p{font-size:15.5px;color:var(--slate);line-height:1.7;}
-.ai-explain p strong{color:var(--ink-dim);font-weight:600;}
+  /* ---------- USE CASES ---------- */
+  .tabs-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:40px;
+    border-bottom:1px solid var(--line);
+  }
+  .tab-btn{
+    background:none;border:none;
+    padding:14px 20px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--bone-faint);
+    position:relative;
+    top:1px;
+  }
+  .tab-btn::after{
+    content:'';
+    position:absolute;left:20px;right:20px;bottom:-1px;
+    height:2px;background:transparent;
+  }
+  .tab-btn.active{color:var(--bone);}
+  .tab-btn.active::after{background:var(--gold);}
+  .tab-btn:hover{color:var(--bone);}
 
-/* WHO IT'S FOR */
-.who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-@media(max-width:900px){.who-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.who-grid{grid-template-columns:1fr;}}
-.who-card{border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--panel);padding:22px 20px;display:flex;flex-direction:column;gap:12px;transition:transform .25s var(--ease),border-color .25s ease,background .25s ease;}
-.who-card:hover{transform:translateY(-3px);border-color:var(--signal-line);background:var(--panel-2);}
-.who-icon{width:22px;height:22px;color:var(--signal);}
-.who-icon svg{width:100%;height:100%;}
-.who-card .label{font-size:14.5px;color:var(--ink);font-weight:600;}
-.who-card .desc{font-size:12.5px;color:var(--slate);line-height:1.5;}
+  .tab-panels{position:relative;}
+  .tab-panel{
+    display:none;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .tab-panel.active{display:grid;animation:fadein .5s var(--ease);}
+  @keyframes fadein{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  .tab-media{
+    aspect-ratio:9/11;
+    overflow:hidden;
+    border:1px solid var(--line-strong);
+  }
+  .tab-media img{width:100%;height:100%;object-fit:cover;}
+  .tab-copy .eyebrow{margin-bottom:16px;}
+  .tab-copy h3{
+    font-size:clamp(22px,2.6vw,30px);
+    line-height:1.25;
+  }
+  .tab-copy p{
+    margin-top:16px;
+    color:var(--bone-dim);
+    font-size:14.5px;
+    line-height:1.75;
+    max-width:42ch;
+  }
+  .tab-specs{
+    display:flex;gap:20px;margin-top:24px;
+  }
+  .tab-specs div{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--bone-faint);
+  }
+  .tab-specs strong{
+    display:block;
+    font-family:var(--sans);
+    font-size:14px;
+    color:var(--bone);
+    font-weight:500;
+  }
 
-/* OFFER CARDS */
-.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-@media(max-width:880px){.options-grid{grid-template-columns:1fr;}}
-.option-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:38px 34px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .3s ease,transform .3s var(--ease);}
-.option-card:hover{transform:translateY(-4px);border-color:var(--line-strong);}
-.option-card.option-alt{background:linear-gradient(165deg,var(--panel),var(--panel-2));}
-.option-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;color:var(--signal);}
-.option-card.option-alt .option-tag{color:var(--current);}
-.option-card h3{font-family:var(--display);font-size:24px;color:var(--ink);font-weight:600;letter-spacing:-0.015em;margin-bottom:6px;}
-.option-card .option-kicker{font-size:14.5px;color:var(--ink-dim);font-weight:500;margin-bottom:16px;}
-.option-card > p.option-desc{font-size:14.5px;color:var(--slate);line-height:1.7;margin-bottom:24px;}
-.option-list{display:flex;flex-direction:column;gap:11px;margin-bottom:22px;flex-grow:1;}
-.option-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink-dim);line-height:1.5;}
-.option-list li svg{width:15px;height:15px;color:var(--signal);flex-shrink:0;margin-top:2px;}
-.option-card.option-alt .option-list li svg{color:var(--current);}
-.option-warranty{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--slate-dim);border:1px solid var(--line);border-radius:100px;padding:6px 12px;margin-bottom:22px;align-self:flex-start;}
-.option-warranty svg{width:12px;height:12px;color:var(--current);}
-.option-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line);}
-.option-price{font-family:var(--mono);font-size:12.5px;color:var(--slate-dim);}
-.option-cta{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--bg);border-radius:var(--radius-sm);padding:13px 20px;font-family:var(--body);font-size:14px;font-weight:700;cursor:pointer;transition:transform .24s var(--ease),box-shadow .24s var(--ease),background .24s var(--ease);}
-.option-cta:hover{background:var(--signal);color:#fff;box-shadow:0 14px 32px -12px rgba(92,141,255,0.45);transform:translateY(-2px);}
-.option-card.option-alt .option-cta:hover{background:var(--current);color:#04231d;box-shadow:0 14px 32px -12px rgba(79,216,196,0.4);}
+  /* ---------- PROCESS ---------- */
+  .process-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .process-cell{
+    background:var(--ink);
+    padding:40px 32px;
+  }
+  .process-take{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.12em;
+    color:var(--gold);
+  }
+  .process-cell h3{
+    font-size:22px;
+    margin-top:18px;
+  }
+  .process-cell p{
+    margin-top:12px;
+    color:var(--bone-dim);
+    font-size:14px;
+    line-height:1.7;
+  }
 
-/* LIMITED OFFER */
-.limited-panel{border-radius:var(--radius);border:1px solid var(--current-line);background:linear-gradient(165deg,rgba(79,216,196,0.06),var(--panel) 55%);padding:52px 46px;position:relative;overflow:hidden;}
-@media(max-width:768px){.limited-panel{padding:36px 24px;}}
-.limited-badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:var(--current);border:1px solid var(--current-line);border-radius:100px;padding:5px 13px;letter-spacing:0.08em;}
-.limited-top{max-width:660px;margin-bottom:44px;}
-.limited-panel h2{font-family:var(--display);font-size:clamp(26px,3.2vw,36px);font-weight:600;color:var(--ink);letter-spacing:-0.02em;line-height:1.18;margin:16px 0 14px;}
-.limited-panel .limited-lead{font-size:15.5px;color:var(--slate);line-height:1.75;}
-.limited-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-@media(max-width:760px){.limited-steps{grid-template-columns:1fr 1fr;}}
-@media(max-width:460px){.limited-steps{grid-template-columns:1fr;}}
-.limited-step{padding:20px 18px;border-radius:var(--radius-sm);background:var(--panel-2);border:1px solid var(--line);}
-.limited-step .snum{font-family:var(--mono);font-size:10.5px;color:var(--slate-dim);display:block;margin-bottom:10px;}
-.limited-step .slabel{font-family:var(--display);font-size:15px;color:var(--ink);font-weight:600;margin-bottom:6px;}
-.limited-step.pay{background:var(--current-soft);border-color:var(--current-line);}
-.limited-step.pay .slabel{color:var(--current);}
-.limited-step p{font-size:12.5px;color:var(--slate);line-height:1.55;}
-.limited-note{margin-top:28px;font-size:13px;color:var(--slate-dim);line-height:1.7;max-width:680px;border-top:1px solid var(--line);padding-top:20px;}
-.limited-cta-row{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    text-align:center;
+    padding:150px 0;
+    position:relative;
+  }
+  .final-cta::before{
+    content:'';
+    position:absolute;left:50%;top:0;
+    transform:translateX(-50%);
+    width:1px;height:60px;
+    background:var(--line-strong);
+  }
+  .final-cta h2{
+    font-size:clamp(32px,5vw,58px);
+    line-height:1.12;
+    max-width:16ch;
+    margin:0 auto;
+  }
+  .final-cta .amount{
+    display:block;
+    margin:34px auto 0;
+    font-family:var(--serif);
+    font-size:26px;
+    color:var(--gold);
+  }
+  .final-cta .btn{margin-top:36px;}
 
-/* WARRANTY */
-.warranty-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:44px 40px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;}
-@media(max-width:700px){.warranty-panel{grid-template-columns:1fr;padding:32px 24px;}}
-.warranty-icon{width:64px;height:64px;border-radius:16px;background:var(--current-soft);border:1px solid var(--current-line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.warranty-icon svg{width:28px;height:28px;color:var(--current);}
-.warranty-text h3{font-family:var(--display);font-size:21px;color:var(--ink);font-weight:600;letter-spacing:-0.01em;margin-bottom:8px;}
-.warranty-text p{font-size:14.5px;color:var(--slate);line-height:1.7;max-width:640px;}
-.warranty-text .fine{font-family:var(--mono);font-size:11.5px;color:var(--slate-dim);margin-top:12px;display:block;}
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+  .faq-item summary{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:26px 0;
+    font-family:var(--serif);
+    font-size:18px;
+    color:var(--bone);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-plus{
+    font-family:var(--mono);
+    font-size:18px;
+    color:var(--gold);
+    transition:transform .3s var(--ease);
+    flex-shrink:0;
+    margin-left:20px;
+  }
+  .faq-item[open] .faq-plus{transform:rotate(45deg);}
+  .faq-a{
+    padding:0 0 26px;
+    color:var(--bone-dim);
+    font-size:14.5px;
+    line-height:1.75;
+    max-width:60ch;
+  }
 
-/* PROCESS */
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
-@media(max-width:920px){.process-steps{grid-template-columns:repeat(2,1fr);gap:32px;}}
-@media(max-width:560px){.process-steps{grid-template-columns:1fr;}}
-.step{position:relative;padding-top:22px;border-top:1.5px solid var(--line);transition:border-color .3s ease;}
-.step:hover{border-top-color:var(--signal);}
-.step-num{font-family:var(--mono);font-size:11.5px;color:var(--signal);letter-spacing:0.06em;margin-bottom:14px;display:block;}
-.step h4{font-family:var(--display);font-size:17px;color:var(--ink);font-weight:600;margin-bottom:9px;letter-spacing:-0.01em;}
-.step p{font-size:13.5px;color:var(--slate);line-height:1.7;}
+  /* ---------- FORM ---------- */
+  .form-shell{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:72px;
+  }
+  .form-copy h2{font-size:clamp(26px,3.2vw,36px);line-height:1.2;}
+  .form-copy p{margin-top:18px;color:var(--bone-dim);font-size:15px;line-height:1.75;max-width:38ch;}
+  .form-note{
+    margin-top:32px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    font-size:12.5px;
+    color:var(--bone-faint);
+  }
+  .form-note .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0;}
 
-/* FINAL CTA */
-.final-cta{max-width:680px;margin:0 auto;text-align:center;}
-.final-h2{font-family:var(--display);font-size:clamp(30px,5vw,50px);font-weight:600;color:var(--ink);letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;}
-.final-sub{font-size:17px;color:var(--slate);line-height:1.7;max-width:480px;margin:0 auto 34px;}
-.final-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
-.final-note{font-family:var(--mono);font-size:12px;color:var(--slate-dim);letter-spacing:0.02em;}
+  form{display:flex;flex-direction:column;gap:22px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  label{
+    display:block;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--bone-faint);
+    margin-bottom:10px;
+  }
+  input, textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line-strong);
+    color:var(--bone);
+    font-family:var(--sans);
+    font-size:15px;
+    padding:10px 2px;
+    transition:border-color .3s var(--ease);
+  }
+  input::placeholder, textarea::placeholder{color:var(--bone-faint);}
+  input:focus, textarea:focus{border-color:var(--gold);}
+  textarea{resize:vertical;min-height:90px;}
+  .form-submit{
+    align-self:flex-start;
+    margin-top:12px;
+  }
+  .form-success{
+    display:none;
+    padding:28px;
+    border:1px solid var(--line-strong);
+    background:var(--ink-2);
+  }
+  .form-success.show{display:block;animation:fadein .5s var(--ease);}
+  .form-success h3{font-size:20px;}
+  .form-success p{margin-top:10px;color:var(--bone-dim);font-size:14px;}
 
-footer{border-top:1px solid var(--line);padding:40px 0;}
-.footer-inner{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
-.footer-text{font-family:var(--mono);font-size:11.5px;color:var(--slate-dim);line-height:1.9;}
-.footer-text a{color:var(--signal);}
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:48px 0;
+    border-top:1px solid var(--line);
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-row .brand img{height:20px;}
+  .footer-row p{font-size:12px;color:var(--bone-faint);}
+  .footer-links{display:flex;gap:24px;}
+  .footer-links a{font-size:12px;color:var(--bone-faint);}
+  .footer-links a:hover{color:var(--gold);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .trust, .why-grid, .form-shell{grid-template-columns:1fr;gap:40px;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-price{text-align:left;}
+    .transform-row{grid-template-columns:1fr;}
+    .transform-arrows{display:none;}
+    .process-row{grid-template-columns:1fr;}
+    .channel-list{grid-template-columns:1fr;}
+    .tab-panel{grid-template-columns:1fr;gap:28px;}
+    .tab-panel.active{display:flex;flex-direction:column-reverse;}
+    .package-top{flex-direction:column;align-items:flex-start;}
+    .package-price{text-align:left;}
+    .field-row{grid-template-columns:1fr;}
+    .final-cta{padding:100px 0;}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    .panel{padding:84px 0;}
+    .panel-tight{padding:64px 0;}
+    .hero-content{padding:150px 0 64px;}
+    .hero-scrub{left:20px;right:20px;}
+    .reel::before, .reel-playhead{left:52px;}
+    .reel-item{grid-template-columns:52px 1fr;gap:18px;}
+    .reel-time::after{left:48px;}
+    .package-top, .reel, .package-foot{padding-left:24px;padding-right:24px;}
+  }
 </style>
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<nav id="siteNav">
-  <div class="nav-inner">
-    <a href="#top" class="brand" aria-label="AutFlow Studio home">
-      <span class="brand-mark" aria-hidden="true">A</span>
-      <span class="brand-name">AutFlow Studio</span>
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">
+      <img src="data:image/png;base64,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" alt="Cadence mark">
+      <span>Cadence</span>
     </a>
-    <div class="nav-links">
-      <button type="button" data-scroll="#demo">Product</button>
-      <button type="button" data-scroll="#ai">AI</button>
-      <button type="button" data-scroll="#offers">Ownership</button>
-      <button type="button" data-scroll="#limited">MVP Program</button>
+    <nav class="nav-links">
+      <a href="#transform">Work</a>
+      <a href="#package">What&rsquo;s Included</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#start" class="btn btn-primary" style="display:none" id="navCtaDesktop">Get Started — $500</a>
+      <a href="#start" class="btn btn-ghost nav-links" style="display:inline-flex">Get Started — $500</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button type="button" class="nav-cta" data-scroll="#offers" aria-label="Discuss ownership or acquisition — scroll to the offers section">Discuss Ownership</button>
   </div>
-</nav>
+</header>
 
-<main id="main">
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#transform">Work</a>
+  <a href="#package">What&rsquo;s Included</a>
+  <a href="#process">Process</a>
+  <a href="#faq">FAQ</a>
+  <a href="#start" class="btn btn-primary">Get Started — $500</a>
+</div>
+
+<main id="top">
 
   <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="wrap">
-      <span class="eyebrow center fade-up">An Existing AI Business Operating System</span>
-      <h1 class="hero-h1 fade-up d1">Your Business Deserves Its Own <span class="accent">Operating System.</span></h1>
-      <p class="hero-sub fade-up d2">AutFlow Studio is a working business system, built and running today — with an AI assistant that understands your business context. Customize it around your workflow, or acquire the source code and make it yours.</p>
-      <div class="cta-row fade-up d3">
-        <button type="button" class="cta-primary" data-scroll="#demo" aria-label="View the product — scroll to the live demo">View the Product <span class="arrow">→</span></button>
-        <button type="button" class="cta-secondary" data-scroll="#offers" aria-label="Discuss ownership or acquisition — scroll to the offers section">Discuss Ownership &amp; Acquisition</button>
-      </div>
-      <span class="cta-note fade-up d3">Customize the Studio, or acquire it as a SaaS / source-code asset.</span>
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2000&q=80" alt="Cinematic exterior of a luxury villa at dusk with an illuminated infinity pool">
     </div>
-  </section>
-
-  <!-- DEMO -->
-  <section id="demo">
-    <div class="wrap">
-      <span class="eyebrow center fade-up">Live Product, Not A Concept</span>
-      <h2 class="section-title center fade-up d1" style="max-width:100%;">AutFlow Studio already exists. Here's what's running today.</h2>
-      <p class="section-lead center fade-up d1">This is the actual product — a configured workspace, not a mockup. Customization and acquisition both start from what you see here.</p>
-
-      <div class="demo-frame fade-up d1">
-        <div class="demo-glow" aria-hidden="true"></div>
-        <div class="demo-frame-inner">
-          <div class="demo-tabbar" role="tablist" aria-label="Product tour">
-            <button type="button" class="demo-tab active" data-panel="panel-workspace" role="tab" aria-selected="true"><span class="dot" aria-hidden="true"></span>Workspace</button>
-            <button type="button" class="demo-tab" data-panel="panel-clients" role="tab" aria-selected="false"><span class="dot" aria-hidden="true"></span>Clients &amp; Projects</button>
-            <button type="button" class="demo-tab" data-panel="panel-activity" role="tab" aria-selected="false"><span class="dot" aria-hidden="true"></span>Activity Log</button>
-          </div>
-
-          <div class="demo-panel active" id="panel-workspace" role="tabpanel">
-            <div class="demo-panel-head">
-              <h4>Business modules — live in this workspace</h4>
-              <span>Configured for a service business</span>
-            </div>
-            <div class="demo-module-grid">
-              <div class="demo-module"><span class="name">Clients &amp; CRM</span><span class="status">Live</span></div>
-              <div class="demo-module"><span class="name">Projects &amp; Tasks</span><span class="status">Live</span></div>
-              <div class="demo-module"><span class="name">Invoicing</span><span class="status">Live</span></div>
-              <div class="demo-module"><span class="name">Forms &amp; Approvals</span><span class="status">Live</span></div>
-              <div class="demo-module"><span class="name">Documents</span><span class="status">Live</span></div>
-              <div class="demo-module"><span class="name">AI Business Assistant</span><span class="status">Live</span></div>
-            </div>
-          </div>
-
-          <div class="demo-panel" id="panel-clients" role="tabpanel">
-            <div class="demo-panel-head">
-              <h4>Clients &amp; projects, in one view</h4>
-              <span>3 of 14 shown</span>
-            </div>
-            <div class="demo-client-list">
-              <div class="demo-client">
-                <span class="avatar" aria-hidden="true">HC</span>
-                <span class="info"><strong>Harborview Co.</strong><span>Website rebuild — proposal stage</span></span>
-                <span class="stage">Proposal sent</span>
-              </div>
-              <div class="demo-client">
-                <span class="avatar" aria-hidden="true">NF</span>
-                <span class="info"><strong>Nettle &amp; Finch</strong><span>Ongoing retainer — milestone 2 of 4</span></span>
-                <span class="stage">In progress</span>
-              </div>
-              <div class="demo-client">
-                <span class="avatar" aria-hidden="true">AS</span>
-                <span class="info"><strong>Ardent Supply</strong><span>Onboarding — assets pending</span></span>
-                <span class="stage">Blocked</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="demo-panel" id="panel-activity" role="tabpanel">
-            <div class="demo-panel-head">
-              <h4>What the system logged today</h4>
-              <span>Auto-tracked</span>
-            </div>
-            <div class="demo-timeline">
-              <div class="demo-tl-item"><span class="when">9:14 AM</span><span class="what"><strong>Invoice sent</strong> to Nettle &amp; Finch for milestone 2</span></div>
-              <div class="demo-tl-item"><span class="when">11:02 AM</span><span class="what"><strong>Proposal opened</strong> by Harborview Co. — no reply yet</span></div>
-              <div class="demo-tl-item"><span class="when">2:40 PM</span><span class="what">AI assistant <strong>drafted a follow-up</strong> for Ardent Supply's pending assets</span></div>
-              <div class="demo-tl-item"><span class="when">4:55 PM</span><span class="what"><strong>Task completed</strong> — homepage copy, Harborview Co.</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="demo-caption fade-up d2">
-        <p><strong>What you see here is what already exists.</strong> Customizing it adapts these modules to your workflow. Acquiring it hands you the source code to build on.</p>
-        <p class="sub">Sample workspace shown for illustration. Your data and modules are your own.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROBLEM -->
-  <section id="problem">
-    <div class="wrap">
-      <div class="problem-grid">
-        <div class="problem-copy">
-          <span class="eyebrow bad fade-up">The Problem</span>
-          <h2 class="section-title fade-up d1" style="max-width:100%;">Your business isn't generic. Your software shouldn't be either.</h2>
-          <p class="fade-up d1">Most businesses stitch together CRMs, project tools, spreadsheets, forms, automations, and AI tools — then spend their time adapting their workflow to the software.</p>
-          <p class="solution-line fade-up d2">AutFlow Studio takes the opposite approach. Software adapts to your business.</p>
-          <div class="cta-row fade-up d2" style="justify-content:flex-start;margin-top:26px;">
-            <button type="button" class="cta-secondary" data-scroll="#ai" aria-label="See how the AI works">See How The AI Works <span class="arrow">→</span></button>
-          </div>
-        </div>
+    <div class="wrap hero-content">
+      <div class="hero-grid">
         <div>
-          <div class="tool-stack">
-            <div class="tool-row fade-up"><span class="name">CRM</span><span class="tag">disconnected</span></div>
-            <div class="tool-row fade-up"><span class="name">Project management</span><span class="tag">disconnected</span></div>
-            <div class="tool-row fade-up"><span class="name">Spreadsheets</span><span class="tag">disconnected</span></div>
-            <div class="tool-row fade-up"><span class="name">Forms &amp; approvals</span><span class="tag">disconnected</span></div>
-            <div class="tool-row fade-up"><span class="name">Automation tools</span><span class="tag">disconnected</span></div>
-            <div class="tool-row fade-up"><span class="name">Generic AI chatbot</span><span class="tag">re-explained daily</span></div>
+          <span class="eyebrow">Luxury Property Content</span>
+          <h1>A first-class visual impression of your <em>property</em>.</h1>
+          <p class="hero-sub">We turn a property you already love into a cinematic content package — one film, three reels, ad creative and marketing assets, ready for listings, social and paid campaigns.</p>
+          <div class="hero-ctas">
+            <a href="#start" class="btn btn-primary">Get My Property Content <span class="btn-arrow">→</span></a>
+            <a href="#package" class="btn btn-ghost">See What&rsquo;s Included</a>
           </div>
-          <div class="problem-final fade-up d2">
-            <span class="name">One AutFlow system</span>
-            <span class="tag">context-aware</span>
-          </div>
+        </div>
+        <div class="hero-price">
+          <div class="amount"><sup>$</sup>500</div>
+          <div class="label">One package · Full content set</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scrub wrap" style="padding:0;left:32px;right:32px;">
+      <span>00:00</span>
+      <div class="bar"></div>
+      <span>00:45</span>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="panel-tight" id="trust">
+    <div class="wrap trust reveal">
+      <div class="trust-heading">
+        <span class="eyebrow">Presentation, not production</span>
+        <h2>Built for properties that deserve better presentation.</h2>
+      </div>
+      <div class="trust-copy">
+        <p>A premium property is judged in seconds — on Airbnb, on Instagram, in a paid ad. Photography alone rarely carries that weight anymore. Content that moves, cuts and holds attention is what separates a listing from a memory.</p>
+        <div class="format-row">
+          <span class="format-tag">16:9 &amp; 9:16</span>
+          <span class="format-tag">Color graded</span>
+          <span class="format-tag">Scored &amp; mixed</span>
+          <span class="format-tag">Ad-ready cuts</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AI DIFFERENTIATOR -->
-  <section id="ai" class="ai-section">
+  <!-- TRANSFORMATION -->
+  <section class="panel alt" id="transform">
     <div class="wrap">
-      <span class="eyebrow current center fade-up">The Differentiator</span>
-      <h2 class="section-title center fade-up d1">Your AI doesn't just answer questions. It understands how your business actually works.</h2>
-      <p class="section-lead center fade-up d1">The assistant works with the context already inside your system — clients, projects, and operations reasoned about together, not re-explained every time.</p>
+      <div class="section-head reveal">
+        <span class="eyebrow">The Transformation</span>
+        <h2>Property. Footage. Marketing asset.</h2>
+        <p>The same property, carried through three stages — from what you already have to what you can publish.</p>
+      </div>
+      <div class="transform-row reveal">
+        <div class="transform-cell">
+          <span class="transform-tag">Raw · 01</span>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Unedited handheld footage of a villa poolside">
+          <p class="transform-caption">What you already have — a beautiful, unpolished property.</p>
+        </div>
+        <div class="transform-cell">
+          <span class="transform-tag">Cut · 02</span>
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80" alt="Color graded cinematic edit of the same villa">
+          <p class="transform-caption">Cinematic edit — pacing, color, sound, motion.</p>
+        </div>
+        <div class="transform-cell final">
+          <span class="transform-tag">Asset · 03</span>
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=900&q=80" alt="Finished vertical reel and thumbnail ready for publishing">
+          <p class="transform-caption">Ready to publish — film, reels, covers, ad cut.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="ai-dashboard fade-up d2" id="aiDashboard">
-        <div class="dash-frame">
-          <div class="dash-titlebar">
-            <div class="dash-titlebar-left">
-              <span class="dash-dot" aria-hidden="true"></span>
-              <span class="dash-title">AI Business Assistant</span>
+  <!-- PACKAGE -->
+  <section class="panel" id="package">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Package · $500</span>
+        <h2>Everything you need to market the property visually.</h2>
+        <p>One offer. No tiers to compare, no add-ons to weigh — just the full set of content a premium property needs.</p>
+      </div>
+
+      <div class="package-shell reveal" id="reelSection">
+        <div class="package-top">
+          <h3>Luxury Property Content Pack</h3>
+          <div class="package-price">
+            <div class="num">$500</div>
+            <div class="sub">Delivered as one project</div>
+          </div>
+        </div>
+
+        <div class="reel">
+          <div class="reel-playhead" id="reelPlayhead"></div>
+
+          <div class="reel-item">
+            <div class="reel-time">00:00</div>
+            <div class="reel-body">
+              <h4>Cinematic Property Video</h4>
+              <div class="meta">30–45 sec · 16:9 + 9:16</div>
+              <p>A strong opening hook, then a cinematic pass through the property — exterior, pool, bedrooms, living spaces and views — scored and color graded.</p>
             </div>
-            <span class="dash-status">Connected to your business context</span>
           </div>
 
-          <div class="dash-body">
-            <aside class="dash-rail" aria-label="Connected business context">
-              <span class="rail-label">Business Context</span>
-              <ul class="rail-list">
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>Clients</li>
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="17" height="13" rx="1.5"/><path d="M3.5 6l2-2h5l2 2"/></svg>Projects</li>
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M8.5 12.5l2.2 2.2 4.8-4.8"/></svg>Tasks</li>
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4M9.5 13h5M9.5 16.5h5"/></svg>Documents</li>
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11.5a3.5 3.5 0 0 1 0 7H8"/><path d="M11 11l-3-3 3-3M13 17H7.5a3.5 3.5 0 0 1 0-7H16"/><path d="M13 13l3 3-3 3"/></svg>Workflows</li>
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15l5-5 3.5 3.5L20 6"/><path d="M14.5 6H20v5.5"/></svg>Revenue</li>
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.6"/><path d="M12 3.5v2.4M12 18.1v2.4M20.5 12h-2.4M5.9 12H3.5M17.7 6.3l-1.7 1.7M8 16l-1.7 1.7M17.7 17.7L16 16M8 8 6.3 6.3"/></svg>Operations</li>
-                <li class="rail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v4H4z"/><path d="M6.5 8v12M9.5 8v6M12.5 8v9M15.5 8v4M18.5 8v10"/></svg>Business Rules</li>
-              </ul>
-            </aside>
+          <div class="reel-item">
+            <div class="reel-time">00:18</div>
+            <div class="reel-body">
+              <h4>Social Media Reels</h4>
+              <div class="meta">3 videos · 10–15 sec each</div>
+              <p>Short-form cuts built for Instagram Reels, TikTok and YouTube Shorts — each with its own pacing and hook.</p>
+            </div>
+          </div>
 
-            <div class="dash-main">
-              <div class="dash-query">
-                <span class="query-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="4"/></svg></span>
-                <span class="query-text">Which clients need attention today?</span>
+          <div class="reel-item">
+            <div class="reel-time">00:29</div>
+            <div class="reel-body">
+              <h4>Marketing Assets</h4>
+              <div class="meta">3 thumbnails · captions · CTA</div>
+              <p>Covers for each reel, short booking-oriented copy, and a version adapted for advertising placements.</p>
+            </div>
+          </div>
+
+          <div class="reel-item">
+            <div class="reel-time">00:37</div>
+            <div class="reel-body">
+              <h4>Ad Creative</h4>
+              <div class="meta">1 cut · 15 sec</div>
+              <p>A paid-ad specific edit with a hook built for the first three seconds — designed to stop the scroll.</p>
+            </div>
+          </div>
+
+          <div class="reel-item">
+            <div class="reel-time">00:45</div>
+            <div class="reel-body">
+              <h4>Revisions</h4>
+              <div class="meta">3 rounds included</div>
+              <p>Three rounds of revisions so the final cut matches how you want the property represented.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="package-foot">
+          <p>Every asset is delivered ready to publish — no further editing required on your end.</p>
+          <a href="#start" class="btn btn-primary">Get My Property Content <span class="btn-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IT MATTERS -->
+  <section class="panel alt" id="why">
+    <div class="wrap why-grid">
+      <div class="why-copy reveal">
+        <span class="eyebrow">Why It Matters</span>
+        <h2>A premium property deserves premium presentation.</h2>
+        <p>The content is built once and reused everywhere the property needs to make an impression — the listing, the feed, the ad, the direct booking page.</p>
+        <p class="disclaimer">We deliver the content and its use across these channels. We don&rsquo;t promise bookings, revenue or occupancy — presentation is the asset; the results are yours to build on it.</p>
+      </div>
+      <div class="channel-list reveal reveal-d1">
+        <div class="channel-item"><span>Airbnb Listing</span><small>Hero video</small></div>
+        <div class="channel-item"><span>Instagram</span><small>Reels &amp; covers</small></div>
+        <div class="channel-item"><span>TikTok</span><small>Short-form</small></div>
+        <div class="channel-item"><span>YouTube Shorts</span><small>Short-form</small></div>
+        <div class="channel-item"><span>Paid Advertising</span><small>15-sec cut</small></div>
+        <div class="channel-item"><span>Direct Booking Site</span><small>Hero film</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="panel" id="usecases">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Use Cases</span>
+        <h2>One property. Multiple marketing opportunities.</h2>
+        <p>The same content package, shaped for where it needs to perform.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="tabs-nav" role="tablist" id="tabsNav">
+          <button class="tab-btn active" data-tab="airbnb" role="tab" aria-selected="true">Airbnb</button>
+          <button class="tab-btn" data-tab="instagram" role="tab" aria-selected="false">Instagram</button>
+          <button class="tab-btn" data-tab="tiktok" role="tab" aria-selected="false">TikTok</button>
+          <button class="tab-btn" data-tab="ads" role="tab" aria-selected="false">Paid Ads</button>
+          <button class="tab-btn" data-tab="direct" role="tab" aria-selected="false">Direct Booking</button>
+        </div>
+
+        <div class="tab-panels">
+          <div class="tab-panel active" data-panel="airbnb">
+            <div class="tab-media">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Luxury living room styled for an Airbnb listing hero video">
+            </div>
+            <div class="tab-copy">
+              <span class="eyebrow">Airbnb</span>
+              <h3>The first thing a guest sees before they read a single amenity.</h3>
+              <p>The cinematic video sits at the top of the listing gallery — setting the tone before pricing or reviews ever come into view.</p>
+              <div class="tab-specs">
+                <div><strong>16:9</strong>Gallery video</div>
+                <div><strong>30–45s</strong>Full cut</div>
               </div>
+            </div>
+          </div>
 
-              <div class="dash-answer">
-                <div class="answer-row">
-                  <span class="answer-tag risk">At risk</span>
-                  <span class="answer-client">Harborview Co.</span>
-                  <span class="answer-detail">No reply in 9 days — proposal is still awaiting sign-off</span>
-                </div>
-                <div class="answer-row">
-                  <span class="answer-tag due">Due soon</span>
-                  <span class="answer-client">Nettle &amp; Finch</span>
-                  <span class="answer-detail">Milestone 2 payment is due Friday</span>
-                </div>
-                <div class="answer-row">
-                  <span class="answer-tag blocked">Blocked</span>
-                  <span class="answer-client">Ardent Supply</span>
-                  <span class="answer-detail">Waiting on their asset upload since Tuesday</span>
-                </div>
+          <div class="tab-panel" data-panel="instagram">
+            <div class="tab-media">
+              <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=800&q=80" alt="Villa bedroom styled for an Instagram reel">
+            </div>
+            <div class="tab-copy">
+              <span class="eyebrow">Instagram</span>
+              <h3>Reels built to be watched to the end, not scrolled past.</h3>
+              <p>Vertical cuts with covers and captions ready to post — built for the feed, Stories and Explore.</p>
+              <div class="tab-specs">
+                <div><strong>9:16</strong>Vertical</div>
+                <div><strong>10–15s</strong>Per reel</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-panel="tiktok">
+            <div class="tab-media">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Aerial view of villa pool for a TikTok short">
+            </div>
+            <div class="tab-copy">
+              <span class="eyebrow">TikTok</span>
+              <h3>A hook in the first second, built for a platform that moves fast.</h3>
+              <p>Pacing and sound designed for discovery, not just for people already looking for a place to stay.</p>
+              <div class="tab-specs">
+                <div><strong>9:16</strong>Vertical</div>
+                <div><strong>10–15s</strong>Per reel</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-panel="ads">
+            <div class="tab-media">
+              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" alt="Villa interior styled for a paid advertising creative">
+            </div>
+            <div class="tab-copy">
+              <span class="eyebrow">Paid Advertising</span>
+              <h3>A creative built to stop the scroll, not just to look nice.</h3>
+              <p>A dedicated 15-second cut with a hook engineered for the first three seconds of a paid placement.</p>
+              <div class="tab-specs">
+                <div><strong>9:16 / 1:1</strong>Ad formats</div>
+                <div><strong>15s</strong>Ad cut</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-panel="direct">
+            <div class="tab-media">
+              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Villa exterior at dusk styled for a direct booking website hero">
+            </div>
+            <div class="tab-copy">
+              <span class="eyebrow">Direct Booking Website</span>
+              <h3>The hero moment that makes guests book without a middleman.</h3>
+              <p>The full cinematic film, placed where it carries the most weight — the top of your own booking page.</p>
+              <div class="tab-specs">
+                <div><strong>16:9</strong>Website hero</div>
+                <div><strong>30–45s</strong>Full cut</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="ai-explain fade-up d3">
-        <p><strong>Only what the product actually supports.</strong> The assistant can surface what's blocking a project, summarize a client's history, or draft the next follow-up — because the context is already inside the system. What runs automatically versus what's AI-assisted depends on how your system is configured.</p>
-      </div>
     </div>
   </section>
 
-  <!-- WHO IT'S FOR -->
-  <section id="who">
+  <!-- PROCESS -->
+  <section class="panel alt" id="process">
     <div class="wrap">
-      <span class="eyebrow center fade-up">Who It's For</span>
-      <h2 class="section-title center fade-up d1">If your business has a workflow, we can build around it.</h2>
-
-      <div class="who-grid">
-        <div class="who-card fade-up">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
-          <span class="label">Agency</span>
-          <span class="desc">Clients, projects, and deliverables in one place.</span>
-        </div>
-        <div class="who-card fade-up d1">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></svg></span>
-          <span class="label">Freelancer</span>
-          <span class="desc">Leads, proposals, and invoicing without the sprawl.</span>
-        </div>
-        <div class="who-card fade-up d2">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v7M8.5 6.5h7"/><rect x="4" y="10" width="16" height="10" rx="1.5"/></svg></span>
-          <span class="label">Clinic</span>
-          <span class="desc">Appointments, staff, and patient workflows.</span>
-        </div>
-        <div class="who-card fade-up d3">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V8l8-4 8 4v11"/><path d="M9 19v-6h6v6"/></svg></span>
-          <span class="label">Consultant</span>
-          <span class="desc">Engagements, reporting, and follow-ups.</span>
-        </div>
-        <div class="who-card fade-up">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3l-2.2 2.2M9.5 21l2.2-2.2M6 12l2.2-2.2M12.7 5.3l6 6-2.4 2.4-6-6zM3 21l4.5-1.4 8.5-8.5-3-3-8.5 8.5z"/></svg></span>
-          <span class="label">Service Business</span>
-          <span class="desc">Scheduling, jobs, and internal handoffs.</span>
-        </div>
-        <div class="who-card fade-up d1">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c2.5 3 4 6.5 4 10a4 4 0 0 1-8 0c0-3.5 1.5-7 4-10Z"/><path d="M9 17l-2 4M15 17l2 4"/></svg></span>
-          <span class="label">Startup</span>
-          <span class="desc">A foundation that scales with the product.</span>
-        </div>
-        <div class="who-card fade-up d2">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 7H6"/></svg></span>
-          <span class="label">Online Business</span>
-          <span class="desc">Orders, fulfillment, and customer operations.</span>
-        </div>
-        <div class="who-card fade-up d3">
-          <span class="who-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M4 16v3a1 1 0 0 0 1 1h3M20 8V5a1 1 0 0 0-1-1h-3M20 16v3a1 1 0 0 1-1 1h-3"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg></span>
-          <span class="label">Custom Business</span>
-          <span class="desc">Any repeatable workflow, mapped and built.</span>
-        </div>
+      <div class="section-head reveal">
+        <span class="eyebrow">Process</span>
+        <h2>Three takes, start to delivery.</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- TWO MAIN WAYS TO WORK WITH US -->
-  <section id="offers">
-    <div class="wrap">
-      <span class="eyebrow center fade-up">The Main Offer</span>
-      <h2 class="section-title center fade-up d1">Adapt the Studio, or own the code outright.</h2>
-      <p class="section-lead center fade-up d1">AutFlow Studio already exists and runs live workspaces like the one shown above. From here, there are two distinct paths — not pricing tiers of the same thing.</p>
-
-      <div class="options-grid">
-        <div class="option-card fade-up">
-          <span class="option-tag">Option 1</span>
-          <h3>Customize AutFlow Studio</h3>
-          <p class="option-kicker">You don't change your business to fit the software. We adapt the software to fit your business.</p>
-          <p class="option-desc">You get the core Studio experience, modified around your workflow — modules added or removed, fields and dashboards adapted, AI context configured for how your business actually runs.</p>
-          <ul class="option-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Add or remove modules</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Adapt fields, dashboards &amp; processes</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Configure the AI context for your data</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Adjust business logic within the Studio</li>
-          </ul>
-          <span class="option-warranty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Includes 7-day adjustment guarantee</span>
-          <div class="option-foot">
-            <span class="option-price">Custom pricing based on scope and requirements</span>
-            <button type="button" class="option-cta" data-scroll="#get-started" aria-label="Discuss your system — scroll to the final call to action">Discuss Your System</button>
-          </div>
+      <div class="process-row reveal">
+        <div class="process-cell">
+          <div class="process-take">Take 01</div>
+          <h3>Share Your Property</h3>
+          <p>Send the property details and any existing photo or video material you have.</p>
         </div>
-
-        <div class="option-card option-alt fade-up d1">
-          <span class="option-tag">Option 2</span>
-          <h3>Acquire the Source Code</h3>
-          <p class="option-kicker">From adapting Studio to owning it outright, as a SaaS or source-code asset.</p>
-          <p class="option-desc">If you don't just want a customized Studio — but want to own and shape the product itself — we transfer and modify the source code substantially around your requirements, including major architecture and workflow changes.</p>
-          <ul class="option-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Major architecture &amp; workflow changes</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>New modules, branding &amp; AI functionality</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SaaS transformation for a different market</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Full source code — you own the product</li>
-          </ul>
-          <span class="option-warranty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Includes 7-day adjustment guarantee</span>
-          <div class="option-foot">
-            <span class="option-price">Custom project</span>
-            <button type="button" class="option-cta" data-scroll="#get-started" aria-label="Discuss acquisition — scroll to the final call to action">Discuss Acquisition</button>
-          </div>
+        <div class="process-cell">
+          <div class="process-take">Take 02</div>
+          <h3>We Create</h3>
+          <p>We shape it into a cinematic content package — edited, graded, scored and cut for every format.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIMITED OFFER -->
-  <section id="limited">
-    <div class="wrap">
-      <div class="limited-panel fade-up">
-        <div class="limited-top">
-          <span class="limited-badge">Separate Program — New MVP Builds Only</span>
-          <h2>Build Now. Pay the Main Fee Later.</h2>
-          <p class="limited-lead">This is a different program from customizing or acquiring AutFlow Studio above — it's for founders who need a brand-new MVP built from scratch, not the existing Studio. For a very limited number of qualified projects, you can start that build with only a small initial fee, deferring the main payment until the agreed MVP criteria have been met.</p>
-        </div>
-
-        <div class="limited-steps" role="list" aria-label="Limited offer process">
-          <div class="limited-step" role="listitem">
-            <span class="snum">01</span>
-            <div class="slabel">Small initial fee</div>
-            <p>You pay a relatively small upfront development / commitment fee.</p>
-          </div>
-          <div class="limited-step" role="listitem">
-            <span class="snum">02</span>
-            <div class="slabel">We build your MVP</div>
-            <p>The MVP is developed according to an agreed scope.</p>
-          </div>
-          <div class="limited-step" role="listitem">
-            <span class="snum">03</span>
-            <div class="slabel">Launch &amp; evaluate</div>
-            <p>The MVP is tested against defined requirements and agreed acceptance criteria.</p>
-          </div>
-          <div class="limited-step pay" role="listitem">
-            <span class="snum">04</span>
-            <div class="slabel">Pay the remaining amount later</div>
-            <p>The main agreed fee becomes payable once the agreed terms are met.</p>
-          </div>
-        </div>
-
-        <p class="limited-note">This is not a promise of revenue, profit, or customer results — it's a payment structure based on agreed deliverables, scope, and acceptance criteria defined before development begins. Available to a limited number of qualified projects, subject to qualification.</p>
-
-        <div class="limited-cta-row">
-          <button type="button" class="cta-primary" data-scroll="#get-started" aria-label="Apply for the limited offer — scroll to the final call to action">Apply for the Limited Offer <span class="arrow">→</span></button>
-          <span class="cta-note">A small number of spots each quarter</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7-DAY GUARANTEE -->
-  <section id="guarantee">
-    <div class="wrap">
-      <div class="warranty-panel fade-up">
-        <span class="warranty-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg></span>
-        <div class="warranty-text">
-          <h3>7-Day Adjustment Guarantee</h3>
-          <p>Every build includes 7 days of free adjustments after delivery. If something needs to be adjusted within the agreed scope, we will make the required adjustments during the 7-day period at no additional cost.</p>
-          <span class="fine">Free adjustments apply to the agreed project scope. New features or major scope changes may require a separate quote.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section id="process">
-    <div class="wrap">
-      <span class="eyebrow fade-up">How It Works</span>
-      <h2 class="section-title fade-up d1">From how you work today to one connected system.</h2>
-
-      <div class="process-steps">
-        <div class="step fade-up">
-          <span class="step-num">01 — Understand</span>
-          <h4>Map your workflow</h4>
-          <p>We map your business, workflow, and requirements.</p>
-        </div>
-        <div class="step fade-up d1">
-          <span class="step-num">02 — Build</span>
-          <h4>Build the system</h4>
-          <p>We configure or develop the system around them.</p>
-        </div>
-        <div class="step fade-up d2">
-          <span class="step-num">03 — Launch</span>
-          <h4>Launch it</h4>
-          <p>You get a working system designed for your operation.</p>
-        </div>
-        <div class="step fade-up d3">
-          <span class="step-num">04 — Improve</span>
-          <h4>Refine it</h4>
-          <p>Use the 7-day adjustment period to refine the delivered system within scope.</p>
+        <div class="process-cell">
+          <div class="process-take">Take 03</div>
+          <h3>Receive &amp; Publish</h3>
+          <p>Receive the finished package, ready to publish across listings, social and advertising.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <section id="get-started">
+  <section class="final-cta">
+    <div class="wrap reveal">
+      <h2>Your property is already the product. Now give it the <em>presentation</em> it deserves.</h2>
+      <span class="amount">$500 · One package</span>
+      <div>
+        <a href="#start" class="btn btn-primary">Get My Property Content — $500 <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="panel" id="faq">
     <div class="wrap">
-      <div class="final-cta">
-        <span class="eyebrow center fade-up">Get Started</span>
-        <h2 class="final-h2 fade-up d1">Stop Adapting Your Business to Software.</h2>
-        <p class="final-sub fade-up d2">See the product, then talk to us about customizing it or acquiring it outright.</p>
-        <div class="final-cta-wrap fade-up d3">
-          <a class="cta-primary" href="https://www.instagram.com/autflow_studio/" target="_blank" rel="noopener noreferrer" aria-label="Discuss customizing or acquiring AutFlow Studio — opens Instagram in a new tab">Discuss Customizing or Acquiring AutFlow Studio <span class="arrow">→</span></a>
-          <span class="final-note">Existing product. Limited availability for new engagements.</span>
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>A few things worth knowing upfront.</h2>
+      </div>
+      <div class="reveal" style="max-width:780px;">
+        <details class="faq-item" open>
+          <summary>What do I need to provide?<span class="faq-plus">+</span></summary>
+          <div class="faq-a">Property details, access or existing footage, and a sense of what makes the property distinctive. We&rsquo;ll guide you through exactly what&rsquo;s needed once you get in touch.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What exactly is included?<span class="faq-plus">+</span></summary>
+          <div class="faq-a">One cinematic property video, three social reels, three marketing covers with captions, one 15-second ad creative, and three rounds of revisions — all in the $500 package.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How long does production take?<span class="faq-plus">+</span></summary>
+          <div class="faq-a">Timelines depend on the property and current queue. You&rsquo;ll get a clear delivery estimate as soon as we scope the project with you.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use the content for paid advertising?<span class="faq-plus">+</span></summary>
+          <div class="faq-a">Yes — the package includes a dedicated 15-second cut built specifically for paid ad placements, alongside the organic content.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What formats do I receive?<span class="faq-plus">+</span></summary>
+          <div class="faq-a">The main film in 16:9 and 9:16, reels and ad creative in 9:16, and thumbnails sized for social and listing use.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How do revisions work?<span class="faq-plus">+</span></summary>
+          <div class="faq-a">Three rounds are included with every package. You&rsquo;ll review the cut and share notes; we refine it until it represents the property the way you want.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can you work with existing property photos or videos?<span class="faq-plus">+</span></summary>
+          <div class="faq-a">Yes — if you already have quality photo or video material, we can build the package from it. Let us know what you have when you reach out.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM / START -->
+  <section class="panel alt" id="start">
+    <div class="wrap form-shell">
+      <div class="form-copy reveal">
+        <span class="eyebrow">Get Started</span>
+        <h2>Request your property content.</h2>
+        <p>Tell us about the property. We&rsquo;ll follow up with next steps and a clear timeline.</p>
+        <div class="form-note"><span class="dot"></span>One package, $500 — no calls required to get started.</div>
+        <div class="form-note"><span class="dot"></span>We&rsquo;ll reply directly to the email you provide.</div>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <form id="inquiryForm">
+          <div class="field-row">
+            <div>
+              <label for="fName">Name</label>
+              <input type="text" id="fName" name="name" placeholder="Your full name" required>
+            </div>
+            <div>
+              <label for="fEmail">Email</label>
+              <input type="email" id="fEmail" name="email" placeholder="you@domain.com" required>
+            </div>
+          </div>
+          <div>
+            <label for="fUrl">Property / Listing URL</label>
+            <input type="text" id="fUrl" name="listing" placeholder="Link to your Airbnb, site or Instagram">
+          </div>
+          <div class="field-row">
+            <div>
+              <label for="fLoc">Property Location</label>
+              <input type="text" id="fLoc" name="location" placeholder="City, region or country">
+            </div>
+            <div>
+              <label for="fWhat">What makes it special?</label>
+              <input type="text" id="fWhat" name="feature" placeholder="One line is enough">
+            </div>
+          </div>
+          <div>
+            <label for="fMsg">Message (optional)</label>
+            <textarea id="fMsg" name="message" placeholder="Anything else worth knowing"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Request My Property Content <span class="btn-arrow">→</span></button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <h3>Request received.</h3>
+          <p>Thank you — we&rsquo;ll follow up by email with next steps for your property.</p>
         </div>
       </div>
     </div>
@@ -736,76 +1325,96 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <span class="brand-mark" aria-hidden="true" style="width:28px;height:28px;font-size:13px;">A</span>
-      <div class="footer-text">
-        <div>AutFlow Studio — Custom Business Software with AI That Understands Your Business</div>
-        <div style="opacity:0.7;">Clients · Projects · Workflows · AI Assistant — built around your business</div>
-        <div style="opacity:0.5;">© 2026 AutFlow Studio. All rights reserved.</div>
-        <div style="margin-top:6px;"><a href="https://www.instagram.com/autflow_studio/" target="_blank" rel="noopener noreferrer">Contact AutFlow Studio on Instagram</a></div>
-      </div>
+  <div class="wrap footer-row">
+    <a href="#top" class="brand"><img src="data:image/png;base64,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" alt="Cadence mark"><span>Cadence</span></a>
+    <p>&copy; 2026 Cadence. Luxury property content.</p>
+    <div class="footer-links">
+      <a href="#package">What&rsquo;s Included</a>
+      <a href="#faq">FAQ</a>
+      <a href="#start">Get Started</a>
     </div>
   </div>
 </footer>
 
 <script>
-(function(){
-  // Nav background on scroll.
-  var nav = document.getElementById('siteNav');
-  function onScroll(){
-    if(window.scrollY > 8){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
+  // Sticky header state
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Smooth-scroll for every [data-scroll] control (all internal CTAs route to the final Get Started section, or other in-page anchors).
-  document.querySelectorAll('[data-scroll]').forEach(function(el){
-    el.addEventListener('click', function(){
-      var target = document.querySelector(el.getAttribute('data-scroll'));
-      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  // Hero load-in
+  window.addEventListener('load', () => {
+    document.getElementById('hero').classList.add('loaded');
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Reel playhead — fills as the package section scrolls through view
+  const reelSection = document.getElementById('reelSection');
+  const playhead = document.getElementById('reelPlayhead');
+  const updatePlayhead = () => {
+    const rect = reelSection.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const total = rect.height + vh;
+    const progressed = vh - rect.top;
+    let pct = progressed / total;
+    pct = Math.max(0, Math.min(1, pct));
+    playhead.style.transform = `scaleY(${pct})`;
+    playhead.style.height = (reelSection.querySelector('.reel').offsetHeight - 44) + 'px';
+  };
+  document.addEventListener('scroll', updatePlayhead, { passive: true });
+  window.addEventListener('resize', updatePlayhead);
+  updatePlayhead();
+
+  // Use case tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      const target = btn.dataset.tab;
+      tabPanels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
     });
   });
 
-  // Scroll reveal.
-  var revealTargets = document.querySelectorAll('.fade-up');
-
-  if('IntersectionObserver' in window){
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
-      });
-    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    revealTargets.forEach(function(el){ obs.observe(el); });
-
-    var innerObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          var group = e.target.querySelectorAll('.tool-row, .rail-item, .answer-row');
-          group.forEach(function(g, i){ setTimeout(function(){ g.classList.add('in'); }, i*70); });
-          innerObs.unobserve(e.target);
-        }
-      });
-    }, {threshold:0.15});
-    if(document.querySelector('.tool-stack')) innerObs.observe(document.querySelector('.tool-stack'));
-    if(document.getElementById('aiDashboard')) innerObs.observe(document.getElementById('aiDashboard'));
-  } else {
-    revealTargets.forEach(function(el){ el.classList.add('in'); });
-  }
-
-  // Product tour tabs.
-  var demoTabs = document.querySelectorAll('.demo-tab');
-  demoTabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      demoTabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      document.querySelectorAll('.demo-panel').forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      var panel = document.getElementById(tab.getAttribute('data-panel'));
-      if(panel) panel.classList.add('active');
-    });
+  // Inquiry form — client-side only.
+  // To receive submissions, point this form at an endpoint (e.g. Formspree, Basin) or wire up your own backend.
+  const form = document.getElementById('inquiryForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.style.display = 'none';
+    success.classList.add('show');
   });
-})();
 </script>
+
 </body>
 </html>

@@ -1,4 +1,6 @@
-"use client";
+<!DOCTYPE html>
+<html lang="en">
+  "use client";
 
 import { useEffect, useState } from "react";
 import {
@@ -65,9 +67,21 @@ const features = [
 ];
 
 const workflow = [
-  { label: "New client", status: "Onboarding", value: "$2,400" },
-  { label: "Website redesign", status: "In progress", value: "$4,800" },
-  { label: "Brand system", status: "Awaiting approval", value: "$1,900" },
+  {
+    label: "New client",
+    status: "Onboarding",
+    value: "$2,400",
+  },
+  {
+    label: "Website redesign",
+    status: "In progress",
+    value: "$4,800",
+  },
+  {
+    label: "Brand system",
+    status: "Awaiting approval",
+    value: "$1,900",
+  },
 ];
 
 export default function Home() {
@@ -86,7 +100,9 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.12 }
+      {
+        threshold: 0.12,
+      }
     );
 
     document
@@ -98,14 +114,22 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#050505] text-white selection:bg-white selection:text-black">
-      {/* Background */}
+      {/* =========================
+          BACKGROUND
+      ========================== */}
+
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-10%,rgba(255,255,255,0.11),transparent_35%)]" />
+
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:64px_64px]" />
+
         <div className="absolute left-1/2 top-[20%] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-white/[0.025] blur-[120px]" />
       </div>
 
-      {/* NAV */}
+      {/* =========================
+          NAVIGATION
+      ========================== */}
+
       <nav className="relative z-50 border-b border-white/[0.07] bg-black/50 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
           <a href="#" className="group flex items-center gap-3">
@@ -117,6 +141,7 @@ export default function Home() {
               <div className="text-sm font-semibold tracking-tight">
                 AutFlow<span className="text-white/40"> Studio</span>
               </div>
+
               <div className="text-[9px] uppercase tracking-[0.25em] text-white/30">
                 Digital Systems
               </div>
@@ -130,12 +155,14 @@ export default function Home() {
             >
               Product
             </a>
+
             <a
               href="#capabilities"
               className="text-sm text-white/50 transition hover:text-white"
             >
               Capabilities
             </a>
+
             <a
               href="#custom"
               className="text-sm text-white/50 transition hover:text-white"
@@ -163,15 +190,27 @@ export default function Home() {
         {menuOpen && (
           <div className="border-t border-white/[0.07] bg-black px-6 py-6 md:hidden">
             <div className="flex flex-col gap-5">
-              <a href="#product" onClick={() => setMenuOpen(false)}>
+              <a
+                href="#product"
+                onClick={() => setMenuOpen(false)}
+              >
                 Product
               </a>
-              <a href="#capabilities" onClick={() => setMenuOpen(false)}>
+
+              <a
+                href="#capabilities"
+                onClick={() => setMenuOpen(false)}
+              >
                 Capabilities
               </a>
-              <a href="#custom" onClick={() => setMenuOpen(false)}>
+
+              <a
+                href="#custom"
+                onClick={() => setMenuOpen(false)}
+              >
                 Custom Software
               </a>
+
               <a
                 href="#get-started"
                 onClick={() => setMenuOpen(false)}
@@ -184,7 +223,10 @@ export default function Home() {
         )}
       </nav>
 
-      {/* HERO */}
+      {/* =========================
+          HERO
+      ========================== */}
+
       <section className="relative z-10 mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-8 lg:pb-32 lg:pt-28">
         <div className="mx-auto max-w-4xl text-center">
           <div
@@ -196,6 +238,7 @@ export default function Home() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
+
             Built for modern agencies
           </div>
 
@@ -206,6 +249,7 @@ export default function Home() {
           >
             Run your agency
             <br />
+
             <span className="bg-gradient-to-b from-white via-white to-white/40 bg-clip-text text-transparent">
               like a system.
             </span>
@@ -231,6 +275,7 @@ export default function Home() {
               className="group flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition hover:scale-[1.025]"
             >
               Get the ready-made system
+
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
@@ -242,16 +287,22 @@ export default function Home() {
               className="flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-7 py-3.5 text-sm font-medium text-white/70 transition hover:border-white/20 hover:bg-white/[0.07] hover:text-white"
             >
               Explore the system
+
               <ChevronRight size={15} />
             </a>
           </div>
         </div>
 
-        {/* Dashboard */}
+        {/* =========================
+            DASHBOARD MOCKUP
+        ========================== */}
+
         <div className="relative mx-auto mt-20 max-w-6xl">
           <div className="absolute left-1/2 top-1/2 h-[300px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.035] blur-[100px]" />
 
           <div className="relative overflow-hidden rounded-2xl border border-white/[0.12] bg-[#0a0a0a] shadow-[0_40px_120px_rgba(0,0,0,0.7)]">
+            {/* Browser top bar */}
+
             <div className="flex h-12 items-center justify-between border-b border-white/[0.07] px-4">
               <div className="flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-white/20" />
@@ -271,6 +322,7 @@ export default function Home() {
 
             <div className="grid min-h-[430px] grid-cols-12">
               {/* Sidebar */}
+
               <aside className="hidden border-r border-white/[0.07] p-5 sm:col-span-3 sm:block">
                 <div className="mb-8 text-[10px] uppercase tracking-[0.2em] text-white/25">
                   Workspace
@@ -302,6 +354,7 @@ export default function Home() {
                   <div className="mb-3 text-[9px] uppercase tracking-[0.2em] text-white/20">
                     System
                   </div>
+
                   <div className="flex items-center gap-3 px-3 text-xs text-white/30">
                     <Settings2 size={14} />
                     Settings
@@ -309,13 +362,15 @@ export default function Home() {
                 </div>
               </aside>
 
-              {/* Main */}
+              {/* Main Dashboard */}
+
               <div className="col-span-12 p-5 sm:col-span-9 sm:p-7">
                 <div className="flex items-end justify-between">
                   <div>
                     <div className="text-[10px] uppercase tracking-[0.2em] text-white/25">
                       Wednesday / Overview
                     </div>
+
                     <h2 className="mt-2 text-2xl font-medium tracking-tight">
                       Good morning.
                     </h2>
@@ -325,6 +380,8 @@ export default function Home() {
                     This month ↗
                   </div>
                 </div>
+
+                {/* Stats */}
 
                 <div className="mt-7 grid grid-cols-2 gap-3 lg:grid-cols-4">
                   {[
@@ -337,16 +394,22 @@ export default function Home() {
                       key={title}
                       className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4 transition hover:border-white/[0.13] hover:bg-white/[0.04]"
                     >
-                      <div className="text-[10px] text-white/25">{title}</div>
+                      <div className="text-[10px] text-white/25">
+                        {title}
+                      </div>
+
                       <div className="mt-2 text-lg font-medium tracking-tight">
                         {value}
                       </div>
+
                       <div className="mt-1 text-[9px] text-emerald-400/70">
                         {change}
                       </div>
                     </div>
                   ))}
                 </div>
+
+                {/* Projects + Revenue */}
 
                 <div className="mt-4 grid gap-4 lg:grid-cols-5">
                   <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5 lg:col-span-3">
@@ -355,11 +418,16 @@ export default function Home() {
                         <div className="text-xs font-medium">
                           Active projects
                         </div>
+
                         <div className="mt-1 text-[10px] text-white/25">
                           Current workload
                         </div>
                       </div>
-                      <ArrowUpRight size={15} className="text-white/25" />
+
+                      <ArrowUpRight
+                        size={15}
+                        className="text-white/25"
+                      />
                     </div>
 
                     <div className="mt-6 space-y-3">
@@ -376,6 +444,7 @@ export default function Home() {
                             <div className="truncate text-xs text-white/75">
                               {item.label}
                             </div>
+
                             <div className="mt-1 text-[9px] text-white/25">
                               {item.status}
                             </div>
@@ -389,26 +458,44 @@ export default function Home() {
                     </div>
                   </div>
 
+                  {/* Revenue */}
+
                   <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5 lg:col-span-2">
-                    <div className="text-xs font-medium">Revenue</div>
+                    <div className="text-xs font-medium">
+                      Revenue
+                    </div>
+
                     <div className="mt-1 text-[10px] text-white/25">
                       Last 30 days
                     </div>
 
                     <div className="mt-8 flex h-[115px] items-end gap-2">
-                      {[30, 48, 40, 65, 54, 74, 62, 85, 71, 96, 80, 100].map(
-                        (height, index) => (
+                      {[
+                        30,
+                        48,
+                        40,
+                        65,
+                        54,
+                        74,
+                        62,
+                        85,
+                        71,
+                        96,
+                        80,
+                        100,
+                      ].map((height, index) => (
+                        <div
+                          key={index}
+                          className="group relative flex-1"
+                        >
                           <div
-                            key={index}
-                            className="group relative flex-1"
-                          >
-                            <div
-                              className="absolute bottom-0 w-full rounded-t-sm bg-white/[0.12] transition-all duration-500 group-hover:bg-white/30"
-                              style={{ height: `${height}%` }}
-                            />
-                          </div>
-                        )
-                      )}
+                            className="absolute bottom-0 w-full rounded-t-sm bg-white/[0.12] transition-all duration-500 group-hover:bg-white/30"
+                            style={{
+                              height: `${height}%`,
+                            }}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -420,8 +507,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCT */}
-      <section id="product" className="relative z-10 border-t border-white/[0.07]">
+      {/* =========================
+          PRODUCT
+      ========================== */}
+
+      <section
+        id="product"
+        className="relative z-10 border-t border-white/[0.07]"
+      >
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
           <div className="reveal grid gap-14 lg:grid-cols-2 lg:items-end">
             <div>
@@ -432,6 +525,7 @@ export default function Home() {
 
               <h2 className="max-w-xl text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
                 Your agency doesn't need more apps.
+
                 <span className="text-white/35">
                   {" "}
                   It needs one system.
@@ -441,8 +535,8 @@ export default function Home() {
 
             <div>
               <p className="max-w-lg text-sm leading-7 text-white/40">
-                AutFlow replaces the fragmented stack of tools agencies use to
-                manage work. Clients, projects, deliverables, approvals,
+                AutFlow replaces the fragmented stack of tools agencies use
+                to manage work. Clients, projects, deliverables, approvals,
                 invoices and operational follow-ups are brought into a single
                 interface.
               </p>
@@ -457,16 +551,23 @@ export default function Home() {
                 <div
                   key={feature.title}
                   className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] p-7 transition duration-500 hover:-translate-y-1 hover:border-white/[0.15] hover:bg-white/[0.04]"
-                  style={{ transitionDelay: `${index * 40}ms` }}
+                  style={{
+                    transitionDelay: `${index * 40}ms`,
+                  }}
                 >
                   <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-white/[0.025] blur-2xl transition group-hover:bg-white/[0.06]" />
 
                   <div className="relative">
                     <div className="mb-7 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04]">
-                      <Icon size={17} className="text-white/60" />
+                      <Icon
+                        size={17}
+                        className="text-white/60"
+                      />
                     </div>
 
-                    <h3 className="text-sm font-medium">{feature.title}</h3>
+                    <h3 className="text-sm font-medium">
+                      {feature.title}
+                    </h3>
 
                     <p className="mt-3 text-xs leading-6 text-white/35">
                       {feature.description}
@@ -479,7 +580,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NO SUBSCRIPTION */}
+      {/* =========================
+          NO SUBSCRIPTION
+      ========================== */}
+
       <section className="relative z-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="reveal overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.015]">
@@ -491,8 +595,12 @@ export default function Home() {
 
                 <h2 className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">
                   Buy the system.
+
                   <br />
-                  <span className="text-white/35">Own the setup.</span>
+
+                  <span className="text-white/35">
+                    Own the setup.
+                  </span>
                 </h2>
 
                 <p className="mt-6 max-w-md text-sm leading-7 text-white/40">
@@ -515,6 +623,7 @@ export default function Home() {
                       <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.08]">
                         <Check size={11} />
                       </div>
+
                       {item}
                     </div>
                   ))}
@@ -528,7 +637,11 @@ export default function Home() {
                   <div className="rounded-2xl border border-white/10 bg-[#0a0a0a]/90 p-5 shadow-2xl backdrop-blur-xl">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <Terminal size={13} className="text-white/40" />
+                        <Terminal
+                          size={13}
+                          className="text-white/40"
+                        />
+
                         <span className="text-[10px] text-white/40">
                           workflow
                         </span>
@@ -552,9 +665,12 @@ export default function Home() {
                         >
                           <div
                             className={`h-1.5 w-1.5 rounded-full ${
-                              i === 3 ? "bg-white" : "bg-white/20"
+                              i === 3
+                                ? "bg-white"
+                                : "bg-white/20"
                             }`}
                           />
+
                           <span className="text-[9px] text-white/40">
                             {item}
                           </span>
@@ -565,6 +681,7 @@ export default function Home() {
                 </div>
 
                 <div className="absolute left-8 top-10 h-px w-24 bg-gradient-to-r from-transparent to-white/20" />
+
                 <div className="absolute bottom-16 right-10 h-px w-28 bg-gradient-to-l from-transparent to-white/20" />
               </div>
             </div>
@@ -572,8 +689,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CAPABILITIES */}
-      <section id="capabilities" className="relative z-10">
+      {/* =========================
+          CAPABILITIES
+      ========================== */}
+
+      <section
+        id="capabilities"
+        className="relative z-10"
+      >
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-8">
           <div className="reveal text-center">
             <div className="mb-5 text-[10px] uppercase tracking-[0.25em] text-white/25">
@@ -582,8 +705,12 @@ export default function Home() {
 
             <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
               Software that solves
+
               <br />
-              <span className="text-white/35">the actual problem.</span>
+
+              <span className="text-white/35">
+                the actual problem.
+              </span>
             </h2>
           </div>
 
@@ -659,10 +786,10 @@ export default function Home() {
                   </h3>
 
                   <p className="mt-4 max-w-xl text-sm leading-7 text-white/40">
-                    If your business has a repetitive workflow, broken internal
-                    tool, manual process or software problem that existing
-                    products cannot solve, AutFlow can build the missing layer
-                    specifically around your operation.
+                    If your business has a repetitive workflow, broken
+                    internal tool, manual process or software problem that
+                    existing products cannot solve, AutFlow can build the
+                    missing layer specifically around your operation.
                   </p>
 
                   <div className="mt-8 flex flex-wrap gap-2">
@@ -689,8 +816,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CUSTOM */}
-      <section id="custom" className="relative z-10 border-t border-white/[0.07]">
+      {/* =========================
+          CUSTOM SOFTWARE
+      ========================== */}
+
+      <section
+        id="custom"
+        className="relative z-10 border-t border-white/[0.07]"
+      >
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
           <div className="reveal relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#080808] p-8 sm:p-12 lg:p-16">
             <div className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-white/[0.035] blur-[120px]" />
@@ -704,7 +837,9 @@ export default function Home() {
 
                 <h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
                   Your problem doesn't
+
                   <br />
+
                   <span className="text-white/35">
                     need another SaaS.
                   </span>
@@ -722,6 +857,7 @@ export default function Home() {
                   className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:scale-[1.02]"
                 >
                   Discuss your problem
+
                   <ArrowRight
                     size={15}
                     className="transition-transform group-hover:translate-x-1"
@@ -736,11 +872,16 @@ export default function Home() {
                       <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/[0.06]">
                         <Terminal size={13} />
                       </div>
+
                       <span className="text-[10px] text-white/40">
                         Problem → System
                       </span>
                     </div>
-                    <Clock3 size={14} className="text-white/20" />
+
+                    <Clock3
+                      size={14}
+                      className="text-white/20"
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -758,9 +899,11 @@ export default function Home() {
                         <span className="text-[9px] font-mono text-white/20">
                           0{i + 1}
                         </span>
+
                         <span className="text-xs text-white/55">
                           {step}
                         </span>
+
                         {i === 4 && (
                           <Check
                             size={13}
@@ -777,8 +920,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="get-started" className="relative z-10">
+      {/* =========================
+          FINAL CTA
+      ========================== */}
+
+      <section
+        id="get-started"
+        className="relative z-10"
+      >
         <div className="mx-auto max-w-4xl px-6 py-28 text-center lg:py-36">
           <div className="reveal">
             <div className="mb-6 flex justify-center">
@@ -789,8 +938,12 @@ export default function Home() {
 
             <h2 className="text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">
               Stop managing the chaos.
+
               <br />
-              <span className="text-white/35">Build the system.</span>
+
+              <span className="text-white/35">
+                Build the system.
+              </span>
             </h2>
 
             <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/35">
@@ -804,6 +957,7 @@ export default function Home() {
                 className="group flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold text-black transition hover:scale-[1.03]"
               >
                 Request your setup
+
                 <ArrowRight
                   size={16}
                   className="transition-transform group-hover:translate-x-1"
@@ -818,7 +972,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* =========================
+          FOOTER
+      ========================== */}
+
       <footer className="relative z-10 border-t border-white/[0.07]">
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
           <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
@@ -828,7 +985,9 @@ export default function Home() {
                   <Command size={14} />
                 </div>
 
-                <span className="text-sm font-medium">AutFlow Studio</span>
+                <span className="text-sm font-medium">
+                  AutFlow Studio
+                </span>
               </div>
 
               <p className="mt-3 text-[10px] uppercase tracking-[0.18em] text-white/20">
@@ -842,10 +1001,13 @@ export default function Home() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-5 py-3 transition hover:border-white/20 hover:bg-white/[0.07]"
             >
-              <Instagram size={16} className="text-white/60" />
+              <Instagram
+                size={16}
+                className="text-white/60"
+              />
 
               <span className="text-xs text-white/55 transition group-hover:text-white">
-                Connect with us on Instagram
+                Connect with us on Instagram @autflow_studio
               </span>
 
               <ArrowUpRight
@@ -856,11 +1018,20 @@ export default function Home() {
           </div>
 
           <div className="mt-10 flex flex-col gap-2 border-t border-white/[0.05] pt-6 text-[10px] text-white/20 sm:flex-row sm:items-center sm:justify-between">
-            <span>© {new Date().getFullYear()} AutFlow Studio</span>
-            <span>Built for operators, not spectators.</span>
+            <span>
+              © {new Date().getFullYear()} AutFlow Studio
+            </span>
+
+            <span>
+              Built for operators, not spectators.
+            </span>
           </div>
         </div>
       </footer>
+
+      {/* =========================
+          GLOBAL ANIMATIONS
+      ========================== */}
 
       <style jsx global>{`
         html {
@@ -878,6 +1049,7 @@ export default function Home() {
         .reveal {
           opacity: 0;
           transform: translateY(24px);
+
           transition:
             opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
             transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -894,6 +1066,7 @@ export default function Home() {
             transform: translateY(18px) scale(0.98);
             filter: blur(8px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -905,6 +1078,7 @@ export default function Home() {
           from {
             opacity: 0;
           }
+
           to {
             opacity: 1;
           }
@@ -915,6 +1089,7 @@ export default function Home() {
             opacity: 0;
             transform: translateY(12px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
@@ -922,19 +1097,27 @@ export default function Home() {
         }
 
         .animate-hero {
-          animation: hero 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          animation:
+            hero 1s cubic-bezier(0.22, 1, 0.36, 1)
+            forwards;
         }
 
         .animate-fade-in {
-          animation: fadeIn 0.8s ease forwards;
+          animation:
+            fadeIn 0.8s ease
+            forwards;
         }
 
         .animate-fade-up {
-          animation: fadeUp 0.8s 0.25s ease both;
+          animation:
+            fadeUp 0.8s 0.25s ease
+            both;
         }
 
         .animate-fade-up-delay {
-          animation: fadeUp 0.8s 0.4s ease both;
+          animation:
+            fadeUp 0.8s 0.4s ease
+            both;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -952,30 +1135,5 @@ export default function Home() {
         }
       `}</style>
     </main>
-  );
-} 
-                import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "AutFlow Studio — Agency Operating System",
-  description:
-    "A modern operating system for agencies. Manage clients, projects, tasks, deliverables, approvals and revenue in one system.",
-  icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
-  },
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
   );
 }

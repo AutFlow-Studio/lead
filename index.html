@@ -1851,6 +1851,112 @@
 
 
     /* =========================================================
+       DEMO MODAL
+    ========================================================== */
+
+    .demo-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    .demo-modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .demo-modal-content {
+      position: relative;
+      width: min(900px, 100%);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #090909;
+      box-shadow: 0 50px 140px rgba(0,0,0,.8), 0 0 100px rgba(255,255,255,.04);
+      transform: translateY(24px) scale(.96);
+      transition: transform .45s cubic-bezier(.16,1,.3,1);
+    }
+
+    .demo-modal.active .demo-modal-content {
+      transform: translateY(0) scale(1);
+    }
+
+    .demo-modal-header {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px 0 17px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .demo-modal-label {
+      color: rgba(255,255,255,.35);
+      font-size: 8px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .demo-modal-close {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 9px;
+      background: rgba(255,255,255,.035);
+      color: rgba(255,255,255,.55);
+      font-size: 17px;
+      transition: .25s ease;
+    }
+
+    .demo-modal-close:hover {
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.16);
+    }
+
+    .demo-video-wrap {
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+
+    .demo-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #000;
+    }
+
+    @media(max-width:620px) {
+      .demo-modal {
+        padding: 15px;
+      }
+
+      .demo-modal-content {
+        border-radius: 15px;
+      }
+
+      .demo-modal-header {
+        min-height: 44px;
+      }
+    }
+
+
+    /* =========================================================
        REDUCED MOTION
     ========================================================== */
 
@@ -2043,6 +2149,15 @@
             Explore the system
             <span>↓</span>
           </a>
+
+          <button
+            type="button"
+            class="button button-secondary magnetic"
+            id="demoButton"
+          >
+            Watch the demo
+            <span>▶</span>
+          </button>
 
         </div>
 
@@ -2975,7 +3090,9 @@
         <div class="final-actions">
 
           <a
-            href="mailto:hello@autflow.studio?subject=AutFlow%20Studio%20Setup"
+            href="https://instagram.com/autflow_studio"
+            target="_blank"
+            rel="noopener noreferrer"
             class="button button-primary magnetic"
           >
             Request your setup
@@ -2993,6 +3110,40 @@
     </div>
 
   </section>
+
+
+  <!-- =========================================================
+       DEMO MODAL
+  ========================================================== -->
+
+  <div class="demo-modal" id="demoModal" aria-hidden="true">
+    <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel">
+      <div class="demo-modal-header">
+        <span class="demo-modal-label" id="demoModalLabel">AutFlow / Product Demo</span>
+        <button
+          type="button"
+          class="demo-modal-close"
+          id="demoModalClose"
+          aria-label="Close demo"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="demo-video-wrap">
+        <video
+          class="demo-video"
+          id="demoVideo"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          <source src="loom.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
 
 
   <!-- =========================================================
@@ -4106,6 +4257,54 @@
         });
 
       });
+
+
+    /* =========================================================
+       DEMO MODAL
+    ========================================================== */
+
+    const demoButton =
+      document.getElementById("demoButton");
+
+    const demoModal =
+      document.getElementById("demoModal");
+
+    const demoModalClose =
+      document.getElementById("demoModalClose");
+
+    const demoVideo =
+      document.getElementById("demoVideo");
+
+    function openDemo() {
+      demoModal.classList.add("active");
+      demoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+
+      demoVideo.currentTime = 0;
+      demoVideo.play().catch(() => {});
+    }
+
+    function closeDemo() {
+      demoModal.classList.remove("active");
+      demoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+      demoVideo.pause();
+    }
+
+    demoButton.addEventListener("click", openDemo);
+    demoModalClose.addEventListener("click", closeDemo);
+
+    demoModal.addEventListener("click", event => {
+      if (event.target === demoModal) {
+        closeDemo();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && demoModal.classList.contains("active")) {
+        closeDemo();
+      }
+    });
 
 
     /* =========================================================

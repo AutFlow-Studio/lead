@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>AutFlow Studio — Agency Operating System</title>
-
   <meta
     name="description"
-    content="AutFlow Studio — The operating system for modern agencies."
-  >
+    content="AutFlow Studio is a mechanical Agency Operating System for managing clients, projects, tasks, invoices and workflows."
+  />
 
-  <!-- =========================================================
-       FONTS
-  ========================================================== -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+  <!-- Favicon -->
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23070709'/%3E%3Cpath d='M25 68L44 25h12l19 43H62l-4-10H42l-4 10H25zm21-20h9l-4.5-12L46 48z' fill='white'/%3E%3C/svg%3E"
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
-  >
+  />
 
-  <!-- =========================================================
-       GSAP
-  ========================================================== -->
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-
-  <!-- =========================================================
-       LENIS SMOOTH SCROLL
-  ========================================================== -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
 
   <style>
-
-    /* =========================================================
-       RESET
-    ========================================================== */
+    :root {
+      --bg: #050507;
+      --bg-soft: #09090c;
+      --card: rgba(255,255,255,0.045);
+      --card-hover: rgba(255,255,255,0.075);
+      --border: rgba(255,255,255,0.09);
+      --border-bright: rgba(255,255,255,0.16);
+      --text: #f5f5f7;
+      --muted: #92929d;
+      --muted-2: #696974;
+      --accent: #ffffff;
+      --purple: #8b5cf6;
+      --blue: #5b8cff;
+      --green: #5ee7a1;
+      --radius: 24px;
+    }
 
     * {
       margin: 0;
@@ -50,1682 +60,1008 @@
     }
 
     html {
+      background: var(--bg);
       scroll-behavior: auto;
     }
 
     body {
-      margin: 0;
-      background: #050505;
-      color: #fff;
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(103, 76, 255, 0.14),
+          transparent 35%
+        ),
+        var(--bg);
+      color: var(--text);
       font-family: "Inter", sans-serif;
       overflow-x: hidden;
-      line-height: 1.5;
     }
 
-    body.menu-open {
+    body.modal-open {
       overflow: hidden;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     button {
-      border: none;
       font: inherit;
-      cursor: pointer;
     }
 
-    ::selection {
-      background: #fff;
-      color: #000;
-    }
+    /* =========================================
+       GLOBAL BACKGROUND
+    ========================================= */
 
-
-    /* =========================================================
-       GLOBAL
-    ========================================================== */
-
-    :root {
-      --white: #fff;
-      --muted: rgba(255,255,255,.42);
-      --soft: rgba(255,255,255,.08);
-      --border: rgba(255,255,255,.09);
-      --panel: rgba(255,255,255,.025);
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 48px));
-      margin: auto;
-    }
-
-    .section-border {
-      border-top: 1px solid rgba(255,255,255,.07);
-    }
-
-    .section-padding {
-      padding: 140px 0;
-    }
-
-
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================== */
-
-    .cursor {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fff;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-    }
-
-    .cursor-ring {
-      position: fixed;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255,255,255,.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-    }
-
-
-    /* =========================================================
-       BACKGROUND
-    ========================================================== */
-
-    .background {
+    .noise {
       position: fixed;
       inset: 0;
-      z-index: -10;
-      overflow: hidden;
-      background: #050505;
       pointer-events: none;
+      z-index: 100;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
     }
 
-    .background-grid {
-      position: absolute;
+    .grid-bg {
+      position: fixed;
       inset: 0;
-
+      pointer-events: none;
+      opacity: 0.18;
       background-image:
-        linear-gradient(
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        );
-
-      background-size: 70px 70px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 80%
-        );
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      z-index: -1;
     }
 
     .glow {
       position: absolute;
       border-radius: 50%;
-      filter: blur(120px);
-      opacity: .45;
+      pointer-events: none;
+      filter: blur(100px);
+      opacity: 0.25;
     }
 
-    .glow-1 {
-      width: 650px;
-      height: 650px;
-      top: -300px;
+    .glow.one {
+      width: 500px;
+      height: 500px;
+      background: #5d3df5;
+      top: 0;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255,255,255,.055);
     }
 
-    .glow-2 {
-      width: 400px;
-      height: 400px;
+    .glow.two {
+      width: 350px;
+      height: 350px;
+      background: #2474ff;
+      right: -150px;
       top: 900px;
-      left: -200px;
-      background: rgba(255,255,255,.025);
+      opacity: 0.12;
     }
 
-    .glow-3 {
-      width: 450px;
-      height: 450px;
-      top: 1600px;
-      right: -200px;
-      background: rgba(255,255,255,.025);
-    }
-
-
-    /* =========================================================
+    /* =========================================
        NAVBAR
-    ========================================================== */
+    ========================================= */
 
-    .navbar {
+    nav {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      z-index: 500;
-
-      border-bottom: 1px solid transparent;
-
-      background: rgba(5,5,5,.25);
-
-      backdrop-filter: blur(0);
-      -webkit-backdrop-filter: blur(0);
-
-      transition:
-        background .4s ease,
-        border-color .4s ease,
-        backdrop-filter .4s ease;
+      right: 0;
+      height: 76px;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.4s ease;
     }
 
-    .navbar.scrolled {
-      background: rgba(5,5,5,.75);
-      border-color: rgba(255,255,255,.07);
-
+    nav.scrolled {
+      background: rgba(5,5,7,0.72);
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .nav-inner {
-      height: 78px;
-
+      width: min(1180px, calc(100% - 40px));
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .brand {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
     }
 
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
       display: grid;
       place-items: center;
-
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 11px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.1),
-          rgba(255,255,255,.025)
-        );
-
-      box-shadow:
-        0 0 40px rgba(255,255,255,.035);
-    }
-
-    .brand-mark span {
-      font-family: "Space Grotesk";
-      font-weight: 700;
-    }
-
-    .brand-name {
-      font-family: "Space Grotesk";
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .brand-name span {
-      color: rgba(255,255,255,.35);
-    }
-
-    .brand-subtitle {
-      font-size: 7px;
-      letter-spacing: .25em;
-      color: rgba(255,255,255,.25);
-      text-transform: uppercase;
+      background: linear-gradient(135deg, #fff, #aaa);
+      color: #050507;
+      font-weight: 900;
+      box-shadow: 0 0 25px rgba(255,255,255,0.13);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .nav-links a {
-      font-size: 11px;
-      color: rgba(255,255,255,.42);
-      transition: color .25s ease;
+      transition: 0.25s ease;
     }
 
     .nav-links a:hover {
-      color: #fff;
-    }
-
-    .nav-button {
-      padding: 11px 19px;
-
-      border-radius: 999px;
-
-      background: #fff;
-      color: #000;
-
-      font-size: 10px;
-      font-weight: 700;
-
-      transition:
-        transform .25s ease,
-        background .25s ease;
-    }
-
-    .nav-button:hover {
-      transform: translateY(-2px);
-      background: #e9e9e9;
-    }
-
-    .mobile-menu-button {
-      display: none;
-
-      width: 40px;
-      height: 40px;
-
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 10px;
-
-      background: rgba(255,255,255,.04);
       color: white;
     }
 
-    .mobile-menu {
-      display: none;
+    .nav-cta {
+      padding: 10px 17px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      transition: 0.3s ease;
     }
 
+    .nav-cta:hover {
+      background: white;
+      color: black;
+      border-color: white;
+    }
 
-    /* =========================================================
+    /* =========================================
        HERO
-    ========================================================== */
+    ========================================= */
 
     .hero {
       min-height: 100vh;
-
-      padding-top: 175px;
-      padding-bottom: 100px;
-
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 90px;
+      overflow: hidden;
     }
 
     .hero-content {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-
+      max-width: 1000px;
       position: relative;
       z-index: 2;
     }
 
-    .status-pill {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-
-      padding: 8px 14px;
-
-      border: 1px solid rgba(255,255,255,.09);
+      border: 1px solid var(--border);
+      padding: 8px 13px;
       border-radius: 999px;
-
-      background: rgba(255,255,255,.035);
-
-      color: rgba(255,255,255,.42);
-
-      font-size: 8px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
+      background: rgba(255,255,255,0.035);
+      color: #bdbdc6;
+      font-size: 12px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(10px);
     }
 
     .status-dot {
-      width: 6px;
-      height: 6px;
-
+      width: 7px;
+      height: 7px;
+      background: var(--green);
       border-radius: 50%;
-
-      background: #66e394;
-
-      box-shadow:
-        0 0 15px rgba(102,227,148,.7);
+      box-shadow: 0 0 12px var(--green);
     }
 
-    .hero-title {
-      margin-top: 28px;
-
-      font-family: "Space Grotesk";
-
-      font-size: clamp(56px, 8vw, 98px);
-
-      line-height: .91;
-
-      letter-spacing: -.07em;
-
-      font-weight: 600;
+    .hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(54px, 8vw, 104px);
+      line-height: 0.94;
+      letter-spacing: -5px;
+      font-weight: 700;
+      margin-bottom: 30px;
     }
 
-    .hero-title .line {
-      display: block;
-      overflow: hidden;
-    }
-
-    .hero-title .line-inner {
-      display: block;
-    }
-
-    .hero-title .muted {
-      color: rgba(255,255,255,.32);
+    .gradient-text {
+      background: linear-gradient(
+        100deg,
+        #ffffff 0%,
+        #ffffff 30%,
+        #a78bfa 65%,
+        #7094ff 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-description {
-      max-width: 650px;
-
-      margin: 32px auto 0;
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 15px;
-
-      line-height: 1.9;
+      max-width: 690px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
     }
 
     .hero-actions {
-      margin-top: 34px;
-
       display: flex;
       justify-content: center;
-      gap: 10px;
-
+      gap: 12px;
+      margin-top: 40px;
       flex-wrap: wrap;
     }
 
-    .button {
+    .btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-
-      min-height: 48px;
-
-      padding: 0 23px;
-
-      border-radius: 999px;
-
-      font-size: 11px;
-      font-weight: 600;
-
+      gap: 9px;
+      min-height: 50px;
+      padding: 0 21px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      cursor: pointer;
       transition:
-        background .3s ease,
-        border-color .3s ease;
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+      overflow: hidden;
     }
 
-    .button-primary {
-      background: #fff;
-      color: #000;
+    .btn:hover {
+      transform: translateY(-3px);
     }
 
-    .button-secondary {
-      background: rgba(255,255,255,.035);
-      border: 1px solid rgba(255,255,255,.1);
-      color: rgba(255,255,255,.6);
-    }
-
-    .button-secondary:hover {
-      border-color: rgba(255,255,255,.2);
-      color: #fff;
-    }
-
-
-    /* =========================================================
-       HERO ORBIT
-    ========================================================== */
-
-    .hero-orbit {
-      position: absolute;
-
-      width: 950px;
-      height: 950px;
-
-      left: 50%;
-      top: 360px;
-
-      transform: translateX(-50%);
-
-      border: 1px solid rgba(255,255,255,.025);
-
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-    .hero-orbit::before {
-      content: "";
-
-      position: absolute;
-
-      inset: 80px;
-
-      border: 1px solid rgba(255,255,255,.02);
-
-      border-radius: 50%;
-    }
-
-    .orbit-dot {
-      position: absolute;
-
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
+    .btn-primary {
       background: white;
-
-      box-shadow:
-        0 0 20px rgba(255,255,255,.7);
-
-      left: 50%;
-      top: 0;
+      color: black;
+      border-color: white;
+      box-shadow: 0 10px 40px rgba(255,255,255,0.09);
     }
 
-
-    /* =========================================================
-       DASHBOARD
-    ========================================================== */
-
-    .dashboard-wrapper {
-      position: relative;
-
-      max-width: 1120px;
-
-      margin: 100px auto 0;
-
-      perspective: 1400px;
+    .btn-primary:hover {
+      box-shadow: 0 15px 50px rgba(255,255,255,0.16);
     }
 
-    .dashboard-glow {
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,0.045);
+      backdrop-filter: blur(15px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: var(--border-bright);
+    }
+
+    /* shine effect */
+
+    .btn::after {
+      content: "";
       position: absolute;
+      width: 80px;
+      height: 200%;
+      top: -50%;
+      left: -100px;
+      transform: rotate(20deg);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+      );
+      transition: left 0.7s ease;
+    }
 
-      width: 800px;
-      height: 350px;
+    .btn:hover::after {
+      left: 120%;
+    }
 
-      left: 50%;
-      top: 50%;
+    /* =========================================
+       DASHBOARD PREVIEW
+    ========================================= */
 
-      transform: translate(-50%,-50%);
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(100px);
+    .dashboard-wrap {
+      width: min(1100px, 94%);
+      margin: 90px auto 0;
+      perspective: 1300px;
     }
 
     .dashboard {
       position: relative;
-
-      border: 1px solid rgba(255,255,255,.12);
-
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.065),
+          rgba(255,255,255,0.018)
+        );
       border-radius: 20px;
-
       overflow: hidden;
-
-      background: #090909;
-
       box-shadow:
-        0 70px 150px rgba(0,0,0,.75),
-        0 0 100px rgba(255,255,255,.025);
-
+        0 50px 120px rgba(0,0,0,0.65),
+        0 0 80px rgba(102,73,255,0.08);
+      transform: rotateX(8deg);
       transform-origin: center top;
-
-      will-change: transform;
     }
 
-    .browser-bar {
-      height: 45px;
-
+    .dashboard-top {
+      height: 54px;
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-
-      padding: 0 16px;
-
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      padding: 0 18px;
+      gap: 8px;
     }
 
-    .browser-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .browser-dots span {
+    .window-dot {
       width: 8px;
       height: 8px;
-
       border-radius: 50%;
-
-      background: rgba(255,255,255,.13);
-    }
-
-    .browser-status {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
-      color: rgba(255,255,255,.25);
-
-      font-size: 8px;
-    }
-
-    .browser-status i {
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: #5cdf8d;
-    }
-
-    .browser-label {
-      color: rgba(255,255,255,.18);
-
-      font-size: 7px;
-
-      letter-spacing: .2em;
+      background: rgba(255,255,255,0.2);
     }
 
     .dashboard-body {
       display: grid;
-      grid-template-columns: 210px 1fr;
-
-      min-height: 460px;
+      grid-template-columns: 180px 1fr;
+      min-height: 440px;
     }
 
     .sidebar {
-      padding: 22px 15px;
-
-      border-right: 1px solid rgba(255,255,255,.07);
+      border-right: 1px solid var(--border);
+      padding: 20px 12px;
+      text-align: left;
     }
 
-    .sidebar-title {
-      margin-bottom: 14px;
-
-      color: rgba(255,255,255,.2);
-
-      font-size: 7px;
-
-      letter-spacing: .2em;
-
+    .side-title {
+      font-size: 10px;
+      color: var(--muted-2);
       text-transform: uppercase;
-    }
-
-    .sidebar-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
+      letter-spacing: 1px;
       padding: 10px;
-
-      margin-bottom: 3px;
-
-      border-radius: 8px;
-
-      color: rgba(255,255,255,.32);
-
-      font-size: 9px;
-
-      transition: .25s ease;
+      margin-bottom: 8px;
     }
 
-    .sidebar-item:hover {
-      background: rgba(255,255,255,.035);
-      color: #fff;
-    }
-
-    .sidebar-item.active {
-      background: rgba(255,255,255,.065);
-      color: #fff;
-    }
-
-    .sidebar-icon {
-      width: 12px;
-      height: 12px;
-
-      border: 1px solid currentColor;
-
-      border-radius: 3px;
-
-      opacity: .6;
-    }
-
-    .sidebar-separator {
-      height: 1px;
-
-      background: rgba(255,255,255,.06);
-
-      margin: 27px 0 18px;
-    }
-
-    .dashboard-main {
-      padding: 28px;
-    }
-
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .dashboard-eyebrow {
-      color: rgba(255,255,255,.22);
-
-      font-size: 7px;
-
-      letter-spacing: .2em;
-
-      text-transform: uppercase;
-    }
-
-    .dashboard-heading {
-      margin-top: 7px;
-
-      font-size: 23px;
-
-      letter-spacing: -.04em;
-    }
-
-    .dashboard-filter {
-      padding: 8px 11px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 7px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 7px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-
-      gap: 9px;
-
-      margin-top: 28px;
-    }
-
-    .stat {
-      padding: 15px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.018);
-    }
-
-    .stat-label {
-      color: rgba(255,255,255,.2);
-
-      font-size: 7px;
-    }
-
-    .stat-value {
-      margin-top: 6px;
-
-      font-size: 17px;
-    }
-
-    .stat-change {
-      margin-top: 3px;
-
-      color: #62db8b;
-
-      font-size: 7px;
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-
-      gap: 11px;
-
-      margin-top: 12px;
-    }
-
-    .panel {
-      padding: 17px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.018);
-    }
-
-    .panel-title {
-      font-size: 9px;
-    }
-
-    .panel-subtitle {
-      margin-top: 3px;
-
-      color: rgba(255,255,255,.2);
-
-      font-size: 7px;
-    }
-
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-
-      margin-top: 17px;
-    }
-
-    .project {
+    .side-item {
       display: flex;
       align-items: center;
       gap: 10px;
-
-      padding: 9px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
+      padding: 10px;
       border-radius: 8px;
-
-      background: rgba(0,0,0,.25);
+      color: #85858f;
+      font-size: 12px;
+      margin-bottom: 3px;
     }
 
-    .project-number {
-      width: 27px;
-      height: 27px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 6px;
-
-      background: rgba(255,255,255,.05);
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 7px;
+    .side-item.active {
+      color: white;
+      background: rgba(255,255,255,0.07);
     }
 
-    .project-info {
-      flex: 1;
-      min-width: 0;
+    .dashboard-main {
+      padding: 25px;
+      text-align: left;
     }
 
-    .project-name {
-      color: rgba(255,255,255,.65);
-
-      font-size: 8px;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .project-status {
-      margin-top: 2px;
-
-      color: rgba(255,255,255,.18);
-
-      font-size: 6px;
-    }
-
-    .project-price {
-      color: rgba(255,255,255,.4);
-
-      font-size: 8px;
-    }
-
-    .chart {
-      height: 115px;
-
+    .dash-heading {
       display: flex;
-      align-items: flex-end;
-
-      gap: 6px;
-
-      margin-top: 25px;
-    }
-
-    .bar {
-      flex: 1;
-
-      min-height: 4px;
-
-      border-radius: 4px 4px 0 0;
-
-      background: rgba(255,255,255,.12);
-    }
-
-
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================== */
-
-    .section-heading-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      gap: 80px;
-
-      align-items: end;
-    }
-
-    .eyebrow {
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
-
-      margin-bottom: 19px;
-
-      color: rgba(255,255,255,.24);
-
-      font-size: 8px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .22em;
+      margin-bottom: 24px;
     }
 
-    .eyebrow-line {
-      width: 27px;
-      height: 1px;
-
-      background: rgba(255,255,255,.3);
-    }
-
-    h2 {
+    .dash-heading h3 {
       font-family: "Space Grotesk";
+      font-size: 21px;
+    }
 
-      font-size: clamp(40px,5vw,60px);
+    .dash-date {
+      font-size: 11px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 7px 10px;
+      border-radius: 8px;
+    }
 
-      line-height: 1;
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
 
-      letter-spacing: -.06em;
+    .stat-card {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.025);
+      padding: 16px;
+      border-radius: 13px;
+    }
 
+    .stat-label {
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 21px;
       font-weight: 600;
     }
 
-    h2 .muted {
-      color: rgba(255,255,255,.32);
+    .stat-change {
+      font-size: 9px;
+      color: var(--green);
+      margin-top: 7px;
     }
 
-    .section-description {
-      max-width: 500px;
-
-      color: rgba(255,255,255,.38);
-
-      font-size: 13px;
-
-      line-height: 1.9;
-    }
-
-
-    /* =========================================================
-       FEATURES
-    ========================================================== */
-
-    .feature-grid {
+    .dashboard-lower {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: 1.4fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
 
+    .dash-card {
+      min-height: 210px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      background: rgba(255,255,255,0.022);
+    }
+
+    .dash-card-title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .fake-chart {
+      height: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+      height: 80px;
+      background:
+        linear-gradient(
+          135deg,
+          transparent 0 10%,
+          rgba(139,92,246,0.3) 10% 11%,
+          transparent 11% 20%,
+          rgba(139,92,246,0.3) 20% 21%,
+          transparent 21% 30%,
+          rgba(139,92,246,0.3) 30% 31%,
+          transparent 31% 40%,
+          rgba(139,92,246,0.3) 40% 41%,
+          transparent 41% 50%,
+          rgba(139,92,246,0.3) 50% 51%,
+          transparent 51% 60%,
+          rgba(139,92,246,0.3) 60% 61%,
+          transparent 61% 70%,
+          rgba(139,92,246,0.3) 70% 71%,
+          transparent 71% 80%,
+          rgba(139,92,246,0.3) 80% 81%,
+          transparent 81% 90%,
+          rgba(139,92,246,0.3) 90% 91%,
+          transparent 91%
+        );
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .activity {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .activity-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .activity-icon {
+      width: 25px;
+      height: 25px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.06);
+      color: white;
+    }
+
+    /* =========================================
+       SECTION
+    ========================================= */
+
+    section {
+      position: relative;
+      padding: 140px 20px;
+    }
+
+    .container {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      color: #9b8cff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .section-heading {
+      font-family: "Space Grotesk";
+      font-size: clamp(40px, 5vw, 67px);
+      letter-spacing: -3px;
+      line-height: 1;
+      max-width: 760px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 610px;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-top: 23px;
+    }
+
+    /* =========================================
+       FEATURES
+    ========================================= */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 13px;
-
-      margin-top: 65px;
+      margin-top: 60px;
     }
 
     .feature-card {
       position: relative;
-
-      min-height: 230px;
-
-      padding: 28px;
-
+      min-height: 250px;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(139,92,246,0.08),
+          transparent 40%
+        ),
+        var(--card);
       overflow: hidden;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.018);
-
-      transform-style: preserve-3d;
-
-      will-change: transform;
-
       transition:
-        border-color .3s ease,
-        background .3s ease;
-    }
-
-    .feature-card::after {
-      content: "";
-
-      position: absolute;
-
-      width: 180px;
-      height: 180px;
-
-      top: -100px;
-      right: -100px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(35px);
-
-      transition: .4s ease;
+        transform 0.4s cubic-bezier(.2,.8,.2,1),
+        border-color 0.4s ease,
+        background 0.4s ease;
     }
 
     .feature-card:hover {
-      border-color: rgba(255,255,255,.16);
-      background: rgba(255,255,255,.035);
+      transform: translateY(-8px);
+      border-color: var(--border-bright);
+      background: var(--card-hover);
     }
 
-    .feature-card:hover::after {
-      background: rgba(255,255,255,.09);
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -90px;
+      bottom: -90px;
+      background: var(--purple);
+      filter: blur(70px);
+      opacity: 0;
+      transition: 0.5s ease;
+    }
+
+    .feature-card:hover::before {
+      opacity: 0.22;
     }
 
     .feature-icon {
       width: 43px;
       height: 43px;
-
+      border-radius: 12px;
       display: grid;
       place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.04);
-
-      font-size: 15px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.055);
+      margin-bottom: 28px;
     }
 
-    .feature-title {
-      margin-top: 28px;
-
+    .feature-card h3 {
       font-family: "Space Grotesk";
-
-      font-size: 15px;
+      font-size: 19px;
+      margin-bottom: 11px;
     }
 
-    .feature-description {
-      margin-top: 10px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 10px;
-
-      line-height: 1.8;
+    .feature-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
     }
 
+    /* =========================================
+       VALUE SECTION
+    ========================================= */
 
-    /* =========================================================
-       OWNERSHIP
-    ========================================================== */
+    .value-section {
+      padding-top: 80px;
+    }
 
-    .ownership-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      overflow: hidden;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 25px;
-
+    .value-box {
+      border: 1px solid var(--border);
+      border-radius: 30px;
       background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(91,140,255,0.08),
+          transparent 35%
+        ),
         linear-gradient(
           135deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.01)
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.015)
         );
-    }
-
-    .ownership-content {
       padding: 65px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      overflow: hidden;
+      position: relative;
     }
 
-    .small-tag {
-      display: inline-block;
-
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
+    .value-box h2 {
+      font-family: "Space Grotesk";
+      font-size: clamp(35px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -2.5px;
     }
 
-    .ownership-content p {
-      max-width: 480px;
-
-      margin-top: 24px;
-
-      color: rgba(255,255,255,.35);
-
-      font-size: 12px;
-
-      line-height: 1.9;
+    .value-box p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-top: 20px;
+      font-size: 14px;
     }
 
     .check-list {
       display: flex;
       flex-direction: column;
-
-      gap: 11px;
-
-      margin-top: 28px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 10px;
+      gap: 18px;
     }
 
     .check {
-      width: 20px;
-      height: 20px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.07);
-
-      font-size: 9px;
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      color: #c9c9d0;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
-    .workflow-visual {
-      min-height: 440px;
+    .check svg {
+      color: var(--green);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
 
+    /* =========================================
+       PROCESS
+    ========================================= */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+      margin-top: 60px;
+    }
+
+    .process-card {
+      padding: 30px;
+      min-height: 210px;
+      border-top: 1px solid var(--border);
       position: relative;
-
-      overflow: hidden;
-
-      border-left: 1px solid rgba(255,255,255,.07);
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.065),
-          transparent 60%
-        );
-    }
-
-    .workflow-box {
-      position: absolute;
-
-      left: 50%;
-      top: 50%;
-
-      width: 290px;
-
-      transform: translate(-50%,-50%);
-
-      padding: 20px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 17px;
-
-      background: rgba(7,7,7,.88);
-
-      box-shadow:
-        0 35px 90px rgba(0,0,0,.65);
-
-      backdrop-filter: blur(15px);
-    }
-
-    .workflow-header {
-      display: flex;
-      justify-content: space-between;
-
-      color: rgba(255,255,255,.35);
-
-      font-size: 8px;
-    }
-
-    .workflow-active {
-      color: #60dc8b;
-    }
-
-    .workflow-steps {
-      display: flex;
-      flex-direction: column;
-
-      gap: 6px;
-
-      margin-top: 18px;
-    }
-
-    .workflow-step {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 11px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      border-radius: 8px;
-
-      background: rgba(255,255,255,.018);
-
-      color: rgba(255,255,255,.37);
-
-      font-size: 8px;
-    }
-
-    .workflow-step-dot {
-      width: 5px;
-      height: 5px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.2);
-    }
-
-    .workflow-step:last-child .workflow-step-dot {
-      background: #fff;
-    }
-
-
-    /* =========================================================
-       TABS
-    ========================================================== */
-
-    .center-heading {
-      max-width: 800px;
-
-      margin: auto;
-
-      text-align: center;
-    }
-
-    .center-heading .eyebrow {
-      justify-content: center;
-    }
-
-    .tabs {
-      max-width: 760px;
-
-      margin: 55px auto 0;
-    }
-
-    .tab-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      padding: 4px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.025);
-    }
-
-    .tab-button {
-      padding: 12px;
-
-      border-radius: 8px;
-
-      background: transparent;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 10px;
-
-      transition: .25s ease;
-    }
-
-    .tab-button.active {
-      background: #fff;
-      color: #000;
-    }
-
-    .tab-content {
-      min-height: 300px;
-
-      margin-top: 12px;
-
-      padding: 45px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.018);
-    }
-
-    .tab-panel {
-      display: none;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    .tab-icon {
-      width: 47px;
-      height: 47px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.09);
-
-      border-radius: 13px;
-
-      background: rgba(255,255,255,.045);
-
-      font-size: 16px;
-    }
-
-    .tab-panel h3 {
-      margin-top: 22px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 24px;
-
-      font-weight: 500;
-
-      letter-spacing: -.04em;
-    }
-
-    .tab-panel p {
-      max-width: 590px;
-
-      margin-top: 13px;
-
-      color: rgba(255,255,255,.36);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 25px;
-    }
-
-    .tag {
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.02);
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 8px;
-    }
-
-
-    /* =========================================================
-       CUSTOM SOFTWARE
-    ========================================================== */
-
-    .custom-card {
-      position: relative;
-
-      overflow: hidden;
-
-      padding: 65px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 25px;
-
-      background: #080808;
-    }
-
-    .custom-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      right: -150px;
-      top: -200px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(100px);
-    }
-
-    .custom-grid {
-      position: relative;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      gap: 70px;
-
-      align-items: center;
-    }
-
-    .custom-description {
-      max-width: 510px;
-
-      margin-top: 22px;
-
-      color: rgba(255,255,255,.37);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .process-box {
-      padding: 17px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.02);
-    }
-
-    .process-header {
-      display: flex;
-      justify-content: space-between;
-
-      margin-bottom: 15px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 8px;
-    }
-
-    .process-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 6px;
-    }
-
-    .process-item {
-      display: flex;
-      align-items: center;
-
-      gap: 12px;
-
-      padding: 12px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      border-radius: 9px;
-
-      background: rgba(0,0,0,.3);
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 8px;
     }
 
     .process-number {
-      color: rgba(255,255,255,.18);
-
-      font-family: "DM Mono";
+      color: var(--muted-2);
+      font-size: 11px;
+      margin-bottom: 45px;
     }
 
+    .process-card h3 {
+      font-family: "Space Grotesk";
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
 
-    /* =========================================================
-       FINAL CTA
-    ========================================================== */
+    .process-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
 
-    .final-cta {
-      padding: 160px 0;
+    /* =========================================
+       SECONDARY OFFER
+    ========================================= */
 
+    .custom-section {
+      padding-top: 80px;
+    }
+
+    .custom-card {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 70px;
+      overflow: hidden;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(139,92,246,0.13),
+          transparent 45%
+        ),
+        rgba(255,255,255,0.025);
+    }
+
+    .custom-card h2 {
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: "Space Grotesk";
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .custom-card p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 25px auto 0;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .custom-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 30px 0;
+    }
+
+    .pill {
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.035);
+      color: #aaaab4;
+      font-size: 11px;
+    }
+
+    /* =========================================
+       CTA
+    ========================================= */
+
+    .final-section {
+      padding: 120px 20px 80px;
       text-align: center;
     }
 
-    .final-icon {
-      width: 50px;
-      height: 50px;
-
-      display: grid;
-      place-items: center;
-
-      margin: 0 auto 25px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 14px;
-
-      background: rgba(255,255,255,.04);
+    .final-section h2 {
+      font-family: "Space Grotesk";
+      font-size: clamp(42px, 6vw, 78px);
+      letter-spacing: -4px;
+      line-height: 0.98;
     }
 
-    .final-cta p {
+    .final-section p {
       max-width: 550px;
-
-      margin: 25px auto 0;
-
-      color: rgba(255,255,255,.32);
-
-      font-size: 12px;
-
-      line-height: 1.9;
+      margin: 25px auto 32px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
     }
 
-    .final-actions {
-      display: flex;
-      flex-direction: column;
-
+    .instagram-btn {
+      min-height: 58px;
+      padding: 0 25px;
+      border-radius: 14px;
+      display: inline-flex;
       align-items: center;
-
-      gap: 12px;
-
-      margin-top: 30px;
+      gap: 11px;
+      background: white;
+      color: black;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.35s ease;
+      box-shadow: 0 20px 70px rgba(255,255,255,0.08);
     }
 
-    .availability {
-      color: rgba(255,255,255,.18);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
+    .instagram-btn:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 25px 90px rgba(139,92,246,0.2);
     }
 
-
-    /* =========================================================
+    /* =========================================
        FOOTER
-    ========================================================== */
+    ========================================= */
 
     footer {
-      border-top: 1px solid rgba(255,255,255,.07);
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
     }
 
     .footer-inner {
-      min-height: 140px;
-
+      width: min(1120px, 100%);
+      margin: auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      color: var(--muted-2);
+      font-size: 11px;
     }
 
     .footer-brand {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
+      color: #aaaab4;
     }
 
-    .footer-mark {
-      width: 32px;
-      height: 32px;
+    /* =========================================
+       DEMO MODAL
+    ========================================= */
 
+    .demo-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+    }
+
+    .demo-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .demo-modal {
+      width: min(950px, 100%);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.08),
+          rgba(255,255,255,0.025)
+        );
+      border: 1px solid var(--border-bright);
+      border-radius: 22px;
+      box-shadow:
+        0 50px 150px rgba(0,0,0,0.75),
+        0 0 100px rgba(91,77,255,0.12);
+      overflow: hidden;
+      transform: translateY(25px) scale(0.97);
+      transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .demo-overlay.active .demo-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .demo-header {
+      height: 62px;
+      padding: 0 17px 0 21px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .demo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Space Grotesk";
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .demo-live {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--green);
+    }
+
+    .close-demo {
+      width: 34px;
+      height: 34px;
       display: grid;
       place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
+      border: 1px solid var(--border);
       border-radius: 9px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 11px;
-
-      font-weight: 700;
+      background: rgba(255,255,255,0.04);
+      color: white;
+      cursor: pointer;
+      transition: 0.25s ease;
     }
 
-    .footer-name {
-      font-size: 11px;
+    .close-demo:hover {
+      background: rgba(255,255,255,0.1);
+      transform: rotate(90deg);
     }
 
-    .footer-tagline {
-      margin-top: 3px;
-
-      color: rgba(255,255,255,.18);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .15em;
+    .demo-video-wrap {
+      background: #000;
+      aspect-ratio: 16 / 9;
+      position: relative;
     }
 
-    .instagram-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 12px 17px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.02);
-
-      color: rgba(255,255,255,.45);
-
-      font-size: 9px;
-
-      transition: .3s ease;
+    .demo-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #000;
     }
 
-    .instagram-link:hover {
-      color: #fff;
-
-      border-color: rgba(255,255,255,.18);
-
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
+    .demo-footer {
+      min-height: 55px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-
-      padding: 18px 0;
-
-      border-top: 1px solid rgba(255,255,255,.05);
-
-      color: rgba(255,255,255,.16);
-
-      font-size: 7px;
+      padding: 0 20px;
+      color: var(--muted);
+      font-size: 11px;
     }
 
-
-    /* =========================================================
+    /* =========================================
        RESPONSIVE
-    ========================================================== */
+    ========================================= */
 
-    @media(max-width:900px) {
-
-      .nav-links,
-      .nav-button {
+    @media (max-width: 850px) {
+      .nav-links {
         display: none;
       }
 
-      .mobile-menu-button {
-        display: block;
-      }
-
-      .mobile-menu.active {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 18px;
-
-        padding: 22px 24px 28px;
-
-        border-top: 1px solid rgba(255,255,255,.06);
-
-        background: rgba(5,5,5,.96);
-      }
-
-      .mobile-menu a {
-        color: rgba(255,255,255,.6);
-        font-size: 13px;
-      }
-
-      .mobile-menu .mobile-cta {
-        padding: 13px;
-
-        border-radius: 10px;
-
-        background: #fff;
-
-        color: #000;
-
-        text-align: center;
-
-        font-weight: 700;
+      .hero h1 {
+        letter-spacing: -3px;
       }
 
       .dashboard-body {
@@ -1736,1188 +1072,333 @@
         display: none;
       }
 
-      .section-heading-grid,
-      .ownership-card,
-      .custom-grid {
+      .stat-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-lower {
         grid-template-columns: 1fr;
       }
 
-      .workflow-visual {
-        border-left: none;
-        border-top: 1px solid rgba(255,255,255,.07);
+      .features-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
       }
 
-      .feature-grid {
-        grid-template-columns: repeat(2,1fr);
+      .value-box {
+        grid-template-columns: 1fr;
+        padding: 40px 28px;
+        gap: 40px;
       }
 
-      .stats {
-        grid-template-columns: repeat(2,1fr);
+      .custom-card {
+        padding: 50px 25px;
       }
     }
 
-
-    @media(max-width:620px) {
-
-      .container {
-        width: calc(100% - 30px);
+    @media (max-width: 550px) {
+      .nav-inner {
+        width: calc(100% - 28px);
       }
 
-      .cursor,
-      .cursor-ring {
-        display: none;
+      .nav-cta {
+        padding: 8px 12px;
+        font-size: 11px;
       }
 
       .hero {
-        padding-top: 135px;
+        padding-top: 120px;
       }
 
-      .hero-title {
-        font-size: 53px;
+      .hero h1 {
+        font-size: 51px;
+        letter-spacing: -2.5px;
       }
 
       .hero-description {
-        font-size: 12px;
+        font-size: 15px;
       }
 
       .hero-actions {
         flex-direction: column;
+        align-items: stretch;
       }
 
-      .button {
+      .btn {
         width: 100%;
       }
 
-      .dashboard-wrapper {
-        margin-top: 60px;
-      }
-
-      .browser-label {
-        display: none;
+      .dashboard-wrap {
+        margin-top: 55px;
       }
 
       .dashboard-main {
-        padding: 17px;
+        padding: 15px;
       }
 
-      .dashboard-grid {
-        grid-template-columns: 1fr;
+      .stat-grid {
+        gap: 7px;
       }
 
-      .section-padding {
-        padding: 90px 0;
+      .stat-card {
+        padding: 12px;
       }
 
-      .section-heading-grid {
-        gap: 30px;
+      .stat-value {
+        font-size: 17px;
       }
 
-      .feature-grid {
-        grid-template-columns: 1fr;
-        margin-top: 40px;
+      .section-heading {
+        letter-spacing: -2px;
       }
 
-      .ownership-content {
-        padding: 35px 24px;
+      section {
+        padding: 95px 16px;
       }
 
-      .custom-card {
-        padding: 35px 24px;
-      }
-
-      .tab-content {
-        padding: 30px 22px;
-      }
-
-      .final-cta {
-        padding: 100px 0;
+      .final-section {
+        padding: 90px 20px 60px;
       }
 
       .footer-inner {
-        padding: 35px 0;
-
         flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 25px;
+        gap: 10px;
       }
 
-      .footer-bottom {
-        flex-direction: column;
-        gap: 8px;
+      .demo-overlay {
+        padding: 12px;
+      }
+
+      .demo-modal {
+        border-radius: 16px;
+      }
+
+      .demo-footer {
+        padding: 0 14px;
       }
     }
-
-
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================== */
-
-    @media(prefers-reduced-motion:reduce) {
-
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-
-    }
-
   </style>
 </head>
 
-
 <body>
 
-  <!-- =========================================================
-       BACKGROUND
-  ========================================================== -->
+  <!-- Background -->
+  <div class="noise"></div>
+  <div class="grid-bg"></div>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
 
-  <div class="background">
+  <!-- =========================================
+       NAVIGATION
+  ========================================== -->
 
-    <div class="background-grid"></div>
+  <nav id="navbar">
+    <div class="nav-inner">
 
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
-
-  </div>
-
-
-  <!-- =========================================================
-       CURSOR
-  ========================================================== -->
-
-  <div class="cursor"></div>
-  <div class="cursor-ring"></div>
-
-
-  <!-- =========================================================
-       NAVBAR
-  ========================================================== -->
-
-  <header class="navbar">
-
-    <div class="container nav-inner">
-
-      <a href="#" class="brand">
-
-        <div class="brand-mark">
-          <span>A</span>
-        </div>
-
-        <div>
-
-          <div class="brand-name">
-            AutFlow <span>Studio</span>
-          </div>
-
-          <div class="brand-subtitle">
-            Digital Systems
-          </div>
-
-        </div>
-
+      <a href="#" class="logo">
+        <span class="logo-mark">A</span>
+        <span>AutFlow Studio</span>
       </a>
 
+      <div class="nav-links">
+        <a href="#product">Product</a>
+        <a href="#features">Features</a>
+        <a href="#custom">Custom Software</a>
+      </div>
 
-      <nav class="nav-links">
-
-        <a href="#product">
-          Product
-        </a>
-
-        <a href="#capabilities">
-          Capabilities
-        </a>
-
-        <a href="#custom">
-          Custom Software
-        </a>
-
-      </nav>
-
-
-      <a href="#get-started" class="nav-button magnetic">
-        Get the system
-      </a>
-
-
-      <button
-        class="mobile-menu-button"
-        id="mobileMenuButton"
+      <a
+        href="https://instagram.com/autflow_studio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-cta"
       >
-        ☰
-      </button>
-
-    </div>
-
-
-    <div class="mobile-menu" id="mobileMenu">
-
-      <a href="#product">
-        Product
-      </a>
-
-      <a href="#capabilities">
-        Capabilities
-      </a>
-
-      <a href="#custom">
-        Custom Software
-      </a>
-
-      <a href="#get-started" class="mobile-cta">
-        Get the system
+        Get Started
       </a>
 
     </div>
+  </nav>
 
-  </header>
-
-
-  <!-- =========================================================
+  <!-- =========================================
        HERO
-  ========================================================== -->
+  ========================================== -->
 
-  <section class="hero">
+  <main>
 
-    <div class="hero-orbit">
-      <div class="orbit-dot"></div>
-    </div>
-
-
-    <div class="container">
+    <section class="hero" id="product">
 
       <div class="hero-content">
 
-        <div class="status-pill hero-animate">
-
+        <div class="eyebrow hero-anim">
           <span class="status-dot"></span>
-
-          Built for modern agencies
-
+          Agency operations, simplified.
         </div>
 
-
-        <h1 class="hero-title">
-
-          <span class="line">
-            <span class="line-inner">
-              Run your agency
-            </span>
-          </span>
-
-          <span class="line">
-            <span class="line-inner muted">
-              like a system.
-            </span>
-          </span>
-
+        <h1 class="hero-anim">
+          Run your agency<br />
+          <span class="gradient-text">without the chaos.</span>
         </h1>
 
-
-        <p class="hero-description hero-animate">
-
-          AutFlow Studio gives service businesses a single command center
-          for clients, projects, tasks, deliverables, approvals and revenue.
-          Less software chaos. More operational control.
-
+        <p class="hero-description hero-anim">
+          AutFlow Studio is a mechanical Agency Operating System that puts
+          your clients, projects, tasks, invoices and workflows into one
+          powerful command center.
         </p>
 
-
-        <div class="hero-actions hero-animate">
-
-          <a
-            href="#get-started"
-            class="button button-primary magnetic"
-          >
-            Get the ready-made system
-            <span>→</span>
-          </a>
+        <div class="hero-actions hero-anim">
 
           <a
-            href="#product"
-            class="button button-secondary magnetic"
+            href="https://instagram.com/autflow_studio"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
           >
-            Explore the system
-            <span>↓</span>
+            Get Your Setup
+            <i data-lucide="arrow-up-right" width="16"></i>
           </a>
 
-        </div>
-
-      </div>
-
-
-      <!-- =====================================================
-           DASHBOARD
-      ====================================================== -->
-
-      <div class="dashboard-wrapper">
-
-        <div class="dashboard-glow"></div>
-
-        <div class="dashboard">
-
-          <div class="browser-bar">
-
-            <div class="browser-dots">
-
-              <span></span>
-              <span></span>
-              <span></span>
-
-            </div>
-
-
-            <div class="browser-status">
-
-              <i></i>
-
-              All systems operational
-
-            </div>
-
-
-            <div class="browser-label">
-              AUTFLOW / DASHBOARD
-            </div>
-
-          </div>
-
-
-          <div class="dashboard-body">
-
-
-            <!-- SIDEBAR -->
-
-            <aside class="sidebar">
-
-              <div class="sidebar-title">
-                Workspace
-              </div>
-
-              <div class="sidebar-item active">
-                <span class="sidebar-icon"></span>
-                Overview
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Projects
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Clients
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Invoices
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Messages
-              </div>
-
-              <div class="sidebar-separator"></div>
-
-              <div class="sidebar-title">
-                System
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Settings
-              </div>
-
-            </aside>
-
-
-            <!-- MAIN -->
-
-            <div class="dashboard-main">
-
-              <div class="dashboard-header">
-
-                <div>
-
-                  <div class="dashboard-eyebrow">
-                    Wednesday / Overview
-                  </div>
-
-                  <div class="dashboard-heading">
-                    Good morning.
-                  </div>
-
-                </div>
-
-                <div class="dashboard-filter">
-                  This month ↗
-                </div>
-
-              </div>
-
-
-              <!-- STATS -->
-
-              <div class="stats">
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Revenue
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="24680"
-                  >
-                    $0
-                  </div>
-
-                  <div class="stat-change">
-                    +18.4%
-                  </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Projects
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="18"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    +4
-                  </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Clients
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="27"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    +3
-                  </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Pending
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="6240"
-                  >
-                    $0
-                  </div>
-
-                  <div class="stat-change">
-                    4 invoices
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <!-- LOWER -->
-
-              <div class="dashboard-grid">
-
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Active projects
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Current workload
-                  </div>
-
-
-                  <div class="project-list">
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        01
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Website redesign
-                        </div>
-
-                        <div class="project-status">
-                          In progress
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        $4,800
-                      </div>
-
-                    </div>
-
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        02
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          New client onboarding
-                        </div>
-
-                        <div class="project-status">
-                          Onboarding
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        $2,400
-                      </div>
-
-                    </div>
-
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        03
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Brand system
-                        </div>
-
-                        <div class="project-status">
-                          Awaiting approval
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        $1,900
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Revenue
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Last 30 days
-                  </div>
-
-
-                  <div class="chart">
-
-                    <div class="bar" style="height:30%"></div>
-                    <div class="bar" style="height:48%"></div>
-                    <div class="bar" style="height:40%"></div>
-                    <div class="bar" style="height:65%"></div>
-                    <div class="bar" style="height:54%"></div>
-                    <div class="bar" style="height:74%"></div>
-                    <div class="bar" style="height:62%"></div>
-                    <div class="bar" style="height:85%"></div>
-                    <div class="bar" style="height:71%"></div>
-                    <div class="bar" style="height:96%"></div>
-                    <div class="bar" style="height:80%"></div>
-                    <div class="bar" style="height:100%"></div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       PRODUCT
-  ========================================================== -->
-
-  <section
-    id="product"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="section-heading-grid">
-
-        <div class="reveal-left">
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-line"></span>
-
-            The product
-
-          </div>
-
-
-          <h2>
-
-            Your agency doesn't need
-            more apps.
-
-            <span class="muted">
-              It needs one system.
-            </span>
-
-          </h2>
-
-        </div>
-
-
-        <p class="section-description reveal-right">
-
-          AutFlow replaces the fragmented stack of tools agencies use
-          to manage work. Clients, projects, deliverables, approvals,
-          invoices and operational follow-ups are brought into a single
-          interface.
-
-        </p>
-
-      </div>
-
-
-      <!-- FEATURES -->
-
-      <div class="feature-grid">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◈
-          </div>
-
-          <div class="feature-title">
-            One operating system
-          </div>
-
-          <div class="feature-description">
-            Clients, projects, tasks, deliverables, approvals and finances
-            live in one clean command center.
-          </div>
-
-        </div>
-
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⌁
-          </div>
-
-          <div class="feature-title">
-            Project control
-          </div>
-
-          <div class="feature-description">
-            Know exactly what is happening across every client and project
-            without jumping between disconnected tools.
-          </div>
-
-        </div>
-
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            $
-          </div>
-
-          <div class="feature-title">
-            Financial visibility
-          </div>
-
-          <div class="feature-description">
-            Track invoices, revenue and project value alongside the actual
-            work generating that revenue.
-          </div>
-
-        </div>
-
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ↻
-          </div>
-
-          <div class="feature-title">
-            Mechanical automation
-          </div>
-
-          <div class="feature-description">
-            Automate repetitive follow-ups and reminders without relying
-            on an unnecessary AI layer.
-          </div>
-
-        </div>
-
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⚙
-          </div>
-
-          <div class="feature-title">
-            Your rules
-          </div>
-
-          <div class="feature-description">
-            Configure reminder timing and operational workflows around
-            how your agency actually works.
-          </div>
-
-        </div>
-
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            &lt;/&gt;
-          </div>
-
-          <div class="feature-title">
-            Built to evolve
-          </div>
-
-          <div class="feature-description">
-            Need something different? The underlying system can be adapted
-            to your exact operational requirements.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       OWNERSHIP
-  ========================================================== -->
-
-  <section>
-
-    <div class="container">
-
-      <div class="ownership-card ownership-parallax">
-
-        <div class="ownership-content">
-
-          <span class="small-tag">
-            Different model
-          </span>
-
-
-          <h2 style="margin-top:23px;">
-
-            Buy the system.
-
-            <br>
-
-            <span class="muted">
-              Own the setup.
-            </span>
-
-          </h2>
-
-
-          <p>
-
-            No bloated subscription stack. No endless monthly fees just
-            to access your own operational data. Get the ready-made
-            system installed and configured for your business.
-
-          </p>
-
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              One-time setup
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Your operational data in one place
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Configurable reminders and workflows
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Ready-made installation within 48 hours
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="workflow-visual">
-
-          <div class="workflow-box workflow-float">
-
-            <div class="workflow-header">
-
-              <span>
-                ◉ workflow
-              </span>
-
-              <span class="workflow-active">
-                ACTIVE
-              </span>
-
-            </div>
-
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Client created
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Project assigned
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Reminder scheduled
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Follow-up triggered
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================================================
-       CAPABILITIES
-  ========================================================== -->
-
-  <section
-    id="capabilities"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          Two ways to work with AutFlow
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-
-        <h2>
-
-          Software that solves
-          <br>
-
-          <span class="muted">
-            the actual problem.
-          </span>
-
-        </h2>
-
-      </div>
-
-
-      <div class="tabs reveal-scale">
-
-        <div class="tab-buttons">
-
-          <button
-            class="tab-button active"
-            data-tab="product"
-          >
-            AutFlow OS
-          </button>
-
-          <button
-            class="tab-button"
-            data-tab="service"
-          >
-            Custom software
+          <!-- NEW DEMO BUTTON -->
+          <button class="btn btn-secondary" id="openDemo">
+            <i data-lucide="play" width="15"></i>
+            Watch Demo
           </button>
 
         </div>
 
+        <!-- Dashboard -->
+        <div class="dashboard-wrap hero-dashboard">
 
-        <div class="tab-content">
+          <div class="dashboard">
 
-          <div
-            class="tab-panel active"
-            id="tab-product"
-          >
-
-            <div class="tab-icon">
-              ◈
+            <div class="dashboard-top">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
             </div>
 
-            <h3>
-              AutFlow Agency Operating System
-            </h3>
+            <div class="dashboard-body">
 
-            <p>
+              <aside class="sidebar">
 
-              A ready-made operational system for agencies that are tired
-              of stitching together project management, CRM, invoicing
-              and communication tools.
+                <div class="side-title">Workspace</div>
 
-            </p>
+                <div class="side-item active">
+                  <i data-lucide="layout-dashboard" width="14"></i>
+                  Dashboard
+                </div>
 
+                <div class="side-item">
+                  <i data-lucide="users" width="14"></i>
+                  Clients
+                </div>
 
-            <div class="tags">
+                <div class="side-item">
+                  <i data-lucide="folder-kanban" width="14"></i>
+                  Projects
+                </div>
 
-              <span class="tag">CRM</span>
-              <span class="tag">Projects</span>
-              <span class="tag">Tasks</span>
-              <span class="tag">Deliverables</span>
-              <span class="tag">Approvals</span>
-              <span class="tag">Invoices</span>
-              <span class="tag">Reminders</span>
+                <div class="side-item">
+                  <i data-lucide="check-square" width="14"></i>
+                  Tasks
+                </div>
 
-            </div>
+                <div class="side-item">
+                  <i data-lucide="receipt" width="14"></i>
+                  Invoices
+                </div>
 
-          </div>
+              </aside>
 
+              <div class="dashboard-main">
 
-          <div
-            class="tab-panel"
-            id="tab-service"
-          >
+                <div class="dash-heading">
+                  <h3>Overview</h3>
+                  <span class="dash-date">August 2026</span>
+                </div>
 
-            <div class="tab-icon">
-              &lt;/&gt;
-            </div>
+                <div class="stat-grid">
 
-            <h3>
-              Have a different bottleneck?
-            </h3>
+                  <div class="stat-card">
+                    <div class="stat-label">ACTIVE CLIENTS</div>
+                    <div class="stat-value">24</div>
+                    <div class="stat-change">+12.5%</div>
+                  </div>
 
-            <p>
+                  <div class="stat-card">
+                    <div class="stat-label">PROJECTS</div>
+                    <div class="stat-value">37</div>
+                    <div class="stat-change">+8.2%</div>
+                  </div>
 
-              If your business has a repetitive workflow, broken internal
-              tool, manual process or software problem that existing
-              products cannot solve, AutFlow can build the missing layer
-              specifically around your operation.
+                  <div class="stat-card">
+                    <div class="stat-label">REVENUE</div>
+                    <div class="stat-value">$48.2K</div>
+                    <div class="stat-change">+18.4%</div>
+                  </div>
 
-            </p>
+                  <div class="stat-card">
+                    <div class="stat-label">PENDING</div>
+                    <div class="stat-value">07</div>
+                    <div class="stat-change">-4.1%</div>
+                  </div>
 
+                </div>
 
-            <div class="tags">
+                <div class="dashboard-lower">
 
-              <span class="tag">Internal tools</span>
-              <span class="tag">Automation</span>
-              <span class="tag">Dashboards</span>
-              <span class="tag">Integrations</span>
-              <span class="tag">Workflow systems</span>
-              <span class="tag">Bug fixes</span>
+                  <div class="dash-card">
 
-            </div>
+                    <div class="dash-card-title">
+                      Revenue Overview
+                    </div>
 
-          </div>
+                    <div class="fake-chart">
+                      <div class="chart-line"></div>
+                    </div>
 
-        </div>
+                  </div>
 
-      </div>
+                  <div class="dash-card">
 
-    </div>
+                    <div class="dash-card-title">
+                      Recent Activity
+                    </div>
 
-  </section>
+                    <div class="activity">
 
+                      <div class="activity-row">
+                        <span class="activity-icon">
+                          <i data-lucide="check" width="12"></i>
+                        </span>
+                        Project completed
+                      </div>
 
-  <!-- =========================================================
-       CUSTOM SOFTWARE
-  ========================================================== -->
+                      <div class="activity-row">
+                        <span class="activity-icon">
+                          <i data-lucide="file-text" width="12"></i>
+                        </span>
+                        Invoice generated
+                      </div>
 
-  <section
-    id="custom"
-    class="section-border"
-  >
+                      <div class="activity-row">
+                        <span class="activity-icon">
+                          <i data-lucide="user-plus" width="12"></i>
+                        </span>
+                        New client added
+                      </div>
 
-    <div class="container section-padding">
+                      <div class="activity-row">
+                        <span class="activity-icon">
+                          <i data-lucide="refresh-cw" width="12"></i>
+                        </span>
+                        Workflow executed
+                      </div>
 
-      <div class="custom-card">
+                    </div>
 
-        <div class="custom-grid">
+                  </div>
 
-          <div class="custom-copy">
+                </div>
 
-            <div class="eyebrow">
-
-              <span>✦</span>
-
-              Custom engineering
-
-            </div>
-
-
-            <h2>
-
-              Your problem doesn't
-              <br>
-
-              <span class="muted">
-                need another SaaS.
-              </span>
-
-            </h2>
-
-
-            <p class="custom-description">
-
-              Facing a technical bottleneck or workflow inefficiency?
-              Describe the problem. The solution can be designed around
-              your business instead of forcing your business into someone
-              else's software.
-
-            </p>
-
-
-            <a
-              href="mailto:hello@autflow.studio?subject=Custom%20Software%20Inquiry"
-              class="button button-primary magnetic"
-              style="margin-top:28px;"
-            >
-              Discuss your problem
-              <span>→</span>
-            </a>
-
-          </div>
-
-
-          <div class="process-box">
-
-            <div class="process-header">
-
-              <span>
-                Problem → System
-              </span>
-
-              <span>
-                ◷
-              </span>
-
-            </div>
-
-
-            <div class="process-list">
-
-              <div class="process-item">
-                <span class="process-number">01</span>
-                Identify the bottleneck
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">02</span>
-                Map the existing workflow
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">03</span>
-                Build the missing system
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">04</span>
-                Connect your existing tools
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">05</span>
-                Deploy & iterate
               </div>
 
             </div>
@@ -2928,926 +1409,692 @@
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================================================
-       FINAL CTA
-  ========================================================== -->
+    <!-- =========================================
+         FEATURES
+    ========================================== -->
 
-  <section
-    id="get-started"
-    class="final-cta"
-  >
+    <section id="features">
 
-    <div class="container">
+      <div class="container">
 
-      <div class="reveal-scale">
-
-        <div class="final-icon">
-          ↗
+        <div class="section-label reveal">
+          The operating system
         </div>
 
-
-        <h2>
-
-          Stop managing the chaos.
-
-          <br>
-
-          <span class="muted">
-            Build the system.
-          </span>
-
+        <h2 class="section-heading reveal">
+          Everything your agency needs.
+          <span class="gradient-text">Nothing it doesn't.</span>
         </h2>
 
-
-        <p>
-
-          Get the ready-made AutFlow setup installed and configured
-          for your agency within 48 hours.
-
+        <p class="section-sub reveal">
+          Stop duct-taping your business together with five different
+          subscriptions. AutFlow gives your agency one mechanical system
+          for managing operations from start to finish.
         </p>
 
+        <div class="features-grid">
 
-        <div class="final-actions">
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <i data-lucide="users"></i>
+            </div>
 
-          <a
-            href="mailto:hello@autflow.studio?subject=AutFlow%20Studio%20Setup"
-            class="button button-primary magnetic"
-          >
-            Request your setup
-            <span>→</span>
-          </a>
+            <h3>Client Management</h3>
 
-          <span class="availability">
-            Ready within 48 hours
-          </span>
+            <p>
+              Keep every client, conversation, project and important detail
+              organized in one centralized workspace.
+            </p>
+          </div>
+
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <i data-lucide="layers"></i>
+            </div>
+
+            <h3>Projects & Tasks</h3>
+
+            <p>
+              Turn messy project delivery into a predictable system with
+              structured tasks, deliverables and workflows.
+            </p>
+          </div>
+
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <i data-lucide="receipt"></i>
+            </div>
+
+            <h3>Invoices & Revenue</h3>
+
+            <p>
+              Understand what you've earned, what's pending and where your
+              agency's money is going.
+            </p>
+          </div>
+
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <i data-lucide="workflow"></i>
+            </div>
+
+            <h3>Mechanical Workflows</h3>
+
+            <p>
+              Replace repetitive operational work with predictable
+              automations and follow-up systems.
+            </p>
+          </div>
+
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <i data-lucide="credit-card"></i>
+            </div>
+
+            <h3>No Monthly Subscription</h3>
+
+            <p>
+              Own the setup instead of renting another piece of software
+              every month.
+            </p>
+          </div>
+
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <i data-lucide="settings-2"></i>
+            </div>
+
+            <h3>Total Control</h3>
+
+            <p>
+              Your operation should adapt to your business — not force your
+              business to adapt to another SaaS platform.
+            </p>
+          </div>
 
         </div>
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
+    <!-- =========================================
+         VALUE
+    ========================================== -->
 
-  <footer>
+    <section class="value-section">
 
-    <div class="container">
+      <div class="container">
 
-      <div class="footer-inner">
-
-        <div class="footer-brand">
-
-          <div class="footer-mark">
-            A
-          </div>
+        <div class="value-box reveal">
 
           <div>
 
-            <div class="footer-name">
-              AutFlow Studio
+            <div class="section-label">
+              Built differently
             </div>
 
-            <div class="footer-tagline">
-              Digital systems for ambitious businesses
+            <h2>
+              Software you
+              <span class="gradient-text">own.</span>
+            </h2>
+
+            <p>
+              AutFlow isn't another bloated SaaS dashboard filled with
+              features you'll never use. It's designed around one goal:
+              giving operators a clean mechanical system to run the business.
+            </p>
+
+          </div>
+
+          <div class="check-list">
+
+            <div class="check">
+              <i data-lucide="check-circle-2" width="18"></i>
+              <span>One centralized operational command center.</span>
+            </div>
+
+            <div class="check">
+              <i data-lucide="check-circle-2" width="18"></i>
+              <span>Clients, projects and tasks connected together.</span>
+            </div>
+
+            <div class="check">
+              <i data-lucide="check-circle-2" width="18"></i>
+              <span>Invoices and revenue visibility.</span>
+            </div>
+
+            <div class="check">
+              <i data-lucide="check-circle-2" width="18"></i>
+              <span>Mechanical follow-ups and workflow automation.</span>
+            </div>
+
+            <div class="check">
+              <i data-lucide="check-circle-2" width="18"></i>
+              <span>No unnecessary complexity.</span>
+            </div>
+
+            <div class="check">
+              <i data-lucide="check-circle-2" width="18"></i>
+              <span>Ready-made setup delivered within 48 hours.</span>
             </div>
 
           </div>
 
         </div>
 
+      </div>
 
+    </section>
+
+
+    <!-- =========================================
+         PROCESS
+    ========================================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-label reveal">
+          Simple deployment
+        </div>
+
+        <h2 class="section-heading reveal">
+          From chaos to
+          <span class="gradient-text">control.</span>
+        </h2>
+
+        <div class="process-grid">
+
+          <div class="process-card reveal">
+
+            <div class="process-number">
+              01 / DISCOVER
+            </div>
+
+            <h3>We understand your workflow.</h3>
+
+            <p>
+              We identify the operational structure your agency actually
+              needs instead of forcing you into unnecessary complexity.
+            </p>
+
+          </div>
+
+
+          <div class="process-card reveal">
+
+            <div class="process-number">
+              02 / CONFIGURE
+            </div>
+
+            <h3>Your system gets configured.</h3>
+
+            <p>
+              Your workspace is prepared around your clients, projects,
+              tasks and operational processes.
+            </p>
+
+          </div>
+
+
+          <div class="process-card reveal">
+
+            <div class="process-number">
+              03 / LAUNCH
+            </div>
+
+            <h3>Start operating.</h3>
+
+            <p>
+              Your ready-made setup is delivered and you can begin using
+              the system instead of spending weeks building it yourself.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CUSTOM SOFTWARE
+    ========================================== -->
+
+    <section class="custom-section" id="custom">
+
+      <div class="container">
+
+        <div class="custom-card reveal">
+
+          <div class="section-label">
+            Not looking for an agency OS?
+          </div>
+
+          <h2>
+            Facing a different
+            <span class="gradient-text">technical bottleneck?</span>
+          </h2>
+
+          <p>
+            If your business has a workflow inefficiency, repetitive
+            process, broken internal tool or software problem that doesn't
+            fit inside AutFlow — we'll build the solution around your
+            actual problem.
+          </p>
+
+          <div class="custom-pills">
+
+            <span class="pill">Custom Software</span>
+            <span class="pill">Workflow Automation</span>
+            <span class="pill">Internal Tools</span>
+            <span class="pill">Bug Fixes</span>
+            <span class="pill">Business Systems</span>
+
+          </div>
+
+          <a
+            href="https://instagram.com/autflow_studio"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Discuss Your Problem
+            <i data-lucide="arrow-up-right" width="15"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FINAL CTA
+    ========================================== -->
+
+    <section class="final-section">
+
+      <div class="container">
+
+        <div class="section-label reveal">
+          Ready when you are
+        </div>
+
+        <h2 class="reveal">
+          Build less.
+          <span class="gradient-text">Operate better.</span>
+        </h2>
+
+        <p class="reveal">
+          Get your AutFlow Studio setup installed within 48 hours,
+          or tell us about the technical problem slowing your business down.
+        </p>
+
+        <!-- FINAL INSTAGRAM CTA -->
         <a
           href="https://instagram.com/autflow_studio"
           target="_blank"
           rel="noopener noreferrer"
-          class="instagram-link magnetic"
+          class="instagram-btn reveal"
         >
-
-          <span style="font-size:15px;">
-            ◎
-          </span>
-
+          <i data-lucide="instagram" width="19"></i>
           Connect with us on Instagram
-          @autflow_studio
-
-          <span>
-            ↗
-          </span>
-
+          <span style="opacity:.55">@autflow_studio</span>
+          <i data-lucide="arrow-up-right" width="16"></i>
         </a>
 
       </div>
 
+    </section>
 
-      <div class="footer-bottom">
+  </main>
 
-        <span>
-          © <span id="year"></span> AutFlow Studio
-        </span>
 
-        <span>
-          Built for operators, not spectators.
-        </span>
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
 
+  <footer>
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        © 2026 AutFlow Studio
       </div>
+
+      <div>
+        Agency Operating System · Custom Software
+      </div>
+
+      <a
+        href="https://instagram.com/autflow_studio"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @autflow_studio
+      </a>
 
     </div>
 
   </footer>
 
 
-  <!-- =========================================================
+  <!-- =========================================
+       DEMO MODAL
+  ========================================== -->
+
+  <div
+    class="demo-overlay"
+    id="demoOverlay"
+    aria-hidden="true"
+  >
+
+    <div
+      class="demo-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demoTitle"
+    >
+
+      <div class="demo-header">
+
+        <div class="demo-title" id="demoTitle">
+          <span class="demo-live"></span>
+          AutFlow Studio — Product Demo
+        </div>
+
+        <button
+          class="close-demo"
+          id="closeDemo"
+          aria-label="Close demo"
+        >
+          <i data-lucide="x" width="17"></i>
+        </button>
+
+      </div>
+
+      <div class="demo-video-wrap">
+
+        <!--
+          IMPORTANT:
+          loom.mp4 must be in the SAME folder as this index.html file.
+        -->
+
+        <video
+          id="demoVideo"
+          class="demo-video"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          <source src="loom.mp4" type="video/mp4" />
+          Your browser does not support the video element.
+        </video>
+
+      </div>
+
+      <div class="demo-footer">
+
+        <span>
+          AutFlow Studio · Agency Operating System
+        </span>
+
+        <span>
+          Product Preview
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
        JAVASCRIPT
-  ========================================================== -->
+  ========================================== -->
 
   <script>
 
-    /* =========================================================
-       GSAP
-    ========================================================== */
+    /* -----------------------------------------
+       ICONS
+    ----------------------------------------- */
 
-    gsap.registerPlugin(ScrollTrigger);
+    lucide.createIcons();
 
 
-    /* =========================================================
-       LENIS
-    ========================================================== */
+    /* -----------------------------------------
+       LENIS SMOOTH SCROLL
+    ----------------------------------------- */
 
     const lenis = new Lenis({
       duration: 1.15,
       smoothWheel: true,
-      wheelMultiplier: .85,
-      touchMultiplier: 1.1
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.2
     });
 
-
     function raf(time) {
-
       lenis.raf(time);
-
       requestAnimationFrame(raf);
-
     }
 
     requestAnimationFrame(raf);
 
 
-    /* =========================================================
-       CONNECT LENIS TO GSAP
-    ========================================================== */
+    /* -----------------------------------------
+       GSAP
+    ----------------------------------------- */
 
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-
-      lenis.raf(time * 1000);
-
-    });
-
-    gsap.ticker.lagSmoothing(0);
+    gsap.registerPlugin(ScrollTrigger);
 
 
-    /* =========================================================
+    /* -----------------------------------------
        NAVBAR
-    ========================================================== */
+    ----------------------------------------- */
 
-    const navbar =
-      document.querySelector(".navbar");
+    const navbar = document.getElementById("navbar");
 
-    ScrollTrigger.create({
+    window.addEventListener("scroll", () => {
 
-      start: "top -60",
-
-      onEnter: () => {
+      if (window.scrollY > 40) {
         navbar.classList.add("scrolled");
-      },
-
-      onLeaveBack: () => {
+      } else {
         navbar.classList.remove("scrolled");
       }
 
     });
 
 
-    /* =========================================================
-       HERO INTRO
-    ========================================================== */
+    /* -----------------------------------------
+       HERO INTRO ANIMATION
+    ----------------------------------------- */
 
-    const heroTimeline =
-      gsap.timeline({
-        defaults: {
-          ease: "power4.out"
-        }
-      });
-
+    const heroTimeline = gsap.timeline({
+      defaults: {
+        ease: "power3.out"
+      }
+    });
 
     heroTimeline
-      .from(".hero-title .line-inner", {
-
-        yPercent: 110,
-
-        duration: 1.15,
-
-        stagger: .09
-
+      .from(".hero-anim", {
+        y: 35,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12
       })
-
-      .from(".hero-animate", {
-
-        y: 25,
-
+      .from(".hero-dashboard", {
+        y: 70,
         opacity: 0,
+        rotateX: 15,
+        duration: 1.2
+      }, "-=0.35");
 
-        duration: .8,
 
-        stagger: .1
+    /* -----------------------------------------
+       REVEAL ELEMENTS
+    ----------------------------------------- */
 
-      }, "-=.65")
-
-      .from(".dashboard-wrapper", {
-
-        y: 90,
-
-        opacity: 0,
-
-        scale: .94,
-
-        duration: 1.4
-
-      }, "-=.45");
-
-
-    /* =========================================================
-       HERO ORBIT ROTATION
-    ========================================================== */
-
-    gsap.to(".hero-orbit", {
-
-      rotation: 360,
-
-      duration: 80,
-
-      repeat: -1,
-
-      ease: "none"
-
-    });
-
-
-    /* =========================================================
-       HERO PARALLAX
-    ========================================================== */
-
-    gsap.to(".hero-content", {
-
-      y: -120,
-
-      opacity: .35,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".hero",
-
-        start: "top top",
-
-        end: "bottom top",
-
-        scrub: true
-
-      }
-
-    });
-
-
-    /* =========================================================
-       DASHBOARD SCROLL ANIMATION
-    ========================================================== */
-
-    gsap.to(".dashboard", {
-
-      y: 110,
-
-      rotateX: 0,
-
-      scale: .93,
-
-      opacity: .45,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".dashboard-wrapper",
-
-        start: "top 65%",
-
-        end: "bottom 20%",
-
-        scrub: 1.2
-
-      }
-
-    });
-
-
-    /* =========================================================
-       DASHBOARD GLOW
-    ========================================================== */
-
-    gsap.to(".dashboard-glow", {
-
-      scale: 1.35,
-
-      opacity: .8,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".dashboard-wrapper",
-
-        start: "top bottom",
-
-        end: "bottom top",
-
-        scrub: true
-
-      }
-
-    });
-
-
-    /* =========================================================
-       BACKGROUND GLOWS
-    ========================================================== */
-
-    gsap.to(".glow-1", {
-
-      y: 500,
-
-      scale: 1.5,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
-    });
-
-
-    gsap.to(".glow-2", {
-
-      y: -300,
-
-      x: 150,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
-    });
-
-
-    gsap.to(".glow-3", {
-
-      y: -400,
-
-      x: -150,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
-    });
-
-
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================== */
-
-    gsap.utils.toArray(".reveal-left").forEach(element => {
+    gsap.utils.toArray(".reveal").forEach((element) => {
 
       gsap.from(element, {
-
-        x: -70,
-
-        opacity: 0,
-
-        duration: 1.1,
-
-        ease: "power4.out",
-
         scrollTrigger: {
-
           trigger: element,
-
-          start: "top 82%",
-
-          once: true
-
-        }
-
+          start: "top 86%",
+          toggleActions: "play none none reverse"
+        },
+        y: 35,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
       });
 
     });
 
 
-    gsap.utils.toArray(".reveal-right").forEach(element => {
-
-      gsap.from(element, {
-
-        x: 70,
-
-        opacity: 0,
-
-        duration: 1.1,
-
-        ease: "power4.out",
-
-        scrollTrigger: {
-
-          trigger: element,
-
-          start: "top 82%",
-
-          once: true
-
-        }
-
-      });
-
-    });
-
-
-    /* =========================================================
+    /* -----------------------------------------
        FEATURE CARDS STAGGER
-    ========================================================== */
+    ----------------------------------------- */
 
     gsap.from(".feature-card", {
-
-      y: 80,
-
-      opacity: 0,
-
-      scale: .94,
-
-      duration: 1,
-
-      stagger: .1,
-
-      ease: "power4.out",
-
       scrollTrigger: {
-
-        trigger: ".feature-grid",
-
-        start: "top 78%",
-
-        once: true
-
-      }
-
+        trigger: ".features-grid",
+        start: "top 80%"
+      },
+      y: 45,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: "power3.out"
     });
 
 
-    /* =========================================================
-       FEATURE 3D TILT
-    ========================================================== */
+    /* -----------------------------------------
+       PROCESS CARDS
+    ----------------------------------------- */
 
-    document
-      .querySelectorAll(".feature-3d")
-      .forEach(card => {
-
-        card.addEventListener("mousemove", event => {
-
-          if (window.innerWidth < 900) {
-            return;
-          }
-
-          const rect =
-            card.getBoundingClientRect();
-
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const centerX =
-            rect.width / 2;
-
-          const centerY =
-            rect.height / 2;
-
-          const rotateX =
-            (y - centerY) / 20;
-
-          const rotateY =
-            (centerX - x) / 20;
-
-          gsap.to(card, {
-
-            rotateX: rotateX,
-
-            rotateY: rotateY,
-
-            scale: 1.025,
-
-            duration: .4,
-
-            ease: "power2.out",
-
-            overwrite: true
-
-          });
-
-        });
+    gsap.from(".process-card", {
+      scrollTrigger: {
+        trigger: ".process-grid",
+        start: "top 80%"
+      },
+      y: 35,
+      opacity: 0,
+      duration: 0.75,
+      stagger: 0.13,
+      ease: "power3.out"
+    });
 
 
-        card.addEventListener("mouseleave", () => {
+    /* -----------------------------------------
+       DASHBOARD PARALLAX
+    ----------------------------------------- */
 
-          gsap.to(card, {
+    gsap.to(".dashboard", {
+      scrollTrigger: {
+        trigger: ".dashboard-wrap",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.2
+      },
+      rotateX: -2,
+      y: 35,
+      scale: 0.97,
+      ease: "none"
+    });
 
-            rotateX: 0,
 
-            rotateY: 0,
+    /* -----------------------------------------
+       MOUSE PARALLAX FOR DASHBOARD
+    ----------------------------------------- */
 
-            scale: 1,
+    const dashboardWrap = document.querySelector(".dashboard-wrap");
+    const dashboard = document.querySelector(".dashboard");
 
-            duration: .7,
+    if (window.innerWidth > 850) {
 
-            ease: "elastic.out(1,.5)"
+      dashboardWrap.addEventListener("mousemove", (e) => {
 
-          });
+        const rect = dashboardWrap.getBoundingClientRect();
 
+        const x =
+          (e.clientX - rect.left) / rect.width - 0.5;
+
+        const y =
+          (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(dashboard, {
+          rotateY: x * 4,
+          rotateX: 6 - y * 3,
+          duration: 0.5,
+          ease: "power2.out"
         });
 
       });
 
-
-    /* =========================================================
-       OWNERSHIP SECTION
-    ========================================================== */
-
-    gsap.from(".ownership-content", {
-
-      x: -80,
-
-      opacity: 0,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".ownership-card",
-
-        start: "top 78%",
-
-        once: true
-
-      }
-
-    });
-
-
-    gsap.from(".workflow-box", {
-
-      x: 100,
-
-      opacity: 0,
-
-      scale: .8,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".ownership-card",
-
-        start: "top 78%",
-
-        once: true
-
-      }
-
-    });
-
-
-    /* =========================================================
-       WORKFLOW FLOAT
-    ========================================================== */
-
-    gsap.to(".workflow-float", {
-
-      y: -20,
-
-      duration: 2.7,
-
-      repeat: -1,
-
-      yoyo: true,
-
-      ease: "sine.inOut"
-
-    });
-
-
-    /* =========================================================
-       CENTER HEADINGS
-    ========================================================== */
-
-    gsap.utils
-      .toArray(".reveal-scale")
-      .forEach(element => {
-
-        gsap.from(element, {
-
-          y: 60,
-
-          opacity: 0,
-
-          scale: .96,
-
-          duration: 1.1,
-
-          ease: "power4.out",
-
-          scrollTrigger: {
-
-            trigger: element,
-
-            start: "top 80%",
-
-            once: true
-
-          }
-
-        });
-
-      });
-
-
-    /* =========================================================
-       PROCESS ITEMS
-    ========================================================== */
-
-    gsap.from(".process-item", {
-
-      x: 60,
-
-      opacity: 0,
-
-      stagger: .1,
-
-      duration: .8,
-
-      ease: "power3.out",
-
-      scrollTrigger: {
-
-        trigger: ".process-box",
-
-        start: "top 80%",
-
-        once: true
-
-      }
-
-    });
-
-
-    /* =========================================================
-       CUSTOM SECTION
-    ========================================================== */
-
-    gsap.from(".custom-copy", {
-
-      x: -70,
-
-      opacity: 0,
-
-      duration: 1,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".custom-card",
-
-        start: "top 80%",
-
-        once: true
-
-      }
-
-    });
-
-
-    gsap.from(".process-box", {
-
-      x: 70,
-
-      opacity: 0,
-
-      duration: 1,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".custom-card",
-
-        start: "top 80%",
-
-        once: true
-
-      }
-
-    });
-
-
-    /* =========================================================
-       COUNTERS
-    ========================================================== */
-
-    document
-      .querySelectorAll(".counter")
-      .forEach(counter => {
-
-        const target =
-          Number(counter.dataset.value);
-
-        const isMoney =
-          target > 1000;
-
-        const object = {
-          value: 0
-        };
-
-        gsap.to(object, {
-
-          value: target,
-
-          duration: 1.8,
-
-          ease: "power2.out",
-
-          scrollTrigger: {
-
-            trigger: counter,
-
-            start: "top 85%",
-
-            once: true
-
-          },
-
-          onUpdate: () => {
-
-            const value =
-              Math.floor(object.value);
-
-            counter.textContent =
-              isMoney
-                ? "$" + value.toLocaleString()
-                : value.toLocaleString();
-
-          }
-
-        });
-
-      });
-
-
-    /* =========================================================
-       REVENUE BARS
-    ========================================================== */
-
-    gsap.from(".bar", {
-
-      scaleY: 0,
-
-      transformOrigin: "bottom",
-
-      stagger: .05,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".chart",
-
-        start: "top 85%",
-
-        once: true
-
-      }
-
-    });
-
-
-    /* =========================================================
-       TABS
-    ========================================================== */
-
-    const tabButtons =
-      document.querySelectorAll(".tab-button");
-
-    const tabPanels =
-      document.querySelectorAll(".tab-panel");
-
-
-    tabButtons.forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        const selected =
-          button.dataset.tab;
-
-
-        tabButtons.forEach(btn => {
-
-          btn.classList.remove("active");
-
-        });
-
-
-        tabPanels.forEach(panel => {
-
-          panel.classList.remove("active");
-
-        });
-
-
-        button.classList.add("active");
-
-
-        const target =
-          document.getElementById(
-            "tab-" + selected
-          );
-
-
-        target.classList.add("active");
-
-
-        gsap.from(target, {
-
-          y: 15,
-
-          opacity: 0,
-
-          duration: .5,
-
+      dashboardWrap.addEventListener("mouseleave", () => {
+
+        gsap.to(dashboard, {
+          rotateY: 0,
+          rotateX: 6,
+          duration: 0.8,
           ease: "power3.out"
+        });
 
+      });
+
+    }
+
+
+    /* -----------------------------------------
+       FEATURE CARD TILT
+    ----------------------------------------- */
+
+    document.querySelectorAll(".feature-card").forEach((card) => {
+
+      card.addEventListener("mousemove", (e) => {
+
+        if (window.innerWidth < 850) return;
+
+        const rect = card.getBoundingClientRect();
+
+        const x =
+          (e.clientX - rect.left) / rect.width - 0.5;
+
+        const y =
+          (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(card, {
+          rotateY: x * 4,
+          rotateX: -y * 4,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+
+      });
+
+      card.addEventListener("mouseleave", () => {
+
+        gsap.to(card, {
+          rotateY: 0,
+          rotateX: 0,
+          duration: 0.5,
+          ease: "power2.out"
         });
 
       });
@@ -3855,62 +2102,158 @@
     });
 
 
-    /* =========================================================
-       MAGNETIC BUTTONS
-    ========================================================== */
+    /* =========================================
+       DEMO MODAL
+    ========================================== */
+
+    const openDemo = document.getElementById("openDemo");
+    const closeDemo = document.getElementById("closeDemo");
+    const demoOverlay = document.getElementById("demoOverlay");
+    const demoVideo = document.getElementById("demoVideo");
+
+
+    function openDemoModal() {
+
+      demoOverlay.classList.add("active");
+      demoOverlay.setAttribute("aria-hidden", "false");
+
+      document.body.classList.add("modal-open");
+
+      /*
+        Small delay makes the modal animation feel smoother
+        before video playback begins.
+      */
+
+      setTimeout(() => {
+
+        demoVideo.play().catch(() => {
+          /*
+            Browser may block autoplay.
+            Controls remain available.
+          */
+        });
+
+      }, 250);
+
+    }
+
+
+    function closeDemoModal() {
+
+      demoOverlay.classList.remove("active");
+      demoOverlay.setAttribute("aria-hidden", "true");
+
+      document.body.classList.remove("modal-open");
+
+      demoVideo.pause();
+
+      /*
+        Return video to beginning when closed.
+      */
+
+      demoVideo.currentTime = 0;
+
+    }
+
+
+    openDemo.addEventListener("click", openDemoModal);
+
+    closeDemo.addEventListener("click", closeDemoModal);
+
+
+    /* -----------------------------------------
+       CLICK OUTSIDE MODAL
+    ----------------------------------------- */
+
+    demoOverlay.addEventListener("click", (event) => {
+
+      if (event.target === demoOverlay) {
+        closeDemoModal();
+      }
+
+    });
+
+
+    /* -----------------------------------------
+       ESCAPE KEY
+    ----------------------------------------- */
+
+    document.addEventListener("keydown", (event) => {
+
+      if (
+        event.key === "Escape" &&
+        demoOverlay.classList.contains("active")
+      ) {
+        closeDemoModal();
+      }
+
+    });
+
+
+    /* -----------------------------------------
+       SMOOTH ANCHOR LINKS
+    ----------------------------------------- */
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
+      link.addEventListener("click", (event) => {
+
+        const targetId = link.getAttribute("href");
+
+        if (targetId === "#") return;
+
+        const target = document.querySelector(targetId);
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        lenis.scrollTo(target, {
+          offset: -80,
+          duration: 1.2
+        });
+
+      });
+
+    });
+
+
+    /* -----------------------------------------
+       MAGNETIC BUTTON EFFECT
+    ----------------------------------------- */
 
     document
-      .querySelectorAll(".magnetic")
-      .forEach(button => {
+      .querySelectorAll(".btn-primary, .instagram-btn")
+      .forEach((button) => {
 
-        button.addEventListener("mousemove", event => {
+        button.addEventListener("mousemove", (e) => {
 
-          if (window.innerWidth < 900) {
-            return;
-          }
+          if (window.innerWidth < 700) return;
 
-          const rect =
-            button.getBoundingClientRect();
+          const rect = button.getBoundingClientRect();
 
           const x =
-            event.clientX - rect.left;
+            e.clientX - rect.left - rect.width / 2;
 
           const y =
-            event.clientY - rect.top;
-
-          const moveX =
-            (x - rect.width / 2) * .13;
-
-          const moveY =
-            (y - rect.height / 2) * .13;
+            e.clientY - rect.top - rect.height / 2;
 
           gsap.to(button, {
-
-            x: moveX,
-
-            y: moveY,
-
-            duration: .35,
-
-            ease: "power3.out"
-
+            x: x * 0.08,
+            y: y * 0.08,
+            duration: 0.3,
+            ease: "power2.out"
           });
 
         });
-
 
         button.addEventListener("mouseleave", () => {
 
           gsap.to(button, {
-
             x: 0,
-
             y: 0,
-
-            duration: .7,
-
-            ease: "elastic.out(1,.4)"
-
+            duration: 0.4,
+            ease: "elastic.out(1, 0.5)"
           });
 
         });
@@ -3918,212 +2261,12 @@
       });
 
 
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================== */
-
-    const cursor =
-      document.querySelector(".cursor");
-
-    const cursorRing =
-      document.querySelector(".cursor-ring");
-
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let ringX = 0;
-    let ringY = 0;
-
-
-    window.addEventListener("mousemove", event => {
-
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
-      gsap.to(cursor, {
-
-        x: mouseX,
-
-        y: mouseY,
-
-        duration: .08,
-
-        overwrite: true
-
-      });
-
-    });
-
-
-    gsap.ticker.add(() => {
-
-      ringX +=
-        (mouseX - ringX) * .12;
-
-      ringY +=
-        (mouseY - ringY) * .12;
-
-      cursorRing.style.left =
-        ringX + "px";
-
-      cursorRing.style.top =
-        ringY + "px";
-
-    });
-
-
-    /* =========================================================
-       CURSOR HOVER
-    ========================================================== */
-
-    document
-      .querySelectorAll("a, button, .feature-card")
-      .forEach(element => {
-
-        element.addEventListener("mouseenter", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1.6,
-
-            borderColor:
-              "rgba(255,255,255,.7)",
-
-            duration: .25
-
-          });
-
-        });
-
-
-        element.addEventListener("mouseleave", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1,
-
-            borderColor:
-              "rgba(255,255,255,.4)",
-
-            duration: .25
-
-          });
-
-        });
-
-      });
-
-
-    /* =========================================================
-       MOBILE MENU
-    ========================================================== */
-
-    const menuButton =
-      document.getElementById(
-        "mobileMenuButton"
-      );
-
-    const mobileMenu =
-      document.getElementById(
-        "mobileMenu"
-      );
-
-
-    menuButton.addEventListener("click", () => {
-
-      mobileMenu.classList.toggle("active");
-
-      document.body.classList.toggle(
-        "menu-open"
-      );
-
-
-      menuButton.textContent =
-        mobileMenu.classList.contains("active")
-          ? "×"
-          : "☰";
-
-    });
-
-
-    document
-      .querySelectorAll(".mobile-menu a")
-      .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-          mobileMenu.classList.remove("active");
-
-          document.body.classList.remove(
-            "menu-open"
-          );
-
-          menuButton.textContent = "☰";
-
-        });
-
-      });
-
-
-    /* =========================================================
-       SMOOTH ANCHOR SCROLL
-    ========================================================== */
-
-    document
-      .querySelectorAll('a[href^="#"]')
-      .forEach(anchor => {
-
-        anchor.addEventListener("click", event => {
-
-          const targetId =
-            anchor.getAttribute("href");
-
-          if (
-            !targetId ||
-            targetId === "#"
-          ) {
-            return;
-          }
-
-          const target =
-            document.querySelector(targetId);
-
-          if (!target) {
-            return;
-          }
-
-          event.preventDefault();
-
-          lenis.scrollTo(target, {
-
-            offset: -80,
-
-            duration: 1.3
-
-          });
-
-        });
-
-      });
-
-
-    /* =========================================================
-       YEAR
-    ========================================================== */
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-
-    /* =========================================================
+    /* -----------------------------------------
        REFRESH SCROLLTRIGGER
-    ========================================================== */
+    ----------------------------------------- */
 
     window.addEventListener("load", () => {
-
       ScrollTrigger.refresh();
-
     });
 
   </script>

@@ -6,9 +6,20 @@
 
   <title>AutFlow Studio — Agency Operating System</title>
 
-  <link rel="icon" type="image/png" href="./AutFlow-logo.png">
-  <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
-<meta
+  <!-- FAVICON: angled / rounded logo -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><clipPath id="c"><path d="M20 5H80L95 20V80L80 95H20L5 80V20Z"/></clipPath></defs><image href="./AutFlow-logo.png" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(%23c)"/></svg>'
+  >
+
+  <link
+    rel="shortcut icon"
+    type="image/svg+xml"
+    href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><clipPath id="c"><path d="M20 5H80L95 20V80L80 95H20L5 80V20Z"/></clipPath></defs><image href="./AutFlow-logo.png" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(%23c)"/></svg>'
+  >
+
+  <meta
     name="description"
     content="AutFlow Studio — The operating system for modern agencies."
   >
@@ -3103,9 +3114,23 @@
   ========================================================== -->
 
   <div class="demo-modal" id="demoModal" aria-hidden="true">
-    <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel">
+
+    <div
+      class="demo-modal-content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demoModalLabel"
+    >
+
       <div class="demo-modal-header">
-        <span class="demo-modal-label" id="demoModalLabel">AutFlow / Product Demo</span>
+
+        <span
+          class="demo-modal-label"
+          id="demoModalLabel"
+        >
+          AutFlow / Product Demo
+        </span>
+
         <button
           type="button"
           class="demo-modal-close"
@@ -3114,9 +3139,12 @@
         >
           ×
         </button>
+
       </div>
 
+
       <div class="demo-video-wrap">
+
         <video
           class="demo-video"
           id="demoVideo"
@@ -3124,11 +3152,20 @@
           playsinline
           preload="metadata"
         >
-          <source src="./loom.mp4" type="video/mp4">
+
+          <source
+            src="./loom.mp4"
+            type="video/mp4"
+          >
+
           Your browser does not support the video tag.
+
         </video>
+
       </div>
+
     </div>
+
   </div>
 
 
@@ -4241,37 +4278,88 @@
     const demoVideo =
       document.getElementById("demoVideo");
 
+
     function openDemo() {
+
       demoModal.classList.add("active");
-      demoModal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("menu-open");
+
+      demoModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.classList.add(
+        "menu-open"
+      );
+
 
       demoVideo.currentTime = 0;
+
       demoVideo.load();
+
       demoVideo.play().catch(() => {});
+
     }
+
 
     function closeDemo() {
+
       demoModal.classList.remove("active");
-      demoModal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("menu-open");
+
+      demoModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
       demoVideo.pause();
+
     }
 
-    demoButton.addEventListener("click", openDemo);
-    demoModalClose.addEventListener("click", closeDemo);
 
-    demoModal.addEventListener("click", event => {
-      if (event.target === demoModal) {
-        closeDemo();
-      }
-    });
+    demoButton.addEventListener(
+      "click",
+      openDemo
+    );
 
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && demoModal.classList.contains("active")) {
-        closeDemo();
+    demoModalClose.addEventListener(
+      "click",
+      closeDemo
+    );
+
+
+    demoModal.addEventListener(
+      "click",
+      event => {
+
+        if (event.target === demoModal) {
+
+          closeDemo();
+
+        }
+
       }
-    });
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape" &&
+          demoModal.classList.contains("active")
+        ) {
+
+          closeDemo();
+
+        }
+
+      }
+    );
 
 
     /* =========================================================

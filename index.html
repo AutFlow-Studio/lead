@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,10 +10,11 @@
   <link rel="icon" type="image/png" href="./AutFlow-logo.png">
   <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
-  <meta
-    name="description"
-    content="AutFlow Studio builds custom software and high-end websites for local and regional businesses — designed to eliminate operational friction, generate more leads, increase conversions, and help businesses scale."
-  >
+<meta
+name="description"
+content="AutFlow Studio builds custom software and high-end websites for local and regional businesses — designed to eliminate operational friction, generate more leads, increase conversions, and help businesses scale."
+
+>
 
   <!-- =========================================================
        FONTS
@@ -1973,8 +1975,8 @@
     }
 
   </style>
-</head>
 
+</head>
 
 <body>
 
@@ -1984,14 +1986,15 @@
 
   <div class="background">
 
-    <div class="background-grid"></div>
+```
+<div class="background-grid"></div>
 
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+```
 
   </div>
-
 
   <!-- =========================================================
        CURSOR
@@ -2000,90 +2003,94 @@
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
 
-
   <!-- =========================================================
        NAVBAR
   ========================================================== -->
 
   <header class="navbar">
 
-    <div class="container nav-inner">
+```
+<div class="container nav-inner">
 
-      <a href="#" class="brand">
+  <a href="#" class="brand">
 
-        <div class="brand-mark">
-          <span>A</span>
-        </div>
+    <div class="brand-mark">
+      <span>A</span>
+    </div>
 
-        <div>
+    <div>
 
-          <div class="brand-name">
-            AutFlow <span>Studio</span>
-          </div>
+      <div class="brand-name">
+        AutFlow <span>Studio</span>
+      </div>
 
-          <div class="brand-subtitle">
-            Business Growth Systems
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <nav class="nav-links">
-
-        <a href="#product">
-          The Solution
-        </a>
-
-        <a href="#capabilities">
-          What We Build
-        </a>
-
-        <a href="#custom">
-          Custom Systems
-        </a>
-
-      </nav>
-
-
-      <a href="https://wa.me/213676127853" class="nav-button magnetic" target="_blank" rel="noopener noreferrer">
-        Fix Your Bottleneck
-      </a>
-
-
-      <button
-        class="mobile-menu-button"
-        id="mobileMenuButton"
-      >
-        ☰
-      </button>
+      <div class="brand-subtitle">
+        Business Growth Systems
+      </div>
 
     </div>
 
+  </a>
 
-    <div class="mobile-menu" id="mobileMenu">
 
-      <a href="#product">
-        The Solution
-      </a>
+  <nav class="nav-links">
 
-      <a href="#capabilities">
-        What We Build
-      </a>
+    <a href="#product">
+      The Solution
+    </a>
 
-      <a href="#custom">
-        Custom Systems
-      </a>
+    <a href="#capabilities">
+      What We Build
+    </a>
 
-      <a href="https://wa.me/213676127853" class="mobile-cta" target="_blank" rel="noopener noreferrer">
-        Fix Your Bottleneck
-      </a>
+    <a href="#custom">
+      Custom Systems
+    </a>
 
-    </div>
+  </nav>
+
+
+  <!-- CHANGED: now scrolls to final CTA -->
+
+  <a href="#get-started" class="nav-button magnetic">
+    Fix Your Bottleneck
+  </a>
+
+
+  <button
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+  >
+    ☰
+  </button>
+
+</div>
+
+
+<div class="mobile-menu" id="mobileMenu">
+
+  <a href="#product">
+    The Solution
+  </a>
+
+  <a href="#capabilities">
+    What We Build
+  </a>
+
+  <a href="#custom">
+    Custom Systems
+  </a>
+
+  <!-- CHANGED: now scrolls to final CTA -->
+
+  <a href="#get-started" class="mobile-cta">
+    Fix Your Bottleneck
+  </a>
+
+</div>
+```
 
   </header>
-
 
   <!-- =========================================================
        HERO
@@ -2091,399 +2098,396 @@
 
   <section class="hero">
 
-    <div class="hero-orbit">
-      <div class="orbit-dot"></div>
+```
+<div class="hero-orbit">
+  <div class="orbit-dot"></div>
+</div>
+
+
+<div class="container">
+
+  <div class="hero-content">
+
+    <div class="status-pill hero-animate">
+
+      <span class="status-dot"></span>
+
+      CUSTOM BUSINESS GROWTH SYSTEMS
+
     </div>
 
 
-    <div class="container">
+    <h1 class="hero-title">
 
-      <div class="hero-content">
+      <span class="line">
+        <span class="line-inner">
+          Stop Losing Business.
+        </span>
+      </span>
 
-        <div class="status-pill hero-animate">
+      <span class="line">
+        <span class="line-inner muted">
+          Build What Your Business Actually Needs.
+        </span>
+      </span>
 
-          <span class="status-dot"></span>
+    </h1>
 
-          CUSTOM BUSINESS GROWTH SYSTEMS
+
+    <p class="hero-description hero-animate">
+
+      We build custom software and high-end websites for local and regional businesses that have outgrown manual processes, weak online conversion, and disconnected tools. Fix the bottleneck slowing your business down, turn more visitors into customers, eliminate operational friction, and create the infrastructure to scale.
+
+    </p>
+
+
+    <div class="hero-actions hero-animate">
+
+      <!-- CHANGED: now scrolls to final CTA -->
+
+      <a
+        href="#get-started"
+        class="button button-primary magnetic"
+      >
+        Fix My Business Bottleneck
+        <span>→</span>
+      </a>
+
+
+      <button
+        type="button"
+        class="button button-secondary magnetic"
+        id="demoButton"
+      >
+        See What We Can Build
+        <span>▶</span>
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       DASHBOARD
+  ====================================================== -->
+
+  <div class="dashboard-wrapper">
+
+    <div class="dashboard-glow"></div>
+
+    <div class="dashboard">
+
+      <div class="browser-bar">
+
+        <div class="browser-dots">
+
+          <span></span>
+          <span></span>
+          <span></span>
 
         </div>
 
 
-        <h1 class="hero-title">
+        <div class="browser-status">
 
-          <span class="line">
-            <span class="line-inner">
-              Stop Losing Business.
-            </span>
-          </span>
+          <i></i>
 
-          <span class="line">
-            <span class="line-inner muted">
-              Build What Your Business Actually Needs.
-            </span>
-          </span>
+          BUSINESS SYSTEM OPERATIONAL
 
-        </h1>
+        </div>
 
 
-        <p class="hero-description hero-animate">
-
-          We build custom software and high-end websites for local and regional businesses that have outgrown manual processes, weak online conversion, and disconnected tools. Fix the bottleneck slowing your business down, turn more visitors into customers, eliminate operational friction, and create the infrastructure to scale.
-
-        </p>
-
-
-        <div class="hero-actions hero-animate">
-
-          <a
-            href="https://wa.me/213676127853"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-primary magnetic"
-          >
-            Fix My Business Bottleneck
-            <span>→</span>
-          </a>
-
-
-          <button
-            type="button"
-            class="button button-secondary magnetic"
-            id="demoButton"
-          >
-            See What We Can Build
-            <span>▶</span>
-          </button>
-
+        <div class="browser-label">
+          BUSINESS / GROWTH SYSTEM
         </div>
 
       </div>
 
 
-      <!-- =====================================================
-           DASHBOARD
-      ====================================================== -->
+      <div class="dashboard-body">
 
-      <div class="dashboard-wrapper">
 
-        <div class="dashboard-glow"></div>
+        <!-- SIDEBAR -->
 
-        <div class="dashboard">
+        <aside class="sidebar">
 
-          <div class="browser-bar">
+          <div class="sidebar-title">
+            Business Operations
+          </div>
 
-            <div class="browser-dots">
+          <div class="sidebar-item active">
+            <span class="sidebar-icon"></span>
+            Command Center
+          </div>
 
-              <span></span>
-              <span></span>
-              <span></span>
+          <div class="sidebar-item">
+            <span class="sidebar-icon"></span>
+            Customers
+          </div>
+
+          <div class="sidebar-item">
+            <span class="sidebar-icon"></span>
+            Sales Pipeline
+          </div>
+
+          <div class="sidebar-item">
+            <span class="sidebar-icon"></span>
+            Automations
+          </div>
+
+          <div class="sidebar-item">
+            <span class="sidebar-icon"></span>
+            Communications
+          </div>
+
+          <div class="sidebar-separator"></div>
+
+          <div class="sidebar-title">
+            Growth
+          </div>
+
+          <div class="sidebar-item">
+            <span class="sidebar-icon"></span>
+            Performance
+          </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <div class="dashboard-main">
+
+          <div class="dashboard-header">
+
+            <div>
+
+              <div class="dashboard-eyebrow">
+                Business / Command Center
+              </div>
+
+              <div class="dashboard-heading">
+                One system. Less chaos. More growth.
+              </div>
 
             </div>
 
-
-            <div class="browser-status">
-
-              <i></i>
-
-              BUSINESS SYSTEM OPERATIONAL
-
-            </div>
-
-
-            <div class="browser-label">
-              BUSINESS / GROWTH SYSTEM
+            <div class="dashboard-filter">
+              Growth view ↗
             </div>
 
           </div>
 
 
-          <div class="dashboard-body">
+          <!-- STATS -->
 
+          <div class="stats">
 
-            <!-- SIDEBAR -->
+            <div class="stat">
 
-            <aside class="sidebar">
-
-              <div class="sidebar-title">
-                Business Operations
+              <div class="stat-label">
+                Revenue Generated
               </div>
 
-              <div class="sidebar-item active">
-                <span class="sidebar-icon"></span>
-                Command Center
+              <div
+                class="stat-value counter"
+                data-value="24680"
+              >
+                $0
               </div>
 
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Customers
+              <div class="stat-change">
+                +18.4%
               </div>
 
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
+            </div>
+
+
+            <div class="stat">
+
+              <div class="stat-label">
+                Leads Converted
+              </div>
+
+              <div
+                class="stat-value counter"
+                data-value="18"
+              >
+                0
+              </div>
+
+              <div class="stat-change">
+                +4
+              </div>
+
+            </div>
+
+
+            <div class="stat">
+
+              <div class="stat-label">
+                Active Customers
+              </div>
+
+              <div
+                class="stat-value counter"
+                data-value="27"
+              >
+                0
+              </div>
+
+              <div class="stat-change">
+                +3
+              </div>
+
+            </div>
+
+
+            <div class="stat">
+
+              <div class="stat-label">
                 Sales Pipeline
               </div>
 
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Automations
+              <div
+                class="stat-value counter"
+                data-value="6240"
+              >
+                $0
               </div>
 
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Communications
+              <div class="stat-change">
+                4 opportunities
               </div>
 
-              <div class="sidebar-separator"></div>
+            </div>
 
-              <div class="sidebar-title">
-                Growth
+          </div>
+
+
+          <!-- LOWER -->
+
+          <div class="dashboard-grid">
+
+
+            <div class="panel">
+
+              <div class="panel-title">
+                Business Operations
               </div>
 
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Performance
-              </div>
-
-            </aside>
-
-
-            <!-- MAIN -->
-
-            <div class="dashboard-main">
-
-              <div class="dashboard-header">
-
-                <div>
-
-                  <div class="dashboard-eyebrow">
-                    Business / Command Center
-                  </div>
-
-                  <div class="dashboard-heading">
-                    One system. Less chaos. More growth.
-                  </div>
-
-                </div>
-
-                <div class="dashboard-filter">
-                  Growth view ↗
-                </div>
-
+              <div class="panel-subtitle">
+                Work moving without the manual chaos
               </div>
 
 
-              <!-- STATS -->
+              <div class="project-list">
 
-              <div class="stats">
+                <div class="project">
 
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Revenue Generated
+                  <div class="project-number">
+                    01
                   </div>
 
-                  <div
-                    class="stat-value counter"
-                    data-value="24680"
-                  >
-                    $0
-                  </div>
+                  <div class="project-info">
 
-                  <div class="stat-change">
-                    +18.4%
-                  </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Leads Converted
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="18"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    +4
-                  </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Active Customers
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="27"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    +3
-                  </div>
-
-                </div>
-
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Sales Pipeline
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="6240"
-                  >
-                    $0
-                  </div>
-
-                  <div class="stat-change">
-                    4 opportunities
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <!-- LOWER -->
-
-              <div class="dashboard-grid">
-
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Business Operations
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Work moving without the manual chaos
-                  </div>
-
-
-                  <div class="project-list">
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        01
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          New customer onboarding
-                        </div>
-
-                        <div class="project-status">
-                          AUTOMATED
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        $4,800
-                      </div>
-
+                    <div class="project-name">
+                      New customer onboarding
                     </div>
 
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        02
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Qualified lead follow-up
-                        </div>
-
-                        <div class="project-status">
-                          ACTIVE
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        $2,400
-                      </div>
-
-                    </div>
-
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        03
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Sales opportunity
-                        </div>
-
-                        <div class="project-status">
-                          CONVERTING
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        $1,900
-                      </div>
-
+                    <div class="project-status">
+                      AUTOMATED
                     </div>
 
                   </div>
 
-                </div>
-
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Business Growth
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Performance over time
-                  </div>
-
-
-                  <div class="chart">
-
-                    <div class="bar" style="height:30%"></div>
-                    <div class="bar" style="height:48%"></div>
-                    <div class="bar" style="height:40%"></div>
-                    <div class="bar" style="height:65%"></div>
-                    <div class="bar" style="height:54%"></div>
-                    <div class="bar" style="height:74%"></div>
-                    <div class="bar" style="height:62%"></div>
-                    <div class="bar" style="height:85%"></div>
-                    <div class="bar" style="height:71%"></div>
-                    <div class="bar" style="height:96%"></div>
-                    <div class="bar" style="height:80%"></div>
-                    <div class="bar" style="height:100%"></div>
-
+                  <div class="project-price">
+                    $4,800
                   </div>
 
                 </div>
+
+
+                <div class="project">
+
+                  <div class="project-number">
+                    02
+                  </div>
+
+                  <div class="project-info">
+
+                    <div class="project-name">
+                      Qualified lead follow-up
+                    </div>
+
+                    <div class="project-status">
+                      ACTIVE
+                    </div>
+
+                  </div>
+
+                  <div class="project-price">
+                    $2,400
+                  </div>
+
+                </div>
+
+
+                <div class="project">
+
+                  <div class="project-number">
+                    03
+                  </div>
+
+                  <div class="project-info">
+
+                    <div class="project-name">
+                      Sales opportunity
+                    </div>
+
+                    <div class="project-status">
+                      CONVERTING
+                    </div>
+
+                  </div>
+
+                  <div class="project-price">
+                    $1,900
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="panel">
+
+              <div class="panel-title">
+                Business Growth
+              </div>
+
+              <div class="panel-subtitle">
+                Performance over time
+              </div>
+
+
+              <div class="chart">
+
+                <div class="bar" style="height:30%"></div>
+                <div class="bar" style="height:48%"></div>
+                <div class="bar" style="height:40%"></div>
+                <div class="bar" style="height:65%"></div>
+                <div class="bar" style="height:54%"></div>
+                <div class="bar" style="height:74%"></div>
+                <div class="bar" style="height:62%"></div>
+                <div class="bar" style="height:85%"></div>
+                <div class="bar" style="height:71%"></div>
+                <div class="bar" style="height:96%"></div>
+                <div class="bar" style="height:80%"></div>
+                <div class="bar" style="height:100%"></div>
 
               </div>
 
@@ -2497,8 +2501,12 @@
 
     </div>
 
-  </section>
+  </div>
 
+</div>
+```
+
+  </section>
 
   <!-- =========================================================
        PRODUCT
@@ -2509,261 +2517,259 @@
     class="section-border"
   >
 
-    <div class="container section-padding">
+```
+<div class="container section-padding">
 
-      <div class="section-heading-grid">
+  <div class="section-heading-grid">
 
-        <div class="reveal-left">
+    <div class="reveal-left">
 
-          <div class="eyebrow">
+      <div class="eyebrow">
 
-            <span class="eyebrow-line"></span>
+        <span class="eyebrow-line"></span>
 
-            FIX THE BOTTLENECK
-
-          </div>
-
-
-          <h2>
-
-            Your business does not need
-            another generic tool.
-
-            <span class="muted">
-              It needs a system built around how you actually operate.
-            </span>
-
-          </h2>
-
-        </div>
-
-
-        <p class="section-description reveal-right">
-
-          We solve the problems that cost business owners time, leads, customers, and money. Choose the complete growth system — custom software plus a high-end website — or take only the service your business needs right now. No bloated templates. No unnecessary features. Just technology built around the bottleneck holding your business back.
-
-        </p>
+        FIX THE BOTTLENECK
 
       </div>
 
 
-      <!-- FEATURES -->
+      <h2>
 
-      <div class="feature-grid">
+        Your business does not need
+        another generic tool.
 
-        <div class="feature-card feature-3d">
+        <span class="muted">
+          It needs a system built around how you actually operate.
+        </span>
 
-          <div class="feature-icon">
-            ◈
-          </div>
+      </h2>
 
-          <div class="feature-title">
-            01 — CUSTOM SOFTWARE THAT REMOVES FRICTION
-          </div>
-
-          <div class="feature-description">
-            Replace spreadsheets, repetitive admin work, disconnected tools, and manual follow-ups with software built around your exact workflow. Fewer bottlenecks. Fewer mistakes. More time for revenue-producing work.
-          </div>
-
-        </div>
+    </div>
 
 
-        <div class="feature-card feature-3d">
+    <p class="section-description reveal-right">
 
-          <div class="feature-icon">
-            ⌁
-          </div>
+      We solve the problems that cost business owners time, leads, customers, and money. Choose the complete growth system — custom software plus a high-end website — or take only the service your business needs right now. No bloated templates. No unnecessary features. Just technology built around the bottleneck holding your business back.
 
-          <div class="feature-title">
-            02 — WEBSITES BUILT TO CONVERT
-          </div>
+    </p>
 
-          <div class="feature-description">
-            Your website should do more than look professional. It should make your offer obvious, remove objections, build trust, capture demand, and push qualified visitors toward becoming paying customers.
-          </div>
-
-        </div>
+  </div>
 
 
-        <div class="feature-card feature-3d">
+  <!-- FEATURES -->
 
-          <div class="feature-icon">
-            $
-          </div>
+  <div class="feature-grid">
 
-          <div class="feature-title">
-            03 — TURN MORE TRAFFIC INTO REVENUE
-          </div>
+    <div class="feature-card feature-3d">
 
-          <div class="feature-description">
-            We structure the experience around the customer journey — stronger positioning, clearer offers, persuasive messaging, frictionless actions, and conversion-focused flows designed to turn attention into opportunities.
-          </div>
+      <div class="feature-icon">
+        ◈
+      </div>
 
-        </div>
+      <div class="feature-title">
+        01 — CUSTOM SOFTWARE THAT REMOVES FRICTION
+      </div>
 
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ↻
-          </div>
-
-          <div class="feature-title">
-            04 — AUTOMATE THE WORK THAT DRAINS YOUR DAY
-          </div>
-
-          <div class="feature-description">
-            Stop spending valuable hours on tasks your business should handle automatically. Build systems for follow-ups, customer management, internal workflows, scheduling, reporting, and other repetitive operations.
-          </div>
-
-        </div>
-
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⚙
-          </div>
-
-          <div class="feature-title">
-            05 — BUILT AROUND YOUR BUSINESS
-          </div>
-
-          <div class="feature-description">
-            Your business is not a template. We build around your processes, customers, team, offer, and operational reality so the technology actually fits the way your company works.
-          </div>
-
-        </div>
-
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            &lt;/&gt;
-          </div>
-
-          <div class="feature-title">
-            06 — BUILT TO SCALE WITH YOU
-          </div>
-
-          <div class="feature-description">
-            Start by fixing the constraint costing you the most. Then expand the system as demand grows — adding workflows, integrations, customer journeys, internal tools, and new revenue opportunities without rebuilding everything from zero.
-          </div>
-
-        </div>
-
+      <div class="feature-description">
+        Replace spreadsheets, repetitive admin work, disconnected tools, and manual follow-ups with software built around your exact workflow. Fewer bottlenecks. Fewer mistakes. More time for revenue-producing work.
       </div>
 
     </div>
 
-  </section>
 
+    <div class="feature-card feature-3d">
+
+      <div class="feature-icon">
+        ⌁
+      </div>
+
+      <div class="feature-title">
+        02 — WEBSITES BUILT TO CONVERT
+      </div>
+
+      <div class="feature-description">
+        Your website should do more than look professional. It should make your offer obvious, remove objections, build trust, capture demand, and push qualified visitors toward becoming paying customers.
+      </div>
+
+    </div>
+
+
+    <div class="feature-card feature-3d">
+
+      <div class="feature-icon">
+        $
+      </div>
+
+      <div class="feature-title">
+        03 — TURN MORE TRAFFIC INTO REVENUE
+      </div>
+
+      <div class="feature-description">
+        We structure the experience around the customer journey — stronger positioning, clearer offers, persuasive messaging, frictionless actions, and conversion-focused flows designed to turn attention into opportunities.
+      </div>
+
+    </div>
+
+
+    <div class="feature-card feature-3d">
+
+      <div class="feature-icon">
+        ↻
+      </div>
+
+      <div class="feature-title">
+        04 — AUTOMATE THE WORK THAT DRAINS YOUR DAY
+      </div>
+
+      <div class="feature-description">
+        Stop spending valuable hours on tasks your business should handle automatically. Build systems for follow-ups, customer management, internal workflows, scheduling, reporting, and other repetitive operations.
+      </div>
+
+    </div>
+
+
+    <div class="feature-card feature-3d">
+
+      <div class="feature-icon">
+        ⚙
+      </div>
+
+      <div class="feature-title">
+        05 — BUILT AROUND YOUR BUSINESS
+      </div>
+
+      <div class="feature-description">
+        Your business is not a template. We build around your processes, customers, team, offer, and operational reality so the technology actually fits the way your company works.
+      </div>
+
+    </div>
+
+
+    <div class="feature-card feature-3d">
+
+      <div class="feature-icon">
+        &lt;/&gt;
+      </div>
+
+      <div class="feature-title">
+        06 — BUILT TO SCALE WITH YOU
+      </div>
+
+      <div class="feature-description">
+        Start by fixing the constraint costing you the most. Then expand the system as demand grows — adding workflows, integrations, customer journeys, internal tools, and new revenue opportunities without rebuilding everything from zero.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
 
   <!-- =========================================================
        OWNERSHIP
-    ========================================================== -->
+  ========================================================== -->
 
   <section>
 
-    <div class="container">
+```
+<div class="container">
 
-      <div class="ownership-card ownership-parallax">
+  <div class="ownership-card ownership-parallax">
 
-        <div class="ownership-content">
+    <div class="ownership-content">
 
-          <span class="small-tag">
-            THE BUSINESS GROWTH MODEL
+      <span class="small-tag">
+        THE BUSINESS GROWTH MODEL
+      </span>
+
+
+      <h2 style="margin-top:23px;">
+
+        Stop patching problems.
+
+        <br>
+
+        <span class="muted">
+          Build the system that fixes them.
+        </span>
+
+      </h2>
+
+
+      <p>
+
+        Whether your problem is missed leads, low website conversion, chaotic operations, repetitive admin, slow customer response, or a process that breaks as you grow, we build the technology around the problem — not around a generic software template.
+
+      </p>
+
+
+      <div class="check-list">
+
+        <div class="check-item">
+          <span class="check">✓</span>
+          Custom software for your exact workflow
+        </div>
+
+        <div class="check-item">
+          <span class="check">✓</span>
+          High-converting professional website
+        </div>
+
+        <div class="check-item">
+          <span class="check">✓</span>
+          Automation that removes repetitive work
+        </div>
+
+        <div class="check-item">
+          <span class="check">✓</span>
+          Infrastructure designed for growth
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="workflow-visual">
+
+      <div class="workflow-box workflow-float">
+
+        <div class="workflow-header">
+
+          <span>
+            ◉ BUSINESS GROWTH SYSTEM
           </span>
 
-
-          <h2 style="margin-top:23px;">
-
-            Stop patching problems.
-
-            <br>
-
-            <span class="muted">
-              Build the system that fixes them.
-            </span>
-
-          </h2>
-
-
-          <p>
-
-            Whether your problem is missed leads, low website conversion, chaotic operations, repetitive admin, slow customer response, or a process that breaks as you grow, we build the technology around the problem — not around a generic software template.
-
-          </p>
-
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Custom software for your exact workflow
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              High-converting professional website
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Automation that removes repetitive work
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Infrastructure designed for growth
-            </div>
-
-          </div>
+          <span class="workflow-active">
+            ACTIVE
+          </span>
 
         </div>
 
 
-        <div class="workflow-visual">
+        <div class="workflow-steps">
 
-          <div class="workflow-box workflow-float">
+          <div class="workflow-step">
+            <span class="workflow-step-dot"></span>
+            Lead captured
+          </div>
 
-            <div class="workflow-header">
+          <div class="workflow-step">
+            <span class="workflow-step-dot"></span>
+            Customer qualified
+          </div>
 
-              <span>
-                ◉ BUSINESS GROWTH SYSTEM
-              </span>
+          <div class="workflow-step">
+            <span class="workflow-step-dot"></span>
+            Follow-up activated
+          </div>
 
-              <span class="workflow-active">
-                ACTIVE
-              </span>
-
-            </div>
-
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Lead captured
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Customer qualified
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Follow-up activated
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Sale / operation completed
-              </div>
-
-            </div>
-
+          <div class="workflow-step">
+            <span class="workflow-step-dot"></span>
+            Sale / operation completed
           </div>
 
         </div>
@@ -2772,8 +2778,12 @@
 
     </div>
 
-  </section>
+  </div>
 
+</div>
+```
+
+  </section>
 
   <!-- =========================================================
        CAPABILITIES
@@ -2784,125 +2794,122 @@
     class="section-border"
   >
 
-    <div class="container section-padding">
+```
+<div class="container section-padding">
 
-      <div class="center-heading reveal-scale">
+  <div class="center-heading reveal-scale">
 
-        <div class="eyebrow">
+    <div class="eyebrow">
 
-          <span class="eyebrow-line"></span>
+      <span class="eyebrow-line"></span>
 
-          TWO WAYS TO MOVE FORWARD
+      TWO WAYS TO MOVE FORWARD
 
-          <span class="eyebrow-line"></span>
+      <span class="eyebrow-line"></span>
 
+    </div>
+
+
+    <h2>
+
+      Fix the problem.
+      <br>
+
+      <span class="muted">
+        Then scale what works.
+      </span>
+
+    </h2>
+
+  </div>
+
+
+  <div class="tabs reveal-scale">
+
+    <div class="tab-buttons">
+
+      <button
+        class="tab-button active"
+        data-tab="product"
+      >
+        COMPLETE GROWTH SYSTEM
+      </button>
+
+      <button
+        class="tab-button"
+        data-tab="service"
+      >
+        SINGLE SERVICE
+      </button>
+
+    </div>
+
+
+    <div class="tab-content">
+
+      <div
+        class="tab-panel active"
+        id="tab-product"
+      >
+
+        <div class="tab-icon">
+          ◈
         </div>
 
+        <h3>
+          Custom Software + High-End Website
+        </h3>
 
-        <h2>
+        <p>
 
-          Fix the problem.
-          <br>
+          The strongest option when your business needs both better customer acquisition and better operations. We build the software required to eliminate your internal bottleneck and a premium interactive website engineered to turn more visitors into qualified leads and customers — one connected system built around your business.
 
-          <span class="muted">
-            Then scale what works.
-          </span>
+        </p>
 
-        </h2>
+
+        <div class="tags">
+
+          <span class="tag">CUSTOM SOFTWARE</span>
+          <span class="tag">HIGH-CONVERTING WEBSITE</span>
+          <span class="tag">BUSINESS AUTOMATION</span>
+          <span class="tag">LEAD GENERATION</span>
+          <span class="tag">CUSTOM WORKFLOWS</span>
+          <span class="tag">CONVERSION SYSTEMS</span>
+          <span class="tag">SCALABLE INFRASTRUCTURE</span>
+
+        </div>
 
       </div>
 
 
-      <div class="tabs reveal-scale">
+      <div
+        class="tab-panel"
+        id="tab-service"
+      >
 
-        <div class="tab-buttons">
-
-          <button
-            class="tab-button active"
-            data-tab="product"
-          >
-            COMPLETE GROWTH SYSTEM
-          </button>
-
-          <button
-            class="tab-button"
-            data-tab="service"
-          >
-            SINGLE SERVICE
-          </button>
-
+        <div class="tab-icon">
+          &lt;/&gt;
         </div>
 
+        <h3>
+          Need One Piece? We Build That Too.
+        </h3>
 
-        <div class="tab-content">
+        <p>
 
-          <div
-            class="tab-panel active"
-            id="tab-product"
-          >
+          You do not need to buy a full system if one critical problem is holding you back. Choose a dedicated custom software solution to streamline operations, automate a painful process, or manage your business more efficiently — or get a high-end professional website designed to strengthen your positioning and convert more of your existing traffic into business.
 
-            <div class="tab-icon">
-              ◈
-            </div>
-
-            <h3>
-              Custom Software + High-End Website
-            </h3>
-
-            <p>
-
-              The strongest option when your business needs both better customer acquisition and better operations. We build the software required to eliminate your internal bottleneck and a premium interactive website engineered to turn more visitors into qualified leads and customers — one connected system built around your business.
-
-            </p>
+        </p>
 
 
-            <div class="tags">
+        <div class="tags">
 
-              <span class="tag">CUSTOM SOFTWARE</span>
-              <span class="tag">HIGH-CONVERTING WEBSITE</span>
-              <span class="tag">BUSINESS AUTOMATION</span>
-              <span class="tag">LEAD GENERATION</span>
-              <span class="tag">CUSTOM WORKFLOWS</span>
-              <span class="tag">CONVERSION SYSTEMS</span>
-              <span class="tag">SCALABLE INFRASTRUCTURE</span>
-
-            </div>
-
-          </div>
-
-
-          <div
-            class="tab-panel"
-            id="tab-service"
-          >
-
-            <div class="tab-icon">
-              &lt;/&gt;
-            </div>
-
-            <h3>
-              Need One Piece? We Build That Too.
-            </h3>
-
-            <p>
-
-              You do not need to buy a full system if one critical problem is holding you back. Choose a dedicated custom software solution to streamline operations, automate a painful process, or manage your business more efficiently — or get a high-end professional website designed to strengthen your positioning and convert more of your existing traffic into business.
-
-            </p>
-
-
-            <div class="tags">
-
-              <span class="tag">CUSTOM SOFTWARE</span>
-              <span class="tag">PROFESSIONAL WEBSITE</span>
-              <span class="tag">AUTOMATION</span>
-              <span class="tag">CONVERSION OPTIMIZATION</span>
-              <span class="tag">BUSINESS WORKFLOWS</span>
-              <span class="tag">CUSTOM INTEGRATIONS</span>
-
-            </div>
-
-          </div>
+          <span class="tag">CUSTOM SOFTWARE</span>
+          <span class="tag">PROFESSIONAL WEBSITE</span>
+          <span class="tag">AUTOMATION</span>
+          <span class="tag">CONVERSION OPTIMIZATION</span>
+          <span class="tag">BUSINESS WORKFLOWS</span>
+          <span class="tag">CUSTOM INTEGRATIONS</span>
 
         </div>
 
@@ -2910,8 +2917,12 @@
 
     </div>
 
-  </section>
+  </div>
 
+</div>
+```
+
+  </section>
 
   <!-- =========================================================
        CUSTOM SOFTWARE
@@ -2922,89 +2933,86 @@
     class="section-border"
   >
 
-    <div class="container section-padding">
+```
+<div class="container section-padding">
 
-      <div class="custom-card">
+  <div class="custom-card">
 
-        <div class="custom-grid">
+    <div class="custom-grid">
 
-          <div class="custom-copy">
+      <div class="custom-copy">
 
-            <div class="eyebrow">
+        <div class="eyebrow">
 
-              <span>✦</span>
+          <span>✦</span>
 
-              CUSTOM BUSINESS SYSTEMS
+          CUSTOM BUSINESS SYSTEMS
 
-            </div>
-
-
-            <h2>
-
-              Your bottleneck is
-              <br>
-
-              <span class="muted">
-                costing you every day.
-              </span>
-
-            </h2>
+        </div>
 
 
-            <p class="custom-description">
+        <h2>
 
-              If your team is wasting time on manual work, your customers are struggling to take the next step, leads are slipping through the cracks, or your current tools cannot keep up with the business, we build the missing system. Custom software, a high-end website, or both — engineered around the exact problem you need solved.
+          Your bottleneck is
+          <br>
 
-            </p>
+          <span class="muted">
+            costing you every day.
+          </span>
+
+        </h2>
 
 
+        <p class="custom-description">
+
+          If your team is wasting time on manual work, your customers are struggling to take the next step, leads are slipping through the cracks, or your current tools cannot keep up with the business, we build the missing system. Custom software, a high-end website, or both — engineered around the exact problem you need solved.
+
+        </p>
+
+
+      </div>
+
+
+      <div class="process-box">
+
+        <div class="process-header">
+
+          <span>
+            Problem → Business Advantage
+          </span>
+
+          <span>
+            ◷
+          </span>
+
+        </div>
+
+
+        <div class="process-list">
+
+          <div class="process-item">
+            <span class="process-number">01</span>
+            Identify the bottleneck costing the business
           </div>
 
+          <div class="process-item">
+            <span class="process-number">02</span>
+            Map the workflow and customer journey
+          </div>
 
-          <div class="process-box">
+          <div class="process-item">
+            <span class="process-number">03</span>
+            Build the custom software or website
+          </div>
 
-            <div class="process-header">
+          <div class="process-item">
+            <span class="process-number">04</span>
+            Connect the system to your business
+          </div>
 
-              <span>
-                Problem → Business Advantage
-              </span>
-
-              <span>
-                ◷
-              </span>
-
-            </div>
-
-
-            <div class="process-list">
-
-              <div class="process-item">
-                <span class="process-number">01</span>
-                Identify the bottleneck costing the business
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">02</span>
-                Map the workflow and customer journey
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">03</span>
-                Build the custom software or website
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">04</span>
-                Connect the system to your business
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">05</span>
-                Deploy, optimize, and build for growth
-              </div>
-
-            </div>
-
+          <div class="process-item">
+            <span class="process-number">05</span>
+            Deploy, optimize, and build for growth
           </div>
 
         </div>
@@ -3013,8 +3021,12 @@
 
     </div>
 
-  </section>
+  </div>
 
+</div>
+```
+
+  </section>
 
   <!-- =========================================================
        FINAL CTA
@@ -3025,58 +3037,61 @@
     class="final-cta"
   >
 
-    <div class="container">
+```
+<div class="container">
 
-      <div class="reveal-scale">
+  <div class="reveal-scale">
 
-        <div class="final-icon">
-          ↗
-        </div>
-
-
-        <h2>
-
-          Every day you delay
-          <br>
-
-          <span class="muted">
-            is another day the bottleneck costs you.
-          </span>
-
-        </h2>
+    <div class="final-icon">
+      ↗
+    </div>
 
 
-        <p>
+    <h2>
 
-          Tell us what is slowing your business down. We will identify whether you need a custom software system, a conversion-focused website, or the complete combination — then build the solution around the outcome your business actually needs.
+      Every day you delay
+      <br>
 
-        </p>
+      <span class="muted">
+        is another day the bottleneck costs you.
+      </span>
+
+    </h2>
 
 
-        <div class="final-actions">
+    <p>
 
-          <a
-            href="https://wa.me/213676127853"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-primary magnetic"
-          >
-            Fix My Business Bottleneck Now
-            <span>→</span>
-          </a>
+      Tell us what is slowing your business down. We will identify whether you need a custom software system, a conversion-focused website, or the complete combination — then build the solution around the outcome your business actually needs.
 
-          <span class="availability">
-            STOP LOSING TIME • LEADS • REVENUE
-          </span>
+    </p>
 
-        </div>
 
-      </div>
+    <div class="final-actions">
+
+      <!-- CHANGED: remains direct WhatsApp link -->
+
+      <a
+        href="https://wa.me/213676127853"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-primary magnetic"
+      >
+        Fix My Business Bottleneck Now
+        <span>→</span>
+      </a>
+
+      <span class="availability">
+        STOP LOSING TIME • LEADS • REVENUE
+      </span>
 
     </div>
 
-  </section>
+  </div>
 
+</div>
+```
+
+  </section>
 
   <!-- =========================================================
        DEMO MODAL
@@ -3096,21 +3111,23 @@
         </button>
       </div>
 
-      <div class="demo-video-wrap">
-        <video
-          class="demo-video"
-          id="demoVideo"
-          controls
-          playsinline
-          preload="metadata"
-        >
-          <source src="https://res.cloudinary.com/uer2wc95/video/upload/v1787756566/jejjj_1.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
+```
+  <div class="demo-video-wrap">
+    <video
+      class="demo-video"
+      id="demoVideo"
+      controls
+      playsinline
+      preload="metadata"
+    >
+      <source src="https://res.cloudinary.com/uer2wc95/video/upload/v1787756566/jejjj_1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
+</div>
+```
 
+  </div>
 
   <!-- =========================================================
        FOOTER
@@ -3118,50 +3135,51 @@
 
   <footer>
 
-    <div class="container">
+```
+<div class="container">
 
-      <div class="footer-inner">
+  <div class="footer-inner">
 
-        <div class="footer-brand">
+    <div class="footer-brand">
 
-          <div class="footer-mark">
-            A
-          </div>
-
-          <div>
-
-            <div class="footer-name">
-              AutFlow Studio
-            </div>
-
-            <div class="footer-tagline">
-              Custom technology for businesses ready to grow
-            </div>
-
-          </div>
-
-        </div>
-
-
+      <div class="footer-mark">
+        A
       </div>
 
+      <div>
 
-      <div class="footer-bottom">
+        <div class="footer-name">
+          AutFlow Studio
+        </div>
 
-        <span>
-          © <span id="year"></span> AutFlow Studio
-        </span>
-
-        <span>
-          Built to eliminate friction, increase conversion, and scale operations.
-        </span>
+        <div class="footer-tagline">
+          Custom technology for businesses ready to grow
+        </div>
 
       </div>
 
     </div>
 
-  </footer>
 
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © <span id="year"></span> AutFlow Studio
+    </span>
+
+    <span>
+      Built to eliminate friction, increase conversion, and scale operations.
+    </span>
+
+  </div>
+
+</div>
+```
+
+  </footer>
 
   <!-- =========================================================
        JAVASCRIPT

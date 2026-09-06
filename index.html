@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,10 @@
     content="AutFlow Studio builds custom software and high-end websites for local and regional businesses — designed to eliminate operational friction, generate more leads, increase conversions, and help businesses scale."
   >
 
-  <!-- Fonts -->
+  <!-- =========================================================
+       FONTS
+  ========================================================== -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -23,22 +27,19 @@
     rel="stylesheet"
   >
 
-  <!-- GSAP -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"
-    defer
-  ></script>
+  <!-- =========================================================
+       GSAP
+  ========================================================== -->
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"
-    defer
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 
-  <!-- Lenis -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"
-    defer
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+  <!-- =========================================================
+       LENIS SMOOTH SCROLL
+  ========================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
 
@@ -46,9 +47,7 @@
        RESET
     ========================================================== */
 
-    *,
-    *::before,
-    *::after {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -129,37 +128,27 @@
        CUSTOM CURSOR
     ========================================================== */
 
-    .cursor,
-    .cursor-ring {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate3d(-50%, -50%, 0);
-      will-change: transform;
-    }
-
     .cursor {
+      position: fixed;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: #fff;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
       mix-blend-mode: difference;
     }
 
     .cursor-ring {
+      position: fixed;
       width: 34px;
       height: 34px;
       border: 1px solid rgba(255,255,255,.4);
       border-radius: 50%;
+      pointer-events: none;
       z-index: 9998;
-      transition:
-        transform .25s ease,
-        border-color .25s ease;
-    }
-
-    .cursor-ring.hovering {
-      transform: translate3d(-50%, -50%, 0) scale(1.6);
-      border-color: rgba(255,255,255,.7);
+      transform: translate(-50%, -50%);
     }
 
 
@@ -174,7 +163,6 @@
       overflow: hidden;
       background: #050505;
       pointer-events: none;
-      contain: strict;
     }
 
     .background-grid {
@@ -200,13 +188,6 @@
           black,
           transparent 80%
         );
-
-      -webkit-mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 80%
-        );
     }
 
     .glow {
@@ -214,7 +195,6 @@
       border-radius: 50%;
       filter: blur(120px);
       opacity: .45;
-      will-change: transform;
     }
 
     .glow-1 {
@@ -258,12 +238,13 @@
 
       background: rgba(5,5,5,.25);
 
+      backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0);
+
       transition:
         background .4s ease,
         border-color .4s ease,
         backdrop-filter .4s ease;
-
-      will-change: background;
     }
 
     .navbar.scrolled {
@@ -370,7 +351,6 @@
         background .25s ease;
 
       white-space: nowrap;
-      will-change: transform;
     }
 
     .nav-button:hover {
@@ -419,8 +399,6 @@
       position: relative;
       z-index: 2;
       min-width: 0;
-
-      will-change: transform, opacity;
     }
 
     .status-pill {
@@ -480,7 +458,6 @@
 
     .hero-title .line-inner {
       display: block;
-      will-change: transform;
     }
 
     .hero-title .muted {
@@ -530,8 +507,6 @@
 
       max-width: 100%;
       text-align: center;
-
-      will-change: transform;
     }
 
     .button-primary {
@@ -564,15 +539,13 @@
       left: 50%;
       top: 360px;
 
-      transform: translate3d(-50%,0,0);
+      transform: translateX(-50%);
 
       border: 1px solid rgba(255,255,255,.025);
 
       border-radius: 50%;
 
       pointer-events: none;
-
-      will-change: transform;
     }
 
     .hero-orbit::before {
@@ -619,8 +592,6 @@
 
       perspective: 1400px;
       min-width: 0;
-
-      will-change: transform, opacity;
     }
 
     .dashboard-glow {
@@ -632,7 +603,7 @@
       left: 50%;
       top: 50%;
 
-      transform: translate3d(-50%,-50%,0);
+      transform: translate(-50%,-50%);
 
       border-radius: 50%;
 
@@ -641,8 +612,6 @@
       filter: blur(100px);
 
       max-width: 90vw;
-
-      will-change: transform, opacity;
     }
 
     .dashboard {
@@ -665,9 +634,7 @@
 
       transform-origin: center top;
 
-      will-change: transform, opacity;
-
-      contain: layout paint;
+      will-change: transform;
     }
 
     .browser-bar {
@@ -776,9 +743,7 @@
 
       font-size: 9px;
 
-      transition:
-        background .25s ease,
-        color .25s ease;
+      transition: .25s ease;
     }
 
     .sidebar-item:hover {
@@ -1041,9 +1006,6 @@
       border-radius: 4px 4px 0 0;
 
       background: rgba(255,255,255,.12);
-
-      transform-origin: bottom;
-      will-change: transform;
     }
 
 
@@ -1173,7 +1135,7 @@
 
       filter: blur(35px);
 
-      transition: background .4s ease;
+      transition: .4s ease;
     }
 
     .feature-card:hover {
@@ -1348,7 +1310,7 @@
 
       width: min(290px, calc(100% - 40px));
 
-      transform: translate3d(-50%,-50%,0);
+      transform: translate(-50%,-50%);
 
       padding: 20px;
 
@@ -1362,9 +1324,6 @@
         0 35px 90px rgba(0,0,0,.65);
 
       backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-
-      will-change: transform;
     }
 
     .workflow-header {
@@ -1477,9 +1436,7 @@
 
       font-size: 10px;
 
-      transition:
-        background .25s ease,
-        color .25s ease;
+      transition: .25s ease;
 
       min-width: 0;
     }
@@ -1857,10 +1814,7 @@
 
       font-size: 9px;
 
-      transition:
-        color .3s ease,
-        border-color .3s ease,
-        transform .3s ease;
+      transition: .3s ease;
     }
 
     .instagram-link:hover {
@@ -2767,25 +2721,17 @@
       position: fixed;
       inset: 0;
       z-index: 2000;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       padding: 24px;
-
       background: rgba(0,0,0,.78);
-
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-
-      transition:
-        opacity .35s ease,
-        visibility .35s ease;
+      transition: opacity .35s ease, visibility .35s ease;
     }
 
     .demo-modal.active {
@@ -2796,57 +2742,39 @@
 
     .demo-modal-content {
       position: relative;
-
       width: min(900px, 100%);
       max-width: 100%;
       max-height: calc(100vh - 48px);
 
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 20px;
-
       overflow: hidden;
-
       background: #090909;
-
-      box-shadow:
-        0 50px 140px rgba(0,0,0,.8),
-        0 0 100px rgba(255,255,255,.04);
-
-      transform: translate3d(0,24px,0) scale(.96);
-
-      transition:
-        transform .45s cubic-bezier(.16,1,.3,1);
+      box-shadow: 0 50px 140px rgba(0,0,0,.8), 0 0 100px rgba(255,255,255,.04);
+      transform: translateY(24px) scale(.96);
+      transition: transform .45s cubic-bezier(.16,1,.3,1);
     }
 
     .demo-modal.active .demo-modal-content {
-      transform: translate3d(0,0,0) scale(1);
+      transform: translateY(0) scale(1);
     }
 
     .demo-modal-header {
       min-height: 48px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 12px;
-
       padding: 0 14px 0 17px;
-
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
     .demo-modal-label {
       color: rgba(255,255,255,.35);
-
       font-size: 8px;
-
       letter-spacing: .2em;
-
       text-transform: uppercase;
-
       min-width: 0;
-
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -2856,24 +2784,14 @@
       width: 32px;
       height: 32px;
       flex: 0 0 32px;
-
       display: grid;
       place-items: center;
-
       border: 1px solid rgba(255,255,255,.08);
-
       border-radius: 9px;
-
       background: rgba(255,255,255,.035);
-
       color: rgba(255,255,255,.55);
-
       font-size: 17px;
-
-      transition:
-        color .25s ease,
-        background .25s ease,
-        border-color .25s ease;
+      transition: .25s ease;
     }
 
     .demo-modal-close:hover {
@@ -2884,22 +2802,16 @@
 
     .demo-video-wrap {
       background: #000;
-
       aspect-ratio: 16 / 9;
-
       width: 100%;
-
       max-height: calc(100vh - 100px);
     }
 
     .demo-video {
       width: 100%;
       height: 100%;
-
       display: block;
-
       object-fit: contain;
-
       background: #000;
     }
 
@@ -2939,12 +2851,9 @@
 
     @media(prefers-reduced-motion:reduce) {
 
-      *,
-      *::before,
-      *::after {
+      * {
         animation: none !important;
         transition: none !important;
-        scroll-behavior: auto !important;
       }
 
     }
@@ -2960,11 +2869,13 @@
   ========================================================== -->
 
   <div class="background">
+
     <div class="background-grid"></div>
 
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
     <div class="glow glow-3"></div>
+
   </div>
 
 
@@ -3022,10 +2933,7 @@
       </nav>
 
 
-      <a
-        href="#get-started"
-        class="nav-button magnetic"
-      >
+      <a href="#get-started" class="nav-button magnetic" target="_blank" rel="noopener noreferrer">
         Fix Your Bottleneck
       </a>
 
@@ -3033,9 +2941,6 @@
       <button
         class="mobile-menu-button"
         id="mobileMenuButton"
-        type="button"
-        aria-label="Toggle menu"
-        aria-expanded="false"
       >
         ☰
       </button>
@@ -3057,10 +2962,7 @@
         Custom Systems
       </a>
 
-      <a
-        href="#get-started"
-        class="mobile-cta"
-      >
+      <a href="#get-started" class="mobile-cta" target="_blank" rel="noopener noreferrer">
         Fix Your Bottleneck
       </a>
 
@@ -3121,6 +3023,8 @@
 
           <a
             href="#get-started"
+            target="_blank"
+            rel="noopener noreferrer"
             class="button button-primary magnetic"
           >
             Fix My Business Bottleneck
@@ -3142,7 +3046,9 @@
       </div>
 
 
-      <!-- Dashboard -->
+      <!-- =====================================================
+           DASHBOARD
+      ====================================================== -->
 
       <div class="dashboard-wrapper">
 
@@ -3153,9 +3059,11 @@
           <div class="browser-bar">
 
             <div class="browser-dots">
+
               <span></span>
               <span></span>
               <span></span>
+
             </div>
 
 
@@ -3177,6 +3085,8 @@
 
           <div class="dashboard-body">
 
+
+            <!-- SIDEBAR -->
 
             <aside class="sidebar">
 
@@ -3223,6 +3133,8 @@
             </aside>
 
 
+            <!-- MAIN -->
+
             <div class="dashboard-main">
 
               <div class="dashboard-header">
@@ -3245,6 +3157,8 @@
 
               </div>
 
+
+              <!-- STATS -->
 
               <div class="stats">
 
@@ -3330,7 +3244,10 @@
               </div>
 
 
+              <!-- LOWER -->
+
               <div class="dashboard-grid">
+
 
                 <div class="panel">
 
@@ -3516,6 +3433,8 @@
       </div>
 
 
+      <!-- FEATURES -->
+
       <div class="feature-grid">
 
         <div class="feature-card feature-3d">
@@ -3628,7 +3547,7 @@
 
   <!-- =========================================================
        OWNERSHIP
-  ========================================================== -->
+    ========================================================== -->
 
   <section>
 
@@ -3787,7 +3706,6 @@
           <button
             class="tab-button active"
             data-tab="product"
-            type="button"
           >
             COMPLETE GROWTH SYSTEM
           </button>
@@ -3795,7 +3713,6 @@
           <button
             class="tab-button"
             data-tab="service"
-            type="button"
           >
             SINGLE SERVICE
           </button>
@@ -4051,28 +3968,10 @@
        DEMO MODAL
   ========================================================== -->
 
-  <div
-    class="demo-modal"
-    id="demoModal"
-    aria-hidden="true"
-  >
-
-    <div
-      class="demo-modal-content"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="demoModalLabel"
-    >
-
+  <div class="demo-modal" id="demoModal" aria-hidden="true">
+    <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel">
       <div class="demo-modal-header">
-
-        <span
-          class="demo-modal-label"
-          id="demoModalLabel"
-        >
-          AutFlow / Portfolio Example
-        </span>
-
+        <span class="demo-modal-label" id="demoModalLabel">AutFlow / Portfolio Example</span>
         <button
           type="button"
           class="demo-modal-close"
@@ -4081,33 +3980,21 @@
         >
           ×
         </button>
-
       </div>
 
-
       <div class="demo-video-wrap">
-
         <video
           class="demo-video"
           id="demoVideo"
           controls
           playsinline
-          preload="none"
+          preload="metadata"
         >
-
-          <source
-            src="https://res.cloudinary.com/uer2wc95/video/upload/v1787756566/jejjj_1.mp4"
-            type="video/mp4"
-          >
-
+          <source src="https://res.cloudinary.com/uer2wc95/video/upload/v1787756566/jejjj_1.mp4" type="video/mp4">
           Your browser does not support the video tag.
-
         </video>
-
       </div>
-
     </div>
-
   </div>
 
 
@@ -4141,6 +4028,7 @@
 
         </div>
 
+
       </div>
 
 
@@ -4162,1287 +4050,1111 @@
 
 
   <!-- =========================================================
-       JAVASCRIPT — OPTIMIZED
+       JAVASCRIPT
   ========================================================== -->
 
   <script>
 
-    window.addEventListener("DOMContentLoaded", () => {
+    /* =========================================================
+       GSAP
+    ========================================================== */
 
-      /* =======================================================
-         GSAP SETUP
-      ======================================================== */
-
-      gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 
 
-      /* =======================================================
-         REDUCED MOTION
-      ======================================================== */
+    /* =========================================================
+       LENIS
+    ========================================================== */
 
-      const reducedMotion =
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lenis = new Lenis({
+      duration: 1.15,
+      smoothWheel: true,
+      wheelMultiplier: .85,
+      touchMultiplier: 1.1
+    });
 
 
-      /* =======================================================
-         LENIS
-         
-         IMPORTANT:
-         Lenis is driven ONLY by requestAnimationFrame.
-         It is NOT added to gsap.ticker.
-      ======================================================== */
+    function raf(time) {
 
-      let lenis = null;
+      lenis.raf(time);
 
-      if (!reducedMotion && typeof Lenis !== "undefined") {
+      requestAnimationFrame(raf);
 
-        lenis = new Lenis({
-          duration: 1.05,
-          smoothWheel: true,
-          wheelMultiplier: .85,
-          touchMultiplier: 1.1
-        });
+    }
 
-        lenis.on("scroll", ScrollTrigger.update);
+    requestAnimationFrame(raf);
 
-        const lenisRAF = (time) => {
 
-          lenis.raf(time);
+    /* =========================================================
+       CONNECT LENIS TO GSAP
+    ========================================================== */
 
-          requestAnimationFrame(lenisRAF);
+    lenis.on("scroll", ScrollTrigger.update);
 
-        };
+    gsap.ticker.add((time) => {
 
-        requestAnimationFrame(lenisRAF);
+      lenis.raf(time * 1000);
+
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================== */
+
+    const navbar =
+      document.querySelector(".navbar");
+
+    ScrollTrigger.create({
+
+      start: "top -60",
+
+      onEnter: () => {
+        navbar.classList.add("scrolled");
+      },
+
+      onLeaveBack: () => {
+        navbar.classList.remove("scrolled");
+      }
+
+    });
+
+
+    /* =========================================================
+       HERO INTRO
+    ========================================================== */
+
+    const heroTimeline =
+      gsap.timeline({
+        defaults: {
+          ease: "power4.out"
+        }
+      });
+
+
+    heroTimeline
+      .from(".hero-title .line-inner", {
+
+        yPercent: 110,
+
+        duration: 1.15,
+
+        stagger: .09
+
+      })
+
+      .from(".hero-animate", {
+
+        y: 25,
+
+        opacity: 0,
+
+        duration: .8,
+
+        stagger: .1
+
+      }, "-=.65")
+
+      .from(".dashboard-wrapper", {
+
+        y: 90,
+
+        opacity: 0,
+
+        scale: .94,
+
+        duration: 1.4
+
+      }, "-=.45");
+
+
+    /* =========================================================
+       HERO ORBIT ROTATION
+    ========================================================== */
+
+    gsap.to(".hero-orbit", {
+
+      rotation: 360,
+
+      duration: 80,
+
+      repeat: -1,
+
+      ease: "none"
+
+    });
+
+
+    /* =========================================================
+       HERO PARALLAX
+    ========================================================== */
+
+    gsap.to(".hero-content", {
+
+      y: -120,
+
+      opacity: .35,
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger: ".hero",
+
+        start: "top top",
+
+        end: "bottom top",
+
+        scrub: true
 
       }
 
+    });
 
-      /* =======================================================
-         NAVBAR
-      ======================================================== */
 
-      const navbar =
-        document.querySelector(".navbar");
+    /* =========================================================
+       DASHBOARD SCROLL ANIMATION
+    ========================================================== */
 
-      let navbarScrolled = false;
+    gsap.to(".dashboard", {
 
-      const updateNavbar = () => {
+      y: 110,
 
-        const shouldScroll =
-          window.scrollY > 60;
+      rotateX: 0,
 
-        if (
-          shouldScroll !== navbarScrolled
-        ) {
+      scale: .93,
 
-          navbarScrolled = shouldScroll;
+      opacity: .45,
 
-          navbar.classList.toggle(
-            "scrolled",
-            shouldScroll
-          );
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger: ".dashboard-wrapper",
+
+        start: "top 65%",
+
+        end: "bottom 20%",
+
+        scrub: 1.2
+
+      }
+
+    });
+
+
+    /* =========================================================
+       DASHBOARD GLOW
+    ========================================================== */
+
+    gsap.to(".dashboard-glow", {
+
+      scale: 1.35,
+
+      opacity: .8,
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger: ".dashboard-wrapper",
+
+        start: "top bottom",
+
+        end: "bottom top",
+
+        scrub: true
+
+      }
+
+    });
+
+
+    /* =========================================================
+       BACKGROUND GLOWS
+    ========================================================== */
+
+    gsap.to(".glow-1", {
+
+      y: 500,
+
+      scale: 1.5,
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger: "body",
+
+        start: "top top",
+
+        end: "bottom bottom",
+
+        scrub: 2
+
+      }
+
+    });
+
+
+    gsap.to(".glow-2", {
+
+      y: -300,
+
+      x: 150,
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger: "body",
+
+        start: "top top",
+
+        end: "bottom bottom",
+
+        scrub: 2
+
+      }
+
+    });
+
+
+    gsap.to(".glow-3", {
+
+      y: -400,
+
+      x: -150,
+
+      ease: "none",
+
+      scrollTrigger: {
+
+        trigger: "body",
+
+        start: "top top",
+
+        end: "bottom bottom",
+
+        scrub: 2
+
+      }
+
+    });
+
+
+    /* =========================================================
+       SECTION HEADINGS
+    ========================================================== */
+
+    gsap.utils.toArray(".reveal-left").forEach(element => {
+
+      gsap.from(element, {
+
+        x: -70,
+
+        opacity: 0,
+
+        duration: 1.1,
+
+        ease: "power4.out",
+
+        scrollTrigger: {
+
+          trigger: element,
+
+          start: "top 82%",
+
+          once: true
 
         }
 
-      };
+      });
 
-      window.addEventListener(
-        "scroll",
-        updateNavbar,
-        {
-          passive: true
+    });
+
+
+    gsap.utils.toArray(".reveal-right").forEach(element => {
+
+      gsap.from(element, {
+
+        x: 70,
+
+        opacity: 0,
+
+        duration: 1.1,
+
+        ease: "power4.out",
+
+        scrollTrigger: {
+
+          trigger: element,
+
+          start: "top 82%",
+
+          once: true
+
         }
-      );
+
+      });
+
+    });
 
 
-      /* =======================================================
-         HERO INTRO
-      ======================================================== */
+    /* =========================================================
+       FEATURE CARDS STAGGER
+    ========================================================== */
 
-      const heroTimeline =
-        gsap.timeline({
-          defaults: {
-            ease: "power4.out"
-          }
-        });
+    gsap.from(".feature-card", {
 
+      y: 80,
 
-      heroTimeline
-        .from(
-          ".hero-title .line-inner",
-          {
-            yPercent: 110,
-            duration: 1.05,
-            stagger: .08
-          }
-        )
-        .from(
-          ".hero-animate",
-          {
-            y: 25,
-            opacity: 0,
-            duration: .75,
-            stagger: .08
-          },
-          "-=.55"
-        )
-        .from(
-          ".dashboard-wrapper",
-          {
-            y: 70,
-            opacity: 0,
-            scale: .96,
-            duration: 1.15
-          },
-          "-=.35"
-        );
+      opacity: 0,
 
+      scale: .94,
 
-      /* =======================================================
-         HERO ORBIT
-      ======================================================== */
+      duration: 1,
 
-      if (!reducedMotion) {
+      stagger: .1,
 
-        gsap.to(
-          ".hero-orbit",
-          {
-            rotation: 360,
-            duration: 80,
-            repeat: -1,
-            ease: "none"
-          }
-        );
+      ease: "power4.out",
+
+      scrollTrigger: {
+
+        trigger: ".feature-grid",
+
+        start: "top 78%",
+
+        once: true
 
       }
 
+    });
 
-      /* =======================================================
-         HERO PARALLAX
-      ======================================================== */
 
-      if (!reducedMotion) {
+    /* =========================================================
+       FEATURE 3D TILT
+    ========================================================== */
 
-        gsap.to(
-          ".hero-content",
-          {
-            y: -120,
-            opacity: .35,
-            ease: "none",
+    document
+      .querySelectorAll(".feature-3d")
+      .forEach(card => {
 
-            scrollTrigger: {
-              trigger: ".hero",
-              start: "top top",
-              end: "bottom top",
-              scrub: 1
-            }
+        card.addEventListener("mousemove", event => {
+
+          if (window.innerWidth < 900) {
+            return;
           }
-        );
 
-      }
+          const rect =
+            card.getBoundingClientRect();
 
+          const x =
+            event.clientX - rect.left;
 
-      /* =======================================================
-         DASHBOARD SCROLL
-      ======================================================== */
+          const y =
+            event.clientY - rect.top;
 
-      if (!reducedMotion) {
+          const centerX =
+            rect.width / 2;
 
-        gsap.to(
-          ".dashboard",
-          {
-            y: 110,
-            scale: .93,
-            opacity: .45,
-            ease: "none",
+          const centerY =
+            rect.height / 2;
 
-            scrollTrigger: {
-              trigger: ".dashboard-wrapper",
-              start: "top 65%",
-              end: "bottom 20%",
-              scrub: 1
-            }
-          }
-        );
+          const rotateX =
+            (y - centerY) / 20;
 
+          const rotateY =
+            (centerX - x) / 20;
 
-        gsap.to(
-          ".dashboard-glow",
-          {
-            scale: 1.35,
-            opacity: .8,
-            ease: "none",
+          gsap.to(card, {
 
-            scrollTrigger: {
-              trigger: ".dashboard-wrapper",
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1
-            }
-          }
-        );
+            rotateX: rotateX,
 
-      }
+            rotateY: rotateY,
 
+            scale: 1.025,
 
-      /* =======================================================
-         BACKGROUND GLOWS
-      ======================================================== */
+            duration: .4,
 
-      if (!reducedMotion) {
+            ease: "power2.out",
 
-        gsap.to(
-          ".glow-1",
-          {
-            y: 500,
-            scale: 1.5,
-            ease: "none",
-
-            scrollTrigger: {
-              trigger: "body",
-              start: "top top",
-              end: "bottom bottom",
-              scrub: 2
-            }
-          }
-        );
-
-
-        gsap.to(
-          ".glow-2",
-          {
-            y: -300,
-            x: 150,
-            ease: "none",
-
-            scrollTrigger: {
-              trigger: "body",
-              start: "top top",
-              end: "bottom bottom",
-              scrub: 2
-            }
-          }
-        );
-
-
-        gsap.to(
-          ".glow-3",
-          {
-            y: -400,
-            x: -150,
-            ease: "none",
-
-            scrollTrigger: {
-              trigger: "body",
-              start: "top top",
-              end: "bottom bottom",
-              scrub: 2
-            }
-          }
-        );
-
-      }
-
-
-      /* =======================================================
-         REVEAL LEFT
-      ======================================================== */
-
-      gsap.utils
-        .toArray(".reveal-left")
-        .forEach(element => {
-
-          gsap.from(
-            element,
-            {
-              x: reducedMotion ? 0 : -70,
-              opacity: reducedMotion ? 1 : 0,
-              duration: .9,
-              ease: "power4.out",
-
-              scrollTrigger: {
-                trigger: element,
-                start: "top 82%",
-                once: true
-              }
-            }
-          );
-
-        });
-
-
-      /* =======================================================
-         REVEAL RIGHT
-      ======================================================== */
-
-      gsap.utils
-        .toArray(".reveal-right")
-        .forEach(element => {
-
-          gsap.from(
-            element,
-            {
-              x: reducedMotion ? 0 : 70,
-              opacity: reducedMotion ? 1 : 0,
-              duration: .9,
-              ease: "power4.out",
-
-              scrollTrigger: {
-                trigger: element,
-                start: "top 82%",
-                once: true
-              }
-            }
-          );
-
-        });
-
-
-      /* =======================================================
-         FEATURE CARDS
-      ======================================================== */
-
-      gsap.from(
-        ".feature-card",
-        {
-          y: reducedMotion ? 0 : 60,
-          opacity: reducedMotion ? 1 : 0,
-          scale: reducedMotion ? 1 : .96,
-          duration: .85,
-          stagger: .08,
-          ease: "power4.out",
-
-          scrollTrigger: {
-            trigger: ".feature-grid",
-            start: "top 78%",
-            once: true
-          }
-        }
-      );
-
-
-      /* =======================================================
-         FEATURE 3D TILT
-         
-         Uses requestAnimationFrame instead of firing
-         gsap.to() on every mousemove.
-      ======================================================== */
-
-      if (
-        !reducedMotion &&
-        window.matchMedia("(pointer:fine)").matches
-      ) {
-
-        document
-          .querySelectorAll(".feature-3d")
-          .forEach(card => {
-
-            let targetX = 0;
-            let targetY = 0;
-
-            let currentX = 0;
-            let currentY = 0;
-
-            let hovering = false;
-            let animationFrame = null;
-
-            const updateTilt = () => {
-
-              currentX +=
-                (targetX - currentX) * .16;
-
-              currentY +=
-                (targetY - currentY) * .16;
-
-              card.style.transform =
-                `perspective(900px) rotateX(${currentY}deg) rotateY(${currentX}deg) scale(${hovering ? 1.025 : 1})`;
-
-              if (
-                hovering ||
-                Math.abs(currentX) > .01 ||
-                Math.abs(currentY) > .01
-              ) {
-
-                animationFrame =
-                  requestAnimationFrame(updateTilt);
-
-              } else {
-
-                animationFrame = null;
-
-              }
-
-            };
-
-
-            card.addEventListener(
-              "mouseenter",
-              () => {
-
-                hovering = true;
-
-                if (!animationFrame) {
-                  animationFrame =
-                    requestAnimationFrame(updateTilt);
-                }
-
-              },
-              {
-                passive: true
-              }
-            );
-
-
-            card.addEventListener(
-              "mousemove",
-              event => {
-
-                const rect =
-                  card.getBoundingClientRect();
-
-                const x =
-                  event.clientX - rect.left;
-
-                const y =
-                  event.clientY - rect.top;
-
-                const centerX =
-                  rect.width / 2;
-
-                const centerY =
-                  rect.height / 2;
-
-                targetY =
-                  (y - centerY) / 20;
-
-                targetX =
-                  (centerX - x) / 20;
-
-              },
-              {
-                passive: true
-              }
-            );
-
-
-            card.addEventListener(
-              "mouseleave",
-              () => {
-
-                hovering = false;
-
-                targetX = 0;
-                targetY = 0;
-
-                if (!animationFrame) {
-                  animationFrame =
-                    requestAnimationFrame(updateTilt);
-                }
-
-              }
-            );
+            overwrite: true
 
           });
 
-      }
+        });
 
 
-      /* =======================================================
-         OWNERSHIP
-      ======================================================== */
+        card.addEventListener("mouseleave", () => {
 
-      gsap.from(
-        ".ownership-content",
-        {
-          x: reducedMotion ? 0 : -70,
-          opacity: reducedMotion ? 1 : 0,
-          duration: .95,
-          ease: "power4.out",
+          gsap.to(card, {
 
-          scrollTrigger: {
-            trigger: ".ownership-card",
-            start: "top 78%",
-            once: true
-          }
-        }
-      );
+            rotateX: 0,
 
+            rotateY: 0,
 
-      gsap.from(
-        ".workflow-box",
-        {
-          x: reducedMotion ? 0 : 80,
-          opacity: reducedMotion ? 1 : 0,
-          scale: reducedMotion ? 1 : .86,
-          duration: .95,
-          ease: "power4.out",
+            scale: 1,
 
-          scrollTrigger: {
-            trigger: ".ownership-card",
-            start: "top 78%",
-            once: true
-          }
-        }
-      );
+            duration: .7,
+
+            ease: "elastic.out(1,.5)"
+
+          });
+
+        });
+
+      });
 
 
-      /* =======================================================
-         WORKFLOW FLOAT
-      ======================================================== */
+    /* =========================================================
+       OWNERSHIP SECTION
+    ========================================================== */
 
-      if (!reducedMotion) {
+    gsap.from(".ownership-content", {
 
-        gsap.to(
-          ".workflow-float",
-          {
-            y: -20,
-            duration: 2.7,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-          }
-        );
+      x: -80,
+
+      opacity: 0,
+
+      duration: 1.2,
+
+      ease: "power4.out",
+
+      scrollTrigger: {
+
+        trigger: ".ownership-card",
+
+        start: "top 78%",
+
+        once: true
 
       }
 
+    });
 
-      /* =======================================================
-         CENTER REVEALS
-      ======================================================== */
 
-      gsap.utils
-        .toArray(".reveal-scale")
-        .forEach(element => {
+    gsap.from(".workflow-box", {
 
-          gsap.from(
-            element,
-            {
-              y: reducedMotion ? 0 : 50,
-              opacity: reducedMotion ? 1 : 0,
-              scale: reducedMotion ? 1 : .97,
-              duration: .95,
-              ease: "power4.out",
+      x: 100,
 
-              scrollTrigger: {
-                trigger: element,
-                start: "top 80%",
-                once: true
-              }
-            }
-          );
+      opacity: 0,
+
+      scale: .8,
+
+      duration: 1.2,
+
+      ease: "power4.out",
+
+      scrollTrigger: {
+
+        trigger: ".ownership-card",
+
+        start: "top 78%",
+
+        once: true
+
+      }
+
+    });
+
+
+    /* =========================================================
+       WORKFLOW FLOAT
+    ========================================================== */
+
+    gsap.to(".workflow-float", {
+
+      y: -20,
+
+      duration: 2.7,
+
+      repeat: -1,
+
+      yoyo: true,
+
+      ease: "sine.inOut"
+
+    });
+
+
+    /* =========================================================
+       CENTER HEADINGS
+    ========================================================== */
+
+    gsap.utils
+      .toArray(".reveal-scale")
+      .forEach(element => {
+
+        gsap.from(element, {
+
+          y: 60,
+
+          opacity: 0,
+
+          scale: .96,
+
+          duration: 1.1,
+
+          ease: "power4.out",
+
+          scrollTrigger: {
+
+            trigger: element,
+
+            start: "top 80%",
+
+            once: true
+
+          }
+
+        });
+
+      });
+
+
+    /* =========================================================
+       PROCESS ITEMS
+    ========================================================== */
+
+    gsap.from(".process-item", {
+
+      x: 60,
+
+      opacity: 0,
+
+      stagger: .1,
+
+      duration: .8,
+
+      ease: "power3.out",
+
+      scrollTrigger: {
+
+        trigger: ".process-box",
+
+        start: "top 80%",
+
+        once: true
+
+      }
+
+    });
+
+
+    /* =========================================================
+       CUSTOM SECTION
+    ========================================================== */
+
+    gsap.from(".custom-copy", {
+
+      x: -70,
+
+      opacity: 0,
+
+      duration: 1,
+
+      ease: "power4.out",
+
+      scrollTrigger: {
+
+        trigger: ".custom-card",
+
+        start: "top 80%",
+
+        once: true
+
+      }
+
+    });
+
+
+    gsap.from(".process-box", {
+
+      x: 70,
+
+      opacity: 0,
+
+      duration: 1,
+
+      ease: "power4.out",
+
+      scrollTrigger: {
+
+        trigger: ".custom-card",
+
+        start: "top 80%",
+
+        once: true
+
+      }
+
+    });
+
+
+    /* =========================================================
+       COUNTERS
+    ========================================================== */
+
+    document
+      .querySelectorAll(".counter")
+      .forEach(counter => {
+
+        const target =
+          Number(counter.dataset.value);
+
+        const isMoney =
+          target > 1000;
+
+        const object = {
+          value: 0
+        };
+
+        gsap.to(object, {
+
+          value: target,
+
+          duration: 1.8,
+
+          ease: "power2.out",
+
+          scrollTrigger: {
+
+            trigger: counter,
+
+            start: "top 85%",
+
+            once: true
+
+          },
+
+          onUpdate: () => {
+
+            const value =
+              Math.floor(object.value);
+
+            counter.textContent =
+              isMoney
+                ? "$" + value.toLocaleString()
+                : value.toLocaleString();
+
+          }
+
+        });
+
+      });
+
+
+    /* =========================================================
+       GROWTH BARS
+    ========================================================== */
+
+    gsap.from(".bar", {
+
+      scaleY: 0,
+
+      transformOrigin: "bottom",
+
+      stagger: .05,
+
+      duration: 1.2,
+
+      ease: "power4.out",
+
+      scrollTrigger: {
+
+        trigger: ".chart",
+
+        start: "top 85%",
+
+        once: true
+
+      }
+
+    });
+
+
+    /* =========================================================
+       TABS
+    ========================================================== */
+
+    const tabButtons =
+      document.querySelectorAll(".tab-button");
+
+    const tabPanels =
+      document.querySelectorAll(".tab-panel");
+
+
+    tabButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const selected =
+          button.dataset.tab;
+
+
+        tabButtons.forEach(btn => {
+
+          btn.classList.remove("active");
 
         });
 
 
-      /* =======================================================
-         PROCESS ITEMS
-      ======================================================== */
+        tabPanels.forEach(panel => {
 
-      gsap.from(
-        ".process-item",
-        {
-          x: reducedMotion ? 0 : 50,
-          opacity: reducedMotion ? 1 : 0,
-          stagger: .08,
-          duration: .7,
-          ease: "power3.out",
+          panel.classList.remove("active");
 
-          scrollTrigger: {
-            trigger: ".process-box",
-            start: "top 80%",
-            once: true
+        });
+
+
+        button.classList.add("active");
+
+
+        const target =
+          document.getElementById(
+            "tab-" + selected
+          );
+
+
+        target.classList.add("active");
+
+
+        gsap.from(target, {
+
+          y: 15,
+
+          opacity: 0,
+
+          duration: .5,
+
+          ease: "power3.out"
+
+        });
+
+      });
+
+    });
+
+
+    /* =========================================================
+       MAGNETIC BUTTONS
+    ========================================================== */
+
+    document
+      .querySelectorAll(".magnetic")
+      .forEach(button => {
+
+        button.addEventListener("mousemove", event => {
+
+          if (window.innerWidth < 900) {
+            return;
           }
-        }
+
+          const rect =
+            button.getBoundingClientRect();
+
+          const x =
+            event.clientX - rect.left;
+
+          const y =
+            event.clientY - rect.top;
+
+          const moveX =
+            (x - rect.width / 2) * .13;
+
+          const moveY =
+            (y - rect.height / 2) * .13;
+
+          gsap.to(button, {
+
+            x: moveX,
+
+            y: moveY,
+
+            duration: .35,
+
+            ease: "power3.out"
+
+          });
+
+        });
+
+
+        button.addEventListener("mouseleave", () => {
+
+          gsap.to(button, {
+
+            x: 0,
+
+            y: 0,
+
+            duration: .7,
+
+            ease: "elastic.out(1,.4)"
+
+          });
+
+        });
+
+      });
+
+
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================== */
+
+    const cursor =
+      document.querySelector(".cursor");
+
+    const cursorRing =
+      document.querySelector(".cursor-ring");
+
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let ringX = 0;
+    let ringY = 0;
+
+
+    window.addEventListener("mousemove", event => {
+
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+
+      gsap.to(cursor, {
+
+        x: mouseX,
+
+        y: mouseY,
+
+        duration: .08,
+
+        overwrite: true
+
+      });
+
+    });
+
+
+    gsap.ticker.add(() => {
+
+      ringX +=
+        (mouseX - ringX) * .12;
+
+      ringY +=
+        (mouseY - ringY) * .12;
+
+      cursorRing.style.left =
+        ringX + "px";
+
+      cursorRing.style.top =
+        ringY + "px";
+
+    });
+
+
+    /* =========================================================
+       CURSOR HOVER
+    ========================================================== */
+
+    document
+      .querySelectorAll("a, button, .feature-card")
+      .forEach(element => {
+
+        element.addEventListener("mouseenter", () => {
+
+          gsap.to(cursorRing, {
+
+            scale: 1.6,
+
+            borderColor:
+              "rgba(255,255,255,.7)",
+
+            duration: .25
+
+          });
+
+        });
+
+
+        element.addEventListener("mouseleave", () => {
+
+          gsap.to(cursorRing, {
+
+            scale: 1,
+
+            borderColor:
+              "rgba(255,255,255,.4)",
+
+            duration: .25
+
+          });
+
+        });
+
+      });
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================== */
+
+    const menuButton =
+      document.getElementById(
+        "mobileMenuButton"
+      );
+
+    const mobileMenu =
+      document.getElementById(
+        "mobileMenu"
       );
 
 
-      /* =======================================================
-         CUSTOM SECTION
-      ======================================================== */
+    menuButton.addEventListener("click", () => {
 
-      gsap.from(
-        ".custom-copy",
-        {
-          x: reducedMotion ? 0 : -60,
-          opacity: reducedMotion ? 1 : 0,
-          duration: .9,
-          ease: "power4.out",
+      mobileMenu.classList.toggle("active");
 
-          scrollTrigger: {
-            trigger: ".custom-card",
-            start: "top 80%",
-            once: true
-          }
-        }
+      document.body.classList.toggle(
+        "menu-open"
       );
 
 
-      gsap.from(
-        ".process-box",
-        {
-          x: reducedMotion ? 0 : 60,
-          opacity: reducedMotion ? 1 : 0,
-          duration: .9,
-          ease: "power4.out",
+      menuButton.textContent =
+        mobileMenu.classList.contains("active")
+          ? "×"
+          : "☰";
 
-          scrollTrigger: {
-            trigger: ".custom-card",
-            start: "top 80%",
-            once: true
+    });
+
+
+    document
+      .querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          mobileMenu.classList.remove("active");
+
+          document.body.classList.remove(
+            "menu-open"
+          );
+
+          menuButton.textContent = "☰";
+
+        });
+
+      });
+
+
+    /* =========================================================
+       SMOOTH ANCHOR SCROLL
+    ========================================================== */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach(anchor => {
+
+        anchor.addEventListener("click", event => {
+
+          const targetId =
+            anchor.getAttribute("href");
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
           }
-        }
-      );
-
-
-      /* =======================================================
-         COUNTERS
-      ======================================================== */
-
-      document
-        .querySelectorAll(".counter")
-        .forEach(counter => {
 
           const target =
-            Number(counter.dataset.value);
+            document.querySelector(targetId);
 
-          const isMoney =
-            target > 1000;
+          if (!target) {
+            return;
+          }
 
-          const object = {
-            value: 0
-          };
+          event.preventDefault();
 
+          lenis.scrollTo(target, {
 
-          gsap.to(
-            object,
-            {
-              value: target,
-              duration: 1.5,
-              ease: "power2.out",
+            offset: -80,
 
-              scrollTrigger: {
-                trigger: counter,
-                start: "top 85%",
-                once: true
-              },
+            duration: 1.3
 
-              onUpdate: () => {
-
-                const value =
-                  Math.floor(object.value);
-
-                const formatted =
-                  value.toLocaleString();
-
-                counter.textContent =
-                  isMoney
-                    ? "$" + formatted
-                    : formatted;
-
-              }
-            }
-          );
+          });
 
         });
-
-
-      /* =======================================================
-         GROWTH BARS
-      ======================================================== */
-
-      gsap.from(
-        ".bar",
-        {
-          scaleY: reducedMotion ? 1 : 0,
-          transformOrigin: "bottom",
-          stagger: .04,
-          duration: 1,
-          ease: "power4.out",
-
-          scrollTrigger: {
-            trigger: ".chart",
-            start: "top 85%",
-            once: true
-          }
-        }
-      );
-
-
-      /* =======================================================
-         TABS
-      ======================================================== */
-
-      const tabButtons =
-        document.querySelectorAll(".tab-button");
-
-      const tabPanels =
-        document.querySelectorAll(".tab-panel");
-
-
-      tabButtons.forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            const selected =
-              button.dataset.tab;
-
-
-            tabButtons.forEach(btn => {
-
-              btn.classList.toggle(
-                "active",
-                btn === button
-              );
-
-            });
-
-
-            tabPanels.forEach(panel => {
-
-              panel.classList.toggle(
-                "active",
-                panel.id === "tab-" + selected
-              );
-
-            });
-
-
-            const target =
-              document.getElementById(
-                "tab-" + selected
-              );
-
-
-            if (!reducedMotion) {
-
-              gsap.fromTo(
-                target,
-                {
-                  y: 12,
-                  opacity: 0
-                },
-                {
-                  y: 0,
-                  opacity: 1,
-                  duration: .4,
-                  ease: "power3.out"
-                }
-              );
-
-            }
-
-          }
-        );
 
       });
 
 
-      /* =======================================================
-         MAGNETIC BUTTONS
-         
-         Optimized using requestAnimationFrame.
-      ======================================================== */
+    /* =========================================================
+       DEMO MODAL
+    ========================================================== */
 
-      if (
-        !reducedMotion &&
-        window.matchMedia("(pointer:fine)").matches
-      ) {
+    const demoButton =
+      document.getElementById("demoButton");
 
-        document
-          .querySelectorAll(".magnetic")
-          .forEach(button => {
+    const demoModal =
+      document.getElementById("demoModal");
 
-            let targetX = 0;
-            let targetY = 0;
+    const demoModalClose =
+      document.getElementById("demoModalClose");
 
-            let currentX = 0;
-            let currentY = 0;
+    const demoVideo =
+      document.getElementById("demoVideo");
 
-            let hovering = false;
-            let rafId = null;
+    function openDemo() {
+      demoModal.classList.add("active");
+      demoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
 
+      demoVideo.currentTime = 0;
+      demoVideo.load();
+      demoVideo.play().catch(() => {});
+    }
 
-            const animate = () => {
+    function closeDemo() {
+      demoModal.classList.remove("active");
+      demoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+      demoVideo.pause();
+    }
 
-              currentX +=
-                (targetX - currentX) * .18;
+    demoButton.addEventListener("click", openDemo);
+    demoModalClose.addEventListener("click", closeDemo);
 
-              currentY +=
-                (targetY - currentY) * .18;
-
-              button.style.transform =
-                `translate3d(${currentX}px,${currentY}px,0)`;
-
-              if (
-                hovering ||
-                Math.abs(currentX) > .05 ||
-                Math.abs(currentY) > .05
-              ) {
-
-                rafId =
-                  requestAnimationFrame(animate);
-
-              } else {
-
-                button.style.transform =
-                  "translate3d(0,0,0)";
-
-                rafId = null;
-
-              }
-
-            };
-
-
-            button.addEventListener(
-              "mouseenter",
-              () => {
-
-                hovering = true;
-
-                if (!rafId) {
-                  rafId =
-                    requestAnimationFrame(animate);
-                }
-
-              }
-            );
-
-
-            button.addEventListener(
-              "mousemove",
-              event => {
-
-                const rect =
-                  button.getBoundingClientRect();
-
-                targetX =
-                  (event.clientX - rect.left - rect.width / 2) * .13;
-
-                targetY =
-                  (event.clientY - rect.top - rect.height / 2) * .13;
-
-              },
-              {
-                passive: true
-              }
-            );
-
-
-            button.addEventListener(
-              "mouseleave",
-              () => {
-
-                hovering = false;
-
-                targetX = 0;
-                targetY = 0;
-
-                if (!rafId) {
-                  rafId =
-                    requestAnimationFrame(animate);
-                }
-
-              }
-            );
-
-          });
-
+    demoModal.addEventListener("click", event => {
+      if (event.target === demoModal) {
+        closeDemo();
       }
+    });
 
-
-      /* =======================================================
-         CUSTOM CURSOR
-         
-         No GSAP tween on every mousemove.
-      ======================================================== */
-
-      const cursor =
-        document.querySelector(".cursor");
-
-      const cursorRing =
-        document.querySelector(".cursor-ring");
-
-
-      if (
-        cursor &&
-        cursorRing &&
-        !reducedMotion &&
-        window.matchMedia("(pointer:fine)").matches
-      ) {
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        let cursorX = 0;
-        let cursorY = 0;
-
-        let ringX = 0;
-        let ringY = 0;
-
-
-        window.addEventListener(
-          "mousemove",
-          event => {
-
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-
-          },
-          {
-            passive: true
-          }
-        );
-
-
-        const cursorLoop = () => {
-
-          cursorX +=
-            (mouseX - cursorX) * .35;
-
-          cursorY +=
-            (mouseY - cursorY) * .35;
-
-          ringX +=
-            (mouseX - ringX) * .12;
-
-          ringY +=
-            (mouseY - ringY) * .12;
-
-
-          cursor.style.left =
-            cursorX + "px";
-
-          cursor.style.top =
-            cursorY + "px";
-
-
-          cursorRing.style.left =
-            ringX + "px";
-
-          cursorRing.style.top =
-            ringY + "px";
-
-
-          requestAnimationFrame(cursorLoop);
-
-        };
-
-
-        requestAnimationFrame(cursorLoop);
-
-
-        document
-          .querySelectorAll(
-            "a, button, .feature-card"
-          )
-          .forEach(element => {
-
-            element.addEventListener(
-              "mouseenter",
-              () => {
-
-                cursorRing.classList.add(
-                  "hovering"
-                );
-
-              }
-            );
-
-
-            element.addEventListener(
-              "mouseleave",
-              () => {
-
-                cursorRing.classList.remove(
-                  "hovering"
-                );
-
-              }
-            );
-
-          });
-
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && demoModal.classList.contains("active")) {
+        closeDemo();
       }
+    });
 
 
-      /* =======================================================
-         MOBILE MENU
-      ======================================================== */
+    /* =========================================================
+       YEAR
+    ========================================================== */
 
-      const menuButton =
-        document.getElementById(
-          "mobileMenuButton"
-        );
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-      const mobileMenu =
-        document.getElementById(
-          "mobileMenu"
-        );
 
+    /* =========================================================
+       REFRESH SCROLLTRIGGER
+    ========================================================== */
 
-      menuButton.addEventListener(
-        "click",
-        () => {
+    window.addEventListener("load", () => {
 
-          const active =
-            mobileMenu.classList.toggle(
-              "active"
-            );
-
-          document.body.classList.toggle(
-            "menu-open",
-            active
-          );
-
-          menuButton.textContent =
-            active
-              ? "×"
-              : "☰";
-
-          menuButton.setAttribute(
-            "aria-expanded",
-            String(active)
-          );
-
-        }
-      );
-
-
-      document
-        .querySelectorAll(".mobile-menu a")
-        .forEach(link => {
-
-          link.addEventListener(
-            "click",
-            () => {
-
-              mobileMenu.classList.remove(
-                "active"
-              );
-
-              document.body.classList.remove(
-                "menu-open"
-              );
-
-              menuButton.textContent =
-                "☰";
-
-              menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-              );
-
-            }
-          );
-
-        });
-
-
-      /* =======================================================
-         SMOOTH ANCHOR SCROLL
-      ======================================================== */
-
-      document
-        .querySelectorAll('a[href^="#"]')
-        .forEach(anchor => {
-
-          anchor.addEventListener(
-            "click",
-            event => {
-
-              const targetId =
-                anchor.getAttribute("href");
-
-              if (
-                !targetId ||
-                targetId === "#"
-              ) {
-                return;
-              }
-
-
-              const target =
-                document.querySelector(
-                  targetId
-                );
-
-
-              if (!target) {
-                return;
-              }
-
-
-              event.preventDefault();
-
-
-              if (lenis) {
-
-                lenis.scrollTo(
-                  target,
-                  {
-                    offset: -80,
-                    duration: 1.15
-                  }
-                );
-
-              } else {
-
-                target.scrollIntoView({
-                  behavior:
-                    reducedMotion
-                      ? "auto"
-                      : "smooth"
-                });
-
-              }
-
-            }
-          );
-
-        });
-
-
-      /* =======================================================
-         DEMO MODAL
-      ======================================================== */
-
-      const demoButton =
-        document.getElementById(
-          "demoButton"
-        );
-
-      const demoModal =
-        document.getElementById(
-          "demoModal"
-        );
-
-      const demoModalClose =
-        document.getElementById(
-          "demoModalClose"
-        );
-
-      const demoVideo =
-        document.getElementById(
-          "demoVideo"
-        );
-
-
-      function openDemo() {
-
-        demoModal.classList.add(
-          "active"
-        );
-
-        demoModal.setAttribute(
-          "aria-hidden",
-          "false"
-        );
-
-        document.body.classList.add(
-          "menu-open"
-        );
-
-
-        demoVideo.currentTime = 0;
-
-        demoVideo.load();
-
-        demoVideo.play().catch(
-          () => {}
-        );
-
-      }
-
-
-      function closeDemo() {
-
-        demoModal.classList.remove(
-          "active"
-        );
-
-        demoModal.setAttribute(
-          "aria-hidden",
-          "true"
-        );
-
-        document.body.classList.remove(
-          "menu-open"
-        );
-
-        demoVideo.pause();
-
-      }
-
-
-      demoButton.addEventListener(
-        "click",
-        openDemo
-      );
-
-      demoModalClose.addEventListener(
-        "click",
-        closeDemo
-      );
-
-
-      demoModal.addEventListener(
-        "click",
-        event => {
-
-          if (
-            event.target === demoModal
-          ) {
-
-            closeDemo();
-
-          }
-
-        }
-      );
-
-
-      document.addEventListener(
-        "keydown",
-        event => {
-
-          if (
-            event.key === "Escape" &&
-            demoModal.classList.contains(
-              "active"
-            )
-          ) {
-
-            closeDemo();
-
-          }
-
-        }
-      );
-
-
-      /* =======================================================
-         YEAR
-      ======================================================== */
-
-      document.getElementById(
-        "year"
-      ).textContent =
-        new Date().getFullYear();
-
-
-      /* =======================================================
-         INITIAL REFRESH
-      ======================================================== */
-
-      requestAnimationFrame(() => {
-
-        ScrollTrigger.refresh();
-
-      });
+      ScrollTrigger.refresh();
 
     });
 
@@ -5450,3 +5162,4 @@
 
 </body>
 </html>
+```

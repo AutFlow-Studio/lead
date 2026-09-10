@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +32,6 @@
   ========================================================== -->
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
   <!-- =========================================================
@@ -95,7 +95,6 @@
       color: #000;
     }
 
-
     /* =========================================================
        GLOBAL
     ========================================================== */
@@ -121,7 +120,6 @@
     .section-padding {
       padding: 140px 0;
     }
-
 
     /* =========================================================
        CUSTOM CURSOR
@@ -149,7 +147,6 @@
       z-index: 9998;
       transform: translate(-50%, -50%);
     }
-
 
     /* =========================================================
        BACKGROUND
@@ -220,7 +217,6 @@
       right: -200px;
       background: rgba(255,255,255,.025);
     }
-
 
     /* =========================================================
        NAVBAR
@@ -375,7 +371,6 @@
       display: none;
     }
 
-
     /* =========================================================
        HERO
     ========================================================== */
@@ -524,7 +519,6 @@
       color: #fff;
     }
 
-
     /* =========================================================
        HERO ORBIT
     ========================================================== */
@@ -575,7 +569,6 @@
       left: 50%;
       top: 0;
     }
-
 
     /* =========================================================
        DASHBOARD
@@ -1007,7 +1000,6 @@
       background: rgba(255,255,255,.12);
     }
 
-
     /* =========================================================
        SECTION HEADINGS
     ========================================================== */
@@ -1076,7 +1068,6 @@
 
       line-height: 1.9;
     }
-
 
     /* =========================================================
        FEATURES
@@ -1182,7 +1173,6 @@
 
       line-height: 1.8;
     }
-
 
     /* =========================================================
        OWNERSHIP
@@ -1384,7 +1374,6 @@
       background: #fff;
     }
 
-
     /* =========================================================
        TABS
     ========================================================== */
@@ -1538,9 +1527,8 @@
       max-width: 100%;
     }
 
-
     /* =========================================================
-       CLIENT MANAGEMENT
+       CUSTOM SOFTWARE OPTIONS
     ========================================================== */
 
     .custom-card {
@@ -1608,67 +1596,208 @@
       line-height: 1.9;
     }
 
-    .process-box {
-      padding: 17px;
+    .custom-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+
+      min-width: 0;
+    }
+
+    .custom-option {
+      position: relative;
+
+      padding: 22px;
 
       border: 1px solid rgba(255,255,255,.08);
 
       border-radius: 17px;
 
-      background: rgba(255,255,255,.02);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+
+      overflow: hidden;
+
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
 
       min-width: 0;
     }
 
-    .process-header {
+    .custom-option::before {
+      content: "";
+
+      position: absolute;
+
+      width: 170px;
+      height: 170px;
+
+      top: -100px;
+      right: -80px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.035);
+
+      filter: blur(35px);
+
+      transition: .4s ease;
+    }
+
+    .custom-option:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(255,255,255,.18);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.018)
+        );
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .custom-option:hover::before {
+      background: rgba(255,255,255,.075);
+    }
+
+    .custom-option-top {
+      position: relative;
+
       display: flex;
+      align-items: flex-start;
       justify-content: space-between;
 
-      gap: 12px;
-
-      margin-bottom: 15px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 8px;
-    }
-
-    .process-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 6px;
-    }
-
-    .process-item {
-      display: flex;
-      align-items: center;
-
-      gap: 12px;
-
-      padding: 12px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      border-radius: 9px;
-
-      background: rgba(0,0,0,.3);
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 8px;
+      gap: 15px;
 
       min-width: 0;
     }
 
-    .process-number {
-      color: rgba(255,255,255,.18);
+    .custom-option-number {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 10px;
+
+      background: rgba(255,255,255,.045);
+
+      color: rgba(255,255,255,.65);
 
       font-family: "DM Mono";
 
-      flex: 0 0 auto;
+      font-size: 8px;
     }
 
+    .custom-option-label {
+      color: rgba(255,255,255,.22);
+
+      font-size: 7px;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      text-align: right;
+
+      line-height: 1.5;
+    }
+
+    .custom-option h3 {
+      position: relative;
+
+      margin-top: 18px;
+
+      font-family: "Space Grotesk";
+
+      font-size: 19px;
+
+      line-height: 1.15;
+
+      letter-spacing: -.035em;
+
+      font-weight: 500;
+
+      max-width: 410px;
+    }
+
+    .custom-option p {
+      position: relative;
+
+      margin-top: 10px;
+
+      color: rgba(255,255,255,.32);
+
+      font-size: 9px;
+
+      line-height: 1.8;
+
+      max-width: 450px;
+    }
+
+    .custom-option-features {
+      position: relative;
+
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 6px;
+
+      margin-top: 16px;
+    }
+
+    .custom-option-feature {
+      padding: 5px 8px;
+
+      border: 1px solid rgba(255,255,255,.07);
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.018);
+
+      color: rgba(255,255,255,.34);
+
+      font-size: 6px;
+
+      letter-spacing: .03em;
+    }
+
+    .custom-option-arrow {
+      position: relative;
+
+      display: flex;
+      justify-content: flex-end;
+
+      margin-top: 17px;
+
+      color: rgba(255,255,255,.28);
+
+      font-size: 15px;
+
+      transition:
+        color .3s ease,
+        transform .3s ease;
+    }
+
+    .custom-option:hover .custom-option-arrow {
+      color: #fff;
+      transform: translateX(4px);
+    }
 
     /* =========================================================
        FINAL CTA
@@ -1730,7 +1859,6 @@
 
       max-width: 100%;
     }
-
 
     /* =========================================================
        FOOTER
@@ -1796,34 +1924,6 @@
       overflow-wrap: break-word;
     }
 
-    .instagram-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 12px 17px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.02);
-
-      color: rgba(255,255,255,.45);
-
-      font-size: 9px;
-
-      transition: .3s ease;
-    }
-
-    .instagram-link:hover {
-      color: #fff;
-
-      border-color: rgba(255,255,255,.18);
-
-      transform: translateY(-2px);
-    }
-
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -1845,7 +1945,6 @@
       min-width: 0;
       overflow-wrap: break-word;
     }
-
 
     /* =========================================================
        RESPONSIVE — TABLET
@@ -1901,7 +2000,6 @@
         padding: 14px;
       }
     }
-
 
     /* =========================================================
        RESPONSIVE — TABLET / MOBILE NAV
@@ -2007,7 +2105,6 @@
       }
     }
 
-
     /* =========================================================
        RESPONSIVE — SMALL TABLETS
     ========================================================== */
@@ -2101,7 +2198,6 @@
         gap: 12px;
       }
     }
-
 
     /* =========================================================
        RESPONSIVE — MOBILE
@@ -2534,26 +2630,51 @@
         line-height: 1.85;
       }
 
-      .process-box {
-        padding: 13px;
+      .custom-options {
+        gap: 8px;
+      }
+
+      .custom-option {
+        padding: 18px;
         border-radius: 14px;
       }
 
-      .process-header {
+      .custom-option-number {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+        border-radius: 9px;
         font-size: 7px;
-        gap: 8px;
-        margin-bottom: 12px;
       }
 
-      .process-list {
+      .custom-option-label {
+        font-size: 6px;
+      }
+
+      .custom-option h3 {
+        margin-top: 15px;
+        font-size: 17px;
+      }
+
+      .custom-option p {
+        margin-top: 8px;
+        font-size: 8px;
+        line-height: 1.75;
+      }
+
+      .custom-option-features {
+        margin-top: 13px;
         gap: 5px;
       }
 
-      .process-item {
-        gap: 9px;
-        padding: 10px;
-        font-size: 7px;
-        line-height: 1.45;
+      .custom-option-feature {
+        padding: 4px 7px;
+        font-size: 5.5px;
+      }
+
+      .custom-option-arrow {
+        margin-top: 13px;
+        font-size: 13px;
       }
 
       .final-cta {
@@ -2604,7 +2725,6 @@
         line-height: 1.6;
       }
     }
-
 
     /* =========================================================
        RESPONSIVE — VERY SMALL PHONES
@@ -2702,15 +2822,22 @@
         font-size: 7px;
       }
 
-      .process-item {
-        font-size: 6.5px;
+      .custom-option {
+        padding: 16px;
+      }
+
+      .custom-option h3 {
+        font-size: 16px;
+      }
+
+      .custom-option p {
+        font-size: 7.5px;
       }
 
       .final-cta {
         padding: 85px 0;
       }
     }
-
 
     /* =========================================================
        DEMO MODAL
@@ -2749,9 +2876,14 @@
       border-radius: 20px;
       overflow: hidden;
       background: #090909;
-      box-shadow: 0 50px 140px rgba(0,0,0,.8), 0 0 100px rgba(255,255,255,.04);
+      box-shadow:
+        0 50px 140px rgba(0,0,0,.8),
+        0 0 100px rgba(255,255,255,.04);
+
       transform: translateY(24px) scale(.96);
-      transition: transform .45s cubic-bezier(.16,1,.3,1);
+
+      transition:
+        transform .45s cubic-bezier(.16,1,.3,1);
     }
 
     .demo-modal.active .demo-modal-content {
@@ -2760,11 +2892,15 @@
 
     .demo-modal-header {
       min-height: 48px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 12px;
+
       padding: 0 14px 0 17px;
+
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
@@ -2783,13 +2919,19 @@
       width: 32px;
       height: 32px;
       flex: 0 0 32px;
+
       display: grid;
       place-items: center;
+
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 9px;
+
       background: rgba(255,255,255,.035);
+
       color: rgba(255,255,255,.55);
+
       font-size: 17px;
+
       transition: .25s ease;
     }
 
@@ -2843,7 +2985,6 @@
       }
     }
 
-
     /* =========================================================
        REDUCED MOTION
     ========================================================== */
@@ -2854,12 +2995,10 @@
         animation: none !important;
         transition: none !important;
       }
-
     }
 
   </style>
 </head>
-
 
 <body>
 
@@ -2877,14 +3016,12 @@
 
   </div>
 
-
   <!-- =========================================================
        CURSOR
   ========================================================== -->
 
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
-
 
   <!-- =========================================================
        NAVBAR
@@ -2914,7 +3051,6 @@
 
       </a>
 
-
       <nav class="nav-links">
 
         <a href="#product">
@@ -2926,16 +3062,17 @@
         </a>
 
         <a href="#custom">
-          Custom Setup & Integration
+          Custom Software
         </a>
 
       </nav>
 
-
-      <a href="#get-started" class="nav-button magnetic" target="_blank" rel="noopener noreferrer">
+      <a
+        href="#get-started"
+        class="nav-button magnetic"
+      >
         Explore AutFlow Studio
       </a>
-
 
       <button
         class="mobile-menu-button"
@@ -2945,7 +3082,6 @@
       </button>
 
     </div>
-
 
     <div class="mobile-menu" id="mobileMenu">
 
@@ -2958,17 +3094,19 @@
       </a>
 
       <a href="#custom">
-        Custom Setup & Integration
+        Custom Software
       </a>
 
-      <a href="#get-started" class="mobile-cta" target="_blank" rel="noopener noreferrer">
+      <a
+        href="#get-started"
+        class="mobile-cta"
+      >
         Explore AutFlow Studio
       </a>
 
     </div>
 
   </header>
-
 
   <!-- =========================================================
        HERO
@@ -2979,7 +3117,6 @@
     <div class="hero-orbit">
       <div class="orbit-dot"></div>
     </div>
-
 
     <div class="container">
 
@@ -2992,7 +3129,6 @@
           THE AGENCY OPERATING SYSTEM
 
         </div>
-
 
         <h1 class="hero-title">
 
@@ -3010,26 +3146,21 @@
 
         </h1>
 
-
         <p class="hero-description hero-animate">
 
           AutFlow Studio brings your agency operations into one command center — clients, projects, tasks, follow-ups, Instagram, WhatsApp, email, invoices, approvals, and team workload analytics. We customize, brand, and deploy it around the way your agency actually works, including any custom features you need.
 
         </p>
 
-
         <div class="hero-actions hero-animate">
 
           <a
             href="#get-started"
-            target="_blank"
-            rel="noopener noreferrer"
             class="button button-primary magnetic"
           >
             Run My Agency on AutFlow
             <span>→</span>
           </a>
-
 
           <button
             type="button"
@@ -3044,7 +3175,6 @@
 
       </div>
 
-
       <!-- =====================================================
            DASHBOARD
       ====================================================== -->
@@ -3058,13 +3188,10 @@
           <div class="browser-bar">
 
             <div class="browser-dots">
-
               <span></span>
               <span></span>
               <span></span>
-
             </div>
-
 
             <div class="browser-status">
 
@@ -3074,18 +3201,13 @@
 
             </div>
 
-
             <div class="browser-label">
               AGENCY / COMMAND CENTER
             </div>
 
           </div>
 
-
           <div class="dashboard-body">
-
-
-            <!-- SIDEBAR -->
 
             <aside class="sidebar">
 
@@ -3131,9 +3253,6 @@
 
             </aside>
 
-
-            <!-- MAIN -->
-
             <div class="dashboard-main">
 
               <div class="dashboard-header">
@@ -3156,9 +3275,6 @@
 
               </div>
 
-
-              <!-- STATS -->
-
               <div class="stats">
 
                 <div class="stat">
@@ -3180,7 +3296,6 @@
 
                 </div>
 
-
                 <div class="stat">
 
                   <div class="stat-label">
@@ -3200,7 +3315,6 @@
 
                 </div>
 
-
                 <div class="stat">
 
                   <div class="stat-label">
@@ -3219,7 +3333,6 @@
                   </div>
 
                 </div>
-
 
                 <div class="stat">
 
@@ -3242,11 +3355,7 @@
 
               </div>
 
-
-              <!-- LOWER -->
-
               <div class="dashboard-grid">
-
 
                 <div class="panel">
 
@@ -3257,7 +3366,6 @@
                   <div class="panel-subtitle">
                     Projects moving without the chaos
                   </div>
-
 
                   <div class="project-list">
 
@@ -3285,7 +3393,6 @@
 
                     </div>
 
-
                     <div class="project">
 
                       <div class="project-number">
@@ -3309,7 +3416,6 @@
                       </div>
 
                     </div>
-
 
                     <div class="project">
 
@@ -3339,7 +3445,6 @@
 
                 </div>
 
-
                 <div class="panel">
 
                   <div class="panel-title">
@@ -3349,7 +3454,6 @@
                   <div class="panel-subtitle">
                     Workload Analytics over time
                   </div>
-
 
                   <div class="chart">
 
@@ -3384,7 +3488,6 @@
 
   </section>
 
-
   <!-- =========================================================
        PRODUCT
   ========================================================== -->
@@ -3408,7 +3511,6 @@
 
           </div>
 
-
           <h2>
 
             Stop stitching together
@@ -3422,7 +3524,6 @@
 
         </div>
 
-
         <p class="section-description reveal-right">
 
           AutFlow Studio replaces the fragmented agency stack with one operating system for client management, project delivery, automated follow-ups, omnichannel communication, invoicing, and team workload visibility. We set it up, customize it, and brand it specifically for your agency — including any custom features your team needs.
@@ -3430,9 +3531,6 @@
         </p>
 
       </div>
-
-
-      <!-- FEATURES -->
 
       <div class="feature-grid">
 
@@ -3452,7 +3550,6 @@
 
         </div>
 
-
         <div class="feature-card feature-3d">
 
           <div class="feature-icon">
@@ -3468,7 +3565,6 @@
           </div>
 
         </div>
-
 
         <div class="feature-card feature-3d">
 
@@ -3486,7 +3582,6 @@
 
         </div>
 
-
         <div class="feature-card feature-3d">
 
           <div class="feature-icon">
@@ -3503,7 +3598,6 @@
 
         </div>
 
-
         <div class="feature-card feature-3d">
 
           <div class="feature-icon">
@@ -3519,7 +3613,6 @@
           </div>
 
         </div>
-
 
         <div class="feature-card feature-3d">
 
@@ -3543,10 +3636,9 @@
 
   </section>
 
-
   <!-- =========================================================
        OWNERSHIP
-    ========================================================== -->
+  ========================================================== -->
 
   <section>
 
@@ -3560,7 +3652,6 @@
             BUILT AROUND YOUR AGENCY
           </span>
 
-
           <h2 style="margin-top:23px;">
 
             Stop Renting Your Stack.
@@ -3573,13 +3664,11 @@
 
           </h2>
 
-
           <p>
 
             We deploy AutFlow Studio as your internal agency operating system — fully customized to your workflow, branded to your identity, and configured with any custom features your team needs. No years of development, no starting from a blank page.
 
           </p>
-
 
           <div class="check-list">
 
@@ -3607,7 +3696,6 @@
 
         </div>
 
-
         <div class="workflow-visual">
 
           <div class="workflow-box workflow-float">
@@ -3623,7 +3711,6 @@
               </span>
 
             </div>
-
 
             <div class="workflow-steps">
 
@@ -3659,7 +3746,6 @@
 
   </section>
 
-
   <!-- =========================================================
        CAPABILITIES
   ========================================================== -->
@@ -3683,7 +3769,6 @@
 
         </div>
 
-
         <h2>
 
           Run Your Agency.
@@ -3696,7 +3781,6 @@
         </h2>
 
       </div>
-
 
       <div class="tabs reveal-scale">
 
@@ -3717,7 +3801,6 @@
           </button>
 
         </div>
-
 
         <div class="tab-content">
 
@@ -3740,7 +3823,6 @@
 
             </p>
 
-
             <div class="tags">
 
               <span class="tag">CLIENT MANAGEMENT</span>
@@ -3754,7 +3836,6 @@
             </div>
 
           </div>
-
 
           <div
             class="tab-panel"
@@ -3774,7 +3855,6 @@
               We take the AutFlow Studio platform and configure it around your agency: your brand, your workflow, and any custom features your team requires. It is not off-the-shelf software — it is a dedicated setup and integration service, so you get exactly the system your agency needs without years of development overhead.
 
             </p>
-
 
             <div class="tags">
 
@@ -3797,9 +3877,8 @@
 
   </section>
 
-
   <!-- =========================================================
-       CLIENT MANAGEMENT
+       CUSTOM SOFTWARE
   ========================================================== -->
 
   <section
@@ -3819,73 +3898,147 @@
 
               <span>✦</span>
 
-              CUSTOM SETUP & INTEGRATION
+              CUSTOM SOFTWARE
 
             </div>
 
-
             <h2>
 
-              Your bottleneck is
+              Fix the bottleneck.
               <br>
 
               <span class="muted">
-                costing you every day.
+                Build the system around it.
               </span>
 
             </h2>
 
-
             <p class="custom-description">
 
-              AutFlow Studio is already built and functional. We customize it, brand it, and integrate it specifically for your agency's workflow — including any custom features you need. The foundation is done, so you can focus on your agency, your clients, and your growth instead of building core software from scratch.
+              No two agencies operate exactly the same way. Choose the system that matches the problem costing your business time, leads, revenue, or control. We design, build, brand, and deploy the solution around your actual workflow — not around a generic software template.
 
             </p>
 
-
           </div>
 
+          <div class="custom-options">
 
-          <div class="process-box">
+            <!-- OPTION 1 -->
 
-            <div class="process-header">
+            <div class="custom-option custom-option-animate">
 
-              <span>
-                FROM PLATFORM → YOUR CUSTOM SETUP
-              </span>
+              <div class="custom-option-top">
 
-              <span>
-                ◷
-              </span>
+                <div class="custom-option-number">
+                  01
+                </div>
+
+                <div class="custom-option-label">
+                  COMMAND CENTER
+                </div>
+
+              </div>
+
+              <h3>
+                Command Center & Operations OS
+              </h3>
+
+              <p>
+
+                A fully custom-built operating system for your agency — tailored to your brand, sales process, team structure, and workflow. Designed to stop lead leakage, centralize pipeline management, automate follow-ups, and give you one place to control the business.
+
+              </p>
+
+              <div class="custom-option-features">
+
+                <span class="custom-option-feature">
+                  CUSTOM COMMAND CENTER
+                </span>
+
+                <span class="custom-option-feature">
+                  LEAD PIPELINE
+                </span>
+
+                <span class="custom-option-feature">
+                  LEAD LEAKAGE PREVENTION
+                </span>
+
+                <span class="custom-option-feature">
+                  AUTOMATED FOLLOW-UPS
+                </span>
+
+                <span class="custom-option-feature">
+                  CLIENT WORKFLOW
+                </span>
+
+                <span class="custom-option-feature">
+                  YOUR BRAND
+                </span>
+
+              </div>
+
+              <div class="custom-option-arrow">
+                →
+              </div>
 
             </div>
 
+            <!-- OPTION 2 -->
 
-            <div class="process-list">
+            <div class="custom-option custom-option-animate">
 
-              <div class="process-item">
-                <span class="process-number">01</span>
-                01 — We review your agency's workflow
+              <div class="custom-option-top">
+
+                <div class="custom-option-number">
+                  02
+                </div>
+
+                <div class="custom-option-label">
+                  BOTTLENECK SYSTEM
+                </div>
+
               </div>
 
-              <div class="process-item">
-                <span class="process-number">02</span>
-                02 — We customize features to match how you work
+              <h3>
+                Custom Software & Automation System
+              </h3>
+
+              <p>
+
+                A specialized software or automation setup built around another operational bottleneck in your business — such as client onboarding, approvals, fulfillment, reporting, internal workflows, scheduling, document handling, or repetitive manual work.
+
+              </p>
+
+              <div class="custom-option-features">
+
+                <span class="custom-option-feature">
+                  WORKFLOW AUTOMATION
+                </span>
+
+                <span class="custom-option-feature">
+                  CUSTOM SOFTWARE
+                </span>
+
+                <span class="custom-option-feature">
+                  INTERNAL OPERATIONS
+                </span>
+
+                <span class="custom-option-feature">
+                  APPROVALS
+                </span>
+
+                <span class="custom-option-feature">
+                  REPORTING
+                </span>
+
+                <span class="custom-option-feature">
+                  CUSTOM INTEGRATIONS
+                </span>
+
               </div>
 
-              <div class="process-item">
-                <span class="process-number">03</span>
-                03 — We brand & configure the platform for your team
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">04</span>
-                04 — We deploy it under your agency's identity
-              </div>
-
-              <div class="process-item">
-                <span class="process-number">05</span>
-                05 — Your team runs on it from day one
+              <div class="custom-option-arrow">
+                →
               </div>
 
             </div>
@@ -3899,7 +4052,6 @@
     </div>
 
   </section>
-
 
   <!-- =========================================================
        FINAL CTA
@@ -3918,7 +4070,6 @@
           ↗
         </div>
 
-
         <h2>
 
           Every day you delay
@@ -3930,13 +4081,11 @@
 
         </h2>
 
-
         <p>
 
-          We'll set up AutFlow Studio as your agency's command center — customized to your workflow, branded to your identity, with any custom features your team needs. It is built, functional, and ready to deploy — no years of development overhead.
+          We'll build and deploy the system your agency actually needs — whether that is a complete command center or a specialized solution for the operational bottleneck holding the business back.
 
         </p>
-
 
         <div class="final-actions">
 
@@ -3946,12 +4095,12 @@
             rel="noopener noreferrer"
             class="button button-primary magnetic"
           >
-            Run My Agency on AutFlow Now→
+            Fix My Business Bottleneck
             <span>→</span>
           </a>
 
           <span class="availability">
-            ONE PLATFORM • CUSTOM-BUILT FOR YOUR AGENCY • ZERO TECH HASSLE
+            CUSTOM SOFTWARE • CUSTOM AUTOMATION • BUILT AROUND YOUR BUSINESS
           </span>
 
         </div>
@@ -3962,15 +4111,32 @@
 
   </section>
 
-
   <!-- =========================================================
        DEMO MODAL
   ========================================================== -->
 
-  <div class="demo-modal" id="demoModal" aria-hidden="true">
-    <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel">
+  <div
+    class="demo-modal"
+    id="demoModal"
+    aria-hidden="true"
+  >
+
+    <div
+      class="demo-modal-content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demoModalLabel"
+    >
+
       <div class="demo-modal-header">
-        <span class="demo-modal-label" id="demoModalLabel">AutFlow Studio / Product Demo</span>
+
+        <span
+          class="demo-modal-label"
+          id="demoModalLabel"
+        >
+          AutFlow Studio / Product Demo
+        </span>
+
         <button
           type="button"
           class="demo-modal-close"
@@ -3979,9 +4145,11 @@
         >
           ×
         </button>
+
       </div>
 
       <div class="demo-video-wrap">
+
         <video
           class="demo-video"
           id="demoVideo"
@@ -3989,13 +4157,21 @@
           playsinline
           preload="metadata"
         >
-          <source src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4" type="video/mp4">
-          Your browser does not support the demo video.
-        </video>
-      </div>
-    </div>
-  </div>
 
+          <source
+            src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4"
+            type="video/mp4"
+          >
+
+          Your browser does not support the demo video.
+
+        </video>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- =========================================================
        FOOTER
@@ -4027,9 +4203,7 @@
 
         </div>
 
-
       </div>
-
 
       <div class="footer-bottom">
 
@@ -4038,7 +4212,7 @@
         </span>
 
         <span>
-          Run your agency in one hub — customized, branded, and set up specifically for your team.
+          Custom software and automation built around the way your business actually works.
         </span>
 
       </div>
@@ -4046,7 +4220,6 @@
     </div>
 
   </footer>
-
 
   <!-- =========================================================
        JAVASCRIPT
@@ -4060,7 +4233,6 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
-
     /* =========================================================
        LENIS
     ========================================================== */
@@ -4072,7 +4244,6 @@
       touchMultiplier: 1.1
     });
 
-
     function raf(time) {
 
       lenis.raf(time);
@@ -4082,7 +4253,6 @@
     }
 
     requestAnimationFrame(raf);
-
 
     /* =========================================================
        CONNECT LENIS TO GSAP
@@ -4097,7 +4267,6 @@
     });
 
     gsap.ticker.lagSmoothing(0);
-
 
     /* =========================================================
        NAVBAR
@@ -4120,7 +4289,6 @@
 
     });
 
-
     /* =========================================================
        HERO INTRO
     ========================================================== */
@@ -4131,7 +4299,6 @@
           ease: "power4.out"
         }
       });
-
 
     heroTimeline
       .from(".hero-title .line-inner", {
@@ -4168,7 +4335,6 @@
 
       }, "-=.45");
 
-
     /* =========================================================
        HERO ORBIT ROTATION
     ========================================================== */
@@ -4184,7 +4350,6 @@
       ease: "none"
 
     });
-
 
     /* =========================================================
        HERO PARALLAX
@@ -4211,7 +4376,6 @@
       }
 
     });
-
 
     /* =========================================================
        DASHBOARD SCROLL ANIMATION
@@ -4243,7 +4407,6 @@
 
     });
 
-
     /* =========================================================
        DASHBOARD GLOW
     ========================================================== */
@@ -4269,7 +4432,6 @@
       }
 
     });
-
 
     /* =========================================================
        BACKGROUND GLOWS
@@ -4297,7 +4459,6 @@
 
     });
 
-
     gsap.to(".glow-2", {
 
       y: -300,
@@ -4320,7 +4481,6 @@
 
     });
 
-
     gsap.to(".glow-3", {
 
       y: -400,
@@ -4342,7 +4502,6 @@
       }
 
     });
-
 
     /* =========================================================
        SECTION HEADINGS
@@ -4374,7 +4533,6 @@
 
     });
 
-
     gsap.utils.toArray(".reveal-right").forEach(element => {
 
       gsap.from(element, {
@@ -4400,7 +4558,6 @@
       });
 
     });
-
 
     /* =========================================================
        FEATURE CARDS STAGGER
@@ -4431,7 +4588,6 @@
       }
 
     });
-
 
     /* =========================================================
        FEATURE 3D TILT
@@ -4486,7 +4642,6 @@
 
         });
 
-
         card.addEventListener("mouseleave", () => {
 
           gsap.to(card, {
@@ -4506,7 +4661,6 @@
         });
 
       });
-
 
     /* =========================================================
        OWNERSHIP SECTION
@@ -4534,7 +4688,6 @@
 
     });
 
-
     gsap.from(".workflow-box", {
 
       x: 100,
@@ -4559,7 +4712,6 @@
 
     });
 
-
     /* =========================================================
        WORKFLOW FLOAT
     ========================================================== */
@@ -4577,7 +4729,6 @@
       ease: "sine.inOut"
 
     });
-
 
     /* =========================================================
        CENTER HEADINGS
@@ -4613,26 +4764,27 @@
 
       });
 
-
     /* =========================================================
-       PROCESS ITEMS
+       CUSTOM SOFTWARE OPTIONS
     ========================================================== */
 
-    gsap.from(".process-item", {
+    gsap.from(".custom-option-animate", {
 
-      x: 60,
+      x: 70,
 
       opacity: 0,
 
-      stagger: .1,
+      scale: .96,
 
-      duration: .8,
+      stagger: .14,
 
-      ease: "power3.out",
+      duration: .9,
+
+      ease: "power4.out",
 
       scrollTrigger: {
 
-        trigger: ".process-box",
+        trigger: ".custom-options",
 
         start: "top 80%",
 
@@ -4641,7 +4793,6 @@
       }
 
     });
-
 
     /* =========================================================
        CUSTOM SECTION
@@ -4668,30 +4819,6 @@
       }
 
     });
-
-
-    gsap.from(".process-box", {
-
-      x: 70,
-
-      opacity: 0,
-
-      duration: 1,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".custom-card",
-
-        start: "top 80%",
-
-        once: true
-
-      }
-
-    });
-
 
     /* =========================================================
        COUNTERS
@@ -4745,7 +4872,6 @@
 
       });
 
-
     /* =========================================================
        GROWTH BARS
     ========================================================== */
@@ -4774,7 +4900,6 @@
 
     });
 
-
     /* =========================================================
        TABS
     ========================================================== */
@@ -4785,7 +4910,6 @@
     const tabPanels =
       document.querySelectorAll(".tab-panel");
 
-
     tabButtons.forEach(button => {
 
       button.addEventListener("click", () => {
@@ -4793,13 +4917,11 @@
         const selected =
           button.dataset.tab;
 
-
         tabButtons.forEach(btn => {
 
           btn.classList.remove("active");
 
         });
-
 
         tabPanels.forEach(panel => {
 
@@ -4807,18 +4929,14 @@
 
         });
 
-
         button.classList.add("active");
-
 
         const target =
           document.getElementById(
             "tab-" + selected
           );
 
-
         target.classList.add("active");
-
 
         gsap.from(target, {
 
@@ -4835,7 +4953,6 @@
       });
 
     });
-
 
     /* =========================================================
        MAGNETIC BUTTONS
@@ -4880,7 +4997,6 @@
 
         });
 
-
         button.addEventListener("mouseleave", () => {
 
           gsap.to(button, {
@@ -4899,7 +5015,6 @@
 
       });
 
-
     /* =========================================================
        CUSTOM CURSOR
     ========================================================== */
@@ -4910,13 +5025,11 @@
     const cursorRing =
       document.querySelector(".cursor-ring");
 
-
     let mouseX = 0;
     let mouseY = 0;
 
     let ringX = 0;
     let ringY = 0;
-
 
     window.addEventListener("mousemove", event => {
 
@@ -4937,7 +5050,6 @@
 
     });
 
-
     gsap.ticker.add(() => {
 
       ringX +=
@@ -4954,13 +5066,12 @@
 
     });
 
-
     /* =========================================================
        CURSOR HOVER
     ========================================================== */
 
     document
-      .querySelectorAll("a, button, .feature-card")
+      .querySelectorAll("a, button, .feature-card, .custom-option")
       .forEach(element => {
 
         element.addEventListener("mouseenter", () => {
@@ -4977,7 +5088,6 @@
           });
 
         });
-
 
         element.addEventListener("mouseleave", () => {
 
@@ -4996,7 +5106,6 @@
 
       });
 
-
     /* =========================================================
        MOBILE MENU
     ========================================================== */
@@ -5011,7 +5120,6 @@
         "mobileMenu"
       );
 
-
     menuButton.addEventListener("click", () => {
 
       mobileMenu.classList.toggle("active");
@@ -5020,14 +5128,12 @@
         "menu-open"
       );
 
-
       menuButton.textContent =
         mobileMenu.classList.contains("active")
           ? "×"
           : "☰";
 
     });
-
 
     document
       .querySelectorAll(".mobile-menu a")
@@ -5046,7 +5152,6 @@
         });
 
       });
-
 
     /* =========================================================
        SMOOTH ANCHOR SCROLL
@@ -5089,7 +5194,6 @@
 
       });
 
-
     /* =========================================================
        DEMO MODAL
     ========================================================== */
@@ -5107,37 +5211,79 @@
       document.getElementById("demoVideo");
 
     function openDemo() {
+
       demoModal.classList.add("active");
-      demoModal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("menu-open");
+
+      demoModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.classList.add(
+        "menu-open"
+      );
 
       demoVideo.currentTime = 0;
+
       demoVideo.load();
+
       demoVideo.play().catch(() => {});
+
     }
 
     function closeDemo() {
+
       demoModal.classList.remove("active");
-      demoModal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("menu-open");
+
+      demoModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
       demoVideo.pause();
+
     }
 
-    demoButton.addEventListener("click", openDemo);
-    demoModalClose.addEventListener("click", closeDemo);
+    demoButton.addEventListener(
+      "click",
+      openDemo
+    );
 
-    demoModal.addEventListener("click", event => {
-      if (event.target === demoModal) {
-        closeDemo();
+    demoModalClose.addEventListener(
+      "click",
+      closeDemo
+    );
+
+    demoModal.addEventListener(
+      "click",
+      event => {
+
+        if (event.target === demoModal) {
+          closeDemo();
+        }
+
       }
-    });
+    );
 
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && demoModal.classList.contains("active")) {
-        closeDemo();
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape" &&
+          demoModal.classList.contains("active")
+        ) {
+
+          closeDemo();
+
+        }
+
       }
-    });
-
+    );
 
     /* =========================================================
        YEAR
@@ -5145,7 +5291,6 @@
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
-
 
     /* =========================================================
        REFRESH SCROLLTRIGGER
@@ -5161,3 +5306,4 @@
 
 </body>
 </html>
+```

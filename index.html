@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AutFlow Studio — Custom Software Systems for Agencies</title>
+  <title>AutFlow Studio — White-Label Software for Agencies</title>
 
   <link rel="icon" type="image/png" href="./AutFlow-logo.png">
   <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
   <meta
     name="description"
-    content="AutFlow Studio builds custom software systems for agencies. Start with a fully custom version of the AutFlow Studio platform — built around your brand, workflow, and operations — or a completely custom software and automation system built around a specific business problem. No templates. No generic subscriptions."
+    content="We build fully branded software systems for agencies — starting from the AutFlow Studio foundation or building a completely custom system around your workflow, services, and client experience."
   >
 
   <!-- =========================================================
@@ -432,9 +432,9 @@
 
       font-family: "Space Grotesk";
 
-      font-size: clamp(56px, 8vw, 98px);
+      font-size: clamp(52px, 7.4vw, 92px);
 
-      line-height: .91;
+      line-height: .95;
 
       letter-spacing: -.07em;
 
@@ -1068,6 +1068,12 @@
       line-height: 1.9;
     }
 
+    .section-description.centered {
+      max-width: 620px;
+      margin: 24px auto 0;
+      text-align: center;
+    }
+
     /* =========================================================
        FEATURES
     ========================================================== */
@@ -1173,8 +1179,12 @@
       line-height: 1.8;
     }
 
+    .feature-card .check-list {
+      margin-top: 22px;
+    }
+
     /* =========================================================
-       OWNERSHIP
+       OWNERSHIP / PRIMARY OFFER
     ========================================================== */
 
     .ownership-card {
@@ -1232,6 +1242,20 @@
       font-size: 12px;
 
       line-height: 1.9;
+    }
+
+    .ownership-note {
+      max-width: 480px;
+
+      margin-top: 22px;
+
+      color: rgba(255,255,255,.28);
+
+      font-size: 10px;
+
+      line-height: 1.8;
+
+      font-style: italic;
     }
 
     .check-list {
@@ -1527,6 +1551,107 @@
     }
 
     /* =========================================================
+       WHITE-LABEL MODEL FLOW + PILL ROWS (NEW)
+    ========================================================== */
+
+    .flow-diagram {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 12px;
+
+      margin-top: 60px;
+    }
+
+    .flow-node {
+      padding: 16px 30px;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.05),
+          rgba(255,255,255,.015)
+        );
+
+      font-family: "Space Grotesk";
+
+      font-size: 12px;
+
+      letter-spacing: .03em;
+
+      color: rgba(255,255,255,.75);
+
+      text-align: center;
+
+      max-width: 100%;
+    }
+
+    .flow-arrow {
+      color: rgba(255,255,255,.22);
+
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      gap: 9px;
+
+      margin-top: 40px;
+    }
+
+    /* =========================================================
+       TEAM / CLIENT SPLIT (NEW)
+    ========================================================== */
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+
+      gap: 13px;
+
+      margin-top: 65px;
+    }
+
+    .split-grid .feature-card {
+      min-height: 0;
+    }
+
+    .split-grid .feature-card .check-list {
+      margin-top: 22px;
+    }
+
+    .split-grid .check-item {
+      color: rgba(255,255,255,.4);
+      font-size: 9px;
+    }
+
+    /* =========================================================
+       HOW IT WORKS STEPS (NEW)
+    ========================================================== */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+
+      gap: 13px;
+
+      margin-top: 65px;
+    }
+
+    .steps-grid .feature-card {
+      min-height: 200px;
+    }
+
+    /* =========================================================
        CUSTOM SOFTWARE OPTIONS
     ========================================================== */
 
@@ -1593,6 +1718,10 @@
       font-size: 12px;
 
       line-height: 1.9;
+    }
+
+    .custom-copy .button {
+      margin-top: 30px;
     }
 
     .custom-options {
@@ -1847,6 +1976,10 @@
       margin-top: 30px;
     }
 
+    .final-actions .hero-actions {
+      margin-top: 0;
+    }
+
     .availability {
       color: rgba(255,255,255,.18);
 
@@ -1998,6 +2131,10 @@
       .panel {
         padding: 14px;
       }
+
+      .steps-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
     }
 
     /* =========================================================
@@ -2061,7 +2198,8 @@
 
       .section-heading-grid,
       .ownership-card,
-      .custom-grid {
+      .custom-grid,
+      .split-grid {
         grid-template-columns: 1fr;
       }
 
@@ -2128,7 +2266,7 @@
       }
 
       .hero-title {
-        font-size: clamp(48px, 10vw, 68px);
+        font-size: clamp(46px, 10vw, 64px);
       }
 
       .hero-description {
@@ -2196,6 +2334,10 @@
       .footer-bottom {
         gap: 12px;
       }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* =========================================================
@@ -2258,9 +2400,9 @@
 
       .hero-title {
         margin-top: 24px;
-        font-size: clamp(42px, 13vw, 57px);
+        font-size: clamp(38px, 12vw, 52px);
         letter-spacing: -.065em;
-        line-height: .94;
+        line-height: .98;
       }
 
       .hero-title .line-inner {
@@ -2614,6 +2756,16 @@
         font-size: 7px;
       }
 
+      .flow-node {
+        padding: 13px 20px;
+        font-size: 10px;
+      }
+
+      .pill-row {
+        margin-top: 30px;
+        gap: 7px;
+      }
+
       .custom-card {
         padding: 34px 23px;
         border-radius: 19px;
@@ -2754,7 +2906,7 @@
       }
 
       .hero-title {
-        font-size: 39px;
+        font-size: 36px;
       }
 
       .hero-description {
@@ -3043,7 +3195,7 @@
           </div>
 
           <div class="brand-subtitle">
-            Custom Software Studio
+            White-Label Software For Agencies
           </div>
 
         </div>
@@ -3056,12 +3208,16 @@
           AutFlow Studio
         </a>
 
-        <a href="#capabilities">
+        <a href="#how-it-works">
           How It Works
         </a>
 
-        <a href="#custom">
-          The Two Offers
+        <a href="#white-label">
+          White-Label
+        </a>
+
+        <a href="#custom-build">
+          Custom Build
         </a>
 
       </nav>
@@ -3070,7 +3226,7 @@
         href="#get-started"
         class="nav-button magnetic"
       >
-        Start The Conversation
+        Start a Conversation
       </a>
 
       <button
@@ -3088,19 +3244,23 @@
         AutFlow Studio
       </a>
 
-      <a href="#capabilities">
+      <a href="#how-it-works">
         How It Works
       </a>
 
-      <a href="#custom">
-        The Two Offers
+      <a href="#white-label">
+        White-Label
+      </a>
+
+      <a href="#custom-build">
+        Custom Build
       </a>
 
       <a
         href="#get-started"
         class="mobile-cta"
       >
-        Start The Conversation
+        Start a Conversation
       </a>
 
     </div>
@@ -3125,7 +3285,7 @@
 
           <span class="status-dot"></span>
 
-          CUSTOM SOFTWARE FOR AGENCIES
+          WHITE-LABEL SOFTWARE FOR AGENCIES
 
         </div>
 
@@ -3133,13 +3293,19 @@
 
           <span class="line">
             <span class="line-inner">
-              Custom Software.
+              Your Agency.
+            </span>
+          </span>
+
+          <span class="line">
+            <span class="line-inner">
+              Your Brand.
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner muted">
-              Built Around Your Agency.
+              Your Software.
             </span>
           </span>
 
@@ -3147,7 +3313,7 @@
 
         <p class="hero-description hero-animate">
 
-          We build custom software systems for agencies. Start with a fully custom version of the AutFlow Studio platform, built around your brand and workflow — or a completely custom piece of software built around a specific problem in your business. Either way, nothing off-the-shelf.
+          We turn the AutFlow Studio foundation into a fully branded software system built around how your agency actually works — and how you want your clients to experience your services.
 
         </p>
 
@@ -3157,7 +3323,7 @@
             href="#get-started"
             class="button button-primary magnetic"
           >
-            Start My Custom Build
+            Build My Agency's Software
             <span>→</span>
           </a>
 
@@ -3196,12 +3362,12 @@
 
               <i></i>
 
-              AGENCY SYSTEM OPERATIONAL
+              FOUNDATION PREVIEW ACTIVE
 
             </div>
 
             <div class="browser-label">
-              AGENCY / COMMAND CENTER
+              A PREVIEW OF YOUR OWN SYSTEM
             </div>
 
           </div>
@@ -3211,7 +3377,7 @@
             <aside class="sidebar">
 
               <div class="sidebar-title">
-                Agency Operations
+                Your Agency
               </div>
 
               <div class="sidebar-item active">
@@ -3259,17 +3425,17 @@
                 <div>
 
                   <div class="dashboard-eyebrow">
-                    Agency / Command Center
+                    Your Agency / Client OS
                   </div>
 
                   <div class="dashboard-heading">
-                    One hub. Fewer tools. Total control.
+                    One foundation. Built around your agency.
                   </div>
 
                 </div>
 
                 <div class="dashboard-filter">
-                  Team & Finance view ↗
+                  Client experience view ↗
                 </div>
 
               </div>
@@ -3488,7 +3654,186 @@
   </section>
 
   <!-- =========================================================
-       PRODUCT
+       THE WHITE-LABEL MODEL
+  ========================================================== -->
+
+  <section class="section-border">
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          THE WHITE-LABEL MODEL
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          We Don't Give Your Agency
+          <br>
+
+          <span class="muted">
+            Another Tool. We Build You Your Own.
+          </span>
+
+        </h2>
+
+        <p class="section-description centered">
+
+          Start with the proven AutFlow Studio foundation, then reshape it around your agency. Your brand, your workflows, your modules, your client experience. The result is a software system your agency can use internally and bring into the way it serves clients.
+
+        </p>
+
+      </div>
+
+      <div class="flow-diagram reveal-scale">
+
+        <div class="flow-node">
+          YOUR AGENCY
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          YOUR BRAND
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          CUSTOMIZED SOFTWARE
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          YOUR CLIENTS
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       WHAT WHITE-LABEL MEANS HERE
+  ========================================================== -->
+
+  <section
+    id="white-label"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          WHAT WHITE-LABEL MEANS HERE
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          Software That Looks And Runs
+          <br>
+
+          <span class="muted">
+            Like Your Agency's Own.
+          </span>
+
+        </h2>
+
+        <p class="section-description centered">
+
+          White-label doesn't mean a coat of paint on someone else's product. It means your agency's branding, your own interface, your own workflows, your own modules, and a client experience built as your agency's branded software environment — with no AutFlow branding presented to your clients.
+
+        </p>
+
+      </div>
+
+      <div class="pill-row reveal-scale">
+
+        <span class="tag">YOUR BRANDING</span>
+        <span class="tag">YOUR OWN INTERFACE</span>
+        <span class="tag">YOUR WORKFLOWS</span>
+        <span class="tag">YOUR MODULES</span>
+        <span class="tag">YOUR CLIENT EXPERIENCE</span>
+        <span class="tag">NO AUTFLOW BRANDING TO CLIENTS</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       TURN SOFTWARE INTO PART OF YOUR SERVICE
+  ========================================================== -->
+
+  <section class="section-border">
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          THE OPPORTUNITY
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          Turn Software Into
+          <br>
+
+          <span class="muted">
+            Part Of Your Service.
+          </span>
+
+        </h2>
+
+        <p class="section-description centered">
+
+          Your clients already buy your agency's expertise. A branded software layer built around the way you deliver it gives that expertise a system your team and your clients can both use — internally, as a client portal, as part of your service, or as a more differentiated way your agency shows up.
+
+        </p>
+
+      </div>
+
+      <div class="pill-row reveal-scale">
+
+        <span class="tag">USED INTERNALLY</span>
+        <span class="tag">CLIENT PORTAL</span>
+        <span class="tag">PART OF YOUR SERVICE</span>
+        <span class="tag">BRANDED OPERATING ENVIRONMENT</span>
+        <span class="tag">A DIFFERENTIATED CLIENT EXPERIENCE</span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       PRODUCT / FOUNDATION
   ========================================================== -->
 
   <section
@@ -3512,11 +3857,10 @@
 
           <h2>
 
-            Stop stitching together
-            disconnected tools.
+            Start With A Working Foundation.
 
             <span class="muted">
-              Run clients, delivery, communication, and finance from one command center.
+              End With Your Own System.
             </span>
 
           </h2>
@@ -3525,7 +3869,7 @@
 
         <p class="section-description reveal-right">
 
-          AutFlow Studio is the foundation we start from — a working system covering client management, project delivery, automated follow-ups, omnichannel communication, invoicing, and team workload visibility. What's shown here and in the demo below is the starting point. What you get is built around your agency: modules added, changed, or removed until it matches exactly how your team operates.
+          AutFlow Studio is the foundation we start from — a working system covering client management, project delivery, follow-ups, communication, invoicing, reporting, and team operations. We then adapt that foundation to your agency. Modules can be added, changed, removed, or rebuilt around the way your team and clients actually work. These are examples of what can exist inside your version.
 
         </p>
 
@@ -3540,11 +3884,11 @@
           </div>
 
           <div class="feature-title">
-            01 — ONE COMMAND CENTER FOR YOUR AGENCY
+            01 — CLIENT OPERATIONS
           </div>
 
           <div class="feature-description">
-            Manage clients, projects, tasks, approvals, documents, meetings, and revenue from one sleek dashboard instead of jumping between multiple tools.
+            Clients, projects, tasks, deliverables, approvals, and deadlines, tracked in one command center built for how your team works.
           </div>
 
         </div>
@@ -3556,27 +3900,11 @@
           </div>
 
           <div class="feature-title">
-            02 — CLIENT & PROJECT MANAGEMENT
+            02 — COMMUNICATION
           </div>
 
           <div class="feature-description">
-            Keep every client, project, task, deliverable, approval, deadline, and status organized in one place so your team always knows what needs to happen next.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            $
-          </div>
-
-          <div class="feature-title">
-            03 — UNIFIED OMNICHANNEL INBOX
-          </div>
-
-          <div class="feature-description">
-            Bring Instagram, WhatsApp, and email conversations into one workflow so client communication stops getting buried across disconnected apps.
+            Instagram, WhatsApp, email, and other communication workflows brought into your system wherever your agency needs them.
           </div>
 
         </div>
@@ -3588,11 +3916,27 @@
           </div>
 
           <div class="feature-title">
-            04 — AUTOMATED FOLLOW-UPS
+            03 — FOLLOW-UP SYSTEMS
           </div>
 
           <div class="feature-description">
-            Set follow-up timing, track what is due, and automate routine reminders so prospects and clients do not fall through the cracks.
+            Structured follow-ups, reminders, and workflow automation so prospects and clients don't fall through the cracks.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            $
+          </div>
+
+          <div class="feature-title">
+            04 — FINANCE & REPORTING
+          </div>
+
+          <div class="feature-description">
+            Invoices, revenue visibility, and reporting that keeps the financial side of delivery connected to the rest of your operations.
           </div>
 
         </div>
@@ -3604,11 +3948,11 @@
           </div>
 
           <div class="feature-title">
-            05 — INVOICING & REVENUE CONTROL
+            05 — TEAM OPERATIONS
           </div>
 
           <div class="feature-description">
-            Create and manage invoices, track revenue across clients, and keep the financial side of delivery connected to the rest of your agency operations.
+            Workload, responsibilities, and internal workflows that keep delivery visible across your team — before bottlenecks reach clients.
           </div>
 
         </div>
@@ -3620,11 +3964,11 @@
           </div>
 
           <div class="feature-title">
-            06 — TEAM WORKLOAD ANALYTICS
+            06 — CUSTOM MODULES
           </div>
 
           <div class="feature-description">
-            See who is overloaded, where delivery is slowing down, and how work is distributed across your team — before bottlenecks become client problems.
+            Anything specific to your agency's operating model can be added, changed, removed, or built from scratch around you.
           </div>
 
         </div>
@@ -3636,10 +3980,10 @@
   </section>
 
   <!-- =========================================================
-       OWNERSHIP
+       OFFER 01 — WHITE-LABEL AUTFLOW STUDIO
   ========================================================== -->
 
-  <section>
+  <section id="offer-one">
 
     <div class="container">
 
@@ -3648,24 +3992,24 @@
         <div class="ownership-content">
 
           <span class="small-tag">
-            OFFER 01 — CUSTOM AUTFLOW STUDIO
+            OFFER 01 — WHITE-LABEL AUTFLOW STUDIO
           </span>
 
           <h2 style="margin-top:23px;">
 
-            A Fully Custom AutFlow Studio.
+            Your Own Agency Software.
 
             <br>
 
             <span class="muted">
-              Built Around How Your Agency Actually Works.
+              Built From The AutFlow Foundation.
             </span>
 
           </h2>
 
           <p>
 
-            AutFlow Studio is the starting foundation, not a generic subscription. We take the existing platform and custom-build it around your agency: your branding, your interface, your workflows, your modules, your business logic. Features you don't need get removed. Features you do need get built. What you end up with is your own version of the system.
+            We take the existing AutFlow Studio system and transform it into a branded software environment built around your agency. Your branding. Your workflows. Your modules. Your client experience.
 
           </p>
 
@@ -3673,30 +4017,41 @@
 
             <div class="check-item">
               <span class="check">✓</span>
-              Custom branding & interface
+              Brand & visual identity
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Custom workflows & modules
+              Navigation, interface & client workflows
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Custom client & project management
+              Project & approval workflows
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Custom approval, reporting & invoicing workflows
+              Reporting, dashboards & invoicing
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Custom automations & integrations where needed
+              Automations where they help
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Client-facing modules & internal operations
             </div>
 
           </div>
+
+          <p class="ownership-note">
+
+            Features and modules are selected, modified, removed, or built according to what your agency actually needs — not a fixed feature list.
+
+          </p>
 
         </div>
 
@@ -3707,7 +4062,7 @@
             <div class="workflow-header">
 
               <span>
-                ◉ AUTFLOW AGENCY OS
+                ◉ YOUR AGENCY OS
               </span>
 
               <span class="workflow-active">
@@ -3751,124 +4106,133 @@
   </section>
 
   <!-- =========================================================
-       CAPABILITIES
+       FOR YOUR TEAM / FOR YOUR CLIENTS
   ========================================================== -->
 
-  <section
-    id="capabilities"
-    class="section-border"
-  >
+  <section class="section-border">
 
     <div class="container section-padding">
 
-      <div class="center-heading reveal-scale">
+      <div class="section-heading-grid">
 
-        <div class="eyebrow">
+        <div class="reveal-left">
 
-          <span class="eyebrow-line"></span>
+          <div class="eyebrow">
 
-          TWO WAYS TO WORK WITH US
+            <span class="eyebrow-line"></span>
 
-          <span class="eyebrow-line"></span>
+            THE CLIENT EXPERIENCE
+
+          </div>
+
+          <h2>
+
+            Built For Your Team.
+
+            <span class="muted">
+              Designed For Your Clients.
+            </span>
+
+          </h2>
 
         </div>
 
-        <h2>
+        <p class="section-description reveal-right">
 
-          Two Offers.
-          <br>
+          This isn't just an internal admin dashboard. The same foundation extends into how your clients experience your agency — a branded environment on both sides of the relationship.
 
-          <span class="muted">
-            You Choose Based On What You Need.
-          </span>
-
-        </h2>
+        </p>
 
       </div>
 
-      <div class="tabs reveal-scale">
+      <div class="split-grid">
 
-        <div class="tab-buttons">
+        <div class="feature-card feature-3d">
 
-          <button
-            class="tab-button active"
-            data-tab="product"
-          >
-            OFFER 01 — CUSTOMIZE AUTFLOW
-          </button>
+          <div class="feature-icon">
+            ⚙
+          </div>
 
-          <button
-            class="tab-button"
-            data-tab="service"
-          >
-            OFFER 02 — BUILD SOMETHING CUSTOM
-          </button>
+          <div class="feature-title">
+            FOR YOUR TEAM
+          </div>
 
-        </div>
+          <div class="check-list">
 
-        <div class="tab-content">
-
-          <div
-            class="tab-panel active"
-            id="tab-product"
-          >
-
-            <div class="tab-icon">
-              ◈
+            <div class="check-item">
+              <span class="check">✓</span>
+              Operations
             </div>
 
-            <h3>
-              Customize AutFlow Studio For Your Agency
-            </h3>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Projects & tasks
+            </div>
 
-            <p>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Workload
+            </div>
 
-              Start with the existing AutFlow Studio platform — client management, projects, follow-ups, omnichannel inbox, invoicing, and workload analytics — and we custom-build it around your agency. Your branding, your workflows, your modules. Nothing you don't need, everything you do.
+            <div class="check-item">
+              <span class="check">✓</span>
+              Follow-ups
+            </div>
 
-            </p>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Finance
+            </div>
 
-            <div class="tags">
-
-              <span class="tag">CUSTOM BRANDING</span>
-              <span class="tag">CUSTOM WORKFLOWS</span>
-              <span class="tag">CUSTOM MODULES</span>
-              <span class="tag">CLIENT & PROJECT MANAGEMENT</span>
-              <span class="tag">OMNICHANNEL INBOX</span>
-              <span class="tag">INVOICING & REPORTING</span>
-              <span class="tag">TEAM ANALYTICS</span>
-
+            <div class="check-item">
+              <span class="check">✓</span>
+              Reporting
             </div>
 
           </div>
 
-          <div
-            class="tab-panel"
-            id="tab-service"
-          >
+        </div>
 
-            <div class="tab-icon">
-              &lt;/&gt;
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◈
+          </div>
+
+          <div class="feature-title">
+            FOR YOUR CLIENTS
+          </div>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Branded portal
             </div>
 
-            <h3>
-              Build A Completely Custom System
-            </h3>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Projects
+            </div>
 
-            <p>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Approvals
+            </div>
 
-              If AutFlow Studio isn't the right foundation for your agency's problem, we design a different system entirely — around the specific bottleneck, not around our product. Internal tools, dashboards, portals, automations, reporting — whatever the problem actually requires.
+            <div class="check-item">
+              <span class="check">✓</span>
+              Deliverables
+            </div>
 
-            </p>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Communication
+            </div>
 
-            <div class="tags">
-
-              <span class="tag">WORKFLOW AUTOMATION</span>
-              <span class="tag">CUSTOM DASHBOARDS</span>
-              <span class="tag">CLIENT PORTALS</span>
-              <span class="tag">CUSTOM CRM</span>
-              <span class="tag">APPROVAL SYSTEMS</span>
-              <span class="tag">REPORTING SYSTEMS</span>
-
+            <div class="check-item">
+              <span class="check">✓</span>
+              Reports & relevant workflows
             </div>
 
           </div>
@@ -3882,11 +4246,11 @@
   </section>
 
   <!-- =========================================================
-       CUSTOM SOFTWARE
+       OFFER 02 — FULLY CUSTOM
   ========================================================== -->
 
   <section
-    id="custom"
+    id="custom-build"
     class="section-border"
   >
 
@@ -3902,92 +4266,43 @@
 
               <span>✦</span>
 
-              CHOOSE YOUR OFFER
+              OFFER 02 — FULLY CUSTOM
 
             </div>
 
             <h2>
 
-              Pick your starting point.
+              Don't Need The AutFlow Foundation?
+
               <br>
 
               <span class="muted">
-                Either way, we build around your business.
+                We'll Build Something Else.
               </span>
 
             </h2>
 
             <p class="custom-description">
 
-              There's no generic package here. Every engagement starts from one of two places — the existing AutFlow Studio foundation, or a blank page built around your specific problem. We design, build, brand, and deploy whichever one actually fits your agency — not a generic software template.
+              Not every agency needs the same system. If the AutFlow foundation isn't the right starting point, we build a completely different software or automation system around the specific bottleneck your business needs to solve.
 
             </p>
+
+            <a
+              href="https://wa.me/213676127853"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button button-secondary magnetic"
+            >
+              Discuss a Custom Build
+              <span>→</span>
+            </a>
 
           </div>
 
           <div class="custom-options">
 
-            <!-- OPTION 1 -->
-
-            <div class="custom-option custom-option-animate">
-
-              <div class="custom-option-top">
-
-                <div class="custom-option-number">
-                  01
-                </div>
-
-                <div class="custom-option-label">
-                  AUTFLOW STUDIO
-                </div>
-
-              </div>
-
-              <h3>
-                A Fully Custom AutFlow Studio
-              </h3>
-
-              <p>
-
-                We take the existing AutFlow Studio platform and custom-build it around your agency — your branding, your interface, your workflows, your modules, your business logic. Not a generic subscription. Your own version of the system, built around how your agency actually works.
-
-              </p>
-
-              <div class="custom-option-features">
-
-                <span class="custom-option-feature">
-                  CUSTOM BRANDING
-                </span>
-
-                <span class="custom-option-feature">
-                  CUSTOM WORKFLOWS
-                </span>
-
-                <span class="custom-option-feature">
-                  CUSTOM MODULES
-                </span>
-
-                <span class="custom-option-feature">
-                  CUSTOM DASHBOARDS
-                </span>
-
-                <span class="custom-option-feature">
-                  CUSTOM REPORTING
-                </span>
-
-                <span class="custom-option-feature">
-                  CUSTOM AUTOMATIONS
-                </span>
-
-              </div>
-
-              <div class="custom-option-arrow">
-                →
-              </div>
-
-            </div>
-
-            <!-- OPTION 2 -->
+            <!-- OFFER 02 DETAIL -->
 
             <div class="custom-option custom-option-animate">
 
@@ -4004,23 +4319,23 @@
               </div>
 
               <h3>
-                Custom Software & Automation System
+                A System Built Around Your Specific Bottleneck
               </h3>
 
               <p>
 
-                If AutFlow Studio isn't the right fit, we build a completely different system around the specific bottleneck costing you time, leads, revenue, or control — internal tools, dashboards, portals, CRMs, approval systems, reporting, whatever the problem actually needs.
+                We start from the problem, not from AutFlow. Custom CRMs, internal tools, client portals, workflow automation, approval systems, reporting platforms, business dashboards — whatever your agency's operations actually require.
 
               </p>
 
               <div class="custom-option-features">
 
                 <span class="custom-option-feature">
-                  WORKFLOW AUTOMATION
+                  CUSTOM CRM
                 </span>
 
                 <span class="custom-option-feature">
-                  CUSTOM DASHBOARDS
+                  INTERNAL TOOLS
                 </span>
 
                 <span class="custom-option-feature">
@@ -4028,7 +4343,7 @@
                 </span>
 
                 <span class="custom-option-feature">
-                  CUSTOM CRM
+                  WORKFLOW AUTOMATION
                 </span>
 
                 <span class="custom-option-feature">
@@ -4036,7 +4351,7 @@
                 </span>
 
                 <span class="custom-option-feature">
-                  REPORTING SYSTEMS
+                  REPORTING PLATFORMS
                 </span>
 
               </div>
@@ -4050,6 +4365,286 @@
           </div>
 
         </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       TWO WAYS WE BUILD
+  ========================================================== -->
+
+  <section
+    id="ways-we-build"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          TWO WAYS WE BUILD
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          Two Ways We Build.
+          <br>
+
+          <span class="muted">
+            Most Agencies Start With The Foundation.
+          </span>
+
+        </h2>
+
+        <p class="section-description centered">
+
+          Most agencies start with the AutFlow foundation and turn it into their own branded system. If that foundation isn't the right fit, we start from the problem and build something entirely custom.
+
+        </p>
+
+      </div>
+
+      <div class="tabs reveal-scale">
+
+        <div class="tab-buttons">
+
+          <button
+            class="tab-button active"
+            data-tab="product"
+          >
+            OFFER 01 — WHITE-LABEL AUTFLOW
+          </button>
+
+          <button
+            class="tab-button"
+            data-tab="service"
+          >
+            OFFER 02 — FULLY CUSTOM
+          </button>
+
+        </div>
+
+        <div class="tab-content">
+
+          <div
+            class="tab-panel active"
+            id="tab-product"
+          >
+
+            <div class="tab-icon">
+              ◈
+            </div>
+
+            <h3>
+              Your Agency's Own Branded Software
+            </h3>
+
+            <p>
+
+              Start with AutFlow Studio's foundation — client operations, communication, follow-ups, finance, and team workflows — and we customize it into a branded system built around your agency. Your branding, your workflows, your modules, your client experience.
+
+            </p>
+
+            <div class="tags">
+
+              <span class="tag">WHITE-LABEL</span>
+              <span class="tag">YOUR BRANDING</span>
+              <span class="tag">YOUR WORKFLOWS</span>
+              <span class="tag">CLIENT PORTAL</span>
+              <span class="tag">TEAM OPERATIONS</span>
+              <span class="tag">REPORTING</span>
+
+            </div>
+
+          </div>
+
+          <div
+            class="tab-panel"
+            id="tab-service"
+          >
+
+            <div class="tab-icon">
+              &lt;/&gt;
+            </div>
+
+            <h3>
+              A System Built From Scratch
+            </h3>
+
+            <p>
+
+              If the AutFlow foundation isn't the right starting point, we design a different system entirely — around the specific bottleneck your agency needs solved, not around our product.
+
+            </p>
+
+            <div class="tags">
+
+              <span class="tag">CUSTOM CRM</span>
+              <span class="tag">INTERNAL TOOLS</span>
+              <span class="tag">CLIENT PORTALS</span>
+              <span class="tag">WORKFLOW AUTOMATION</span>
+              <span class="tag">APPROVAL SYSTEMS</span>
+              <span class="tag">REPORTING SYSTEMS</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       HOW IT WORKS
+  ========================================================== -->
+
+  <section
+    id="how-it-works"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          HOW WE BUILD IT
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+          How It Works.
+        </h2>
+
+      </div>
+
+      <div class="steps-grid reveal-scale">
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            01
+          </div>
+
+          <div class="feature-title">
+            UNDERSTAND
+          </div>
+
+          <div class="feature-description">
+            We map how your agency works, how your team operates, and what your clients need to experience.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            02
+          </div>
+
+          <div class="feature-title">
+            CUSTOMIZE
+          </div>
+
+          <div class="feature-description">
+            We adapt the AutFlow foundation — branding, modules, workflows, dashboards, and business logic.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            03
+          </div>
+
+          <div class="feature-title">
+            BUILD
+          </div>
+
+          <div class="feature-description">
+            We implement the customized system and the specific functionality your agency needs.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            04
+          </div>
+
+          <div class="feature-title">
+            DEPLOY
+          </div>
+
+          <div class="feature-description">
+            Your branded system is prepared for your team's workflow and your client experience.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       NOT ANOTHER SUBSCRIPTION
+  ========================================================== -->
+
+  <section class="section-border">
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          NOT ANOTHER SUBSCRIPTION
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          Stop Renting
+          <br>
+
+          <span class="muted">
+            Your Workflow.
+          </span>
+
+        </h2>
+
+        <p class="section-description centered">
+
+          Generic SaaS tools force your agency to adapt its processes around their software. We take the opposite approach — the system is adapted around your agency.
+
+        </p>
 
       </div>
 
@@ -4076,35 +4671,47 @@
 
         <h2>
 
-          Every day you delay
+          Your Agency Doesn't Need
           <br>
 
           <span class="muted">
-            is another day you're working around the problem.
+            Another Generic Tool.
           </span>
 
         </h2>
 
         <p>
 
-          We'll build the system your agency actually needs — a fully custom AutFlow Studio built around your operations, or a completely custom piece of software built around your specific problem. Either way, nothing generic.
+          It needs software built around the way you actually operate — and the way you want your clients to experience your agency.
 
         </p>
 
         <div class="final-actions">
 
-          <a
-            href="https://wa.me/213676127853"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-primary magnetic"
-          >
-            Let's Build My System
-            <span>→</span>
-          </a>
+          <div class="hero-actions">
+
+            <a
+              href="https://wa.me/213676127853"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button button-primary magnetic"
+            >
+              Build My Agency's Software
+              <span>→</span>
+            </a>
+
+            <a
+              href="#ways-we-build"
+              class="button button-secondary magnetic"
+            >
+              See What We Can Build
+              <span>→</span>
+            </a>
+
+          </div>
 
           <span class="availability">
-            CUSTOM AUTFLOW STUDIO • CUSTOM SOFTWARE • BUILT AROUND YOUR AGENCY
+            WHITE-LABEL AUTFLOW STUDIO • FULLY CUSTOM BUILDS • BUILT AROUND YOUR AGENCY
           </span>
 
         </div>
@@ -4138,14 +4745,14 @@
           class="demo-modal-label"
           id="demoModalLabel"
         >
-          AutFlow Studio / Product Demo
+          AutFlow Studio / Foundation Demo
         </span>
 
         <button
           type="button"
           class="demo-modal-close"
           id="demoModalClose"
-          aria-label="Close product demo"
+          aria-label="Close foundation demo"
         >
           ×
         </button>
@@ -4200,7 +4807,7 @@
             </div>
 
             <div class="footer-tagline">
-              Custom software systems for agencies ready to scale
+              White-label software for agencies, built from the AutFlow foundation
             </div>
 
           </div>
@@ -4216,7 +4823,7 @@
         </span>
 
         <span>
-          Custom software and automation built around the way your business actually works.
+          White-label software for agencies — or a fully custom system built around your business.
         </span>
 
       </div>

@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AutFlow Studio — Branded Ops Systems + AI Revenue for Agencies</title>
+  <title>AutFlow Studio — White-Label Software for Agencies</title>
 
   <link rel="icon" type="image/png" href="./AutFlow-logo.png">
   <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
   <meta
     name="description"
-    content="Branded operations systems for agencies — client management, follow-ups, reporting, invoicing, and AI auto-reply you can activate and sell as a paid add-on to your clients."
+    content="We build fully branded software systems for agencies — starting from the AutFlow Studio foundation or building a completely custom system around your workflow, services, and client experience."
   >
 
   <!-- =========================================================
@@ -1928,6 +1928,107 @@
     }
 
     /* =========================================================
+       PRICING (NEW)
+    ========================================================== */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 16px;
+      margin-top: 65px;
+    }
+
+    .pricing-card {
+      position: relative;
+      padding: 42px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      background: rgba(255,255,255,.018);
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(255,255,255,.22);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.06),
+          rgba(255,255,255,.015)
+        );
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      padding: 6px 10px;
+      border: 1px solid rgba(102,227,148,.35);
+      border-radius: 999px;
+      background: rgba(102,227,148,.08);
+      color: #7be8a4;
+      font-size: 7px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .pricing-label {
+      color: rgba(255,255,255,.28);
+      font-size: 7px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .pricing-name {
+      margin-top: 14px;
+      font-family: "Space Grotesk";
+      font-size: 21px;
+      letter-spacing: -.03em;
+    }
+
+    .pricing-price {
+      margin-top: 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pricing-amount {
+      font-family: "Space Grotesk";
+      font-size: 40px;
+      letter-spacing: -.03em;
+    }
+
+    .pricing-cadence {
+      color: rgba(255,255,255,.3);
+      font-size: 10px;
+    }
+
+    .pricing-sub {
+      margin-top: 6px;
+      color: rgba(255,255,255,.32);
+      font-size: 9px;
+    }
+
+    .pricing-desc {
+      margin-top: 18px;
+      color: rgba(255,255,255,.35);
+      font-size: 10px;
+      line-height: 1.8;
+      max-width: 400px;
+    }
+
+    .pricing-card .check-list {
+      margin-top: 24px;
+    }
+
+    .pricing-card .button {
+      margin-top: 28px;
+      width: 100%;
+    }
+
+    /* =========================================================
        FINAL CTA
     ========================================================== */
 
@@ -2134,6 +2235,10 @@
 
       .steps-grid {
         grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -2828,6 +2933,14 @@
         font-size: 13px;
       }
 
+      .pricing-card {
+        padding: 28px 22px;
+      }
+
+      .pricing-amount {
+        font-size: 32px;
+      }
+
       .final-cta {
         padding: 95px 0;
       }
@@ -3208,16 +3321,16 @@
           AutFlow Studio
         </a>
 
+        <a href="#ai-auto-reply">
+          AI Auto-Reply
+        </a>
+
+        <a href="#pricing">
+          Pricing
+        </a>
+
         <a href="#how-it-works">
           How It Works
-        </a>
-
-        <a href="#white-label">
-          White-Label
-        </a>
-
-        <a href="#custom-build">
-          Custom Build
         </a>
 
       </nav>
@@ -3244,16 +3357,16 @@
         AutFlow Studio
       </a>
 
+      <a href="#ai-auto-reply">
+        AI Auto-Reply
+      </a>
+
+      <a href="#pricing">
+        Pricing
+      </a>
+
       <a href="#how-it-works">
         How It Works
-      </a>
-
-      <a href="#white-label">
-        White-Label
-      </a>
-
-      <a href="#custom-build">
-        Custom Build
       </a>
 
       <a
@@ -3285,7 +3398,7 @@
 
           <span class="status-dot"></span>
 
-          WHITE-LABEL SOFTWARE FOR AGENCIES
+          BRANDED AGENCY SOFTWARE + AI AUTO-REPLY
 
         </div>
 
@@ -3305,7 +3418,7 @@
 
           <span class="line">
             <span class="line-inner muted">
-              Your Software.
+              Your AI.
             </span>
           </span>
 
@@ -3313,7 +3426,7 @@
 
         <p class="hero-description hero-animate">
 
-          A branded ops system for client management, projects, follow-ups, reporting, and invoicing — with optional AI auto-reply you can activate for clients and sell as a paid add-on.
+          We build your agency its own branded operations system — client management, follow-ups, reporting — and add AI auto-reply that handles routine messages for you. Once it's live, you can offer it as a paid add-on to your own clients too.
 
         </p>
 
@@ -3323,7 +3436,7 @@
             href="#get-started"
             class="button button-primary magnetic"
           >
-            Build My Agency System
+            Build My Agency's Software
             <span>→</span>
           </a>
 
@@ -3402,7 +3515,7 @@
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Omnichannel Inbox
+                AI Auto-Reply
               </div>
 
               <div class="sidebar-separator"></div>
@@ -3654,7 +3767,7 @@
   </section>
 
   <!-- =========================================================
-       THE WHITE-LABEL MODEL
+       THE MODEL: TWO PARTS
   ========================================================== -->
 
   <section class="section-border">
@@ -3667,7 +3780,7 @@
 
           <span class="eyebrow-line"></span>
 
-          THE WHITE-LABEL MODEL
+          HOW IT'S STRUCTURED
 
           <span class="eyebrow-line"></span>
 
@@ -3675,18 +3788,18 @@
 
         <h2>
 
-          We Don't Give Your Agency
+          One System. Two Ways
           <br>
 
           <span class="muted">
-            Another Tool. We Build Around Your Revenue.
+            It Works For You.
           </span>
 
         </h2>
 
         <p class="section-description centered">
 
-          Start with the proven AutFlow Studio foundation, then reshape it around your agency. Your brand, your workflows, your modules, your client experience. The result is a branded operating system for your team and clients — built to recover lost revenue, reduce operational leaks, and create new service revenue.
+          Start with your agency's own branded operations system, built from the AutFlow foundation. Add AI auto-reply so it handles routine client messages for you — and, once it's live, offer that same AI auto-reply as a new paid service to your own clients.
 
         </p>
 
@@ -3701,19 +3814,19 @@
         <div class="flow-arrow">↓</div>
 
         <div class="flow-node">
-          YOUR BRAND
+          YOUR BRANDED SYSTEM + AI AUTO-REPLY
         </div>
 
         <div class="flow-arrow">↓</div>
 
         <div class="flow-node">
-          CUSTOMIZED SOFTWARE
+          USED INTERNALLY, AND OFFERED TO YOUR CLIENTS
         </div>
 
         <div class="flow-arrow">↓</div>
 
         <div class="flow-node">
-          YOUR CLIENTS
+          A NEW REVENUE LINE FOR YOUR AGENCY
         </div>
 
       </div>
@@ -3751,14 +3864,14 @@
           <br>
 
           <span class="muted">
-            Like Your Agency's Brand.
+            Like Your Agency's Own.
           </span>
 
         </h2>
 
         <p class="section-description centered">
 
-          White-label means your agency's branding, your interface, your workflows, your modules, and a client experience built inside your branded operating environment — with no AutFlow branding presented to your clients. It supports how your agency operates and serves clients; it is not a separate SaaS product you run independently.
+          White-label doesn't mean a coat of paint on someone else's product. It means your agency's branding, your own interface, your own workflows, and a client experience — including the AI auto-reply — that looks entirely like your own, with no third-party branding shown to your clients.
 
         </p>
 
@@ -3767,64 +3880,11 @@
       <div class="pill-row reveal-scale">
 
         <span class="tag">YOUR BRANDING</span>
-        <span class="tag">YOUR INTERFACE</span>
+        <span class="tag">YOUR OWN INTERFACE</span>
         <span class="tag">YOUR WORKFLOWS</span>
-        <span class="tag">YOUR MODULES</span>
+        <span class="tag">AI AUTO-REPLY</span>
         <span class="tag">YOUR CLIENT EXPERIENCE</span>
-        <span class="tag">NO AUTFLOW BRANDING TO CLIENTS</span>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       TURN SOFTWARE INTO PART OF YOUR SERVICE
-  ========================================================== -->
-
-  <section class="section-border">
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          THE OPPORTUNITY
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Plug Revenue Leaks.
-          <br>
-
-          <span class="muted">
-            Open New Revenue.
-          </span>
-
-        </h2>
-
-        <p class="section-description centered">
-
-          Lost leads, missed follow-ups, and client churn quietly cost agencies revenue. A branded operations system closes those leaks — while AI auto-reply gives you a new paid add-on you can activate for existing clients and sell without acquiring new ones.
-
-        </p>
-
-      </div>
-
-      <div class="pill-row reveal-scale">
-
-        <span class="tag">RECOVER LOST LEADS</span>
-        <span class="tag">CLOSE MISSED FOLLOW-UPS</span>
-        <span class="tag">REDUCE CLIENT CHURN</span>
-        <span class="tag">AI PAID ADD-ON</span>
-        <span class="tag">SELL TO EXISTING CLIENTS</span>
+        <span class="tag">NO THIRD-PARTY BRANDING TO CLIENTS</span>
 
       </div>
 
@@ -3869,7 +3929,7 @@
 
         <p class="section-description reveal-right">
 
-          The Base System starts with client management, project delivery, follow-ups, communication, invoicing, reporting, and team operations. We adapt that foundation to your agency. Add AI auto-reply for client accounts you choose to activate and offer as a paid service. These are examples of what can exist inside your system.
+          AutFlow Studio is the foundation we start from — a working system covering client management, project delivery, follow-ups, communication, invoicing, reporting, and team operations. We then adapt that foundation to your agency, and layer in AI auto-reply on top.
 
         </p>
 
@@ -3960,7 +4020,7 @@
         <div class="feature-card feature-3d">
 
           <div class="feature-icon">
-            &lt;/&gt;
+            ✦
           </div>
 
           <div class="feature-title">
@@ -3968,7 +4028,7 @@
           </div>
 
           <div class="feature-description">
-            Routine client messages handled automatically. Activate it for any of your own clients, then offer it as a paid add-on to create a new revenue line.
+            AI handles routine client messages across your channels — answering FAQs, qualifying, and scheduling — and escalates anything that needs a human touch.
           </div>
 
         </div>
@@ -3980,10 +4040,10 @@
   </section>
 
   <!-- =========================================================
-       OFFER 01 — WHITE-LABEL AUTFLOW STUDIO
+       AI AUTO-REPLY FEATURE SECTION
   ========================================================== -->
 
-  <section id="offer-one">
+  <section id="ai-auto-reply">
 
     <div class="container">
 
@@ -3992,24 +4052,24 @@
         <div class="ownership-content">
 
           <span class="small-tag">
-            OFFER 01 — WHITE-LABEL AUTFLOW STUDIO
+            THE AI AUTO-REPLY LAYER
           </span>
 
           <h2 style="margin-top:23px;">
 
-            Your Branded Agency System.
+            AI That Handles The Routine Messages.
 
             <br>
 
             <span class="muted">
-              Built From The AutFlow Foundation.
+              And A New Revenue Line For Your Agency.
             </span>
 
           </h2>
 
           <p>
 
-            We take the existing AutFlow Studio system and transform it into a branded operations environment built around your agency. Your branding. Your workflows. Your modules. Your client experience. The Base System closes revenue leaks; add AI auto-reply when you want a new paid service for your existing clients.
+            AI auto-reply plugs into your system to handle routine client messages — FAQs, scheduling, qualifying — across the channels your agency already uses. It's tailored to your business and escalates anything that needs a human. Once it's built and live in your system, it's yours to use, and yours to offer as a paid add-on to your own clients.
 
           </p>
 
@@ -4017,39 +4077,34 @@
 
             <div class="check-item">
               <span class="check">✓</span>
-              Brand & visual identity
+              Handles routine, repetitive messages automatically
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Navigation, interface & client workflows
+              Escalates anything that needs a human response
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Project & approval workflows
+              Configured around your business, tone & channels
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Reporting, dashboards & invoicing
+              Usable internally by your team from day one
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              AI auto-reply for selected client accounts
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Offer AI auto-reply as a paid client add-on
+              Offerable to your own clients as a paid service
             </div>
 
           </div>
 
           <p class="ownership-note">
 
-            AI auto-reply can be activated for your own clients and offered as an additional paid service. Other features and modules are selected, modified, removed, or built according to what your agency actually needs.
+            When one of your clients wants automated replies for their own business, we set up and manage that specific automation — you own the client relationship and the pricing, we handle the technical delivery.
 
           </p>
 
@@ -4062,7 +4117,7 @@
             <div class="workflow-header">
 
               <span>
-                ◉ YOUR AGENCY OS
+                ◉ AI AUTO-REPLY
               </span>
 
               <span class="workflow-active">
@@ -4075,22 +4130,22 @@
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Client inquiry received
+                Message received
               </div>
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Client onboarded
+                AI checks against your rules
               </div>
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Follow-up scheduled
+                Routine message answered instantly
               </div>
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Project delivered & invoiced
+                Anything else escalated to your team
               </div>
 
             </div>
@@ -4106,7 +4161,7 @@
   </section>
 
   <!-- =========================================================
-       FOR YOUR TEAM / FOR YOUR CLIENTS
+       OFFER 01 — WHITE-LABEL AUTFLOW STUDIO
   ========================================================== -->
 
   <section class="section-border">
@@ -4139,7 +4194,7 @@
 
         <p class="section-description reveal-right">
 
-          This isn't just an internal admin dashboard. The same foundation extends into how your clients experience your agency — a branded environment on both sides of the relationship.
+          This isn't just an internal admin dashboard. The same foundation extends into how your clients experience your agency — a branded environment on both sides of the relationship, with AI auto-reply available on each.
 
         </p>
 
@@ -4181,12 +4236,12 @@
 
             <div class="check-item">
               <span class="check">✓</span>
-              Finance
+              Finance & reporting
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Reporting
+              AI auto-reply, used internally
             </div>
 
           </div>
@@ -4212,12 +4267,7 @@
 
             <div class="check-item">
               <span class="check">✓</span>
-              Projects
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Approvals
+              Projects & approvals
             </div>
 
             <div class="check-item">
@@ -4235,6 +4285,11 @@
               Reports & relevant workflows
             </div>
 
+            <div class="check-item">
+              <span class="check">✓</span>
+              AI auto-reply, offered as your add-on service
+            </div>
+
           </div>
 
         </div>
@@ -4246,113 +4301,170 @@
   </section>
 
   <!-- =========================================================
-       OFFER 02 — FULLY CUSTOM
+       PRICING
   ========================================================== -->
 
   <section
-    id="custom-build"
+    id="pricing"
     class="section-border"
   >
 
     <div class="container section-padding">
 
-      <div class="custom-card">
+      <div class="center-heading reveal-scale">
 
-        <div class="custom-grid">
+        <div class="eyebrow">
 
-          <div class="custom-copy">
+          <span class="eyebrow-line"></span>
 
-            <div class="eyebrow">
+          PRICING
 
-              <span>✦</span>
+          <span class="eyebrow-line"></span>
 
-              OFFER 02 — FULLY CUSTOM
+        </div>
 
-            </div>
+        <h2>
 
-            <h2>
+          Two Packages.
+          <br>
 
-              Don't Need The AutFlow Foundation?
+          <span class="muted">
+            Pick The One That Fits.
+          </span>
 
-              <br>
+        </h2>
 
-              <span class="muted">
-                We'll Build Something Else.
-              </span>
+        <p class="section-description centered">
 
-            </h2>
+          Most agencies start with the base system. Some go further and add AI auto-reply — which becomes a new revenue line you can sell to your own clients.
 
-            <p class="custom-description">
+        </p>
 
-              Not every agency needs the same system. If the AutFlow foundation isn't the right starting point, we build a completely different software or automation system around the specific bottleneck your business needs to solve.
+      </div>
 
-            </p>
+      <div class="pricing-grid reveal-scale">
 
+        <div class="pricing-card">
+
+          <div class="pricing-label">
+            PACKAGE 01
           </div>
 
-          <div class="custom-options">
+          <div class="pricing-name">
+            Base System
+          </div>
 
-            <!-- OFFER 02 DETAIL -->
+          <div class="pricing-price">
+            <span class="pricing-amount">$1,997</span>
+          </div>
 
-            <div class="custom-option custom-option-animate">
+          <div class="pricing-sub">
+            One-time setup
+          </div>
 
-              <div class="custom-option-top">
+          <p class="pricing-desc">
+            Your agency's own branded operations system — client management, follow-ups, reporting, invoicing, and a branded client portal.
+          </p>
 
-                <div class="custom-option-number">
-                  02
-                </div>
+          <div class="check-list">
 
-                <div class="custom-option-label">
-                  FULLY CUSTOM
-                </div>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Full brand & visual identity
+            </div>
 
-              </div>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Client operations & project workflows
+            </div>
 
-              <h3>
-                A System Built Around Your Specific Bottleneck
-              </h3>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Follow-up automation
+            </div>
 
-              <p>
+            <div class="check-item">
+              <span class="check">✓</span>
+              Reporting, dashboards & invoicing
+            </div>
 
-                We start from the problem, not from AutFlow. Custom CRMs, internal tools, client portals, workflow automation, approval systems, reporting platforms, business dashboards — whatever your agency's operations actually require.
-
-              </p>
-
-              <div class="custom-option-features">
-
-                <span class="custom-option-feature">
-                  CUSTOM CRM
-                </span>
-
-                <span class="custom-option-feature">
-                  INTERNAL TOOLS
-                </span>
-
-                <span class="custom-option-feature">
-                  CLIENT PORTALS
-                </span>
-
-                <span class="custom-option-feature">
-                  WORKFLOW AUTOMATION
-                </span>
-
-                <span class="custom-option-feature">
-                  APPROVAL SYSTEMS
-                </span>
-
-                <span class="custom-option-feature">
-                  REPORTING PLATFORMS
-                </span>
-
-              </div>
-
-              <div class="custom-option-arrow">
-                →
-              </div>
-
+            <div class="check-item">
+              <span class="check">✓</span>
+              Branded client portal
             </div>
 
           </div>
+
+          <a
+            href="#get-started"
+            class="button button-secondary magnetic"
+          >
+            Start With Package 01
+          </a>
+
+        </div>
+
+        <div class="pricing-card featured">
+
+          <div class="pricing-badge">
+            MOST VALUE
+          </div>
+
+          <div class="pricing-label">
+            PACKAGE 02
+          </div>
+
+          <div class="pricing-name">
+            Base System + AI Auto-Reply
+          </div>
+
+          <div class="pricing-price">
+            <span class="pricing-amount">$4,997</span>
+          </div>
+
+          <div class="pricing-sub">
+            One-time setup, plus $149/mo for AI infrastructure
+          </div>
+
+          <p class="pricing-desc">
+            Everything in Package 01, plus AI auto-reply — usable internally, and offerable as a new paid service to your own clients.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Everything in the base system
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              AI auto-reply across your channels
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Configured around your business & tone
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              A new paid service you can sell to your clients
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              We build & manage each client automation with you
+            </div>
+
+          </div>
+
+          <a
+            href="#get-started"
+            class="button button-primary magnetic"
+          >
+            Start With Package 02
+          </a>
 
         </div>
 
@@ -4379,7 +4491,7 @@
 
           <span class="eyebrow-line"></span>
 
-          TWO WAYS WE BUILD
+          THE TWO PACKAGES
 
           <span class="eyebrow-line"></span>
 
@@ -4387,18 +4499,18 @@
 
         <h2>
 
-          Two Ways We Build.
+          Compare The Packages.
           <br>
 
           <span class="muted">
-            Most Agencies Start With The Foundation.
+            Most Agencies Start With The Base.
           </span>
 
         </h2>
 
         <p class="section-description centered">
 
-          Most agencies start with the AutFlow foundation and turn it into their branded operating system. The base system handles the operational leaks; the AI auto-reply package adds a new paid service you can offer to existing clients. If the foundation isn't the right fit, we start from the problem and build something entirely custom.
+          Most agencies start with the base system and add AI auto-reply once they're ready to offer it to their own clients as a new revenue line.
 
         </p>
 
@@ -4412,14 +4524,14 @@
             class="tab-button active"
             data-tab="product"
           >
-            OFFER 01 — WHITE-LABEL AUTFLOW
+            PACKAGE 01 — BASE SYSTEM
           </button>
 
           <button
             class="tab-button"
             data-tab="service"
           >
-            OFFER 02 — FULLY CUSTOM
+            PACKAGE 02 — + AI AUTO-REPLY
           </button>
 
         </div>
@@ -4436,12 +4548,12 @@
             </div>
 
             <h3>
-              Your Agency's Branded Operations System
+              Your Agency's Own Branded Software
             </h3>
 
             <p>
 
-              Start with AutFlow Studio's foundation — client operations, communication, follow-ups, finance, and team workflows — and we customize it into a branded system built around your agency. Add AI auto-reply for selected clients and turn it into a paid add-on for your existing client base.
+              Start with AutFlow Studio's foundation — client operations, communication, follow-ups, finance, and team workflows — customized into a branded system built around your agency. Your branding, your workflows, your client experience.
 
             </p>
 
@@ -4450,8 +4562,8 @@
               <span class="tag">WHITE-LABEL</span>
               <span class="tag">YOUR BRANDING</span>
               <span class="tag">YOUR WORKFLOWS</span>
-              <span class="tag">AI AUTO-REPLY</span>
-              <span class="tag">PAID CLIENT ADD-ON</span>
+              <span class="tag">CLIENT PORTAL</span>
+              <span class="tag">TEAM OPERATIONS</span>
               <span class="tag">REPORTING</span>
 
             </div>
@@ -4464,27 +4576,26 @@
           >
 
             <div class="tab-icon">
-              &lt;/&gt;
+              ✦
             </div>
 
             <h3>
-              A System Built From Scratch
+              Everything In The Base, Plus AI Auto-Reply
             </h3>
 
             <p>
 
-              If the AutFlow foundation isn't the right starting point, we design a different system entirely — around the specific bottleneck your agency needs solved, not around our product.
+              Adds AI auto-reply on top of your branded system — handling routine client messages, configured around your business. Once it's live, offer it as a new paid service to your own clients, using relationships you already have.
 
             </p>
 
             <div class="tags">
 
-              <span class="tag">CUSTOM CRM</span>
-              <span class="tag">INTERNAL TOOLS</span>
-              <span class="tag">CLIENT PORTALS</span>
-              <span class="tag">WORKFLOW AUTOMATION</span>
-              <span class="tag">APPROVAL SYSTEMS</span>
-              <span class="tag">REPORTING SYSTEMS</span>
+              <span class="tag">AI AUTO-REPLY</span>
+              <span class="tag">NEW REVENUE LINE</span>
+              <span class="tag">SELL TO YOUR CLIENTS</span>
+              <span class="tag">CONFIGURED PER CLIENT</span>
+              <span class="tag">WE BUILD IT WITH YOU</span>
 
             </div>
 
@@ -4572,7 +4683,7 @@
           </div>
 
           <div class="feature-description">
-            We implement the customized system and the specific functionality your agency needs.
+            We implement the customized system, including AI auto-reply if part of your package.
           </div>
 
         </div>
@@ -4629,7 +4740,7 @@
 
         <p>
 
-          It needs software that closes revenue leaks, protects client value, and gives you a new service you can sell to clients you already have — so the system can pay for itself.
+          It needs software built around the way you actually operate — with AI auto-reply that saves your team time, and can become a new revenue line with your own clients.
 
         </p>
 
@@ -4643,14 +4754,14 @@
               rel="noopener noreferrer"
               class="button button-primary magnetic"
             >
-              Build My Agency System
+              Build My Agency's Software
               <span>→</span>
             </a>
 
           </div>
 
           <span class="availability">
-            BASE SYSTEM • BASE SYSTEM + AI AUTO-REPLY • FULLY CUSTOM BUILDS
+            BASE SYSTEM • AI AUTO-REPLY ADD-ON • BUILT AROUND YOUR AGENCY
           </span>
 
         </div>
@@ -4746,7 +4857,7 @@
             </div>
 
             <div class="footer-tagline">
-              White-label software for agencies, built from the AutFlow foundation
+              Branded agency software + AI auto-reply, built from the AutFlow foundation
             </div>
 
           </div>
@@ -4762,7 +4873,7 @@
         </span>
 
         <span>
-          Branded operations systems for agencies — with optional AI auto-reply for client upsell revenue.
+          Branded agency software with AI auto-reply — a system you can also offer to your own clients.
         </span>
 
       </div>
@@ -5315,62 +5426,6 @@
       });
 
     /* =========================================================
-       CUSTOM SOFTWARE OPTIONS
-    ========================================================== */
-
-    gsap.from(".custom-option-animate", {
-
-      x: 70,
-
-      opacity: 0,
-
-      scale: .96,
-
-      stagger: .14,
-
-      duration: .9,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".custom-options",
-
-        start: "top 80%",
-
-        once: true
-
-      }
-
-    });
-
-    /* =========================================================
-       CUSTOM SECTION
-    ========================================================== */
-
-    gsap.from(".custom-copy", {
-
-      x: -70,
-
-      opacity: 0,
-
-      duration: 1,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".custom-card",
-
-        start: "top 80%",
-
-        once: true
-
-      }
-
-    });
-
-    /* =========================================================
        COUNTERS
     ========================================================== */
 
@@ -5621,7 +5676,7 @@
     ========================================================== */
 
     document
-      .querySelectorAll("a, button, .feature-card, .custom-option")
+      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
       .forEach(element => {
 
         element.addEventListener("mouseenter", () => {

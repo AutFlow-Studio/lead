@@ -11,7 +11,7 @@
 
   <meta
     name="description"
-    content="AutFlow Studio turns repetitive, manual, disconnected business workflows into custom software. We map how your team works today and build the system around it — for any business, any industry."
+    content="AutFlow Studio turns repetitive, manual business workflows into custom software and automation, built around how your business actually works."
   >
 
   <!-- =========================================================
@@ -1184,7 +1184,7 @@
     }
 
     /* =========================================================
-       FEATURE BADGES / EQUATION ROW
+       FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW (NEW)
     ========================================================== */
 
     .feature-badge {
@@ -1221,6 +1221,17 @@
       letter-spacing: -.02em;
 
       color: #fff;
+    }
+
+    .equation-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
+      gap: 16px;
+
+      margin-top: 55px;
     }
 
     /* =========================================================
@@ -1591,7 +1602,7 @@
     }
 
     /* =========================================================
-       FLOW DIAGRAM + PILL ROWS
+       WHITE-LABEL MODEL FLOW + PILL ROWS
     ========================================================== */
 
     .flow-diagram {
@@ -1649,7 +1660,33 @@
     }
 
     /* =========================================================
-       HOW IT WORKS / STEP GRIDS
+       TEAM / CLIENT SPLIT
+    ========================================================== */
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+
+      gap: 13px;
+
+      margin-top: 65px;
+    }
+
+    .split-grid .feature-card {
+      min-height: 0;
+    }
+
+    .split-grid .feature-card .check-list {
+      margin-top: 22px;
+    }
+
+    .split-grid .check-item {
+      color: rgba(255,255,255,.4);
+      font-size: 9px;
+    }
+
+    /* =========================================================
+       HOW IT WORKS / 4-UP STEP STYLE GRIDS
     ========================================================== */
 
     .steps-grid {
@@ -1661,12 +1698,385 @@
       margin-top: 65px;
     }
 
-    .steps-grid.steps-grid-5 {
-      grid-template-columns: repeat(5,minmax(0,1fr));
-    }
-
     .steps-grid .feature-card {
       min-height: 200px;
+    }
+
+    /* =========================================================
+       CUSTOM SOFTWARE OPTIONS
+    ========================================================== */
+
+    .custom-card {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 65px;
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      border-radius: 25px;
+
+      background: #080808;
+
+      min-width: 0;
+    }
+
+    .custom-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      right: -150px;
+      top: -200px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.035);
+
+      filter: blur(100px);
+
+      pointer-events: none;
+    }
+
+    .custom-grid {
+      position: relative;
+
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+
+      gap: 70px;
+
+      align-items: center;
+
+      min-width: 0;
+    }
+
+    .custom-copy {
+      min-width: 0;
+    }
+
+    .custom-description {
+      max-width: 510px;
+
+      margin-top: 22px;
+
+      color: rgba(255,255,255,.37);
+
+      font-size: 12px;
+
+      line-height: 1.9;
+    }
+
+    .custom-copy .button {
+      margin-top: 30px;
+    }
+
+    .custom-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+
+      min-width: 0;
+    }
+
+    .custom-option {
+      position: relative;
+
+      padding: 22px;
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+
+      overflow: hidden;
+
+      transition:
+        transform .35s ease,
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease;
+
+      min-width: 0;
+    }
+
+    .custom-option::before {
+      content: "";
+
+      position: absolute;
+
+      width: 170px;
+      height: 170px;
+
+      top: -100px;
+      right: -80px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.035);
+
+      filter: blur(35px);
+
+      transition: .4s ease;
+    }
+
+    .custom-option:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(255,255,255,.18);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.018)
+        );
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+    }
+
+    .custom-option:hover::before {
+      background: rgba(255,255,255,.075);
+    }
+
+    .custom-option-top {
+      position: relative;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      min-width: 0;
+    }
+
+    .custom-option-number {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255,255,255,.1);
+
+      border-radius: 10px;
+
+      background: rgba(255,255,255,.045);
+
+      color: rgba(255,255,255,.65);
+
+      font-family: "DM Mono";
+
+      font-size: 8px;
+    }
+
+    .custom-option-label {
+      color: rgba(255,255,255,.22);
+
+      font-size: 7px;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      text-align: right;
+
+      line-height: 1.5;
+    }
+
+    .custom-option h3 {
+      position: relative;
+
+      margin-top: 18px;
+
+      font-family: "Space Grotesk";
+
+      font-size: 19px;
+
+      line-height: 1.15;
+
+      letter-spacing: -.035em;
+
+      font-weight: 500;
+
+      max-width: 410px;
+    }
+
+    .custom-option p {
+      position: relative;
+
+      margin-top: 10px;
+
+      color: rgba(255,255,255,.32);
+
+      font-size: 9px;
+
+      line-height: 1.8;
+
+      max-width: 450px;
+    }
+
+    .custom-option-features {
+      position: relative;
+
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 6px;
+
+      margin-top: 16px;
+    }
+
+    .custom-option-feature {
+      padding: 5px 8px;
+
+      border: 1px solid rgba(255,255,255,.07);
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.018);
+
+      color: rgba(255,255,255,.34);
+
+      font-size: 6px;
+
+      letter-spacing: .03em;
+    }
+
+    .custom-option-arrow {
+      position: relative;
+
+      display: flex;
+      justify-content: flex-end;
+
+      margin-top: 17px;
+
+      color: rgba(255,255,255,.28);
+
+      font-size: 15px;
+
+      transition:
+        color .3s ease,
+        transform .3s ease;
+    }
+
+    .custom-option:hover .custom-option-arrow {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
+       PRICING
+    ========================================================== */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 16px;
+      margin-top: 65px;
+    }
+
+    .pricing-card {
+      position: relative;
+      padding: 42px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      background: rgba(255,255,255,.018);
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(255,255,255,.22);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.06),
+          rgba(255,255,255,.015)
+        );
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      padding: 6px 10px;
+      border: 1px solid rgba(102,227,148,.35);
+      border-radius: 999px;
+      background: rgba(102,227,148,.08);
+      color: #7be8a4;
+      font-size: 7px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .pricing-label {
+      color: rgba(255,255,255,.28);
+      font-size: 7px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .pricing-name {
+      margin-top: 14px;
+      font-family: "Space Grotesk";
+      font-size: 21px;
+      letter-spacing: -.03em;
+    }
+
+    .pricing-price {
+      margin-top: 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pricing-amount {
+      font-family: "Space Grotesk";
+      font-size: 40px;
+      letter-spacing: -.03em;
+    }
+
+    .pricing-cadence {
+      color: rgba(255,255,255,.3);
+      font-size: 10px;
+    }
+
+    .pricing-sub {
+      margin-top: 6px;
+      color: rgba(255,255,255,.32);
+      font-size: 9px;
+    }
+
+    .pricing-desc {
+      margin-top: 18px;
+      color: rgba(255,255,255,.35);
+      font-size: 10px;
+      line-height: 1.8;
+      max-width: 400px;
+    }
+
+    .pricing-card .check-list {
+      margin-top: 24px;
+    }
+
+    .pricing-card .button {
+      margin-top: 28px;
+      width: 100%;
     }
 
     /* =========================================================
@@ -1842,6 +2252,14 @@
         padding: 50px;
       }
 
+      .custom-card {
+        padding: 50px;
+      }
+
+      .custom-grid {
+        gap: 45px;
+      }
+
       .dashboard-main {
         padding: 22px;
       }
@@ -1866,9 +2284,12 @@
         padding: 14px;
       }
 
-      .steps-grid,
-      .steps-grid.steps-grid-5 {
+      .steps-grid {
         grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1932,7 +2353,9 @@
       }
 
       .section-heading-grid,
-      .ownership-card {
+      .ownership-card,
+      .custom-grid,
+      .split-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1964,6 +2387,10 @@
       .hero-orbit {
         width: 800px;
         height: 800px;
+      }
+
+      .custom-grid {
+        gap: 35px;
       }
 
       .workflow-visual {
@@ -2048,6 +2475,10 @@
         padding: 42px 30px;
       }
 
+      .custom-card {
+        padding: 42px 30px;
+      }
+
       .tab-content {
         padding: 35px;
       }
@@ -2060,8 +2491,7 @@
         gap: 12px;
       }
 
-      .steps-grid,
-      .steps-grid.steps-grid-5 {
+      .steps-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -2497,6 +2927,76 @@
         gap: 7px;
       }
 
+      .custom-card {
+        padding: 34px 23px;
+        border-radius: 19px;
+      }
+
+      .custom-grid {
+        gap: 30px;
+      }
+
+      .custom-description {
+        margin-top: 19px;
+        font-size: 10px;
+        line-height: 1.85;
+      }
+
+      .custom-options {
+        gap: 8px;
+      }
+
+      .custom-option {
+        padding: 18px;
+        border-radius: 14px;
+      }
+
+      .custom-option-number {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+        border-radius: 9px;
+        font-size: 7px;
+      }
+
+      .custom-option-label {
+        font-size: 6px;
+      }
+
+      .custom-option h3 {
+        margin-top: 15px;
+        font-size: 17px;
+      }
+
+      .custom-option p {
+        margin-top: 8px;
+        font-size: 8px;
+        line-height: 1.75;
+      }
+
+      .custom-option-features {
+        margin-top: 13px;
+        gap: 5px;
+      }
+
+      .custom-option-feature {
+        padding: 4px 7px;
+        font-size: 5.5px;
+      }
+
+      .custom-option-arrow {
+        margin-top: 13px;
+        font-size: 13px;
+      }
+
+      .pricing-card {
+        padding: 28px 22px;
+      }
+
+      .pricing-amount {
+        font-size: 32px;
+      }
+
       .final-cta {
         padding: 95px 0;
       }
@@ -2624,7 +3124,8 @@
         padding: 21px;
       }
 
-      .ownership-content {
+      .ownership-content,
+      .custom-card {
         padding-left: 20px;
         padding-right: 20px;
       }
@@ -2641,8 +3142,166 @@
         font-size: 7px;
       }
 
+      .custom-option {
+        padding: 16px;
+      }
+
+      .custom-option h3 {
+        font-size: 16px;
+      }
+
+      .custom-option p {
+        font-size: 7.5px;
+      }
+
       .final-cta {
         padding: 85px 0;
+      }
+    }
+
+    /* =========================================================
+       DEMO MODAL
+    ========================================================== */
+
+    .demo-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    .demo-modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .demo-modal-content {
+      position: relative;
+      width: min(900px, 100%);
+      max-width: 100%;
+      max-height: calc(100vh - 48px);
+
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #090909;
+      box-shadow:
+        0 50px 140px rgba(0,0,0,.8),
+        0 0 100px rgba(255,255,255,.04);
+
+      transform: translateY(24px) scale(.96);
+
+      transition:
+        transform .45s cubic-bezier(.16,1,.3,1);
+    }
+
+    .demo-modal.active .demo-modal-content {
+      transform: translateY(0) scale(1);
+    }
+
+    .demo-modal-header {
+      min-height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      padding: 0 14px 0 17px;
+
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .demo-modal-label {
+      color: rgba(255,255,255,.35);
+      font-size: 8px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .demo-modal-close {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 9px;
+
+      background: rgba(255,255,255,.035);
+
+      color: rgba(255,255,255,.55);
+
+      font-size: 17px;
+
+      transition: .25s ease;
+    }
+
+    .demo-modal-close:hover {
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.16);
+    }
+
+    .demo-video-wrap {
+      background: #000;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      max-height: calc(100vh - 100px);
+    }
+
+    .demo-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #000;
+    }
+
+    @media(max-width:620px) {
+
+      .demo-modal {
+        padding: 15px;
+      }
+
+      .demo-modal-content {
+        border-radius: 15px;
+        max-height: calc(100vh - 30px);
+      }
+
+      .demo-modal-header {
+        min-height: 44px;
+        padding-left: 13px;
+        padding-right: 10px;
+      }
+
+      .demo-modal-label {
+        font-size: 6px;
+        letter-spacing: .14em;
+      }
+
+      .demo-modal-close {
+        width: 30px;
+        height: 30px;
+        flex-basis: 30px;
       }
     }
 
@@ -2705,7 +3364,7 @@
           </div>
 
           <div class="brand-subtitle">
-            Custom Software For Real Workflows
+            Custom Software For Your Workflow
           </div>
 
         </div>
@@ -2714,20 +3373,20 @@
 
       <nav class="nav-links">
 
-        <a href="#problem">
-          The Problem
-        </a>
-
-        <a href="#capabilities">
-          What We Build
-        </a>
-
-        <a href="#how-it-works">
+        <a href="#product">
           How It Works
         </a>
 
-        <a href="#why-custom">
-          Why Custom
+        <a href="#capabilities">
+          What We Solve
+        </a>
+
+        <a href="#comparison">
+          Examples
+        </a>
+
+        <a href="#preview">
+          Start Here
         </a>
 
       </nav>
@@ -2736,7 +3395,7 @@
         href="#get-started"
         class="nav-button magnetic"
       >
-        Show Us Your Workflow
+        Get Started
       </a>
 
       <button
@@ -2750,27 +3409,27 @@
 
     <div class="mobile-menu" id="mobileMenu">
 
-      <a href="#problem">
-        The Problem
-      </a>
-
-      <a href="#capabilities">
-        What We Build
-      </a>
-
-      <a href="#how-it-works">
+      <a href="#product">
         How It Works
       </a>
 
-      <a href="#why-custom">
-        Why Custom
+      <a href="#capabilities">
+        What We Solve
+      </a>
+
+      <a href="#comparison">
+        Examples
+      </a>
+
+      <a href="#preview">
+        Start Here
       </a>
 
       <a
         href="#get-started"
         class="mobile-cta"
       >
-        Show Us Your Workflow
+        Get Started
       </a>
 
     </div>
@@ -2778,7 +3437,7 @@
   </header>
 
   <!-- =========================================================
-       HERO
+       HERO — THE OFFER, IMMEDIATELY
   ========================================================== -->
 
   <section class="hero">
@@ -2795,7 +3454,7 @@
 
           <span class="status-dot"></span>
 
-          CUSTOM SOFTWARE FOR ANY BUSINESS
+          CUSTOM SOFTWARE FOR REPETITIVE WORKFLOWS
 
         </div>
 
@@ -2823,7 +3482,7 @@
 
         <p class="hero-description hero-animate">
 
-          Your business already has a way of working. We map the repetitive, manual, and disconnected parts of it and build custom software around them — less manual work, fewer errors, and a system that fits your business instead of the other way around.
+          Your team already repeats the same steps every day: chasing follow-ups, entering the same data twice, moving information between tools by hand. We turn that exact process into custom software, so the repetitive parts run themselves and your team handles what actually needs a person.
 
         </p>
 
@@ -2837,12 +3496,14 @@
             <span>→</span>
           </a>
 
-          <a
-            href="#how-it-works"
+          <button
+            type="button"
             class="button button-secondary magnetic"
+            id="demoButton"
           >
-            See How It Works
-          </a>
+            Watch An Example Build
+            <span>▶</span>
+          </button>
 
         </div>
 
@@ -2870,12 +3531,12 @@
 
               <i></i>
 
-              LIVE SYSTEM PREVIEW
+              EXAMPLE SYSTEM PREVIEW
 
             </div>
 
             <div class="browser-label">
-              BUILT AROUND YOUR OPERATIONS
+              ONE EXAMPLE — BUILT AROUND A WORKFLOW
             </div>
 
           </div>
@@ -2895,22 +3556,22 @@
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Customers & Requests
+                Customers
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Orders & Fulfillment
+                Orders & Quotes
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Scheduling
+                Follow-Ups
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Documents & Records
+                Automation Layer
               </div>
 
               <div class="sidebar-separator"></div>
@@ -2924,11 +3585,6 @@
                 Workload Analytics
               </div>
 
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Billing & Invoices
-              </div>
-
             </aside>
 
             <div class="dashboard-main">
@@ -2938,7 +3594,7 @@
                 <div>
 
                   <div class="dashboard-eyebrow">
-                    Your Business / Operations
+                    Example System / Operations View
                   </div>
 
                   <div class="dashboard-heading">
@@ -2958,14 +3614,14 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Requests Handled
+                    Revenue
                   </div>
 
                   <div
                     class="stat-value counter"
-                    data-value="1240"
+                    data-value="24680"
                   >
-                    0
+                    $0
                   </div>
 
                   <div class="stat-change">
@@ -2977,18 +3633,18 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Open Orders
+                    Active Projects
                   </div>
 
                   <div
                     class="stat-value counter"
-                    data-value="34"
+                    data-value="18"
                   >
                     0
                   </div>
 
                   <div class="stat-change">
-                    +6
+                    +4
                   </div>
 
                 </div>
@@ -2996,7 +3652,7 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Manual Steps Removed
+                    Active Clients
                   </div>
 
                   <div
@@ -3007,7 +3663,7 @@
                   </div>
 
                   <div class="stat-change">
-                    Across 4 systems
+                    +3
                   </div>
 
                 </div>
@@ -3015,18 +3671,18 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Avg. Response Time
+                    Pipeline Value
                   </div>
 
                   <div
                     class="stat-value counter"
-                    data-value="12"
+                    data-value="6240"
                   >
-                    0
+                    $0
                   </div>
 
                   <div class="stat-change">
-                    Minutes, down from hours
+                    4 opportunities
                   </div>
 
                 </div>
@@ -3038,7 +3694,7 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Operations Queue
+                    Operations Overview
                   </div>
 
                   <div class="panel-subtitle">
@@ -3056,7 +3712,7 @@
                       <div class="project-info">
 
                         <div class="project-name">
-                          New order intake
+                          Client onboarding
                         </div>
 
                         <div class="project-status">
@@ -3066,7 +3722,7 @@
                       </div>
 
                       <div class="project-price">
-                        CRM → ERP
+                        $4,800
                       </div>
 
                     </div>
@@ -3080,7 +3736,7 @@
                       <div class="project-info">
 
                         <div class="project-name">
-                          Customer follow-up
+                          Client follow-up
                         </div>
 
                         <div class="project-status">
@@ -3090,7 +3746,7 @@
                       </div>
 
                       <div class="project-price">
-                        SCHEDULED
+                        $2,400
                       </div>
 
                     </div>
@@ -3104,7 +3760,7 @@
                       <div class="project-info">
 
                         <div class="project-name">
-                          Invoice reconciliation
+                          Project delivery
                         </div>
 
                         <div class="project-status">
@@ -3114,7 +3770,7 @@
                       </div>
 
                       <div class="project-price">
-                        SYNCED
+                        $1,900
                       </div>
 
                     </div>
@@ -3126,11 +3782,11 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Team Workload
+                    Team & Finance
                   </div>
 
                   <div class="panel-subtitle">
-                    Capacity over the last 12 weeks
+                    Workload Analytics over time
                   </div>
 
                   <div class="chart">
@@ -3167,13 +3823,10 @@
   </section>
 
   <!-- =========================================================
-       THE PROBLEM
+       PROBLEM FRAMING
   ========================================================== -->
 
-  <section
-    id="problem"
-    class="section-border"
-  >
+  <section class="section-border">
 
     <div class="container section-padding">
 
@@ -3191,71 +3844,20 @@
 
         <h2>
 
-          Your Team Shouldn't Have To Be
+          Rigid Software Makes
           <br>
 
           <span class="muted">
-            The Integration Layer.
+            Your Business Adapt.
           </span>
+
         </h2>
 
         <p class="section-description centered">
 
-          A request comes in. Someone checks their email, copies the details into a CRM, checks a second system, updates a spreadsheet, messages a coworker, and writes a follow-up reminder — by hand, every time. That's not a workflow. That's a person doing the work software should be doing.
+          Work ends up scattered across spreadsheets and half-used apps. Leads wait. Follow-ups go out late. Repetitive tasks eat your team's time. We build one system around how your business actually works — whatever that work is.
 
         </p>
-
-      </div>
-
-      <div class="flow-diagram reveal-scale">
-
-        <div class="flow-node">
-          Customer request comes in
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          Employee checks email
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          Copies information into the CRM
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          Checks another system
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          Updates a spreadsheet
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          Messages another employee
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          Creates a follow-up, updates a report
-        </div>
-
-      </div>
-
-      <div class="center-heading reveal-scale" style="margin-top:55px;">
-
-        <h2 style="font-size:clamp(28px,3.6vw,38px);">
-          We turn that workflow into <span class="muted">a system.</span>
-        </h2>
 
       </div>
 
@@ -3264,7 +3866,53 @@
   </section>
 
   <!-- =========================================================
-       WHAT WE BUILD — BREADTH WITHOUT BECOMING GENERIC
+       PRODUCT / FOUNDATION — THE STARTING SYSTEM
+  ========================================================== -->
+
+  <section
+    id="product"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="section-heading-grid">
+
+        <div class="reveal-left">
+
+          <div class="eyebrow">
+
+            <span class="eyebrow-line"></span>
+
+            ONE EXAMPLE
+
+          </div>
+
+          <h2>
+
+            What You Saw Above
+
+            <span class="muted">
+              Is One Example.
+            </span>
+          </h2>
+
+        </div>
+
+        <p class="section-description reveal-right">
+
+          It's a sample of the kind of system we build: branding, workflow, processes, automations, and the functionality a business actually needs. Your own system is designed around your workflow, not a fixed template.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       WHAT WE SOLVE
   ========================================================== -->
 
   <section
@@ -3274,32 +3922,32 @@
 
     <div class="container section-padding">
 
-      <div class="center-heading reveal-scale">
+      <div class="section-heading-grid">
 
-        <div class="eyebrow">
+        <div class="reveal-left">
 
-          <span class="eyebrow-line"></span>
+          <div class="eyebrow">
 
-          WHAT CAN WE TURN INTO SOFTWARE?
+            <span class="eyebrow-line"></span>
 
-          <span class="eyebrow-line"></span>
+            WHAT WE SOLVE
+
+          </div>
+
+          <h2>
+
+            The Problems We
+
+            <span class="muted">
+              Turn Into Software.
+            </span>
+          </h2>
 
         </div>
 
-        <h2>
+        <p class="section-description reveal-right">
 
-          Wherever The Manual Work Is,
-
-          <br>
-
-          <span class="muted">
-            That's Where We Start.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          These are examples of the kinds of workflows we build software around, not a fixed menu of products. If your team repeats it, we can probably turn it into a system.
+          These are patterns we see across different businesses. You don't need to know which of these apply to you — just tell us how the work is done today, and we'll find it.
 
         </p>
 
@@ -3310,95 +3958,15 @@
         <div class="feature-card feature-3d">
 
           <div class="feature-icon">
-            ◈
+            ↻
           </div>
 
           <div class="feature-title">
-            CUSTOMER OPERATIONS
+            REPETITIVE WORK
           </div>
 
           <div class="feature-description">
-            Requests, support workflows, follow-ups, communication, ticket routing, escalations, onboarding.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ↗
-          </div>
-
-          <div class="feature-title">
-            SALES OPERATIONS
-          </div>
-
-          <div class="feature-description">
-            Lead management, follow-up, quoting, proposal workflows, pipeline and sales coordination.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ▤
-          </div>
-
-          <div class="feature-title">
-            ORDERS & FULFILLMENT
-          </div>
-
-          <div class="feature-description">
-            Order processing, quote-to-order workflows, fulfillment coordination, inventory-related processes, internal order routing.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ▦
-          </div>
-
-          <div class="feature-title">
-            ADMINISTRATION
-          </div>
-
-          <div class="feature-description">
-            Data entry, document processing, approvals, recordkeeping, repetitive back-office and employee workflows.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            $
-          </div>
-
-          <div class="feature-title">
-            FINANCE
-          </div>
-
-          <div class="feature-description">
-            Invoicing, payment tracking, billing workflows, financial reporting, reconciliation-related processes.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◷
-          </div>
-
-          <div class="feature-title">
-            SCHEDULING
-          </div>
-
-          <div class="feature-description">
-            Appointments, staff scheduling, resource allocation, reminders, coordination between people and jobs.
+            Tasks employees perform again and again — the same steps, the same inputs, the same outcome every time.
           </div>
 
         </div>
@@ -3410,11 +3978,11 @@
           </div>
 
           <div class="feature-title">
-            INTERNAL OPERATIONS
+            DISCONNECTED SYSTEMS
           </div>
 
           <div class="feature-description">
-            Task assignment, approvals, handoffs between departments, status tracking, reporting, dashboards, workload management.
+            Information that has to be manually moved between tools because those tools don't talk to each other.
           </div>
 
         </div>
@@ -3426,20 +3994,504 @@
           </div>
 
           <div class="feature-title">
-            CONNECTED SYSTEMS
+            MANUAL FOLLOW-UP
           </div>
 
           <div class="feature-description">
-            CRM to ERP, spreadsheet to CRM, email to internal system, forms to database — information moving automatically between disconnected tools.
+            Requests, leads, customers, or tasks that require someone to remember to check back in.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◷
+          </div>
+
+          <div class="feature-title">
+            SLOW INTERNAL PROCESSES
+          </div>
+
+          <div class="feature-description">
+            Approvals, coordination, scheduling, and handoffs that create delays between teams.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◈
+          </div>
+
+          <div class="feature-title">
+            SCATTERED INFORMATION
+          </div>
+
+          <div class="feature-description">
+            Data spread across spreadsheets, inboxes, CRMs, ERPs, and internal tools, with no single source of truth.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ⎘
+          </div>
+
+          <div class="feature-title">
+            MANUAL REPORTING
+          </div>
+
+          <div class="feature-description">
+            People spending hours collecting and formatting information that a system could assemble on its own.
           </div>
 
         </div>
 
       </div>
 
-      <p class="section-description centered reveal-scale" style="margin-top:34px;">
-        Where it genuinely helps, we also use AI to read messages, extract information from documents, classify requests, or summarize information — as one tool inside the system, not the whole pitch.
-      </p>
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       CUSTOMIZATION — NEED SOMETHING THAT ISN'T LISTED?
+  ========================================================== -->
+
+  <section
+    id="customization"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          BEYOND THE LISTED EXAMPLES
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          Have A Workflow That Isn't Listed?
+          <br>
+
+          <span class="muted">
+            It Can Still Be Built Into Software.
+          </span>
+        </h2>
+
+        <p class="section-description centered">
+
+          The examples above are patterns, not a checklist. Your process doesn't need to match any of them — describe how your team works today, and we design around that.
+
+        </p>
+
+      </div>
+
+      <div class="steps-grid reveal-scale">
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            A process that's unique to how your team works?
+          </div>
+
+          <div class="request-answer">
+            We can build it.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            A specific automation?
+          </div>
+
+          <div class="request-answer">
+            We can build it.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            A custom dashboard or report?
+          </div>
+
+          <div class="request-answer">
+            We can build it.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            Something else your business needs?
+          </div>
+
+          <div class="request-answer">
+            Tell us.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       HOW A WORKFLOW BECOMES SOFTWARE — EXAMPLES
+  ========================================================== -->
+
+  <section
+    id="comparison"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          FROM MANUAL TO AUTOMATED
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          Every Business Has A Version
+          <br>
+
+          <span class="muted">
+            Of This Same Problem.
+          </span>
+        </h2>
+
+        <p class="section-description centered">
+
+          Different companies, different work — but the shape of the problem repeats. Manual steps that could run on their own, spread across tools that don't talk to each other.
+
+        </p>
+
+      </div>
+
+      <div class="equation-row reveal-scale">
+
+        <div class="flow-node">
+          MANUAL, SCATTERED WORK
+        </div>
+
+        <div class="flow-arrow">+</div>
+
+        <div class="flow-node">
+          CUSTOM SOFTWARE
+        </div>
+
+        <div class="flow-arrow">=</div>
+
+        <div class="flow-node">
+          ONE CONNECTED SYSTEM
+        </div>
+
+      </div>
+
+      <div class="pricing-grid reveal-scale">
+
+        <div class="pricing-card">
+
+          <div class="pricing-label">
+            EXAMPLE 01
+          </div>
+
+          <div class="pricing-name">
+            Lead Follow-Up
+          </div>
+
+          <p class="pricing-desc">
+            Before: a request comes in, someone checks their inbox, opens a spreadsheet, checks the CRM, re-enters the same information, and sends a follow-up whenever they remember to.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Request lands in one system automatically
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Information is captured once, not re-typed
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Follow-ups go out on schedule, not by memory
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              The team only steps in when a person is needed
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="pricing-card featured">
+
+          <div class="pricing-badge">
+            EXAMPLE
+          </div>
+
+          <div class="pricing-label">
+            EXAMPLE 02
+          </div>
+
+          <div class="pricing-name">
+            Weekly Reporting
+          </div>
+
+          <p class="pricing-desc">
+            Before: someone spends hours every week pulling numbers from different tools, pasting them into a spreadsheet, and formatting a report by hand.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Numbers are pulled from connected systems automatically
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              The report assembles itself on a schedule
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Errors from manual copying disappear
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              The team reviews the numbers instead of collecting them
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       YOU BRING THE WORKFLOW — WE DESIGN THE SYSTEM
+  ========================================================== -->
+
+  <section
+    id="revenue-opportunity"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          YOU DON'T NEED TO KNOW THE SOLUTION
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+
+          You Bring The Workflow.
+          <br>
+
+          <span class="muted">
+            We Design The System.
+          </span>
+        </h2>
+
+        <p class="section-description centered">
+
+          You don't need to know what software you need, what should be automated, or what technology to use. You just need to know your team spends too much time doing something manually. We handle the rest.
+
+        </p>
+
+      </div>
+
+      <div class="flow-diagram reveal-scale">
+
+        <div class="flow-node">
+          YOU EXPLAIN HOW THE WORK IS DONE TODAY
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          WE FIND WHAT'S REPETITIVE
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          WE DESIGN AND BUILD THE SYSTEM
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          YOUR TEAM WORKS INSIDE IT
+        </div>
+
+      </div>
+
+      <div class="ownership-card ownership-parallax" style="margin-top:70px;">
+
+        <div class="ownership-content">
+
+          <span class="small-tag">
+            EVERY WORKFLOW IS DIFFERENT
+          </span>
+
+          <h2 style="margin-top:23px;">
+
+            Describe The Process.
+
+            <br>
+
+            <span class="muted">
+              We Handle The Rest.
+            </span>
+          </h2>
+
+          <p>
+
+            Tell us what your team repeats, where information gets stuck, or what still gets done by hand. We turn that into a system built around your actual process, not a generic template.
+
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              You explain how the work is done today
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              We identify the repetitive, manual parts
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              We design what becomes software, what gets automated, and what stays human
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              We build the system around your actual workflow
+            </div>
+
+          </div>
+
+          <p class="ownership-note">
+
+            Every system looks different, because every workflow is different.
+
+          </p>
+
+        </div>
+
+        <div class="workflow-visual">
+
+          <div class="workflow-box workflow-float">
+
+            <div class="workflow-header">
+
+              <span>
+                ◉ EXAMPLE WORKFLOW
+              </span>
+
+              <span class="workflow-active">
+                ACTIVE
+              </span>
+
+            </div>
+
+            <div class="workflow-steps">
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Request comes in
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                System checks the right information
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Automated action is taken
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Your team is notified only when needed
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -3474,7 +4526,7 @@
 
       </div>
 
-      <div class="steps-grid steps-grid-5 reveal-scale">
+      <div class="steps-grid reveal-scale">
 
         <div class="feature-card feature-3d">
 
@@ -3487,7 +4539,7 @@
           </div>
 
           <div class="feature-description">
-            We map how the work is currently done — the tools, the steps, and the people involved.
+            We learn how the work is done today: the steps, the tools, and where time gets lost.
           </div>
 
         </div>
@@ -3499,11 +4551,11 @@
           </div>
 
           <div class="feature-title">
-            FIND THE BOTTLENECK
+            DESIGN
           </div>
 
           <div class="feature-description">
-            We identify repetitive work, unnecessary handoffs, disconnected tools, and manual steps.
+            We identify the repetitive, manual parts and decide what should become software, what gets automated, and what stays human.
           </div>
 
         </div>
@@ -3515,11 +4567,11 @@
           </div>
 
           <div class="feature-title">
-            DESIGN
+            BUILD
           </div>
 
           <div class="feature-description">
-            We design the software around the actual workflow, not the other way around.
+            We build the system around your actual workflow — not a generic template.
           </div>
 
         </div>
@@ -3531,27 +4583,11 @@
           </div>
 
           <div class="feature-title">
-            BUILD
-          </div>
-
-          <div class="feature-description">
-            We build the system, automation, integrations, dashboards, and functionality it needs.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            05
-          </div>
-
-          <div class="feature-title">
             DEPLOY
           </div>
 
           <div class="feature-description">
-            The system goes live inside your business, and your team starts working in it.
+            Your system goes live and your team starts working inside it.
           </div>
 
         </div>
@@ -3563,336 +4599,85 @@
   </section>
 
   <!-- =========================================================
-       WHY CUSTOM
+       TELL US WHAT YOUR TEAM REPEATS — LOW-FRICTION START
   ========================================================== -->
 
   <section
-    id="why-custom"
+    id="preview"
     class="section-border"
   >
 
     <div class="container section-padding">
 
-      <div class="ownership-card reveal-scale">
+      <div class="custom-card reveal-scale">
 
-        <div class="ownership-content">
+        <div class="custom-grid">
 
-          <span class="small-tag">
-            THE MOST IMPORTANT DISTINCTION
-          </span>
+          <div class="custom-copy">
 
-          <h2 style="margin-top:23px;">
-
-            We Build The Software
-
-            <br>
-
-            <span class="muted">
-              Around Your Business.
+            <span class="small-tag">
+              YOU DON'T NEED TO KNOW WHAT YOU NEED
             </span>
-          </h2>
 
-          <p>
+            <h2 style="margin-top:23px;">
 
-            Generic software asks you to change how your business works so it fits the tool. We do the opposite: we look at how your business already works, and we build the system around that.
+              Just Tell Us
 
-          </p>
+              <br>
 
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Your workflow, not a template
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Your rules, encoded the way your team actually applies them
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Your data, structured the way your business uses it
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Your processes, kept intact where they work
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Your system — scoped to the problem you actually have
-            </div>
-
-          </div>
-
-          <p class="ownership-note">
-
-            The scope of every project depends on the workflow we're solving. There's no fixed package, because no two businesses run the same way.
-
-          </p>
-
-        </div>
-
-        <div class="workflow-visual">
-
-          <div class="workflow-box workflow-float">
-
-            <div class="workflow-header">
-
-              <span>
-                ◉ YOUR SYSTEM
+              <span class="muted">
+                What Your Team Repeats.
               </span>
+            </h2>
 
-              <span class="workflow-active">
-                LIVE
-              </span>
-
-            </div>
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Request comes in
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                System routes and records it automatically
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Team is notified only when a decision is needed
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Status and reporting update themselves
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="feature-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ↓
-          </div>
-
-          <div class="feature-title">
-            LESS MANUAL WORK
-          </div>
-
-          <div class="feature-description">
-            Stop paying people to repeatedly move information around by hand.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ✕
-          </div>
-
-          <div class="feature-title">
-            FEWER ERRORS
-          </div>
-
-          <div class="feature-description">
-            Reduce copying mistakes, missed steps, and inconsistent processes.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⚡
-          </div>
-
-          <div class="feature-title">
-            FASTER OPERATIONS
-          </div>
-
-          <div class="feature-description">
-            Information moves through the business automatically instead of waiting on someone.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◎
-          </div>
-
-          <div class="feature-title">
-            BETTER VISIBILITY
-          </div>
-
-          <div class="feature-description">
-            See what's happening without manually assembling a report first.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◫
-          </div>
-
-          <div class="feature-title">
-            SOFTWARE THAT FITS
-          </div>
-
-          <div class="feature-description">
-            The system adapts to your business — not the other way around.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⊕
-          </div>
-
-          <div class="feature-title">
-            ONE OPERATIONAL SYSTEM
-          </div>
-
-          <div class="feature-description">
-            Fragmented processes brought into one place where it makes sense to.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       EXAMPLES
-  ========================================================== -->
-
-  <section
-    id="examples"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          EXAMPLES
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Same Approach.
-
-          <br>
-
-          <span class="muted">
-            Different Workflow Every Time.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          Two examples of the same underlying idea — real operational work, turned into a system built around it.
-
-        </p>
-
-      </div>
-
-      <div class="tabs reveal-scale">
-
-        <div class="tab-buttons">
-
-          <button
-            type="button"
-            class="tab-button active"
-            data-tab="requests"
-          >
-            Customer Requests
-          </button>
-
-          <button
-            type="button"
-            class="tab-button"
-            data-tab="orders"
-          >
-            Order Processing
-          </button>
-
-        </div>
-
-        <div class="tab-content">
-
-          <div class="tab-panel active" id="tab-requests">
-
-            <div class="tab-icon">
-              ◈
-            </div>
-
-            <h3>
-              From Inbox To System
-            </h3>
-
-            <p>
-              Before: requests arrive by email, get triaged by hand, copied into a spreadsheet, and followed up whenever someone remembers. After: requests are captured automatically, routed to the right person, and followed up on schedule — with a record of what happened and when.
+            <p class="custom-description">
+              You don't need to walk in knowing the software solution, the automation, or the technology behind it. Just tell us what takes too long, what gets copied by hand, or what keeps falling through the cracks — we'll figure out what to build.
             </p>
 
-            <div class="tags">
-              <span class="tag">Intake automation</span>
-              <span class="tag">Routing rules</span>
-              <span class="tag">Scheduled follow-up</span>
-              <span class="tag">Status tracking</span>
-            </div>
+            <a
+              href="#get-started"
+              class="button button-primary magnetic"
+            >
+              Show Us Your Workflow
+              <span>→</span>
+            </a>
 
           </div>
 
-          <div class="tab-panel" id="tab-orders">
+          <div class="custom-options">
 
-            <div class="tab-icon">
-              ▤
-            </div>
+            <div class="custom-option">
 
-            <h3>
-              From Quote To Fulfillment
-            </h3>
+              <div class="custom-option-top">
 
-            <p>
-              Before: a quote is approved, then someone re-enters it into a second system, checks stock manually, and messages the fulfillment team. After: an approved quote becomes an order automatically, stock is checked in real time, and the right team is notified — with nothing re-typed.
-            </p>
+                <div class="custom-option-number">
+                  01
+                </div>
 
-            <div class="tags">
-              <span class="tag">Quote-to-order automation</span>
-              <span class="tag">System sync</span>
-              <span class="tag">Inventory checks</span>
-              <span class="tag">Team handoffs</span>
+                <div class="custom-option-label">
+                  WHAT TO<br>SEND US
+                </div>
+
+              </div>
+
+              <h3>
+                Describe The Work, Not The Solution
+              </h3>
+
+              <p>
+                A few sentences on how your team currently handles something is enough for us to start looking for the bottleneck.
+              </p>
+
+              <div class="custom-option-features">
+                <span class="custom-option-feature">"MY TEAM SPENDS HOURS DOING X"</span>
+                <span class="custom-option-feature">"WE COPY DATA FROM A TO B"</span>
+                <span class="custom-option-feature">"REQUESTS GET LOST BETWEEN TOOLS"</span>
+              </div>
+
+              <div class="custom-option-arrow">
+                →
+              </div>
+
             </div>
 
           </div>
@@ -3924,17 +4709,17 @@
 
         <h2>
 
-          Tell Us How Your
+          Tell Us How You Work Today.
           <br>
 
           <span class="muted">
-            Business Works Today.
+            We'll Turn It Into Software.
           </span>
         </h2>
 
         <p>
 
-          Every project starts the same way: we look at a real workflow in your business and figure out what software could take off your team's plate. No fixed packages — the scope depends on what we find.
+          Explain the process, the steps, and where your team loses time. We'll figure out what should become software, what should be automated, and what stays human.
 
         </p>
 
@@ -3955,7 +4740,7 @@
           </div>
 
           <span class="availability">
-            ANY INDUSTRY — WE SCOPE THE PROJECT AROUND YOUR WORKFLOW
+            EVERY SYSTEM IS BUILT AROUND YOUR WORKFLOW — NO FIXED PACKAGES
           </span>
 
         </div>
@@ -3965,6 +4750,68 @@
     </div>
 
   </section>
+
+  <!-- =========================================================
+       DEMO MODAL
+  ========================================================== -->
+
+  <div
+    class="demo-modal"
+    id="demoModal"
+    aria-hidden="true"
+  >
+
+    <div
+      class="demo-modal-content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demoModalLabel"
+    >
+
+      <div class="demo-modal-header">
+
+        <span
+          class="demo-modal-label"
+          id="demoModalLabel"
+        >
+          AutFlow Studio / Example System
+        </span>
+
+        <button
+          type="button"
+          class="demo-modal-close"
+          id="demoModalClose"
+          aria-label="Close example demo"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="demo-video-wrap">
+
+        <video
+          class="demo-video"
+          id="demoVideo"
+          controls
+          playsinline
+          preload="metadata"
+        >
+
+          <source
+            src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4"
+            type="video/mp4"
+          >
+
+          Your browser does not support the demo video.
+
+        </video>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- =========================================================
        FOOTER
@@ -3989,7 +4836,7 @@
             </div>
 
             <div class="footer-tagline">
-              Custom software and workflow automation, built around how your business already works.
+              Custom software and automation built around how your business actually works.
             </div>
 
           </div>
@@ -4005,7 +4852,7 @@
         </span>
 
         <span>
-          Custom software studio. Project scope is set around the workflow we're solving — no fixed packages.
+          Every system is designed around your workflow — not a fixed product.
         </span>
 
       </div>
@@ -4568,6 +5415,9 @@
         const target =
           Number(counter.dataset.value);
 
+        const isMoney =
+          target > 1000;
+
         const object = {
           value: 0
         };
@@ -4596,7 +5446,9 @@
               Math.floor(object.value);
 
             counter.textContent =
-              value.toLocaleString();
+              isMoney
+                ? "$" + value.toLocaleString()
+                : value.toLocaleString();
 
           }
 
@@ -4749,7 +5601,7 @@
     ========================================================== */
 
     document
-      .querySelectorAll("a, button, .feature-card")
+      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
       .forEach(element => {
 
         element.addEventListener("mouseenter", () => {
@@ -4873,42 +5725,95 @@
       });
 
     /* =========================================================
-       TABS
+       DEMO MODAL
     ========================================================== */
 
-    document
-      .querySelectorAll(".tab-button")
-      .forEach(button => {
+    const demoButton =
+      document.getElementById("demoButton");
 
-        button.addEventListener("click", () => {
+    const demoModal =
+      document.getElementById("demoModal");
 
-          const tabKey =
-            button.dataset.tab;
+    const demoModalClose =
+      document.getElementById("demoModalClose");
 
-          document
-            .querySelectorAll(".tab-button")
-            .forEach(otherButton => {
-              otherButton.classList.remove("active");
-            });
+    const demoVideo =
+      document.getElementById("demoVideo");
 
-          document
-            .querySelectorAll(".tab-panel")
-            .forEach(panel => {
-              panel.classList.remove("active");
-            });
+    function openDemo() {
 
-          button.classList.add("active");
+      demoModal.classList.add("active");
 
-          const targetPanel =
-            document.getElementById("tab-" + tabKey);
+      demoModal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
 
-          if (targetPanel) {
-            targetPanel.classList.add("active");
-          }
+      document.body.classList.add(
+        "menu-open"
+      );
 
-        });
+      demoVideo.currentTime = 0;
 
-      });
+      demoVideo.load();
+
+      demoVideo.play().catch(() => {});
+
+    }
+
+    function closeDemo() {
+
+      demoModal.classList.remove("active");
+
+      demoModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
+      demoVideo.pause();
+
+    }
+
+    demoButton.addEventListener(
+      "click",
+      openDemo
+    );
+
+    demoModalClose.addEventListener(
+      "click",
+      closeDemo
+    );
+
+    demoModal.addEventListener(
+      "click",
+      event => {
+
+        if (event.target === demoModal) {
+          closeDemo();
+        }
+
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape" &&
+          demoModal.classList.contains("active")
+        ) {
+
+          closeDemo();
+
+        }
+
+      }
+    );
 
     /* =========================================================
        YEAR

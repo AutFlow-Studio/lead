@@ -4,67 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Auditlane — Freight Invoice Audit | Find Billing Errors Carriers Don't Flag</title>
+  <title>AutFlow Studio — Freight Invoice Audit &amp; Discrepancy Detection</title>
 
-  <link rel="icon" type="image/png" href="./auditlane-logo.png">
-  <link rel="shortcut icon" type="image/png" href="./auditlane-logo.png">
+  <link rel="icon" type="image/png" href="./AutFlow-logo.png">
+  <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
   <meta
     name="description"
-    content="Auditlane audits carrier freight invoices for duplicate charges, rate discrepancies, accessorial issues, and other billing anomalies — so your Finance and Logistics team can focus on the exceptions instead of reviewing every invoice. Get a free invoice check."
+    content="A freight invoice audit service for companies with significant freight spend. Automated extraction and rule-based checks surface potential billing discrepancies, which are verified by a person before being reported."
   >
-  <meta name="keywords" content="freight invoice audit, freight billing audit, carrier invoice audit, freight overcharges, freight invoice discrepancies, freight audit service, freight billing errors">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Auditlane — Freight Invoice Audit">
-  <meta property="og:description" content="We audit carrier invoices for duplicate charges, rate discrepancies, and billing anomalies — so your team can focus on the invoices that actually need a closer look.">
-  <meta property="og:image" content="./auditlane-logo.png">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Auditlane — Freight Invoice Audit">
-  <meta name="twitter:description" content="Find the freight billing errors your team doesn't have time to find. Get a free invoice check.">
-
-  <!-- =========================================================
-       FONTS
-  ========================================================== -->
-
+  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
-  <!-- =========================================================
-       GSAP
-  ========================================================== -->
-
+  <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
-  <!-- =========================================================
-       LENIS SMOOTH SCROLL
-  ========================================================== -->
-
+  <!-- LENIS SMOOTH SCROLL -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
 
-    /* =========================================================
-       RESET
-    ========================================================== */
+    /* RESET */
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: auto;
-      width: 100%;
-      overflow-x: hidden;
-    }
+    html { scroll-behavior: auto; width: 100%; overflow-x: hidden; }
 
     body {
       margin: 0;
@@ -77,35 +48,17 @@
       min-width: 0;
     }
 
-    body.menu-open {
-      overflow: hidden;
-    }
+    body.menu-open { overflow: hidden; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
-    button {
-      border: none;
-      font: inherit;
-      cursor: pointer;
-    }
+    button { border: none; font: inherit; cursor: pointer; }
 
-    img,
-    video,
-    svg {
-      max-width: 100%;
-    }
+    img, video, svg { max-width: 100%; }
 
-    ::selection {
-      background: #fff;
-      color: #000;
-    }
+    ::selection { background: #fff; color: #000; }
 
-    /* =========================================================
-       GLOBAL
-    ========================================================== */
+    /* GLOBAL */
 
     :root {
       --white: #fff;
@@ -113,3165 +66,834 @@
       --soft: rgba(255,255,255,.08);
       --border: rgba(255,255,255,.09);
       --panel: rgba(255,255,255,.025);
-      --accent: #7be8a4;
-      --warn: #e8c47b;
     }
 
-    .container {
-      width: min(1180px, calc(100% - 48px));
-      margin: auto;
-      min-width: 0;
-    }
+    .container { width: min(1180px, calc(100% - 48px)); margin: auto; min-width: 0; }
 
-    .section-border {
-      border-top: 1px solid rgba(255,255,255,.07);
-    }
+    .section-border { border-top: 1px solid rgba(255,255,255,.07); }
 
-    .section-padding {
-      padding: 140px 0;
-    }
+    .section-padding { padding: 140px 0; }
 
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================== */
+    /* CUSTOM CURSOR */
 
     .cursor {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fff;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
+      position: fixed; width: 10px; height: 10px; border-radius: 50%;
+      background: #fff; pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%); mix-blend-mode: difference;
     }
 
     .cursor-ring {
-      position: fixed;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255,255,255,.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
+      position: fixed; width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,.4); border-radius: 50%;
+      pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
     }
 
-    /* =========================================================
-       BACKGROUND
-    ========================================================== */
+    /* BACKGROUND */
 
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -10;
-      overflow: hidden;
-      background: #050505;
-      pointer-events: none;
-    }
+    .background { position: fixed; inset: 0; z-index: -10; overflow: hidden; background: #050505; pointer-events: none; }
 
     .background-grid {
-      position: absolute;
-      inset: 0;
-
+      position: absolute; inset: 0;
       background-image:
-        linear-gradient(
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        );
-
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
       background-size: 70px 70px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 80%
-        );
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
 
-    .glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: .45;
-    }
+    .glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .45; }
 
-    .glow-1 {
-      width: 650px;
-      height: 650px;
-      top: -300px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,.055);
-    }
+    .glow-1 { width: 650px; height: 650px; top: -300px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,.055); }
 
-    .glow-2 {
-      width: 400px;
-      height: 400px;
-      top: 900px;
-      left: -200px;
-      background: rgba(255,255,255,.025);
-    }
+    .glow-2 { width: 400px; height: 400px; top: 900px; left: -200px; background: rgba(255,255,255,.025); }
 
-    .glow-3 {
-      width: 450px;
-      height: 450px;
-      top: 1600px;
-      right: -200px;
-      background: rgba(255,255,255,.025);
-    }
+    .glow-3 { width: 450px; height: 450px; top: 1600px; right: -200px; background: rgba(255,255,255,.025); }
 
-    /* =========================================================
-       NAVBAR
-    ========================================================== */
+    /* NAVBAR */
 
     .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 500;
-
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 500;
       border-bottom: 1px solid transparent;
-
       background: rgba(5,5,5,.25);
-
-      backdrop-filter: blur(0);
-      -webkit-backdrop-filter: blur(0);
-
-      transition:
-        background .4s ease,
-        border-color .4s ease,
-        backdrop-filter .4s ease;
+      backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0);
+      transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
     }
 
     .navbar.scrolled {
       background: rgba(5,5,5,.75);
       border-color: rgba(255,255,255,.07);
-
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     }
 
-    .nav-inner {
-      height: 78px;
+    .nav-inner { height: 78px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      min-width: 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
-      flex: 0 0 38px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 11px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.1),
-          rgba(255,255,255,.025)
-        );
-
-      box-shadow:
-        0 0 40px rgba(255,255,255,.035);
+      width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.12); border-radius: 11px;
+      background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.025));
+      box-shadow: 0 0 40px rgba(255,255,255,.035);
     }
 
-    .brand-mark span {
-      font-family: "Space Grotesk";
-      font-weight: 700;
-    }
+    .brand-mark span { font-family: "Space Grotesk"; font-weight: 700; }
 
-    .brand-name {
-      font-family: "Space Grotesk";
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
+    .brand-name { font-family: "Space Grotesk"; font-size: 14px; font-weight: 600; white-space: nowrap; }
 
-    .brand-name span {
-      color: rgba(255,255,255,.35);
-    }
+    .brand-name span { color: rgba(255,255,255,.35); }
 
-    .brand-subtitle {
-      font-size: 7px;
-      letter-spacing: .25em;
-      color: rgba(255,255,255,.25);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
+    .brand-subtitle { font-size: 7px; letter-spacing: .25em; color: rgba(255,255,255,.25); text-transform: uppercase; white-space: nowrap; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
+    .nav-links { display: flex; align-items: center; gap: 34px; }
 
-    .nav-links a {
-      font-size: 11px;
-      color: rgba(255,255,255,.42);
-      transition: color .25s ease;
-      white-space: nowrap;
-    }
+    .nav-links a { font-size: 11px; color: rgba(255,255,255,.42); transition: color .25s ease; white-space: nowrap; }
 
-    .nav-links a:hover {
-      color: #fff;
-    }
+    .nav-links a:hover { color: #fff; }
 
     .nav-button {
-      padding: 11px 19px;
-
-      border-radius: 999px;
-
-      background: #fff;
-      color: #000;
-
-      font-size: 10px;
-      font-weight: 700;
-
-      transition:
-        transform .25s ease,
-        background .25s ease;
-
-      white-space: nowrap;
+      padding: 11px 19px; border-radius: 999px; background: #fff; color: #000;
+      font-size: 10px; font-weight: 700;
+      transition: transform .25s ease, background .25s ease; white-space: nowrap;
     }
 
-    .nav-button:hover {
-      transform: translateY(-2px);
-      background: #e9e9e9;
-    }
+    .nav-button:hover { transform: translateY(-2px); background: #e9e9e9; }
 
     .mobile-menu-button {
-      display: none;
-
-      width: 40px;
-      height: 40px;
-      flex: 0 0 40px;
-
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 10px;
-
-      background: rgba(255,255,255,.04);
-      color: white;
+      display: none; width: 40px; height: 40px; flex: 0 0 40px;
+      border: 1px solid rgba(255,255,255,.1); border-radius: 10px;
+      background: rgba(255,255,255,.04); color: white;
     }
 
-    .mobile-menu {
-      display: none;
-    }
+    .mobile-menu { display: none; }
 
-    /* =========================================================
-       HERO
-    ========================================================== */
+    /* HERO */
 
-    .hero {
-      min-height: 100vh;
+    .hero { min-height: 100vh; padding-top: 175px; padding-bottom: 100px; position: relative; overflow: hidden; }
 
-      padding-top: 175px;
-      padding-bottom: 100px;
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-content {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-
-      position: relative;
-      z-index: 2;
-      min-width: 0;
-    }
+    .hero-content { max-width: 900px; margin: auto; text-align: center; position: relative; z-index: 2; min-width: 0; }
 
     .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 8px 14px;
-
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.035);
-
-      color: rgba(255,255,255,.42);
-
-      font-size: 8px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      max-width: 100%;
+      display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,.09); border-radius: 999px;
+      background: rgba(255,255,255,.035); color: rgba(255,255,255,.42);
+      font-size: 8px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%;
     }
 
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      flex: 0 0 6px;
-
-      border-radius: 50%;
-
-      background: #66e394;
-
-      box-shadow:
-        0 0 15px rgba(102,227,148,.7);
-    }
+    .status-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #66e394; box-shadow: 0 0 15px rgba(102,227,148,.7); }
 
     .hero-title {
-      margin-top: 28px;
-
-      font-family: "Space Grotesk";
-
-      font-size: clamp(46px, 6.6vw, 82px);
-
-      line-height: .98;
-
-      letter-spacing: -.06em;
-
-      font-weight: 600;
-
-      overflow-wrap: normal;
-      word-break: normal;
+      margin-top: 28px; font-family: "Space Grotesk";
+      font-size: clamp(52px, 7.4vw, 92px); line-height: .95; letter-spacing: -.07em; font-weight: 600;
+      overflow-wrap: normal; word-break: normal;
     }
 
-    .hero-title .line {
-      display: block;
-      overflow: hidden;
-    }
+    .hero-title .line { display: block; overflow: hidden; }
 
-    .hero-title .line-inner {
-      display: block;
-    }
+    .hero-title .line-inner { display: block; }
 
-    .hero-title .muted {
-      color: rgba(255,255,255,.32);
-    }
+    .hero-title .muted { color: rgba(255,255,255,.32); }
 
-    .hero-description {
-      max-width: 660px;
+    .hero-description { max-width: 650px; margin: 32px auto 0; color: rgba(255,255,255,.4); font-size: 15px; line-height: 1.9; }
 
-      margin: 32px auto 0;
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 15px;
-
-      line-height: 1.9;
-    }
-
-    .hero-actions {
-      margin-top: 34px;
-
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-
-      flex-wrap: wrap;
-    }
+    .hero-actions { margin-top: 34px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 
     .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      min-height: 48px;
-
-      padding: 0 23px;
-
-      border-radius: 999px;
-
-      font-size: 11px;
-      font-weight: 600;
-
-      transition:
-        background .3s ease,
-        border-color .3s ease;
-
-      max-width: 100%;
-      text-align: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 23px; border-radius: 999px; font-size: 11px; font-weight: 600;
+      transition: background .3s ease, border-color .3s ease; max-width: 100%; text-align: center;
     }
 
-    .button-primary {
-      background: #fff;
-      color: #000;
-    }
+    .button-primary { background: #fff; color: #000; }
 
-    .button-secondary {
-      background: rgba(255,255,255,.035);
-      border: 1px solid rgba(255,255,255,.1);
-      color: rgba(255,255,255,.6);
-    }
+    .button-secondary { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
 
-    .button-secondary:hover {
-      border-color: rgba(255,255,255,.2);
-      color: #fff;
-    }
+    .button-secondary:hover { border-color: rgba(255,255,255,.2); color: #fff; }
 
-    /* =========================================================
-       HERO ORBIT
-    ========================================================== */
+    /* HERO ORBIT */
 
     .hero-orbit {
-      position: absolute;
-
-      width: 950px;
-      height: 950px;
-
-      left: 50%;
-      top: 360px;
-
-      transform: translateX(-50%);
-
-      border: 1px solid rgba(255,255,255,.025);
-
-      border-radius: 50%;
-
-      pointer-events: none;
+      position: absolute; width: 950px; height: 950px; left: 50%; top: 360px;
+      transform: translateX(-50%); border: 1px solid rgba(255,255,255,.025);
+      border-radius: 50%; pointer-events: none;
     }
 
-    .hero-orbit::before {
-      content: "";
+    .hero-orbit::before { content: ""; position: absolute; inset: 80px; border: 1px solid rgba(255,255,255,.02); border-radius: 50%; }
 
-      position: absolute;
+    .orbit-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: white; box-shadow: 0 0 20px rgba(255,255,255,.7); left: 50%; top: 0; }
 
-      inset: 80px;
+    /* DASHBOARD */
 
-      border: 1px solid rgba(255,255,255,.02);
-
-      border-radius: 50%;
-    }
-
-    .orbit-dot {
-      position: absolute;
-
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: white;
-
-      box-shadow:
-        0 0 20px rgba(255,255,255,.7);
-
-      left: 50%;
-      top: 0;
-    }
-
-    /* =========================================================
-       DASHBOARD
-    ========================================================== */
-
-    .dashboard-wrapper {
-      position: relative;
-
-      width: 100%;
-      max-width: 1120px;
-
-      margin: 100px auto 0;
-
-      perspective: 1400px;
-      min-width: 0;
-    }
+    .dashboard-wrapper { position: relative; width: 100%; max-width: 1120px; margin: 100px auto 0; perspective: 1400px; min-width: 0; }
 
     .dashboard-glow {
-      position: absolute;
-
-      width: 800px;
-      height: 350px;
-
-      left: 50%;
-      top: 50%;
-
-      transform: translate(-50%,-50%);
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(100px);
-
-      max-width: 90vw;
+      position: absolute; width: 800px; height: 350px; left: 50%; top: 50%;
+      transform: translate(-50%,-50%); border-radius: 50%;
+      background: rgba(255,255,255,.035); filter: blur(100px); max-width: 90vw;
     }
 
     .dashboard {
-      position: relative;
-
-      width: 100%;
-      max-width: 100%;
-
-      border: 1px solid rgba(255,255,255,.12);
-
-      border-radius: 20px;
-
-      overflow: hidden;
-
+      position: relative; width: 100%; max-width: 100%;
+      border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden;
       background: #090909;
-
-      box-shadow:
-        0 70px 150px rgba(0,0,0,.75),
-        0 0 100px rgba(255,255,255,.025);
-
-      transform-origin: center top;
-
-      will-change: transform;
+      box-shadow: 0 70px 150px rgba(0,0,0,.75), 0 0 100px rgba(255,255,255,.025);
+      transform-origin: center top; will-change: transform;
     }
 
     .browser-bar {
-      min-height: 45px;
-      height: 45px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 0 16px;
-
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      min-height: 45px; height: 45px; display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 0 16px; border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
-    .browser-dots {
-      display: flex;
-      gap: 6px;
-      flex: 0 0 auto;
-    }
+    .browser-dots { display: flex; gap: 6px; flex: 0 0 auto; }
 
-    .browser-dots span {
-      width: 8px;
-      height: 8px;
+    .browser-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.13); }
 
-      border-radius: 50%;
+    .browser-status { display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,.4); font-size: 8px; min-width: 0; text-align: center; }
 
-      background: rgba(255,255,255,.13);
-    }
+    .browser-status i { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #5cdf8d; }
 
-    .browser-status {
-      display: flex;
-      align-items: center;
-      gap: 7px;
+    .browser-label { color: rgba(255,255,255,.32); font-size: 8px; letter-spacing: .2em; white-space: nowrap; }
 
-      color: rgba(255,255,255,.4);
+    .dashboard-body { display: grid; grid-template-columns: 210px minmax(0, 1fr); min-height: 460px; min-width: 0; }
 
-      font-size: 8px;
+    .sidebar { padding: 22px 15px; border-right: 1px solid rgba(255,255,255,.07); min-width: 0; }
 
-      min-width: 0;
-      text-align: center;
-    }
-
-    .browser-status i {
-      width: 6px;
-      height: 6px;
-      flex: 0 0 6px;
-
-      border-radius: 50%;
-
-      background: #5cdf8d;
-    }
-
-    .browser-label {
-      color: rgba(255,255,255,.32);
-
-      font-size: 8px;
-
-      letter-spacing: .2em;
-
-      white-space: nowrap;
-    }
-
-    .dashboard-body {
-      display: grid;
-      grid-template-columns: 210px minmax(0, 1fr);
-
-      min-height: 460px;
-      min-width: 0;
-    }
-
-    .sidebar {
-      padding: 22px 15px;
-
-      border-right: 1px solid rgba(255,255,255,.07);
-
-      min-width: 0;
-    }
-
-    .sidebar-title {
-      margin-bottom: 14px;
-
-      color: rgba(255,255,255,.2);
-
-      font-size: 7px;
-
-      letter-spacing: .2em;
-
-      text-transform: uppercase;
-    }
+    .sidebar-title { margin-bottom: 14px; color: rgba(255,255,255,.2); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
 
     .sidebar-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 10px;
-
-      margin-bottom: 3px;
-
-      border-radius: 8px;
-
-      color: rgba(255,255,255,.32);
-
-      font-size: 9px;
-
-      transition: .25s ease;
+      display: flex; align-items: center; gap: 9px; padding: 10px; margin-bottom: 3px;
+      border-radius: 8px; color: rgba(255,255,255,.32); font-size: 9px; transition: .25s ease;
     }
 
-    .sidebar-item:hover {
-      background: rgba(255,255,255,.035);
-      color: #fff;
-    }
+    .sidebar-item:hover { background: rgba(255,255,255,.035); color: #fff; }
 
-    .sidebar-item.active {
-      background: rgba(255,255,255,.065);
-      color: #fff;
-    }
+    .sidebar-item.active { background: rgba(255,255,255,.065); color: #fff; }
 
-    .sidebar-icon {
-      width: 12px;
-      height: 12px;
-      flex: 0 0 12px;
+    .sidebar-icon { width: 12px; height: 12px; flex: 0 0 12px; border: 1px solid currentColor; border-radius: 3px; opacity: .6; }
 
-      border: 1px solid currentColor;
+    .sidebar-separator { height: 1px; background: rgba(255,255,255,.06); margin: 27px 0 18px; }
 
-      border-radius: 3px;
+    .dashboard-main { padding: 28px; min-width: 0; overflow: hidden; }
 
-      opacity: .6;
-    }
+    .dashboard-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; min-width: 0; }
 
-    .sidebar-separator {
-      height: 1px;
+    .dashboard-header > div:first-child { min-width: 0; }
 
-      background: rgba(255,255,255,.06);
+    .dashboard-eyebrow { color: rgba(255,255,255,.22); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
 
-      margin: 27px 0 18px;
-    }
-
-    .dashboard-main {
-      padding: 28px;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-
-      gap: 20px;
-      min-width: 0;
-    }
-
-    .dashboard-header > div:first-child {
-      min-width: 0;
-    }
-
-    .dashboard-eyebrow {
-      color: rgba(255,255,255,.22);
-
-      font-size: 7px;
-
-      letter-spacing: .2em;
-
-      text-transform: uppercase;
-    }
-
-    .dashboard-heading {
-      margin-top: 7px;
-
-      font-size: 23px;
-
-      letter-spacing: -.04em;
-
-      overflow-wrap: break-word;
-    }
+    .dashboard-heading { margin-top: 7px; font-size: 23px; letter-spacing: -.04em; overflow-wrap: break-word; }
 
     .dashboard-filter {
-      padding: 8px 11px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 7px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 7px;
-
-      flex: 0 0 auto;
-      white-space: nowrap;
+      padding: 8px 11px; border: 1px solid rgba(255,255,255,.08); border-radius: 7px;
+      color: rgba(255,255,255,.3); font-size: 7px; flex: 0 0 auto; white-space: nowrap;
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
+    .stats { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; margin-top: 28px; }
 
-      gap: 9px;
+    .stat { padding: 15px; border: 1px solid rgba(255,255,255,.07); border-radius: 11px; background: rgba(255,255,255,.018); min-width: 0; }
 
-      margin-top: 28px;
-    }
+    .stat-label { color: rgba(255,255,255,.2); font-size: 7px; overflow-wrap: break-word; }
 
-    .stat {
-      padding: 15px;
+    .stat-value { margin-top: 6px; font-size: 17px; white-space: nowrap; }
 
-      border: 1px solid rgba(255,255,255,.07);
+    .stat-change { margin-top: 3px; color: #62db8b; font-size: 7px; overflow-wrap: break-word; }
 
-      border-radius: 11px;
+    .dashboard-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 11px; margin-top: 12px; min-width: 0; }
 
-      background: rgba(255,255,255,.018);
+    .panel { padding: 17px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(255,255,255,.018); min-width: 0; }
 
-      min-width: 0;
-    }
+    .panel-title { font-size: 9px; }
 
-    .stat-label {
-      color: rgba(255,255,255,.2);
+    .panel-subtitle { margin-top: 3px; color: rgba(255,255,255,.2); font-size: 7px; overflow-wrap: break-word; }
 
-      font-size: 7px;
-
-      overflow-wrap: break-word;
-    }
-
-    .stat-value {
-      margin-top: 6px;
-
-      font-size: 17px;
-
-      white-space: nowrap;
-    }
-
-    .stat-change {
-      margin-top: 3px;
-
-      color: #62db8b;
-
-      font-size: 7px;
-
-      overflow-wrap: break-word;
-    }
-
-    .stat-change.warn {
-      color: #e8c47b;
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.5fr) minmax(0,1fr);
-
-      gap: 11px;
-
-      margin-top: 12px;
-
-      min-width: 0;
-    }
-
-    .panel {
-      padding: 17px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.018);
-
-      min-width: 0;
-    }
-
-    .panel-title {
-      font-size: 9px;
-    }
-
-    .panel-subtitle {
-      margin-top: 3px;
-
-      color: rgba(255,255,255,.2);
-
-      font-size: 7px;
-
-      overflow-wrap: break-word;
-    }
-
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-
-      margin-top: 17px;
-    }
+    .project-list { display: flex; flex-direction: column; gap: 7px; margin-top: 17px; }
 
     .project {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      padding: 9px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      border-radius: 8px;
-
-      background: rgba(0,0,0,.25);
-
-      min-width: 0;
+      display: flex; align-items: center; gap: 10px; padding: 9px;
+      border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(0,0,0,.25); min-width: 0;
     }
 
     .project-number {
-      width: 27px;
-      height: 27px;
-      flex: 0 0 27px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 6px;
-
-      background: rgba(255,255,255,.05);
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 7px;
+      width: 27px; height: 27px; flex: 0 0 27px; display: grid; place-items: center;
+      border-radius: 6px; background: rgba(255,255,255,.05); color: rgba(255,255,255,.3); font-size: 7px;
     }
 
-    .project-info {
-      flex: 1;
-      min-width: 0;
-    }
+    .project-info { flex: 1; min-width: 0; }
 
-    .project-name {
-      color: rgba(255,255,255,.65);
+    .project-name { color: rgba(255,255,255,.65); font-size: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-      font-size: 8px;
+    .project-status { margin-top: 2px; color: rgba(255,255,255,.18); font-size: 6px; }
 
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    .project-price { color: rgba(255,255,255,.4); font-size: 8px; flex: 0 0 auto; white-space: nowrap; }
 
-    .project-status {
-      margin-top: 2px;
+    .chart { height: 115px; display: flex; align-items: flex-end; gap: 6px; margin-top: 25px; }
 
-      color: rgba(255,255,255,.18);
+    .bar { flex: 1; min-height: 4px; border-radius: 4px 4px 0 0; background: rgba(255,255,255,.12); }
 
-      font-size: 6px;
-    }
+    /* SECTION HEADINGS */
 
-    .project-price {
-      color: rgba(255,255,255,.4);
+    .section-heading-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 80px; align-items: end; }
 
-      font-size: 8px;
-
-      flex: 0 0 auto;
-      white-space: nowrap;
-    }
-
-    .chart {
-      height: 115px;
-
-      display: flex;
-      align-items: flex-end;
-
-      gap: 6px;
-
-      margin-top: 25px;
-    }
-
-    .bar {
-      flex: 1;
-
-      min-height: 4px;
-
-      border-radius: 4px 4px 0 0;
-
-      background: rgba(255,255,255,.12);
-    }
-
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================== */
-
-    .section-heading-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
-      gap: 80px;
-
-      align-items: end;
-    }
-
-    .section-heading-grid > * {
-      min-width: 0;
-    }
+    .section-heading-grid > * { min-width: 0; }
 
     .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      margin-bottom: 19px;
-
-      color: rgba(255,255,255,.24);
-
-      font-size: 8px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .22em;
+      display: flex; align-items: center; gap: 8px; margin-bottom: 19px;
+      color: rgba(255,255,255,.24); font-size: 8px; text-transform: uppercase; letter-spacing: .22em;
     }
 
-    .eyebrow-line {
-      width: 27px;
-      height: 1px;
-      flex: 0 0 27px;
-
-      background: rgba(255,255,255,.3);
-    }
+    .eyebrow-line { width: 27px; height: 1px; flex: 0 0 27px; background: rgba(255,255,255,.3); }
 
     h2 {
-      font-family: "Space Grotesk";
-
-      font-size: clamp(36px,4.4vw,54px);
-
-      line-height: 1.05;
-
-      letter-spacing: -.05em;
-
-      font-weight: 600;
-
-      overflow-wrap: break-word;
+      font-family: "Space Grotesk"; font-size: clamp(40px,5vw,60px); line-height: 1;
+      letter-spacing: -.06em; font-weight: 600; overflow-wrap: break-word;
     }
 
-    h2 .muted {
-      color: rgba(255,255,255,.32);
-    }
+    h2 .muted { color: rgba(255,255,255,.32); }
 
-    .section-description {
-      max-width: 500px;
+    .section-description { max-width: 500px; color: rgba(255,255,255,.38); font-size: 13px; line-height: 1.9; }
 
-      color: rgba(255,255,255,.38);
+    .section-description.centered { max-width: 620px; margin: 24px auto 0; text-align: center; }
 
-      font-size: 13px;
+    /* FEATURES */
 
-      line-height: 1.9;
-    }
-
-    .section-description.centered {
-      max-width: 620px;
-      margin: 24px auto 0;
-      text-align: center;
-    }
-
-    /* =========================================================
-       FEATURES
-    ========================================================== */
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
+    .feature-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
 
     .feature-card {
-      position: relative;
-
-      min-height: 230px;
-
-      padding: 28px;
-
-      overflow: hidden;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.018);
-
-      transform-style: preserve-3d;
-
-      will-change: transform;
-
-      transition:
-        border-color .3s ease,
-        background .3s ease;
-
-      min-width: 0;
+      position: relative; min-height: 230px; padding: 28px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.07); border-radius: 17px; background: rgba(255,255,255,.018);
+      transform-style: preserve-3d; will-change: transform;
+      transition: border-color .3s ease, background .3s ease; min-width: 0;
     }
 
     .feature-card::after {
-      content: "";
-
-      position: absolute;
-
-      width: 180px;
-      height: 180px;
-
-      top: -100px;
-      right: -100px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(35px);
-
-      transition: .4s ease;
+      content: ""; position: absolute; width: 180px; height: 180px; top: -100px; right: -100px;
+      border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease;
     }
 
-    .feature-card:hover {
-      border-color: rgba(255,255,255,.16);
-      background: rgba(255,255,255,.035);
-    }
+    .feature-card:hover { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.035); }
 
-    .feature-card:hover::after {
-      background: rgba(255,255,255,.09);
-    }
+    .feature-card:hover::after { background: rgba(255,255,255,.09); }
 
     .feature-icon {
-      width: 43px;
-      height: 43px;
-      flex: 0 0 43px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.04);
-
-      font-size: 15px;
+      width: 43px; height: 43px; flex: 0 0 43px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: rgba(255,255,255,.04); font-size: 15px;
     }
 
-    .feature-title {
-      margin-top: 28px;
+    .feature-title { margin-top: 28px; font-family: "Space Grotesk"; font-size: 15px; overflow-wrap: break-word; }
 
-      font-family: "Space Grotesk";
+    .feature-description { margin-top: 10px; color: rgba(255,255,255,.3); font-size: 10px; line-height: 1.8; }
 
-      font-size: 15px;
+    .feature-card .check-list { margin-top: 22px; }
 
-      overflow-wrap: break-word;
-    }
-
-    .feature-description {
-      margin-top: 10px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 10px;
-
-      line-height: 1.8;
-    }
-
-    .feature-card .check-list {
-      margin-top: 22px;
-    }
+    /* FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW */
 
     .feature-badge {
-      display: inline-block;
-
-      margin-top: 14px;
-
-      padding: 5px 9px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.03);
-
-      color: rgba(255,255,255,.48);
-
-      font-size: 6.5px;
-
-      letter-spacing: .14em;
-
-      text-transform: uppercase;
+      display: inline-block; margin-top: 14px; padding: 5px 9px;
+      border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.48); font-size: 6.5px; letter-spacing: .14em; text-transform: uppercase;
     }
 
-    .equation-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
+    .request-answer { margin-top: 18px; font-family: "Space Grotesk"; font-size: 18px; font-weight: 600; letter-spacing: -.02em; color: #fff; }
 
-      gap: 16px;
+    .equation-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin-top: 55px; }
 
-      margin-top: 55px;
-    }
-
-    /* =========================================================
-       OWNERSHIP / PRIMARY OFFER
-    ========================================================== */
+    /* OWNERSHIP / PRIMARY OFFER */
 
     .ownership-card {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
-      overflow: hidden;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 25px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.01)
-        );
-
-      min-width: 0;
+      display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08); border-radius: 25px;
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01)); min-width: 0;
     }
 
-    .ownership-content {
-      padding: 65px;
-      min-width: 0;
-    }
+    .ownership-content { padding: 65px; min-width: 0; }
 
     .small-tag {
-      display: inline-block;
-
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
-
-      max-width: 100%;
+      display: inline-block; padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px;
+      color: rgba(255,255,255,.3); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%;
     }
 
-    .ownership-content p {
-      max-width: 480px;
+    .ownership-content p { max-width: 480px; margin-top: 24px; color: rgba(255,255,255,.35); font-size: 12px; line-height: 1.9; }
 
-      margin-top: 24px;
+    .ownership-note { max-width: 480px; margin-top: 22px; color: rgba(255,255,255,.28); font-size: 10px; line-height: 1.8; font-style: italic; }
 
-      color: rgba(255,255,255,.35);
+    .check-list { display: flex; flex-direction: column; gap: 11px; margin-top: 28px; }
 
-      font-size: 12px;
+    .check-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.55); font-size: 10px; min-width: 0; }
 
-      line-height: 1.9;
-    }
-
-    .ownership-note {
-      max-width: 480px;
-
-      margin-top: 22px;
-
-      color: rgba(255,255,255,.28);
-
-      font-size: 10px;
-
-      line-height: 1.8;
-
-      font-style: italic;
-    }
-
-    .check-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 11px;
-
-      margin-top: 28px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 10px;
-
-      min-width: 0;
-    }
-
-    .check {
-      width: 20px;
-      height: 20px;
-      flex: 0 0 20px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.07);
-
-      font-size: 9px;
-    }
-
-    .check.check-no {
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.35);
-    }
+    .check { width: 20px; height: 20px; flex: 0 0 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.07); font-size: 9px; }
 
     .workflow-visual {
-      min-height: 440px;
-
-      position: relative;
-
-      overflow: hidden;
-
-      border-left: 1px solid rgba(255,255,255,.07);
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.065),
-          transparent 60%
-        );
-
-      min-width: 0;
+      min-height: 440px; position: relative; overflow: hidden; border-left: 1px solid rgba(255,255,255,.07);
+      background: radial-gradient(circle at center, rgba(255,255,255,.065), transparent 60%); min-width: 0;
     }
 
     .workflow-box {
-      position: absolute;
-
-      left: 50%;
-      top: 50%;
-
-      width: min(290px, calc(100% - 40px));
-
-      transform: translate(-50%,-50%);
-
-      padding: 20px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 17px;
-
-      background: rgba(7,7,7,.88);
-
-      box-shadow:
-        0 35px 90px rgba(0,0,0,.65);
-
-      backdrop-filter: blur(15px);
+      position: absolute; left: 50%; top: 50%; width: min(290px, calc(100% - 40px));
+      transform: translate(-50%,-50%); padding: 20px; border: 1px solid rgba(255,255,255,.1);
+      border-radius: 17px; background: rgba(7,7,7,.88); box-shadow: 0 35px 90px rgba(0,0,0,.65); backdrop-filter: blur(15px);
     }
 
-    .workflow-header {
-      display: flex;
-      justify-content: space-between;
+    .workflow-header { display: flex; justify-content: space-between; gap: 10px; color: rgba(255,255,255,.35); font-size: 8px; }
 
-      gap: 10px;
+    .workflow-active { color: #60dc8b; white-space: nowrap; }
 
-      color: rgba(255,255,255,.35);
-
-      font-size: 8px;
-    }
-
-    .workflow-active {
-      color: #60dc8b;
-      white-space: nowrap;
-    }
-
-    .workflow-steps {
-      display: flex;
-      flex-direction: column;
-
-      gap: 6px;
-
-      margin-top: 18px;
-    }
+    .workflow-steps { display: flex; flex-direction: column; gap: 6px; margin-top: 18px; }
 
     .workflow-step {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 11px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      border-radius: 8px;
-
-      background: rgba(255,255,255,.018);
-
-      color: rgba(255,255,255,.37);
-
-      font-size: 8px;
-
-      min-width: 0;
+      display: flex; align-items: center; gap: 9px; padding: 11px; border: 1px solid rgba(255,255,255,.05);
+      border-radius: 8px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.37); font-size: 8px; min-width: 0;
     }
 
-    .workflow-step-dot {
-      width: 5px;
-      height: 5px;
-      flex: 0 0 5px;
+    .workflow-step-dot { width: 5px; height: 5px; flex: 0 0 5px; border-radius: 50%; background: rgba(255,255,255,.2); }
 
-      border-radius: 50%;
+    .workflow-step:last-child .workflow-step-dot { background: #fff; }
 
-      background: rgba(255,255,255,.2);
-    }
+    /* TABS */
 
-    .workflow-step:last-child .workflow-step-dot {
-      background: #fff;
-    }
+    .center-heading { max-width: 800px; margin: auto; text-align: center; min-width: 0; }
 
-    /* =========================================================
-       CENTER HEADING
-    ========================================================== */
+    .center-heading .eyebrow { justify-content: center; }
 
-    .center-heading {
-      max-width: 800px;
+    .tabs { max-width: 760px; margin: 55px auto 0; min-width: 0; }
 
-      margin: auto;
+    .tab-buttons { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(255,255,255,.025); }
 
-      text-align: center;
+    .tab-button { padding: 12px; border-radius: 8px; background: transparent; color: rgba(255,255,255,.3); font-size: 10px; transition: .25s ease; min-width: 0; }
 
-      min-width: 0;
-    }
+    .tab-button.active { background: #fff; color: #000; }
 
-    .center-heading .eyebrow {
-      justify-content: center;
-    }
+    .tab-content { min-height: 300px; margin-top: 12px; padding: 45px; border: 1px solid rgba(255,255,255,.07); border-radius: 17px; background: rgba(255,255,255,.018); min-width: 0; }
 
-    /* =========================================================
-       FLOW DIAGRAM + PILLS
-    ========================================================== */
+    .tab-panel { display: none; min-width: 0; }
 
-    .flow-diagram {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .tab-panel.active { display: block; }
 
-      gap: 12px;
+    .tab-icon { width: 47px; height: 47px; flex: 0 0 47px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.09); border-radius: 13px; background: rgba(255,255,255,.045); font-size: 16px; }
 
-      margin-top: 60px;
-    }
+    .tab-panel h3 { margin-top: 22px; font-family: "Space Grotesk"; font-size: 24px; font-weight: 500; letter-spacing: -.04em; overflow-wrap: break-word; }
+
+    .tab-panel p { max-width: 590px; margin-top: 13px; color: rgba(255,255,255,.36); font-size: 12px; line-height: 1.9; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 25px; }
+
+    .tag { padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px; background: rgba(255,255,255,.02); color: rgba(255,255,255,.4); font-size: 8px; max-width: 100%; }
+
+    /* FLOW + PILL ROWS */
+
+    .flow-diagram { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 60px; }
 
     .flow-node {
-      padding: 16px 30px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 999px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.05),
-          rgba(255,255,255,.015)
-        );
-
-      font-family: "Space Grotesk";
-
-      font-size: 12px;
-
-      letter-spacing: .03em;
-
-      color: rgba(255,255,255,.75);
-
-      text-align: center;
-
-      max-width: 100%;
+      padding: 16px 30px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+      font-family: "Space Grotesk"; font-size: 12px; letter-spacing: .03em; color: rgba(255,255,255,.75);
+      text-align: center; max-width: 100%;
     }
 
-    .flow-arrow {
-      color: rgba(255,255,255,.22);
+    .flow-arrow { color: rgba(255,255,255,.22); font-size: 14px; line-height: 1; }
 
-      font-size: 14px;
-      line-height: 1;
-    }
+    .pill-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 40px; }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* SPLIT */
 
-      gap: 9px;
+    .split-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
 
-      margin-top: 40px;
-    }
+    .split-grid .feature-card { min-height: 0; }
 
-    /* =========================================================
-       TEAM / CLIENT SPLIT
-    ========================================================== */
+    .split-grid .feature-card .check-list { margin-top: 22px; }
 
-    .split-grid {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
+    .split-grid .check-item { color: rgba(255,255,255,.4); font-size: 9px; }
 
-      gap: 13px;
+    /* STEPS GRID */
 
-      margin-top: 65px;
-    }
+    .steps-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
 
-    .split-grid .feature-card {
-      min-height: 0;
-    }
+    .steps-grid .feature-card { min-height: 200px; }
 
-    .split-grid .feature-card .check-list {
-      margin-top: 22px;
-    }
+    /* CUSTOM OPTIONS */
 
-    .split-grid .check-item {
-      color: rgba(255,255,255,.4);
-      font-size: 9px;
-      align-items: flex-start;
-    }
-
-    .split-grid .check {
-      margin-top: 1px;
-    }
-
-    .split-label {
-      color: rgba(255,255,255,.22);
-      font-size: 7px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    /* =========================================================
-       HOW IT WORKS / STEP GRIDS
-    ========================================================== */
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
-
-    .steps-grid .feature-card {
-      min-height: 200px;
-    }
-
-    .steps-grid-5 {
-      display: grid;
-      grid-template-columns: repeat(5,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
-
-    .steps-grid-5 .feature-card {
-      min-height: 210px;
-    }
-
-    /* =========================================================
-       REPORT MOCK (SAMPLE FINDINGS)
-    ========================================================== */
-
-    .report-mock {
-      margin-top: 65px;
-
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      overflow: hidden;
-      background: #090909;
-
-      box-shadow:
-        0 60px 140px rgba(0,0,0,.65),
-        0 0 90px rgba(255,255,255,.02);
-
-      min-width: 0;
-    }
-
-    .report-mock-header {
-      min-height: 52px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 0 22px;
-
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .report-mock-label {
-      font-family: "DM Mono";
-      font-size: 9px;
-      letter-spacing: .16em;
-      color: rgba(255,255,255,.55);
-      text-transform: uppercase;
-    }
-
-    .report-mock-tag {
-      padding: 6px 10px;
-      border: 1px solid rgba(232,196,123,.35);
-      border-radius: 999px;
-      background: rgba(232,196,123,.08);
-      color: var(--warn);
-      font-size: 7px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .report-mock-body {
-      padding: 30px;
-      min-width: 0;
-    }
-
-    .report-summary {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 10px;
-    }
-
-    .report-summary .stat {
-      padding: 18px;
-    }
-
-    .report-summary .stat-value {
-      font-size: 22px;
-      white-space: normal;
-    }
-
-    .report-divider {
-      height: 1px;
-      background: rgba(255,255,255,.07);
-      margin: 30px 0;
-    }
-
-    .report-finding-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .report-finding-title {
-      font-family: "Space Grotesk";
-      font-size: 15px;
-      color: rgba(255,255,255,.8);
-    }
-
-    .report-finding-status {
-      padding: 6px 10px;
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 999px;
-      color: rgba(255,255,255,.4);
-      font-size: 7px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .report-finding-grid {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .report-line {
-      padding: 14px;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 10px;
-      background: rgba(255,255,255,.015);
-      min-width: 0;
-    }
-
-    .report-line-label {
-      color: rgba(255,255,255,.24);
-      font-size: 7px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .report-line-value {
-      margin-top: 7px;
-      font-family: "Space Grotesk";
-      font-size: 15px;
-    }
-
-    .report-flag {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 20px;
-      padding: 8px 12px;
-      border: 1px solid rgba(232,196,123,.3);
-      border-radius: 999px;
-      background: rgba(232,196,123,.07);
-      color: var(--warn);
-      font-size: 9px;
-    }
-
-    /* =========================================================
-       PRICING
-    ========================================================== */
-
-    .pricing-wrap {
-      max-width: 620px;
-      margin: 65px auto 0;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 16px;
-      margin-top: 65px;
-    }
-
-    .pricing-card {
-      position: relative;
-      padding: 42px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 22px;
-      background: rgba(255,255,255,.018);
-      overflow: hidden;
-      min-width: 0;
-    }
-
-    .pricing-card.featured {
-      border-color: rgba(255,255,255,.22);
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.015)
-        );
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      padding: 6px 10px;
-      border: 1px solid rgba(102,227,148,.35);
-      border-radius: 999px;
-      background: rgba(102,227,148,.08);
-      color: #7be8a4;
-      font-size: 7px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .pricing-label {
-      color: rgba(255,255,255,.28);
-      font-size: 7px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .pricing-name {
-      margin-top: 14px;
-      font-family: "Space Grotesk";
-      font-size: 21px;
-      letter-spacing: -.03em;
-    }
-
-    .pricing-price {
-      margin-top: 16px;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .pricing-amount {
-      font-family: "Space Grotesk";
-      font-size: 36px;
-      letter-spacing: -.03em;
-    }
-
-    .pricing-cadence {
-      color: rgba(255,255,255,.3);
-      font-size: 10px;
-    }
-
-    .pricing-sub {
-      margin-top: 6px;
-      color: rgba(255,255,255,.32);
-      font-size: 9px;
-    }
-
-    .pricing-desc {
-      margin-top: 18px;
-      color: rgba(255,255,255,.35);
-      font-size: 10px;
-      line-height: 1.8;
-      max-width: 400px;
-    }
-
-    .pricing-card .check-list {
-      margin-top: 24px;
-    }
-
-    .pricing-card .button {
-      margin-top: 28px;
-      width: 100%;
-    }
-
-    .pricing-footnote {
-      max-width: 500px;
-      margin: 26px auto 0;
-      text-align: center;
-      color: rgba(255,255,255,.28);
-      font-size: 10px;
-      line-height: 1.8;
-    }
-
-    /* =========================================================
-       LEAD FORM
-    ========================================================== */
-
-    .custom-card {
-      position: relative;
-
-      overflow: hidden;
-
-      padding: 65px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 25px;
-
-      background: #080808;
-
-      min-width: 0;
-    }
+    .custom-card { position: relative; overflow: hidden; padding: 65px; border: 1px solid rgba(255,255,255,.08); border-radius: 25px; background: #080808; min-width: 0; }
 
     .custom-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      right: -150px;
-      top: -200px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(100px);
-
-      pointer-events: none;
+      content: ""; position: absolute; width: 500px; height: 500px; right: -150px; top: -200px;
+      border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(100px); pointer-events: none;
     }
 
-    .custom-grid {
-      position: relative;
+    .custom-grid { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 70px; align-items: center; min-width: 0; }
 
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    .custom-copy { min-width: 0; }
 
-      gap: 70px;
+    .custom-description { max-width: 510px; margin-top: 22px; color: rgba(255,255,255,.37); font-size: 12px; line-height: 1.9; }
 
-      align-items: start;
+    .custom-copy .button { margin-top: 30px; }
 
-      min-width: 0;
+    .custom-options { display: grid; grid-template-columns: 1fr; gap: 10px; min-width: 0; }
+
+    .custom-option {
+      position: relative; padding: 22px; border: 1px solid rgba(255,255,255,.08); border-radius: 17px;
+      background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); overflow: hidden;
+      transition: transform .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease; min-width: 0;
     }
 
-    .custom-copy {
-      min-width: 0;
+    .custom-option::before {
+      content: ""; position: absolute; width: 170px; height: 170px; top: -100px; right: -80px;
+      border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease;
     }
 
-    .custom-description {
-      max-width: 510px;
-
-      margin-top: 22px;
-
-      color: rgba(255,255,255,.37);
-
-      font-size: 12px;
-
-      line-height: 1.9;
+    .custom-option:hover {
+      transform: translateY(-4px); border-color: rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
     }
 
-    .custom-copy .button {
-      margin-top: 30px;
+    .custom-option:hover::before { background: rgba(255,255,255,.075); }
+
+    .custom-option-top { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; min-width: 0; }
+
+    .custom-option-number {
+      width: 36px; height: 36px; flex: 0 0 36px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.045);
+      color: rgba(255,255,255,.65); font-family: "DM Mono"; font-size: 8px;
     }
 
-    .whatsapp-alt {
-      display: block;
-      margin-top: 16px;
-      color: rgba(255,255,255,.3);
-      font-size: 10px;
+    .custom-option-label { color: rgba(255,255,255,.22); font-size: 7px; letter-spacing: .18em; text-transform: uppercase; text-align: right; line-height: 1.5; }
+
+    .custom-option h3 { position: relative; margin-top: 18px; font-family: "Space Grotesk"; font-size: 19px; line-height: 1.15; letter-spacing: -.035em; font-weight: 500; max-width: 410px; }
+
+    .custom-option p { position: relative; margin-top: 10px; color: rgba(255,255,255,.32); font-size: 9px; line-height: 1.8; max-width: 450px; }
+
+    .custom-option-features { position: relative; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+
+    .custom-option-feature { padding: 5px 8px; border: 1px solid rgba(255,255,255,.07); border-radius: 999px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.34); font-size: 6px; letter-spacing: .03em; }
+
+    .custom-option-arrow { position: relative; display: flex; justify-content: flex-end; margin-top: 17px; color: rgba(255,255,255,.28); font-size: 15px; transition: color .3s ease, transform .3s ease; }
+
+    .custom-option:hover .custom-option-arrow { color: #fff; transform: translateX(4px); }
+
+    /* PRICING */
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 65px; }
+
+    .pricing-card { position: relative; padding: 42px; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; background: rgba(255,255,255,.018); overflow: hidden; min-width: 0; }
+
+    .pricing-card.featured { border-color: rgba(255,255,255,.22); background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015)); }
+
+    .pricing-badge {
+      position: absolute; top: 22px; right: 22px; padding: 6px 10px;
+      border: 1px solid rgba(102,227,148,.35); border-radius: 999px; background: rgba(102,227,148,.08);
+      color: #7be8a4; font-size: 7px; letter-spacing: .16em; text-transform: uppercase;
     }
 
-    .whatsapp-alt a {
-      color: rgba(255,255,255,.55);
-      border-bottom: 1px solid rgba(255,255,255,.2);
-    }
-
-    .lead-form {
-      position: relative;
-
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-
-      min-width: 0;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      min-width: 0;
-    }
-
-    .form-field label {
-      color: rgba(255,255,255,.35);
-      font-size: 8px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 10px;
-      background: rgba(255,255,255,.03);
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      font-size: 12px;
-      transition: border-color .25s ease, background .25s ease;
-    }
-
-    .form-field select {
-      appearance: none;
-      background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,.4) 50%), linear-gradient(135deg, rgba(255,255,255,.4) 50%, transparent 50%);
-      background-position: calc(100% - 18px) center, calc(100% - 13px) center;
-      background-size: 5px 5px, 5px 5px;
-      background-repeat: no-repeat;
-    }
-
-    .form-field select option {
-      background: #0a0a0a;
-      color: #fff;
-    }
-
-    .form-field textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .form-field input::placeholder,
-    .form-field textarea::placeholder {
-      color: rgba(255,255,255,.22);
-    }
-
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      outline: none;
-      border-color: rgba(255,255,255,.35);
-      background: rgba(255,255,255,.05);
-    }
-
-    .lead-form .button {
-      margin-top: 8px;
-      width: 100%;
-    }
-
-    .form-disclaimer {
-      margin-top: 4px;
-      color: rgba(255,255,255,.22);
-      font-size: 8.5px;
-      line-height: 1.7;
-    }
-
-    .form-confirmation {
-      display: none;
-      padding: 30px;
-      border: 1px solid rgba(102,227,148,.25);
-      border-radius: 14px;
-      background: rgba(102,227,148,.05);
-    }
-
-    .form-confirmation.active {
-      display: block;
-    }
-
-    .form-confirmation.active ~ .lead-form,
-    .lead-form.hidden {
-      display: none;
-    }
-
-    .form-confirmation-title {
-      font-family: "Space Grotesk";
-      font-size: 15px;
-      color: #7be8a4;
-    }
-
-    .form-confirmation p {
-      margin-top: 10px;
-      color: rgba(255,255,255,.5);
-      font-size: 11px;
-      line-height: 1.8;
-    }
-
-    /* =========================================================
-       FAQ
-    ========================================================== */
-
-    .faq-list {
-      max-width: 780px;
-      margin: 65px auto 0;
-
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
+    .pricing-label { color: rgba(255,255,255,.28); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
 
-    .faq-item {
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      background: rgba(255,255,255,.018);
-      overflow: hidden;
-    }
+    .pricing-name { margin-top: 14px; font-family: "Space Grotesk"; font-size: 21px; letter-spacing: -.03em; }
 
-    .faq-item[open] {
-      border-color: rgba(255,255,255,.16);
-    }
+    .pricing-price { margin-top: 16px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 
-    .faq-item summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+    .pricing-amount { font-family: "Space Grotesk"; font-size: 40px; letter-spacing: -.03em; }
 
-      padding: 20px 24px;
+    .pricing-cadence { color: rgba(255,255,255,.3); font-size: 10px; }
 
-      cursor: pointer;
-      list-style: none;
+    .pricing-sub { margin-top: 6px; color: rgba(255,255,255,.32); font-size: 9px; }
 
-      font-family: "Space Grotesk";
-      font-size: 13px;
-      color: rgba(255,255,255,.82);
-    }
+    .pricing-desc { margin-top: 18px; color: rgba(255,255,255,.35); font-size: 10px; line-height: 1.8; max-width: 400px; }
 
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
+    .pricing-card .check-list { margin-top: 24px; }
 
-    .faq-item summary::after {
-      content: "+";
-      flex: 0 0 auto;
-      color: rgba(255,255,255,.3);
-      font-size: 16px;
-      transition: transform .3s ease;
-    }
+    .pricing-card .button { margin-top: 28px; width: 100%; }
 
-    .faq-item[open] summary::after {
-      transform: rotate(45deg);
-    }
+    /* FINAL CTA */
 
-    .faq-answer {
-      padding: 0 24px 22px;
-      color: rgba(255,255,255,.38);
-      font-size: 11px;
-      line-height: 1.9;
-      max-width: 640px;
-    }
+    .final-cta { padding: 160px 0; text-align: center; }
 
-    /* =========================================================
-       FINAL CTA
-    ========================================================== */
+    .final-icon { width: 50px; height: 50px; display: grid; place-items: center; margin: 0 auto 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.04); }
 
-    .final-cta {
-      padding: 160px 0;
+    .final-cta p { max-width: 550px; margin: 25px auto 0; color: rgba(255,255,255,.32); font-size: 12px; line-height: 1.9; }
 
-      text-align: center;
-    }
+    .final-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 30px; }
 
-    .final-icon {
-      width: 50px;
-      height: 50px;
+    .final-actions .hero-actions { margin-top: 0; }
 
-      display: grid;
-      place-items: center;
+    .availability { color: rgba(255,255,255,.18); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
 
-      margin: 0 auto 25px;
+    /* FOOTER */
 
-      border: 1px solid rgba(255,255,255,.1);
+    footer { border-top: 1px solid rgba(255,255,255,.07); }
 
-      border-radius: 14px;
+    .footer-inner { min-height: 140px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
 
-      background: rgba(255,255,255,.04);
-    }
+    .footer-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
 
-    .final-cta p {
-      max-width: 550px;
+    .footer-mark { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 9px; font-family: "Space Grotesk"; font-size: 11px; font-weight: 700; }
 
-      margin: 25px auto 0;
+    .footer-name { font-size: 11px; }
 
-      color: rgba(255,255,255,.32);
+    .footer-tagline { margin-top: 3px; color: rgba(255,255,255,.18); font-size: 7px; text-transform: uppercase; letter-spacing: .15em; overflow-wrap: break-word; }
 
-      font-size: 12px;
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.05); color: rgba(255,255,255,.16); font-size: 7px; min-width: 0; }
 
-      line-height: 1.9;
-    }
+    .footer-bottom span { min-width: 0; overflow-wrap: break-word; }
 
-    .final-actions {
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-
-      gap: 12px;
-
-      margin-top: 30px;
-    }
-
-    .final-actions .hero-actions {
-      margin-top: 0;
-    }
-
-    .availability {
-      color: rgba(255,255,255,.18);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
-
-      max-width: 100%;
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================== */
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,.07);
-    }
-
-    .footer-inner {
-      min-height: 140px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      min-width: 0;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      min-width: 0;
-    }
-
-    .footer-mark {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 9px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 11px;
-
-      font-weight: 700;
-    }
-
-    .footer-name {
-      font-size: 11px;
-    }
-
-    .footer-tagline {
-      margin-top: 3px;
-
-      color: rgba(255,255,255,.18);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .15em;
-
-      overflow-wrap: break-word;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding: 18px 0;
-
-      border-top: 1px solid rgba(255,255,255,.05);
-
-      color: rgba(255,255,255,.16);
-
-      font-size: 7px;
-
-      min-width: 0;
-    }
-
-    .footer-bottom span {
-      min-width: 0;
-      overflow-wrap: break-word;
-    }
-
-    /* =========================================================
-       RESPONSIVE — TABLET
-    ========================================================== */
+    /* RESPONSIVE — TABLET */
 
     @media(max-width:1100px) {
-
-      .container {
-        width: min(100% - 40px, 1180px);
-      }
-
-      .nav-links {
-        gap: 22px;
-      }
-
-      .section-heading-grid {
-        gap: 50px;
-      }
-
-      .ownership-content {
-        padding: 50px;
-      }
-
-      .custom-card {
-        padding: 50px;
-      }
-
-      .custom-grid {
-        gap: 45px;
-      }
-
-      .dashboard-main {
-        padding: 22px;
-      }
-
-      .dashboard-heading {
-        font-size: 20px;
-      }
-
-      .stats {
-        gap: 7px;
-      }
-
-      .stat {
-        padding: 12px;
-      }
-
-      .dashboard-grid {
-        gap: 8px;
-      }
-
-      .panel {
-        padding: 14px;
-      }
-
-      .steps-grid,
-      .steps-grid-5 {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .report-summary,
-      .report-finding-grid {
-        grid-template-columns: repeat(3,minmax(0,1fr));
-      }
-
-      .form-row {
-        grid-template-columns: 1fr 1fr;
-      }
+      .container { width: min(100% - 40px, 1180px); }
+      .nav-links { gap: 22px; }
+      .section-heading-grid { gap: 50px; }
+      .ownership-content { padding: 50px; }
+      .custom-card { padding: 50px; }
+      .custom-grid { gap: 45px; }
+      .dashboard-main { padding: 22px; }
+      .dashboard-heading { font-size: 20px; }
+      .stats { gap: 7px; }
+      .stat { padding: 12px; }
+      .dashboard-grid { gap: 8px; }
+      .panel { padding: 14px; }
+      .steps-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .pricing-grid { grid-template-columns: 1fr; }
     }
 
-    /* =========================================================
-       RESPONSIVE — TABLET / MOBILE NAV
-    ========================================================== */
+    /* RESPONSIVE — TABLET / MOBILE NAV */
 
     @media(max-width:900px) {
-
-      .nav-links,
-      .nav-button {
-        display: none;
-      }
-
-      .mobile-menu-button {
-        display: block;
-      }
-
+      .nav-links, .nav-button { display: none; }
+      .mobile-menu-button { display: block; }
       .mobile-menu.active {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 18px;
-
-        padding: 22px 24px 28px;
-
-        border-top: 1px solid rgba(255,255,255,.06);
-
-        background: rgba(5,5,5,.96);
-
-        max-height: calc(100vh - 78px);
-        overflow-y: auto;
+        display: flex; flex-direction: column; gap: 18px; padding: 22px 24px 28px;
+        border-top: 1px solid rgba(255,255,255,.06); background: rgba(5,5,5,.96);
+        max-height: calc(100vh - 78px); overflow-y: auto;
       }
-
-      .mobile-menu a {
-        color: rgba(255,255,255,.6);
-        font-size: 13px;
-      }
-
-      .mobile-menu .mobile-cta {
-        padding: 13px;
-
-        border-radius: 10px;
-
-        background: #fff;
-
-        color: #000;
-
-        text-align: center;
-
-        font-weight: 700;
-      }
-
-      .dashboard-body {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        display: none;
-      }
-
-      .section-heading-grid,
-      .ownership-card,
-      .custom-grid,
-      .split-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-heading-grid {
-        align-items: start;
-      }
-
-      .workflow-visual {
-        border-left: none;
-        border-top: 1px solid rgba(255,255,255,.07);
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .stats {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .dashboard-main {
-        padding: 22px;
-      }
-
-      .hero-orbit {
-        width: 800px;
-        height: 800px;
-      }
-
-      .custom-grid {
-        gap: 35px;
-      }
-
-      .workflow-visual {
-        min-height: 390px;
-      }
-
-      .report-summary,
-      .report-finding-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
+      .mobile-menu a { color: rgba(255,255,255,.6); font-size: 13px; }
+      .mobile-menu .mobile-cta { padding: 13px; border-radius: 10px; background: #fff; color: #000; text-align: center; font-weight: 700; }
+      .dashboard-body { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .section-heading-grid, .ownership-card, .custom-grid, .split-grid { grid-template-columns: 1fr; }
+      .section-heading-grid { align-items: start; }
+      .workflow-visual { border-left: none; border-top: 1px solid rgba(255,255,255,.07); }
+      .feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard-main { padding: 22px; }
+      .hero-orbit { width: 800px; height: 800px; }
+      .custom-grid { gap: 35px; }
+      .workflow-visual { min-height: 390px; }
     }
 
-    /* =========================================================
-       RESPONSIVE — SMALL TABLETS
-    ========================================================== */
+    /* RESPONSIVE — SMALL TABLETS */
 
     @media(max-width:760px) {
-
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .nav-inner {
-        height: 72px;
-      }
-
-      .mobile-menu.active {
-        max-height: calc(100vh - 72px);
-      }
-
-      .hero {
-        padding-top: 125px;
-        padding-bottom: 70px;
-      }
-
-      .hero-title {
-        font-size: clamp(40px, 9vw, 58px);
-      }
-
-      .hero-description {
-        max-width: 600px;
-        font-size: 13px;
-        line-height: 1.8;
-      }
-
-      .dashboard-wrapper {
-        margin-top: 70px;
-      }
-
-      .dashboard {
-        border-radius: 16px;
-      }
-
-      .browser-bar {
-        padding: 0 12px;
-      }
-
-      .browser-status {
-        font-size: 7px;
-      }
-
-      .dashboard-main {
-        padding: 18px;
-      }
-
-      .dashboard-heading {
-        font-size: 18px;
-      }
-
-      .section-padding {
-        padding: 105px 0;
-      }
-
-      .section-heading-grid {
-        gap: 35px;
-      }
-
-      h2 {
-        font-size: clamp(32px, 7vw, 46px);
-      }
-
-      .feature-card {
-        padding: 24px;
-      }
-
-      .ownership-content {
-        padding: 42px 30px;
-      }
-
-      .custom-card {
-        padding: 42px 30px;
-      }
-
-      .final-cta {
-        padding: 120px 0;
-      }
-
-      .footer-bottom {
-        gap: 12px;
-      }
-
-      .steps-grid,
-      .steps-grid-5 {
-        grid-template-columns: 1fr;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .report-summary,
-      .report-finding-grid {
-        grid-template-columns: 1fr;
-      }
+      .container { width: calc(100% - 32px); }
+      .nav-inner { height: 72px; }
+      .mobile-menu.active { max-height: calc(100vh - 72px); }
+      .hero { padding-top: 125px; padding-bottom: 70px; }
+      .hero-title { font-size: clamp(46px, 10vw, 64px); }
+      .hero-description { max-width: 600px; font-size: 13px; line-height: 1.8; }
+      .dashboard-wrapper { margin-top: 70px; }
+      .dashboard { border-radius: 16px; }
+      .browser-bar { padding: 0 12px; }
+      .browser-status { font-size: 7px; }
+      .dashboard-main { padding: 18px; }
+      .dashboard-heading { font-size: 18px; }
+      .section-padding { padding: 105px 0; }
+      .section-heading-grid { gap: 35px; }
+      h2 { font-size: clamp(38px, 8vw, 52px); }
+      .feature-card { padding: 24px; }
+      .ownership-content { padding: 42px 30px; }
+      .custom-card { padding: 42px 30px; }
+      .tab-content { padding: 35px; }
+      .final-cta { padding: 120px 0; }
+      .footer-bottom { gap: 12px; }
+      .steps-grid { grid-template-columns: 1fr; }
     }
 
-    /* =========================================================
-       RESPONSIVE — MOBILE
-    ========================================================== */
+    /* RESPONSIVE — MOBILE */
 
     @media(max-width:620px) {
-
-      .container {
-        width: calc(100% - 30px);
-        max-width: none;
-      }
-
-      .cursor,
-      .cursor-ring {
-        display: none;
-      }
-
-      .brand {
-        gap: 9px;
-      }
-
-      .brand-mark {
-        width: 35px;
-        height: 35px;
-        flex-basis: 35px;
-        border-radius: 10px;
-      }
-
-      .brand-name {
-        font-size: 13px;
-      }
-
-      .brand-subtitle {
-        font-size: 6px;
-        letter-spacing: .18em;
-      }
-
-      .hero {
-        padding-top: 125px;
-        padding-bottom: 65px;
-      }
-
-      .hero-orbit {
-        width: 620px;
-        height: 620px;
-        top: 410px;
-      }
-
-      .hero-orbit::before {
-        inset: 55px;
-      }
-
-      .status-pill {
-        padding: 7px 11px;
-        gap: 7px;
-        font-size: 7px;
-        letter-spacing: .12em;
-      }
-
-      .hero-title {
-        margin-top: 24px;
-        font-size: clamp(34px, 11vw, 48px);
-        letter-spacing: -.055em;
-        line-height: 1.02;
-      }
-
-      .hero-title .line-inner {
-        max-width: 100%;
-      }
-
-      .hero-description {
-        margin-top: 25px;
-        font-size: 12px;
-        line-height: 1.85;
-      }
-
-      .hero-actions {
-        margin-top: 28px;
-        flex-direction: column;
-        width: 100%;
-        gap: 9px;
-      }
-
-      .button {
-        width: 100%;
-        min-height: 48px;
-        padding: 0 18px;
-        font-size: 10px;
-      }
-
-      .dashboard-wrapper {
-        margin-top: 55px;
-        width: 100%;
-      }
-
-      .dashboard {
-        border-radius: 14px;
-      }
-
-      .browser-bar {
-        height: 40px;
-        min-height: 40px;
-        padding: 0 10px;
-      }
-
-      .browser-dots {
-        gap: 5px;
-      }
-
-      .browser-dots span {
-        width: 7px;
-        height: 7px;
-      }
-
-      .browser-status {
-        font-size: 6px;
-        gap: 5px;
-      }
-
-      .browser-status i {
-        width: 5px;
-        height: 5px;
-        flex-basis: 5px;
-      }
-
-      .browser-label {
-        display: none;
-      }
-
-      .dashboard-body {
-        min-height: 0;
-      }
-
-      .dashboard-main {
-        padding: 14px;
-      }
-
-      .dashboard-header {
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .dashboard-eyebrow {
-        font-size: 6px;
-        letter-spacing: .15em;
-      }
-
-      .dashboard-heading {
-        margin-top: 5px;
-        font-size: 16px;
-        line-height: 1.2;
-      }
-
-      .dashboard-filter {
-        padding: 7px 8px;
-        font-size: 6px;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-        gap: 6px;
-        margin-top: 20px;
-      }
-
-      .stat {
-        padding: 10px;
-        border-radius: 9px;
-      }
-
-      .stat-label {
-        font-size: 6px;
-      }
-
-      .stat-value {
-        margin-top: 5px;
-        font-size: 14px;
-      }
-
-      .stat-change {
-        font-size: 6px;
-      }
-
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-        gap: 7px;
-        margin-top: 8px;
-      }
-
-      .panel {
-        padding: 12px;
-        border-radius: 10px;
-      }
-
-      .panel-title {
-        font-size: 8px;
-      }
-
-      .panel-subtitle {
-        font-size: 6px;
-      }
-
-      .project-list {
-        gap: 5px;
-        margin-top: 12px;
-      }
-
-      .project {
-        gap: 7px;
-        padding: 7px;
-      }
-
-      .project-number {
-        width: 23px;
-        height: 23px;
-        flex-basis: 23px;
-        font-size: 6px;
-      }
-
-      .project-name {
-        font-size: 7px;
-      }
-
-      .project-status {
-        font-size: 5px;
-      }
-
-      .project-price {
-        font-size: 7px;
-      }
-
-      .chart {
-        height: 90px;
-        gap: 4px;
-        margin-top: 18px;
-      }
-
-      .section-padding {
-        padding: 85px 0;
-      }
-
-      .section-heading-grid {
-        gap: 28px;
-      }
-
-      .eyebrow {
-        gap: 6px;
-        margin-bottom: 15px;
-        font-size: 7px;
-        letter-spacing: .16em;
-      }
-
-      .eyebrow-line {
-        width: 22px;
-        flex-basis: 22px;
-      }
-
-      h2 {
-        font-size: clamp(30px, 9vw, 42px);
-        line-height: 1.05;
-      }
-
-      .section-description {
-        font-size: 11px;
-        line-height: 1.85;
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 9px;
-        margin-top: 38px;
-      }
-
-      .feature-card {
-        min-height: 0;
-        padding: 24px;
-        border-radius: 15px;
-      }
-
-      .feature-icon {
-        width: 40px;
-        height: 40px;
-        flex-basis: 40px;
-      }
-
-      .feature-title {
-        margin-top: 22px;
-        font-size: 13px;
-        line-height: 1.35;
-      }
-
-      .feature-description {
-        margin-top: 9px;
-        font-size: 9px;
-        line-height: 1.75;
-      }
-
-      .ownership-card {
-        border-radius: 19px;
-      }
-
-      .ownership-content {
-        padding: 34px 23px;
-      }
-
-      .small-tag {
-        font-size: 6px;
-        letter-spacing: .14em;
-      }
-
-      .ownership-content h2 {
-        margin-top: 20px !important;
-      }
-
-      .ownership-content p {
-        margin-top: 20px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .check-list {
-        gap: 10px;
-        margin-top: 23px;
-      }
-
-      .check-item {
-        align-items: flex-start;
-        gap: 8px;
-        font-size: 9px;
-        line-height: 1.5;
-      }
-
-      .check {
-        margin-top: 1px;
-        width: 18px;
-        height: 18px;
-        flex-basis: 18px;
-        font-size: 8px;
-      }
-
-      .workflow-visual {
-        min-height: 350px;
-      }
-
-      .workflow-box {
-        width: calc(100% - 34px);
-        padding: 16px;
-        border-radius: 14px;
-      }
-
-      .workflow-header {
-        font-size: 7px;
-      }
-
-      .workflow-steps {
-        margin-top: 14px;
-        gap: 5px;
-      }
-
-      .workflow-step {
-        padding: 10px;
-        font-size: 7px;
-      }
-
-      .center-heading .eyebrow {
-        gap: 5px;
-      }
-
-      .flow-node {
-        padding: 13px 20px;
-        font-size: 10px;
-      }
-
-      .pill-row {
-        margin-top: 30px;
-        gap: 7px;
-      }
-
-      .custom-card {
-        padding: 34px 23px;
-        border-radius: 19px;
-      }
-
-      .custom-grid {
-        gap: 30px;
-      }
-
-      .custom-description {
-        margin-top: 19px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .pricing-card {
-        padding: 28px 22px;
-      }
-
-      .pricing-amount {
-        font-size: 30px;
-      }
-
-      .report-mock-body {
-        padding: 20px;
-      }
-
-      .report-mock-header {
-        padding: 0 16px;
-      }
-
-      .faq-item summary {
-        padding: 16px 18px;
-        font-size: 12px;
-      }
-
-      .faq-answer {
-        padding: 0 18px 18px;
-      }
-
-      .final-cta {
-        padding: 95px 0;
-      }
-
-      .final-icon {
-        width: 46px;
-        height: 46px;
-        margin-bottom: 21px;
-      }
-
-      .final-cta p {
-        margin-top: 21px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .final-actions {
-        margin-top: 26px;
-        gap: 10px;
-      }
-
-      .availability {
-        font-size: 6px;
-        letter-spacing: .13em;
-        text-align: center;
-      }
-
-      .footer-inner {
-        min-height: 0;
-        padding: 32px 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 25px;
-      }
-
-      .footer-tagline {
-        font-size: 6px;
-        letter-spacing: .12em;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 8px;
-        padding: 15px 0;
-        font-size: 6px;
-        line-height: 1.6;
-      }
+      .container { width: calc(100% - 30px); max-width: none; }
+      .cursor, .cursor-ring { display: none; }
+      .brand { gap: 9px; }
+      .brand-mark { width: 35px; height: 35px; flex-basis: 35px; border-radius: 10px; }
+      .brand-name { font-size: 13px; }
+      .brand-subtitle { font-size: 6px; letter-spacing: .18em; }
+      .hero { padding-top: 125px; padding-bottom: 65px; }
+      .hero-orbit { width: 620px; height: 620px; top: 410px; }
+      .hero-orbit::before { inset: 55px; }
+      .status-pill { padding: 7px 11px; gap: 7px; font-size: 7px; letter-spacing: .12em; }
+      .hero-title { margin-top: 24px; font-size: clamp(38px, 12vw, 52px); letter-spacing: -.065em; line-height: .98; }
+      .hero-title .line-inner { max-width: 100%; }
+      .hero-description { margin-top: 25px; font-size: 12px; line-height: 1.85; }
+      .hero-actions { margin-top: 28px; flex-direction: column; width: 100%; gap: 9px; }
+      .button { width: 100%; min-height: 48px; padding: 0 18px; font-size: 10px; }
+      .dashboard-wrapper { margin-top: 55px; width: 100%; }
+      .dashboard { border-radius: 14px; }
+      .browser-bar { height: 40px; min-height: 40px; padding: 0 10px; }
+      .browser-dots { gap: 5px; }
+      .browser-dots span { width: 7px; height: 7px; }
+      .browser-status { font-size: 6px; gap: 5px; }
+      .browser-status i { width: 5px; height: 5px; flex-basis: 5px; }
+      .browser-label { display: none; }
+      .dashboard-body { min-height: 0; }
+      .dashboard-main { padding: 14px; }
+      .dashboard-header { align-items: flex-start; gap: 10px; }
+      .dashboard-eyebrow { font-size: 6px; letter-spacing: .15em; }
+      .dashboard-heading { margin-top: 5px; font-size: 16px; line-height: 1.2; }
+      .dashboard-filter { padding: 7px 8px; font-size: 6px; }
+      .stats { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; margin-top: 20px; }
+      .stat { padding: 10px; border-radius: 9px; }
+      .stat-label { font-size: 6px; }
+      .stat-value { margin-top: 5px; font-size: 14px; }
+      .stat-change { font-size: 6px; }
+      .dashboard-grid { grid-template-columns: 1fr; gap: 7px; margin-top: 8px; }
+      .panel { padding: 12px; border-radius: 10px; }
+      .panel-title { font-size: 8px; }
+      .panel-subtitle { font-size: 6px; }
+      .project-list { gap: 5px; margin-top: 12px; }
+      .project { gap: 7px; padding: 7px; }
+      .project-number { width: 23px; height: 23px; flex-basis: 23px; font-size: 6px; }
+      .project-name { font-size: 7px; }
+      .project-status { font-size: 5px; }
+      .project-price { font-size: 7px; }
+      .chart { height: 90px; gap: 4px; margin-top: 18px; }
+      .section-padding { padding: 85px 0; }
+      .section-heading-grid { gap: 28px; }
+      .eyebrow { gap: 6px; margin-bottom: 15px; font-size: 7px; letter-spacing: .16em; }
+      .eyebrow-line { width: 22px; flex-basis: 22px; }
+      h2 { font-size: clamp(36px, 11vw, 48px); line-height: .98; }
+      .section-description { font-size: 11px; line-height: 1.85; }
+      .feature-grid { grid-template-columns: 1fr; gap: 9px; margin-top: 38px; }
+      .feature-card { min-height: 0; padding: 24px; border-radius: 15px; }
+      .feature-icon { width: 40px; height: 40px; flex-basis: 40px; }
+      .feature-title { margin-top: 22px; font-size: 13px; line-height: 1.35; }
+      .feature-description { margin-top: 9px; font-size: 9px; line-height: 1.75; }
+      .request-answer { margin-top: 14px; font-size: 15px; }
+      .ownership-card { border-radius: 19px; }
+      .ownership-content { padding: 34px 23px; }
+      .small-tag { font-size: 6px; letter-spacing: .14em; }
+      .ownership-content h2 { margin-top: 20px !important; }
+      .ownership-content p { margin-top: 20px; font-size: 10px; line-height: 1.85; }
+      .check-list { gap: 10px; margin-top: 23px; }
+      .check-item { align-items: flex-start; gap: 8px; font-size: 9px; line-height: 1.5; }
+      .check { margin-top: 1px; width: 18px; height: 18px; flex-basis: 18px; font-size: 8px; }
+      .workflow-visual { min-height: 350px; }
+      .workflow-box { width: calc(100% - 34px); padding: 16px; border-radius: 14px; }
+      .workflow-header { font-size: 7px; }
+      .workflow-steps { margin-top: 14px; gap: 5px; }
+      .workflow-step { padding: 10px; font-size: 7px; }
+      .center-heading .eyebrow { gap: 5px; }
+      .tabs { margin-top: 40px; }
+      .tab-buttons { gap: 2px; padding: 3px; border-radius: 10px; }
+      .tab-button { padding: 11px 7px; font-size: 8px; line-height: 1.25; }
+      .tab-content { min-height: 0; padding: 28px 20px; border-radius: 14px; }
+      .tab-icon { width: 43px; height: 43px; flex-basis: 43px; }
+      .tab-panel h3 { margin-top: 19px; font-size: 20px; line-height: 1.15; }
+      .tab-panel p { margin-top: 11px; font-size: 10px; line-height: 1.85; }
+      .tags { gap: 6px; margin-top: 21px; }
+      .tag { padding: 5px 8px; font-size: 7px; }
+      .flow-node { padding: 13px 20px; font-size: 10px; }
+      .pill-row { margin-top: 30px; gap: 7px; }
+      .custom-card { padding: 34px 23px; border-radius: 19px; }
+      .custom-grid { gap: 30px; }
+      .custom-description { margin-top: 19px; font-size: 10px; line-height: 1.85; }
+      .custom-options { gap: 8px; }
+      .custom-option { padding: 18px; border-radius: 14px; }
+      .custom-option-number { width: 32px; height: 32px; flex-basis: 32px; border-radius: 9px; font-size: 7px; }
+      .custom-option-label { font-size: 6px; }
+      .custom-option h3 { margin-top: 15px; font-size: 17px; }
+      .custom-option p { margin-top: 8px; font-size: 8px; line-height: 1.75; }
+      .custom-option-features { margin-top: 13px; gap: 5px; }
+      .custom-option-feature { padding: 4px 7px; font-size: 5.5px; }
+      .custom-option-arrow { margin-top: 13px; font-size: 13px; }
+      .pricing-card { padding: 28px 22px; }
+      .pricing-amount { font-size: 32px; }
+      .final-cta { padding: 95px 0; }
+      .final-icon { width: 46px; height: 46px; margin-bottom: 21px; }
+      .final-cta p { margin-top: 21px; font-size: 10px; line-height: 1.85; }
+      .final-actions { margin-top: 26px; gap: 10px; }
+      .availability { font-size: 6px; letter-spacing: .13em; text-align: center; }
+      .footer-inner { min-height: 0; padding: 32px 0; flex-direction: column; align-items: flex-start; gap: 25px; }
+      .footer-tagline { font-size: 6px; letter-spacing: .12em; }
+      .footer-bottom { flex-direction: column; gap: 8px; padding: 15px 0; font-size: 6px; line-height: 1.6; }
     }
 
-    /* =========================================================
-       RESPONSIVE — VERY SMALL PHONES
-    ========================================================== */
+    /* RESPONSIVE — VERY SMALL PHONES */
 
     @media(max-width:380px) {
-
-      .container {
-        width: calc(100% - 24px);
-      }
-
-      .brand-name {
-        font-size: 12px;
-      }
-
-      .brand-subtitle {
-        font-size: 5px;
-      }
-
-      .mobile-menu-button {
-        width: 37px;
-        height: 37px;
-        flex-basis: 37px;
-      }
-
-      .hero {
-        padding-top: 115px;
-      }
-
-      .hero-title {
-        font-size: 32px;
-      }
-
-      .hero-description {
-        font-size: 11px;
-      }
-
-      .status-pill {
-        font-size: 6px;
-        letter-spacing: .09em;
-      }
-
-      .browser-status {
-        font-size: 5px;
-      }
-
-      .dashboard-main {
-        padding: 11px;
-      }
-
-      .dashboard-heading {
-        font-size: 14px;
-      }
-
-      .dashboard-filter {
-        font-size: 5px;
-        padding: 6px;
-      }
-
-      .stat {
-        padding: 8px;
-      }
-
-      .stat-value {
-        font-size: 12px;
-      }
-
-      .project {
-        gap: 5px;
-      }
-
-      .project-price {
-        font-size: 6px;
-      }
-
-      .feature-card {
-        padding: 21px;
-      }
-
-      .ownership-content,
-      .custom-card {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .workflow-box {
-        width: calc(100% - 24px);
-      }
-
-      .final-cta {
-        padding: 85px 0;
-      }
+      .container { width: calc(100% - 24px); }
+      .brand-name { font-size: 12px; }
+      .brand-subtitle { font-size: 5px; }
+      .mobile-menu-button { width: 37px; height: 37px; flex-basis: 37px; }
+      .hero { padding-top: 115px; }
+      .hero-title { font-size: 36px; }
+      .hero-description { font-size: 11px; }
+      .status-pill { font-size: 6px; letter-spacing: .09em; }
+      .browser-status { font-size: 5px; }
+      .dashboard-main { padding: 11px; }
+      .dashboard-heading { font-size: 14px; }
+      .dashboard-filter { font-size: 5px; padding: 6px; }
+      .stat { padding: 8px; }
+      .stat-value { font-size: 12px; }
+      .project { gap: 5px; }
+      .project-price { font-size: 6px; }
+      .feature-card { padding: 21px; }
+      .ownership-content, .custom-card { padding-left: 20px; padding-right: 20px; }
+      .workflow-box { width: calc(100% - 24px); }
+      .tab-content { padding: 24px 17px; }
+      .tab-button { font-size: 7px; }
+      .custom-option { padding: 16px; }
+      .custom-option h3 { font-size: 16px; }
+      .custom-option p { font-size: 7.5px; }
+      .final-cta { padding: 85px 0; }
     }
 
-    /* =========================================================
-       DEMO MODAL
-    ========================================================== */
+    /* DEMO MODAL */
 
     .demo-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0,0,0,.78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity .35s ease, visibility .35s ease;
+      position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center;
+      padding: 24px; background: rgba(0,0,0,.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s ease, visibility .35s ease;
     }
 
-    .demo-modal.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
+    .demo-modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
 
     .demo-modal-content {
-      position: relative;
-      width: min(900px, 100%);
-      max-width: 100%;
-      max-height: calc(100vh - 48px);
-
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      overflow: hidden;
-      background: #090909;
-      box-shadow:
-        0 50px 140px rgba(0,0,0,.8),
-        0 0 100px rgba(255,255,255,.04);
-
-      transform: translateY(24px) scale(.96);
-
-      transition:
-        transform .45s cubic-bezier(.16,1,.3,1);
+      position: relative; width: min(900px, 100%); max-width: 100%; max-height: calc(100vh - 48px);
+      border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden; background: #090909;
+      box-shadow: 0 50px 140px rgba(0,0,0,.8), 0 0 100px rgba(255,255,255,.04);
+      transform: translateY(24px) scale(.96); transition: transform .45s cubic-bezier(.16,1,.3,1);
     }
 
-    .demo-modal.active .demo-modal-content {
-      transform: translateY(0) scale(1);
-    }
+    .demo-modal.active .demo-modal-content { transform: translateY(0) scale(1); }
 
     .demo-modal-header {
-      min-height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 0 14px 0 17px;
-
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      min-height: 48px; display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 0 14px 0 17px; border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
-    .demo-modal-label {
-      color: rgba(255,255,255,.35);
-      font-size: 8px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    .demo-modal-label { color: rgba(255,255,255,.35); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     .demo-modal-close {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 9px;
-
-      background: rgba(255,255,255,.035);
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 17px;
-
-      transition: .25s ease;
+      width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.08); border-radius: 9px; background: rgba(255,255,255,.035);
+      color: rgba(255,255,255,.55); font-size: 17px; transition: .25s ease;
     }
 
-    .demo-modal-close:hover {
-      color: #fff;
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.16);
-    }
+    .demo-modal-close:hover { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
 
-    .demo-video-wrap {
-      background: #000;
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      max-height: calc(100vh - 100px);
-    }
+    .demo-video-wrap { background: #000; aspect-ratio: 16 / 9; width: 100%; max-height: calc(100vh - 100px); }
 
-    .demo-video {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      background: #000;
-    }
+    .demo-video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
 
     @media(max-width:620px) {
-
-      .demo-modal {
-        padding: 15px;
-      }
-
-      .demo-modal-content {
-        border-radius: 15px;
-        max-height: calc(100vh - 30px);
-      }
-
-      .demo-modal-header {
-        min-height: 44px;
-        padding-left: 13px;
-        padding-right: 10px;
-      }
-
-      .demo-modal-label {
-        font-size: 6px;
-        letter-spacing: .14em;
-      }
-
-      .demo-modal-close {
-        width: 30px;
-        height: 30px;
-        flex-basis: 30px;
-      }
+      .demo-modal { padding: 15px; }
+      .demo-modal-content { border-radius: 15px; max-height: calc(100vh - 30px); }
+      .demo-modal-header { min-height: 44px; padding-left: 13px; padding-right: 10px; }
+      .demo-modal-label { font-size: 6px; letter-spacing: .14em; }
+      .demo-modal-close { width: 30px; height: 30px; flex-basis: 30px; }
     }
 
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================== */
+    /* REDUCED MOTION */
 
     @media(prefers-reduced-motion:reduce) {
-
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
+      * { animation: none !important; transition: none !important; }
     }
 
   </style>
@@ -3279,30 +901,21 @@
 
 <body>
 
-  <!-- =========================================================
-       BACKGROUND
-  ========================================================== -->
+  <!-- BACKGROUND -->
 
   <div class="background">
-
     <div class="background-grid"></div>
-
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
     <div class="glow glow-3"></div>
-
   </div>
 
-  <!-- =========================================================
-       CURSOR
-  ========================================================== -->
+  <!-- CURSOR -->
 
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
 
-  <!-- =========================================================
-       NAVBAR
-  ========================================================== -->
+  <!-- NAVBAR -->
 
   <header class="navbar">
 
@@ -3315,95 +928,44 @@
         </div>
 
         <div>
-
           <div class="brand-name">
-            Audit<span>lane</span>
+            AutFlow <span>Studio</span>
           </div>
-
           <div class="brand-subtitle">
-            Freight Invoice Audit
+            Freight Invoice Audit Service
           </div>
-
         </div>
 
       </a>
 
       <nav class="nav-links">
-
-        <a href="#how-it-works">
-          How It Works
-        </a>
-
-        <a href="#what-we-check">
-          What We Check
-        </a>
-
-        <a href="#sample-report">
-          Sample Report
-        </a>
-
-        <a href="#pricing">
-          Pricing
-        </a>
-
-        <a href="#faq">
-          FAQ
-        </a>
-
+        <a href="#product">How It Works</a>
+        <a href="#capabilities">What We Check</a>
+        <a href="#comparison">Economics</a>
+        <a href="#preview">Start Here</a>
       </nav>
 
-      <a
-        href="#free-check"
-        class="nav-button magnetic"
-      >
-        Get A Free Invoice Check
+      <a href="#get-started" class="nav-button magnetic">
+        Request a Review
       </a>
 
-      <button
-        class="mobile-menu-button"
-        id="mobileMenuButton"
-      >
+      <button class="mobile-menu-button" id="mobileMenuButton">
         ☰
       </button>
 
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
-
-      <a href="#how-it-works">
-        How It Works
-      </a>
-
-      <a href="#what-we-check">
-        What We Check
-      </a>
-
-      <a href="#sample-report">
-        Sample Report
-      </a>
-
-      <a href="#pricing">
-        Pricing
-      </a>
-
-      <a href="#faq">
-        FAQ
-      </a>
-
-      <a
-        href="#free-check"
-        class="mobile-cta"
-      >
-        Get A Free Invoice Check
-      </a>
-
+      <a href="#product">How It Works</a>
+      <a href="#capabilities">What We Check</a>
+      <a href="#comparison">Economics</a>
+      <a href="#preview">Start Here</a>
+      <a href="#get-started" class="mobile-cta">Request a Review</a>
     </div>
 
   </header>
 
-  <!-- =========================================================
-       HERO
-  ========================================================== -->
+  <!-- HERO -->
 
   <section class="hero">
 
@@ -3416,65 +978,53 @@
       <div class="hero-content">
 
         <div class="status-pill hero-animate">
-
           <span class="status-dot"></span>
-
-          FREIGHT INVOICE AUDIT — POTENTIAL BILLING ERRORS
-
+          FREIGHT INVOICE AUDIT &amp; DISCREPANCY DETECTION
         </div>
 
         <h1 class="hero-title">
 
           <span class="line">
             <span class="line-inner">
-              Find The Freight Billing Errors
+              Your Freight Invoices.
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner">
-              Your Team Doesn't Have Time
+              Systematically Audited.
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner muted">
-              To Find.
+              Every Finding Verified.
             </span>
           </span>
 
         </h1>
 
         <p class="hero-description hero-animate">
-
-          We audit carrier invoices for duplicate charges, rate discrepancies, accessorial issues, and other billing anomalies — so your Finance and Logistics team can focus on the exceptions instead of manually reviewing every invoice.
-
+          If your company pays millions in freight across multiple carriers, reviewing every charge by hand is difficult to sustain. We process your carrier invoices, flag potential billing discrepancies, and reduce thousands of invoices to a focused list your team can verify.
         </p>
 
         <div class="hero-actions hero-animate">
 
-          <a
-            href="#free-check"
-            class="button button-primary magnetic"
-          >
-            Get A Free Invoice Check
+          <a href="#get-started" class="button button-primary magnetic">
+            Request a Freight Audit Review
             <span>→</span>
           </a>
 
-          <a
-            href="#how-it-works"
-            class="button button-secondary magnetic"
-          >
-            See How It Works
-          </a>
+          <button type="button" class="button button-secondary magnetic" id="demoButton">
+            Watch Our Previous Software Work
+            <span>▶</span>
+          </button>
 
         </div>
 
       </div>
 
-      <!-- =====================================================
-           DASHBOARD — SAMPLE AUDIT VIEW
-      ====================================================== -->
+      <!-- DASHBOARD -->
 
       <div class="dashboard-wrapper">
 
@@ -3491,15 +1041,12 @@
             </div>
 
             <div class="browser-status">
-
               <i></i>
-
-              SAMPLE AUDIT — LIVE VIEW
-
+              ILLUSTRATIVE AUDIT PREVIEW
             </div>
 
             <div class="browser-label">
-              ILLUSTRATIVE EXAMPLE — NOT A CLIENT RESULT
+              SAMPLE DATA — NOT CLIENT RESULTS
             </div>
 
           </div>
@@ -3514,38 +1061,38 @@
 
               <div class="sidebar-item active">
                 <span class="sidebar-icon"></span>
-                Invoice Queue
+                Audit Overview
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Carriers
+                Invoices
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Discrepancies
+                Flagged Items
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Rate Rules
+                Rate Checks
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Reports
+                Verification Status
               </div>
 
               <div class="sidebar-separator"></div>
 
               <div class="sidebar-title">
-                This Engagement
+                Deliverables
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Audit Summary
+                Findings Report
               </div>
 
             </aside>
@@ -3555,19 +1102,16 @@
               <div class="dashboard-header">
 
                 <div>
-
                   <div class="dashboard-eyebrow">
-                    Sample Audit / Carrier: Sample Carrier Co.
+                    Illustrative Example / Audit Summary
                   </div>
-
                   <div class="dashboard-heading">
-                    124 invoices reviewed
+                    A focused list, not a pile of invoices.
                   </div>
-
                 </div>
 
                 <div class="dashboard-filter">
-                  Last 90 days ↗
+                  Sample data ↗
                 </div>
 
               </div>
@@ -3575,79 +1119,27 @@
               <div class="stats">
 
                 <div class="stat">
-
-                  <div class="stat-label">
-                    Invoices Reviewed
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="124"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    1 carrier
-                  </div>
-
+                  <div class="stat-label">Invoices Processed</div>
+                  <div class="stat-value counter" data-value="840">0</div>
+                  <div class="stat-change">Sample volume</div>
                 </div>
 
                 <div class="stat">
-
-                  <div class="stat-label">
-                    Potential Discrepancies
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="12"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change warn">
-                    9.7% of invoices
-                  </div>
-
+                  <div class="stat-label">Items Flagged for Review</div>
+                  <div class="stat-value counter" data-value="37">0</div>
+                  <div class="stat-change">A small share of the total</div>
                 </div>
 
                 <div class="stat">
-
-                  <div class="stat-label">
-                    Potential Financial Impact
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="18420"
-                  >
-                    $0
-                  </div>
-
-                  <div class="stat-change warn">
-                    Requires verification
-                  </div>
-
+                  <div class="stat-label">Carriers Included</div>
+                  <div class="stat-value counter" data-value="6">0</div>
+                  <div class="stat-change">Multi-carrier scope</div>
                 </div>
 
                 <div class="stat">
-
-                  <div class="stat-label">
-                    Duplicate Charges Found
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="3"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change warn">
-                    Flagged for review
-                  </div>
-
+                  <div class="stat-label">Potential Discrepancies</div>
+                  <div class="stat-value counter" data-value="18420">$0</div>
+                  <div class="stat-change">Requires verification</div>
                 </div>
 
               </div>
@@ -3657,85 +1149,40 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Flagged Invoices
+                    Flagged Items
                   </div>
 
                   <div class="panel-subtitle">
-                    Illustrative example — not a client result
+                    Sample entries — potential discrepancies, not confirmed errors
                   </div>
 
                   <div class="project-list">
 
                     <div class="project">
-
-                      <div class="project-number">
-                        01
-                      </div>
-
+                      <div class="project-number">01</div>
                       <div class="project-info">
-
-                        <div class="project-name">
-                          Invoice #48291 — Rate discrepancy
-                        </div>
-
-                        <div class="project-status">
-                          REQUIRES VERIFICATION
-                        </div>
-
+                        <div class="project-name">Possible duplicate charge</div>
+                        <div class="project-status">REQUIRES VERIFICATION</div>
                       </div>
-
-                      <div class="project-price">
-                        $230
-                      </div>
-
+                      <div class="project-price">$1,240</div>
                     </div>
 
                     <div class="project">
-
-                      <div class="project-number">
-                        02
-                      </div>
-
+                      <div class="project-number">02</div>
                       <div class="project-info">
-
-                        <div class="project-name">
-                          Invoice #48304 — Duplicate billing
-                        </div>
-
-                        <div class="project-status">
-                          REQUIRES VERIFICATION
-                        </div>
-
+                        <div class="project-name">Billed rate differs from contract rate</div>
+                        <div class="project-status">FLAGGED</div>
                       </div>
-
-                      <div class="project-price">
-                        $410
-                      </div>
-
+                      <div class="project-price">$860</div>
                     </div>
 
                     <div class="project">
-
-                      <div class="project-number">
-                        03
-                      </div>
-
+                      <div class="project-number">03</div>
                       <div class="project-info">
-
-                        <div class="project-name">
-                          Invoice #48355 — Accessorial charge
-                        </div>
-
-                        <div class="project-status">
-                          REQUIRES VERIFICATION
-                        </div>
-
+                        <div class="project-name">Unexpected accessorial charge</div>
+                        <div class="project-status">UNDER REVIEW</div>
                       </div>
-
-                      <div class="project-price">
-                        $95
-                      </div>
-
+                      <div class="project-price">$415</div>
                     </div>
 
                   </div>
@@ -3745,15 +1192,14 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Discrepancies By Category
+                    Discrepancy Types
                   </div>
 
                   <div class="panel-subtitle">
-                    Sample distribution across 90 days
+                    Sample distribution by category
                   </div>
 
                   <div class="chart">
-
                     <div class="bar" style="height:30%"></div>
                     <div class="bar" style="height:48%"></div>
                     <div class="bar" style="height:40%"></div>
@@ -3766,7 +1212,6 @@
                     <div class="bar" style="height:96%"></div>
                     <div class="bar" style="height:80%"></div>
                     <div class="bar" style="height:100%"></div>
-
                   </div>
 
                 </div>
@@ -3785,9 +1230,7 @@
 
   </section>
 
-  <!-- =========================================================
-       PROBLEM FRAMING
-  ========================================================== -->
+  <!-- PROBLEM FRAMING -->
 
   <section class="section-border">
 
@@ -3796,33 +1239,21 @@
       <div class="center-heading reveal-scale">
 
         <div class="eyebrow">
-
           <span class="eyebrow-line"></span>
-
           THE PROBLEM
-
           <span class="eyebrow-line"></span>
-
         </div>
 
         <h2>
-
-          The Problem Isn't That
+          Manual Review Doesn't Scale
           <br>
-
-          Your Team Isn't Checking.
-          <br>
-
           <span class="muted">
-            It's That There's Too Much To Check.
+            Across Thousands Of Invoices.
           </span>
-
         </h2>
 
         <p class="section-description centered">
-
-          Companies with real freight spend often work with multiple carriers, negotiated rates, accessorial charges, and fuel surcharges — spread across hundreds or thousands of invoices a month, in different formats from different systems. Reviewing every line item by hand is possible in theory. In practice, volume outpaces attention, and patterns across invoices get missed.
-
+          Freight invoices arrive in different formats from different carriers, each with its own rates, fees and references. Checking every charge against contracts and shipment records is repetitive work that is hard to keep consistent. Small discrepancies can go unnoticed, and when freight spend reaches the millions, they can add up.
         </p>
 
       </div>
@@ -3831,15 +1262,9 @@
 
   </section>
 
-  <!-- =========================================================
-       MANUAL REVIEW VS. OUR WORKFLOW
-  ========================================================== */
-  -->
+  <!-- METHOD -->
 
-  <section
-    id="approach"
-    class="section-border"
-  >
+  <section id="product" class="section-border">
 
     <div class="container section-padding">
 
@@ -3848,105 +1273,22 @@
         <div class="reveal-left">
 
           <div class="eyebrow">
-
             <span class="eyebrow-line"></span>
-
-            THE APPROACH
-
+            OUR METHODOLOGY
           </div>
 
           <h2>
-
-            We Don't Replace Your Team.
-
+            Automation Surfaces.
             <span class="muted">
-              We Help It Focus.
+              People Verify.
             </span>
           </h2>
 
         </div>
 
         <p class="section-description reveal-right">
-
-          Manual review doesn't usually fail because people aren't careful. It fails because volume outpaces attention. Instead of reviewing every invoice with the same depth, our workflow narrows a large invoice set down to the specific charges that actually deserve a closer look.
-
+          AI-assisted extraction reads invoices in inconsistent formats. Deterministic rules then check the data. Every flagged item is reviewed by a person before it is treated as a confirmed issue. The technology narrows the search; it does not make the financial decision.
         </p>
-
-      </div>
-
-      <div class="split-grid reveal-scale">
-
-        <div class="feature-card">
-
-          <span class="split-label">
-            TODAY
-          </span>
-
-          <div class="feature-title" style="margin-top:14px;">
-            Traditional Review
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check check-no">–</span>
-              Invoice arrives from the carrier
-            </div>
-
-            <div class="check-item">
-              <span class="check check-no">–</span>
-              Reviewed manually, if and when there's time
-            </div>
-
-            <div class="check-item">
-              <span class="check check-no">–</span>
-              Depth of review depends on workload and fatigue
-            </div>
-
-            <div class="check-item">
-              <span class="check check-no">–</span>
-              Patterns across hundreds of invoices are easy to miss
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="feature-card">
-
-          <span class="split-label">
-            WITH AUDITLANE
-          </span>
-
-          <div class="feature-title" style="margin-top:14px;">
-            Our Audit Workflow
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Invoices received and extracted into structured data
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Deterministic rules run the same checks on every invoice
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Potential discrepancies are verified by a person
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Your team gets a focused report, not a raw data dump
-            </div>
-
-          </div>
-
-        </div>
 
       </div>
 
@@ -3954,137 +1296,9 @@
 
   </section>
 
-  <!-- =========================================================
-       HOW IT WORKS
-  ========================================================== -->
+  <!-- WHAT WE CHECK -->
 
-  <section
-    id="how-it-works"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          THE PROCESS
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-          How The Audit Works.
-        </h2>
-
-        <p class="section-description centered">
-
-          You don't need to know what should be automated or what technology to use. You send us your invoices — we handle the rest, and check with you at each stage.
-
-        </p>
-
-      </div>
-
-      <div class="steps-grid-5 reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            01
-          </div>
-
-          <div class="feature-title">
-            Send Your Invoices
-          </div>
-
-          <div class="feature-description">
-            Send 30–90 days of invoices from one carrier for the initial sample — PDF, CSV, or Excel. A contract or rate sheet helps, but isn't required to start.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            02
-          </div>
-
-          <div class="feature-title">
-            We Structure The Data
-          </div>
-
-          <div class="feature-description">
-            Carrier, invoice number, PRO/tracking number, charge type, amount, weight, and other billing fields are extracted and normalized into one dataset.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            03
-          </div>
-
-          <div class="feature-title">
-            We Run The Checks
-          </div>
-
-          <div class="feature-description">
-            Deterministic rules check for duplicate billing, rate discrepancies, accessorial issues, surcharge inconsistencies, and other anomalies.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            04
-          </div>
-
-          <div class="feature-title">
-            We Verify The Findings
-          </div>
-
-          <div class="feature-description">
-            Every flagged item is reviewed by a person before it's reported as a potential discrepancy — not just a raw system output.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            05
-          </div>
-
-          <div class="feature-title">
-            You Get The Findings
-          </div>
-
-          <div class="feature-description">
-            You receive a clear report showing what was reviewed, what was flagged, and the potential financial impact of each item.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       WHAT WE CHECK
-  ========================================================== -->
-
-  <section
-    id="what-we-check"
-    class="section-border"
-  >
+  <section id="capabilities" class="section-border">
 
     <div class="container section-padding">
 
@@ -4093,28 +1307,21 @@
         <div class="reveal-left">
 
           <div class="eyebrow">
-
             <span class="eyebrow-line"></span>
-
             WHAT WE CHECK
-
           </div>
 
           <h2>
-
-            Six Categories
-
+            The Charges We
             <span class="muted">
-              Of Potential Billing Issues.
+              Examine Closely.
             </span>
           </h2>
 
         </div>
 
         <p class="section-description reveal-right">
-
-          Every flagged item is labeled as a potential discrepancy that requires verification — not treated as a confirmed error. We'd rather under-claim and be right than over-claim and lose your trust.
-
+          Checks depend on the data available for your account. Where contracts, rate sheets or shipment records are provided, we compare against them. Not every discrepancy can always be detected, and every result is a potential finding until verified.
         </p>
 
       </div>
@@ -4122,99 +1329,51 @@
       <div class="feature-grid reveal-scale">
 
         <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⧉
-          </div>
-
-          <div class="feature-title">
-            DUPLICATE BILLING
-          </div>
-
+          <div class="feature-icon">⎘</div>
+          <div class="feature-title">DUPLICATE CHARGES</div>
           <div class="feature-description">
-            Repeated invoice, shipment, or PRO/tracking patterns that may indicate the same charge billed more than once.
+            Repeated invoice numbers, shipment references or charges that may have been billed more than once.
           </div>
-
         </div>
 
         <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            %
-          </div>
-
-          <div class="feature-title">
-            RATE DISCREPANCIES
-          </div>
-
+          <div class="feature-icon">⇄</div>
+          <div class="feature-title">RATE MISMATCHES</div>
           <div class="feature-description">
-            Billed amounts compared against agreed or contracted rates, where contract or rate sheet data is available.
+            Billed rates that differ from negotiated or contracted rates, including outdated rates, where rate information is available.
           </div>
-
         </div>
 
         <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            +
-          </div>
-
-          <div class="feature-title">
-            ACCESSORIAL CHARGES
-          </div>
-
+          <div class="feature-icon">⌁</div>
+          <div class="feature-title">ACCESSORIAL CHARGES</div>
           <div class="feature-description">
-            Additional charges — detention, liftgate, residential, reclassification — that look unexpected or unsupported.
+            Unexpected or potentially unauthorized fees that warrant a closer look against shipment details.
           </div>
-
         </div>
 
         <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⛽
-          </div>
-
-          <div class="feature-title">
-            FUEL &amp; SURCHARGE ISSUES
-          </div>
-
+          <div class="feature-icon">↻</div>
+          <div class="feature-title">ARITHMETIC INCONSISTENCIES</div>
           <div class="feature-description">
-            Surcharge calculations that appear inconsistent with the carrier's published or contracted methodology.
+            Line items and totals that do not reconcile with each other on the invoice itself.
           </div>
-
         </div>
 
         <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⚖
-          </div>
-
-          <div class="feature-title">
-            WEIGHT &amp; SHIPMENT DATA
-          </div>
-
+          <div class="feature-icon">◈</div>
+          <div class="feature-title">WEIGHT DISCREPANCIES</div>
           <div class="feature-description">
-            Mismatches between shipment details on record and what was actually billed.
+            Billed weights that differ from shipment records, where enough data exists to compare.
           </div>
-
         </div>
 
         <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◈
-          </div>
-
-          <div class="feature-title">
-            OTHER BILLING ANOMALIES
-          </div>
-
+          <div class="feature-icon">◷</div>
+          <div class="feature-title">OTHER RULE-BASED EXCEPTIONS</div>
           <div class="feature-description">
-            Patterns that don't fit a standard category but are unusual enough to warrant a closer look.
+            Additional anomalies identified by structured rules, each flagged as an item requiring review.
           </div>
-
         </div>
 
       </div>
@@ -4223,111 +1382,196 @@
 
   </section>
 
-  <!-- =========================================================
-       SAMPLE FINDINGS / REPORT
-  ========================================================== -->
+  <!-- IDEAL CUSTOMER -->
 
-  <section
-    id="sample-report"
-    class="section-border"
-  >
+  <section id="customization" class="section-border">
 
     <div class="container section-padding">
 
       <div class="center-heading reveal-scale">
 
         <div class="eyebrow">
-
           <span class="eyebrow-line"></span>
-
-          SAMPLE FINDINGS
-
+          WHO THIS IS FOR
           <span class="eyebrow-line"></span>
-
         </div>
 
         <h2>
-          What A Finding Actually Looks Like.
+          Does Your Freight Operation
+          <br>
+          <span class="muted">
+            Fit This Profile?
+          </span>
         </h2>
 
         <p class="section-description centered">
-
-          Below is an illustrative example of how a flagged invoice is presented in your report. The figures are for illustration only — they are not a promise about what we'll find in your invoices.
-
+          Built for the company paying the freight bills: manufacturers, distributors, importers, wholesalers and other mid-market businesses. If your invoices span multiple carriers and facilities, manual review becomes hard to maintain at scale. This does not mean errors are certain, only that a systematic look can be worthwhile.
         </p>
 
       </div>
 
-      <div class="report-mock reveal-scale">
+      <div class="steps-grid reveal-scale">
 
-        <div class="report-mock-header">
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">?</div>
+          <div class="feature-title">Invoices from multiple carriers?</div>
+          <div class="request-answer">Common fit.</div>
+        </div>
 
-          <span class="report-mock-label">
-            Freight Audit — Sample
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">?</div>
+          <div class="feature-title">High invoice volume across facilities?</div>
+          <div class="request-answer">Common fit.</div>
+        </div>
+
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">?</div>
+          <div class="feature-title">Negotiated carrier rates to check against?</div>
+          <div class="request-answer">Useful input.</div>
+        </div>
+
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">?</div>
+          <div class="feature-title">Millions in annual freight spend?</div>
+          <div class="request-answer">Worth a look.</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ECONOMICS -->
+
+  <section id="comparison" class="section-border">
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+          <span class="eyebrow-line"></span>
+          THE ECONOMICS
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <h2>
+          The Question Isn't What The Audit Costs.
+          <br>
+          <span class="muted">
+            It's What Not Looking Costs.
           </span>
+        </h2>
 
-          <span class="report-mock-tag">
-            Illustrative Example — Not A Client Result
-          </span>
+        <p class="section-description centered">
+          Industry estimates commonly place potential recoverable savings from systematic freight auditing at roughly 2–4% of freight spend, although actual results vary significantly by company, carrier mix and contracts. The scenarios below are illustrative calculations, not guaranteed results.
+        </p>
+
+      </div>
+
+      <div class="equation-row reveal-scale">
+
+        <div class="flow-node">
+          FREIGHT SPEND IN THE MILLIONS
+        </div>
+
+        <div class="flow-arrow">+</div>
+
+        <div class="flow-node">
+          A SMALL DISCREPANCY RATE
+        </div>
+
+        <div class="flow-arrow">=</div>
+
+        <div class="flow-node">
+          SIGNIFICANT POTENTIAL IMPACT
+        </div>
+
+      </div>
+
+      <div class="pricing-grid reveal-scale">
+
+        <div class="pricing-card">
+
+          <div class="pricing-label">
+            ILLUSTRATION 01
+          </div>
+
+          <div class="pricing-name">
+            $3M Annual Freight Spend
+          </div>
+
+          <p class="pricing-desc">
+            A hypothetical scenario showing how potential impact scales with spend. Not a prediction or a promise.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              At a hypothetical 2%: $3,000,000 × 2% = $60,000
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              At a hypothetical 4%: $3,000,000 × 4% = $120,000
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Potential impact is not guaranteed recovery
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Actual results vary and depend on what verification confirms
+            </div>
+
+          </div>
 
         </div>
 
-        <div class="report-mock-body">
+        <div class="pricing-card featured">
 
-          <div class="report-summary">
-
-            <div class="stat">
-              <div class="stat-label">Invoices Reviewed</div>
-              <div class="stat-value">124</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">Potential Discrepancies</div>
-              <div class="stat-value">12</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">Potential Financial Impact</div>
-              <div class="stat-value">$18,420</div>
-            </div>
-
+          <div class="pricing-badge">
+            ILLUSTRATIVE
           </div>
 
-          <div class="report-divider"></div>
-
-          <div class="report-finding-head">
-
-            <div class="report-finding-title">
-              Invoice #48291
-            </div>
-
-            <div class="report-finding-status">
-              Status: Requires Human Verification
-            </div>
-
+          <div class="pricing-label">
+            ILLUSTRATION 02
           </div>
 
-          <div class="report-finding-grid">
-
-            <div class="report-line">
-              <div class="report-line-label">Billed Amount</div>
-              <div class="report-line-value">$1,480</div>
-            </div>
-
-            <div class="report-line">
-              <div class="report-line-label">Expected Amount</div>
-              <div class="report-line-value">$1,250</div>
-            </div>
-
-            <div class="report-line">
-              <div class="report-line-label">Difference</div>
-              <div class="report-line-value">$230</div>
-            </div>
-
+          <div class="pricing-name">
+            $5M Annual Freight Spend
           </div>
 
-          <div class="report-flag">
-            ⚠ Potential rate discrepancy
+          <p class="pricing-desc">
+            Weigh a typical $7,500 audit against the spend being examined, not in isolation. Even if the actual result is materially lower, the economics can justify a structured audit.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              At a hypothetical 2%: $5,000,000 × 2% = $100,000
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              At a hypothetical 4%: $5,000,000 × 4% = $200,000
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Illustrative only. We do not guarantee any savings or recovery
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              The audit shows what is worth verifying, and what is not
+            </div>
+
           </div>
 
         </div>
@@ -4338,14 +1582,216 @@
 
   </section>
 
-  <!-- =========================================================
-       FREE INVOICE CHECK — LEAD FORM
-  ========================================================== -->
+  <!-- HOW THE AUDIT WORKS + ENGAGEMENT -->
 
-  <section
-    id="free-check"
-    class="section-border"
-  >
+  <section id="revenue-opportunity" class="section-border">
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+          <span class="eyebrow-line"></span>
+          THE ENGAGEMENT
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <h2>
+          You Send The Invoices.
+          <br>
+          <span class="muted">
+            We Surface What Needs Review.
+          </span>
+        </h2>
+
+        <p class="section-description centered">
+          You don't need to inspect every invoice. We reduce a large volume of invoices to a focused list of charges that deserve human attention: less exhaustive review, more targeted investigation.
+        </p>
+
+      </div>
+
+      <div class="flow-diagram reveal-scale">
+
+        <div class="flow-node">
+          YOU PROVIDE CARRIER INVOICES
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          WE EXTRACT AND VALIDATE THE DATA
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          WE FLAG POTENTIAL DISCREPANCIES
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          A PERSON VERIFIES EACH FINDING
+        </div>
+
+      </div>
+
+      <div class="ownership-card ownership-parallax" style="margin-top:70px;">
+
+        <div class="ownership-content">
+
+          <span class="small-tag">
+            TYPICAL ENGAGEMENT · $5,000–$10,000
+          </span>
+
+          <h2 style="margin-top:23px;">
+            A $7,500 Audit,
+            <br>
+            <span class="muted">
+              Weighed Against The Spend.
+            </span>
+          </h2>
+
+          <p>
+            A typical engagement is $7,500, within a $5,000–$10,000 range depending on scope. Weigh it against the freight spend being examined, not in isolation: potential impact is not guaranteed recovery, but the economics can make a structured look reasonable.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Scoped before work begins
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Based on invoice volume, carrier count, historical period and complexity
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              50% to start, 50% upon delivery
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              No guaranteed savings; findings are potential until verified
+            </div>
+
+          </div>
+
+          <p class="ownership-note">
+            Invoices may be PDF, CSV, Excel or similar exports. Where available, contracts, rate sheets and shipment records improve the checks.
+          </p>
+
+        </div>
+
+        <div class="workflow-visual">
+
+          <div class="workflow-box workflow-float">
+
+            <div class="workflow-header">
+              <span>◉ EXAMPLE AUDIT FLOW</span>
+              <span class="workflow-active">ILLUSTRATIVE</span>
+            </div>
+
+            <div class="workflow-steps">
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Carrier invoices collected
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Data extracted and checked against rules
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Potential discrepancies flagged
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Findings verified before reporting
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section id="how-it-works" class="section-border">
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+          <span class="eyebrow-line"></span>
+          STEP BY STEP
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <h2>
+          How The Audit Works.
+        </h2>
+
+      </div>
+
+      <div class="steps-grid reveal-scale">
+
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">01</div>
+          <div class="feature-title">COLLECT</div>
+          <div class="feature-description">
+            You provide carrier invoices (PDF, CSV, Excel or similar) and, where available, contracts, rate sheets and shipment records such as BOL, PRO or tracking references.
+          </div>
+        </div>
+
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">02</div>
+          <div class="feature-title">PROCESS &amp; CHECK</div>
+          <div class="feature-description">
+            AI-assisted extraction turns invoices into structured data. Deterministic rules then check for duplicates, rate mismatches, accessorials, arithmetic and weight inconsistencies.
+          </div>
+        </div>
+
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">03</div>
+          <div class="feature-title">FOCUS &amp; VERIFY</div>
+          <div class="feature-description">
+            Thousands of invoices become a focused list of items requiring review. Each is verified by a person before being represented as a confirmed problem.
+          </div>
+        </div>
+
+        <div class="feature-card feature-3d">
+          <div class="feature-icon">04</div>
+          <div class="feature-title">REPORT</div>
+          <div class="feature-description">
+            You receive a structured report: invoice reference, billed amount, expected amount where determinable, difference, discrepancy type, supporting information and verification status.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- START A CONVERSATION -->
+
+  <section id="preview" class="section-border">
 
     <div class="container section-padding">
 
@@ -4356,319 +1802,60 @@
           <div class="custom-copy">
 
             <span class="small-tag">
-              THE FREE INVOICE CHECK
+              START WITH A CONVERSATION
             </span>
 
             <h2 style="margin-top:23px;">
-
-              Send A Sample.
-
+              Tell Us About
               <br>
-
               <span class="muted">
-                Find Out If There's A Problem.
+                Your Freight Spend.
               </span>
             </h2>
 
             <p class="custom-description">
-              Send us 30–90 days of freight invoices from one carrier — PDF, CSV, or Excel — plus a contract or rate sheet if you have one. We'll review them and show you what we find, at no cost and with no obligation. We won't promise a savings number before we've seen your data — just an honest look at what's actually in your invoices.
+              Share a rough picture of your freight operation and we'll tell you whether a structured audit is likely to be worthwhile, and how it would be scoped. Handling of financial documents is treated with care, and scope and price are agreed before any work begins.
             </p>
 
-            <span class="whatsapp-alt">
-              Prefer to talk first? Reach us directly on
-              <a href="https://wa.me/213659735828" target="_blank" rel="noopener noreferrer">WhatsApp</a>.
-            </span>
+            <a href="#get-started" class="button button-primary magnetic">
+              Discuss Your Freight Spend
+              <span>→</span>
+            </a>
 
           </div>
 
-          <div>
+          <div class="custom-options">
 
-            <div class="form-confirmation" id="formConfirmation">
+            <div class="custom-option">
 
-              <div class="form-confirmation-title">
-                Request received.
+              <div class="custom-option-top">
+
+                <div class="custom-option-number">
+                  01
+                </div>
+
+                <div class="custom-option-label">
+                  WHAT TO<br>SHARE
+                </div>
+
               </div>
+
+              <h3>
+                A Few Facts Are Enough To Begin
+              </h3>
 
               <p>
-                Thanks — we'll review your request and get back to you with the simplest next step for sending a small invoice sample.
+                We don't need a data dump up front. A general sense of your freight spend, carriers and invoice formats lets us assess fit and propose a scope, or start with an initial invoice review.
               </p>
 
-            </div>
-
-            <form class="lead-form" id="leadForm">
-
-              <div class="form-row">
-
-                <div class="form-field">
-                  <label for="fName">Name</label>
-                  <input type="text" id="fName" name="name" placeholder="Jane Rivera" required>
-                </div>
-
-                <div class="form-field">
-                  <label for="fEmail">Work Email</label>
-                  <input type="email" id="fEmail" name="email" placeholder="jane@company.com" required>
-                </div>
-
+              <div class="custom-option-features">
+                <span class="custom-option-feature">ANNUAL FREIGHT SPEND</span>
+                <span class="custom-option-feature">NUMBER OF CARRIERS</span>
+                <span class="custom-option-feature">INVOICE VOLUME &amp; FORMAT</span>
               </div>
 
-              <div class="form-row">
-
-                <div class="form-field">
-                  <label for="fCompany">Company</label>
-                  <input type="text" id="fCompany" name="company" placeholder="Company name" required>
-                </div>
-
-                <div class="form-field">
-                  <label for="fRole">Role</label>
-                  <input type="text" id="fRole" name="role" placeholder="Controller, VP Finance, etc." required>
-                </div>
-
-              </div>
-
-              <div class="form-row">
-
-                <div class="form-field">
-                  <label for="fSpend">Approx. Annual Freight Spend</label>
-                  <select id="fSpend" name="spend">
-                    <option value="">Select a range</option>
-                    <option value="under-500k">Under $500K</option>
-                    <option value="500k-2m">$500K – $2M</option>
-                    <option value="2m-10m">$2M – $10M</option>
-                    <option value="10m-plus">$10M+</option>
-                    <option value="not-sure">Not sure</option>
-                  </select>
-                </div>
-
-                <div class="form-field">
-                  <label for="fCarriers">Number Of Carriers (optional)</label>
-                  <input type="text" id="fCarriers" name="carriers" placeholder="e.g. 3">
-                </div>
-
-              </div>
-
-              <div class="form-field">
-                <label for="fMessage">Message (optional)</label>
-                <textarea id="fMessage" name="message" placeholder="Anything useful for us to know before we look at your invoices."></textarea>
-              </div>
-
-              <button type="submit" class="button button-primary magnetic">
-                Request Free Invoice Check
-                <span>→</span>
-              </button>
-
-              <p class="form-disclaimer">
-                By submitting, you agree to let us review the invoices you send. This request does not commit you to a paid engagement.
-              </p>
-
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       WHO THIS IS FOR / NOT FOR
-  ========================================================== -->
-
-  <section
-    id="who-its-for"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          WHO THIS IS FOR
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-          Built For Companies Where Manual Review Starts To Break Down.
-        </h2>
-
-        <p class="section-description centered">
-
-          Freight audit tends to make sense once volume and complexity pass a certain point. This is a general picture, not a rigid checklist.
-
-        </p>
-
-      </div>
-
-      <div class="split-grid reveal-scale">
-
-        <div class="feature-card">
-
-          <span class="split-label">
-            A LIKELY FIT
-          </span>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Manufacturers, distributors, importers, and wholesalers
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Mid-market companies with meaningful freight spend
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Multiple carriers or negotiated rate structures
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Hundreds or thousands of invoices to review
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              A Finance, AP, or Logistics team relying on manual or fragmented review
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="feature-card">
-
-          <span class="split-label">
-            PROBABLY NOT A FIT
-          </span>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check check-no">–</span>
-              Very low freight volume — a handful of invoices a month
-            </div>
-
-            <div class="check-item">
-              <span class="check check-no">–</span>
-              An existing freight-audit provider already covering the full process
-            </div>
-
-            <div class="check-item">
-              <span class="check check-no">–</span>
-              No meaningful invoice volume to review yet
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       PREVIOUS SOFTWARE WORK + VIDEO
-  ========================================================== -->
-
-  <section
-    id="portfolio"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="ownership-card ownership-parallax">
-
-        <div class="ownership-content">
-
-          <span class="small-tag">
-            BEFORE THIS AUDIT WORKFLOW
-          </span>
-
-          <h2 style="margin-top:23px;">
-
-            Built Before.
-
-            <br>
-
-            <span class="muted">
-              Built For Business.
-            </span>
-          </h2>
-
-          <p>
-
-            Before building this audit workflow, I designed and shipped a full business-management platform — authentication, role-based access, multi-tenant architecture, financial workflows, document handling, and automated business logic.
-
-          </p>
-
-          <p class="ownership-note">
-
-            This is not freight-audit software, and it isn't shown to prove freight-audit experience. It's here as proof that the systems behind this audit are built by someone who has already shipped real, working business software.
-
-          </p>
-
-          <a
-            href="#"
-            class="button button-secondary magnetic"
-            id="demoButton"
-            style="margin-top:28px;"
-          >
-            Watch A Walkthrough
-            <span>▶</span>
-          </a>
-
-        </div>
-
-        <div class="workflow-visual">
-
-          <div class="workflow-box workflow-float">
-
-            <div class="workflow-header">
-
-              <span>
-                ◉ PREVIOUS PROJECT
-              </span>
-
-              <span class="workflow-active">
-                RECORDED DEMO
-              </span>
-
-            </div>
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Multi-tenant business platform
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Auth and role-based access
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Financial workflows and documents
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Automated business logic
+              <div class="custom-option-arrow">
+                →
               </div>
 
             </div>
@@ -4683,344 +1870,9 @@
 
   </section>
 
-  <!-- =========================================================
-       TRUST / CONFIDENTIALITY
-  ========================================================== -->
+  <!-- FINAL CTA -->
 
-  <section
-    id="trust"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          TRUST &amp; CONFIDENTIALITY
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-          Your Invoices Are Financial Documents. We Treat Them That Way.
-        </h2>
-
-      </div>
-
-      <div class="steps-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◐
-          </div>
-
-          <div class="feature-title">
-            CONFIDENTIALITY
-          </div>
-
-          <div class="feature-description">
-            We can sign an NDA before receiving sensitive invoices or contract data, if you'd like one in place first.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◧
-          </div>
-
-          <div class="feature-title">
-            CONTROLLED ACCESS
-          </div>
-
-          <div class="feature-description">
-            Only the people working directly on your audit have access to your files.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◨
-          </div>
-
-          <div class="feature-title">
-            DATA HANDLING
-          </div>
-
-          <div class="feature-description">
-            Your documents are used to perform the audit and retained according to an agreed data-retention policy, which we're happy to put in writing.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◭
-          </div>
-
-          <div class="feature-title">
-            HOW AI IS USED
-          </div>
-
-          <div class="feature-description">
-            AI/OCR tools may assist with extracting and structuring messy documents. They don't make financial decisions — every check runs on deterministic rules, followed by human verification.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       PRICING
-  ========================================================== -->
-
-  <section
-    id="pricing"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          PRICING
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-          One Engagement. Scoped To Your Freight.
-        </h2>
-
-        <p class="section-description centered">
-
-          There's no fixed package tier to choose from — just one engagement, scoped after you've already seen real findings from your own invoices at no cost.
-
-        </p>
-
-      </div>
-
-      <div class="pricing-wrap reveal-scale">
-
-        <div class="pricing-card featured">
-
-          <div class="pricing-badge">
-            TYPICAL ENGAGEMENT
-          </div>
-
-          <div class="pricing-label">
-            FULL FREIGHT INVOICE AUDIT
-          </div>
-
-          <div class="pricing-name">
-            Full Audit Engagement
-          </div>
-
-          <div class="pricing-price">
-            <span class="pricing-amount">$5,000 – $10,000</span>
-            <span class="pricing-cadence">per engagement</span>
-          </div>
-
-          <div class="pricing-sub">
-            Final price depends on number of carriers, invoice volume, audit period, and complexity.
-          </div>
-
-          <p class="pricing-desc">
-            Structured as 50% to start and 50% on delivery. Typical timeline is 5–10 business days after we receive the required data.
-          </p>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Full invoice population reviewed, not just a sample
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Checks across duplicate, rate, accessorial, surcharge, and weight categories
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Every finding verified by a person before delivery
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              A clear report with potential financial impact by category
-            </div>
-
-          </div>
-
-          <a href="#free-check" class="button button-primary magnetic">
-            Start With A Free Invoice Check
-          </a>
-
-        </div>
-
-      </div>
-
-      <div class="flow-diagram reveal-scale">
-
-        <div class="flow-node">
-          SCOPE CONFIRMED
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          SIMPLE AGREEMENT SIGNED
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          50% DEPOSIT PAID
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          FULL AUDIT RUNS
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          REPORT DELIVERED
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          REMAINING 50% PAID
-        </div>
-
-      </div>
-
-      <p class="pricing-footnote">
-        Pricing follows the free sample — we don't ask for a commitment before you've seen evidence from your own invoices.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       FAQ
-  ========================================================== -->
-
-  <section
-    id="faq"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          QUESTIONS
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-          Frequently Asked Questions.
-        </h2>
-
-      </div>
-
-      <div class="faq-list reveal-scale">
-
-        <details class="faq-item">
-          <summary>Do I need to change my existing software?</summary>
-          <div class="faq-answer">No. The initial audit works from exported invoice files — PDF, CSV, or Excel. No system replacement or integration is required to get started.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Do you need our contracts or rate sheets?</summary>
-          <div class="faq-answer">They're useful for rate validation, but the initial sample can still identify certain discrepancy categories — like duplicate billing or accessorial issues — without them.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Is AI making the decisions?</summary>
-          <div class="faq-answer">No. AI may assist with extracting and structuring messy documents. Core checks run on deterministic rules, followed by human verification, before anything is reported as a finding.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can you guarantee savings?</summary>
-          <div class="faq-answer">No. We don't promise a savings number before we've reviewed your actual data. Some invoice sets have significant issues; some are clean. We won't know until we look.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>What if you find nothing?</summary>
-          <div class="faq-answer">We tell you honestly. A clean sample is useful information too — it means your current process is working for that carrier.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>How long does the audit take?</summary>
-          <div class="faq-answer">Typically 5–10 business days for the full engagement after we receive the required data. The free sample check is usually faster.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>How much does it cost?</summary>
-          <div class="faq-answer">Typical full engagements run $5,000–$10,000, depending on carriers, invoice volume, audit period, and complexity. The initial invoice check is free.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>What do I need to send for the free sample?</summary>
-          <div class="faq-answer">Ideally 30–90 days of invoices from one carrier, in PDF, CSV, or Excel format. A contract or rate sheet helps but isn't required.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Will this replace our Finance, AP, or Logistics team?</summary>
-          <div class="faq-answer">No. It's designed to help your existing team focus on the exceptions that deserve attention, instead of manually reviewing every invoice.</div>
-        </details>
-
-        <details class="faq-item">
-          <summary>Is my data confidential?</summary>
-          <div class="faq-answer">We can sign an NDA before receiving sensitive documents, and only the people working on your audit have access to your files. Ask us for our current data-handling policy in writing.</div>
-        </details>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       FINAL CTA
-  ========================================================== -->
-
-  <section
-    id="get-started"
-    class="final-cta"
-  >
+  <section id="get-started" class="final-cta">
 
     <div class="container">
 
@@ -5031,19 +1883,15 @@
         </div>
 
         <h2>
-
-          Send Us How You're Billed Today.
+          Discuss Your Freight Invoices.
           <br>
-
           <span class="muted">
-            We'll Show You What's In It.
+            See What Merits A Closer Look.
           </span>
         </h2>
 
         <p>
-
-          Send 30–90 days of invoices from one carrier. We'll review them and show you what we find — potential discrepancies, categorized, with the potential financial impact — at no cost and with no obligation.
-
+          Tell us about your freight spend, carriers and invoice volume. We'll outline how an audit would work, what it would cover and what it would cost, before any work begins. Built by a team with experience designing and shipping real business software; the demo video shows a previous project, not the audit platform.
         </p>
 
         <div class="final-actions">
@@ -5051,17 +1899,19 @@
           <div class="hero-actions">
 
             <a
-              href="#free-check"
+              href="https://wa.me/213659735828"
+              target="_blank"
+              rel="noopener noreferrer"
               class="button button-primary magnetic"
             >
-              Get A Free Invoice Check
+              Request a Freight Audit Review
               <span>→</span>
             </a>
 
           </div>
 
           <span class="availability">
-            EVERY AUDIT IS SCOPED TO YOUR ACTUAL FREIGHT — NO FIXED PACKAGES
+            SCOPED BEFORE WORK BEGINS — NO GUARANTEED SAVINGS
           </span>
 
         </div>
@@ -5072,15 +1922,9 @@
 
   </section>
 
-  <!-- =========================================================
-       DEMO MODAL
-  ========================================================== -->
+  <!-- DEMO MODAL -->
 
-  <div
-    class="demo-modal"
-    id="demoModal"
-    aria-hidden="true"
-  >
+  <div class="demo-modal" id="demoModal" aria-hidden="true">
 
     <div
       class="demo-modal-content"
@@ -5091,18 +1935,15 @@
 
       <div class="demo-modal-header">
 
-        <span
-          class="demo-modal-label"
-          id="demoModalLabel"
-        >
-          Auditlane / Previous Project Walkthrough
+        <span class="demo-modal-label" id="demoModalLabel">
+          Previous software project — engineering portfolio, not the freight audit
         </span>
 
         <button
           type="button"
           class="demo-modal-close"
           id="demoModalClose"
-          aria-label="Close walkthrough video"
+          aria-label="Close example demo"
         >
           ×
         </button>
@@ -5134,9 +1975,7 @@
 
   </div>
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
+  <!-- FOOTER -->
 
   <footer>
 
@@ -5153,11 +1992,11 @@
           <div>
 
             <div class="footer-name">
-              Auditlane
+              AutFlow Studio
             </div>
 
             <div class="footer-tagline">
-              Freight invoice audits for companies with real freight spend.
+              Freight invoice audit service: automated checks, human verification.
             </div>
 
           </div>
@@ -5169,11 +2008,11 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="year"></span> Auditlane
+          © <span id="year"></span> AutFlow Studio
         </span>
 
         <span>
-          Flagged items are potential discrepancies until verified. Nothing on this site is legal, accounting, or tax advice.
+          Findings are potential discrepancies until verified. The demo video shows previous business software built by our team, not the freight audit service.
         </span>
 
       </div>
@@ -5182,21 +2021,13 @@
 
   </footer>
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
+  <!-- JAVASCRIPT -->
 
   <script>
 
-    /* =========================================================
-       GSAP
-    ========================================================== */
-
     gsap.registerPlugin(ScrollTrigger);
 
-    /* =========================================================
-       LENIS
-    ========================================================== */
+    /* LENIS */
 
     const lenis = new Lenis({
       duration: 1.15,
@@ -5206,996 +2037,330 @@
     });
 
     function raf(time) {
-
       lenis.raf(time);
-
       requestAnimationFrame(raf);
-
     }
 
     requestAnimationFrame(raf);
 
-    /* =========================================================
-       CONNECT LENIS TO GSAP
-    ========================================================== */
-
     lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
-
       lenis.raf(time * 1000);
-
     });
 
     gsap.ticker.lagSmoothing(0);
 
-    /* =========================================================
-       NAVBAR
-    ========================================================== */
+    /* NAVBAR */
 
-    const navbar =
-      document.querySelector(".navbar");
+    const navbar = document.querySelector(".navbar");
 
     ScrollTrigger.create({
-
       start: "top -60",
-
-      onEnter: () => {
-        navbar.classList.add("scrolled");
-      },
-
-      onLeaveBack: () => {
-        navbar.classList.remove("scrolled");
-      }
-
+      onEnter: () => { navbar.classList.add("scrolled"); },
+      onLeaveBack: () => { navbar.classList.remove("scrolled"); }
     });
 
-    /* =========================================================
-       HERO INTRO
-    ========================================================== */
+    /* HERO INTRO */
 
-    const heroTimeline =
-      gsap.timeline({
-        defaults: {
-          ease: "power4.out"
-        }
-      });
+    const heroTimeline = gsap.timeline({ defaults: { ease: "power4.out" } });
 
     heroTimeline
-      .from(".hero-title .line-inner", {
+      .from(".hero-title .line-inner", { yPercent: 110, duration: 1.15, stagger: .09 })
+      .from(".hero-animate", { y: 25, opacity: 0, duration: .8, stagger: .1 }, "-=.65")
+      .from(".dashboard-wrapper", { y: 90, opacity: 0, scale: .94, duration: 1.4 }, "-=.45");
 
-        yPercent: 110,
+    /* HERO ORBIT ROTATION */
 
-        duration: 1.15,
+    gsap.to(".hero-orbit", { rotation: 360, duration: 80, repeat: -1, ease: "none" });
 
-        stagger: .09
-
-      })
-
-      .from(".hero-animate", {
-
-        y: 25,
-
-        opacity: 0,
-
-        duration: .8,
-
-        stagger: .1
-
-      }, "-=.65")
-
-      .from(".dashboard-wrapper", {
-
-        y: 90,
-
-        opacity: 0,
-
-        scale: .94,
-
-        duration: 1.4
-
-      }, "-=.45");
-
-    /* =========================================================
-       HERO ORBIT ROTATION
-    ========================================================== */
-
-    gsap.to(".hero-orbit", {
-
-      rotation: 360,
-
-      duration: 80,
-
-      repeat: -1,
-
-      ease: "none"
-
-    });
-
-    /* =========================================================
-       HERO PARALLAX
-    ========================================================== */
+    /* HERO PARALLAX */
 
     gsap.to(".hero-content", {
-
-      y: -120,
-
-      opacity: .35,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".hero",
-
-        start: "top top",
-
-        end: "bottom top",
-
-        scrub: true
-
-      }
-
+      y: -120, opacity: .35, ease: "none",
+      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
     });
 
-    /* =========================================================
-       DASHBOARD SCROLL ANIMATION
-    ========================================================== */
+    /* DASHBOARD SCROLL ANIMATION */
 
     gsap.to(".dashboard", {
-
-      y: 110,
-
-      rotateX: 0,
-
-      scale: .93,
-
-      opacity: .45,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".dashboard-wrapper",
-
-        start: "top 65%",
-
-        end: "bottom 20%",
-
-        scrub: 1.2
-
-      }
-
+      y: 110, rotateX: 0, scale: .93, opacity: .45, ease: "none",
+      scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 65%", end: "bottom 20%", scrub: 1.2 }
     });
 
-    /* =========================================================
-       DASHBOARD GLOW
-    ========================================================== */
+    /* DASHBOARD GLOW */
 
     gsap.to(".dashboard-glow", {
-
-      scale: 1.35,
-
-      opacity: .8,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".dashboard-wrapper",
-
-        start: "top bottom",
-
-        end: "bottom top",
-
-        scrub: true
-
-      }
-
+      scale: 1.35, opacity: .8, ease: "none",
+      scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true }
     });
 
-    /* =========================================================
-       BACKGROUND GLOWS
-    ========================================================== */
+    /* BACKGROUND GLOWS */
 
     gsap.to(".glow-1", {
-
-      y: 500,
-
-      scale: 1.5,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
+      y: 500, scale: 1.5, ease: "none",
+      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
     });
 
     gsap.to(".glow-2", {
-
-      y: -300,
-
-      x: 150,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
+      y: -300, x: 150, ease: "none",
+      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
     });
 
     gsap.to(".glow-3", {
-
-      y: -400,
-
-      x: -150,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
+      y: -400, x: -150, ease: "none",
+      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
     });
 
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================== */
+    /* SECTION HEADINGS */
 
     gsap.utils.toArray(".reveal-left").forEach(element => {
-
       gsap.from(element, {
-
-        x: -70,
-
-        opacity: 0,
-
-        duration: 1.1,
-
-        ease: "power4.out",
-
-        scrollTrigger: {
-
-          trigger: element,
-
-          start: "top 82%",
-
-          once: true
-
-        }
-
+        x: -70, opacity: 0, duration: 1.1, ease: "power4.out",
+        scrollTrigger: { trigger: element, start: "top 82%", once: true }
       });
-
     });
 
     gsap.utils.toArray(".reveal-right").forEach(element => {
-
       gsap.from(element, {
-
-        x: 70,
-
-        opacity: 0,
-
-        duration: 1.1,
-
-        ease: "power4.out",
-
-        scrollTrigger: {
-
-          trigger: element,
-
-          start: "top 82%",
-
-          once: true
-
-        }
-
+        x: 70, opacity: 0, duration: 1.1, ease: "power4.out",
+        scrollTrigger: { trigger: element, start: "top 82%", once: true }
       });
-
     });
 
-    /* =========================================================
-       FEATURE CARDS STAGGER
-    ========================================================== */
+    /* FEATURE CARDS STAGGER */
 
     gsap.from(".feature-card", {
-
-      y: 80,
-
-      opacity: 0,
-
-      scale: .94,
-
-      duration: 1,
-
-      stagger: .1,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".feature-grid, .steps-grid, .steps-grid-5, .split-grid",
-
-        start: "top 78%",
-
-        once: true
-
-      }
-
+      y: 80, opacity: 0, scale: .94, duration: 1, stagger: .1, ease: "power4.out",
+      scrollTrigger: { trigger: ".feature-grid", start: "top 78%", once: true }
     });
 
-    /* =========================================================
-       FEATURE 3D TILT
-    ========================================================== */
+    /* FEATURE 3D TILT */
 
-    document
-      .querySelectorAll(".feature-3d")
-      .forEach(card => {
+    document.querySelectorAll(".feature-3d").forEach(card => {
 
-        card.addEventListener("mousemove", event => {
+      card.addEventListener("mousemove", event => {
 
-          if (window.innerWidth < 900) {
-            return;
-          }
+        if (window.innerWidth < 900) { return; }
 
-          const rect =
-            card.getBoundingClientRect();
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
 
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const centerX =
-            rect.width / 2;
-
-          const centerY =
-            rect.height / 2;
-
-          const rotateX =
-            (y - centerY) / 20;
-
-          const rotateY =
-            (centerX - x) / 20;
-
-          gsap.to(card, {
-
-            rotateX: rotateX,
-
-            rotateY: rotateY,
-
-            scale: 1.025,
-
-            duration: .4,
-
-            ease: "power2.out",
-
-            overwrite: true
-
-          });
-
-        });
-
-        card.addEventListener("mouseleave", () => {
-
-          gsap.to(card, {
-
-            rotateX: 0,
-
-            rotateY: 0,
-
-            scale: 1,
-
-            duration: .7,
-
-            ease: "elastic.out(1,.5)"
-
-          });
-
+        gsap.to(card, {
+          rotateX: rotateX, rotateY: rotateY, scale: 1.025,
+          duration: .4, ease: "power2.out", overwrite: true
         });
 
       });
 
-    /* =========================================================
-       PORTFOLIO SECTION
-    ========================================================== */
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, { rotateX: 0, rotateY: 0, scale: 1, duration: .7, ease: "elastic.out(1,.5)" });
+      });
+
+    });
+
+    /* OWNERSHIP SECTION */
 
     gsap.from(".ownership-content", {
-
-      x: -80,
-
-      opacity: 0,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".ownership-card",
-
-        start: "top 78%",
-
-        once: true
-
-      }
-
+      x: -80, opacity: 0, duration: 1.2, ease: "power4.out",
+      scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
     });
 
     gsap.from(".workflow-box", {
+      x: 100, opacity: 0, scale: .8, duration: 1.2, ease: "power4.out",
+      scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
+    });
 
-      x: 100,
+    /* WORKFLOW FLOAT */
 
-      opacity: 0,
+    gsap.to(".workflow-float", { y: -20, duration: 2.7, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
-      scale: .8,
+    /* CENTER HEADINGS */
 
-      duration: 1.2,
+    gsap.utils.toArray(".reveal-scale").forEach(element => {
+      gsap.from(element, {
+        y: 60, opacity: 0, scale: .96, duration: 1.1, ease: "power4.out",
+        scrollTrigger: { trigger: element, start: "top 80%", once: true }
+      });
+    });
 
-      ease: "power4.out",
+    /* COUNTERS */
 
-      scrollTrigger: {
+    document.querySelectorAll(".counter").forEach(counter => {
 
-        trigger: ".ownership-card",
+      const target = Number(counter.dataset.value);
+      const isMoney = target > 1000;
+      const object = { value: 0 };
 
-        start: "top 78%",
-
-        once: true
-
-      }
+      gsap.to(object, {
+        value: target, duration: 1.8, ease: "power2.out",
+        scrollTrigger: { trigger: counter, start: "top 85%", once: true },
+        onUpdate: () => {
+          const value = Math.floor(object.value);
+          counter.textContent = isMoney ? "$" + value.toLocaleString() : value.toLocaleString();
+        }
+      });
 
     });
 
-    /* =========================================================
-       WORKFLOW FLOAT
-    ========================================================== */
-
-    gsap.to(".workflow-float", {
-
-      y: -20,
-
-      duration: 2.7,
-
-      repeat: -1,
-
-      yoyo: true,
-
-      ease: "sine.inOut"
-
-    });
-
-    /* =========================================================
-       CENTER HEADINGS / REVEAL SCALE
-    ========================================================== */
-
-    gsap.utils
-      .toArray(".reveal-scale")
-      .forEach(element => {
-
-        gsap.from(element, {
-
-          y: 60,
-
-          opacity: 0,
-
-          scale: .96,
-
-          duration: 1.1,
-
-          ease: "power4.out",
-
-          scrollTrigger: {
-
-            trigger: element,
-
-            start: "top 80%",
-
-            once: true
-
-          }
-
-        });
-
-      });
-
-    /* =========================================================
-       COUNTERS
-    ========================================================== */
-
-    document
-      .querySelectorAll(".counter")
-      .forEach(counter => {
-
-        const target =
-          Number(counter.dataset.value);
-
-        const isMoney =
-          target > 1000;
-
-        const object = {
-          value: 0
-        };
-
-        gsap.to(object, {
-
-          value: target,
-
-          duration: 1.8,
-
-          ease: "power2.out",
-
-          scrollTrigger: {
-
-            trigger: counter,
-
-            start: "top 85%",
-
-            once: true
-
-          },
-
-          onUpdate: () => {
-
-            const value =
-              Math.floor(object.value);
-
-            counter.textContent =
-              isMoney
-                ? "$" + value.toLocaleString()
-                : value.toLocaleString();
-
-          }
-
-        });
-
-      });
-
-    /* =========================================================
-       GROWTH BARS
-    ========================================================== */
+    /* GROWTH BARS */
 
     gsap.from(".bar", {
-
-      scaleY: 0,
-
-      transformOrigin: "bottom",
-
-      stagger: .05,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".chart",
-
-        start: "top 85%",
-
-        once: true
-
-      }
-
+      scaleY: 0, transformOrigin: "bottom", stagger: .05, duration: 1.2, ease: "power4.out",
+      scrollTrigger: { trigger: ".chart", start: "top 85%", once: true }
     });
 
-    /* =========================================================
-       MAGNETIC BUTTONS
-    ========================================================== */
+    /* MAGNETIC BUTTONS */
 
-    document
-      .querySelectorAll(".magnetic")
-      .forEach(button => {
+    document.querySelectorAll(".magnetic").forEach(button => {
 
-        button.addEventListener("mousemove", event => {
+      button.addEventListener("mousemove", event => {
 
-          if (window.innerWidth < 900) {
-            return;
-          }
+        if (window.innerWidth < 900) { return; }
 
-          const rect =
-            button.getBoundingClientRect();
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const moveX = (x - rect.width / 2) * .13;
+        const moveY = (y - rect.height / 2) * .13;
 
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const moveX =
-            (x - rect.width / 2) * .13;
-
-          const moveY =
-            (y - rect.height / 2) * .13;
-
-          gsap.to(button, {
-
-            x: moveX,
-
-            y: moveY,
-
-            duration: .35,
-
-            ease: "power3.out"
-
-          });
-
-        });
-
-        button.addEventListener("mouseleave", () => {
-
-          gsap.to(button, {
-
-            x: 0,
-
-            y: 0,
-
-            duration: .7,
-
-            ease: "elastic.out(1,.4)"
-
-          });
-
-        });
+        gsap.to(button, { x: moveX, y: moveY, duration: .35, ease: "power3.out" });
 
       });
 
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================== */
+      button.addEventListener("mouseleave", () => {
+        gsap.to(button, { x: 0, y: 0, duration: .7, ease: "elastic.out(1,.4)" });
+      });
 
-    const cursor =
-      document.querySelector(".cursor");
+    });
 
-    const cursorRing =
-      document.querySelector(".cursor-ring");
+    /* CUSTOM CURSOR */
+
+    const cursor = document.querySelector(".cursor");
+    const cursorRing = document.querySelector(".cursor-ring");
 
     let mouseX = 0;
     let mouseY = 0;
-
     let ringX = 0;
     let ringY = 0;
 
     window.addEventListener("mousemove", event => {
-
       mouseX = event.clientX;
       mouseY = event.clientY;
-
-      gsap.to(cursor, {
-
-        x: mouseX,
-
-        y: mouseY,
-
-        duration: .08,
-
-        overwrite: true
-
-      });
-
+      gsap.to(cursor, { x: mouseX, y: mouseY, duration: .08, overwrite: true });
     });
 
     gsap.ticker.add(() => {
-
-      ringX +=
-        (mouseX - ringX) * .12;
-
-      ringY +=
-        (mouseY - ringY) * .12;
-
-      cursorRing.style.left =
-        ringX + "px";
-
-      cursorRing.style.top =
-        ringY + "px";
-
+      ringX += (mouseX - ringX) * .12;
+      ringY += (mouseY - ringY) * .12;
+      cursorRing.style.left = ringX + "px";
+      cursorRing.style.top = ringY + "px";
     });
 
-    /* =========================================================
-       CURSOR HOVER
-    ========================================================== */
+    /* CURSOR HOVER */
 
     document
-      .querySelectorAll("a, button, .feature-card, .pricing-card, .faq-item")
+      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
       .forEach(element => {
 
         element.addEventListener("mouseenter", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1.6,
-
-            borderColor:
-              "rgba(255,255,255,.7)",
-
-            duration: .25
-
-          });
-
+          gsap.to(cursorRing, { scale: 1.6, borderColor: "rgba(255,255,255,.7)", duration: .25 });
         });
 
         element.addEventListener("mouseleave", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1,
-
-            borderColor:
-              "rgba(255,255,255,.4)",
-
-            duration: .25
-
-          });
-
+          gsap.to(cursorRing, { scale: 1, borderColor: "rgba(255,255,255,.4)", duration: .25 });
         });
 
       });
 
-    /* =========================================================
-       MOBILE MENU
-    ========================================================== */
+    /* MOBILE MENU */
 
-    const menuButton =
-      document.getElementById(
-        "mobileMenuButton"
-      );
-
-    const mobileMenu =
-      document.getElementById(
-        "mobileMenu"
-      );
+    const menuButton = document.getElementById("mobileMenuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
 
     menuButton.addEventListener("click", () => {
-
       mobileMenu.classList.toggle("active");
+      document.body.classList.toggle("menu-open");
+      menuButton.textContent = mobileMenu.classList.contains("active") ? "×" : "☰";
+    });
 
-      document.body.classList.toggle(
-        "menu-open"
-      );
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("menu-open");
+        menuButton.textContent = "☰";
+      });
+    });
 
-      menuButton.textContent =
-        mobileMenu.classList.contains("active")
-          ? "×"
-          : "☰";
+    /* SMOOTH ANCHOR SCROLL */
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+      anchor.addEventListener("click", event => {
+
+        const targetId = anchor.getAttribute("href");
+
+        if (!targetId || targetId === "#") { return; }
+
+        const target = document.querySelector(targetId);
+
+        if (!target) { return; }
+
+        event.preventDefault();
+
+        lenis.scrollTo(target, { offset: -80, duration: 1.3 });
+
+      });
 
     });
 
-    document
-      .querySelectorAll(".mobile-menu a")
-      .forEach(link => {
+    /* DEMO MODAL */
 
-        link.addEventListener("click", () => {
+    const demoButton = document.getElementById("demoButton");
+    const demoModal = document.getElementById("demoModal");
+    const demoModalClose = document.getElementById("demoModalClose");
+    const demoVideo = document.getElementById("demoVideo");
 
-          mobileMenu.classList.remove("active");
-
-          document.body.classList.remove(
-            "menu-open"
-          );
-
-          menuButton.textContent = "☰";
-
-        });
-
-      });
-
-    /* =========================================================
-       SMOOTH ANCHOR SCROLL
-    ========================================================== */
-
-    document
-      .querySelectorAll('a[href^="#"]')
-      .forEach(anchor => {
-
-        anchor.addEventListener("click", event => {
-
-          const targetId =
-            anchor.getAttribute("href");
-
-          if (
-            !targetId ||
-            targetId === "#"
-          ) {
-            return;
-          }
-
-          const target =
-            document.querySelector(targetId);
-
-          if (!target) {
-            return;
-          }
-
-          event.preventDefault();
-
-          lenis.scrollTo(target, {
-
-            offset: -80,
-
-            duration: 1.3
-
-          });
-
-        });
-
-      });
-
-    /* =========================================================
-       DEMO MODAL
-    ========================================================== */
-
-    const demoButton =
-      document.getElementById("demoButton");
-
-    const demoModal =
-      document.getElementById("demoModal");
-
-    const demoModalClose =
-      document.getElementById("demoModalClose");
-
-    const demoVideo =
-      document.getElementById("demoVideo");
-
-    function openDemo(event) {
-
-      if (event) {
-        event.preventDefault();
-      }
-
+    function openDemo() {
       demoModal.classList.add("active");
-
-      demoModal.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-      document.body.classList.add(
-        "menu-open"
-      );
-
+      demoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
       demoVideo.currentTime = 0;
-
       demoVideo.load();
-
       demoVideo.play().catch(() => {});
-
     }
 
     function closeDemo() {
-
       demoModal.classList.remove("active");
-
-      demoModal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-      document.body.classList.remove(
-        "menu-open"
-      );
-
+      demoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
       demoVideo.pause();
-
     }
 
-    if (demoButton) {
+    demoButton.addEventListener("click", openDemo);
 
-      demoButton.addEventListener(
-        "click",
-        openDemo
-      );
+    demoModalClose.addEventListener("click", closeDemo);
 
-    }
-
-    demoModalClose.addEventListener(
-      "click",
-      closeDemo
-    );
-
-    demoModal.addEventListener(
-      "click",
-      event => {
-
-        if (event.target === demoModal) {
-          closeDemo();
-        }
-
-      }
-    );
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape" &&
-          demoModal.classList.contains("active")
-        ) {
-
-          closeDemo();
-
-        }
-
-      }
-    );
-
-    /* =========================================================
-       LEAD FORM SUBMISSION
-       NOTE: this currently only shows an in-page confirmation.
-       Wire this up to your real backend, CRM, or email service
-       (e.g. a POST to your own endpoint) before going live.
-    ========================================================== */
-
-    const leadForm =
-      document.getElementById("leadForm");
-
-    const formConfirmation =
-      document.getElementById("formConfirmation");
-
-    if (leadForm) {
-
-      leadForm.addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        // TODO: replace this with a real submission —
-        // e.g. fetch('/api/lead', { method: 'POST', body: new FormData(leadForm) })
-        // This placeholder only confirms the request in the UI.
-
-        leadForm.classList.add("hidden");
-
-        formConfirmation.classList.add("active");
-
-        formConfirmation.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-
-      });
-
-    }
-
-    /* =========================================================
-       YEAR
-    ========================================================== */
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    /* =========================================================
-       REFRESH SCROLLTRIGGER
-    ========================================================== */
-
-    window.addEventListener("load", () => {
-
-      ScrollTrigger.refresh();
-
+    demoModal.addEventListener("click", event => {
+      if (event.target === demoModal) { closeDemo(); }
     });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && demoModal.classList.contains("active")) { closeDemo(); }
+    });
+
+    /* YEAR */
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* REFRESH SCROLLTRIGGER */
+
+    window.addEventListener("load", () => { ScrollTrigger.refresh(); });
 
   </script>
 

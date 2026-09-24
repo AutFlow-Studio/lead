@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AutFlow Studio — Freight Invoice Audit &amp; Discrepancy Detection</title>
+  <title>AutFlow Studio — Freight Invoice Auditing. Review What Gets Flagged.</title>
 
   <link rel="icon" type="image/png" href="./AutFlow-logo.png">
   <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
   <meta
     name="description"
-    content="A freight invoice audit service for companies with significant freight spend. Automated extraction and rule-based checks surface potential billing discrepancies, which are verified by a person before being reported."
+    content="AutFlow Studio audits freight carrier invoices using AI-assisted extraction, deterministic rules, automated checks, and human verification, so your team reviews flagged items instead of every invoice."
   >
 
   <!-- FONTS -->
@@ -32,34 +32,16 @@
   <style>
 
     /* RESET */
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: auto; width: 100%; overflow-x: hidden; }
-
-    body {
-      margin: 0;
-      background: #050505;
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      overflow-x: hidden;
-      line-height: 1.5;
-      width: 100%;
-      min-width: 0;
-    }
-
+    body { margin: 0; background: #050505; color: #fff; font-family: "Inter", sans-serif; overflow-x: hidden; line-height: 1.5; width: 100%; min-width: 0; }
     body.menu-open { overflow: hidden; }
-
     a { text-decoration: none; color: inherit; }
-
     button { border: none; font: inherit; cursor: pointer; }
-
     img, video, svg { max-width: 100%; }
-
     ::selection { background: #fff; color: #000; }
 
     /* GLOBAL */
-
     :root {
       --white: #fff;
       --muted: rgba(255,255,255,.42);
@@ -67,31 +49,16 @@
       --border: rgba(255,255,255,.09);
       --panel: rgba(255,255,255,.025);
     }
-
     .container { width: min(1180px, calc(100% - 48px)); margin: auto; min-width: 0; }
-
     .section-border { border-top: 1px solid rgba(255,255,255,.07); }
-
     .section-padding { padding: 140px 0; }
 
     /* CUSTOM CURSOR */
-
-    .cursor {
-      position: fixed; width: 10px; height: 10px; border-radius: 50%;
-      background: #fff; pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%); mix-blend-mode: difference;
-    }
-
-    .cursor-ring {
-      position: fixed; width: 34px; height: 34px;
-      border: 1px solid rgba(255,255,255,.4); border-radius: 50%;
-      pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
-    }
+    .cursor { position: fixed; width: 10px; height: 10px; border-radius: 50%; background: #fff; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); mix-blend-mode: difference; }
+    .cursor-ring { position: fixed; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
 
     /* BACKGROUND */
-
     .background { position: fixed; inset: 0; z-index: -10; overflow: hidden; background: #050505; pointer-events: none; }
-
     .background-grid {
       position: absolute; inset: 0;
       background-image:
@@ -100,17 +67,12 @@
       background-size: 70px 70px;
       mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
-
     .glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .45; }
-
     .glow-1 { width: 650px; height: 650px; top: -300px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,.055); }
-
     .glow-2 { width: 400px; height: 400px; top: 900px; left: -200px; background: rgba(255,255,255,.025); }
-
     .glow-3 { width: 450px; height: 450px; top: 1600px; right: -200px; background: rgba(255,255,255,.025); }
 
     /* NAVBAR */
-
     .navbar {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 500;
       border-bottom: 1px solid transparent;
@@ -118,523 +80,258 @@
       backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0);
       transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
     }
-
-    .navbar.scrolled {
-      background: rgba(5,5,5,.75);
-      border-color: rgba(255,255,255,.07);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    }
-
+    .navbar.scrolled { background: rgba(5,5,5,.75); border-color: rgba(255,255,255,.07); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
     .nav-inner { height: 78px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
-
     .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-
     .brand-mark {
       width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center;
       border: 1px solid rgba(255,255,255,.12); border-radius: 11px;
       background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.025));
       box-shadow: 0 0 40px rgba(255,255,255,.035);
     }
-
     .brand-mark span { font-family: "Space Grotesk"; font-weight: 700; }
-
     .brand-name { font-family: "Space Grotesk"; font-size: 14px; font-weight: 600; white-space: nowrap; }
-
     .brand-name span { color: rgba(255,255,255,.35); }
-
     .brand-subtitle { font-size: 7px; letter-spacing: .25em; color: rgba(255,255,255,.25); text-transform: uppercase; white-space: nowrap; }
-
     .nav-links { display: flex; align-items: center; gap: 34px; }
-
     .nav-links a { font-size: 11px; color: rgba(255,255,255,.42); transition: color .25s ease; white-space: nowrap; }
-
     .nav-links a:hover { color: #fff; }
-
-    .nav-button {
-      padding: 11px 19px; border-radius: 999px; background: #fff; color: #000;
-      font-size: 10px; font-weight: 700;
-      transition: transform .25s ease, background .25s ease; white-space: nowrap;
-    }
-
+    .nav-button { padding: 11px 19px; border-radius: 999px; background: #fff; color: #000; font-size: 10px; font-weight: 700; transition: transform .25s ease, background .25s ease; white-space: nowrap; }
     .nav-button:hover { transform: translateY(-2px); background: #e9e9e9; }
-
-    .mobile-menu-button {
-      display: none; width: 40px; height: 40px; flex: 0 0 40px;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 10px;
-      background: rgba(255,255,255,.04); color: white;
-    }
-
+    .mobile-menu-button { display: none; width: 40px; height: 40px; flex: 0 0 40px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.04); color: white; }
     .mobile-menu { display: none; }
 
     /* HERO */
-
     .hero { min-height: 100vh; padding-top: 175px; padding-bottom: 100px; position: relative; overflow: hidden; }
-
     .hero-content { max-width: 900px; margin: auto; text-align: center; position: relative; z-index: 2; min-width: 0; }
-
     .status-pill {
       display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px;
-      border: 1px solid rgba(255,255,255,.09); border-radius: 999px;
-      background: rgba(255,255,255,.035); color: rgba(255,255,255,.42);
-      font-size: 8px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%;
+      border: 1px solid rgba(255,255,255,.09); border-radius: 999px; background: rgba(255,255,255,.035);
+      color: rgba(255,255,255,.42); font-size: 8px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%;
     }
-
     .status-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #66e394; box-shadow: 0 0 15px rgba(102,227,148,.7); }
-
     .hero-title {
-      margin-top: 28px; font-family: "Space Grotesk";
-      font-size: clamp(52px, 7.4vw, 92px); line-height: .95; letter-spacing: -.07em; font-weight: 600;
-      overflow-wrap: normal; word-break: normal;
+      margin-top: 28px; font-family: "Space Grotesk"; font-size: clamp(52px, 7.4vw, 92px);
+      line-height: .95; letter-spacing: -.07em; font-weight: 600; overflow-wrap: normal; word-break: normal;
     }
-
     .hero-title .line { display: block; overflow: hidden; }
-
     .hero-title .line-inner { display: block; }
-
     .hero-title .muted { color: rgba(255,255,255,.32); }
-
     .hero-description { max-width: 650px; margin: 32px auto 0; color: rgba(255,255,255,.4); font-size: 15px; line-height: 1.9; }
-
     .hero-actions { margin-top: 34px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-
     .button {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      min-height: 48px; padding: 0 23px; border-radius: 999px; font-size: 11px; font-weight: 600;
-      transition: background .3s ease, border-color .3s ease; max-width: 100%; text-align: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 23px;
+      border-radius: 999px; font-size: 11px; font-weight: 600; transition: background .3s ease, border-color .3s ease;
+      max-width: 100%; text-align: center;
     }
-
     .button-primary { background: #fff; color: #000; }
-
     .button-secondary { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
-
     .button-secondary:hover { border-color: rgba(255,255,255,.2); color: #fff; }
 
     /* HERO ORBIT */
-
-    .hero-orbit {
-      position: absolute; width: 950px; height: 950px; left: 50%; top: 360px;
-      transform: translateX(-50%); border: 1px solid rgba(255,255,255,.025);
-      border-radius: 50%; pointer-events: none;
-    }
-
+    .hero-orbit { position: absolute; width: 950px; height: 950px; left: 50%; top: 360px; transform: translateX(-50%); border: 1px solid rgba(255,255,255,.025); border-radius: 50%; pointer-events: none; }
     .hero-orbit::before { content: ""; position: absolute; inset: 80px; border: 1px solid rgba(255,255,255,.02); border-radius: 50%; }
-
     .orbit-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: white; box-shadow: 0 0 20px rgba(255,255,255,.7); left: 50%; top: 0; }
 
     /* DASHBOARD */
-
     .dashboard-wrapper { position: relative; width: 100%; max-width: 1120px; margin: 100px auto 0; perspective: 1400px; min-width: 0; }
-
-    .dashboard-glow {
-      position: absolute; width: 800px; height: 350px; left: 50%; top: 50%;
-      transform: translate(-50%,-50%); border-radius: 50%;
-      background: rgba(255,255,255,.035); filter: blur(100px); max-width: 90vw;
-    }
-
+    .dashboard-glow { position: absolute; width: 800px; height: 350px; left: 50%; top: 50%; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(100px); max-width: 90vw; }
     .dashboard {
-      position: relative; width: 100%; max-width: 100%;
-      border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden;
-      background: #090909;
+      position: relative; width: 100%; max-width: 100%; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden; background: #090909;
       box-shadow: 0 70px 150px rgba(0,0,0,.75), 0 0 100px rgba(255,255,255,.025);
       transform-origin: center top; will-change: transform;
     }
-
-    .browser-bar {
-      min-height: 45px; height: 45px; display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; padding: 0 16px; border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
+    .browser-bar { min-height: 45px; height: 45px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; border-bottom: 1px solid rgba(255,255,255,.07); }
     .browser-dots { display: flex; gap: 6px; flex: 0 0 auto; }
-
     .browser-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.13); }
-
     .browser-status { display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,.4); font-size: 8px; min-width: 0; text-align: center; }
-
     .browser-status i { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #5cdf8d; }
-
     .browser-label { color: rgba(255,255,255,.32); font-size: 8px; letter-spacing: .2em; white-space: nowrap; }
-
     .dashboard-body { display: grid; grid-template-columns: 210px minmax(0, 1fr); min-height: 460px; min-width: 0; }
-
     .sidebar { padding: 22px 15px; border-right: 1px solid rgba(255,255,255,.07); min-width: 0; }
-
     .sidebar-title { margin-bottom: 14px; color: rgba(255,255,255,.2); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
-
-    .sidebar-item {
-      display: flex; align-items: center; gap: 9px; padding: 10px; margin-bottom: 3px;
-      border-radius: 8px; color: rgba(255,255,255,.32); font-size: 9px; transition: .25s ease;
-    }
-
+    .sidebar-item { display: flex; align-items: center; gap: 9px; padding: 10px; margin-bottom: 3px; border-radius: 8px; color: rgba(255,255,255,.32); font-size: 9px; transition: .25s ease; }
     .sidebar-item:hover { background: rgba(255,255,255,.035); color: #fff; }
-
     .sidebar-item.active { background: rgba(255,255,255,.065); color: #fff; }
-
     .sidebar-icon { width: 12px; height: 12px; flex: 0 0 12px; border: 1px solid currentColor; border-radius: 3px; opacity: .6; }
-
     .sidebar-separator { height: 1px; background: rgba(255,255,255,.06); margin: 27px 0 18px; }
-
     .dashboard-main { padding: 28px; min-width: 0; overflow: hidden; }
-
     .dashboard-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; min-width: 0; }
-
     .dashboard-header > div:first-child { min-width: 0; }
-
     .dashboard-eyebrow { color: rgba(255,255,255,.22); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
-
     .dashboard-heading { margin-top: 7px; font-size: 23px; letter-spacing: -.04em; overflow-wrap: break-word; }
-
-    .dashboard-filter {
-      padding: 8px 11px; border: 1px solid rgba(255,255,255,.08); border-radius: 7px;
-      color: rgba(255,255,255,.3); font-size: 7px; flex: 0 0 auto; white-space: nowrap;
-    }
-
+    .dashboard-filter { padding: 8px 11px; border: 1px solid rgba(255,255,255,.08); border-radius: 7px; color: rgba(255,255,255,.3); font-size: 7px; flex: 0 0 auto; white-space: nowrap; }
     .stats { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; margin-top: 28px; }
-
     .stat { padding: 15px; border: 1px solid rgba(255,255,255,.07); border-radius: 11px; background: rgba(255,255,255,.018); min-width: 0; }
-
     .stat-label { color: rgba(255,255,255,.2); font-size: 7px; overflow-wrap: break-word; }
-
     .stat-value { margin-top: 6px; font-size: 17px; white-space: nowrap; }
-
     .stat-change { margin-top: 3px; color: #62db8b; font-size: 7px; overflow-wrap: break-word; }
-
     .dashboard-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 11px; margin-top: 12px; min-width: 0; }
-
     .panel { padding: 17px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(255,255,255,.018); min-width: 0; }
-
     .panel-title { font-size: 9px; }
-
     .panel-subtitle { margin-top: 3px; color: rgba(255,255,255,.2); font-size: 7px; overflow-wrap: break-word; }
-
     .project-list { display: flex; flex-direction: column; gap: 7px; margin-top: 17px; }
-
-    .project {
-      display: flex; align-items: center; gap: 10px; padding: 9px;
-      border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(0,0,0,.25); min-width: 0;
-    }
-
-    .project-number {
-      width: 27px; height: 27px; flex: 0 0 27px; display: grid; place-items: center;
-      border-radius: 6px; background: rgba(255,255,255,.05); color: rgba(255,255,255,.3); font-size: 7px;
-    }
-
+    .project { display: flex; align-items: center; gap: 10px; padding: 9px; border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(0,0,0,.25); min-width: 0; }
+    .project-number { width: 27px; height: 27px; flex: 0 0 27px; display: grid; place-items: center; border-radius: 6px; background: rgba(255,255,255,.05); color: rgba(255,255,255,.3); font-size: 7px; }
     .project-info { flex: 1; min-width: 0; }
-
     .project-name { color: rgba(255,255,255,.65); font-size: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
     .project-status { margin-top: 2px; color: rgba(255,255,255,.18); font-size: 6px; }
-
     .project-price { color: rgba(255,255,255,.4); font-size: 8px; flex: 0 0 auto; white-space: nowrap; }
-
     .chart { height: 115px; display: flex; align-items: flex-end; gap: 6px; margin-top: 25px; }
-
     .bar { flex: 1; min-height: 4px; border-radius: 4px 4px 0 0; background: rgba(255,255,255,.12); }
 
     /* SECTION HEADINGS */
-
     .section-heading-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 80px; align-items: end; }
-
     .section-heading-grid > * { min-width: 0; }
-
-    .eyebrow {
-      display: flex; align-items: center; gap: 8px; margin-bottom: 19px;
-      color: rgba(255,255,255,.24); font-size: 8px; text-transform: uppercase; letter-spacing: .22em;
-    }
-
+    .eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 19px; color: rgba(255,255,255,.24); font-size: 8px; text-transform: uppercase; letter-spacing: .22em; }
     .eyebrow-line { width: 27px; height: 1px; flex: 0 0 27px; background: rgba(255,255,255,.3); }
-
-    h2 {
-      font-family: "Space Grotesk"; font-size: clamp(40px,5vw,60px); line-height: 1;
-      letter-spacing: -.06em; font-weight: 600; overflow-wrap: break-word;
-    }
-
+    h2 { font-family: "Space Grotesk"; font-size: clamp(40px,5vw,60px); line-height: 1; letter-spacing: -.06em; font-weight: 600; overflow-wrap: break-word; }
     h2 .muted { color: rgba(255,255,255,.32); }
-
     .section-description { max-width: 500px; color: rgba(255,255,255,.38); font-size: 13px; line-height: 1.9; }
-
     .section-description.centered { max-width: 620px; margin: 24px auto 0; text-align: center; }
 
     /* FEATURES */
-
     .feature-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
-
     .feature-card {
-      position: relative; min-height: 230px; padding: 28px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,.07); border-radius: 17px; background: rgba(255,255,255,.018);
-      transform-style: preserve-3d; will-change: transform;
+      position: relative; min-height: 230px; padding: 28px; overflow: hidden; border: 1px solid rgba(255,255,255,.07); border-radius: 17px;
+      background: rgba(255,255,255,.018); transform-style: preserve-3d; will-change: transform;
       transition: border-color .3s ease, background .3s ease; min-width: 0;
     }
-
-    .feature-card::after {
-      content: ""; position: absolute; width: 180px; height: 180px; top: -100px; right: -100px;
-      border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease;
-    }
-
+    .feature-card::after { content: ""; position: absolute; width: 180px; height: 180px; top: -100px; right: -100px; border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease; }
     .feature-card:hover { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.035); }
-
     .feature-card:hover::after { background: rgba(255,255,255,.09); }
-
-    .feature-icon {
-      width: 43px; height: 43px; flex: 0 0 43px; display: grid; place-items: center;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: rgba(255,255,255,.04); font-size: 15px;
-    }
-
+    .feature-icon { width: 43px; height: 43px; flex: 0 0 43px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: rgba(255,255,255,.04); font-size: 15px; }
     .feature-title { margin-top: 28px; font-family: "Space Grotesk"; font-size: 15px; overflow-wrap: break-word; }
-
     .feature-description { margin-top: 10px; color: rgba(255,255,255,.3); font-size: 10px; line-height: 1.8; }
-
     .feature-card .check-list { margin-top: 22px; }
 
     /* FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW */
-
-    .feature-badge {
-      display: inline-block; margin-top: 14px; padding: 5px 9px;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.48); font-size: 6.5px; letter-spacing: .14em; text-transform: uppercase;
-    }
-
+    .feature-badge { display: inline-block; margin-top: 14px; padding: 5px 9px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.03); color: rgba(255,255,255,.48); font-size: 6.5px; letter-spacing: .14em; text-transform: uppercase; }
     .request-answer { margin-top: 18px; font-family: "Space Grotesk"; font-size: 18px; font-weight: 600; letter-spacing: -.02em; color: #fff; }
-
     .equation-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin-top: 55px; }
 
     /* OWNERSHIP / PRIMARY OFFER */
-
     .ownership-card {
       display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); overflow: hidden;
       border: 1px solid rgba(255,255,255,.08); border-radius: 25px;
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01)); min-width: 0;
     }
-
     .ownership-content { padding: 65px; min-width: 0; }
-
-    .small-tag {
-      display: inline-block; padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px;
-      color: rgba(255,255,255,.3); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%;
-    }
-
+    .small-tag { display: inline-block; padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px; color: rgba(255,255,255,.3); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
     .ownership-content p { max-width: 480px; margin-top: 24px; color: rgba(255,255,255,.35); font-size: 12px; line-height: 1.9; }
-
     .ownership-note { max-width: 480px; margin-top: 22px; color: rgba(255,255,255,.28); font-size: 10px; line-height: 1.8; font-style: italic; }
-
     .check-list { display: flex; flex-direction: column; gap: 11px; margin-top: 28px; }
-
     .check-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.55); font-size: 10px; min-width: 0; }
-
     .check { width: 20px; height: 20px; flex: 0 0 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.07); font-size: 9px; }
-
-    .workflow-visual {
-      min-height: 440px; position: relative; overflow: hidden; border-left: 1px solid rgba(255,255,255,.07);
-      background: radial-gradient(circle at center, rgba(255,255,255,.065), transparent 60%); min-width: 0;
-    }
-
+    .workflow-visual { min-height: 440px; position: relative; overflow: hidden; border-left: 1px solid rgba(255,255,255,.07); background: radial-gradient(circle at center, rgba(255,255,255,.065), transparent 60%); min-width: 0; }
     .workflow-box {
-      position: absolute; left: 50%; top: 50%; width: min(290px, calc(100% - 40px));
-      transform: translate(-50%,-50%); padding: 20px; border: 1px solid rgba(255,255,255,.1);
-      border-radius: 17px; background: rgba(7,7,7,.88); box-shadow: 0 35px 90px rgba(0,0,0,.65); backdrop-filter: blur(15px);
+      position: absolute; left: 50%; top: 50%; width: min(290px, calc(100% - 40px)); transform: translate(-50%,-50%); padding: 20px;
+      border: 1px solid rgba(255,255,255,.1); border-radius: 17px; background: rgba(7,7,7,.88);
+      box-shadow: 0 35px 90px rgba(0,0,0,.65); backdrop-filter: blur(15px);
     }
-
     .workflow-header { display: flex; justify-content: space-between; gap: 10px; color: rgba(255,255,255,.35); font-size: 8px; }
-
     .workflow-active { color: #60dc8b; white-space: nowrap; }
-
     .workflow-steps { display: flex; flex-direction: column; gap: 6px; margin-top: 18px; }
-
-    .workflow-step {
-      display: flex; align-items: center; gap: 9px; padding: 11px; border: 1px solid rgba(255,255,255,.05);
-      border-radius: 8px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.37); font-size: 8px; min-width: 0;
-    }
-
+    .workflow-step { display: flex; align-items: center; gap: 9px; padding: 11px; border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.37); font-size: 8px; min-width: 0; }
     .workflow-step-dot { width: 5px; height: 5px; flex: 0 0 5px; border-radius: 50%; background: rgba(255,255,255,.2); }
-
     .workflow-step:last-child .workflow-step-dot { background: #fff; }
 
     /* TABS */
-
     .center-heading { max-width: 800px; margin: auto; text-align: center; min-width: 0; }
-
     .center-heading .eyebrow { justify-content: center; }
-
     .tabs { max-width: 760px; margin: 55px auto 0; min-width: 0; }
-
     .tab-buttons { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(255,255,255,.025); }
-
     .tab-button { padding: 12px; border-radius: 8px; background: transparent; color: rgba(255,255,255,.3); font-size: 10px; transition: .25s ease; min-width: 0; }
-
     .tab-button.active { background: #fff; color: #000; }
-
     .tab-content { min-height: 300px; margin-top: 12px; padding: 45px; border: 1px solid rgba(255,255,255,.07); border-radius: 17px; background: rgba(255,255,255,.018); min-width: 0; }
-
     .tab-panel { display: none; min-width: 0; }
-
     .tab-panel.active { display: block; }
-
     .tab-icon { width: 47px; height: 47px; flex: 0 0 47px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.09); border-radius: 13px; background: rgba(255,255,255,.045); font-size: 16px; }
-
     .tab-panel h3 { margin-top: 22px; font-family: "Space Grotesk"; font-size: 24px; font-weight: 500; letter-spacing: -.04em; overflow-wrap: break-word; }
-
     .tab-panel p { max-width: 590px; margin-top: 13px; color: rgba(255,255,255,.36); font-size: 12px; line-height: 1.9; }
-
     .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 25px; }
-
     .tag { padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px; background: rgba(255,255,255,.02); color: rgba(255,255,255,.4); font-size: 8px; max-width: 100%; }
 
-    /* FLOW + PILL ROWS */
-
+    /* WHITE-LABEL MODEL FLOW + PILL ROWS */
     .flow-diagram { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 60px; }
-
     .flow-node {
       padding: 16px 30px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px;
       background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
-      font-family: "Space Grotesk"; font-size: 12px; letter-spacing: .03em; color: rgba(255,255,255,.75);
-      text-align: center; max-width: 100%;
+      font-family: "Space Grotesk"; font-size: 12px; letter-spacing: .03em; color: rgba(255,255,255,.75); text-align: center; max-width: 100%;
     }
-
     .flow-arrow { color: rgba(255,255,255,.22); font-size: 14px; line-height: 1; }
-
     .pill-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 40px; }
 
-    /* SPLIT */
-
+    /* TEAM / CLIENT SPLIT */
     .split-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
-
     .split-grid .feature-card { min-height: 0; }
-
     .split-grid .feature-card .check-list { margin-top: 22px; }
-
     .split-grid .check-item { color: rgba(255,255,255,.4); font-size: 9px; }
 
-    /* STEPS GRID */
-
+    /* HOW IT WORKS / 4-UP STEP STYLE GRIDS */
     .steps-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
-
     .steps-grid .feature-card { min-height: 200px; }
 
-    /* CUSTOM OPTIONS */
-
+    /* CUSTOM SOFTWARE OPTIONS */
     .custom-card { position: relative; overflow: hidden; padding: 65px; border: 1px solid rgba(255,255,255,.08); border-radius: 25px; background: #080808; min-width: 0; }
-
-    .custom-card::before {
-      content: ""; position: absolute; width: 500px; height: 500px; right: -150px; top: -200px;
-      border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(100px); pointer-events: none;
-    }
-
+    .custom-card::before { content: ""; position: absolute; width: 500px; height: 500px; right: -150px; top: -200px; border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(100px); pointer-events: none; }
     .custom-grid { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 70px; align-items: center; min-width: 0; }
-
     .custom-copy { min-width: 0; }
-
     .custom-description { max-width: 510px; margin-top: 22px; color: rgba(255,255,255,.37); font-size: 12px; line-height: 1.9; }
-
     .custom-copy .button { margin-top: 30px; }
-
     .custom-options { display: grid; grid-template-columns: 1fr; gap: 10px; min-width: 0; }
-
     .custom-option {
       position: relative; padding: 22px; border: 1px solid rgba(255,255,255,.08); border-radius: 17px;
       background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); overflow: hidden;
       transition: transform .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease; min-width: 0;
     }
-
-    .custom-option::before {
-      content: ""; position: absolute; width: 170px; height: 170px; top: -100px; right: -80px;
-      border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease;
-    }
-
-    .custom-option:hover {
-      transform: translateY(-4px); border-color: rgba(255,255,255,.18);
-      background: linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
-      box-shadow: 0 25px 70px rgba(0,0,0,.35);
-    }
-
+    .custom-option::before { content: ""; position: absolute; width: 170px; height: 170px; top: -100px; right: -80px; border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease; }
+    .custom-option:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.18); background: linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.018)); box-shadow: 0 25px 70px rgba(0,0,0,.35); }
     .custom-option:hover::before { background: rgba(255,255,255,.075); }
-
     .custom-option-top { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; min-width: 0; }
-
-    .custom-option-number {
-      width: 36px; height: 36px; flex: 0 0 36px; display: grid; place-items: center;
-      border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.045);
-      color: rgba(255,255,255,.65); font-family: "DM Mono"; font-size: 8px;
-    }
-
+    .custom-option-number { width: 36px; height: 36px; flex: 0 0 36px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.045); color: rgba(255,255,255,.65); font-family: "DM Mono"; font-size: 8px; }
     .custom-option-label { color: rgba(255,255,255,.22); font-size: 7px; letter-spacing: .18em; text-transform: uppercase; text-align: right; line-height: 1.5; }
-
     .custom-option h3 { position: relative; margin-top: 18px; font-family: "Space Grotesk"; font-size: 19px; line-height: 1.15; letter-spacing: -.035em; font-weight: 500; max-width: 410px; }
-
     .custom-option p { position: relative; margin-top: 10px; color: rgba(255,255,255,.32); font-size: 9px; line-height: 1.8; max-width: 450px; }
-
     .custom-option-features { position: relative; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
-
     .custom-option-feature { padding: 5px 8px; border: 1px solid rgba(255,255,255,.07); border-radius: 999px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.34); font-size: 6px; letter-spacing: .03em; }
-
     .custom-option-arrow { position: relative; display: flex; justify-content: flex-end; margin-top: 17px; color: rgba(255,255,255,.28); font-size: 15px; transition: color .3s ease, transform .3s ease; }
-
     .custom-option:hover .custom-option-arrow { color: #fff; transform: translateX(4px); }
 
     /* PRICING */
-
     .pricing-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 65px; }
-
     .pricing-card { position: relative; padding: 42px; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; background: rgba(255,255,255,.018); overflow: hidden; min-width: 0; }
-
     .pricing-card.featured { border-color: rgba(255,255,255,.22); background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015)); }
-
-    .pricing-badge {
-      position: absolute; top: 22px; right: 22px; padding: 6px 10px;
-      border: 1px solid rgba(102,227,148,.35); border-radius: 999px; background: rgba(102,227,148,.08);
-      color: #7be8a4; font-size: 7px; letter-spacing: .16em; text-transform: uppercase;
-    }
-
+    .pricing-badge { position: absolute; top: 22px; right: 22px; padding: 6px 10px; border: 1px solid rgba(102,227,148,.35); border-radius: 999px; background: rgba(102,227,148,.08); color: #7be8a4; font-size: 7px; letter-spacing: .16em; text-transform: uppercase; }
     .pricing-label { color: rgba(255,255,255,.28); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
-
     .pricing-name { margin-top: 14px; font-family: "Space Grotesk"; font-size: 21px; letter-spacing: -.03em; }
-
     .pricing-price { margin-top: 16px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-
     .pricing-amount { font-family: "Space Grotesk"; font-size: 40px; letter-spacing: -.03em; }
-
     .pricing-cadence { color: rgba(255,255,255,.3); font-size: 10px; }
-
     .pricing-sub { margin-top: 6px; color: rgba(255,255,255,.32); font-size: 9px; }
-
     .pricing-desc { margin-top: 18px; color: rgba(255,255,255,.35); font-size: 10px; line-height: 1.8; max-width: 400px; }
-
     .pricing-card .check-list { margin-top: 24px; }
-
     .pricing-card .button { margin-top: 28px; width: 100%; }
 
     /* FINAL CTA */
-
     .final-cta { padding: 160px 0; text-align: center; }
-
     .final-icon { width: 50px; height: 50px; display: grid; place-items: center; margin: 0 auto 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.04); }
-
     .final-cta p { max-width: 550px; margin: 25px auto 0; color: rgba(255,255,255,.32); font-size: 12px; line-height: 1.9; }
-
     .final-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 30px; }
-
     .final-actions .hero-actions { margin-top: 0; }
-
     .availability { color: rgba(255,255,255,.18); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
 
     /* FOOTER */
-
     footer { border-top: 1px solid rgba(255,255,255,.07); }
-
     .footer-inner { min-height: 140px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
-
     .footer-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-
     .footer-mark { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 9px; font-family: "Space Grotesk"; font-size: 11px; font-weight: 700; }
-
     .footer-name { font-size: 11px; }
-
     .footer-tagline { margin-top: 3px; color: rgba(255,255,255,.18); font-size: 7px; text-transform: uppercase; letter-spacing: .15em; overflow-wrap: break-word; }
-
     .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.05); color: rgba(255,255,255,.16); font-size: 7px; min-width: 0; }
-
     .footer-bottom span { min-width: 0; overflow-wrap: break-word; }
 
     /* RESPONSIVE — TABLET */
-
     @media(max-width:1100px) {
       .container { width: min(100% - 40px, 1180px); }
       .nav-links { gap: 22px; }
@@ -653,7 +350,6 @@
     }
 
     /* RESPONSIVE — TABLET / MOBILE NAV */
-
     @media(max-width:900px) {
       .nav-links, .nav-button { display: none; }
       .mobile-menu-button { display: block; }
@@ -679,7 +375,6 @@
     }
 
     /* RESPONSIVE — SMALL TABLETS */
-
     @media(max-width:760px) {
       .container { width: calc(100% - 32px); }
       .nav-inner { height: 72px; }
@@ -706,7 +401,6 @@
     }
 
     /* RESPONSIVE — MOBILE */
-
     @media(max-width:620px) {
       .container { width: calc(100% - 30px); max-width: none; }
       .cursor, .cursor-ring { display: none; }
@@ -815,7 +509,6 @@
     }
 
     /* RESPONSIVE — VERY SMALL PHONES */
-
     @media(max-width:380px) {
       .container { width: calc(100% - 24px); }
       .brand-name { font-size: 12px; }
@@ -845,41 +538,24 @@
     }
 
     /* DEMO MODAL */
-
     .demo-modal {
-      position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center;
-      padding: 24px; background: rgba(0,0,0,.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 24px;
+      background: rgba(0,0,0,.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
       opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s ease, visibility .35s ease;
     }
-
     .demo-modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
-
     .demo-modal-content {
       position: relative; width: min(900px, 100%); max-width: 100%; max-height: calc(100vh - 48px);
       border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden; background: #090909;
       box-shadow: 0 50px 140px rgba(0,0,0,.8), 0 0 100px rgba(255,255,255,.04);
       transform: translateY(24px) scale(.96); transition: transform .45s cubic-bezier(.16,1,.3,1);
     }
-
     .demo-modal.active .demo-modal-content { transform: translateY(0) scale(1); }
-
-    .demo-modal-header {
-      min-height: 48px; display: flex; align-items: center; justify-content: space-between;
-      gap: 12px; padding: 0 14px 0 17px; border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
+    .demo-modal-header { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 14px 0 17px; border-bottom: 1px solid rgba(255,255,255,.07); }
     .demo-modal-label { color: rgba(255,255,255,.35); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-    .demo-modal-close {
-      width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center;
-      border: 1px solid rgba(255,255,255,.08); border-radius: 9px; background: rgba(255,255,255,.035);
-      color: rgba(255,255,255,.55); font-size: 17px; transition: .25s ease;
-    }
-
+    .demo-modal-close { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.08); border-radius: 9px; background: rgba(255,255,255,.035); color: rgba(255,255,255,.55); font-size: 17px; transition: .25s ease; }
     .demo-modal-close:hover { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
-
     .demo-video-wrap { background: #000; aspect-ratio: 16 / 9; width: 100%; max-height: calc(100vh - 100px); }
-
     .demo-video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
 
     @media(max-width:620px) {
@@ -891,7 +567,6 @@
     }
 
     /* REDUCED MOTION */
-
     @media(prefers-reduced-motion:reduce) {
       * { animation: none !important; transition: none !important; }
     }
@@ -902,7 +577,6 @@
 <body>
 
   <!-- BACKGROUND -->
-
   <div class="background">
     <div class="background-grid"></div>
     <div class="glow glow-1"></div>
@@ -911,12 +585,10 @@
   </div>
 
   <!-- CURSOR -->
-
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
 
   <!-- NAVBAR -->
-
   <header class="navbar">
 
     <div class="container nav-inner">
@@ -928,45 +600,85 @@
         </div>
 
         <div>
+
           <div class="brand-name">
             AutFlow <span>Studio</span>
           </div>
+
           <div class="brand-subtitle">
-            Freight Invoice Audit Service
+            Freight Invoice Auditing
           </div>
+
         </div>
 
       </a>
 
       <nav class="nav-links">
-        <a href="#product">How It Works</a>
-        <a href="#capabilities">What We Check</a>
-        <a href="#comparison">Economics</a>
-        <a href="#preview">Start Here</a>
+
+        <a href="#product">
+          How It Works
+        </a>
+
+        <a href="#capabilities">
+          What We Solve
+        </a>
+
+        <a href="#comparison">
+          Examples
+        </a>
+
+        <a href="#preview">
+          Start Here
+        </a>
+
       </nav>
 
-      <a href="#get-started" class="nav-button magnetic">
-        Request a Review
+      <a
+        href="#get-started"
+        class="nav-button magnetic"
+      >
+        Get Started
       </a>
 
-      <button class="mobile-menu-button" id="mobileMenuButton">
+      <button
+        class="mobile-menu-button"
+        id="mobileMenuButton"
+      >
         ☰
       </button>
 
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#product">How It Works</a>
-      <a href="#capabilities">What We Check</a>
-      <a href="#comparison">Economics</a>
-      <a href="#preview">Start Here</a>
-      <a href="#get-started" class="mobile-cta">Request a Review</a>
+
+      <a href="#product">
+        How It Works
+      </a>
+
+      <a href="#capabilities">
+        What We Solve
+      </a>
+
+      <a href="#comparison">
+        Examples
+      </a>
+
+      <a href="#preview">
+        Start Here
+      </a>
+
+      <a
+        href="#get-started"
+        class="mobile-cta"
+      >
+        Get Started
+      </a>
+
     </div>
 
   </header>
 
   <!-- HERO -->
-
   <section class="hero">
 
     <div class="hero-orbit">
@@ -978,45 +690,57 @@
       <div class="hero-content">
 
         <div class="status-pill hero-animate">
+
           <span class="status-dot"></span>
-          FREIGHT INVOICE AUDIT &amp; DISCREPANCY DETECTION
+
+          FREIGHT INVOICE AUDITING FOR MID-MARKET COMPANIES
+
         </div>
 
         <h1 class="hero-title">
 
           <span class="line">
             <span class="line-inner">
-              Your Freight Invoices.
+              Don't Check Every Invoice.
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner">
-              Systematically Audited.
+              Review What Gets Flagged.
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner muted">
-              Every Finding Verified.
+              Freight Billing, Audited.
             </span>
           </span>
 
         </h1>
 
         <p class="hero-description hero-animate">
-          If your company pays millions in freight across multiple carriers, reviewing every charge by hand is difficult to sustain. We process your carrier invoices, flag potential billing discrepancies, and reduce thousands of invoices to a focused list your team can verify.
+
+          Companies that spend millions on freight cannot manually verify every carrier invoice against contracts, negotiated rates, and shipment data. We analyze your invoices, identify potential billing discrepancies, and show your finance and logistics team exactly where to investigate.
+
         </p>
 
         <div class="hero-actions hero-animate">
 
-          <a href="#get-started" class="button button-primary magnetic">
-            Request a Freight Audit Review
+          <a
+            href="#get-started"
+            class="button button-primary magnetic"
+          >
+            Show Us Your Workflow
             <span>→</span>
           </a>
 
-          <button type="button" class="button button-secondary magnetic" id="demoButton">
-            Watch Our Previous Software Work
+          <button
+            type="button"
+            class="button button-secondary magnetic"
+            id="demoButton"
+          >
+            Watch An Example Build
             <span>▶</span>
           </button>
 
@@ -1025,7 +749,6 @@
       </div>
 
       <!-- DASHBOARD -->
-
       <div class="dashboard-wrapper">
 
         <div class="dashboard-glow"></div>
@@ -1041,8 +764,11 @@
             </div>
 
             <div class="browser-status">
+
               <i></i>
+
               ILLUSTRATIVE AUDIT PREVIEW
+
             </div>
 
             <div class="browser-label">
@@ -1066,6 +792,11 @@
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
+                Carriers
+              </div>
+
+              <div class="sidebar-item">
+                <span class="sidebar-icon"></span>
                 Invoices
               </div>
 
@@ -1076,18 +807,13 @@
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Rate Checks
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Verification Status
+                Human Verification
               </div>
 
               <div class="sidebar-separator"></div>
 
               <div class="sidebar-title">
-                Deliverables
+                Reporting
               </div>
 
               <div class="sidebar-item">
@@ -1102,16 +828,19 @@
               <div class="dashboard-header">
 
                 <div>
+
                   <div class="dashboard-eyebrow">
-                    Illustrative Example / Audit Summary
+                    Illustrative Sample / Audit View
                   </div>
+
                   <div class="dashboard-heading">
-                    A focused list, not a pile of invoices.
+                    Review what the system flags.
                   </div>
+
                 </div>
 
                 <div class="dashboard-filter">
-                  Sample data ↗
+                  Sample period ↗
                 </div>
 
               </div>
@@ -1119,27 +848,79 @@
               <div class="stats">
 
                 <div class="stat">
-                  <div class="stat-label">Invoices Processed</div>
-                  <div class="stat-value counter" data-value="840">0</div>
-                  <div class="stat-change">Sample volume</div>
+
+                  <div class="stat-label">
+                    Invoices Processed
+                  </div>
+
+                  <div
+                    class="stat-value counter"
+                    data-value="640"
+                  >
+                    0
+                  </div>
+
+                  <div class="stat-change">
+                    Sample data
+                  </div>
+
                 </div>
 
                 <div class="stat">
-                  <div class="stat-label">Items Flagged for Review</div>
-                  <div class="stat-value counter" data-value="37">0</div>
-                  <div class="stat-change">A small share of the total</div>
+
+                  <div class="stat-label">
+                    Flagged For Review
+                  </div>
+
+                  <div
+                    class="stat-value counter"
+                    data-value="38"
+                  >
+                    0
+                  </div>
+
+                  <div class="stat-change">
+                    Potential discrepancies
+                  </div>
+
                 </div>
 
                 <div class="stat">
-                  <div class="stat-label">Carriers Included</div>
-                  <div class="stat-value counter" data-value="6">0</div>
-                  <div class="stat-change">Multi-carrier scope</div>
+
+                  <div class="stat-label">
+                    Verified By A Person
+                  </div>
+
+                  <div
+                    class="stat-value counter"
+                    data-value="21"
+                  >
+                    0
+                  </div>
+
+                  <div class="stat-change">
+                    Before reporting
+                  </div>
+
                 </div>
 
                 <div class="stat">
-                  <div class="stat-label">Potential Discrepancies</div>
-                  <div class="stat-value counter" data-value="18420">$0</div>
-                  <div class="stat-change">Requires verification</div>
+
+                  <div class="stat-label">
+                    Potential Impact
+                  </div>
+
+                  <div
+                    class="stat-value counter"
+                    data-value="18400"
+                  >
+                    $0
+                  </div>
+
+                  <div class="stat-change">
+                    Illustrative only
+                  </div>
+
                 </div>
 
               </div>
@@ -1153,36 +934,81 @@
                   </div>
 
                   <div class="panel-subtitle">
-                    Sample entries — potential discrepancies, not confirmed errors
+                    Sample data — potential discrepancies only
                   </div>
 
                   <div class="project-list">
 
                     <div class="project">
-                      <div class="project-number">01</div>
-                      <div class="project-info">
-                        <div class="project-name">Possible duplicate charge</div>
-                        <div class="project-status">REQUIRES VERIFICATION</div>
+
+                      <div class="project-number">
+                        01
                       </div>
-                      <div class="project-price">$1,240</div>
+
+                      <div class="project-info">
+
+                        <div class="project-name">
+                          Rate above contract
+                        </div>
+
+                        <div class="project-status">
+                          REQUIRES VERIFICATION
+                        </div>
+
+                      </div>
+
+                      <div class="project-price">
+                        $1,240
+                      </div>
+
                     </div>
 
                     <div class="project">
-                      <div class="project-number">02</div>
-                      <div class="project-info">
-                        <div class="project-name">Billed rate differs from contract rate</div>
-                        <div class="project-status">FLAGGED</div>
+
+                      <div class="project-number">
+                        02
                       </div>
-                      <div class="project-price">$860</div>
+
+                      <div class="project-info">
+
+                        <div class="project-name">
+                          Possible duplicate invoice
+                        </div>
+
+                        <div class="project-status">
+                          UNDER REVIEW
+                        </div>
+
+                      </div>
+
+                      <div class="project-price">
+                        $860
+                      </div>
+
                     </div>
 
                     <div class="project">
-                      <div class="project-number">03</div>
-                      <div class="project-info">
-                        <div class="project-name">Unexpected accessorial charge</div>
-                        <div class="project-status">UNDER REVIEW</div>
+
+                      <div class="project-number">
+                        03
                       </div>
-                      <div class="project-price">$415</div>
+
+                      <div class="project-info">
+
+                        <div class="project-name">
+                          Unexpected accessorial charge
+                        </div>
+
+                        <div class="project-status">
+                          REQUIRES VERIFICATION
+                        </div>
+
+                      </div>
+
+                      <div class="project-price">
+                        $410
+                      </div>
+
                     </div>
 
                   </div>
@@ -1192,14 +1018,15 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Discrepancy Types
+                    Potential Impact
                   </div>
 
                   <div class="panel-subtitle">
-                    Sample distribution by category
+                    By month, illustrative
                   </div>
 
                   <div class="chart">
+
                     <div class="bar" style="height:30%"></div>
                     <div class="bar" style="height:48%"></div>
                     <div class="bar" style="height:40%"></div>
@@ -1212,6 +1039,7 @@
                     <div class="bar" style="height:96%"></div>
                     <div class="bar" style="height:80%"></div>
                     <div class="bar" style="height:100%"></div>
+
                   </div>
 
                 </div>
@@ -1231,7 +1059,6 @@
   </section>
 
   <!-- PROBLEM FRAMING -->
-
   <section class="section-border">
 
     <div class="container section-padding">
@@ -1239,21 +1066,30 @@
       <div class="center-heading reveal-scale">
 
         <div class="eyebrow">
+
           <span class="eyebrow-line"></span>
+
           THE PROBLEM
+
           <span class="eyebrow-line"></span>
+
         </div>
 
         <h2>
-          Manual Review Doesn't Scale
+
+          Manual Review Can't Cover
           <br>
+
           <span class="muted">
-            Across Thousands Of Invoices.
+            Every Freight Invoice.
           </span>
+
         </h2>
 
         <p class="section-description centered">
-          Freight invoices arrive in different formats from different carriers, each with its own rates, fees and references. Checking every charge against contracts and shipment records is repetitive work that is hard to keep consistent. Small discrepancies can go unnoticed, and when freight spend reaches the millions, they can add up.
+
+          A single billing error may be small. Repeated across hundreds of invoices, thousands of shipments, multiple carriers, and multiple facilities, small discrepancies add up to meaningful financial leakage. The problem is rarely one huge mistake. It is small errors, repeated at scale.
+
         </p>
 
       </div>
@@ -1262,9 +1098,11 @@
 
   </section>
 
-  <!-- METHOD -->
-
-  <section id="product" class="section-border">
+  <!-- PRODUCT -->
+  <section
+    id="product"
+    class="section-border"
+  >
 
     <div class="container section-padding">
 
@@ -1273,21 +1111,28 @@
         <div class="reveal-left">
 
           <div class="eyebrow">
+
             <span class="eyebrow-line"></span>
-            OUR METHODOLOGY
+
+            THE PREVIEW ABOVE
+
           </div>
 
           <h2>
-            Automation Surfaces.
+
+            An Illustration,
+
             <span class="muted">
-              People Verify.
+              Not A Result.
             </span>
           </h2>
 
         </div>
 
         <p class="section-description reveal-right">
-          AI-assisted extraction reads invoices in inconsistent formats. Deterministic rules then check the data. Every flagged item is reviewed by a person before it is treated as a confirmed issue. The technology narrows the search; it does not make the financial decision.
+
+          The preview above uses sample data to show how flagged items are organized for review. It does not represent a client or a real finding. The video from "Watch An Example Build" shows a different business software project we previously built, as evidence of our technical capability.
+
         </p>
 
       </div>
@@ -1296,9 +1141,11 @@
 
   </section>
 
-  <!-- WHAT WE CHECK -->
-
-  <section id="capabilities" class="section-border">
+  <!-- WHAT WE SOLVE -->
+  <section
+    id="capabilities"
+    class="section-border"
+  >
 
     <div class="container section-padding">
 
@@ -1307,21 +1154,28 @@
         <div class="reveal-left">
 
           <div class="eyebrow">
+
             <span class="eyebrow-line"></span>
-            WHAT WE CHECK
+
+            WHAT WE SOLVE
+
           </div>
 
           <h2>
-            The Charges We
+
+            The Discrepancies We
+
             <span class="muted">
-              Examine Closely.
+              Look For.
             </span>
           </h2>
 
         </div>
 
         <p class="section-description reveal-right">
-          Checks depend on the data available for your account. Where contracts, rate sheets or shipment records are provided, we compare against them. Not every discrepancy can always be detected, and every result is a potential finding until verified.
+
+          Carrier invoices can contain many kinds of billing issues. These are the categories our checks target. Each flag is a potential discrepancy until it has been verified.
+
         </p>
 
       </div>
@@ -1329,51 +1183,99 @@
       <div class="feature-grid reveal-scale">
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">⎘</div>
-          <div class="feature-title">DUPLICATE CHARGES</div>
-          <div class="feature-description">
-            Repeated invoice numbers, shipment references or charges that may have been billed more than once.
+
+          <div class="feature-icon">
+            ↻
           </div>
+
+          <div class="feature-title">
+            RATE MISMATCHES
+          </div>
+
+          <div class="feature-description">
+            Charges that differ from negotiated contract rates or rate sheets.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">⇄</div>
-          <div class="feature-title">RATE MISMATCHES</div>
-          <div class="feature-description">
-            Billed rates that differ from negotiated or contracted rates, including outdated rates, where rate information is available.
+
+          <div class="feature-icon">
+            ⇄
           </div>
+
+          <div class="feature-title">
+            DUPLICATE CHARGES
+          </div>
+
+          <div class="feature-description">
+            The same invoice or shipment reference billed more than once.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">⌁</div>
-          <div class="feature-title">ACCESSORIAL CHARGES</div>
-          <div class="feature-description">
-            Unexpected or potentially unauthorized fees that warrant a closer look against shipment details.
+
+          <div class="feature-icon">
+            ⌁
           </div>
+
+          <div class="feature-title">
+            ACCESSORIAL CHARGES
+          </div>
+
+          <div class="feature-description">
+            Unexpected or unauthorized accessorial charges added to an invoice.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">↻</div>
-          <div class="feature-title">ARITHMETIC INCONSISTENCIES</div>
-          <div class="feature-description">
-            Line items and totals that do not reconcile with each other on the invoice itself.
+
+          <div class="feature-icon">
+            ◷
           </div>
+
+          <div class="feature-title">
+            FUEL CHARGES
+          </div>
+
+          <div class="feature-description">
+            Fuel charges that do not match the agreed schedule or contract terms.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">◈</div>
-          <div class="feature-title">WEIGHT DISCREPANCIES</div>
-          <div class="feature-description">
-            Billed weights that differ from shipment records, where enough data exists to compare.
+
+          <div class="feature-icon">
+            ◈
           </div>
+
+          <div class="feature-title">
+            WEIGHT & QUANTITY
+          </div>
+
+          <div class="feature-description">
+            Billed weights or quantities that are inconsistent with shipment records.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">◷</div>
-          <div class="feature-title">OTHER RULE-BASED EXCEPTIONS</div>
-          <div class="feature-description">
-            Additional anomalies identified by structured rules, each flagged as an item requiring review.
+
+          <div class="feature-icon">
+            ⎘
           </div>
+
+          <div class="feature-title">
+            OTHER BILLING ANOMALIES
+          </div>
+
+          <div class="feature-description">
+            Other irregularities measured against contracts and billing rules.
+          </div>
+
         </div>
 
       </div>
@@ -1382,30 +1284,40 @@
 
   </section>
 
-  <!-- IDEAL CUSTOMER -->
-
-  <section id="customization" class="section-border">
+  <!-- WHO THIS IS FOR -->
+  <section
+    id="customization"
+    class="section-border"
+  >
 
     <div class="container section-padding">
 
       <div class="center-heading reveal-scale">
 
         <div class="eyebrow">
+
           <span class="eyebrow-line"></span>
+
           WHO THIS IS FOR
+
           <span class="eyebrow-line"></span>
+
         </div>
 
         <h2>
-          Does Your Freight Operation
+
+          Built For Companies With
           <br>
+
           <span class="muted">
-            Fit This Profile?
+            Significant Freight Spend.
           </span>
         </h2>
 
         <p class="section-description centered">
-          Built for the company paying the freight bills: manufacturers, distributors, importers, wholesalers and other mid-market businesses. If your invoices span multiple carriers and facilities, manual review becomes hard to maintain at scale. This does not mean errors are certain, only that a systematic look can be worthwhile.
+
+          Manufacturers, distributors, importers, wholesalers, and other mid-market companies that use multiple carriers and process large invoice volumes. Typical decision-makers include the CFO, Controller, VP Finance, Director of Logistics, and VP Supply Chain.
+
         </p>
 
       </div>
@@ -1413,27 +1325,67 @@
       <div class="steps-grid reveal-scale">
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">?</div>
-          <div class="feature-title">Invoices from multiple carriers?</div>
-          <div class="request-answer">Common fit.</div>
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            Manufacturers and distributors with multiple carriers?
+          </div>
+
+          <div class="request-answer">
+            A good fit.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">?</div>
-          <div class="feature-title">High invoice volume across facilities?</div>
-          <div class="request-answer">Common fit.</div>
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            Importers and wholesalers with large invoice volumes?
+          </div>
+
+          <div class="request-answer">
+            A good fit.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">?</div>
-          <div class="feature-title">Negotiated carrier rates to check against?</div>
-          <div class="request-answer">Useful input.</div>
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            CFO, Controller, or Finance Director?
+          </div>
+
+          <div class="request-answer">
+            See the impact.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">?</div>
-          <div class="feature-title">Millions in annual freight spend?</div>
-          <div class="request-answer">Worth a look.</div>
+
+          <div class="feature-icon">
+            ?
+          </div>
+
+          <div class="feature-title">
+            Logistics, Transportation, or Supply Chain lead?
+          </div>
+
+          <div class="request-answer">
+            See the detail.
+          </div>
+
         </div>
 
       </div>
@@ -1443,29 +1395,39 @@
   </section>
 
   <!-- ECONOMICS -->
-
-  <section id="comparison" class="section-border">
+  <section
+    id="comparison"
+    class="section-border"
+  >
 
     <div class="container section-padding">
 
       <div class="center-heading reveal-scale">
 
         <div class="eyebrow">
+
           <span class="eyebrow-line"></span>
+
           THE ECONOMICS
+
           <span class="eyebrow-line"></span>
+
         </div>
 
         <h2>
-          The Question Isn't What The Audit Costs.
+
+          Small Discrepancies,
           <br>
+
           <span class="muted">
-            It's What Not Looking Costs.
+            Repeated At Scale.
           </span>
         </h2>
 
         <p class="section-description centered">
-          Industry estimates commonly place potential recoverable savings from systematic freight auditing at roughly 2–4% of freight spend, although actual results vary significantly by company, carrier mix and contracts. The scenarios below are illustrative calculations, not guaranteed results.
+
+          For a company spending millions on freight, a $5K–$10K audit can be economically rational if the potential discrepancies it identifies materially exceed the cost of the engagement. The figures below are illustrative calculations, not guaranteed savings.
+
         </p>
 
       </div>
@@ -1473,19 +1435,19 @@
       <div class="equation-row reveal-scale">
 
         <div class="flow-node">
-          FREIGHT SPEND IN THE MILLIONS
+          AUTOMATED CHECKS
         </div>
 
         <div class="flow-arrow">+</div>
 
         <div class="flow-node">
-          A SMALL DISCREPANCY RATE
+          HUMAN VERIFICATION
         </div>
 
         <div class="flow-arrow">=</div>
 
         <div class="flow-node">
-          SIGNIFICANT POTENTIAL IMPACT
+          A CLEAR REPORT
         </div>
 
       </div>
@@ -1495,37 +1457,37 @@
         <div class="pricing-card">
 
           <div class="pricing-label">
-            ILLUSTRATION 01
+            TYPICAL ENGAGEMENT
           </div>
 
           <div class="pricing-name">
-            $3M Annual Freight Spend
+            $5K–$10K, Depending On Scope
           </div>
 
           <p class="pricing-desc">
-            A hypothetical scenario showing how potential impact scales with spend. Not a prediction or a promise.
+            Typical engagements range from $5K–$10K. The exact price depends on the scope of the audit:
           </p>
 
           <div class="check-list">
 
             <div class="check-item">
               <span class="check">✓</span>
-              At a hypothetical 2%: $3,000,000 × 2% = $60,000
+              Number of carriers
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              At a hypothetical 4%: $3,000,000 × 4% = $120,000
+              Number of invoices and audit period
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Potential impact is not guaranteed recovery
+              Freight volume
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Actual results vary and depend on what verification confirms
+              Data complexity and overall scope
             </div>
 
           </div>
@@ -1539,37 +1501,37 @@
           </div>
 
           <div class="pricing-label">
-            ILLUSTRATION 02
+            THE MATH
           </div>
 
           <div class="pricing-name">
-            $5M Annual Freight Spend
+            Hypothetical Billing Leakage
           </div>
 
           <p class="pricing-desc">
-            Weigh a typical $7,500 audit against the spend being examined, not in isolation. Even if the actual result is materially lower, the economics can justify a structured audit.
+            Industry estimates commonly place potential freight-audit recovery in the low-single-digit percentage range, although actual results vary significantly by company, carrier, contract, shipment volume, and billing practices.
           </p>
 
           <div class="check-list">
 
             <div class="check-item">
               <span class="check">✓</span>
-              At a hypothetical 2%: $5,000,000 × 2% = $100,000
+              $2M annual freight: 2% = $40K, 4% = $80K
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              At a hypothetical 4%: $5,000,000 × 4% = $200,000
+              $5M annual freight: 2% = $100K, 4% = $200K
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Illustrative only. We do not guarantee any savings or recovery
+              $10M annual freight: 2% = $200K, 4% = $400K
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              The audit shows what is worth verifying, and what is not
+              The audit determines whether meaningful discrepancies actually exist
             </div>
 
           </div>
@@ -1582,30 +1544,40 @@
 
   </section>
 
-  <!-- HOW THE AUDIT WORKS + ENGAGEMENT -->
-
-  <section id="revenue-opportunity" class="section-border">
+  <!-- HUMAN + SOFTWARE MODEL -->
+  <section
+    id="revenue-opportunity"
+    class="section-border"
+  >
 
     <div class="container section-padding">
 
       <div class="center-heading reveal-scale">
 
         <div class="eyebrow">
+
           <span class="eyebrow-line"></span>
-          THE ENGAGEMENT
+
+          THE METHOD
+
           <span class="eyebrow-line"></span>
+
         </div>
 
         <h2>
-          You Send The Invoices.
+
+          Software Finds Exceptions.
           <br>
+
           <span class="muted">
-            We Surface What Needs Review.
+            People Verify Findings.
           </span>
         </h2>
 
         <p class="section-description centered">
-          You don't need to inspect every invoice. We reduce a large volume of invoices to a focused list of charges that deserve human attention: less exhaustive review, more targeted investigation.
+
+          The system combines AI-assisted document extraction, deterministic financial rules, and automated checks, followed by human verification. The AI is not the product. The audit is. It reduces manual checking so your team can focus on exceptions.
+
         </p>
 
       </div>
@@ -1613,25 +1585,25 @@
       <div class="flow-diagram reveal-scale">
 
         <div class="flow-node">
-          YOU PROVIDE CARRIER INVOICES
+          SOFTWARE FINDS THE EXCEPTIONS
         </div>
 
         <div class="flow-arrow">↓</div>
 
         <div class="flow-node">
-          WE EXTRACT AND VALIDATE THE DATA
+          RULES VALIDATE THE NUMBERS
         </div>
 
         <div class="flow-arrow">↓</div>
 
         <div class="flow-node">
-          WE FLAG POTENTIAL DISCREPANCIES
+          HUMAN REVIEW VALIDATES THE FINDING
         </div>
 
         <div class="flow-arrow">↓</div>
 
         <div class="flow-node">
-          A PERSON VERIFIES EACH FINDING
+          YOU RECEIVE A CLEAR REPORT
         </div>
 
       </div>
@@ -1641,47 +1613,54 @@
         <div class="ownership-content">
 
           <span class="small-tag">
-            TYPICAL ENGAGEMENT · $5,000–$10,000
+            NOT A BLIND AUTOMATED SYSTEM
           </span>
 
           <h2 style="margin-top:23px;">
-            A $7,500 Audit,
+
+            Flagged By Software.
+
             <br>
+
             <span class="muted">
-              Weighed Against The Spend.
+              Verified By People.
             </span>
           </h2>
 
           <p>
-            A typical engagement is $7,500, within a $5,000–$10,000 range depending on scope. Weigh it against the freight spend being examined, not in isolation: potential impact is not guaranteed recovery, but the economics can make a structured look reasonable.
+
+            Not every flagged item is an error. Potential discrepancies are reviewed before they are treated as confirmed findings, so your team receives a report it can act on.
+
           </p>
 
           <div class="check-list">
 
             <div class="check-item">
               <span class="check">✓</span>
-              Scoped before work begins
+              AI-assisted extraction structures the invoice data
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Based on invoice volume, carrier count, historical period and complexity
+              Deterministic rules check rates, duplicates, and charges
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              50% to start, 50% upon delivery
+              Automated checks organize potential discrepancies
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              No guaranteed savings; findings are potential until verified
+              Human verification comes before anything is reported
             </div>
 
           </div>
 
           <p class="ownership-note">
-            Invoices may be PDF, CSV, Excel or similar exports. Where available, contracts, rate sheets and shipment records improve the checks.
+
+            Each finding shows the invoice, the charge, the difference, and the reason it was flagged.
+
           </p>
 
         </div>
@@ -1691,30 +1670,37 @@
           <div class="workflow-box workflow-float">
 
             <div class="workflow-header">
-              <span>◉ EXAMPLE AUDIT FLOW</span>
-              <span class="workflow-active">ILLUSTRATIVE</span>
+
+              <span>
+                ◉ EXAMPLE AUDIT FLOW
+              </span>
+
+              <span class="workflow-active">
+                SAMPLE
+              </span>
+
             </div>
 
             <div class="workflow-steps">
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Carrier invoices collected
+                Carrier invoice received
               </div>
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Data extracted and checked against rules
+                Rates and rules checked
               </div>
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Potential discrepancies flagged
+                Potential discrepancy flagged
               </div>
 
               <div class="workflow-step">
                 <span class="workflow-step-dot"></span>
-                Findings verified before reporting
+                Person verifies before reporting
               </div>
 
             </div>
@@ -1730,21 +1716,27 @@
   </section>
 
   <!-- HOW IT WORKS -->
-
-  <section id="how-it-works" class="section-border">
+  <section
+    id="how-it-works"
+    class="section-border"
+  >
 
     <div class="container section-padding">
 
       <div class="center-heading reveal-scale">
 
         <div class="eyebrow">
+
           <span class="eyebrow-line"></span>
-          STEP BY STEP
+
+          THE AUDIT PROCESS
+
           <span class="eyebrow-line"></span>
+
         </div>
 
         <h2>
-          How The Audit Works.
+          How It Works.
         </h2>
 
       </div>
@@ -1752,35 +1744,67 @@
       <div class="steps-grid reveal-scale">
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">01</div>
-          <div class="feature-title">COLLECT</div>
-          <div class="feature-description">
-            You provide carrier invoices (PDF, CSV, Excel or similar) and, where available, contracts, rate sheets and shipment records such as BOL, PRO or tracking references.
+
+          <div class="feature-icon">
+            01
           </div>
+
+          <div class="feature-title">
+            COLLECT
+          </div>
+
+          <div class="feature-description">
+            You provide freight invoices from your carriers, plus contracts, rate sheets, shipment records, and billing information where available.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">02</div>
-          <div class="feature-title">PROCESS &amp; CHECK</div>
-          <div class="feature-description">
-            AI-assisted extraction turns invoices into structured data. Deterministic rules then check for duplicates, rate mismatches, accessorials, arithmetic and weight inconsistencies.
+
+          <div class="feature-icon">
+            02
           </div>
+
+          <div class="feature-title">
+            EXTRACT & CHECK
+          </div>
+
+          <div class="feature-description">
+            The system extracts and structures invoice data, then checks rates, duplicates, accessorials, weights, and quantities.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">03</div>
-          <div class="feature-title">FOCUS &amp; VERIFY</div>
-          <div class="feature-description">
-            Thousands of invoices become a focused list of items requiring review. Each is verified by a person before being represented as a confirmed problem.
+
+          <div class="feature-icon">
+            03
           </div>
+
+          <div class="feature-title">
+            VERIFY
+          </div>
+
+          <div class="feature-description">
+            Potential discrepancies are organized, then reviewed by a person before being treated as confirmed findings.
+          </div>
+
         </div>
 
         <div class="feature-card feature-3d">
-          <div class="feature-icon">04</div>
-          <div class="feature-title">REPORT</div>
-          <div class="feature-description">
-            You receive a structured report: invoice reference, billed amount, expected amount where determinable, difference, discrepancy type, supporting information and verification status.
+
+          <div class="feature-icon">
+            04
           </div>
+
+          <div class="feature-title">
+            REPORT
+          </div>
+
+          <div class="feature-description">
+            You receive the invoice, charge, difference, reason for the flag, supporting information, and potential financial impact.
+          </div>
+
         </div>
 
       </div>
@@ -1789,9 +1813,11 @@
 
   </section>
 
-  <!-- START A CONVERSATION -->
-
-  <section id="preview" class="section-border">
+  <!-- FREE INITIAL REVIEW -->
+  <section
+    id="preview"
+    class="section-border"
+  >
 
     <div class="container section-padding">
 
@@ -1802,23 +1828,29 @@
           <div class="custom-copy">
 
             <span class="small-tag">
-              START WITH A CONVERSATION
+              FREE INITIAL REVIEW
             </span>
 
             <h2 style="margin-top:23px;">
-              Tell Us About
+
+              Start With
+
               <br>
+
               <span class="muted">
-                Your Freight Spend.
+                A Small Sample.
               </span>
             </h2>
 
             <p class="custom-description">
-              Share a rough picture of your freight operation and we'll tell you whether a structured audit is likely to be worthwhile, and how it would be scoped. Handling of financial documents is treated with care, and scope and price are agreed before any work begins.
+              Send a small sample of invoices from one carrier. We review it and identify potential discrepancies, so you see what we find in your own data before committing to a larger audit. No specific amount of savings is promised.
             </p>
 
-            <a href="#get-started" class="button button-primary magnetic">
-              Discuss Your Freight Spend
+            <a
+              href="#get-started"
+              class="button button-primary magnetic"
+            >
+              Show Us Your Workflow
               <span>→</span>
             </a>
 
@@ -1835,23 +1867,23 @@
                 </div>
 
                 <div class="custom-option-label">
-                  WHAT TO<br>SHARE
+                  WHAT TO<br>SEND US
                 </div>
 
               </div>
 
               <h3>
-                A Few Facts Are Enough To Begin
+                Invoices From One Carrier
               </h3>
 
               <p>
-                We don't need a data dump up front. A general sense of your freight spend, carriers and invoice formats lets us assess fit and propose a scope, or start with an initial invoice review.
+                A small sample is enough to show what our checks can surface in your own billing data. A contract or rate sheet helps if you have one.
               </p>
 
               <div class="custom-option-features">
-                <span class="custom-option-feature">ANNUAL FREIGHT SPEND</span>
-                <span class="custom-option-feature">NUMBER OF CARRIERS</span>
-                <span class="custom-option-feature">INVOICE VOLUME &amp; FORMAT</span>
+                <span class="custom-option-feature">SAMPLE CARRIER INVOICES</span>
+                <span class="custom-option-feature">CONTRACT OR RATE SHEET, IF AVAILABLE</span>
+                <span class="custom-option-feature">SHIPMENT RECORDS, IF AVAILABLE</span>
               </div>
 
               <div class="custom-option-arrow">
@@ -1871,8 +1903,10 @@
   </section>
 
   <!-- FINAL CTA -->
-
-  <section id="get-started" class="final-cta">
+  <section
+    id="get-started"
+    class="final-cta"
+  >
 
     <div class="container">
 
@@ -1883,15 +1917,19 @@
         </div>
 
         <h2>
-          Discuss Your Freight Invoices.
+
+          See What We Find
           <br>
+
           <span class="muted">
-            See What Merits A Closer Look.
+            In Your Own Invoices.
           </span>
         </h2>
 
         <p>
-          Tell us about your freight spend, carriers and invoice volume. We'll outline how an audit would work, what it would cover and what it would cost, before any work begins. Built by a team with experience designing and shipping real business software; the demo video shows a previous project, not the audit platform.
+
+          Send a small sample of freight invoices from one carrier. We'll identify potential discrepancies for your team to review, before you commit to a larger audit.
+
         </p>
 
         <div class="final-actions">
@@ -1904,14 +1942,14 @@
               rel="noopener noreferrer"
               class="button button-primary magnetic"
             >
-              Request a Freight Audit Review
+              Show Us Your Workflow
               <span>→</span>
             </a>
 
           </div>
 
           <span class="availability">
-            SCOPED BEFORE WORK BEGINS — NO GUARANTEED SAVINGS
+            TYPICAL ENGAGEMENTS $5K–$10K — NO GUARANTEED SAVINGS
           </span>
 
         </div>
@@ -1923,8 +1961,11 @@
   </section>
 
   <!-- DEMO MODAL -->
-
-  <div class="demo-modal" id="demoModal" aria-hidden="true">
+  <div
+    class="demo-modal"
+    id="demoModal"
+    aria-hidden="true"
+  >
 
     <div
       class="demo-modal-content"
@@ -1935,8 +1976,11 @@
 
       <div class="demo-modal-header">
 
-        <span class="demo-modal-label" id="demoModalLabel">
-          Previous software project — engineering portfolio, not the freight audit
+        <span
+          class="demo-modal-label"
+          id="demoModalLabel"
+        >
+          AutFlow Studio / Previously Built Software
         </span>
 
         <button
@@ -1976,7 +2020,6 @@
   </div>
 
   <!-- FOOTER -->
-
   <footer>
 
     <div class="container">
@@ -1996,7 +2039,7 @@
             </div>
 
             <div class="footer-tagline">
-              Freight invoice audit service: automated checks, human verification.
+              Freight invoice auditing supported by custom software and automation.
             </div>
 
           </div>
@@ -2012,7 +2055,7 @@
         </span>
 
         <span>
-          Findings are potential discrepancies until verified. The demo video shows previous business software built by our team, not the freight audit service.
+          Flagged items are potential discrepancies until verified. Results vary and savings are not guaranteed.
         </span>
 
       </div>
@@ -2022,13 +2065,12 @@
   </footer>
 
   <!-- JAVASCRIPT -->
-
   <script>
 
+    /* GSAP */
     gsap.registerPlugin(ScrollTrigger);
 
     /* LENIS */
-
     const lenis = new Lenis({
       duration: 1.15,
       smoothWheel: true,
@@ -2043,6 +2085,7 @@
 
     requestAnimationFrame(raf);
 
+    /* CONNECT LENIS TO GSAP */
     lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
@@ -2052,7 +2095,6 @@
     gsap.ticker.lagSmoothing(0);
 
     /* NAVBAR */
-
     const navbar = document.querySelector(".navbar");
 
     ScrollTrigger.create({
@@ -2062,7 +2104,6 @@
     });
 
     /* HERO INTRO */
-
     const heroTimeline = gsap.timeline({ defaults: { ease: "power4.out" } });
 
     heroTimeline
@@ -2071,32 +2112,27 @@
       .from(".dashboard-wrapper", { y: 90, opacity: 0, scale: .94, duration: 1.4 }, "-=.45");
 
     /* HERO ORBIT ROTATION */
-
     gsap.to(".hero-orbit", { rotation: 360, duration: 80, repeat: -1, ease: "none" });
 
     /* HERO PARALLAX */
-
     gsap.to(".hero-content", {
       y: -120, opacity: .35, ease: "none",
       scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
     });
 
     /* DASHBOARD SCROLL ANIMATION */
-
     gsap.to(".dashboard", {
       y: 110, rotateX: 0, scale: .93, opacity: .45, ease: "none",
       scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 65%", end: "bottom 20%", scrub: 1.2 }
     });
 
     /* DASHBOARD GLOW */
-
     gsap.to(".dashboard-glow", {
       scale: 1.35, opacity: .8, ease: "none",
       scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true }
     });
 
     /* BACKGROUND GLOWS */
-
     gsap.to(".glow-1", {
       y: 500, scale: 1.5, ease: "none",
       scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
@@ -2113,7 +2149,6 @@
     });
 
     /* SECTION HEADINGS */
-
     gsap.utils.toArray(".reveal-left").forEach(element => {
       gsap.from(element, {
         x: -70, opacity: 0, duration: 1.1, ease: "power4.out",
@@ -2129,14 +2164,12 @@
     });
 
     /* FEATURE CARDS STAGGER */
-
     gsap.from(".feature-card", {
       y: 80, opacity: 0, scale: .94, duration: 1, stagger: .1, ease: "power4.out",
       scrollTrigger: { trigger: ".feature-grid", start: "top 78%", once: true }
     });
 
     /* FEATURE 3D TILT */
-
     document.querySelectorAll(".feature-3d").forEach(card => {
 
       card.addEventListener("mousemove", event => {
@@ -2165,7 +2198,6 @@
     });
 
     /* OWNERSHIP SECTION */
-
     gsap.from(".ownership-content", {
       x: -80, opacity: 0, duration: 1.2, ease: "power4.out",
       scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
@@ -2177,11 +2209,9 @@
     });
 
     /* WORKFLOW FLOAT */
-
     gsap.to(".workflow-float", { y: -20, duration: 2.7, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
     /* CENTER HEADINGS */
-
     gsap.utils.toArray(".reveal-scale").forEach(element => {
       gsap.from(element, {
         y: 60, opacity: 0, scale: .96, duration: 1.1, ease: "power4.out",
@@ -2190,7 +2220,6 @@
     });
 
     /* COUNTERS */
-
     document.querySelectorAll(".counter").forEach(counter => {
 
       const target = Number(counter.dataset.value);
@@ -2209,14 +2238,12 @@
     });
 
     /* GROWTH BARS */
-
     gsap.from(".bar", {
       scaleY: 0, transformOrigin: "bottom", stagger: .05, duration: 1.2, ease: "power4.out",
       scrollTrigger: { trigger: ".chart", start: "top 85%", once: true }
     });
 
     /* MAGNETIC BUTTONS */
-
     document.querySelectorAll(".magnetic").forEach(button => {
 
       button.addEventListener("mousemove", event => {
@@ -2240,7 +2267,6 @@
     });
 
     /* CUSTOM CURSOR */
-
     const cursor = document.querySelector(".cursor");
     const cursorRing = document.querySelector(".cursor-ring");
 
@@ -2263,23 +2289,19 @@
     });
 
     /* CURSOR HOVER */
+    document.querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card").forEach(element => {
 
-    document
-      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
-      .forEach(element => {
-
-        element.addEventListener("mouseenter", () => {
-          gsap.to(cursorRing, { scale: 1.6, borderColor: "rgba(255,255,255,.7)", duration: .25 });
-        });
-
-        element.addEventListener("mouseleave", () => {
-          gsap.to(cursorRing, { scale: 1, borderColor: "rgba(255,255,255,.4)", duration: .25 });
-        });
-
+      element.addEventListener("mouseenter", () => {
+        gsap.to(cursorRing, { scale: 1.6, borderColor: "rgba(255,255,255,.7)", duration: .25 });
       });
 
-    /* MOBILE MENU */
+      element.addEventListener("mouseleave", () => {
+        gsap.to(cursorRing, { scale: 1, borderColor: "rgba(255,255,255,.4)", duration: .25 });
+      });
 
+    });
+
+    /* MOBILE MENU */
     const menuButton = document.getElementById("mobileMenuButton");
     const mobileMenu = document.getElementById("mobileMenu");
 
@@ -2298,7 +2320,6 @@
     });
 
     /* SMOOTH ANCHOR SCROLL */
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
       anchor.addEventListener("click", event => {
@@ -2320,7 +2341,6 @@
     });
 
     /* DEMO MODAL */
-
     const demoButton = document.getElementById("demoButton");
     const demoModal = document.getElementById("demoModal");
     const demoModalClose = document.getElementById("demoModalClose");
@@ -2343,7 +2363,6 @@
     }
 
     demoButton.addEventListener("click", openDemo);
-
     demoModalClose.addEventListener("click", closeDemo);
 
     demoModal.addEventListener("click", event => {
@@ -2355,11 +2374,9 @@
     });
 
     /* YEAR */
-
     document.getElementById("year").textContent = new Date().getFullYear();
 
     /* REFRESH SCROLLTRIGGER */
-
     window.addEventListener("load", () => { ScrollTrigger.refresh(); });
 
   </script>

@@ -4,15 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AutFlow Studio — Your Workflow. Turned Into Software.</title>
+  <title>Auditlane — Freight Invoice Audit | Find Billing Errors Carriers Don't Flag</title>
 
-  <link rel="icon" type="image/png" href="./AutFlow-logo.png">
-  <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
+  <link rel="icon" type="image/png" href="./auditlane-logo.png">
+  <link rel="shortcut icon" type="image/png" href="./auditlane-logo.png">
 
   <meta
     name="description"
-    content="AutFlow Studio turns repetitive, manual business workflows into custom software and automation, built around how your business actually works."
+    content="Auditlane audits carrier freight invoices for duplicate charges, rate discrepancies, accessorial issues, and other billing anomalies — so your Finance and Logistics team can focus on the exceptions instead of reviewing every invoice. Get a free invoice check."
   >
+  <meta name="keywords" content="freight invoice audit, freight billing audit, carrier invoice audit, freight overcharges, freight invoice discrepancies, freight audit service, freight billing errors">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Auditlane — Freight Invoice Audit">
+  <meta property="og:description" content="We audit carrier invoices for duplicate charges, rate discrepancies, and billing anomalies — so your team can focus on the invoices that actually need a closer look.">
+  <meta property="og:image" content="./auditlane-logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Auditlane — Freight Invoice Audit">
+  <meta name="twitter:description" content="Find the freight billing errors your team doesn't have time to find. Get a free invoice check.">
 
   <!-- =========================================================
        FONTS
@@ -104,6 +113,8 @@
       --soft: rgba(255,255,255,.08);
       --border: rgba(255,255,255,.09);
       --panel: rgba(255,255,255,.025);
+      --accent: #7be8a4;
+      --warn: #e8c47b;
     }
 
     .container {
@@ -315,7 +326,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 34px;
+      gap: 30px;
     }
 
     .nav-links a {
@@ -432,11 +443,11 @@
 
       font-family: "Space Grotesk";
 
-      font-size: clamp(52px, 7.4vw, 92px);
+      font-size: clamp(46px, 6.6vw, 82px);
 
-      line-height: .95;
+      line-height: .98;
 
-      letter-spacing: -.07em;
+      letter-spacing: -.06em;
 
       font-weight: 600;
 
@@ -458,7 +469,7 @@
     }
 
     .hero-description {
-      max-width: 650px;
+      max-width: 660px;
 
       margin: 32px auto 0;
 
@@ -868,6 +879,10 @@
       overflow-wrap: break-word;
     }
 
+    .stat-change.warn {
+      color: #e8c47b;
+    }
+
     .dashboard-grid {
       display: grid;
       grid-template-columns: minmax(0,1.5fr) minmax(0,1fr);
@@ -1043,11 +1058,11 @@
     h2 {
       font-family: "Space Grotesk";
 
-      font-size: clamp(40px,5vw,60px);
+      font-size: clamp(36px,4.4vw,54px);
 
-      line-height: 1;
+      line-height: 1.05;
 
-      letter-spacing: -.06em;
+      letter-spacing: -.05em;
 
       font-weight: 600;
 
@@ -1183,10 +1198,6 @@
       margin-top: 22px;
     }
 
-    /* =========================================================
-       FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW (NEW)
-    ========================================================== */
-
     .feature-badge {
       display: inline-block;
 
@@ -1207,20 +1218,6 @@
       letter-spacing: .14em;
 
       text-transform: uppercase;
-    }
-
-    .request-answer {
-      margin-top: 18px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 18px;
-
-      font-weight: 600;
-
-      letter-spacing: -.02em;
-
-      color: #fff;
     }
 
     .equation-row {
@@ -1346,6 +1343,11 @@
       font-size: 9px;
     }
 
+    .check.check-no {
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.35);
+    }
+
     .workflow-visual {
       min-height: 440px;
 
@@ -1449,7 +1451,7 @@
     }
 
     /* =========================================================
-       TABS
+       CENTER HEADING
     ========================================================== */
 
     .center-heading {
@@ -1466,143 +1468,8 @@
       justify-content: center;
     }
 
-    .tabs {
-      max-width: 760px;
-
-      margin: 55px auto 0;
-
-      min-width: 0;
-    }
-
-    .tab-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      padding: 4px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.025);
-    }
-
-    .tab-button {
-      padding: 12px;
-
-      border-radius: 8px;
-
-      background: transparent;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 10px;
-
-      transition: .25s ease;
-
-      min-width: 0;
-    }
-
-    .tab-button.active {
-      background: #fff;
-      color: #000;
-    }
-
-    .tab-content {
-      min-height: 300px;
-
-      margin-top: 12px;
-
-      padding: 45px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.018);
-
-      min-width: 0;
-    }
-
-    .tab-panel {
-      display: none;
-      min-width: 0;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    .tab-icon {
-      width: 47px;
-      height: 47px;
-      flex: 0 0 47px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.09);
-
-      border-radius: 13px;
-
-      background: rgba(255,255,255,.045);
-
-      font-size: 16px;
-    }
-
-    .tab-panel h3 {
-      margin-top: 22px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 24px;
-
-      font-weight: 500;
-
-      letter-spacing: -.04em;
-
-      overflow-wrap: break-word;
-    }
-
-    .tab-panel p {
-      max-width: 590px;
-
-      margin-top: 13px;
-
-      color: rgba(255,255,255,.36);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 25px;
-    }
-
-    .tag {
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.02);
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 8px;
-
-      max-width: 100%;
-    }
-
     /* =========================================================
-       WHITE-LABEL MODEL FLOW + PILL ROWS
+       FLOW DIAGRAM + PILLS
     ========================================================== */
 
     .flow-diagram {
@@ -1683,10 +1550,22 @@
     .split-grid .check-item {
       color: rgba(255,255,255,.4);
       font-size: 9px;
+      align-items: flex-start;
+    }
+
+    .split-grid .check {
+      margin-top: 1px;
+    }
+
+    .split-label {
+      color: rgba(255,255,255,.22);
+      font-size: 7px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
 
     /* =========================================================
-       HOW IT WORKS / 4-UP STEP STYLE GRIDS
+       HOW IT WORKS / STEP GRIDS
     ========================================================== */
 
     .steps-grid {
@@ -1702,285 +1581,172 @@
       min-height: 200px;
     }
 
+    .steps-grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5,minmax(0,1fr));
+
+      gap: 13px;
+
+      margin-top: 65px;
+    }
+
+    .steps-grid-5 .feature-card {
+      min-height: 210px;
+    }
+
     /* =========================================================
-       CUSTOM SOFTWARE OPTIONS
+       REPORT MOCK (SAMPLE FINDINGS)
     ========================================================== */
 
-    .custom-card {
-      position: relative;
+    .report-mock {
+      margin-top: 65px;
 
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
       overflow: hidden;
-
-      padding: 65px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 25px;
-
-      background: #080808;
-
-      min-width: 0;
-    }
-
-    .custom-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      right: -150px;
-      top: -200px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(100px);
-
-      pointer-events: none;
-    }
-
-    .custom-grid {
-      position: relative;
-
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
-      gap: 70px;
-
-      align-items: center;
-
-      min-width: 0;
-    }
-
-    .custom-copy {
-      min-width: 0;
-    }
-
-    .custom-description {
-      max-width: 510px;
-
-      margin-top: 22px;
-
-      color: rgba(255,255,255,.37);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .custom-copy .button {
-      margin-top: 30px;
-    }
-
-    .custom-options {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-
-      min-width: 0;
-    }
-
-    .custom-option {
-      position: relative;
-
-      padding: 22px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 17px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.035),
-          rgba(255,255,255,.012)
-        );
-
-      overflow: hidden;
-
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease,
-        box-shadow .35s ease;
-
-      min-width: 0;
-    }
-
-    .custom-option::before {
-      content: "";
-
-      position: absolute;
-
-      width: 170px;
-      height: 170px;
-
-      top: -100px;
-      right: -80px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(35px);
-
-      transition: .4s ease;
-    }
-
-    .custom-option:hover {
-      transform: translateY(-4px);
-
-      border-color: rgba(255,255,255,.18);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.018)
-        );
+      background: #090909;
 
       box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
-    }
-
-    .custom-option:hover::before {
-      background: rgba(255,255,255,.075);
-    }
-
-    .custom-option-top {
-      position: relative;
-
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      gap: 15px;
+        0 60px 140px rgba(0,0,0,.65),
+        0 0 90px rgba(255,255,255,.02);
 
       min-width: 0;
     }
 
-    .custom-option-number {
-      width: 36px;
-      height: 36px;
-      flex: 0 0 36px;
+    .report-mock-header {
+      min-height: 52px;
 
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      border: 1px solid rgba(255,255,255,.1);
+      gap: 12px;
 
-      border-radius: 10px;
+      padding: 0 22px;
 
-      background: rgba(255,255,255,.045);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
 
-      color: rgba(255,255,255,.65);
-
+    .report-mock-label {
       font-family: "DM Mono";
-
-      font-size: 8px;
-    }
-
-    .custom-option-label {
-      color: rgba(255,255,255,.22);
-
-      font-size: 7px;
-
-      letter-spacing: .18em;
-
-      text-transform: uppercase;
-
-      text-align: right;
-
-      line-height: 1.5;
-    }
-
-    .custom-option h3 {
-      position: relative;
-
-      margin-top: 18px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 19px;
-
-      line-height: 1.15;
-
-      letter-spacing: -.035em;
-
-      font-weight: 500;
-
-      max-width: 410px;
-    }
-
-    .custom-option p {
-      position: relative;
-
-      margin-top: 10px;
-
-      color: rgba(255,255,255,.32);
-
       font-size: 9px;
-
-      line-height: 1.8;
-
-      max-width: 450px;
+      letter-spacing: .16em;
+      color: rgba(255,255,255,.55);
+      text-transform: uppercase;
     }
 
-    .custom-option-features {
-      position: relative;
-
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 6px;
-
-      margin-top: 16px;
-    }
-
-    .custom-option-feature {
-      padding: 5px 8px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
+    .report-mock-tag {
+      padding: 6px 10px;
+      border: 1px solid rgba(232,196,123,.35);
       border-radius: 999px;
-
-      background: rgba(255,255,255,.018);
-
-      color: rgba(255,255,255,.34);
-
-      font-size: 6px;
-
-      letter-spacing: .03em;
+      background: rgba(232,196,123,.08);
+      color: var(--warn);
+      font-size: 7px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .custom-option-arrow {
-      position: relative;
+    .report-mock-body {
+      padding: 30px;
+      min-width: 0;
+    }
 
+    .report-summary {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 10px;
+    }
+
+    .report-summary .stat {
+      padding: 18px;
+    }
+
+    .report-summary .stat-value {
+      font-size: 22px;
+      white-space: normal;
+    }
+
+    .report-divider {
+      height: 1px;
+      background: rgba(255,255,255,.07);
+      margin: 30px 0;
+    }
+
+    .report-finding-head {
       display: flex;
-      justify-content: flex-end;
-
-      margin-top: 17px;
-
-      color: rgba(255,255,255,.28);
-
-      font-size: 15px;
-
-      transition:
-        color .3s ease,
-        transform .3s ease;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .custom-option:hover .custom-option-arrow {
-      color: #fff;
-      transform: translateX(4px);
+    .report-finding-title {
+      font-family: "Space Grotesk";
+      font-size: 15px;
+      color: rgba(255,255,255,.8);
+    }
+
+    .report-finding-status {
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      color: rgba(255,255,255,.4);
+      font-size: 7px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .report-finding-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .report-line {
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 10px;
+      background: rgba(255,255,255,.015);
+      min-width: 0;
+    }
+
+    .report-line-label {
+      color: rgba(255,255,255,.24);
+      font-size: 7px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .report-line-value {
+      margin-top: 7px;
+      font-family: "Space Grotesk";
+      font-size: 15px;
+    }
+
+    .report-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 20px;
+      padding: 8px 12px;
+      border: 1px solid rgba(232,196,123,.3);
+      border-radius: 999px;
+      background: rgba(232,196,123,.07);
+      color: var(--warn);
+      font-size: 9px;
     }
 
     /* =========================================================
        PRICING
     ========================================================== */
+
+    .pricing-wrap {
+      max-width: 620px;
+      margin: 65px auto 0;
+    }
 
     .pricing-grid {
       display: grid;
@@ -2047,7 +1813,7 @@
 
     .pricing-amount {
       font-family: "Space Grotesk";
-      font-size: 40px;
+      font-size: 36px;
       letter-spacing: -.03em;
     }
 
@@ -2077,6 +1843,281 @@
     .pricing-card .button {
       margin-top: 28px;
       width: 100%;
+    }
+
+    .pricing-footnote {
+      max-width: 500px;
+      margin: 26px auto 0;
+      text-align: center;
+      color: rgba(255,255,255,.28);
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       LEAD FORM
+    ========================================================== */
+
+    .custom-card {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 65px;
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      border-radius: 25px;
+
+      background: #080808;
+
+      min-width: 0;
+    }
+
+    .custom-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      right: -150px;
+      top: -200px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.035);
+
+      filter: blur(100px);
+
+      pointer-events: none;
+    }
+
+    .custom-grid {
+      position: relative;
+
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+
+      gap: 70px;
+
+      align-items: start;
+
+      min-width: 0;
+    }
+
+    .custom-copy {
+      min-width: 0;
+    }
+
+    .custom-description {
+      max-width: 510px;
+
+      margin-top: 22px;
+
+      color: rgba(255,255,255,.37);
+
+      font-size: 12px;
+
+      line-height: 1.9;
+    }
+
+    .custom-copy .button {
+      margin-top: 30px;
+    }
+
+    .whatsapp-alt {
+      display: block;
+      margin-top: 16px;
+      color: rgba(255,255,255,.3);
+      font-size: 10px;
+    }
+
+    .whatsapp-alt a {
+      color: rgba(255,255,255,.55);
+      border-bottom: 1px solid rgba(255,255,255,.2);
+    }
+
+    .lead-form {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      min-width: 0;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .form-field label {
+      color: rgba(255,255,255,.35);
+      font-size: 8px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      background: rgba(255,255,255,.03);
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      transition: border-color .25s ease, background .25s ease;
+    }
+
+    .form-field select {
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,.4) 50%), linear-gradient(135deg, rgba(255,255,255,.4) 50%, transparent 50%);
+      background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+    }
+
+    .form-field select option {
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(255,255,255,.22);
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.05);
+    }
+
+    .lead-form .button {
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .form-disclaimer {
+      margin-top: 4px;
+      color: rgba(255,255,255,.22);
+      font-size: 8.5px;
+      line-height: 1.7;
+    }
+
+    .form-confirmation {
+      display: none;
+      padding: 30px;
+      border: 1px solid rgba(102,227,148,.25);
+      border-radius: 14px;
+      background: rgba(102,227,148,.05);
+    }
+
+    .form-confirmation.active {
+      display: block;
+    }
+
+    .form-confirmation.active ~ .lead-form,
+    .lead-form.hidden {
+      display: none;
+    }
+
+    .form-confirmation-title {
+      font-family: "Space Grotesk";
+      font-size: 15px;
+      color: #7be8a4;
+    }
+
+    .form-confirmation p {
+      margin-top: 10px;
+      color: rgba(255,255,255,.5);
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       FAQ
+    ========================================================== */
+
+    .faq-list {
+      max-width: 780px;
+      margin: 65px auto 0;
+
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      background: rgba(255,255,255,.018);
+      overflow: hidden;
+    }
+
+    .faq-item[open] {
+      border-color: rgba(255,255,255,.16);
+    }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+
+      padding: 20px 24px;
+
+      cursor: pointer;
+      list-style: none;
+
+      font-family: "Space Grotesk";
+      font-size: 13px;
+      color: rgba(255,255,255,.82);
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      color: rgba(255,255,255,.3);
+      font-size: 16px;
+      transition: transform .3s ease;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      color: rgba(255,255,255,.38);
+      font-size: 11px;
+      line-height: 1.9;
+      max-width: 640px;
     }
 
     /* =========================================================
@@ -2284,12 +2325,22 @@
         padding: 14px;
       }
 
-      .steps-grid {
+      .steps-grid,
+      .steps-grid-5 {
         grid-template-columns: repeat(2,minmax(0,1fr));
       }
 
       .pricing-grid {
         grid-template-columns: 1fr;
+      }
+
+      .report-summary,
+      .report-finding-grid {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+      }
+
+      .form-row {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -2396,6 +2447,11 @@
       .workflow-visual {
         min-height: 390px;
       }
+
+      .report-summary,
+      .report-finding-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
     }
 
     /* =========================================================
@@ -2422,7 +2478,7 @@
       }
 
       .hero-title {
-        font-size: clamp(46px, 10vw, 64px);
+        font-size: clamp(40px, 9vw, 58px);
       }
 
       .hero-description {
@@ -2464,7 +2520,7 @@
       }
 
       h2 {
-        font-size: clamp(38px, 8vw, 52px);
+        font-size: clamp(32px, 7vw, 46px);
       }
 
       .feature-card {
@@ -2479,10 +2535,6 @@
         padding: 42px 30px;
       }
 
-      .tab-content {
-        padding: 35px;
-      }
-
       .final-cta {
         padding: 120px 0;
       }
@@ -2491,7 +2543,17 @@
         gap: 12px;
       }
 
-      .steps-grid {
+      .steps-grid,
+      .steps-grid-5 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .report-summary,
+      .report-finding-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -2556,9 +2618,9 @@
 
       .hero-title {
         margin-top: 24px;
-        font-size: clamp(38px, 12vw, 52px);
-        letter-spacing: -.065em;
-        line-height: .98;
+        font-size: clamp(34px, 11vw, 48px);
+        letter-spacing: -.055em;
+        line-height: 1.02;
       }
 
       .hero-title .line-inner {
@@ -2752,8 +2814,8 @@
       }
 
       h2 {
-        font-size: clamp(36px, 11vw, 48px);
-        line-height: .98;
+        font-size: clamp(30px, 9vw, 42px);
+        line-height: 1.05;
       }
 
       .section-description {
@@ -2789,11 +2851,6 @@
         margin-top: 9px;
         font-size: 9px;
         line-height: 1.75;
-      }
-
-      .request-answer {
-        margin-top: 14px;
-        font-size: 15px;
       }
 
       .ownership-card {
@@ -2867,56 +2924,6 @@
         gap: 5px;
       }
 
-      .tabs {
-        margin-top: 40px;
-      }
-
-      .tab-buttons {
-        gap: 2px;
-        padding: 3px;
-        border-radius: 10px;
-      }
-
-      .tab-button {
-        padding: 11px 7px;
-        font-size: 8px;
-        line-height: 1.25;
-      }
-
-      .tab-content {
-        min-height: 0;
-        padding: 28px 20px;
-        border-radius: 14px;
-      }
-
-      .tab-icon {
-        width: 43px;
-        height: 43px;
-        flex-basis: 43px;
-      }
-
-      .tab-panel h3 {
-        margin-top: 19px;
-        font-size: 20px;
-        line-height: 1.15;
-      }
-
-      .tab-panel p {
-        margin-top: 11px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .tags {
-        gap: 6px;
-        margin-top: 21px;
-      }
-
-      .tag {
-        padding: 5px 8px;
-        font-size: 7px;
-      }
-
       .flow-node {
         padding: 13px 20px;
         font-size: 10px;
@@ -2942,59 +2949,29 @@
         line-height: 1.85;
       }
 
-      .custom-options {
-        gap: 8px;
-      }
-
-      .custom-option {
-        padding: 18px;
-        border-radius: 14px;
-      }
-
-      .custom-option-number {
-        width: 32px;
-        height: 32px;
-        flex-basis: 32px;
-        border-radius: 9px;
-        font-size: 7px;
-      }
-
-      .custom-option-label {
-        font-size: 6px;
-      }
-
-      .custom-option h3 {
-        margin-top: 15px;
-        font-size: 17px;
-      }
-
-      .custom-option p {
-        margin-top: 8px;
-        font-size: 8px;
-        line-height: 1.75;
-      }
-
-      .custom-option-features {
-        margin-top: 13px;
-        gap: 5px;
-      }
-
-      .custom-option-feature {
-        padding: 4px 7px;
-        font-size: 5.5px;
-      }
-
-      .custom-option-arrow {
-        margin-top: 13px;
-        font-size: 13px;
-      }
-
       .pricing-card {
         padding: 28px 22px;
       }
 
       .pricing-amount {
-        font-size: 32px;
+        font-size: 30px;
+      }
+
+      .report-mock-body {
+        padding: 20px;
+      }
+
+      .report-mock-header {
+        padding: 0 16px;
+      }
+
+      .faq-item summary {
+        padding: 16px 18px;
+        font-size: 12px;
+      }
+
+      .faq-answer {
+        padding: 0 18px 18px;
       }
 
       .final-cta {
@@ -3075,7 +3052,7 @@
       }
 
       .hero-title {
-        font-size: 36px;
+        font-size: 32px;
       }
 
       .hero-description {
@@ -3132,26 +3109,6 @@
 
       .workflow-box {
         width: calc(100% - 24px);
-      }
-
-      .tab-content {
-        padding: 24px 17px;
-      }
-
-      .tab-button {
-        font-size: 7px;
-      }
-
-      .custom-option {
-        padding: 16px;
-      }
-
-      .custom-option h3 {
-        font-size: 16px;
-      }
-
-      .custom-option p {
-        font-size: 7.5px;
       }
 
       .final-cta {
@@ -3360,11 +3317,11 @@
         <div>
 
           <div class="brand-name">
-            AutFlow <span>Studio</span>
+            Audit<span>lane</span>
           </div>
 
           <div class="brand-subtitle">
-            Custom Software For Your Workflow
+            Freight Invoice Audit
           </div>
 
         </div>
@@ -3373,29 +3330,33 @@
 
       <nav class="nav-links">
 
-        <a href="#product">
+        <a href="#how-it-works">
           How It Works
         </a>
 
-        <a href="#capabilities">
-          What We Solve
+        <a href="#what-we-check">
+          What We Check
         </a>
 
-        <a href="#comparison">
-          Examples
+        <a href="#sample-report">
+          Sample Report
         </a>
 
-        <a href="#preview">
-          Start Here
+        <a href="#pricing">
+          Pricing
+        </a>
+
+        <a href="#faq">
+          FAQ
         </a>
 
       </nav>
 
       <a
-        href="#get-started"
+        href="#free-check"
         class="nav-button magnetic"
       >
-        Get Started
+        Get A Free Invoice Check
       </a>
 
       <button
@@ -3409,27 +3370,31 @@
 
     <div class="mobile-menu" id="mobileMenu">
 
-      <a href="#product">
+      <a href="#how-it-works">
         How It Works
       </a>
 
-      <a href="#capabilities">
-        What We Solve
+      <a href="#what-we-check">
+        What We Check
       </a>
 
-      <a href="#comparison">
-        Examples
+      <a href="#sample-report">
+        Sample Report
       </a>
 
-      <a href="#preview">
-        Start Here
+      <a href="#pricing">
+        Pricing
+      </a>
+
+      <a href="#faq">
+        FAQ
       </a>
 
       <a
-        href="#get-started"
+        href="#free-check"
         class="mobile-cta"
       >
-        Get Started
+        Get A Free Invoice Check
       </a>
 
     </div>
@@ -3437,7 +3402,7 @@
   </header>
 
   <!-- =========================================================
-       HERO — THE OFFER, IMMEDIATELY
+       HERO
   ========================================================== -->
 
   <section class="hero">
@@ -3454,7 +3419,7 @@
 
           <span class="status-dot"></span>
 
-          CUSTOM SOFTWARE FOR REPETITIVE WORKFLOWS
+          FREIGHT INVOICE AUDIT — POTENTIAL BILLING ERRORS
 
         </div>
 
@@ -3462,19 +3427,19 @@
 
           <span class="line">
             <span class="line-inner">
-              Your Workflow.
+              Find The Freight Billing Errors
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner">
-              Turned Into Software.
+              Your Team Doesn't Have Time
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner muted">
-              Built Around How You Work.
+              To Find.
             </span>
           </span>
 
@@ -3482,35 +3447,33 @@
 
         <p class="hero-description hero-animate">
 
-          Your team already repeats the same steps every day: chasing follow-ups, entering the same data twice, moving information between tools by hand. We turn that exact process into custom software, so the repetitive parts run themselves and your team handles what actually needs a person.
+          We audit carrier invoices for duplicate charges, rate discrepancies, accessorial issues, and other billing anomalies — so your Finance and Logistics team can focus on the exceptions instead of manually reviewing every invoice.
 
         </p>
 
         <div class="hero-actions hero-animate">
 
           <a
-            href="#get-started"
+            href="#free-check"
             class="button button-primary magnetic"
           >
-            Show Us Your Workflow
+            Get A Free Invoice Check
             <span>→</span>
           </a>
 
-          <button
-            type="button"
+          <a
+            href="#how-it-works"
             class="button button-secondary magnetic"
-            id="demoButton"
           >
-            Watch An Example Build
-            <span>▶</span>
-          </button>
+            See How It Works
+          </a>
 
         </div>
 
       </div>
 
       <!-- =====================================================
-           DASHBOARD
+           DASHBOARD — SAMPLE AUDIT VIEW
       ====================================================== -->
 
       <div class="dashboard-wrapper">
@@ -3531,12 +3494,12 @@
 
               <i></i>
 
-              EXAMPLE SYSTEM PREVIEW
+              SAMPLE AUDIT — LIVE VIEW
 
             </div>
 
             <div class="browser-label">
-              ONE EXAMPLE — BUILT AROUND A WORKFLOW
+              ILLUSTRATIVE EXAMPLE — NOT A CLIENT RESULT
             </div>
 
           </div>
@@ -3546,43 +3509,43 @@
             <aside class="sidebar">
 
               <div class="sidebar-title">
-                Your Business
+                Audit Workspace
               </div>
 
               <div class="sidebar-item active">
                 <span class="sidebar-icon"></span>
-                Command Center
+                Invoice Queue
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Customers
+                Carriers
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Orders & Quotes
+                Discrepancies
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Follow-Ups
+                Rate Rules
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Automation Layer
+                Reports
               </div>
 
               <div class="sidebar-separator"></div>
 
               <div class="sidebar-title">
-                Team & Finance
+                This Engagement
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Workload Analytics
+                Audit Summary
               </div>
 
             </aside>
@@ -3594,17 +3557,17 @@
                 <div>
 
                   <div class="dashboard-eyebrow">
-                    Example System / Operations View
+                    Sample Audit / Carrier: Sample Carrier Co.
                   </div>
 
                   <div class="dashboard-heading">
-                    Your workflow. Your system.
+                    124 invoices reviewed
                   </div>
 
                 </div>
 
                 <div class="dashboard-filter">
-                  Team view ↗
+                  Last 90 days ↗
                 </div>
 
               </div>
@@ -3614,37 +3577,18 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Revenue
+                    Invoices Reviewed
                   </div>
 
                   <div
                     class="stat-value counter"
-                    data-value="24680"
-                  >
-                    $0
-                  </div>
-
-                  <div class="stat-change">
-                    +18.4%
-                  </div>
-
-                </div>
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Active Projects
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="18"
+                    data-value="124"
                   >
                     0
                   </div>
 
                   <div class="stat-change">
-                    +4
+                    1 carrier
                   </div>
 
                 </div>
@@ -3652,18 +3596,18 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Active Clients
+                    Potential Discrepancies
                   </div>
 
                   <div
                     class="stat-value counter"
-                    data-value="27"
+                    data-value="12"
                   >
                     0
                   </div>
 
-                  <div class="stat-change">
-                    +3
+                  <div class="stat-change warn">
+                    9.7% of invoices
                   </div>
 
                 </div>
@@ -3671,18 +3615,37 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Pipeline Value
+                    Potential Financial Impact
                   </div>
 
                   <div
                     class="stat-value counter"
-                    data-value="6240"
+                    data-value="18420"
                   >
                     $0
                   </div>
 
-                  <div class="stat-change">
-                    4 opportunities
+                  <div class="stat-change warn">
+                    Requires verification
+                  </div>
+
+                </div>
+
+                <div class="stat">
+
+                  <div class="stat-label">
+                    Duplicate Charges Found
+                  </div>
+
+                  <div
+                    class="stat-value counter"
+                    data-value="3"
+                  >
+                    0
+                  </div>
+
+                  <div class="stat-change warn">
+                    Flagged for review
                   </div>
 
                 </div>
@@ -3694,11 +3657,11 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Operations Overview
+                    Flagged Invoices
                   </div>
 
                   <div class="panel-subtitle">
-                    Sample data — everything in one place
+                    Illustrative example — not a client result
                   </div>
 
                   <div class="project-list">
@@ -3712,17 +3675,17 @@
                       <div class="project-info">
 
                         <div class="project-name">
-                          Client onboarding
+                          Invoice #48291 — Rate discrepancy
                         </div>
 
                         <div class="project-status">
-                          AUTOMATED
+                          REQUIRES VERIFICATION
                         </div>
 
                       </div>
 
                       <div class="project-price">
-                        $4,800
+                        $230
                       </div>
 
                     </div>
@@ -3736,17 +3699,17 @@
                       <div class="project-info">
 
                         <div class="project-name">
-                          Client follow-up
+                          Invoice #48304 — Duplicate billing
                         </div>
 
                         <div class="project-status">
-                          ACTIVE
+                          REQUIRES VERIFICATION
                         </div>
 
                       </div>
 
                       <div class="project-price">
-                        $2,400
+                        $410
                       </div>
 
                     </div>
@@ -3760,17 +3723,17 @@
                       <div class="project-info">
 
                         <div class="project-name">
-                          Project delivery
+                          Invoice #48355 — Accessorial charge
                         </div>
 
                         <div class="project-status">
-                          IN PROGRESS
+                          REQUIRES VERIFICATION
                         </div>
 
                       </div>
 
                       <div class="project-price">
-                        $1,900
+                        $95
                       </div>
 
                     </div>
@@ -3782,11 +3745,11 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Team & Finance
+                    Discrepancies By Category
                   </div>
 
                   <div class="panel-subtitle">
-                    Workload Analytics over time
+                    Sample distribution across 90 days
                   </div>
 
                   <div class="chart">
@@ -3844,18 +3807,21 @@
 
         <h2>
 
-          Rigid Software Makes
+          The Problem Isn't That
+          <br>
+
+          Your Team Isn't Checking.
           <br>
 
           <span class="muted">
-            Your Business Adapt.
+            It's That There's Too Much To Check.
           </span>
 
         </h2>
 
         <p class="section-description centered">
 
-          Work ends up scattered across spreadsheets and half-used apps. Leads wait. Follow-ups go out late. Repetitive tasks eat your team's time. We build one system around how your business actually works — whatever that work is.
+          Companies with real freight spend often work with multiple carriers, negotiated rates, accessorial charges, and fuel surcharges — spread across hundreds or thousands of invoices a month, in different formats from different systems. Reviewing every line item by hand is possible in theory. In practice, volume outpaces attention, and patterns across invoices get missed.
 
         </p>
 
@@ -3866,11 +3832,12 @@
   </section>
 
   <!-- =========================================================
-       PRODUCT / FOUNDATION — THE STARTING SYSTEM
-  ========================================================== -->
+       MANUAL REVIEW VS. OUR WORKFLOW
+  ========================================================== */
+  -->
 
   <section
-    id="product"
+    id="approach"
     class="section-border"
   >
 
@@ -3884,16 +3851,16 @@
 
             <span class="eyebrow-line"></span>
 
-            ONE EXAMPLE
+            THE APPROACH
 
           </div>
 
           <h2>
 
-            What You Saw Above
+            We Don't Replace Your Team.
 
             <span class="muted">
-              Is One Example.
+              We Help It Focus.
             </span>
           </h2>
 
@@ -3901,590 +3868,80 @@
 
         <p class="section-description reveal-right">
 
-          It's a sample of the kind of system we build: branding, workflow, processes, automations, and the functionality a business actually needs. Your own system is designed around your workflow, not a fixed template.
+          Manual review doesn't usually fail because people aren't careful. It fails because volume outpaces attention. Instead of reviewing every invoice with the same depth, our workflow narrows a large invoice set down to the specific charges that actually deserve a closer look.
 
         </p>
 
       </div>
 
-    </div>
+      <div class="split-grid reveal-scale">
 
-  </section>
+        <div class="feature-card">
 
-  <!-- =========================================================
-       WHAT WE SOLVE
-  ========================================================== -->
-
-  <section
-    id="capabilities"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="section-heading-grid">
-
-        <div class="reveal-left">
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-line"></span>
-
-            WHAT WE SOLVE
-
-          </div>
-
-          <h2>
-
-            The Problems We
-
-            <span class="muted">
-              Turn Into Software.
-            </span>
-          </h2>
-
-        </div>
-
-        <p class="section-description reveal-right">
-
-          These are patterns we see across different businesses. You don't need to know which of these apply to you — just tell us how the work is done today, and we'll find it.
-
-        </p>
-
-      </div>
-
-      <div class="feature-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ↻
-          </div>
-
-          <div class="feature-title">
-            REPETITIVE WORK
-          </div>
-
-          <div class="feature-description">
-            Tasks employees perform again and again — the same steps, the same inputs, the same outcome every time.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⇄
-          </div>
-
-          <div class="feature-title">
-            DISCONNECTED SYSTEMS
-          </div>
-
-          <div class="feature-description">
-            Information that has to be manually moved between tools because those tools don't talk to each other.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⌁
-          </div>
-
-          <div class="feature-title">
-            MANUAL FOLLOW-UP
-          </div>
-
-          <div class="feature-description">
-            Requests, leads, customers, or tasks that require someone to remember to check back in.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◷
-          </div>
-
-          <div class="feature-title">
-            SLOW INTERNAL PROCESSES
-          </div>
-
-          <div class="feature-description">
-            Approvals, coordination, scheduling, and handoffs that create delays between teams.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◈
-          </div>
-
-          <div class="feature-title">
-            SCATTERED INFORMATION
-          </div>
-
-          <div class="feature-description">
-            Data spread across spreadsheets, inboxes, CRMs, ERPs, and internal tools, with no single source of truth.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⎘
-          </div>
-
-          <div class="feature-title">
-            MANUAL REPORTING
-          </div>
-
-          <div class="feature-description">
-            People spending hours collecting and formatting information that a system could assemble on its own.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       CUSTOMIZATION — NEED SOMETHING THAT ISN'T LISTED?
-  ========================================================== -->
-
-  <section
-    id="customization"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          BEYOND THE LISTED EXAMPLES
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Have A Workflow That Isn't Listed?
-          <br>
-
-          <span class="muted">
-            It Can Still Be Built Into Software.
+          <span class="split-label">
+            TODAY
           </span>
-        </h2>
 
-        <p class="section-description centered">
-
-          The examples above are patterns, not a checklist. Your process doesn't need to match any of them — describe how your team works today, and we design around that.
-
-        </p>
-
-      </div>
-
-      <div class="steps-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
+          <div class="feature-title" style="margin-top:14px;">
+            Traditional Review
           </div>
 
-          <div class="feature-title">
-            A process that's unique to how your team works?
-          </div>
+          <div class="check-list">
 
-          <div class="request-answer">
-            We can build it.
-          </div>
+            <div class="check-item">
+              <span class="check check-no">–</span>
+              Invoice arrives from the carrier
+            </div>
 
-        </div>
+            <div class="check-item">
+              <span class="check check-no">–</span>
+              Reviewed manually, if and when there's time
+            </div>
 
-        <div class="feature-card feature-3d">
+            <div class="check-item">
+              <span class="check check-no">–</span>
+              Depth of review depends on workload and fatigue
+            </div>
 
-          <div class="feature-icon">
-            ?
-          </div>
+            <div class="check-item">
+              <span class="check check-no">–</span>
+              Patterns across hundreds of invoices are easy to miss
+            </div>
 
-          <div class="feature-title">
-            A specific automation?
-          </div>
-
-          <div class="request-answer">
-            We can build it.
           </div>
 
         </div>
 
-        <div class="feature-card feature-3d">
+        <div class="feature-card">
 
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            A custom dashboard or report?
-          </div>
-
-          <div class="request-answer">
-            We can build it.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Something else your business needs?
-          </div>
-
-          <div class="request-answer">
-            Tell us.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       HOW A WORKFLOW BECOMES SOFTWARE — EXAMPLES
-  ========================================================== -->
-
-  <section
-    id="comparison"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          FROM MANUAL TO AUTOMATED
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Every Business Has A Version
-          <br>
-
-          <span class="muted">
-            Of This Same Problem.
+          <span class="split-label">
+            WITH AUDITLANE
           </span>
-        </h2>
 
-        <p class="section-description centered">
-
-          Different companies, different work — but the shape of the problem repeats. Manual steps that could run on their own, spread across tools that don't talk to each other.
-
-        </p>
-
-      </div>
-
-      <div class="equation-row reveal-scale">
-
-        <div class="flow-node">
-          MANUAL, SCATTERED WORK
-        </div>
-
-        <div class="flow-arrow">+</div>
-
-        <div class="flow-node">
-          CUSTOM SOFTWARE
-        </div>
-
-        <div class="flow-arrow">=</div>
-
-        <div class="flow-node">
-          ONE CONNECTED SYSTEM
-        </div>
-
-      </div>
-
-      <div class="pricing-grid reveal-scale">
-
-        <div class="pricing-card">
-
-          <div class="pricing-label">
-            EXAMPLE 01
+          <div class="feature-title" style="margin-top:14px;">
+            Our Audit Workflow
           </div>
-
-          <div class="pricing-name">
-            Lead Follow-Up
-          </div>
-
-          <p class="pricing-desc">
-            Before: a request comes in, someone checks their inbox, opens a spreadsheet, checks the CRM, re-enters the same information, and sends a follow-up whenever they remember to.
-          </p>
 
           <div class="check-list">
 
             <div class="check-item">
               <span class="check">✓</span>
-              Request lands in one system automatically
+              Invoices received and extracted into structured data
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Information is captured once, not re-typed
+              Deterministic rules run the same checks on every invoice
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              Follow-ups go out on schedule, not by memory
+              Potential discrepancies are verified by a person
             </div>
 
             <div class="check-item">
               <span class="check">✓</span>
-              The team only steps in when a person is needed
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="pricing-card featured">
-
-          <div class="pricing-badge">
-            EXAMPLE
-          </div>
-
-          <div class="pricing-label">
-            EXAMPLE 02
-          </div>
-
-          <div class="pricing-name">
-            Weekly Reporting
-          </div>
-
-          <p class="pricing-desc">
-            Before: someone spends hours every week pulling numbers from different tools, pasting them into a spreadsheet, and formatting a report by hand.
-          </p>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Numbers are pulled from connected systems automatically
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              The report assembles itself on a schedule
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Errors from manual copying disappear
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              The team reviews the numbers instead of collecting them
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       YOU BRING THE WORKFLOW — WE DESIGN THE SYSTEM
-  ========================================================== -->
-
-  <section
-    id="revenue-opportunity"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          YOU DON'T NEED TO KNOW THE SOLUTION
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          You Bring The Workflow.
-          <br>
-
-          <span class="muted">
-            We Design The System.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          You don't need to know what software you need, what should be automated, or what technology to use. You just need to know your team spends too much time doing something manually. We handle the rest.
-
-        </p>
-
-      </div>
-
-      <div class="flow-diagram reveal-scale">
-
-        <div class="flow-node">
-          YOU EXPLAIN HOW THE WORK IS DONE TODAY
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          WE FIND WHAT'S REPETITIVE
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          WE DESIGN AND BUILD THE SYSTEM
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          YOUR TEAM WORKS INSIDE IT
-        </div>
-
-      </div>
-
-      <div class="ownership-card ownership-parallax" style="margin-top:70px;">
-
-        <div class="ownership-content">
-
-          <span class="small-tag">
-            EVERY WORKFLOW IS DIFFERENT
-          </span>
-
-          <h2 style="margin-top:23px;">
-
-            Describe The Process.
-
-            <br>
-
-            <span class="muted">
-              We Handle The Rest.
-            </span>
-          </h2>
-
-          <p>
-
-            Tell us what your team repeats, where information gets stuck, or what still gets done by hand. We turn that into a system built around your actual process, not a generic template.
-
-          </p>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              You explain how the work is done today
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              We identify the repetitive, manual parts
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              We design what becomes software, what gets automated, and what stays human
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              We build the system around your actual workflow
-            </div>
-
-          </div>
-
-          <p class="ownership-note">
-
-            Every system looks different, because every workflow is different.
-
-          </p>
-
-        </div>
-
-        <div class="workflow-visual">
-
-          <div class="workflow-box workflow-float">
-
-            <div class="workflow-header">
-
-              <span>
-                ◉ EXAMPLE WORKFLOW
-              </span>
-
-              <span class="workflow-active">
-                ACTIVE
-              </span>
-
-            </div>
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Request comes in
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                System checks the right information
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Automated action is taken
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Your team is notified only when needed
-              </div>
-
+              Your team gets a focused report, not a raw data dump
             </div>
 
           </div>
@@ -4514,19 +3971,25 @@
 
           <span class="eyebrow-line"></span>
 
-          HOW WE BUILD IT
+          THE PROCESS
 
           <span class="eyebrow-line"></span>
 
         </div>
 
         <h2>
-          How It Works.
+          How The Audit Works.
         </h2>
+
+        <p class="section-description centered">
+
+          You don't need to know what should be automated or what technology to use. You send us your invoices — we handle the rest, and check with you at each stage.
+
+        </p>
 
       </div>
 
-      <div class="steps-grid reveal-scale">
+      <div class="steps-grid-5 reveal-scale">
 
         <div class="feature-card feature-3d">
 
@@ -4535,11 +3998,11 @@
           </div>
 
           <div class="feature-title">
-            UNDERSTAND
+            Send Your Invoices
           </div>
 
           <div class="feature-description">
-            We learn how the work is done today: the steps, the tools, and where time gets lost.
+            Send 30–90 days of invoices from one carrier for the initial sample — PDF, CSV, or Excel. A contract or rate sheet helps, but isn't required to start.
           </div>
 
         </div>
@@ -4551,11 +4014,11 @@
           </div>
 
           <div class="feature-title">
-            DESIGN
+            We Structure The Data
           </div>
 
           <div class="feature-description">
-            We identify the repetitive, manual parts and decide what should become software, what gets automated, and what stays human.
+            Carrier, invoice number, PRO/tracking number, charge type, amount, weight, and other billing fields are extracted and normalized into one dataset.
           </div>
 
         </div>
@@ -4567,11 +4030,11 @@
           </div>
 
           <div class="feature-title">
-            BUILD
+            We Run The Checks
           </div>
 
           <div class="feature-description">
-            We build the system around your actual workflow — not a generic template.
+            Deterministic rules check for duplicate billing, rate discrepancies, accessorial issues, surcharge inconsistencies, and other anomalies.
           </div>
 
         </div>
@@ -4583,11 +4046,27 @@
           </div>
 
           <div class="feature-title">
-            DEPLOY
+            We Verify The Findings
           </div>
 
           <div class="feature-description">
-            Your system goes live and your team starts working inside it.
+            Every flagged item is reviewed by a person before it's reported as a potential discrepancy — not just a raw system output.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            05
+          </div>
+
+          <div class="feature-title">
+            You Get The Findings
+          </div>
+
+          <div class="feature-description">
+            You receive a clear report showing what was reviewed, what was flagged, and the potential financial impact of each item.
           </div>
 
         </div>
@@ -4599,11 +4078,272 @@
   </section>
 
   <!-- =========================================================
-       TELL US WHAT YOUR TEAM REPEATS — LOW-FRICTION START
+       WHAT WE CHECK
   ========================================================== -->
 
   <section
-    id="preview"
+    id="what-we-check"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="section-heading-grid">
+
+        <div class="reveal-left">
+
+          <div class="eyebrow">
+
+            <span class="eyebrow-line"></span>
+
+            WHAT WE CHECK
+
+          </div>
+
+          <h2>
+
+            Six Categories
+
+            <span class="muted">
+              Of Potential Billing Issues.
+            </span>
+          </h2>
+
+        </div>
+
+        <p class="section-description reveal-right">
+
+          Every flagged item is labeled as a potential discrepancy that requires verification — not treated as a confirmed error. We'd rather under-claim and be right than over-claim and lose your trust.
+
+        </p>
+
+      </div>
+
+      <div class="feature-grid reveal-scale">
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ⧉
+          </div>
+
+          <div class="feature-title">
+            DUPLICATE BILLING
+          </div>
+
+          <div class="feature-description">
+            Repeated invoice, shipment, or PRO/tracking patterns that may indicate the same charge billed more than once.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            %
+          </div>
+
+          <div class="feature-title">
+            RATE DISCREPANCIES
+          </div>
+
+          <div class="feature-description">
+            Billed amounts compared against agreed or contracted rates, where contract or rate sheet data is available.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            +
+          </div>
+
+          <div class="feature-title">
+            ACCESSORIAL CHARGES
+          </div>
+
+          <div class="feature-description">
+            Additional charges — detention, liftgate, residential, reclassification — that look unexpected or unsupported.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ⛽
+          </div>
+
+          <div class="feature-title">
+            FUEL &amp; SURCHARGE ISSUES
+          </div>
+
+          <div class="feature-description">
+            Surcharge calculations that appear inconsistent with the carrier's published or contracted methodology.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ⚖
+          </div>
+
+          <div class="feature-title">
+            WEIGHT &amp; SHIPMENT DATA
+          </div>
+
+          <div class="feature-description">
+            Mismatches between shipment details on record and what was actually billed.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◈
+          </div>
+
+          <div class="feature-title">
+            OTHER BILLING ANOMALIES
+          </div>
+
+          <div class="feature-description">
+            Patterns that don't fit a standard category but are unusual enough to warrant a closer look.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       SAMPLE FINDINGS / REPORT
+  ========================================================== -->
+
+  <section
+    id="sample-report"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          SAMPLE FINDINGS
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+          What A Finding Actually Looks Like.
+        </h2>
+
+        <p class="section-description centered">
+
+          Below is an illustrative example of how a flagged invoice is presented in your report. The figures are for illustration only — they are not a promise about what we'll find in your invoices.
+
+        </p>
+
+      </div>
+
+      <div class="report-mock reveal-scale">
+
+        <div class="report-mock-header">
+
+          <span class="report-mock-label">
+            Freight Audit — Sample
+          </span>
+
+          <span class="report-mock-tag">
+            Illustrative Example — Not A Client Result
+          </span>
+
+        </div>
+
+        <div class="report-mock-body">
+
+          <div class="report-summary">
+
+            <div class="stat">
+              <div class="stat-label">Invoices Reviewed</div>
+              <div class="stat-value">124</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Potential Discrepancies</div>
+              <div class="stat-value">12</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">Potential Financial Impact</div>
+              <div class="stat-value">$18,420</div>
+            </div>
+
+          </div>
+
+          <div class="report-divider"></div>
+
+          <div class="report-finding-head">
+
+            <div class="report-finding-title">
+              Invoice #48291
+            </div>
+
+            <div class="report-finding-status">
+              Status: Requires Human Verification
+            </div>
+
+          </div>
+
+          <div class="report-finding-grid">
+
+            <div class="report-line">
+              <div class="report-line-label">Billed Amount</div>
+              <div class="report-line-value">$1,480</div>
+            </div>
+
+            <div class="report-line">
+              <div class="report-line-label">Expected Amount</div>
+              <div class="report-line-value">$1,250</div>
+            </div>
+
+            <div class="report-line">
+              <div class="report-line-label">Difference</div>
+              <div class="report-line-value">$230</div>
+            </div>
+
+          </div>
+
+          <div class="report-flag">
+            ⚠ Potential rate discrepancy
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       FREE INVOICE CHECK — LEAD FORM
+  ========================================================== -->
+
+  <section
+    id="free-check"
     class="section-border"
   >
 
@@ -4616,66 +4356,319 @@
           <div class="custom-copy">
 
             <span class="small-tag">
-              YOU DON'T NEED TO KNOW WHAT YOU NEED
+              THE FREE INVOICE CHECK
             </span>
 
             <h2 style="margin-top:23px;">
 
-              Just Tell Us
+              Send A Sample.
 
               <br>
 
               <span class="muted">
-                What Your Team Repeats.
+                Find Out If There's A Problem.
               </span>
             </h2>
 
             <p class="custom-description">
-              You don't need to walk in knowing the software solution, the automation, or the technology behind it. Just tell us what takes too long, what gets copied by hand, or what keeps falling through the cracks — we'll figure out what to build.
+              Send us 30–90 days of freight invoices from one carrier — PDF, CSV, or Excel — plus a contract or rate sheet if you have one. We'll review them and show you what we find, at no cost and with no obligation. We won't promise a savings number before we've seen your data — just an honest look at what's actually in your invoices.
             </p>
 
-            <a
-              href="#get-started"
-              class="button button-primary magnetic"
-            >
-              Show Us Your Workflow
-              <span>→</span>
-            </a>
+            <span class="whatsapp-alt">
+              Prefer to talk first? Reach us directly on
+              <a href="https://wa.me/213659735828" target="_blank" rel="noopener noreferrer">WhatsApp</a>.
+            </span>
 
           </div>
 
-          <div class="custom-options">
+          <div>
 
-            <div class="custom-option">
+            <div class="form-confirmation" id="formConfirmation">
 
-              <div class="custom-option-top">
-
-                <div class="custom-option-number">
-                  01
-                </div>
-
-                <div class="custom-option-label">
-                  WHAT TO<br>SEND US
-                </div>
-
+              <div class="form-confirmation-title">
+                Request received.
               </div>
-
-              <h3>
-                Describe The Work, Not The Solution
-              </h3>
 
               <p>
-                A few sentences on how your team currently handles something is enough for us to start looking for the bottleneck.
+                Thanks — we'll review your request and get back to you with the simplest next step for sending a small invoice sample.
               </p>
 
-              <div class="custom-option-features">
-                <span class="custom-option-feature">"MY TEAM SPENDS HOURS DOING X"</span>
-                <span class="custom-option-feature">"WE COPY DATA FROM A TO B"</span>
-                <span class="custom-option-feature">"REQUESTS GET LOST BETWEEN TOOLS"</span>
+            </div>
+
+            <form class="lead-form" id="leadForm">
+
+              <div class="form-row">
+
+                <div class="form-field">
+                  <label for="fName">Name</label>
+                  <input type="text" id="fName" name="name" placeholder="Jane Rivera" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="fEmail">Work Email</label>
+                  <input type="email" id="fEmail" name="email" placeholder="jane@company.com" required>
+                </div>
+
               </div>
 
-              <div class="custom-option-arrow">
-                →
+              <div class="form-row">
+
+                <div class="form-field">
+                  <label for="fCompany">Company</label>
+                  <input type="text" id="fCompany" name="company" placeholder="Company name" required>
+                </div>
+
+                <div class="form-field">
+                  <label for="fRole">Role</label>
+                  <input type="text" id="fRole" name="role" placeholder="Controller, VP Finance, etc." required>
+                </div>
+
+              </div>
+
+              <div class="form-row">
+
+                <div class="form-field">
+                  <label for="fSpend">Approx. Annual Freight Spend</label>
+                  <select id="fSpend" name="spend">
+                    <option value="">Select a range</option>
+                    <option value="under-500k">Under $500K</option>
+                    <option value="500k-2m">$500K – $2M</option>
+                    <option value="2m-10m">$2M – $10M</option>
+                    <option value="10m-plus">$10M+</option>
+                    <option value="not-sure">Not sure</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="fCarriers">Number Of Carriers (optional)</label>
+                  <input type="text" id="fCarriers" name="carriers" placeholder="e.g. 3">
+                </div>
+
+              </div>
+
+              <div class="form-field">
+                <label for="fMessage">Message (optional)</label>
+                <textarea id="fMessage" name="message" placeholder="Anything useful for us to know before we look at your invoices."></textarea>
+              </div>
+
+              <button type="submit" class="button button-primary magnetic">
+                Request Free Invoice Check
+                <span>→</span>
+              </button>
+
+              <p class="form-disclaimer">
+                By submitting, you agree to let us review the invoices you send. This request does not commit you to a paid engagement.
+              </p>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       WHO THIS IS FOR / NOT FOR
+  ========================================================== -->
+
+  <section
+    id="who-its-for"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          WHO THIS IS FOR
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+          Built For Companies Where Manual Review Starts To Break Down.
+        </h2>
+
+        <p class="section-description centered">
+
+          Freight audit tends to make sense once volume and complexity pass a certain point. This is a general picture, not a rigid checklist.
+
+        </p>
+
+      </div>
+
+      <div class="split-grid reveal-scale">
+
+        <div class="feature-card">
+
+          <span class="split-label">
+            A LIKELY FIT
+          </span>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Manufacturers, distributors, importers, and wholesalers
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Mid-market companies with meaningful freight spend
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Multiple carriers or negotiated rate structures
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Hundreds or thousands of invoices to review
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              A Finance, AP, or Logistics team relying on manual or fragmented review
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="feature-card">
+
+          <span class="split-label">
+            PROBABLY NOT A FIT
+          </span>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check check-no">–</span>
+              Very low freight volume — a handful of invoices a month
+            </div>
+
+            <div class="check-item">
+              <span class="check check-no">–</span>
+              An existing freight-audit provider already covering the full process
+            </div>
+
+            <div class="check-item">
+              <span class="check check-no">–</span>
+              No meaningful invoice volume to review yet
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       PREVIOUS SOFTWARE WORK + VIDEO
+  ========================================================== -->
+
+  <section
+    id="portfolio"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="ownership-card ownership-parallax">
+
+        <div class="ownership-content">
+
+          <span class="small-tag">
+            BEFORE THIS AUDIT WORKFLOW
+          </span>
+
+          <h2 style="margin-top:23px;">
+
+            Built Before.
+
+            <br>
+
+            <span class="muted">
+              Built For Business.
+            </span>
+          </h2>
+
+          <p>
+
+            Before building this audit workflow, I designed and shipped a full business-management platform — authentication, role-based access, multi-tenant architecture, financial workflows, document handling, and automated business logic.
+
+          </p>
+
+          <p class="ownership-note">
+
+            This is not freight-audit software, and it isn't shown to prove freight-audit experience. It's here as proof that the systems behind this audit are built by someone who has already shipped real, working business software.
+
+          </p>
+
+          <a
+            href="#"
+            class="button button-secondary magnetic"
+            id="demoButton"
+            style="margin-top:28px;"
+          >
+            Watch A Walkthrough
+            <span>▶</span>
+          </a>
+
+        </div>
+
+        <div class="workflow-visual">
+
+          <div class="workflow-box workflow-float">
+
+            <div class="workflow-header">
+
+              <span>
+                ◉ PREVIOUS PROJECT
+              </span>
+
+              <span class="workflow-active">
+                RECORDED DEMO
+              </span>
+
+            </div>
+
+            <div class="workflow-steps">
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Multi-tenant business platform
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Auth and role-based access
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Financial workflows and documents
+              </div>
+
+              <div class="workflow-step">
+                <span class="workflow-step-dot"></span>
+                Automated business logic
               </div>
 
             </div>
@@ -4683,6 +4676,336 @@
           </div>
 
         </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       TRUST / CONFIDENTIALITY
+  ========================================================== -->
+
+  <section
+    id="trust"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          TRUST &amp; CONFIDENTIALITY
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+          Your Invoices Are Financial Documents. We Treat Them That Way.
+        </h2>
+
+      </div>
+
+      <div class="steps-grid reveal-scale">
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◐
+          </div>
+
+          <div class="feature-title">
+            CONFIDENTIALITY
+          </div>
+
+          <div class="feature-description">
+            We can sign an NDA before receiving sensitive invoices or contract data, if you'd like one in place first.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◧
+          </div>
+
+          <div class="feature-title">
+            CONTROLLED ACCESS
+          </div>
+
+          <div class="feature-description">
+            Only the people working directly on your audit have access to your files.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◨
+          </div>
+
+          <div class="feature-title">
+            DATA HANDLING
+          </div>
+
+          <div class="feature-description">
+            Your documents are used to perform the audit and retained according to an agreed data-retention policy, which we're happy to put in writing.
+          </div>
+
+        </div>
+
+        <div class="feature-card feature-3d">
+
+          <div class="feature-icon">
+            ◭
+          </div>
+
+          <div class="feature-title">
+            HOW AI IS USED
+          </div>
+
+          <div class="feature-description">
+            AI/OCR tools may assist with extracting and structuring messy documents. They don't make financial decisions — every check runs on deterministic rules, followed by human verification.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       PRICING
+  ========================================================== -->
+
+  <section
+    id="pricing"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          PRICING
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+          One Engagement. Scoped To Your Freight.
+        </h2>
+
+        <p class="section-description centered">
+
+          There's no fixed package tier to choose from — just one engagement, scoped after you've already seen real findings from your own invoices at no cost.
+
+        </p>
+
+      </div>
+
+      <div class="pricing-wrap reveal-scale">
+
+        <div class="pricing-card featured">
+
+          <div class="pricing-badge">
+            TYPICAL ENGAGEMENT
+          </div>
+
+          <div class="pricing-label">
+            FULL FREIGHT INVOICE AUDIT
+          </div>
+
+          <div class="pricing-name">
+            Full Audit Engagement
+          </div>
+
+          <div class="pricing-price">
+            <span class="pricing-amount">$5,000 – $10,000</span>
+            <span class="pricing-cadence">per engagement</span>
+          </div>
+
+          <div class="pricing-sub">
+            Final price depends on number of carriers, invoice volume, audit period, and complexity.
+          </div>
+
+          <p class="pricing-desc">
+            Structured as 50% to start and 50% on delivery. Typical timeline is 5–10 business days after we receive the required data.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Full invoice population reviewed, not just a sample
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Checks across duplicate, rate, accessorial, surcharge, and weight categories
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Every finding verified by a person before delivery
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              A clear report with potential financial impact by category
+            </div>
+
+          </div>
+
+          <a href="#free-check" class="button button-primary magnetic">
+            Start With A Free Invoice Check
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="flow-diagram reveal-scale">
+
+        <div class="flow-node">
+          SCOPE CONFIRMED
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          SIMPLE AGREEMENT SIGNED
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          50% DEPOSIT PAID
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          FULL AUDIT RUNS
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          REPORT DELIVERED
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-node">
+          REMAINING 50% PAID
+        </div>
+
+      </div>
+
+      <p class="pricing-footnote">
+        Pricing follows the free sample — we don't ask for a commitment before you've seen evidence from your own invoices.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       FAQ
+  ========================================================== -->
+
+  <section
+    id="faq"
+    class="section-border"
+  >
+
+    <div class="container section-padding">
+
+      <div class="center-heading reveal-scale">
+
+        <div class="eyebrow">
+
+          <span class="eyebrow-line"></span>
+
+          QUESTIONS
+
+          <span class="eyebrow-line"></span>
+
+        </div>
+
+        <h2>
+          Frequently Asked Questions.
+        </h2>
+
+      </div>
+
+      <div class="faq-list reveal-scale">
+
+        <details class="faq-item">
+          <summary>Do I need to change my existing software?</summary>
+          <div class="faq-answer">No. The initial audit works from exported invoice files — PDF, CSV, or Excel. No system replacement or integration is required to get started.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you need our contracts or rate sheets?</summary>
+          <div class="faq-answer">They're useful for rate validation, but the initial sample can still identify certain discrepancy categories — like duplicate billing or accessorial issues — without them.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is AI making the decisions?</summary>
+          <div class="faq-answer">No. AI may assist with extracting and structuring messy documents. Core checks run on deterministic rules, followed by human verification, before anything is reported as a finding.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can you guarantee savings?</summary>
+          <div class="faq-answer">No. We don't promise a savings number before we've reviewed your actual data. Some invoice sets have significant issues; some are clean. We won't know until we look.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if you find nothing?</summary>
+          <div class="faq-answer">We tell you honestly. A clean sample is useful information too — it means your current process is working for that carrier.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long does the audit take?</summary>
+          <div class="faq-answer">Typically 5–10 business days for the full engagement after we receive the required data. The free sample check is usually faster.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How much does it cost?</summary>
+          <div class="faq-answer">Typical full engagements run $5,000–$10,000, depending on carriers, invoice volume, audit period, and complexity. The initial invoice check is free.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What do I need to send for the free sample?</summary>
+          <div class="faq-answer">Ideally 30–90 days of invoices from one carrier, in PDF, CSV, or Excel format. A contract or rate sheet helps but isn't required.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Will this replace our Finance, AP, or Logistics team?</summary>
+          <div class="faq-answer">No. It's designed to help your existing team focus on the exceptions that deserve attention, instead of manually reviewing every invoice.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is my data confidential?</summary>
+          <div class="faq-answer">We can sign an NDA before receiving sensitive documents, and only the people working on your audit have access to your files. Ask us for our current data-handling policy in writing.</div>
+        </details>
 
       </div>
 
@@ -4709,17 +5032,17 @@
 
         <h2>
 
-          Tell Us How You Work Today.
+          Send Us How You're Billed Today.
           <br>
 
           <span class="muted">
-            We'll Turn It Into Software.
+            We'll Show You What's In It.
           </span>
         </h2>
 
         <p>
 
-          Explain the process, the steps, and where your team loses time. We'll figure out what should become software, what should be automated, and what stays human.
+          Send 30–90 days of invoices from one carrier. We'll review them and show you what we find — potential discrepancies, categorized, with the potential financial impact — at no cost and with no obligation.
 
         </p>
 
@@ -4728,19 +5051,17 @@
           <div class="hero-actions">
 
             <a
-              href="https://wa.me/213659735828"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#free-check"
               class="button button-primary magnetic"
             >
-              Show Us Your Workflow
+              Get A Free Invoice Check
               <span>→</span>
             </a>
 
           </div>
 
           <span class="availability">
-            EVERY SYSTEM IS BUILT AROUND YOUR WORKFLOW — NO FIXED PACKAGES
+            EVERY AUDIT IS SCOPED TO YOUR ACTUAL FREIGHT — NO FIXED PACKAGES
           </span>
 
         </div>
@@ -4774,14 +5095,14 @@
           class="demo-modal-label"
           id="demoModalLabel"
         >
-          AutFlow Studio / Example System
+          Auditlane / Previous Project Walkthrough
         </span>
 
         <button
           type="button"
           class="demo-modal-close"
           id="demoModalClose"
-          aria-label="Close example demo"
+          aria-label="Close walkthrough video"
         >
           ×
         </button>
@@ -4832,11 +5153,11 @@
           <div>
 
             <div class="footer-name">
-              AutFlow Studio
+              Auditlane
             </div>
 
             <div class="footer-tagline">
-              Custom software and automation built around how your business actually works.
+              Freight invoice audits for companies with real freight spend.
             </div>
 
           </div>
@@ -4848,11 +5169,11 @@
       <div class="footer-bottom">
 
         <span>
-          © <span id="year"></span> AutFlow Studio
+          © <span id="year"></span> Auditlane
         </span>
 
         <span>
-          Every system is designed around your workflow — not a fixed product.
+          Flagged items are potential discrepancies until verified. Nothing on this site is legal, accounting, or tax advice.
         </span>
 
       </div>
@@ -5219,7 +5540,7 @@
 
       scrollTrigger: {
 
-        trigger: ".feature-grid",
+        trigger: ".feature-grid, .steps-grid, .steps-grid-5, .split-grid",
 
         start: "top 78%",
 
@@ -5303,7 +5624,7 @@
       });
 
     /* =========================================================
-       OWNERSHIP SECTION
+       PORTFOLIO SECTION
     ========================================================== */
 
     gsap.from(".ownership-content", {
@@ -5371,7 +5692,7 @@
     });
 
     /* =========================================================
-       CENTER HEADINGS
+       CENTER HEADINGS / REVEAL SCALE
     ========================================================== */
 
     gsap.utils
@@ -5601,7 +5922,7 @@
     ========================================================== */
 
     document
-      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
+      .querySelectorAll("a, button, .feature-card, .pricing-card, .faq-item")
       .forEach(element => {
 
         element.addEventListener("mouseenter", () => {
@@ -5740,7 +6061,11 @@
     const demoVideo =
       document.getElementById("demoVideo");
 
-    function openDemo() {
+    function openDemo(event) {
+
+      if (event) {
+        event.preventDefault();
+      }
 
       demoModal.classList.add("active");
 
@@ -5778,10 +6103,14 @@
 
     }
 
-    demoButton.addEventListener(
-      "click",
-      openDemo
-    );
+    if (demoButton) {
+
+      demoButton.addEventListener(
+        "click",
+        openDemo
+      );
+
+    }
 
     demoModalClose.addEventListener(
       "click",
@@ -5814,6 +6143,42 @@
 
       }
     );
+
+    /* =========================================================
+       LEAD FORM SUBMISSION
+       NOTE: this currently only shows an in-page confirmation.
+       Wire this up to your real backend, CRM, or email service
+       (e.g. a POST to your own endpoint) before going live.
+    ========================================================== */
+
+    const leadForm =
+      document.getElementById("leadForm");
+
+    const formConfirmation =
+      document.getElementById("formConfirmation");
+
+    if (leadForm) {
+
+      leadForm.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        // TODO: replace this with a real submission —
+        // e.g. fetch('/api/lead', { method: 'POST', body: new FormData(leadForm) })
+        // This placeholder only confirms the request in the UI.
+
+        leadForm.classList.add("hidden");
+
+        formConfirmation.classList.add("active");
+
+        formConfirmation.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+      });
+
+    }
 
     /* =========================================================
        YEAR

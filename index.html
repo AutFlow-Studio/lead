@@ -77,7 +77,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .hero-orbit::before{content:"";position:absolute;inset:80px;border:1px solid rgba(255,255,255,.02);border-radius:50%}
 .orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:white;box-shadow:0 0 20px rgba(255,255,255,.7);left:50%;top:0}
 
-/* DASHBOARD */
+/* DASHBOARD LEGACY STRUCTURE — retained for compatibility */
 .dashboard-wrapper{position:relative;width:100%;max-width:1120px;margin:100px auto 0;perspective:1400px;min-width:0}
 .dashboard-glow{position:absolute;width:800px;height:350px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);max-width:90vw}
 .dashboard{position:relative;width:100%;max-width:100%;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 70px 150px rgba(0,0,0,.75),0 0 100px rgba(255,255,255,.025);transform-origin:center top;will-change:transform}
@@ -249,7 +249,7 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.16);font-size:7px;min-width:0}
 .footer-bottom span{min-width:0;overflow-wrap:break-word}
 
-/* MODAL (shared pattern) */
+/* MODAL */
 .demo-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
 .demo-modal.active{opacity:1;visibility:visible;pointer-events:auto}
 .demo-modal-content{position:relative;width:min(900px,100%);max-width:100%;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 50px 140px rgba(0,0,0,.8),0 0 100px rgba(255,255,255,.04);transform:translateY(24px) scale(.96);transition:transform .45s cubic-bezier(.16,1,.3,1)}
@@ -260,7 +260,6 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .demo-modal-close:hover{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
 .specialist-body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);overflow-y:auto;overscroll-behavior:contain;min-height:0}
 .specialist-photo{position:relative;min-height:420px;background:#050505;border-right:1px solid rgba(255,255,255,.07)}
-.specialist-mono{position:absolute;inset:0;display:grid;place-items:center;font-family:"Space Grotesk";font-size:72px;font-weight:600;letter-spacing:-.05em;color:rgba(255,255,255,.12)}
 .specialist-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .specialist-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.55),transparent 45%);pointer-events:none}
 .specialist-info{padding:44px 40px;min-width:0}
@@ -270,137 +269,143 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .specialist-info p{margin-top:22px;color:rgba(255,255,255,.4);font-size:12px;line-height:1.9}
 .specialist-info .button{margin-top:28px}
 
-/* AUDIT DEMO — animated walkthrough (sample data only) */
-.dm-tracker{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:22px}
-.dm-track-line{position:absolute;top:9px;left:8.333%;right:8.333%;height:1px;background:rgba(255,255,255,.1)}
-.dm-track-line i{display:block;height:100%;width:0;background:rgba(255,255,255,.65)}
-.dm-step{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(255,255,255,.28);font-size:9px;letter-spacing:.1em;text-transform:uppercase;transition:color .4s ease}
-.dm-step span{width:19px;height:19px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.14);border-radius:50%;background:#090909;font-family:"DM Mono";font-size:8px;transition:all .4s ease}
-.dm-step.done{color:rgba(255,255,255,.45)}
-.dm-step.done span{border-color:rgba(98,219,139,.5);color:#62db8b}
-.dm-step.active{color:#fff}
-.dm-step.active span{background:#fff;border-color:#fff;color:#000;box-shadow:0 0 18px rgba(255,255,255,.3)}
-.dm-stage{position:relative;height:340px;margin-top:18px}
-.dm-layer{position:absolute;inset:0;display:flex;flex-direction:column;min-width:0;opacity:0;visibility:hidden}
-.dm-center{align-items:center;justify-content:center;text-align:center}
-.dm-kicker{display:flex;align-items:center;gap:9px;color:rgba(255,255,255,.45);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
-.dm-kicker::before{content:"";width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#66e394;box-shadow:0 0 12px rgba(102,227,148,.6)}
-.dm-center .dm-kicker{justify-content:center}
-.dm-bignum{margin-top:14px;font-family:"Space Grotesk";font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.05em;line-height:1;font-size:72px}
-.dm-sub{margin-top:8px;color:rgba(255,255,255,.4);font-size:12px}
-.dm-note{margin-top:12px;color:rgba(255,255,255,.38);font-size:10px;line-height:1.6}
-.dm-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
-.dm-disclosure{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
-.dm-disclosure i{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:rgba(255,255,255,.55)}
-.dm-replay{padding:6px 11px;border:1px solid rgba(255,255,255,.1);border-radius:7px;background:rgba(255,255,255,.03);color:rgba(255,255,255,.45);font-size:9px;letter-spacing:.08em;transition:color .25s ease,border-color .25s ease,background .25s ease}
-.dm-replay:hover{color:#fff;border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.06)}
-/* stage 1 */
-.dm-ingest{position:relative;flex:1;min-height:0}
-.dm-batch{position:absolute;left:2%;top:50%;width:190px;height:200px;margin-top:-100px;z-index:3;will-change:transform}
-.dm-doc{position:absolute;width:150px;height:104px;padding:10px 11px;display:flex;flex-direction:column;gap:6px;overflow:hidden;border:1px solid rgba(255,255,255,.14);border-radius:9px;background:linear-gradient(160deg,#181818,#0d0d0d);box-shadow:0 14px 30px rgba(0,0,0,.55)}
-.dm-doc.d1{left:-6px;top:38px;transform:rotate(-9deg)}
-.dm-doc.d2{left:2px;top:30px;transform:rotate(-4deg)}
-.dm-doc.d3{left:30px;top:10px;transform:rotate(6deg)}
-.dm-doc.d4{left:36px;top:2px;transform:rotate(10deg)}
-.dm-doc.d5{left:16px;top:20px}
-.dm-doc-top{display:flex;justify-content:space-between;gap:6px;font-size:7.5px;letter-spacing:.08em;color:rgba(255,255,255,.55)}
-.dm-doc-top em{font-style:normal;font-family:"DM Mono";color:rgba(255,255,255,.4)}
-.dm-doc-carrier{font-size:9px;color:rgba(255,255,255,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dm-doc-lines{display:flex;flex-direction:column;gap:4px}
-.dm-doc-lines i{display:block;height:3px;border-radius:2px;background:rgba(255,255,255,.1)}
-.dm-doc-lines i:nth-child(2){width:78%}
-.dm-doc-lines i:nth-child(3){width:52%}
-.dm-doc-bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;font-size:8px;color:rgba(255,255,255,.4)}
-.dm-doc-bottom strong{font-family:"DM Mono";font-weight:500;font-size:9px;color:#fff}
-.dm-badge{position:absolute;left:0;right:0;top:152px;text-align:center}
-.dm-badge b{display:block;font-family:"Space Grotesk";font-size:26px;font-weight:600;letter-spacing:-.04em;line-height:1}
-.dm-badge span{display:block;margin-top:5px;color:rgba(255,255,255,.45);font-size:8.5px;letter-spacing:.2em;text-transform:uppercase}
-.dm-drop{position:absolute;right:2%;top:50%;width:44%;height:210px;margin-top:-105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;border:1.5px dashed rgba(255,255,255,.2);border-radius:18px;background:rgba(255,255,255,.015);transition:border-color .4s ease,background .4s ease,box-shadow .4s ease}
-.dm-drop-label{position:absolute;top:14px;left:0;right:0;color:rgba(255,255,255,.35);font-size:9px;letter-spacing:.2em;text-transform:uppercase}
-.dm-drop-icon{width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.14);border-radius:50%;background:rgba(255,255,255,.04);font-size:18px;color:rgba(255,255,255,.7);transition:all .4s ease}
-.dm-drop-text{padding:0 12px;color:rgba(255,255,255,.55);font-size:11px;line-height:1.5}
-.dm-drop.hot{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06);box-shadow:0 0 60px rgba(255,255,255,.1),inset 0 0 40px rgba(255,255,255,.04)}
-.dm-drop.hot .dm-drop-icon{background:#fff;color:#000;transform:translateY(3px)}
-.dm-drop.done{border-style:solid;border-color:rgba(98,219,139,.5);background:rgba(98,219,139,.05);box-shadow:0 0 50px rgba(98,219,139,.1)}
-.dm-drop.done .dm-drop-icon{border-color:rgba(98,219,139,.5);background:rgba(98,219,139,.14);color:#62db8b}
-.dm-drop.done .dm-drop-text{color:#fff}
-.dm-cursor{position:absolute;left:0;top:0;z-index:6;pointer-events:none;transform-origin:2px 2px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6))}
-/* stage 2 */
-.dm-bar{width:min(420px,100%);height:5px;margin-top:18px;overflow:hidden;border-radius:99px;background:rgba(255,255,255,.08)}
-.dm-bar i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,rgba(255,255,255,.45),#fff)}
-.dm-bar-meta{width:min(420px,100%);display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:rgba(255,255,255,.4);font-size:10px}
-.dm-dots{width:min(420px,100%);display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:5px;margin-top:20px}
-.dm-dots i{aspect-ratio:1;border-radius:3px;background:rgba(255,255,255,.07);transition:background .3s ease}
-.dm-dots i.on{background:rgba(255,255,255,.7)}
-.dm-fields{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin-top:20px}
-.dm-fields-label{margin-right:4px;color:rgba(255,255,255,.3);font-size:9px;letter-spacing:.16em;text-transform:uppercase}
-.dm-field{padding:5px 10px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.03);color:rgba(255,255,255,.7);font-size:9.5px}
-.dm-layer.complete .dm-bar i{background:#62db8b}
-.dm-layer.complete .dm-dots i.on{background:#62db8b}
-.dm-layer.complete .dm-bar-meta span:first-child{color:#62db8b}
-/* stage 3 */
-.dm-ref{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;color:rgba(255,255,255,.35);font-size:9.5px}
-.dm-ref span{padding:4px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;background:rgba(255,255,255,.025);color:rgba(255,255,255,.6)}
-.dm-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
-.dm-check{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;padding:12px 14px;border:1px solid rgba(255,255,255,.07);border-radius:10px;background:rgba(0,0,0,.25);color:rgba(255,255,255,.6);transition:border-color .4s ease,color .4s ease,background .4s ease}
-.dm-check.ok{border-color:rgba(98,219,139,.3);background:rgba(98,219,139,.035);color:#fff}
-.dm-check-main{min-width:0}
-.dm-check-main b{display:block;font-weight:500;font-size:11.5px}
-.dm-check-main small{display:block;margin-top:2px;color:rgba(255,255,255,.3);font-size:9px}
-.dm-check-state{position:relative;width:20px;height:20px;flex:0 0 20px}
-.dm-spin{position:absolute;inset:2px;border:1.5px solid rgba(255,255,255,.18);border-top-color:#fff;border-radius:50%;animation:dmspin .8s linear infinite}
-.dm-check-ok{position:absolute;inset:0;display:grid;place-items:center;border-radius:50%;background:rgba(98,219,139,.16);color:#62db8b;font-size:11px;font-style:normal}
-@keyframes dmspin{to{transform:rotate(360deg)}}
-/* stage 4 */
-.dm-queue{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:16px;align-items:center}
-.dm-queue-count{padding:4px 8px;min-width:0}
-.dm-queue-count .dm-bignum{font-size:84px}
-.dm-count-label{margin-top:12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:.16em}
-.dm-count-sub{margin-top:4px;color:rgba(255,255,255,.6);font-size:12px}
-.dm-count-meta{margin-top:8px;color:rgba(255,255,255,.3);font-size:9.5px}
-.dm-layer .panel-title{font-size:11px}
-.dm-layer .panel-subtitle{font-size:9px}
-.dm-layer .project-list{margin-top:14px;gap:7px}
-.dm-layer .project{padding:9px 12px}
-.dm-layer .project-number{width:28px;height:28px;flex-basis:28px;font-size:9px}
-.dm-layer .project-name{font-size:12px}
-.dm-layer .project-status{margin-top:3px;font-size:8.5px;letter-spacing:.12em}
-.dm-layer .project-price{font-size:12px}
-/* stage 6 */
-.dm-statement{margin-top:10px;font-family:"Space Grotesk";font-size:clamp(15px,2.3vw,24px);font-weight:600;letter-spacing:-.03em;line-height:1.15}
-.dm-statement span{color:rgba(255,255,255,.4)}
-.dm-lanes{display:flex;flex-direction:column;gap:8px;margin-top:16px}
-.dm-lane-head,.dm-lane{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.dm-lane-head div{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.42);font-size:9px;letter-spacing:.12em;text-transform:uppercase;line-height:1.3}
-.dm-person{flex:0 0 14px;color:rgba(255,255,255,.5)}
-.dm-person.busy{color:#fff;animation:dmpulse 1.2s ease-in-out infinite}
-@keyframes dmpulse{50%{opacity:.35}}
-.dm-cell{position:relative;height:48px;border:1px dashed rgba(255,255,255,.08);border-radius:10px}
-.dm-cell.c1::after,.dm-cell.c2::after{content:"→";position:absolute;right:-14px;top:50%;width:10px;transform:translateY(-50%);text-align:center;color:rgba(255,255,255,.22);font-size:11px}
-.dm-card{position:absolute;left:0;top:0;z-index:2;width:100%;height:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:#101010;box-shadow:0 10px 24px rgba(0,0,0,.45);transition:border-color .4s ease,background .4s ease}
-.dm-card-main{min-width:0}
-.dm-card-name{color:rgba(255,255,255,.85);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dm-card-state{margin-top:3px;color:rgba(255,255,255,.35);font-size:8px;letter-spacing:.12em;white-space:nowrap}
-.dm-card-amt{flex:0 0 auto;color:rgba(255,255,255,.55);font-family:"DM Mono";font-size:11px}
-.dm-card.review{border-color:rgba(255,255,255,.4)}
-.dm-card.review .dm-card-state{color:rgba(255,255,255,.7)}
-.dm-card.verified{border-color:rgba(98,219,139,.5);background:rgba(98,219,139,.07)}
-.dm-card.verified .dm-card-state{color:#62db8b}
-.dm-card.cleared{border-style:dashed}
-/* stage 7 */
-.dm-report-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.dm-tag{padding:5px 10px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:rgba(255,255,255,.5);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
-.dm-layer .stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:12px}
-.dm-layer .stat{padding:14px}
-.dm-layer .stat-label{font-size:9.5px;color:rgba(255,255,255,.4)}
-.dm-layer .stat-value{margin-top:8px;font-family:"Space Grotesk";font-size:26px;letter-spacing:-.04em}
-.dm-layer .stat-change{font-size:9px}
-.dm-layer .dashboard-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-top:10px;flex:1;min-height:0}
-.dm-layer .dashboard-grid .panel{display:flex;flex-direction:column;overflow:hidden}
-.dm-layer .check-list{margin-top:12px;gap:8px}
-.dm-layer .check-item{font-size:10.5px}
-.dm-layer .chart{height:90px;margin-top:auto;gap:5px}
-  /* RESPONSIVE */
+/* SCROLL-DRIVEN AUDIT PRODUCT FILM */
+.audit-story{position:relative;height:680vh;margin-top:92px}
+.audit-stage{position:relative;width:100%;height:calc(100vh - 118px);min-height:610px;max-height:850px}
+.audit-stage-shell{position:absolute;inset:0;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 70px 150px rgba(0,0,0,.75),0 0 100px rgba(255,255,255,.025)}
+.audit-browser-bar{height:45px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.07)}
+.audit-browser-bar .browser-status{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.4);font-size:8px}
+.audit-browser-bar .browser-status i{width:6px;height:6px;border-radius:50%;background:#5cdf8d;box-shadow:0 0 14px rgba(92,223,141,.45)}
+.audit-film{height:calc(100% - 45px);padding:24px 28px 18px;display:flex;flex-direction:column}
+.audit-topline{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.audit-kicker,.scene-label{color:rgba(255,255,255,.24);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
+.audit-title{margin-top:7px;font-family:"Space Grotesk";font-size:23px;letter-spacing:-.04em}
+.audit-step-counter{font-family:"DM Mono";color:rgba(255,255,255,.32);font-size:9px}
+.audit-viewport{position:relative;flex:1;min-height:0;margin-top:18px;overflow:hidden;border:1px solid rgba(255,255,255,.055);border-radius:15px;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.035),transparent 62%),#070707}
+.audit-scene{position:absolute;inset:0;padding:34px;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(24px) scale(.985)}
+.audit-progress{height:2px;overflow:hidden;background:rgba(255,255,255,.06);margin-top:15px}
+.audit-progress span{display:block;width:100%;height:100%;background:#fff;transform:scaleX(0);transform-origin:left}
+.audit-footnote{display:flex;justify-content:space-between;margin-top:10px;color:rgba(255,255,255,.16);font-size:6px;letter-spacing:.16em;text-transform:uppercase}
+.scene-copy{position:absolute;left:34px;top:50%;transform:translateY(-50%);width:240px}
+.scene-big-number{margin-top:18px;font-family:"Space Grotesk";font-size:64px;line-height:.9;letter-spacing:-.07em}
+.scene-big-label{margin-top:7px;font-family:"Space Grotesk";font-size:13px;letter-spacing:.08em}
+.scene-copy p{margin-top:17px;color:rgba(255,255,255,.3);font-size:9px;line-height:1.8}
+.invoice-dropzone{position:absolute;right:9%;top:50%;width:43%;height:68%;transform:translateY(-50%);border:1px dashed rgba(255,255,255,.12);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.012)}
+.invoice-dropzone.is-target{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.045);box-shadow:0 0 80px rgba(255,255,255,.08)}
+.dropzone-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:35px 35px}
+.dropzone-label,.dropzone-title,.dropzone-subtitle{position:relative}
+.dropzone-label{color:rgba(255,255,255,.3);font-size:7px;letter-spacing:.18em}
+.dropzone-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#63df8f;margin-right:6px}
+.dropzone-title{margin-top:14px;font-family:"Space Grotesk";font-size:22px}
+.dropzone-subtitle{margin-top:6px;color:rgba(255,255,255,.2);font-size:8px}
+.dropzone-ring{position:absolute;width:180px;height:180px;border:1px solid rgba(255,255,255,.05);border-radius:50%;animation:auditPulse 3s ease-in-out infinite}
+.invoice-stack{position:absolute;left:18%;top:50%;width:235px;height:190px;transform:translate(-50%,-50%);transform-style:preserve-3d}
+.invoice-card{position:absolute;width:210px;height:132px;padding:15px;border:1px solid rgba(255,255,255,.12);border-radius:13px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.018));box-shadow:0 30px 60px rgba(0,0,0,.55)}
+.invoice-card.back{left:18px;top:4px;transform:rotate(-8deg) translateZ(-25px);opacity:.42}
+.invoice-card.mid{left:9px;top:17px;transform:rotate(4deg) translateZ(-10px);opacity:.68}
+.invoice-card.front{left:0;top:31px;transform:rotate(-1deg) translateZ(10px)}
+.invoice-card-top,.invoice-card-bottom{display:flex;justify-content:space-between;font:6px "DM Mono";color:rgba(255,255,255,.4)}
+.invoice-card-line{height:4px;width:76%;margin-top:20px;border-radius:3px;background:rgba(255,255,255,.13)}
+.invoice-card-line.short{width:45%;margin-top:8px;background:rgba(255,255,255,.07)}
+.invoice-card-bottom{position:absolute;left:15px;right:15px;bottom:14px}
+.invoice-count{position:absolute;left:55px;bottom:-3px;color:rgba(255,255,255,.18);font-size:7px;letter-spacing:.12em}
+.invoice-count b{color:rgba(255,255,255,.45)}
+.demo-cursor{position:absolute;left:32%;top:35%;width:18px;height:24px;opacity:0;z-index:5;filter:drop-shadow(0 5px 12px rgba(0,0,0,.7))}
+.demo-cursor:before{content:"";display:block;width:18px;height:24px;background:#fff;clip-path:polygon(0 0,0 82%,27% 62%,51% 100%,70% 91%,46% 55%,88% 55%)}
+.demo-cursor b{position:absolute;left:16px;top:15px;padding:4px 6px;border:1px solid rgba(255,255,255,.12);border-radius:5px;background:#090909;color:rgba(255,255,255,.55);font:6px "DM Mono"}
+.processing-panel{position:absolute;left:10%;top:50%;width:52%;transform:translateY(-50%)}
+.processing-heading{margin-top:12px;font-family:"Space Grotesk";font-size:26px}
+.processing-counter{margin-top:34px;font-family:"Space Grotesk";font-size:72px;line-height:.9}
+.processing-counter small{font:10px "DM Mono";color:rgba(255,255,255,.22)}
+.processing-track{height:6px;margin-top:27px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.processing-fill{height:100%;width:0;background:#fff}
+.processing-scan{display:block;position:relative;left:-15%;width:15%;height:100%;background:#fff;opacity:.35}
+.processing-meta{display:flex;justify-content:space-between;margin-top:10px;color:rgba(255,255,255,.2);font:7px "DM Mono"}
+.processing-orbit{position:absolute;right:11%;top:50%;width:220px;height:220px;transform:translateY(-50%);border:1px solid rgba(255,255,255,.08);border-radius:50%;animation:auditSpin 16s linear infinite}
+.processing-orbit:before{content:"";position:absolute;inset:27px;border:1px solid rgba(255,255,255,.05);border-radius:50%}
+.processing-orbit span{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff}
+.processing-orbit span:nth-child(1){left:50%;top:-3px}
+.processing-orbit span:nth-child(2){right:-3px;top:50%}
+.processing-orbit span:nth-child(3){left:50%;bottom:-3px}
+.processing-orbit span:nth-child(4){left:-3px;top:50%}
+.processing-docs{position:absolute;right:19%;top:50%;display:flex;gap:4px;transform:translateY(-50%)}
+.processing-docs span{width:48px;height:66px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:8px;background:#0b0b0b;color:rgba(255,255,255,.22);font:7px "DM Mono"}
+  .checks-header,.report-header,.queue-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.checks-title,.report-title{margin-top:8px;font-family:"Space Grotesk";font-size:26px}
+.checks-scan-state,.report-status{padding:7px 9px;border:1px solid rgba(255,255,255,.08);border-radius:999px;color:rgba(255,255,255,.28);font:6px "DM Mono"}
+.checks-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:35px;margin-top:34px;height:calc(100% - 100px)}
+.checks-source-card{align-self:center;padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:15px}
+.mini-label{color:rgba(255,255,255,.18);font:6px "DM Mono";letter-spacing:.16em}
+.source-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:8px;color:rgba(255,255,255,.25)}
+.source-row b{color:rgba(255,255,255,.58);font-weight:500}
+.checks-list{display:flex;flex-direction:column;justify-content:center;gap:8px}
+.audit-check{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;padding:14px;border:1px solid rgba(255,255,255,.065);border-radius:10px;background:rgba(255,255,255,.014);color:rgba(255,255,255,.32);font-size:8px}
+.audit-check em{font:6px "DM Mono";color:rgba(255,255,255,.15);font-style:normal}
+.audit-check.active{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.045);color:#fff;transform:translateX(8px)}
+.audit-check.active em{color:#63df8f}
+.exception-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:2}
+.exception-title{margin-top:13px;font-family:"Space Grotesk";font-size:28px}
+.exception-number{margin-top:17px;font-family:"Space Grotesk";font-size:108px;line-height:.82}
+.exception-label{margin-top:9px;color:rgba(255,255,255,.45);font:9px "DM Mono"}
+.exception-disclosure{margin-top:20px;color:rgba(255,255,255,.18);font-size:6px}
+.exception-radar{position:absolute;left:50%;top:50%;width:430px;height:430px;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.055);border-radius:50%;animation:auditPulse 4s ease-in-out infinite}
+.queue-title{margin-top:8px;max-width:570px;font-family:"Space Grotesk";font-size:21px}
+.queue-badge{padding:8px 10px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:rgba(255,255,255,.35);font:6px "DM Mono"}
+.queue-layout{display:grid;grid-template-columns:1fr auto 1.8fr;align-items:center;gap:20px;height:calc(100% - 90px);max-width:900px;margin:10px auto}
+.queue-engine{padding:24px 18px;border:1px solid rgba(255,255,255,.08);border-radius:14px;text-align:center}
+.queue-engine strong{display:block;margin-top:12px;font:42px "Space Grotesk"}
+.queue-engine small{color:rgba(255,255,255,.2);font:6px "DM Mono"}
+.queue-arrow{color:rgba(255,255,255,.22);font-size:24px}
+.finding-card{display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;margin-top:8px;padding:13px;border:1px solid rgba(255,255,255,.065);border-radius:10px;background:rgba(255,255,255,.015);transform:translateX(70px);opacity:0}
+.finding-card span{color:rgba(255,255,255,.25);font:7px "DM Mono"}
+.finding-card b{color:rgba(255,255,255,.58);font-size:8px;font-weight:500}
+.finding-card em{grid-column:2;font:6px "DM Mono";color:rgba(255,255,255,.18);font-style:normal}
+.finding-card strong{color:rgba(255,255,255,.38);font:8px "DM Mono"}
+.human-heading{text-align:center}
+.human-title{margin-top:13px;font-family:"Space Grotesk";font-size:32px;line-height:1.03}
+.human-title span{color:rgba(255,255,255,.34)}
+.verification-card{position:absolute;left:50%;top:56%;width:min(780px,85%);transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.1);border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.012));overflow:hidden}
+.verification-top,.verification-result{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.25);font:6px "DM Mono"}
+.verification-body{display:grid;grid-template-columns:1.2fr .8fr;gap:25px;padding:22px}
+.verification-document{padding:20px;border:1px solid rgba(255,255,255,.06);border-radius:12px}
+.verification-document h4{margin-top:11px;font-family:"Space Grotesk";font-size:17px}
+.verification-values{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:19px}
+.verification-values span{padding:10px;border:1px solid rgba(255,255,255,.05);border-radius:8px;color:rgba(255,255,255,.2);font:6px "DM Mono"}
+.verification-values b{display:block;margin-top:4px;color:rgba(255,255,255,.58);font-size:9px}
+.verification-track{display:flex;flex-direction:column;justify-content:center;gap:17px;color:rgba(255,255,255,.25);font-size:8px}
+.verification-track div{display:flex;align-items:center;gap:10px}
+.verification-track i{width:8px;height:8px;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+.verification-track i.active{background:#fff}
+.verification-result{border-top:1px solid rgba(255,255,255,.06);border-bottom:0}
+.verification-result b{color:rgba(255,255,255,.48)}
+.report-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:25px}
+.report-stat{padding:15px;border:1px solid rgba(255,255,255,.07);border-radius:11px}
+.report-stat span{display:block;color:rgba(255,255,255,.2);font:6px "DM Mono"}
+.report-stat b{display:block;margin-top:9px;font:29px "Space Grotesk"}
+.report-stat small{display:block;margin-top:5px;color:rgba(255,255,255,.18);font-size:6px}
+.report-table{margin-top:12px;border:1px solid rgba(255,255,255,.065);border-radius:11px;overflow:hidden}
+.report-row{display:grid;grid-template-columns:1.5fr 1fr .6fr;gap:10px;padding:11px 13px;border-top:1px solid rgba(255,255,255,.045);font-size:7px;color:rgba(255,255,255,.34)}
+.report-row:first-child{border-top:0}
+.report-row.head{color:rgba(255,255,255,.16);font:6px "DM Mono"}
+.report-row b{text-align:right;color:rgba(255,255,255,.52);font-weight:500}
+.report-row span:nth-child(2){color:#63df8f}
+.report-disclosure,.complete-disclosure{text-align:center;color:rgba(255,255,255,.2);font:6px "DM Mono";letter-spacing:.13em}
+.report-disclosure{margin-top:14px}
+.complete-heading{text-align:center}
+.complete-title{margin-top:10px;font-family:"Space Grotesk";font-size:36px}
+.complete-heading p{margin:10px auto;color:rgba(255,255,255,.28);font-size:9px}
+.complete-flow{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:65px}
+.complete-flow>div{width:108px;min-height:100px;padding:14px 10px;border:1px solid rgba(255,255,255,.09);border-radius:13px;text-align:center}
+.complete-flow b,.complete-flow strong,.complete-flow small{display:block}
+.complete-flow b{color:rgba(255,255,255,.18);font:6px "DM Mono"}
+.complete-flow strong{margin-top:13px;font:11px "Space Grotesk"}
+.complete-flow small{margin-top:6px;color:rgba(255,255,255,.2);font-size:6px}
+.complete-flow i{color:rgba(255,255,255,.2);font-style:normal}
+.complete-disclosure{margin-top:42px}
+@keyframes auditPulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:.9;transform:scale(1)}}
+@keyframes auditSpin{to{transform:translateY(-50%) rotate(360deg)}}
+
+/* RESPONSIVE */
 @media(max-width:1100px){
 .container{width:min(100% - 40px,1180px)}
 .nav-links{gap:22px}
@@ -438,6 +443,26 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .who-card{flex-direction:column;align-items:flex-start;padding:42px 34px}
 .specialist-body{grid-template-columns:1fr}
 .specialist-photo{min-height:0;aspect-ratio:4/4.2;max-height:380px;border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+.audit-story{height:720vh;margin-top:65px}
+.audit-stage{height:calc(100vh - 95px);min-height:600px}
+.audit-film{padding:19px 18px 14px}
+.audit-viewport{margin-top:14px}
+.audit-scene{padding:24px}
+.audit-browser-bar{height:40px;padding:0 12px}
+.audit-browser-bar .browser-label{display:none}
+.scene-copy{left:24px;width:180px}
+.scene-big-number{font-size:52px}
+.invoice-dropzone{right:5%;width:52%}
+.invoice-stack{left:21%;transform:translate(-50%,-50%) scale(.82)}
+.processing-panel{left:7%;width:58%}
+.processing-counter{font-size:58px}
+.processing-orbit{right:4%;width:180px;height:180px}
+.checks-layout{grid-template-columns:.7fr 1.3fr;gap:18px}
+.queue-layout{grid-template-columns:.8fr auto 1.7fr;gap:10px}
+.complete-flow{flex-wrap:wrap;gap:7px}
+.complete-flow>i{display:none}
+.complete-flow>div{width:30%;min-height:80px}
+.verification-card{width:92%}
 }
 @media(max-width:760px){
 .container{width:calc(100% - 32px)}
@@ -566,6 +591,56 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 .specialist-info{padding:28px 22px 30px}
 .specialist-info h3{font-size:28px}
 .specialist-info p{font-size:11px;line-height:1.85}
+.audit-story{height:760vh;margin-top:48px}
+.audit-stage{height:calc(100vh - 88px);min-height:570px}
+.audit-browser-bar{height:38px;padding:0 9px}
+.audit-film{height:calc(100% - 38px);padding:14px 12px 10px}
+.audit-title{font-size:14px}
+.audit-viewport{margin-top:10px}
+.audit-scene{padding:16px}
+.audit-footnote{font-size:5px}
+.audit-footnote span:first-child{display:none}
+.scene-copy{left:16px;top:17%;transform:none;width:calc(100% - 32px);text-align:center}
+.scene-big-number{font-size:48px}
+.invoice-dropzone{left:10%;right:10%;top:auto;bottom:12%;width:auto;height:45%;transform:none}
+.invoice-stack{left:50%;top:55%;transform:translate(-50%,-50%) scale(.66)}
+.demo-cursor{left:45%;top:42%}
+.processing-panel{left:10%;top:34%;width:80%;transform:none;text-align:center}
+.processing-counter{margin-top:24px;font-size:50px}
+.processing-orbit{left:50%;right:auto;top:72%;width:135px;height:135px;transform:translate(-50%,-50%)}
+.processing-docs{right:auto;left:50%;top:72%;transform:translate(-50%,-50%) scale(.7)}
+.checks-layout{grid-template-columns:1fr;height:auto;margin-top:18px;gap:10px}
+.checks-source-card{padding:12px}
+.source-row{padding:7px 0;font-size:6px}
+.checks-list{gap:5px}
+.audit-check{grid-template-columns:23px 1fr auto;padding:9px;font-size:6px}
+.exception-number{font-size:82px}
+.exception-radar{width:270px;height:270px}
+.queue-title{font-size:15px}
+.queue-layout{grid-template-columns:1fr;height:auto;margin-top:18px}
+.queue-engine,.queue-arrow{display:none}
+.finding-card{grid-template-columns:25px 1fr auto;padding:10px}
+.finding-card b{font-size:6px}
+.finding-card em,.finding-card strong{font-size:5px}
+.human-title{font-size:22px}
+.verification-card{top:57%;width:94%}
+.verification-body{grid-template-columns:1fr;gap:10px;padding:12px}
+.verification-document{padding:12px}
+.verification-values{gap:4px;margin-top:11px}
+.verification-values span{padding:7px;font-size:5px}
+.verification-values b{font-size:7px}
+.verification-track{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.verification-track div{font-size:6px;flex-direction:column}
+.report-grid{grid-template-columns:repeat(2,1fr);gap:5px;margin-top:16px}
+.report-stat{padding:9px}
+.report-stat b{font-size:20px}
+.report-row{padding:8px 7px;font-size:5px}
+.complete-title{font-size:25px}
+.complete-flow{margin-top:28px;gap:5px}
+.complete-flow>div{width:31%;min-height:70px;padding:10px 6px}
+.complete-flow strong{font-size:8px;margin-top:8px}
+.complete-flow small{font-size:5px}
+.complete-disclosure{margin-top:25px;font-size:5px}
 }
 @media(max-width:380px){
 .container{width:calc(100% - 24px)}
@@ -590,96 +665,17 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 .custom-option p{font-size:7.5px}
 .final-cta{padding:85px 0}
 }
-
-/* AUDIT DEMO — RESPONSIVE */
-@media(max-width:900px){
-.dm-stage{height:350px}
+@media(prefers-reduced-motion:reduce){
+*{animation:none!important;transition:none!important}
+.audit-story{height:auto}
+.audit-stage{height:auto;min-height:0}
+.audit-stage-shell{position:relative}
+.audit-viewport{min-height:650px}
+.audit-scene{position:relative;display:none;opacity:1;visibility:hidden;transform:none}
+.audit-scene.scene-complete{display:block;visibility:visible}
+.audit-progress{display:none}
+.processing-orbit,.dropzone-ring,.exception-radar,.demo-cursor{animation:none!important;display:none}
 }
-@media(max-width:620px){
-.browser-status{font-size:7px}
-.dashboard-heading{min-height:2.4em}
-.dashboard-filter{font-size:7px}
-.dm-tracker{margin-top:18px}
-.dm-step{gap:6px;font-size:8px;letter-spacing:.04em}
-.dm-stage{height:410px;margin-top:16px}
-.dm-kicker{font-size:9px;letter-spacing:.16em}
-.dm-bignum{font-size:56px}
-.dm-sub{font-size:11px}
-.dm-disclosure{font-size:8.5px;letter-spacing:.1em}
-.dm-batch{left:0;width:130px;height:150px;margin-top:-75px}
-.dm-doc{width:108px;height:78px;padding:7px 8px;gap:4px}
-.dm-doc.d1{left:-4px;top:30px}
-.dm-doc.d2{left:2px;top:24px}
-.dm-doc.d3{left:20px;top:8px}
-.dm-doc.d4{left:24px;top:2px}
-.dm-doc.d5{left:10px;top:14px}
-.dm-doc-top{font-size:7px}
-.dm-doc-top b span{display:none}
-.dm-doc-carrier{font-size:8px}
-.dm-doc-lines i:nth-child(3){display:none}
-.dm-doc-bottom{font-size:7.5px}
-.dm-doc-bottom strong{font-size:8px}
-.dm-badge{top:104px}
-.dm-badge b{font-size:21px}
-.dm-badge span{font-size:7.5px;letter-spacing:.14em}
-.dm-drop{right:0;width:46%;height:170px;margin-top:-85px;border-radius:14px}
-.dm-drop-label{font-size:8px;letter-spacing:.14em}
-.dm-drop-icon{width:38px;height:38px}
-.dm-drop-text{font-size:10px}
-.dm-bar-meta{font-size:9.5px}
-.dm-fields{gap:5px}
-.dm-field{padding:4px 8px;font-size:9px}
-.dm-checks{grid-template-columns:1fr;gap:6px;margin-top:12px}
-.dm-check{padding:10px 12px}
-.dm-check-main b{font-size:11px}
-.dm-check-main small{display:none}
-.dm-ref{font-size:9px}
-.dm-note{font-size:9.5px}
-.dm-queue{grid-template-columns:1fr;gap:10px;align-content:start}
-.dm-queue-count{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:center;padding:0 2px}
-.dm-queue-count .dm-kicker{grid-column:1/-1}
-.dm-queue-count .dm-bignum{margin-top:8px;font-size:52px}
-.dm-count-text{margin-top:8px}
-.dm-count-label{margin-top:0;font-size:10px}
-.dm-count-sub{font-size:11px}
-.dm-count-meta{font-size:9px}
-.dm-layer .project{padding:8px 10px}
-.dm-layer .project-name{font-size:11px}
-.dm-layer .project-status{font-size:8px;letter-spacing:.08em}
-.dm-layer .project-price{font-size:11px}
-.dm-layer .panel-title{font-size:10px}
-.dm-layer .panel-subtitle{font-size:8.5px}
-.fi-extra{display:none}
-.dm-statement{font-size:15px}
-.dm-lane-head,.dm-lane{gap:8px}
-.dm-lane-head div{font-size:8px;letter-spacing:.06em}
-.dm-lanes{gap:8px;margin-top:14px}
-.dm-cell{height:54px}
-.dm-cell.c1::after,.dm-cell.c2::after{display:none}
-.dm-card{flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;padding:0 8px}
-.dm-card-name{font-size:9px;line-height:1.2;white-space:normal}
-.dm-card-state{display:none}
-.dm-card-amt{font-size:9.5px}
-.dm-layer .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-.dm-layer .stat{padding:10px}
-.dm-layer .stat-label{font-size:9px}
-.dm-layer .stat-value{margin-top:5px;font-size:21px}
-.dm-layer .stat-change{font-size:8.5px}
-.dm-layer .dashboard-grid{grid-template-columns:1fr}
-.dm-chart-panel{display:none}
-.dm-layer .check-item{font-size:10px}
-.dm-layer .check{width:18px;height:18px;flex-basis:18px}
-.dm-tag{font-size:7.5px;letter-spacing:.1em;padding:4px 8px}
-}
-@media(max-width:380px){
-.dm-stage{height:430px}
-.dm-step{font-size:7.5px;letter-spacing:.02em}
-.dm-bignum{font-size:50px}
-.dm-queue-count .dm-bignum{font-size:46px}
-.dm-drop-text{font-size:9.5px}
-.browser-status{font-size:6.5px}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -737,176 +733,29 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       </div>
     </div>
 
-    <!-- DASHBOARD / ANIMATED AUDIT DEMO -->
-    <div class="dashboard-wrapper">
-      <div class="dashboard-glow"></div>
-      <div class="dashboard" id="auditDemo">
-        <div class="browser-bar">
-          <div class="browser-dots"><span></span><span></span><span></span></div>
-          <div class="browser-status"><i></i>ILLUSTRATIVE AUDIT PREVIEW</div>
-          <div class="browser-label">SAMPLE DATA — NOT CLIENT RESULTS</div>
-        </div>
-        <div class="dashboard-body">
-          <aside class="sidebar">
-            <div class="sidebar-title">Audit Workspace</div>
-            <div class="sidebar-item active"><span class="sidebar-icon"></span>Audit Overview</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Carriers</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Invoices</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Flagged Items</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Human Verification</div>
-            <div class="sidebar-separator"></div>
-            <div class="sidebar-title">Reporting</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Findings Report</div>
-          </aside>
-          <div class="dashboard-main">
-            <div class="dashboard-header">
-              <div>
-                <div class="dashboard-eyebrow">Illustrative Sample / Audit View</div>
-                <div class="dashboard-heading" id="dmHeading">Review what the system flags.</div>
+    <!-- SCROLL-DRIVEN AUDIT PRODUCT FILM -->
+    <div class="audit-story" id="audit-story" aria-label="Illustrative scroll-controlled freight audit demonstration">
+      <div class="audit-stage">
+        <div class="audit-stage-shell">
+          <div class="audit-browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-status"><i></i><span data-audit-status>ILLUSTRATIVE AUDIT PREVIEW</span></div><div class="browser-label">SAMPLE DATA — NOT CLIENT RESULTS</div></div>
+          <div class="audit-film">
+            <div class="audit-topline"><div><div class="audit-kicker" data-audit-kicker>AUDIT WORKSPACE / INVOICE INTAKE</div><div class="audit-title" data-audit-title>Bring the freight invoices in.</div></div><div class="audit-step-counter"><span data-audit-step>01</span><span>/</span><span>08</span></div></div>
+            <div class="audit-viewport">
+              <div class="audit-scene scene-intake">
+                <div class="scene-copy"><div class="scene-label">SCENE 01 / INVOICE INTAKE</div><div class="scene-big-number">10,000</div><div class="scene-big-label">FREIGHT INVOICES</div><p>Carrier billing enters the audit workspace as a controlled batch.</p></div>
+                <div class="invoice-dropzone"><div class="dropzone-grid"></div><div class="dropzone-label"><span class="dropzone-dot"></span>AUDIT WORKSPACE</div><div class="dropzone-title">DROP INVOICES</div><div class="dropzone-subtitle">Ready to extract &amp; check</div><div class="dropzone-ring"></div></div>
+                <div class="invoice-stack"><div class="invoice-card back"><div class="invoice-card-top"><span>INV-08421</span><span>UPS</span></div><div class="invoice-card-line"></div><div class="invoice-card-line short"></div><div class="invoice-card-bottom"><span>$8,420.00</span><span>SEP 18</span></div></div><div class="invoice-card mid"><div class="invoice-card-top"><span>INV-08422</span><span>FEDEX</span></div><div class="invoice-card-line"></div><div class="invoice-card-line short"></div><div class="invoice-card-bottom"><span>$5,860.00</span><span>SEP 19</span></div></div><div class="invoice-card front"><div class="invoice-card-top"><span>INV-08423</span><span>OLD DOMINION</span></div><div class="invoice-card-line"></div><div class="invoice-card-line short"></div><div class="invoice-card-bottom"><span>$12,410.00</span><span>SEP 20</span></div></div><div class="invoice-count"><b>+9,997</b> MORE INVOICES</div></div>
+                <div class="demo-cursor"><b>DRAG</b></div>
               </div>
-              <div class="dashboard-filter">Sample period ↗</div>
+              <div class="audit-scene scene-processing"><div class="processing-panel"><div class="scene-label">SCENE 02 / SYSTEM PROCESSING</div><div class="processing-heading">PROCESSING FREIGHT INVOICES</div><div class="processing-counter"><span data-processing-count>0</span><small>/ 10,000</small></div><div class="processing-track"><div class="processing-fill"></div><span class="processing-scan"></span></div><div class="processing-meta"><span data-processing-status>EXTRACTING DOCUMENT DATA</span><span data-processing-percent>0%</span></div></div><div class="processing-orbit"><span></span><span></span><span></span><span></span></div><div class="processing-docs"><span>INV</span><span>PDF</span><span>CSV</span><span>INV</span></div></div>
+              <div class="audit-scene scene-checks"><div class="checks-header"><div><div class="scene-label">SCENE 03 / BILLING RULE CHECKS</div><div class="checks-title">CHECKING BILLING DATA</div></div><div class="checks-scan-state"><i></i>REFERENCE MATCH</div></div><div class="checks-layout"><div class="checks-source-card"><div class="mini-label">INVOICE RECORD</div><div class="source-row"><span>Carrier</span><b>OLD DOMINION</b></div><div class="source-row"><span>Invoice</span><b>INV-08423</b></div><div class="source-row"><span>Base Rate</span><b>$11,170</b></div><div class="source-row"><span>Fuel</span><b>$1,240</b></div><div class="source-row"><span>Weight</span><b>8,420 LB</b></div></div><div class="checks-list"><div class="audit-check"><span>01</span><b>CONTRACT / RATE MATCH</b><em>WAITING</em></div><div class="audit-check"><span>02</span><b>DUPLICATE CHARGES</b><em>WAITING</em></div><div class="audit-check"><span>03</span><b>ACCESSORIAL CHARGES</b><em>WAITING</em></div><div class="audit-check"><span>04</span><b>FUEL CHARGES</b><em>WAITING</em></div><div class="audit-check"><span>05</span><b>WEIGHT / QUANTITY</b><em>WAITING</em></div><div class="audit-check"><span>06</span><b>BILLING RULES</b><em>WAITING</em></div></div></div></div>
+              <div class="audit-scene scene-exceptions"><div class="exception-radar"></div><div class="exception-center"><div class="scene-label">SCENE 04 / EXCEPTIONS EMERGE</div><div class="exception-title">REVIEW QUEUE</div><div class="exception-number"><span data-flagged-count>0</span></div><div class="exception-label">FLAGGED FOR REVIEW</div><div class="exception-disclosure">POTENTIAL DISCREPANCIES — NOT CONFIRMED ERRORS</div></div></div>
+              <div class="audit-scene scene-queue"><div class="queue-heading"><div><div class="scene-label">SCENE 05 / FINDINGS MOVE INTO REVIEW</div><div class="queue-title">Potential discrepancies, organized for a person to review.</div></div><div class="queue-badge">247 FLAGGED</div></div><div class="queue-layout"><div class="queue-engine"><div class="mini-label">AUDIT ENGINE</div><strong>10,000</strong><small>INVOICES CHECKED</small></div><div class="queue-arrow">→</div><div class="review-queue"><div class="mini-label">REVIEW QUEUE</div><div class="finding-card"><span>01</span><b>RATE ABOVE CONTRACT</b><em>REQUIRES VERIFICATION</em><strong>$1,240</strong></div><div class="finding-card"><span>02</span><b>POSSIBLE DUPLICATE INVOICE</b><em>UNDER REVIEW</em><strong>$860</strong></div><div class="finding-card"><span>03</span><b>UNEXPECTED ACCESSORIAL CHARGE</b><em>REQUIRES VERIFICATION</em><strong>$410</strong></div></div></div></div>
+              <div class="audit-scene scene-human"><div class="human-heading"><div class="scene-label">SCENE 06 / HUMAN VERIFICATION</div><div class="human-title">Software Finds Exceptions.<br><span>People Verify Findings.</span></div></div><div class="verification-card"><div class="verification-top"><span>FLAGGED ITEM / INV-08423</span><span>● LIVE REVIEW</span></div><div class="verification-body"><div class="verification-document"><div class="mini-label">POTENTIAL DISCREPANCY</div><h4>RATE ABOVE CONTRACT</h4><div class="verification-values"><span>BILLED <b>$12,410</b></span><span>CONTRACT <b>$11,170</b></span><span>DIFFERENCE <b>$1,240</b></span></div></div><div class="verification-track"><div><i class="active"></i>Potential discrepancy</div><div><i></i>Reviewing</div><div><i></i>Verified</div></div></div><div class="verification-result"><span data-verification-state>REVIEWING FINDING</span><b data-verification-badge>HUMAN CHECK REQUIRED</b></div></div></div>
+              <div class="audit-scene scene-report"><div class="report-header"><div><div class="scene-label">SCENE 07 / FINAL REPORT</div><div class="report-title">AUDIT REPORT</div></div><div class="report-status">GENERATED / ILLUSTRATIVE</div></div><div class="report-grid"><div class="report-stat"><span>INVOICES PROCESSED</span><b data-report-number="10000">0</b><small>10,000 / 10,000</small></div><div class="report-stat"><span>FLAGGED FOR REVIEW</span><b data-report-number="247">0</b><small>Potential discrepancies</small></div><div class="report-stat"><span>VERIFIED BY A PERSON</span><b data-report-number="128">0</b><small>Before reporting</small></div><div class="report-stat"><span>POTENTIAL IMPACT</span><b data-report-number="18400">$0</b><small>Illustrative only</small></div></div><div class="report-table"><div class="report-row head"><span>FINDING</span><span>STATUS</span><span>POTENTIAL IMPACT</span></div><div class="report-row"><span>Rate above contract</span><span>VERIFIED</span><b>$1,240</b></div><div class="report-row"><span>Possible duplicate invoice</span><span>VERIFIED</span><b>$860</b></div><div class="report-row"><span>Unexpected accessorial charge</span><span>VERIFIED</span><b>$410</b></div></div><div class="report-disclosure">ILLUSTRATIVE SAMPLE — NOT CLIENT RESULTS</div></div>
+              <div class="audit-scene scene-complete"><div class="complete-heading"><div class="scene-label">SCENE 08 / COMPLETE SYSTEM VIEW</div><div class="complete-title">One continuous audit process.</div><p>From freight invoices to a report your team can review and act on.</p></div><div class="complete-flow"><div><b>01</b><strong>COLLECT</strong><small>Invoices</small></div><i>→</i><div><b>02</b><strong>EXTRACT</strong><small>Structured data</small></div><i>→</i><div><b>03</b><strong>CHECK</strong><small>Rules &amp; rates</small></div><i>→</i><div><b>04</b><strong>FLAG</strong><small>Exceptions</small></div><i>→</i><div><b>05</b><strong>VERIFY</strong><small>Human review</small></div><i>→</i><div><b>06</b><strong>REPORT</strong><small>Findings</small></div></div><div class="complete-disclosure">ILLUSTRATIVE SAMPLE — NOT CLIENT RESULTS</div></div>
             </div>
-
-            <div class="dm-tracker" aria-hidden="true">
-              <div class="dm-track-line"><i id="dmTrackFill"></i></div>
-              <div class="dm-step active"><span>1</span>Load</div>
-              <div class="dm-step"><span>2</span>Process</div>
-              <div class="dm-step"><span>3</span>Check</div>
-              <div class="dm-step"><span>4</span>Flag</div>
-              <div class="dm-step"><span>5</span>Verify</div>
-              <div class="dm-step"><span>6</span>Report</div>
-            </div>
-
-            <div class="dm-stage" role="img" aria-label="Animated illustration using sample data: 10,000 freight invoices are loaded, processed, checked against billing rules, flagged as potential discrepancies, verified by a person, and summarized in an audit report. Not client results.">
-
-              <!-- STAGE 1: INVOICES ENTER THE SYSTEM -->
-              <div class="dm-layer" id="dmS1">
-                <div class="dm-ingest">
-                  <div class="dm-batch" id="dmBatch">
-                    <div class="dm-doc d1"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48209</em></div><div class="dm-doc-carrier">Harbor Line Logistics</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/12</span><strong>$962.50</strong></div></div>
-                    <div class="dm-doc d2"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48210</em></div><div class="dm-doc-carrier">Summit Freight</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/12</span><strong>$2,115.00</strong></div></div>
-                    <div class="dm-doc d3"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48214</em></div><div class="dm-doc-carrier">Northline Freight</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/13</span><strong>$740.00</strong></div></div>
-                    <div class="dm-doc d4"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48216</em></div><div class="dm-doc-carrier">Cascade Carriers</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/14</span><strong>$3,090.00</strong></div></div>
-                    <div class="dm-doc d5"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48217</em></div><div class="dm-doc-carrier">Northline Freight</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/14</span><strong>$1,840.00</strong></div></div>
-                    <div class="dm-badge"><b>10,000</b><span>Freight Invoices</span></div>
-                  </div>
-                  <div class="dm-drop" id="dmDrop">
-                    <div class="dm-drop-label">Audit Workspace</div>
-                    <div class="dm-drop-icon" id="dmDropIcon">↓</div>
-                    <div class="dm-drop-text" id="dmDropText">Drop invoices to begin</div>
-                  </div>
-                  <svg class="dm-cursor" id="dmCursor" width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M2 2v19l5.2-4.6 3.6 8.2 3.6-1.6-3.6-8 7-.4L2 2z" fill="#fff" stroke="#050505" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                </div>
-              </div>
-
-              <!-- STAGE 2: PROCESSING -->
-              <div class="dm-layer dm-center" id="dmS2">
-                <div class="dm-kicker">Processing Freight Invoices</div>
-                <div class="dm-bignum" id="dmProcCount">0</div>
-                <div class="dm-sub">/ 10,000 processed</div>
-                <div class="dm-bar"><i id="dmProcBar"></i></div>
-                <div class="dm-bar-meta"><span id="dmProcPct">0%</span><span>Extracting invoice data</span></div>
-                <div class="dm-dots" id="dmDots"></div>
-                <div class="dm-fields">
-                  <span class="dm-fields-label">Extracting</span>
-                  <span class="dm-field">Carrier</span><span class="dm-field">Invoice #</span><span class="dm-field">Date</span><span class="dm-field">Amount</span><span class="dm-field">Charges</span><span class="dm-field">Weight</span>
-                </div>
-              </div>
-
-              <!-- STAGE 3: AUDIT CHECKS -->
-              <div class="dm-layer" id="dmS3">
-                <div class="dm-kicker">Checking Billing Data</div>
-                <div class="dm-ref"><span>Compared against</span><span>Contracts</span><span>Rate sheets</span><span>Billing rules</span><span>Shipment records</span></div>
-                <div class="dm-checks">
-                  <div class="dm-check"><div class="dm-check-main"><b>Contract / Rate Match</b><small>vs. contract &amp; rate sheets</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
-                  <div class="dm-check"><div class="dm-check-main"><b>Duplicate Charges</b><small>same reference billed twice</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
-                  <div class="dm-check"><div class="dm-check-main"><b>Accessorial Charges</b><small>unexpected add-on charges</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
-                  <div class="dm-check"><div class="dm-check-main"><b>Fuel Charges</b><small>vs. agreed fuel schedule</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
-                  <div class="dm-check"><div class="dm-check-main"><b>Weight / Quantity</b><small>vs. shipment records</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
-                  <div class="dm-check"><div class="dm-check-main"><b>Billing Rules</b><small>vs. your configured rules</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
-                </div>
-                <div class="dm-note" id="dmCheckNote">Checks compare invoice data to configured rules and reference information. A flag is a potential discrepancy, not a conclusion.</div>
-              </div>
-
-              <!-- STAGE 4/5: REVIEW QUEUE + FLAGGED ITEMS -->
-              <div class="dm-layer" id="dmS4">
-                <div class="dm-queue">
-                  <div class="dm-queue-count">
-                    <div class="dm-kicker">Review Queue</div>
-                    <div class="dm-bignum" id="dmFlagCount">0</div>
-                    <div class="dm-count-text">
-                      <div class="dm-count-label dm-fade">FLAGGED FOR REVIEW</div>
-                      <div class="dm-count-sub dm-fade">Potential discrepancies</div>
-                      <div class="dm-count-meta dm-fade">Out of 10,000 sample invoices</div>
-                    </div>
-                  </div>
-                  <div class="panel">
-                    <div class="panel-title">Flagged Items</div>
-                    <div class="panel-subtitle">Sample data — potential discrepancies only</div>
-                    <div class="project-list">
-                      <div class="project dm-fi"><div class="project-number">01</div><div class="project-info"><div class="project-name">Rate above contract</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$1,240</div></div>
-                      <div class="project dm-fi"><div class="project-number">02</div><div class="project-info"><div class="project-name">Possible duplicate invoice</div><div class="project-status">UNDER REVIEW</div></div><div class="project-price">$860</div></div>
-                      <div class="project dm-fi"><div class="project-number">03</div><div class="project-info"><div class="project-name">Unexpected accessorial charge</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$410</div></div>
-                      <div class="project dm-fi fi-extra"><div class="project-number">04</div><div class="project-info"><div class="project-name">Weight differs from shipment record</div><div class="project-status">UNDER REVIEW</div></div><div class="project-price">$325</div></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- STAGE 6: HUMAN VERIFICATION -->
-              <div class="dm-layer" id="dmS6">
-                <div class="dm-kicker">Human Verification</div>
-                <div class="dm-statement">Software Finds Exceptions. <span>People Verify Findings.</span></div>
-                <div class="dm-lanes">
-                  <div class="dm-lane-head">
-                    <div>Potential discrepancy</div>
-                    <div><svg class="dm-person" id="dmReviewer" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.5" fill="currentColor"/><path d="M2 12.5c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Human review</div>
-                    <div>Verified</div>
-                  </div>
-                  <div class="dm-lane"><div class="dm-cell c1"><div class="dm-card"><div class="dm-card-main"><div class="dm-card-name">Rate above contract</div><div class="dm-card-state">POTENTIAL DISCREPANCY</div></div><div class="dm-card-amt">$1,240</div></div></div><div class="dm-cell c2"></div><div class="dm-cell c3"></div></div>
-                  <div class="dm-lane"><div class="dm-cell c1"><div class="dm-card"><div class="dm-card-main"><div class="dm-card-name">Possible duplicate</div><div class="dm-card-state">POTENTIAL DISCREPANCY</div></div><div class="dm-card-amt">$860</div></div></div><div class="dm-cell c2"></div><div class="dm-cell c3"></div></div>
-                  <div class="dm-lane"><div class="dm-cell c1"><div class="dm-card"><div class="dm-card-main"><div class="dm-card-name">Accessorial charge</div><div class="dm-card-state">POTENTIAL DISCREPANCY</div></div><div class="dm-card-amt">$410</div></div></div><div class="dm-cell c2"></div><div class="dm-cell c3"></div></div>
-                </div>
-                <div class="dm-note" id="dmS6Note">Not every flagged item is an error. A person decides what is reported as a confirmed finding.</div>
-              </div>
-
-              <!-- STAGE 7: AUDIT REPORT -->
-              <div class="dm-layer" id="dmS7">
-                <div class="dm-report-head"><div class="dm-kicker">Audit Report</div><span class="dm-tag">Illustrative · Sample data</span></div>
-                <div class="stats">
-                  <div class="stat"><div class="stat-label">Invoices Processed</div><div class="stat-value dm-stat-val" data-prefix="">0</div><div class="stat-change">Sample data</div></div>
-                  <div class="stat"><div class="stat-label">Flagged For Review</div><div class="stat-value dm-stat-val" data-prefix="">0</div><div class="stat-change">Potential discrepancies</div></div>
-                  <div class="stat"><div class="stat-label">Verified By A Person</div><div class="stat-value dm-stat-val" data-prefix="">0</div><div class="stat-change">Before reporting</div></div>
-                  <div class="stat"><div class="stat-label">Illustrative Potential Impact</div><div class="stat-value dm-stat-val" data-prefix="$">$0</div><div class="stat-change">Illustrative only</div></div>
-                </div>
-                <div class="dashboard-grid">
-                  <div class="panel">
-                    <div class="panel-title">What each finding includes</div>
-                    <div class="panel-subtitle">Verified findings, structured for your team</div>
-                    <div class="check-list">
-                      <div class="check-item"><span class="check">✓</span>Invoice and charge</div>
-                      <div class="check-item"><span class="check">✓</span>Difference from the expected amount</div>
-                      <div class="check-item"><span class="check">✓</span>Reason it was flagged</div>
-                      <div class="check-item"><span class="check">✓</span>Supporting information</div>
-                      <div class="check-item"><span class="check">✓</span>Verification status</div>
-                    </div>
-                  </div>
-                  <div class="panel dm-chart-panel">
-                    <div class="panel-title">Potential Impact</div>
-                    <div class="panel-subtitle">By month, illustrative</div>
-                    <div class="chart">
-                      <div class="bar" style="height:30%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:54%"></div><div class="bar" style="height:74%"></div><div class="bar" style="height:62%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:71%"></div><div class="bar" style="height:96%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:100%"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="dm-foot">
-              <div class="dm-disclosure"><i></i>Sample data — not client results</div>
-              <button type="button" class="dm-replay" id="dmReplay" aria-label="Replay the audit preview">↻ Replay</button>
-            </div>
+            <div class="audit-progress"><span></span></div><div class="audit-footnote"><span>SCROLL TO EXPLORE</span><span>ILLUSTRATIVE SAMPLE — NOT CLIENT RESULTS</span></div>
           </div>
         </div>
       </div>
@@ -933,7 +782,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
         <div class="eyebrow"><span class="eyebrow-line"></span>THE PREVIEW ABOVE</div>
         <h2>An Illustration, <span class="muted">Not A Result.</span></h2>
       </div>
-      <p class="section-description reveal-right">The animated preview above uses sample data to show how invoices move through the audit: loaded, processed, checked, flagged, verified by a person, and reported. The numbers are illustrative. They do not represent a client or a real finding.</p>
+      <p class="section-description reveal-right">The preview above uses sample data to show how flagged items are organized for review inside the audit system. It does not represent a client or a real finding.</p>
     </div>
   </div>
 </section>
@@ -953,7 +802,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <div class="feature-card feature-3d"><div class="feature-icon">⇄</div><div class="feature-title">DUPLICATE CHARGES</div><div class="feature-description">The same invoice or shipment reference billed more than once.</div></div>
       <div class="feature-card feature-3d"><div class="feature-icon">⌁</div><div class="feature-title">ACCESSORIAL CHARGES</div><div class="feature-description">Unexpected or unauthorized accessorial charges added to an invoice.</div></div>
       <div class="feature-card feature-3d"><div class="feature-icon">◷</div><div class="feature-title">FUEL CHARGES</div><div class="feature-description">Fuel charges that do not match the agreed schedule or contract terms.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">◈</div><div class="feature-title">WEIGHT & QUANTITY</div><div class="feature-description">Billed weights or quantities that are inconsistent with shipment records.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">◈</div><div class="feature-title">WEIGHT &amp; QUANTITY</div><div class="feature-description">Billed weights or quantities that are inconsistent with shipment records.</div></div>
       <div class="feature-card feature-3d"><div class="feature-icon">⎘</div><div class="feature-title">OTHER BILLING ANOMALIES</div><div class="feature-description">Other irregularities measured against contracts and billing rules.</div></div>
     </div>
   </div>
@@ -1016,7 +865,6 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
     </div>
   </div>
 </section>
-
 <!-- METHOD -->
 <section id="method" class="section-border">
   <div class="container section-padding">
@@ -1059,7 +907,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
   </div>
 </section>
 
-<!-- HOW IT WORKS (METHODOLOGY) -->
+<!-- HOW IT WORKS -->
 <section id="how-it-works" class="section-border">
   <div class="container section-padding">
     <div class="center-heading reveal-scale">
@@ -1068,8 +916,8 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <p class="section-description centered">Invoices → automated checks → flagged exceptions → human verification → report.</p>
     </div>
     <div class="steps-grid reveal-scale">
-      <div class="feature-card feature-3d"><div class="feature-icon">01</div><div class="feature-title">COLLECT & CONFIGURE</div><div class="feature-description">You provide freight invoices from your carriers, plus contracts, rate sheets, shipment records, and billing information where available. The system is configured around your carriers, rates, and billing rules.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">02</div><div class="feature-title">EXTRACT & CHECK</div><div class="feature-description">The system extracts and structures invoice data, then checks rates, duplicates, accessorials, weights, and quantities.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">01</div><div class="feature-title">COLLECT &amp; CONFIGURE</div><div class="feature-description">You provide freight invoices from your carriers, plus contracts, rate sheets, shipment records, and billing information where available. The system is configured around your carriers, rates, and billing rules.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">02</div><div class="feature-title">EXTRACT &amp; CHECK</div><div class="feature-description">The system extracts and structures invoice data, then checks rates, duplicates, accessorials, weights, and quantities.</div></div>
       <div class="feature-card feature-3d"><div class="feature-icon">03</div><div class="feature-title">VERIFY</div><div class="feature-description">Potential discrepancies are organized, then reviewed by a person before being treated as confirmed findings.</div></div>
       <div class="feature-card feature-3d"><div class="feature-icon">04</div><div class="feature-title">REPORT</div><div class="feature-description">You receive the invoice, charge, difference, reason for the flag, supporting information, and potential financial impact.</div></div>
     </div>
@@ -1094,7 +942,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
     <div class="process-grid reveal-scale">
       <div class="feature-card feature-3d">
         <div class="feature-icon">01</div>
-        <div class="feature-title">SCOPE & CONFIGURE</div>
+        <div class="feature-title">SCOPE &amp; CONFIGURE</div>
         <div class="feature-description">We review your freight operation and establish the initial structure around:</div>
         <div class="check-list">
           <div class="check-item"><span class="check">✓</span>Carriers and contracts</div>
@@ -1105,62 +953,58 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       </div>
       <div class="feature-card feature-3d">
         <div class="feature-icon">02</div>
-        <div class="feature-title">CONTROLLED SETUP</div>
-        <div class="feature-description">The audit environment is configured specifically for your operation. This is a customized implementation around your actual carriers, rates, and rules — not a generic SaaS sign-up.</div>
+        <div class="feature-title">EXTRACT &amp; STRUCTURE</div>
+        <div class="feature-description">Invoice information is extracted and organized into a consistent audit structure.</div>
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span>Invoice fields</div>
+          <div class="check-item"><span class="check">✓</span>Shipment references</div>
+          <div class="check-item"><span class="check">✓</span>Charges and amounts</div>
+        </div>
       </div>
       <div class="feature-card feature-3d">
         <div class="feature-icon">03</div>
-        <div class="feature-title">EXTRACT & CHECK</div>
-        <div class="feature-description">Invoices are processed at scale. Relevant data is extracted and checked against:</div>
+        <div class="feature-title">AUDIT</div>
+        <div class="feature-description">The configured rules run against the invoice data to identify potential discrepancies.</div>
         <div class="check-list">
-          <div class="check-item"><span class="check">✓</span>Rates, contracts, expected charges</div>
-          <div class="check-item"><span class="check">✓</span>Duplicate-charge logic</div>
-          <div class="check-item"><span class="check">✓</span>Accessorial and fuel-charge rules</div>
-          <div class="check-item"><span class="check">✓</span>Weight and quantity information</div>
+          <div class="check-item"><span class="check">✓</span>Rates</div>
+          <div class="check-item"><span class="check">✓</span>Duplicates</div>
+          <div class="check-item"><span class="check">✓</span>Accessorials</div>
+          <div class="check-item"><span class="check">✓</span>Weights and quantities</div>
+        </div>
+      </div>
+      <div class="feature-card feature-3d">
+        <div class="feature-icon">04</div>
+        <div class="feature-title">VERIFY</div>
+        <div class="feature-description">Potential discrepancies are reviewed before they become confirmed findings.</div>
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span>Invoice evidence</div>
+          <div class="check-item"><span class="check">✓</span>Contract/rate context</div>
+          <div class="check-item"><span class="check">✓</span>Human review</div>
         </div>
       </div>
       <div class="feature-card feature-3d highlight">
-        <div class="feature-icon">04</div>
-        <div class="feature-title">HUMAN VERIFICATION</div>
-        <div class="feature-description">The system does not declare every flagged item an error. Software identifies potential discrepancies; a person reviews and verifies the important findings before they are reported as confirmed issues.</div>
-      </div>
-      <div class="feature-card feature-3d">
         <div class="feature-icon">05</div>
-        <div class="feature-title">REPORT & RESOLVE</div>
-        <div class="feature-description">Verified findings are organized into a clear report so you can investigate, resolve, and recover legitimate discrepancies where appropriate. Recovery is not guaranteed.</div>
-      </div>
-    </div>
-    <p class="process-tagline">Software Finds Exceptions. <span>People Verify Findings.</span></p>
-
-    <!-- RISK CONTROL -->
-    <div class="split-grid reveal-scale" style="margin-top:90px;">
-      <div class="feature-card">
-        <span class="small-tag">YOU STAY IN CONTROL</span>
-        <h2 style="margin-top:23px;font-size:clamp(32px,4vw,44px);">A Controlled Process, <span class="muted">Not A Leap Of Faith.</span></h2>
-        <p class="section-description" style="margin-top:20px;">You do not have to hand over everything blindly and hope the system works. The engagement is structured so that each stage is defined before the next begins.</p>
-      </div>
-      <div class="feature-card">
-        <div class="check-list" style="margin-top:0;gap:16px;">
-          <div class="check-item"><span class="check">✓</span>Scope is defined up front</div>
-          <div class="check-item"><span class="check">✓</span>The system is configured around your operation</div>
-          <div class="check-item"><span class="check">✓</span>The audit process is established before invoices are reviewed at scale</div>
-          <div class="check-item"><span class="check">✓</span>Findings are reviewed by a person before they are reported</div>
-          <div class="check-item"><span class="check">✓</span>You receive structured outputs your team can act on</div>
+        <div class="feature-title">REPORT</div>
+        <div class="feature-description">Verified findings are organized into a report your team can review and act on.</div>
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span>Invoice</div>
+          <div class="check-item"><span class="check">✓</span>Charge</div>
+          <div class="check-item"><span class="check">✓</span>Difference</div>
+          <div class="check-item"><span class="check">✓</span>Reason for flag</div>
         </div>
       </div>
     </div>
+    <div class="process-tagline">The software finds the exceptions. <span>Your team gets the findings.</span></div>
   </div>
 </section>
 
 <!-- DATA -->
 <section id="data" class="section-border">
   <div class="container section-padding">
-    <div class="section-heading-grid">
-      <div class="reveal-left">
-        <div class="eyebrow"><span class="eyebrow-line"></span>DATA HANDLING</div>
-        <h2>Your Data Stays <span class="muted">Under Your Control.</span></h2>
-      </div>
-      <p class="section-description reveal-right">Freight invoices and rate information can contain sensitive commercial data. The audit environment can be configured to run locally on your own machine or within your controlled environment, so working files can remain with you rather than being uploaded to a public SaaS dashboard.</p>
+    <div class="center-heading reveal-scale">
+      <div class="eyebrow"><span class="eyebrow-line"></span>YOUR DATA<span class="eyebrow-line"></span></div>
+      <h2>Built Around <br><span class="muted">Controlled Data.</span></h2>
+      <p class="section-description centered">The system is designed around the customer's freight invoices, contracts, rate sheets, shipment information, and billing rules rather than a generic public dashboard.</p>
     </div>
     <div class="feature-grid reveal-scale">
       <div class="feature-card feature-3d"><div class="feature-icon">▣</div><div class="feature-title">LOCAL AUDIT ENVIRONMENT</div><div class="feature-description">Designed around a customer-controlled environment instead of a shared online dashboard.</div></div>
@@ -1206,7 +1050,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
             <h3>Configured Around Your Freight Operation</h3>
             <p>Each system is built around your actual carriers, contracts, and billing rules, so your team works from one centralized place to review flagged items.</p>
             <div class="custom-option-features">
-              <span class="custom-option-feature">CARRIERS</span><span class="custom-option-feature">CONTRACTS & NEGOTIATED RATES</span><span class="custom-option-feature">RATE STRUCTURES</span><span class="custom-option-feature">BILLING RULES</span><span class="custom-option-feature">SHIPMENT DATA</span><span class="custom-option-feature">ACCESSORIAL RULES</span><span class="custom-option-feature">FUEL-CHARGE STRUCTURES</span><span class="custom-option-feature">INTERNAL WORKFLOW</span>
+              <span class="custom-option-feature">CARRIERS</span><span class="custom-option-feature">CONTRACTS &amp; NEGOTIATED RATES</span><span class="custom-option-feature">RATE STRUCTURES</span><span class="custom-option-feature">BILLING RULES</span><span class="custom-option-feature">SHIPMENT DATA</span><span class="custom-option-feature">ACCESSORIAL RULES</span><span class="custom-option-feature">FUEL-CHARGE STRUCTURES</span><span class="custom-option-feature">INTERNAL WORKFLOW</span>
             </div>
             <div class="custom-option-arrow">→</div>
           </div>
@@ -1232,7 +1076,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <div class="who-copy">
         <span class="small-tag">WHO IS BEHIND IT</span>
         <h2>Abderrahmen Hud <br><span class="muted">AutFlow Studio.</span></h2>
-        <p>Freight Audit & Recovery Specialist. Every system is built and configured personally, around your operation.</p>
+        <p>Freight Audit &amp; Recovery Specialist. Every system is built and configured personally, around your operation.</p>
       </div>
       <button type="button" class="button button-secondary magnetic" id="specialistButton2" aria-haspopup="dialog" aria-controls="specialistModal">Meet the Specialist <span aria-hidden="true">→</span></button>
     </div>
@@ -1267,17 +1111,15 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
     </div>
     <div class="specialist-body">
       <div class="specialist-photo">
-        <span class="specialist-mono" aria-hidden="true">AH</span>
-        <img src="./kadem.png" alt="Portrait of Abderrahmen Hud, Freight Audit & Recovery Specialist at AutFlow Studio" loading="lazy" onerror="this.style.display='none'">
+        <img src="/kadem.png" alt="Portrait of Abderrahmen Hud, Freight Audit &amp; Recovery Specialist at AutFlow Studio" loading="lazy">
       </div>
       <div class="specialist-info">
         <span class="small-tag">THE PERSON BEHIND THE SERVICE</span>
         <h3>Abderrahmen Hud</h3>
-        <div class="specialist-role">Freight Audit & Recovery Specialist</div>
+        <div class="specialist-role">Freight Audit &amp; Recovery Specialist</div>
         <div class="specialist-company">AutFlow Studio</div>
-        <p>Abderrahmen Hud is the Freight Audit & Recovery Specialist behind AutFlow Studio. He builds and configures custom freight invoice audit systems for companies that want tighter control over freight billing.</p>
-        <p>His work combines structured financial checks, automation, document processing, and human verification to turn large volumes of freight invoices into a controlled audit process. The service exists because billing discrepancies can stay hidden across large invoice volumes, and manual review rarely covers every invoice.</p>
-        <p>Flagged items are treated as potential discrepancies until a person has reviewed them. Engagements are scoped up front, with confidentiality and NDA expectations discussed where appropriate.</p>
+        <p>Abderrahmen Hud is the founder of AutFlow Studio, where he focuses on building and configuring custom freight invoice audit systems for companies that need tighter control over freight billing.</p>
+        <p>His work combines structured financial checks, automation, document processing, and human verification to turn large volumes of freight invoices into a controlled audit process. He built the service because freight discrepancies can stay hidden across large invoice volumes, and manual review rarely covers every invoice.</p>
         <a href="#get-started" class="button button-primary" id="specialistCta">Start Your Freight Audit System <span>→</span></a>
       </div>
     </div>
@@ -1318,20 +1160,170 @@ ScrollTrigger.create({ start: "top -60", onEnter: () => navbar.classList.add("sc
 gsap.timeline({ defaults: { ease: "power4.out" } })
   .from(".hero-title .line-inner", { yPercent: 110, duration: 1.15, stagger: .09 })
   .from(".hero-animate", { y: 25, opacity: 0, duration: .8, stagger: .1 }, "-=.65")
-  .from(".dashboard-wrapper", { y: 90, opacity: 0, scale: .94, duration: 1.4 }, "-=.45");
+  .from(".audit-stage", { y: 90, opacity: 0, scale: .94, duration: 1.4 }, "-=.45");
 
 gsap.to(".hero-orbit", { rotation: 360, duration: 80, repeat: -1, ease: "none" });
 gsap.to(".hero-content", { y: -120, opacity: .35, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-gsap.to(".dashboard", { y: 80, rotateX: 0, scale: .95, opacity: .5, ease: "none", scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 20%", end: "bottom 5%", scrub: 1.2 } });
-gsap.to(".dashboard-glow", { scale: 1.35, opacity: .8, ease: "none", scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true } });
 gsap.to(".glow-1", { y: 500, scale: 1.5, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
 gsap.to(".glow-2", { y: -300, x: 150, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
 gsap.to(".glow-3", { y: -400, x: -150, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
 
+/* SCROLL-DRIVEN AUDIT PRODUCT FILM */
+(function(){
+  const story=document.querySelector('.audit-story'),stage=document.querySelector('.audit-stage');
+  if(!story||!stage)return;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scenes=gsap.utils.toArray('.audit-scene'),step=document.querySelector('[data-audit-step]'),kicker=document.querySelector('[data-audit-kicker]'),title=document.querySelector('[data-audit-title]'),status=document.querySelector('[data-audit-status]'),bar=document.querySelector('.audit-progress span');
+  const meta=[
+    ['01','AUDIT WORKSPACE / INVOICE INTAKE','Bring the freight invoices in.','ILLUSTRATIVE AUDIT PREVIEW'],
+    ['02','AUDIT ENGINE / PROCESSING','Process the batch at scale.','PROCESSING FREIGHT INVOICES'],
+    ['03','AUDIT ENGINE / BILLING CHECKS','Compare invoices against the rules.','CHECKING BILLING DATA'],
+    ['04','AUDIT ENGINE / EXCEPTIONS','Potential discrepancies emerge.','REVIEW QUEUE'],
+    ['05','AUDIT WORKSPACE / REVIEW QUEUE','Move findings into human review.','POTENTIAL DISCREPANCIES'],
+    ['06','HUMAN VERIFICATION / REVIEW','A person verifies the finding.','HUMAN VERIFICATION'],
+    ['07','REPORTING / FINAL REPORT','Turn verified findings into a report.','AUDIT REPORT'],
+    ['08','COMPLETE SYSTEM VIEW','One continuous audit process.','ILLUSTRATIVE AUDIT PREVIEW']
+  ];
+  const setMeta=i=>{
+    const m=meta[i];
+    step.textContent=m[0];
+    kicker.textContent=m[1];
+    title.textContent=m[2];
+    status.textContent=m[3];
+    scenes.forEach((x,j)=>x.classList.toggle('is-active',j===i));
+  };
+  if(reduce){setMeta(7);return;}
+
+  const tl=gsap.timeline({
+    scrollTrigger:{
+      trigger:story,
+      start:'top top',
+      end:'bottom bottom',
+      scrub:1,
+      pin:stage,
+      pinSpacing:false,
+      anticipatePin:1,
+      invalidateOnRefresh:true,
+      onUpdate:self=>bar.style.transform=`scaleX(${self.progress})`
+    }
+  });
+
+  const hide=(i,label)=>tl.to(scenes[i],{autoAlpha:0,y:-10,scale:.985,duration:.12},label);
+  const show=(i,label)=>tl.to(scenes[i],{autoAlpha:1,y:0,scale:1,duration:.18},label);
+
+  scenes.forEach((scene,i)=>{
+    const label='s'+i;
+    tl.addLabel(label);
+
+    if(i===0){
+      const c=scene.querySelector('.demo-cursor');
+      const stack=scene.querySelector('.invoice-stack');
+      const zone=scene.querySelector('.invoice-dropzone');
+
+      tl.set(scene,{autoAlpha:1,y:0,scale:1},label)
+        .fromTo(c,{opacity:0,x:-50,y:-30},{opacity:1,x:0,y:0,duration:.18},label)
+        .to(c,{x:45,y:30,duration:.22},label+'+=.18')
+        .to(stack,{x:150,y:5,scale:.86,rotateY:-10,duration:.35},label+'+=.38')
+        .to(zone,{className:'+=is-target',duration:.12},label+'+=.63')
+        .to(stack,{x:230,scale:.68,opacity:.05,duration:.28},label+'+=.76')
+        .to(c,{x:240,opacity:0,duration:.16},label+'+=.91');
+    }
+
+    if(i===1){
+      const o={v:0};
+      const n=scene.querySelector('[data-processing-count]');
+      const pct=scene.querySelector('[data-processing-percent]');
+      const fill=scene.querySelector('.processing-fill');
+
+      hide(0,label);
+      show(1,label);
+
+      tl.to(o,{
+        v:10000,
+        duration:.95,
+        onUpdate:()=>{
+          n.textContent=Math.floor(o.v).toLocaleString();
+          pct.textContent=Math.floor(o.v/100)+'%';
+        }
+      },label+'+=.18')
+      .to(fill,{width:'100%',duration:.95},label+'+=.18');
+    }
+
+    if(i===2){
+      hide(1,label);
+      show(2,label);
+      tl.to(scene.querySelectorAll('.audit-check'),{className:'+=active',stagger:.12,duration:.08},label+'+=.18');
+    }
+
+    if(i===3){
+      const o={v:0};
+      const n=scene.querySelector('[data-flagged-count]');
+      hide(2,label);
+      show(3,label);
+      tl.to(o,{
+        v:247,
+        duration:.7,
+        onUpdate:()=>n.textContent=Math.floor(o.v).toLocaleString()
+      },label+'+=.18');
+    }
+
+    if(i===4){
+      hide(3,label);
+      show(4,label);
+      tl.to(scene.querySelectorAll('.finding-card'),{
+        x:0,
+        opacity:1,
+        stagger:.15,
+        duration:.3,
+        ease:'power3.out'
+      },label+'+=.2');
+    }
+
+    if(i===5){
+      hide(4,label);
+      show(5,label);
+      const d=scene.querySelectorAll('.verification-track i');
+      const state=scene.querySelector('[data-verification-state]');
+      const badge=scene.querySelector('[data-verification-badge]');
+
+      tl.to(d[1],{background:'#fff',duration:.12},label+'+=.3')
+        .to(d[0],{background:'transparent',duration:.12},label+'+=.3')
+        .to(state,{textContent:'FINDING VERIFIED',duration:.1},label+'+=.58')
+        .to(badge,{textContent:'VERIFIED BY A PERSON',color:'#63df8f',duration:.1},label+'+=.58')
+        .to(d[2],{background:'#63df8f',duration:.12},label+'+=.72');
+    }
+
+    if(i===6){
+      hide(5,label);
+      show(6,label);
+      tl.add(()=>{
+        scene.querySelectorAll('[data-report-number]').forEach(x=>{
+          x.textContent=x.dataset.reportNumber==='18400'
+            ? '$18,400'
+            : Number(x.dataset.reportNumber).toLocaleString();
+        });
+      },label+'+=.3');
+    }
+
+    if(i===7){
+      hide(6,label);
+      show(7,label);
+      tl.to(scene,{scale:1.02,duration:.45,ease:'power2.inOut'},label+'+=.25');
+    }
+  });
+
+  ScrollTrigger.create({
+    trigger:story,
+    start:'top top',
+    end:'bottom bottom',
+    onUpdate:self=>setMeta(Math.min(7,Math.floor(self.progress*8)))
+  });
+})();
+
 gsap.utils.toArray(".reveal-left").forEach(el => gsap.from(el, { x: -70, opacity: 0, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 82%", once: true } }));
 gsap.utils.toArray(".reveal-right").forEach(el => gsap.from(el, { x: 70, opacity: 0, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 82%", once: true } }));
 
-/* FEATURE CARDS — each grid animates when it scrolls into view */
+/* FEATURE CARDS */
 gsap.utils.toArray(".feature-grid, .steps-grid, .process-grid, .engage-grid, .split-grid").forEach(grid => {
   const cards = grid.querySelectorAll(".feature-card");
   if (!cards.length) { return; }
@@ -1354,261 +1346,13 @@ gsap.to(".workflow-float", { y: -20, duration: 2.7, repeat: -1, yoyo: true, ease
 
 gsap.utils.toArray(".reveal-scale").forEach(el => gsap.from(el, { y: 60, opacity: 0, scale: .96, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 80%", once: true } }));
 
-/* AUDIT DEMO — animated, looping walkthrough (illustrative sample data only) */
-(function () {
-  const root = document.getElementById("auditDemo");
-  if (!root) { return; }
-  const q = (s) => root.querySelector(s);
-  const qa = (s) => Array.from(root.querySelectorAll(s));
-  const fmt = (n) => Math.round(n).toLocaleString("en-US");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.querySelectorAll(".counter").forEach(counter => {
+  const target = Number(counter.dataset.value), isMoney = target > 1000, obj = { value: 0 };
+  gsap.to(obj, { value: target, duration: 1.8, ease: "power2.out", scrollTrigger: { trigger: counter, start: "top 85%", once: true },
+    onUpdate: () => { const v = Math.floor(obj.value); counter.textContent = isMoney ? "$" + v.toLocaleString() : v.toLocaleString(); } });
+});
 
-  const stage = q(".dm-stage");
-  const layers = qa(".dm-layer");
-  const s1 = q("#dmS1"), s2 = q("#dmS2"), s3 = q("#dmS3"), s4 = q("#dmS4"), s6 = q("#dmS6"), s7 = q("#dmS7");
-  const steps = qa(".dm-step");
-  const sideItems = qa(".sidebar-item");
-  const trackFill = q("#dmTrackFill");
-  const heading = q("#dmHeading");
-  const headings = [
-    "Load the freight invoices.",
-    "Process invoices at scale.",
-    "Check billing against rules.",
-    "Review what the system flags.",
-    "People verify the findings.",
-    "Receive a structured report."
-  ];
-  const sideMap = [2, 0, 1, 3, 4, 5];
-
-  const batch = q("#dmBatch"), drop = q("#dmDrop"), dropIcon = q("#dmDropIcon"), dropText = q("#dmDropText"), cursor = q("#dmCursor");
-  const procCount = q("#dmProcCount"), procBar = q("#dmProcBar"), procPct = q("#dmProcPct"), dotsWrap = q("#dmDots");
-  for (let i = 0; i < 48; i++) { dotsWrap.appendChild(document.createElement("i")); }
-  const dots = Array.from(dotsWrap.children);
-  const pills = qa(".dm-field");
-  const checks = qa(".dm-check"), checkNote = q("#dmCheckNote");
-  const flagCount = q("#dmFlagCount"), queueBits = qa(".dm-fade"), flagItems = qa(".dm-fi");
-  const lanes = qa(".dm-lane"), cards = qa(".dm-card"), s6Note = q("#dmS6Note"), reviewer = q("#dmReviewer");
-  const statVals = qa(".dm-stat-val"), reportBars = qa("#dmS7 .bar"), reportChecks = qa("#dmS7 .check-item");
-  const finals = [10000, 247, 128, 18400];
-
-  const cardStates = {
-    potential: ["POTENTIAL DISCREPANCY", ""],
-    review: ["UNDER HUMAN REVIEW", "review"],
-    verified: ["VERIFIED ✓", "verified"],
-    cleared: ["CLEARED — NOT AN ISSUE", "cleared"]
-  };
-  function setCard(card, key) {
-    card.classList.remove("review", "verified", "cleared");
-    if (cardStates[key][1]) { card.classList.add(cardStates[key][1]); }
-    card.querySelector(".dm-card-state").textContent = cardStates[key][0];
-  }
-
-  function setStep(i) {
-    steps.forEach((s, k) => { s.classList.toggle("active", k === i); s.classList.toggle("done", k < i); });
-    sideItems.forEach((s, k) => s.classList.toggle("active", k === sideMap[i]));
-    gsap.to(trackFill, { width: (i / 5 * 100) + "%", duration: .8, ease: "power2.inOut", overwrite: true });
-    heading.textContent = headings[i];
-    gsap.fromTo(heading, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: .5, ease: "power2.out", overwrite: true });
-  }
-
-  function reset() {
-    gsap.set(layers, { autoAlpha: 0, y: 0, scale: 1 });
-    gsap.set(batch, { x: 0, y: 0, scale: 1, autoAlpha: 1 });
-    gsap.set(cursor, { x: 0, y: 0, scale: 1, autoAlpha: 0 });
-    drop.classList.remove("hot", "done");
-    dropIcon.textContent = "↓";
-    dropText.textContent = "Drop invoices to begin";
-    s2.classList.remove("complete");
-    procCount.textContent = "0";
-    procBar.style.width = "0%";
-    procPct.textContent = "0%";
-    dots.forEach(d => d.classList.remove("on"));
-    gsap.set(pills, { opacity: .3 });
-    gsap.set(checks, { autoAlpha: 0, y: 12 });
-    checks.forEach(c => c.classList.remove("ok"));
-    gsap.set(qa(".dm-spin"), { autoAlpha: 0 });
-    gsap.set(qa(".dm-check-ok"), { autoAlpha: 0, scale: .3 });
-    gsap.set(checkNote, { autoAlpha: 0, y: 8 });
-    flagCount.textContent = "0";
-    gsap.set(queueBits, { autoAlpha: 0, y: 8 });
-    gsap.set(flagItems, { autoAlpha: 0, x: 18 });
-    gsap.set(cards, { x: 0, autoAlpha: 0 });
-    cards.forEach(c => setCard(c, "potential"));
-    gsap.set(s6Note, { autoAlpha: 0, y: 8 });
-    reviewer.classList.remove("busy");
-    statVals.forEach(v => { v.textContent = (v.dataset.prefix || "") + "0"; });
-    gsap.set(reportBars, { scaleY: 0, transformOrigin: "50% 100%" });
-    gsap.set(reportChecks, { autoAlpha: 0, x: -8 });
-  }
-
-  function staticState() {
-    reset();
-    setStep(5);
-    gsap.set(s7, { autoAlpha: 1 });
-    statVals.forEach((v, i) => { v.textContent = (v.dataset.prefix || "") + fmt(finals[i]); });
-    gsap.set(reportBars, { scaleY: 1 });
-    gsap.set(reportChecks, { autoAlpha: 1, x: 0 });
-  }
-
-  let current = null, inView = true, started = false, lastW = window.innerWidth;
-
-  function build(isFirst) {
-    const tl = gsap.timeline({ onComplete: run });
-    const W = stage.clientWidth, H = stage.clientHeight;
-    const show = (el, at, instant) => tl.fromTo(el, { autoAlpha: instant ? 1 : 0, y: instant ? 0 : 14 }, { autoAlpha: 1, y: 0, duration: instant ? .01 : .7, ease: "power3.out" }, at);
-    const hide = (el, at) => tl.to(el, { autoAlpha: 0, y: -10, duration: .5, ease: "power2.in" }, at);
-    const mark = (i, at) => tl.call(() => setStep(i), null, at);
-
-    /* STAGE 1 — invoices enter the system */
-    const A = .35;
-    mark(0, A);
-    show(s1, A, isFirst);
-    const bx = batch.offsetLeft + batch.offsetWidth / 2, by = batch.offsetTop + batch.offsetHeight / 2;
-    const zx = drop.offsetLeft + drop.offsetWidth / 2, zy = drop.offsetTop + drop.offsetHeight / 2;
-    const dx = zx - bx, dy = zy - by;
-    const gx = bx - 8, gy = by - 24;
-    gsap.set(cursor, { x: W * .56, y: H * .92 });
-    tl.to(cursor, { autoAlpha: 1, duration: .4 }, A + .7);
-    tl.to(cursor, { x: gx, y: gy, duration: 1.1, ease: "power2.inOut" }, A + .7);
-    tl.to(cursor, { scale: .84, duration: .18, ease: "power1.out" }, A + 1.95);
-    tl.to(batch, { scale: 1.05, duration: .25, ease: "power2.out" }, A + 1.95);
-    tl.to(batch, { x: dx, y: dy, duration: 1.4, ease: "power3.inOut" }, A + 2.25);
-    tl.to(cursor, { x: gx + dx, y: gy + dy, duration: 1.4, ease: "power3.inOut" }, A + 2.25);
-    tl.call(() => { drop.classList.add("hot"); dropText.textContent = "Release to load"; }, null, A + 3.15);
-    tl.to(cursor, { scale: 1, duration: .18 }, A + 3.75);
-    tl.to(batch, { scale: .5, autoAlpha: 0, duration: .5, ease: "power2.in" }, A + 3.8);
-    tl.to(cursor, { x: gx + dx + 50, y: gy + dy + 80, autoAlpha: 0, duration: .6, ease: "power2.inOut" }, A + 4.1);
-    tl.call(() => { drop.classList.remove("hot"); drop.classList.add("done"); dropIcon.textContent = "✓"; dropText.textContent = "10,000 invoices loaded"; }, null, A + 4.25);
-    hide(s1, A + 5.4);
-
-    /* STAGE 2 — processing */
-    const B = A + 5.7;
-    mark(1, B);
-    show(s2, B);
-    const obj = { v: 0 };
-    let lit = 0;
-    const upd = () => {
-      const p = obj.v / 10000;
-      procCount.textContent = fmt(obj.v);
-      procBar.style.width = (p * 100) + "%";
-      procPct.textContent = Math.round(p * 100) + "%";
-      const n = Math.round(p * dots.length);
-      while (lit < n) { dots[lit++].classList.add("on"); }
-    };
-    [1000, 3500, 6800, 10000].forEach((m, i) => tl.to(obj, { v: m, duration: .9, ease: "power1.inOut", onUpdate: upd }, B + .8 + i * 1.2));
-    tl.to(pills, { opacity: 1, duration: .4, stagger: .55 }, B + .9);
-    tl.call(() => { s2.classList.add("complete"); procPct.textContent = "100% · Complete"; }, null, B + 5.35);
-    hide(s2, B + 6.3);
-
-    /* STAGE 3 — audit checks */
-    const C = B + 6.4;
-    mark(2, C);
-    show(s3, C);
-    checks.forEach((row, i) => {
-      const at = C + .9 + i * .58;
-      const spin = row.querySelector(".dm-spin"), ok = row.querySelector(".dm-check-ok");
-      tl.to(row, { autoAlpha: 1, y: 0, duration: .4, ease: "power2.out" }, at);
-      tl.to(spin, { autoAlpha: 1, duration: .2 }, at + .1);
-      tl.to(spin, { autoAlpha: 0, duration: .15 }, at + .45);
-      tl.to(ok, { autoAlpha: 1, scale: 1, duration: .35, ease: "back.out(2.2)" }, at + .45);
-      tl.call(() => row.classList.add("ok"), null, at + .45);
-    });
-    tl.to(checkNote, { autoAlpha: 1, y: 0, duration: .5 }, C + 4.4);
-    hide(s3, C + 5.6);
-
-    /* STAGE 4/5 — review queue and flagged examples */
-    const D = C + 5.7;
-    mark(3, D);
-    show(s4, D);
-    const fo = { v: 0 };
-    tl.to(fo, { v: 247, duration: 1.3, ease: "power2.out", onUpdate: () => { flagCount.textContent = fmt(fo.v); } }, D + .5);
-    tl.to(queueBits, { autoAlpha: 1, y: 0, duration: .5, stagger: .15 }, D + .9);
-    tl.to(flagItems, { autoAlpha: 1, x: 0, duration: .55, ease: "power3.out", stagger: .4 }, D + 1.5);
-    hide(s4, D + 4.6);
-
-    /* STAGE 6 — human verification */
-    const E = D + 4.7;
-    mark(4, E);
-    show(s6, E);
-    tl.to(cards, { autoAlpha: 1, duration: .5, stagger: .12 }, E + .7);
-    const c1 = lanes[0].querySelector(".c1"), c2 = lanes[0].querySelector(".c2"), c3 = lanes[0].querySelector(".c3");
-    const d12 = c2.offsetLeft - c1.offsetLeft, d13 = c3.offsetLeft - c1.offsetLeft;
-    tl.call(() => reviewer.classList.add("busy"), null, E + 1.6);
-    cards.forEach((card, i) => {
-      const at = E + 1.7 + i * .35;
-      tl.to(card, { x: d12, duration: .8, ease: "power3.inOut" }, at);
-      tl.call(() => setCard(card, "review"), null, at + .6);
-    });
-    const vAt = E + 3.7;
-    tl.to(cards[0], { x: d13, duration: .8, ease: "power3.inOut" }, vAt);
-    tl.call(() => setCard(cards[0], "verified"), null, vAt + .6);
-    tl.to(cards[1], { x: d13, duration: .8, ease: "power3.inOut" }, vAt + .35);
-    tl.call(() => setCard(cards[1], "verified"), null, vAt + .95);
-    tl.call(() => setCard(cards[2], "cleared"), null, vAt + .7);
-    tl.to(cards[2], { autoAlpha: .4, duration: .5 }, vAt + .9);
-    tl.call(() => reviewer.classList.remove("busy"), null, vAt + 1.6);
-    tl.to(s6Note, { autoAlpha: 1, y: 0, duration: .5 }, vAt + 1.5);
-    hide(s6, vAt + 3.4);
-
-    /* STAGE 7 — audit report */
-    const F = E + 7.2;
-    mark(5, F);
-    show(s7, F);
-    statVals.forEach((el, i) => {
-      const o = { v: 0 };
-      tl.to(o, { v: finals[i], duration: 1.5, ease: "power2.out", onUpdate: () => { el.textContent = (el.dataset.prefix || "") + fmt(o.v); } }, F + .6 + i * .12);
-    });
-    tl.to(reportBars, { scaleY: 1, duration: .8, ease: "power3.out", stagger: .04 }, F + 1.2);
-    tl.to(reportChecks, { autoAlpha: 1, x: 0, duration: .4, stagger: .15 }, F + 1.2);
-    hide(s7, F + 5.6);
-    return tl;
-  }
-
-  function run(isFirst) {
-    if (current) { current.kill(); }
-    reset();
-    const first = isFirst === true;
-    if (first) { gsap.set(s1, { autoAlpha: 1 }); }
-    current = build(first);
-    if (!inView) { current.pause(); }
-  }
-
-  if (reduceMotion) {
-    staticState();
-  } else {
-    reset();
-    gsap.set(s1, { autoAlpha: 1 });
-    setStep(0);
-    gsap.delayedCall(1.4, () => { started = true; run(true); });
-  }
-
-  ScrollTrigger.create({
-    trigger: ".dashboard-wrapper",
-    start: "top 92%",
-    end: "bottom 4%",
-    onToggle: self => {
-      inView = self.isActive;
-      if (current) { if (inView) { current.play(); } else { current.pause(); } }
-    }
-  });
-
-  q("#dmReplay").addEventListener("click", () => {
-    if (reduceMotion) { return; }
-    inView = true;
-    started = true;
-    run(false);
-  });
-
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (window.innerWidth === lastW) { return; }
-      lastW = window.innerWidth;
-      if (reduceMotion) { staticState(); } else if (started) { run(false); }
-    }, 300);
-  });
-})();
+gsap.from(".bar", { scaleY: 0, transformOrigin: "bottom", stagger: .05, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: ".chart", start: "top 85%", once: true } });
 
 document.querySelectorAll(".magnetic").forEach(button => {
   button.addEventListener("mousemove", event => {
@@ -1666,6 +1410,7 @@ function openSpecialist() {
   lenis.stop();
   setTimeout(() => modalClose.focus(), 50);
 }
+
 function closeSpecialist() {
   modal.classList.remove("active");
   modal.setAttribute("aria-hidden", "true");
@@ -1673,11 +1418,13 @@ function closeSpecialist() {
   lenis.start();
   if (lastFocus) { lastFocus.focus(); }
 }
+
 document.getElementById("specialistButton").addEventListener("click", openSpecialist);
 document.getElementById("specialistButton2").addEventListener("click", openSpecialist);
 modalClose.addEventListener("click", closeSpecialist);
 modal.addEventListener("click", e => { if (e.target === modal) { closeSpecialist(); } });
 document.getElementById("specialistCta").addEventListener("click", () => { lastFocus = null; closeSpecialist(); });
+
 document.addEventListener("keydown", event => {
   if (!modal.classList.contains("active")) { return; }
   if (event.key === "Escape") { closeSpecialist(); return; }

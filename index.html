@@ -1,274 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Custom Freight Invoice Audit System. Review What Gets Flagged.</title>
-<link rel="icon" type="image/png" href="./AutFlow-logo.png">
-<link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
-<meta name="description" content="AutFlow Studio builds a custom freight invoice audit system around your carriers, contracts, rate structures, billing rules, and workflow, so your team reviews flagged items instead of every invoice.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto;width:100%;overflow-x:hidden}
-body{margin:0;background:#050505;color:#fff;font-family:"Inter",sans-serif;overflow-x:hidden;line-height:1.5;width:100%;min-width:0}
-body.menu-open{overflow:hidden}
-a{text-decoration:none;color:inherit}
-button{border:none;font:inherit;cursor:pointer}
-img,video,svg{max-width:100%}
-::selection{background:#fff;color:#000}
-a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
-:root{--white:#fff;--muted:rgba(255,255,255,.42);--soft:rgba(255,255,255,.08);--border:rgba(255,255,255,.09);--panel:rgba(255,255,255,.025)}
-.container{width:min(1180px,calc(100% - 48px));margin:auto;min-width:0}
-.section-border{border-top:1px solid rgba(255,255,255,.07)}
-.section-padding{padding:140px 0}
-
-/* CURSOR */
-.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
-.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(255,255,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
-
-/* BACKGROUND */
-.background{position:fixed;inset:0;z-index:-10;overflow:hidden;background:#050505;pointer-events:none}
-.background-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
-.glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45}
-.glow-1{width:650px;height:650px;top:-300px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.055)}
-.glow-2{width:400px;height:400px;top:900px;left:-200px;background:rgba(255,255,255,.025)}
-.glow-3{width:450px;height:450px;top:1600px;right:-200px;background:rgba(255,255,255,.025)}
-
-/* NAVBAR */
-.navbar{position:fixed;top:0;left:0;width:100%;z-index:500;border-bottom:1px solid transparent;background:rgba(5,5,5,.25);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);transition:background .4s ease,border-color .4s ease,backdrop-filter .4s ease}
-.navbar.scrolled{background:rgba(5,5,5,.75);border-color:rgba(255,255,255,.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;min-width:0}
-.brand{display:flex;align-items:center;gap:12px;min-width:0}
-.brand-mark{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.025));box-shadow:0 0 40px rgba(255,255,255,.035)}
-.brand-mark span{font-family:"Space Grotesk";font-weight:700}
-.brand-name{font-family:"Space Grotesk";font-size:14px;font-weight:600;white-space:nowrap}
-.brand-name span{color:rgba(255,255,255,.35)}
-.brand-subtitle{font-size:7px;letter-spacing:.25em;color:rgba(255,255,255,.25);text-transform:uppercase;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:34px}
-.nav-links a{font-size:11px;color:rgba(255,255,255,.42);transition:color .25s ease;white-space:nowrap}
-.nav-links a:hover{color:#fff}
-.nav-button{padding:11px 19px;border-radius:999px;background:#fff;color:#000;font-size:10px;font-weight:700;transition:transform .25s ease,background .25s ease;white-space:nowrap}
-.nav-button:hover{transform:translateY(-2px);background:#e9e9e9}
-.mobile-menu-button{display:none;width:40px;height:40px;flex:0 0 40px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.04);color:white}
-.mobile-menu{display:none}
-
-/* HERO */
-.hero{min-height:100vh;padding-top:175px;padding-bottom:100px;position:relative;overflow:hidden}
-.hero-content{max-width:900px;margin:auto;text-align:center;position:relative;z-index:2;min-width:0}
-.status-pill{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.42);font-size:8px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
-.status-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#66e394;box-shadow:0 0 15px rgba(102,227,148,.7)}
-.hero-title{margin-top:28px;font-family:"Space Grotesk";font-size:clamp(52px,7.4vw,92px);line-height:.95;letter-spacing:-.07em;font-weight:600;overflow-wrap:normal;word-break:normal}
-.hero-title .line{display:block;overflow:hidden}
-.hero-title .line-inner{display:block}
-.hero-title .muted{color:rgba(255,255,255,.32)}
-.hero-description{max-width:650px;margin:32px auto 0;color:rgba(255,255,255,.4);font-size:15px;line-height:1.9}
-.hero-actions{margin-top:34px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 23px;border-radius:999px;font-size:11px;font-weight:600;transition:background .3s ease,border-color .3s ease;max-width:100%;text-align:center}
-.button-primary{background:#fff;color:#000}
-.button-secondary{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
-.button-secondary:hover{border-color:rgba(255,255,255,.2);color:#fff}
-.hero-orbit{position:absolute;width:950px;height:950px;left:50%;top:360px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.025);border-radius:50%;pointer-events:none}
-.hero-orbit::before{content:"";position:absolute;inset:80px;border:1px solid rgba(255,255,255,.02);border-radius:50%}
-.orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:white;box-shadow:0 0 20px rgba(255,255,255,.7);left:50%;top:0}
-
-/* DASHBOARD */
-.dashboard-wrapper{position:relative;width:100%;max-width:1120px;margin:100px auto 0;perspective:1400px;min-width:0}
-.dashboard-glow{position:absolute;width:800px;height:350px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);max-width:90vw}
-.dashboard{position:relative;width:100%;max-width:100%;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 70px 150px rgba(0,0,0,.75),0 0 100px rgba(255,255,255,.025);transform-origin:center top;will-change:transform}
-.browser-bar{min-height:45px;height:45px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.07)}
-.browser-dots{display:flex;gap:6px;flex:0 0 auto}
-.browser-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.13)}
-.browser-status{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.4);font-size:8px;min-width:0;text-align:center}
-.browser-status i{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#5cdf8d}
-.browser-label{color:rgba(255,255,255,.32);font-size:8px;letter-spacing:.2em;white-space:nowrap}
-.dashboard-body{display:grid;grid-template-columns:210px minmax(0,1fr);min-height:460px;min-width:0}
-.sidebar{padding:22px 15px;border-right:1px solid rgba(255,255,255,.07);min-width:0}
-.sidebar-title{margin-bottom:14px;color:rgba(255,255,255,.2);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
-.sidebar-item{display:flex;align-items:center;gap:9px;padding:10px;margin-bottom:3px;border-radius:8px;color:rgba(255,255,255,.32);font-size:9px;transition:.25s ease}
-.sidebar-item:hover{background:rgba(255,255,255,.035);color:#fff}
-.sidebar-item.active{background:rgba(255,255,255,.065);color:#fff}
-.sidebar-icon{width:12px;height:12px;flex:0 0 12px;border:1px solid currentColor;border-radius:3px;opacity:.6}
-.sidebar-separator{height:1px;background:rgba(255,255,255,.06);margin:27px 0 18px}
-.dashboard-main{padding:28px;min-width:0;overflow:hidden}
-.dashboard-header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;min-width:0}
-.dashboard-header>div:first-child{min-width:0}
-.dashboard-eyebrow{color:rgba(255,255,255,.22);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
-.dashboard-heading{margin-top:7px;font-size:23px;letter-spacing:-.04em;overflow-wrap:break-word}
-.dashboard-filter{padding:8px 11px;border:1px solid rgba(255,255,255,.08);border-radius:7px;color:rgba(255,255,255,.3);font-size:7px;flex:0 0 auto;white-space:nowrap}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:28px}
-.stat{padding:15px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:rgba(255,255,255,.018);min-width:0}
-.stat-label{color:rgba(255,255,255,.2);font-size:7px;overflow-wrap:break-word}
-.stat-value{margin-top:6px;font-size:17px;white-space:nowrap}
-.stat-change{margin-top:3px;color:#62db8b;font-size:7px;overflow-wrap:break-word}
-.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:11px;margin-top:12px;min-width:0}
-.panel{padding:17px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.018);min-width:0}
-.panel-title{font-size:9px}
-.panel-subtitle{margin-top:3px;color:rgba(255,255,255,.2);font-size:7px;overflow-wrap:break-word}
-.project-list{display:flex;flex-direction:column;gap:7px;margin-top:17px}
-.project{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid rgba(255,255,255,.05);border-radius:8px;background:rgba(0,0,0,.25);min-width:0}
-.project-number{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:6px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.3);font-size:7px}
-.project-info{flex:1;min-width:0}
-.project-name{color:rgba(255,255,255,.65);font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.project-status{margin-top:2px;color:rgba(255,255,255,.18);font-size:6px}
-.project-price{color:rgba(255,255,255,.4);font-size:8px;flex:0 0 auto;white-space:nowrap}
-.chart{height:115px;display:flex;align-items:flex-end;gap:6px;margin-top:25px}
-.bar{flex:1;min-height:4px;border-radius:4px 4px 0 0;background:rgba(255,255,255,.12)}
-
-/* SECTION HEADINGS */
-.section-heading-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:end}
-.section-heading-grid>*{min-width:0}
-.eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:19px;color:rgba(255,255,255,.24);font-size:8px;text-transform:uppercase;letter-spacing:.22em}
-.eyebrow-line{width:27px;height:1px;flex:0 0 27px;background:rgba(255,255,255,.3)}
-h2{font-family:"Space Grotesk";font-size:clamp(40px,5vw,60px);line-height:1;letter-spacing:-.06em;font-weight:600;overflow-wrap:break-word}
-h2 .muted{color:rgba(255,255,255,.32)}
-.section-description{max-width:500px;color:rgba(255,255,255,.38);font-size:13px;line-height:1.9}
-.section-description.centered{max-width:620px;margin:24px auto 0;text-align:center}
-
-/* FEATURES */
-.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:65px}
-.feature-card{position:relative;min-height:230px;padding:28px;overflow:hidden;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.018);transform-style:preserve-3d;will-change:transform;transition:border-color .3s ease,background .3s ease;min-width:0}
-.feature-card::after{content:"";position:absolute;width:180px;height:180px;top:-100px;right:-100px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(35px);transition:.4s ease}
-.feature-card:hover{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.035)}
-.feature-card:hover::after{background:rgba(255,255,255,.09)}
-.feature-icon{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.04);font-size:15px}
-.feature-title{margin-top:28px;font-family:"Space Grotesk";font-size:15px;overflow-wrap:break-word}
-.feature-description{margin-top:10px;color:rgba(255,255,255,.3);font-size:10px;line-height:1.8}
-.feature-card .check-list{margin-top:22px}
-.request-answer{margin-top:18px;font-family:"Space Grotesk";font-size:18px;font-weight:600;letter-spacing:-.02em;color:#fff}
-.equation-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;margin-top:55px}
-
-/* OWNERSHIP */
-.ownership-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.01));min-width:0}
-.ownership-content{padding:65px;min-width:0}
-.small-tag{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.08);border-radius:999px;color:rgba(255,255,255,.3);font-size:7px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
-.ownership-content p{max-width:480px;margin-top:24px;color:rgba(255,255,255,.35);font-size:12px;line-height:1.9}
-.ownership-note{max-width:480px;margin-top:22px;color:rgba(255,255,255,.28);font-size:10px;line-height:1.8;font-style:italic}
-.check-list{display:flex;flex-direction:column;gap:11px;margin-top:28px}
-.check-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.55);font-size:10px;min-width:0}
-.check{width:20px;height:20px;flex:0 0 20px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.07);font-size:9px}
-.workflow-visual{min-height:440px;position:relative;overflow:hidden;border-left:1px solid rgba(255,255,255,.07);background:radial-gradient(circle at center,rgba(255,255,255,.065),transparent 60%);min-width:0}
-.workflow-box{position:absolute;left:50%;top:50%;width:min(290px,calc(100% - 40px));transform:translate(-50%,-50%);padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:17px;background:rgba(7,7,7,.88);box-shadow:0 35px 90px rgba(0,0,0,.65);backdrop-filter:blur(15px)}
-.workflow-header{display:flex;justify-content:space-between;gap:10px;color:rgba(255,255,255,.35);font-size:8px}
-.workflow-active{color:#60dc8b;white-space:nowrap}
-.workflow-steps{display:flex;flex-direction:column;gap:6px;margin-top:18px}
-.workflow-step{display:flex;align-items:center;gap:9px;padding:11px;border:1px solid rgba(255,255,255,.05);border-radius:8px;background:rgba(255,255,255,.018);color:rgba(255,255,255,.37);font-size:8px;min-width:0}
-.workflow-step-dot{width:5px;height:5px;flex:0 0 5px;border-radius:50%;background:rgba(255,255,255,.2)}
-.workflow-step:last-child .workflow-step-dot{background:#fff}
-
-/* CENTER HEADING */
-.center-heading{max-width:800px;margin:auto;text-align:center;min-width:0}
-.center-heading .eyebrow{justify-content:center}
-
-/* FLOW + PILLS */
-.flow-diagram{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:60px}
-.flow-node{padding:16px 30px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.015));font-family:"Space Grotesk";font-size:12px;letter-spacing:.03em;color:rgba(255,255,255,.75);text-align:center;max-width:100%}
-.flow-arrow{color:rgba(255,255,255,.22);font-size:14px;line-height:1}
-.flow-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:55px}
-.pill-row{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:40px}
-
-/* GRIDS */
-.steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:65px}
-.steps-grid .feature-card{min-height:200px}
-.process-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px;margin-top:65px}
-.process-grid .feature-card{min-height:260px;padding:24px}
-.process-grid .feature-description{font-size:9.5px}
-.process-grid .check-list{gap:7px;margin-top:16px}
-.process-grid .check-item{font-size:8.5px;color:rgba(255,255,255,.4);align-items:flex-start}
-.process-grid .check{width:16px;height:16px;flex-basis:16px;font-size:7px}
-.process-grid .feature-card.highlight{border-color:rgba(255,255,255,.2);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
-.process-tagline{margin-top:40px;text-align:center;font-family:"Space Grotesk";font-size:18px;letter-spacing:-.02em;color:rgba(255,255,255,.7)}
-.process-tagline span{color:rgba(255,255,255,.32)}
-.split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:65px}
-.split-grid .feature-card{min-height:0}
-.split-grid .check-item{color:rgba(255,255,255,.4);font-size:9px}
-.engage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:65px}
-.engage-grid .feature-card{min-height:0;padding:24px}
-.engage-grid .feature-icon{font-size:11px;font-family:"DM Mono"}
-.engage-grid .feature-title{margin-top:20px}
-
-/* SPECIALIST STRIP */
-.who-card{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:48px 55px;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));min-width:0}
-.who-copy{min-width:0}
-.who-copy p{max-width:520px;margin-top:20px;color:rgba(255,255,255,.36);font-size:12px;line-height:1.9}
-.who-copy h2{font-size:clamp(34px,4vw,48px);margin-top:20px}
-.who-card .button{flex:0 0 auto}
-
-/* CUSTOM */
-.custom-card{position:relative;overflow:hidden;padding:65px;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:#080808;min-width:0}
-.custom-card::before{content:"";position:absolute;width:500px;height:500px;right:-150px;top:-200px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);pointer-events:none}
-.custom-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:70px;align-items:center;min-width:0}
-.custom-copy{min-width:0}
-.custom-description{max-width:510px;margin-top:22px;color:rgba(255,255,255,.37);font-size:12px;line-height:1.9}
-.custom-copy .button{margin-top:30px}
-.custom-options{display:grid;grid-template-columns:1fr;gap:10px;min-width:0}
-.custom-option{position:relative;padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.012));overflow:hidden;transition:transform .35s ease,border-color .35s ease,background .35s ease,box-shadow .35s ease;min-width:0}
-.custom-option::before{content:"";position:absolute;width:170px;height:170px;top:-100px;right:-80px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(35px);transition:.4s ease}
-.custom-option:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 25px 70px rgba(0,0,0,.35)}
-.custom-option:hover::before{background:rgba(255,255,255,.075)}
-.custom-option-top{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:15px;min-width:0}
-.custom-option-number{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.045);color:rgba(255,255,255,.65);font-family:"DM Mono";font-size:8px}
-.custom-option-label{color:rgba(255,255,255,.22);font-size:7px;letter-spacing:.18em;text-transform:uppercase;text-align:right;line-height:1.5}
-.custom-option h3{position:relative;margin-top:18px;font-family:"Space Grotesk";font-size:19px;line-height:1.15;letter-spacing:-.035em;font-weight:500;max-width:410px}
-.custom-option p{position:relative;margin-top:10px;color:rgba(255,255,255,.32);font-size:9px;line-height:1.8;max-width:450px}
-.custom-option-features{position:relative;display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-.custom-option-feature{padding:5px 8px;border:1px solid rgba(255,255,255,.07);border-radius:999px;background:rgba(255,255,255,.018);color:rgba(255,255,255,.34);font-size:6px;letter-spacing:.03em}
-.custom-option-arrow{position:relative;display:flex;justify-content:flex-end;margin-top:17px;color:rgba(255,255,255,.28);font-size:15px;transition:color .3s ease,transform .3s ease}
-.custom-option:hover .custom-option-arrow{color:#fff;transform:translateX(4px)}
-
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:65px}
-.pricing-card{position:relative;padding:42px;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.018);overflow:hidden;min-width:0}
-.pricing-card.featured{border-color:rgba(255,255,255,.22);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
-.pricing-badge{position:absolute;top:22px;right:22px;padding:6px 10px;border:1px solid rgba(102,227,148,.35);border-radius:999px;background:rgba(102,227,148,.08);color:#7be8a4;font-size:7px;letter-spacing:.16em;text-transform:uppercase}
-.pricing-label{color:rgba(255,255,255,.28);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
-.pricing-name{margin-top:14px;font-family:"Space Grotesk";font-size:21px;letter-spacing:-.03em}
-.pricing-desc{margin-top:18px;color:rgba(255,255,255,.35);font-size:10px;line-height:1.8;max-width:400px}
-.pricing-card .check-list{margin-top:24px}
-
-/* FINAL CTA */
-.final-cta{padding:160px 0;text-align:center}
-.final-icon{width:50px;height:50px;display:grid;place-items:center;margin:0 auto 25px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.04)}
-.final-cta p{max-width:550px;margin:25px auto 0;color:rgba(255,255,255,.32);font-size:12px;line-height:1.9}
-.final-actions{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px}
-.final-actions .hero-actions{margin-top:0}
-.availability{color:rgba(255,255,255,.18);font-size:7px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
-
-/* FOOTER */
-footer{border-top:1px solid rgba(255,255,255,.07)}
-.footer-inner{min-height:140px;display:flex;align-items:center;justify-content:space-between;min-width:0}
-.footer-brand{display:flex;align-items:center;gap:10px;min-width:0}
-.footer-mark{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:9px;font-family:"Space Grotesk";font-size:11px;font-weight:700}
-.footer-name{font-size:11px}
-.footer-tagline{margin-top:3px;color:rgba(255,255,255,.18);font-size:7px;text-transform:uppercase;letter-spacing:.15em;overflow-wrap:break-word}
-.footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.16);font-size:7px;min-width:0}
-.footer-bottom span{min-width:0;overflow-wrap:break-word}
-
-/* MODAL (shared pattern) */
-.demo-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
-.demo-modal.active{opacity:1;visibility:visible;pointer-events:auto}
-.demo-modal-content{position:relative;width:min(900px,100%);max-width:100%;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 50px 140px rgba(0,0,0,.8),0 0 100px rgba(255,255,255,.04);transform:translateY(24px) scale(.96);transition:transform .45s cubic-bezier(.16,1,.3,1)}
-.demo-modal.active .demo-modal-content{transform:translateY(0) scale(1)}
-.demo-modal-header{flex:0 0 auto;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px 0 17px;border-bottom:1px solid rgba(255,255,255,.07)}
-.demo-modal-label{color:rgba(255,255,255,.35);font-size:8px;letter-spacing:.2em;text-transform:uppercase;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.demo-modal-close{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.55);font-size:17px;transition:.25s ease}
-.demo-modal-close:hover{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
-.specialist-body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);overflow-y:auto;overscroll-behavior:contain;min-height:0}
-.specialist-photo{position:relative;min-height:420px;background:#050505;border-right:1px solid rgba(255,255,255,.07)}
-.specialist-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.specialist-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.55),transparent 45%);pointer-events:none}
-.specialist-info{padding:44px 40px;min-width:0}
-.specialist-info h3{margin-top:20px;font-family:"Space Grotesk";font-size:34px;line-height:1.05;letter-spacing:-.05em;font-weight:600;overflow-wrap:break-word}
-.specialist-role{margin-top:10px;color:rgba(255,255,255,.7);font-size:12px}
-.specialist-company{margin-top:3px;color:rgba(255,255,255,.3);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
-.specialist-info p{margin-top:22px;color:rgba(255,255,255,.4);font-size:12px;line-height:1.9}
-.specialist-info .button{margin-top:28px}
-
 /* RESPONSIVE */
 @media(max-width:1100px){
 .container{width:min(100% - 40px,1180px)}
@@ -459,6 +188,95 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 .custom-option p{font-size:7.5px}
 .final-cta{padding:85px 0}
 }
+
+/* AUDIT DEMO — RESPONSIVE */
+@media(max-width:900px){
+.dm-stage{height:350px}
+}
+@media(max-width:620px){
+.browser-status{font-size:7px}
+.dashboard-heading{min-height:2.4em}
+.dashboard-filter{font-size:7px}
+.dm-tracker{margin-top:18px}
+.dm-step{gap:6px;font-size:8px;letter-spacing:.04em}
+.dm-stage{height:410px;margin-top:16px}
+.dm-kicker{font-size:9px;letter-spacing:.16em}
+.dm-bignum{font-size:56px}
+.dm-sub{font-size:11px}
+.dm-disclosure{font-size:8.5px;letter-spacing:.1em}
+.dm-batch{left:0;width:130px;height:150px;margin-top:-75px}
+.dm-doc{width:108px;height:78px;padding:7px 8px;gap:4px}
+.dm-doc.d1{left:-4px;top:30px}
+.dm-doc.d2{left:2px;top:24px}
+.dm-doc.d3{left:20px;top:8px}
+.dm-doc.d4{left:24px;top:2px}
+.dm-doc.d5{left:10px;top:14px}
+.dm-doc-top{font-size:7px}
+.dm-doc-top b span{display:none}
+.dm-doc-carrier{font-size:8px}
+.dm-doc-lines i:nth-child(3){display:none}
+.dm-doc-bottom{font-size:7.5px}
+.dm-doc-bottom strong{font-size:8px}
+.dm-badge{top:104px}
+.dm-badge b{font-size:21px}
+.dm-badge span{font-size:7.5px;letter-spacing:.14em}
+.dm-drop{right:0;width:46%;height:170px;margin-top:-85px;border-radius:14px}
+.dm-drop-label{font-size:8px;letter-spacing:.14em}
+.dm-drop-icon{width:38px;height:38px}
+.dm-drop-text{font-size:10px}
+.dm-bar-meta{font-size:9.5px}
+.dm-fields{gap:5px}
+.dm-field{padding:4px 8px;font-size:9px}
+.dm-checks{grid-template-columns:1fr;gap:6px;margin-top:12px}
+.dm-check{padding:10px 12px}
+.dm-check-main b{font-size:11px}
+.dm-check-main small{display:none}
+.dm-ref{font-size:9px}
+.dm-note{font-size:9.5px}
+.dm-queue{grid-template-columns:1fr;gap:10px;align-content:start}
+.dm-queue-count{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:center;padding:0 2px}
+.dm-queue-count .dm-kicker{grid-column:1/-1}
+.dm-queue-count .dm-bignum{margin-top:8px;font-size:52px}
+.dm-count-text{margin-top:8px}
+.dm-count-label{margin-top:0;font-size:10px}
+.dm-count-sub{font-size:11px}
+.dm-count-meta{font-size:9px}
+.dm-layer .project{padding:8px 10px}
+.dm-layer .project-name{font-size:11px}
+.dm-layer .project-status{font-size:8px;letter-spacing:.08em}
+.dm-layer .project-price{font-size:11px}
+.dm-layer .panel-title{font-size:10px}
+.dm-layer .panel-subtitle{font-size:8.5px}
+.fi-extra{display:none}
+.dm-statement{font-size:15px}
+.dm-lane-head,.dm-lane{gap:8px}
+.dm-lane-head div{font-size:8px;letter-spacing:.06em}
+.dm-lanes{gap:8px;margin-top:14px}
+.dm-cell{height:54px}
+.dm-cell.c1::after,.dm-cell.c2::after{display:none}
+.dm-card{flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;padding:0 8px}
+.dm-card-name{font-size:9px;line-height:1.2;white-space:normal}
+.dm-card-state{display:none}
+.dm-card-amt{font-size:9.5px}
+.dm-layer .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.dm-layer .stat{padding:10px}
+.dm-layer .stat-label{font-size:9px}
+.dm-layer .stat-value{margin-top:5px;font-size:21px}
+.dm-layer .stat-change{font-size:8.5px}
+.dm-layer .dashboard-grid{grid-template-columns:1fr}
+.dm-chart-panel{display:none}
+.dm-layer .check-item{font-size:10px}
+.dm-layer .check{width:18px;height:18px;flex-basis:18px}
+.dm-tag{font-size:7.5px;letter-spacing:.1em;padding:4px 8px}
+}
+@media(max-width:380px){
+.dm-stage{height:430px}
+.dm-step{font-size:7.5px;letter-spacing:.02em}
+.dm-bignum{font-size:50px}
+.dm-queue-count .dm-bignum{font-size:46px}
+.dm-drop-text{font-size:9.5px}
+.browser-status{font-size:6.5px}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -517,10 +335,10 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       </div>
     </div>
 
-    <!-- DASHBOARD -->
+    <!-- DASHBOARD / ANIMATED AUDIT DEMO -->
     <div class="dashboard-wrapper">
       <div class="dashboard-glow"></div>
-      <div class="dashboard">
+      <div class="dashboard" id="auditDemo">
         <div class="browser-bar">
           <div class="browser-dots"><span></span><span></span><span></span></div>
           <div class="browser-status"><i></i>ILLUSTRATIVE AUDIT PREVIEW</div>
@@ -542,33 +360,150 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
             <div class="dashboard-header">
               <div>
                 <div class="dashboard-eyebrow">Illustrative Sample / Audit View</div>
-                <div class="dashboard-heading">Review what the system flags.</div>
+                <div class="dashboard-heading" id="dmHeading">Review what the system flags.</div>
               </div>
               <div class="dashboard-filter">Sample period ↗</div>
             </div>
-            <div class="stats">
-              <div class="stat"><div class="stat-label">Invoices Processed</div><div class="stat-value counter" data-value="640">0</div><div class="stat-change">Sample data</div></div>
-              <div class="stat"><div class="stat-label">Flagged For Review</div><div class="stat-value counter" data-value="38">0</div><div class="stat-change">Potential discrepancies</div></div>
-              <div class="stat"><div class="stat-label">Verified By A Person</div><div class="stat-value counter" data-value="21">0</div><div class="stat-change">Before reporting</div></div>
-              <div class="stat"><div class="stat-label">Potential Impact</div><div class="stat-value counter" data-value="18400">$0</div><div class="stat-change">Illustrative only</div></div>
+
+            <div class="dm-tracker" aria-hidden="true">
+              <div class="dm-track-line"><i id="dmTrackFill"></i></div>
+              <div class="dm-step active"><span>1</span>Load</div>
+              <div class="dm-step"><span>2</span>Process</div>
+              <div class="dm-step"><span>3</span>Check</div>
+              <div class="dm-step"><span>4</span>Flag</div>
+              <div class="dm-step"><span>5</span>Verify</div>
+              <div class="dm-step"><span>6</span>Report</div>
             </div>
-            <div class="dashboard-grid">
-              <div class="panel">
-                <div class="panel-title">Flagged Items</div>
-                <div class="panel-subtitle">Sample data — potential discrepancies only</div>
-                <div class="project-list">
-                  <div class="project"><div class="project-number">01</div><div class="project-info"><div class="project-name">Rate above contract</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$1,240</div></div>
-                  <div class="project"><div class="project-number">02</div><div class="project-info"><div class="project-name">Possible duplicate invoice</div><div class="project-status">UNDER REVIEW</div></div><div class="project-price">$860</div></div>
-                  <div class="project"><div class="project-number">03</div><div class="project-info"><div class="project-name">Unexpected accessorial charge</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$410</div></div>
+
+            <div class="dm-stage" role="img" aria-label="Animated illustration using sample data: 10,000 freight invoices are loaded, processed, checked against billing rules, flagged as potential discrepancies, verified by a person, and summarized in an audit report. Not client results.">
+
+              <!-- STAGE 1: INVOICES ENTER THE SYSTEM -->
+              <div class="dm-layer" id="dmS1">
+                <div class="dm-ingest">
+                  <div class="dm-batch" id="dmBatch">
+                    <div class="dm-doc d1"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48209</em></div><div class="dm-doc-carrier">Harbor Line Logistics</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/12</span><strong>$962.50</strong></div></div>
+                    <div class="dm-doc d2"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48210</em></div><div class="dm-doc-carrier">Summit Freight</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/12</span><strong>$2,115.00</strong></div></div>
+                    <div class="dm-doc d3"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48214</em></div><div class="dm-doc-carrier">Northline Freight</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/13</span><strong>$740.00</strong></div></div>
+                    <div class="dm-doc d4"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48216</em></div><div class="dm-doc-carrier">Cascade Carriers</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/14</span><strong>$3,090.00</strong></div></div>
+                    <div class="dm-doc d5"><div class="dm-doc-top"><b><span>FREIGHT </span>INVOICE</b><em>#FB-48217</em></div><div class="dm-doc-carrier">Northline Freight</div><div class="dm-doc-lines"><i></i><i></i><i></i></div><div class="dm-doc-bottom"><span>03/14</span><strong>$1,840.00</strong></div></div>
+                    <div class="dm-badge"><b>10,000</b><span>Freight Invoices</span></div>
+                  </div>
+                  <div class="dm-drop" id="dmDrop">
+                    <div class="dm-drop-label">Audit Workspace</div>
+                    <div class="dm-drop-icon" id="dmDropIcon">↓</div>
+                    <div class="dm-drop-text" id="dmDropText">Drop invoices to begin</div>
+                  </div>
+                  <svg class="dm-cursor" id="dmCursor" width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M2 2v19l5.2-4.6 3.6 8.2 3.6-1.6-3.6-8 7-.4L2 2z" fill="#fff" stroke="#050505" stroke-width="1.5" stroke-linejoin="round"/></svg>
                 </div>
               </div>
-              <div class="panel">
-                <div class="panel-title">Potential Impact</div>
-                <div class="panel-subtitle">By month, illustrative</div>
-                <div class="chart">
-                  <div class="bar" style="height:30%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:54%"></div><div class="bar" style="height:74%"></div><div class="bar" style="height:62%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:71%"></div><div class="bar" style="height:96%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:100%"></div>
+
+              <!-- STAGE 2: PROCESSING -->
+              <div class="dm-layer dm-center" id="dmS2">
+                <div class="dm-kicker">Processing Freight Invoices</div>
+                <div class="dm-bignum" id="dmProcCount">0</div>
+                <div class="dm-sub">/ 10,000 processed</div>
+                <div class="dm-bar"><i id="dmProcBar"></i></div>
+                <div class="dm-bar-meta"><span id="dmProcPct">0%</span><span>Extracting invoice data</span></div>
+                <div class="dm-dots" id="dmDots"></div>
+                <div class="dm-fields">
+                  <span class="dm-fields-label">Extracting</span>
+                  <span class="dm-field">Carrier</span><span class="dm-field">Invoice #</span><span class="dm-field">Date</span><span class="dm-field">Amount</span><span class="dm-field">Charges</span><span class="dm-field">Weight</span>
                 </div>
               </div>
+
+              <!-- STAGE 3: AUDIT CHECKS -->
+              <div class="dm-layer" id="dmS3">
+                <div class="dm-kicker">Checking Billing Data</div>
+                <div class="dm-ref"><span>Compared against</span><span>Contracts</span><span>Rate sheets</span><span>Billing rules</span><span>Shipment records</span></div>
+                <div class="dm-checks">
+                  <div class="dm-check"><div class="dm-check-main"><b>Contract / Rate Match</b><small>vs. contract &amp; rate sheets</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
+                  <div class="dm-check"><div class="dm-check-main"><b>Duplicate Charges</b><small>same reference billed twice</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
+                  <div class="dm-check"><div class="dm-check-main"><b>Accessorial Charges</b><small>unexpected add-on charges</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
+                  <div class="dm-check"><div class="dm-check-main"><b>Fuel Charges</b><small>vs. agreed fuel schedule</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
+                  <div class="dm-check"><div class="dm-check-main"><b>Weight / Quantity</b><small>vs. shipment records</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
+                  <div class="dm-check"><div class="dm-check-main"><b>Billing Rules</b><small>vs. your configured rules</small></div><span class="dm-check-state"><i class="dm-spin"></i><i class="dm-check-ok">✓</i></span></div>
+                </div>
+                <div class="dm-note" id="dmCheckNote">Checks compare invoice data to configured rules and reference information. A flag is a potential discrepancy, not a conclusion.</div>
+              </div>
+
+              <!-- STAGE 4/5: REVIEW QUEUE + FLAGGED ITEMS -->
+              <div class="dm-layer" id="dmS4">
+                <div class="dm-queue">
+                  <div class="dm-queue-count">
+                    <div class="dm-kicker">Review Queue</div>
+                    <div class="dm-bignum" id="dmFlagCount">0</div>
+                    <div class="dm-count-text">
+                      <div class="dm-count-label dm-fade">FLAGGED FOR REVIEW</div>
+                      <div class="dm-count-sub dm-fade">Potential discrepancies</div>
+                      <div class="dm-count-meta dm-fade">Out of 10,000 sample invoices</div>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <div class="panel-title">Flagged Items</div>
+                    <div class="panel-subtitle">Sample data — potential discrepancies only</div>
+                    <div class="project-list">
+                      <div class="project dm-fi"><div class="project-number">01</div><div class="project-info"><div class="project-name">Rate above contract</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$1,240</div></div>
+                      <div class="project dm-fi"><div class="project-number">02</div><div class="project-info"><div class="project-name">Possible duplicate invoice</div><div class="project-status">UNDER REVIEW</div></div><div class="project-price">$860</div></div>
+                      <div class="project dm-fi"><div class="project-number">03</div><div class="project-info"><div class="project-name">Unexpected accessorial charge</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$410</div></div>
+                      <div class="project dm-fi fi-extra"><div class="project-number">04</div><div class="project-info"><div class="project-name">Weight differs from shipment record</div><div class="project-status">UNDER REVIEW</div></div><div class="project-price">$325</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STAGE 6: HUMAN VERIFICATION -->
+              <div class="dm-layer" id="dmS6">
+                <div class="dm-kicker">Human Verification</div>
+                <div class="dm-statement">Software Finds Exceptions. <span>People Verify Findings.</span></div>
+                <div class="dm-lanes">
+                  <div class="dm-lane-head">
+                    <div>Potential discrepancy</div>
+                    <div><svg class="dm-person" id="dmReviewer" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.5" fill="currentColor"/><path d="M2 12.5c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Human review</div>
+                    <div>Verified</div>
+                  </div>
+                  <div class="dm-lane"><div class="dm-cell c1"><div class="dm-card"><div class="dm-card-main"><div class="dm-card-name">Rate above contract</div><div class="dm-card-state">POTENTIAL DISCREPANCY</div></div><div class="dm-card-amt">$1,240</div></div></div><div class="dm-cell c2"></div><div class="dm-cell c3"></div></div>
+                  <div class="dm-lane"><div class="dm-cell c1"><div class="dm-card"><div class="dm-card-main"><div class="dm-card-name">Possible duplicate</div><div class="dm-card-state">POTENTIAL DISCREPANCY</div></div><div class="dm-card-amt">$860</div></div></div><div class="dm-cell c2"></div><div class="dm-cell c3"></div></div>
+                  <div class="dm-lane"><div class="dm-cell c1"><div class="dm-card"><div class="dm-card-main"><div class="dm-card-name">Accessorial charge</div><div class="dm-card-state">POTENTIAL DISCREPANCY</div></div><div class="dm-card-amt">$410</div></div></div><div class="dm-cell c2"></div><div class="dm-cell c3"></div></div>
+                </div>
+                <div class="dm-note" id="dmS6Note">Not every flagged item is an error. A person decides what is reported as a confirmed finding.</div>
+              </div>
+
+              <!-- STAGE 7: AUDIT REPORT -->
+              <div class="dm-layer" id="dmS7">
+                <div class="dm-report-head"><div class="dm-kicker">Audit Report</div><span class="dm-tag">Illustrative · Sample data</span></div>
+                <div class="stats">
+                  <div class="stat"><div class="stat-label">Invoices Processed</div><div class="stat-value dm-stat-val" data-prefix="">0</div><div class="stat-change">Sample data</div></div>
+                  <div class="stat"><div class="stat-label">Flagged For Review</div><div class="stat-value dm-stat-val" data-prefix="">0</div><div class="stat-change">Potential discrepancies</div></div>
+                  <div class="stat"><div class="stat-label">Verified By A Person</div><div class="stat-value dm-stat-val" data-prefix="">0</div><div class="stat-change">Before reporting</div></div>
+                  <div class="stat"><div class="stat-label">Illustrative Potential Impact</div><div class="stat-value dm-stat-val" data-prefix="$">$0</div><div class="stat-change">Illustrative only</div></div>
+                </div>
+                <div class="dashboard-grid">
+                  <div class="panel">
+                    <div class="panel-title">What each finding includes</div>
+                    <div class="panel-subtitle">Verified findings, structured for your team</div>
+                    <div class="check-list">
+                      <div class="check-item"><span class="check">✓</span>Invoice and charge</div>
+                      <div class="check-item"><span class="check">✓</span>Difference from the expected amount</div>
+                      <div class="check-item"><span class="check">✓</span>Reason it was flagged</div>
+                      <div class="check-item"><span class="check">✓</span>Supporting information</div>
+                      <div class="check-item"><span class="check">✓</span>Verification status</div>
+                    </div>
+                  </div>
+                  <div class="panel dm-chart-panel">
+                    <div class="panel-title">Potential Impact</div>
+                    <div class="panel-subtitle">By month, illustrative</div>
+                    <div class="chart">
+                      <div class="bar" style="height:30%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:54%"></div><div class="bar" style="height:74%"></div><div class="bar" style="height:62%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:71%"></div><div class="bar" style="height:96%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:100%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="dm-foot">
+              <div class="dm-disclosure"><i></i>Sample data — not client results</div>
+              <button type="button" class="dm-replay" id="dmReplay" aria-label="Replay the audit preview">↻ Replay</button>
             </div>
           </div>
         </div>
@@ -596,7 +531,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
         <div class="eyebrow"><span class="eyebrow-line"></span>THE PREVIEW ABOVE</div>
         <h2>An Illustration, <span class="muted">Not A Result.</span></h2>
       </div>
-      <p class="section-description reveal-right">The preview above uses sample data to show how flagged items are organized for review inside the audit system. It does not represent a client or a real finding.</p>
+      <p class="section-description reveal-right">The animated preview above uses sample data to show how invoices move through the audit: loaded, processed, checked, flagged, verified by a person, and reported. The numbers are illustrative. They do not represent a client or a real finding.</p>
     </div>
   </div>
 </section>
@@ -911,7 +846,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <p>Tell us about your carriers, contracts, and how your team handles freight billing. We'll configure a centralized audit system around your operation, so your team can review flagged items instead of every invoice.</p>
       <div class="final-actions">
         <div class="hero-actions">
-          <a href="https://wa.me/213659735828" target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">Start Your Freight Audit System <span>→</span></a>
+          <a href="https://wa.me/213676127853" target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">Start Your Freight Audit System <span>→</span></a>
         </div>
         <span class="availability">TYPICAL ENGAGEMENTS $5K–$10K — NO GUARANTEED SAVINGS</span>
       </div>
@@ -930,15 +865,17 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
     </div>
     <div class="specialist-body">
       <div class="specialist-photo">
-        <img src="/kamed.png" alt="Portrait of Abderrahmen Hud, Freight Audit & Recovery Specialist at AutFlow Studio" loading="lazy">
+        <span class="specialist-mono" aria-hidden="true">AH</span>
+        <img src="./kadem.png" alt="Portrait of Abderrahmen Hud, Freight Audit & Recovery Specialist at AutFlow Studio" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="specialist-info">
         <span class="small-tag">THE PERSON BEHIND THE SERVICE</span>
         <h3>Abderrahmen Hud</h3>
         <div class="specialist-role">Freight Audit & Recovery Specialist</div>
         <div class="specialist-company">AutFlow Studio</div>
-        <p>Abderrahmen Hud is the founder of AutFlow Studio, where he focuses on building and configuring custom freight invoice audit systems for companies that need tighter control over freight billing.</p>
-        <p>His work combines structured financial checks, automation, document processing, and human verification to turn large volumes of freight invoices into a controlled audit process. He built the service because freight discrepancies can stay hidden across large invoice volumes, and manual review rarely covers every invoice.</p>
+        <p>Abderrahmen Hud is the Freight Audit & Recovery Specialist behind AutFlow Studio. He builds and configures custom freight invoice audit systems for companies that want tighter control over freight billing.</p>
+        <p>His work combines structured financial checks, automation, document processing, and human verification to turn large volumes of freight invoices into a controlled audit process. The service exists because billing discrepancies can stay hidden across large invoice volumes, and manual review rarely covers every invoice.</p>
+        <p>Flagged items are treated as potential discrepancies until a person has reviewed them. Engagements are scoped up front, with confidentiality and NDA expectations discussed where appropriate.</p>
         <a href="#get-started" class="button button-primary" id="specialistCta">Start Your Freight Audit System <span>→</span></a>
       </div>
     </div>
@@ -983,7 +920,7 @@ gsap.timeline({ defaults: { ease: "power4.out" } })
 
 gsap.to(".hero-orbit", { rotation: 360, duration: 80, repeat: -1, ease: "none" });
 gsap.to(".hero-content", { y: -120, opacity: .35, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-gsap.to(".dashboard", { y: 110, rotateX: 0, scale: .93, opacity: .45, ease: "none", scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 65%", end: "bottom 20%", scrub: 1.2 } });
+gsap.to(".dashboard", { y: 80, rotateX: 0, scale: .95, opacity: .5, ease: "none", scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 20%", end: "bottom 5%", scrub: 1.2 } });
 gsap.to(".dashboard-glow", { scale: 1.35, opacity: .8, ease: "none", scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true } });
 gsap.to(".glow-1", { y: 500, scale: 1.5, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
 gsap.to(".glow-2", { y: -300, x: 150, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
@@ -1015,13 +952,261 @@ gsap.to(".workflow-float", { y: -20, duration: 2.7, repeat: -1, yoyo: true, ease
 
 gsap.utils.toArray(".reveal-scale").forEach(el => gsap.from(el, { y: 60, opacity: 0, scale: .96, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 80%", once: true } }));
 
-document.querySelectorAll(".counter").forEach(counter => {
-  const target = Number(counter.dataset.value), isMoney = target > 1000, obj = { value: 0 };
-  gsap.to(obj, { value: target, duration: 1.8, ease: "power2.out", scrollTrigger: { trigger: counter, start: "top 85%", once: true },
-    onUpdate: () => { const v = Math.floor(obj.value); counter.textContent = isMoney ? "$" + v.toLocaleString() : v.toLocaleString(); } });
-});
+/* AUDIT DEMO — animated, looping walkthrough (illustrative sample data only) */
+(function () {
+  const root = document.getElementById("auditDemo");
+  if (!root) { return; }
+  const q = (s) => root.querySelector(s);
+  const qa = (s) => Array.from(root.querySelectorAll(s));
+  const fmt = (n) => Math.round(n).toLocaleString("en-US");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-gsap.from(".bar", { scaleY: 0, transformOrigin: "bottom", stagger: .05, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: ".chart", start: "top 85%", once: true } });
+  const stage = q(".dm-stage");
+  const layers = qa(".dm-layer");
+  const s1 = q("#dmS1"), s2 = q("#dmS2"), s3 = q("#dmS3"), s4 = q("#dmS4"), s6 = q("#dmS6"), s7 = q("#dmS7");
+  const steps = qa(".dm-step");
+  const sideItems = qa(".sidebar-item");
+  const trackFill = q("#dmTrackFill");
+  const heading = q("#dmHeading");
+  const headings = [
+    "Load the freight invoices.",
+    "Process invoices at scale.",
+    "Check billing against rules.",
+    "Review what the system flags.",
+    "People verify the findings.",
+    "Receive a structured report."
+  ];
+  const sideMap = [2, 0, 1, 3, 4, 5];
+
+  const batch = q("#dmBatch"), drop = q("#dmDrop"), dropIcon = q("#dmDropIcon"), dropText = q("#dmDropText"), cursor = q("#dmCursor");
+  const procCount = q("#dmProcCount"), procBar = q("#dmProcBar"), procPct = q("#dmProcPct"), dotsWrap = q("#dmDots");
+  for (let i = 0; i < 48; i++) { dotsWrap.appendChild(document.createElement("i")); }
+  const dots = Array.from(dotsWrap.children);
+  const pills = qa(".dm-field");
+  const checks = qa(".dm-check"), checkNote = q("#dmCheckNote");
+  const flagCount = q("#dmFlagCount"), queueBits = qa(".dm-fade"), flagItems = qa(".dm-fi");
+  const lanes = qa(".dm-lane"), cards = qa(".dm-card"), s6Note = q("#dmS6Note"), reviewer = q("#dmReviewer");
+  const statVals = qa(".dm-stat-val"), reportBars = qa("#dmS7 .bar"), reportChecks = qa("#dmS7 .check-item");
+  const finals = [10000, 247, 128, 18400];
+
+  const cardStates = {
+    potential: ["POTENTIAL DISCREPANCY", ""],
+    review: ["UNDER HUMAN REVIEW", "review"],
+    verified: ["VERIFIED ✓", "verified"],
+    cleared: ["CLEARED — NOT AN ISSUE", "cleared"]
+  };
+  function setCard(card, key) {
+    card.classList.remove("review", "verified", "cleared");
+    if (cardStates[key][1]) { card.classList.add(cardStates[key][1]); }
+    card.querySelector(".dm-card-state").textContent = cardStates[key][0];
+  }
+
+  function setStep(i) {
+    steps.forEach((s, k) => { s.classList.toggle("active", k === i); s.classList.toggle("done", k < i); });
+    sideItems.forEach((s, k) => s.classList.toggle("active", k === sideMap[i]));
+    gsap.to(trackFill, { width: (i / 5 * 100) + "%", duration: .8, ease: "power2.inOut", overwrite: true });
+    heading.textContent = headings[i];
+    gsap.fromTo(heading, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: .5, ease: "power2.out", overwrite: true });
+  }
+
+  function reset() {
+    gsap.set(layers, { autoAlpha: 0, y: 0, scale: 1 });
+    gsap.set(batch, { x: 0, y: 0, scale: 1, autoAlpha: 1 });
+    gsap.set(cursor, { x: 0, y: 0, scale: 1, autoAlpha: 0 });
+    drop.classList.remove("hot", "done");
+    dropIcon.textContent = "↓";
+    dropText.textContent = "Drop invoices to begin";
+    s2.classList.remove("complete");
+    procCount.textContent = "0";
+    procBar.style.width = "0%";
+    procPct.textContent = "0%";
+    dots.forEach(d => d.classList.remove("on"));
+    gsap.set(pills, { opacity: .3 });
+    gsap.set(checks, { autoAlpha: 0, y: 12 });
+    checks.forEach(c => c.classList.remove("ok"));
+    gsap.set(qa(".dm-spin"), { autoAlpha: 0 });
+    gsap.set(qa(".dm-check-ok"), { autoAlpha: 0, scale: .3 });
+    gsap.set(checkNote, { autoAlpha: 0, y: 8 });
+    flagCount.textContent = "0";
+    gsap.set(queueBits, { autoAlpha: 0, y: 8 });
+    gsap.set(flagItems, { autoAlpha: 0, x: 18 });
+    gsap.set(cards, { x: 0, autoAlpha: 0 });
+    cards.forEach(c => setCard(c, "potential"));
+    gsap.set(s6Note, { autoAlpha: 0, y: 8 });
+    reviewer.classList.remove("busy");
+    statVals.forEach(v => { v.textContent = (v.dataset.prefix || "") + "0"; });
+    gsap.set(reportBars, { scaleY: 0, transformOrigin: "50% 100%" });
+    gsap.set(reportChecks, { autoAlpha: 0, x: -8 });
+  }
+
+  function staticState() {
+    reset();
+    setStep(5);
+    gsap.set(s7, { autoAlpha: 1 });
+    statVals.forEach((v, i) => { v.textContent = (v.dataset.prefix || "") + fmt(finals[i]); });
+    gsap.set(reportBars, { scaleY: 1 });
+    gsap.set(reportChecks, { autoAlpha: 1, x: 0 });
+  }
+
+  let current = null, inView = true, started = false, lastW = window.innerWidth;
+
+  function build(isFirst) {
+    const tl = gsap.timeline({ onComplete: run });
+    const W = stage.clientWidth, H = stage.clientHeight;
+    const show = (el, at, instant) => tl.fromTo(el, { autoAlpha: instant ? 1 : 0, y: instant ? 0 : 14 }, { autoAlpha: 1, y: 0, duration: instant ? .01 : .7, ease: "power3.out" }, at);
+    const hide = (el, at) => tl.to(el, { autoAlpha: 0, y: -10, duration: .5, ease: "power2.in" }, at);
+    const mark = (i, at) => tl.call(() => setStep(i), null, at);
+
+    /* STAGE 1 — invoices enter the system */
+    const A = .35;
+    mark(0, A);
+    show(s1, A, isFirst);
+    const bx = batch.offsetLeft + batch.offsetWidth / 2, by = batch.offsetTop + batch.offsetHeight / 2;
+    const zx = drop.offsetLeft + drop.offsetWidth / 2, zy = drop.offsetTop + drop.offsetHeight / 2;
+    const dx = zx - bx, dy = zy - by;
+    const gx = bx - 8, gy = by - 24;
+    gsap.set(cursor, { x: W * .56, y: H * .92 });
+    tl.to(cursor, { autoAlpha: 1, duration: .4 }, A + .7);
+    tl.to(cursor, { x: gx, y: gy, duration: 1.1, ease: "power2.inOut" }, A + .7);
+    tl.to(cursor, { scale: .84, duration: .18, ease: "power1.out" }, A + 1.95);
+    tl.to(batch, { scale: 1.05, duration: .25, ease: "power2.out" }, A + 1.95);
+    tl.to(batch, { x: dx, y: dy, duration: 1.4, ease: "power3.inOut" }, A + 2.25);
+    tl.to(cursor, { x: gx + dx, y: gy + dy, duration: 1.4, ease: "power3.inOut" }, A + 2.25);
+    tl.call(() => { drop.classList.add("hot"); dropText.textContent = "Release to load"; }, null, A + 3.15);
+    tl.to(cursor, { scale: 1, duration: .18 }, A + 3.75);
+    tl.to(batch, { scale: .5, autoAlpha: 0, duration: .5, ease: "power2.in" }, A + 3.8);
+    tl.to(cursor, { x: gx + dx + 50, y: gy + dy + 80, autoAlpha: 0, duration: .6, ease: "power2.inOut" }, A + 4.1);
+    tl.call(() => { drop.classList.remove("hot"); drop.classList.add("done"); dropIcon.textContent = "✓"; dropText.textContent = "10,000 invoices loaded"; }, null, A + 4.25);
+    hide(s1, A + 5.4);
+
+    /* STAGE 2 — processing */
+    const B = A + 5.7;
+    mark(1, B);
+    show(s2, B);
+    const obj = { v: 0 };
+    let lit = 0;
+    const upd = () => {
+      const p = obj.v / 10000;
+      procCount.textContent = fmt(obj.v);
+      procBar.style.width = (p * 100) + "%";
+      procPct.textContent = Math.round(p * 100) + "%";
+      const n = Math.round(p * dots.length);
+      while (lit < n) { dots[lit++].classList.add("on"); }
+    };
+    [1000, 3500, 6800, 10000].forEach((m, i) => tl.to(obj, { v: m, duration: .9, ease: "power1.inOut", onUpdate: upd }, B + .8 + i * 1.2));
+    tl.to(pills, { opacity: 1, duration: .4, stagger: .55 }, B + .9);
+    tl.call(() => { s2.classList.add("complete"); procPct.textContent = "100% · Complete"; }, null, B + 5.35);
+    hide(s2, B + 6.3);
+
+    /* STAGE 3 — audit checks */
+    const C = B + 6.4;
+    mark(2, C);
+    show(s3, C);
+    checks.forEach((row, i) => {
+      const at = C + .9 + i * .58;
+      const spin = row.querySelector(".dm-spin"), ok = row.querySelector(".dm-check-ok");
+      tl.to(row, { autoAlpha: 1, y: 0, duration: .4, ease: "power2.out" }, at);
+      tl.to(spin, { autoAlpha: 1, duration: .2 }, at + .1);
+      tl.to(spin, { autoAlpha: 0, duration: .15 }, at + .45);
+      tl.to(ok, { autoAlpha: 1, scale: 1, duration: .35, ease: "back.out(2.2)" }, at + .45);
+      tl.call(() => row.classList.add("ok"), null, at + .45);
+    });
+    tl.to(checkNote, { autoAlpha: 1, y: 0, duration: .5 }, C + 4.4);
+    hide(s3, C + 5.6);
+
+    /* STAGE 4/5 — review queue and flagged examples */
+    const D = C + 5.7;
+    mark(3, D);
+    show(s4, D);
+    const fo = { v: 0 };
+    tl.to(fo, { v: 247, duration: 1.3, ease: "power2.out", onUpdate: () => { flagCount.textContent = fmt(fo.v); } }, D + .5);
+    tl.to(queueBits, { autoAlpha: 1, y: 0, duration: .5, stagger: .15 }, D + .9);
+    tl.to(flagItems, { autoAlpha: 1, x: 0, duration: .55, ease: "power3.out", stagger: .4 }, D + 1.5);
+    hide(s4, D + 4.6);
+
+    /* STAGE 6 — human verification */
+    const E = D + 4.7;
+    mark(4, E);
+    show(s6, E);
+    tl.to(cards, { autoAlpha: 1, duration: .5, stagger: .12 }, E + .7);
+    const c1 = lanes[0].querySelector(".c1"), c2 = lanes[0].querySelector(".c2"), c3 = lanes[0].querySelector(".c3");
+    const d12 = c2.offsetLeft - c1.offsetLeft, d13 = c3.offsetLeft - c1.offsetLeft;
+    tl.call(() => reviewer.classList.add("busy"), null, E + 1.6);
+    cards.forEach((card, i) => {
+      const at = E + 1.7 + i * .35;
+      tl.to(card, { x: d12, duration: .8, ease: "power3.inOut" }, at);
+      tl.call(() => setCard(card, "review"), null, at + .6);
+    });
+    const vAt = E + 3.7;
+    tl.to(cards[0], { x: d13, duration: .8, ease: "power3.inOut" }, vAt);
+    tl.call(() => setCard(cards[0], "verified"), null, vAt + .6);
+    tl.to(cards[1], { x: d13, duration: .8, ease: "power3.inOut" }, vAt + .35);
+    tl.call(() => setCard(cards[1], "verified"), null, vAt + .95);
+    tl.call(() => setCard(cards[2], "cleared"), null, vAt + .7);
+    tl.to(cards[2], { autoAlpha: .4, duration: .5 }, vAt + .9);
+    tl.call(() => reviewer.classList.remove("busy"), null, vAt + 1.6);
+    tl.to(s6Note, { autoAlpha: 1, y: 0, duration: .5 }, vAt + 1.5);
+    hide(s6, vAt + 3.4);
+
+    /* STAGE 7 — audit report */
+    const F = E + 7.2;
+    mark(5, F);
+    show(s7, F);
+    statVals.forEach((el, i) => {
+      const o = { v: 0 };
+      tl.to(o, { v: finals[i], duration: 1.5, ease: "power2.out", onUpdate: () => { el.textContent = (el.dataset.prefix || "") + fmt(o.v); } }, F + .6 + i * .12);
+    });
+    tl.to(reportBars, { scaleY: 1, duration: .8, ease: "power3.out", stagger: .04 }, F + 1.2);
+    tl.to(reportChecks, { autoAlpha: 1, x: 0, duration: .4, stagger: .15 }, F + 1.2);
+    hide(s7, F + 5.6);
+    return tl;
+  }
+
+  function run(isFirst) {
+    if (current) { current.kill(); }
+    reset();
+    const first = isFirst === true;
+    if (first) { gsap.set(s1, { autoAlpha: 1 }); }
+    current = build(first);
+    if (!inView) { current.pause(); }
+  }
+
+  if (reduceMotion) {
+    staticState();
+  } else {
+    reset();
+    gsap.set(s1, { autoAlpha: 1 });
+    setStep(0);
+    gsap.delayedCall(1.4, () => { started = true; run(true); });
+  }
+
+  ScrollTrigger.create({
+    trigger: ".dashboard-wrapper",
+    start: "top 92%",
+    end: "bottom 4%",
+    onToggle: self => {
+      inView = self.isActive;
+      if (current) { if (inView) { current.play(); } else { current.pause(); } }
+    }
+  });
+
+  q("#dmReplay").addEventListener("click", () => {
+    if (reduceMotion) { return; }
+    inView = true;
+    started = true;
+    run(false);
+  });
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth === lastW) { return; }
+      lastW = window.innerWidth;
+      if (reduceMotion) { staticState(); } else if (started) { run(false); }
+    }, 300);
+  });
+})();
 
 document.querySelectorAll(".magnetic").forEach(button => {
   button.addEventListener("mousemove", event => {

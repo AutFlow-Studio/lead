@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>AutFlow Studio — Custom AI Lead-To-Appointment Systems</title>
 
+  <!-- FIX: favicon path documented — replace AutFlow-logo.png with your actual logo file -->
   <link rel="icon" type="image/png" href="./AutFlow-logo.png">
   <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
@@ -13,6 +14,15 @@
     name="description"
     content="A custom-built AI system for your inbound lead workflow, from first inquiry through qualification, follow-up, and booking. Configured around your business and expandable as your needs grow."
   >
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AutFlow Studio — Custom AI Lead-To-Appointment Systems">
+  <meta property="og:description" content="A custom-built AI system for your inbound lead workflow, from first inquiry through qualification, follow-up, and booking. Configured around your business and expandable as your needs grow.">
+  <meta property="og:image" content="./AutFlow-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AutFlow Studio — Custom AI Lead-To-Appointment Systems">
+  <meta name="twitter:description" content="A custom-built AI system for your inbound lead workflow, from first inquiry through qualification, follow-up, and booking.">
 
   <!-- =========================================================
        FONTS
@@ -55,6 +65,9 @@
       scroll-behavior: auto;
       width: 100%;
       overflow-x: hidden;
+      /* Safe area insets for phones with notch/home bar */
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
     }
 
     body {
@@ -96,6 +109,13 @@
     ::selection {
       background: #fff;
       color: #000;
+    }
+
+    /* FIX: Keyboard focus visibility — accessibility requirement */
+    :focus-visible {
+      outline: 2px solid rgba(255,255,255,.7);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
 
     /* =========================================================
@@ -1188,7 +1208,7 @@
     }
 
     /* =========================================================
-       FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW (NEW)
+       FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW
     ========================================================== */
 
     .feature-badge {
@@ -1453,7 +1473,7 @@
     }
 
     /* =========================================================
-       TABS
+       TABS (CSS retained — not currently used in HTML)
     ========================================================== */
 
     .center-heading {
@@ -1468,141 +1488,6 @@
 
     .center-heading .eyebrow {
       justify-content: center;
-    }
-
-    .tabs {
-      max-width: 760px;
-
-      margin: 55px auto 0;
-
-      min-width: 0;
-    }
-
-    .tab-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      padding: 4px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.025);
-    }
-
-    .tab-button {
-      padding: 12px;
-
-      border-radius: 8px;
-
-      background: transparent;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 10px;
-
-      transition: .25s ease;
-
-      min-width: 0;
-    }
-
-    .tab-button.active {
-      background: #fff;
-      color: #000;
-    }
-
-    .tab-content {
-      min-height: 300px;
-
-      margin-top: 12px;
-
-      padding: 45px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.018);
-
-      min-width: 0;
-    }
-
-    .tab-panel {
-      display: none;
-      min-width: 0;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    .tab-icon {
-      width: 47px;
-      height: 47px;
-      flex: 0 0 47px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.09);
-
-      border-radius: 13px;
-
-      background: rgba(255,255,255,.045);
-
-      font-size: 16px;
-    }
-
-    .tab-panel h3 {
-      margin-top: 22px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 24px;
-
-      font-weight: 500;
-
-      letter-spacing: -.04em;
-
-      overflow-wrap: break-word;
-    }
-
-    .tab-panel p {
-      max-width: 590px;
-
-      margin-top: 13px;
-
-      color: rgba(255,255,255,.36);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 25px;
-    }
-
-    .tag {
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.02);
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 8px;
-
-      max-width: 100%;
     }
 
     /* =========================================================
@@ -1983,7 +1868,7 @@
     }
 
     /* =========================================================
-       PRICING
+       SUITABILITY / WHO IT'S FOR
     ========================================================== */
 
     .pricing-grid {
@@ -2013,20 +1898,6 @@
         );
     }
 
-    .pricing-badge {
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      padding: 6px 10px;
-      border: 1px solid rgba(102,227,148,.35);
-      border-radius: 999px;
-      background: rgba(102,227,148,.08);
-      color: #7be8a4;
-      font-size: 7px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
     .pricing-label {
       color: rgba(255,255,255,.45);
       font-size: 7px;
@@ -2041,46 +1912,8 @@
       letter-spacing: -.03em;
     }
 
-    .pricing-price {
-      margin-top: 16px;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .pricing-amount {
-      font-family: "Space Grotesk";
-      font-size: 40px;
-      letter-spacing: -.03em;
-    }
-
-    .pricing-cadence {
-      color: rgba(255,255,255,.3);
-      font-size: 10px;
-    }
-
-    .pricing-sub {
-      margin-top: 6px;
-      color: rgba(255,255,255,.32);
-      font-size: 9px;
-    }
-
-    .pricing-desc {
-      margin-top: 18px;
-      color: rgba(255,255,255,.5);
-      font-size: 10px;
-      line-height: 1.8;
-      max-width: 400px;
-    }
-
     .pricing-card .check-list {
       margin-top: 24px;
-    }
-
-    .pricing-card .button {
-      margin-top: 28px;
-      width: 100%;
     }
 
     /* =========================================================
@@ -2483,10 +2316,6 @@
         padding: 42px 30px;
       }
 
-      .tab-content {
-        padding: 35px;
-      }
-
       .final-cta {
         padding: 120px 0;
       }
@@ -2871,56 +2700,6 @@
         gap: 5px;
       }
 
-      .tabs {
-        margin-top: 40px;
-      }
-
-      .tab-buttons {
-        gap: 2px;
-        padding: 3px;
-        border-radius: 10px;
-      }
-
-      .tab-button {
-        padding: 11px 7px;
-        font-size: 8px;
-        line-height: 1.25;
-      }
-
-      .tab-content {
-        min-height: 0;
-        padding: 28px 20px;
-        border-radius: 14px;
-      }
-
-      .tab-icon {
-        width: 43px;
-        height: 43px;
-        flex-basis: 43px;
-      }
-
-      .tab-panel h3 {
-        margin-top: 19px;
-        font-size: 20px;
-        line-height: 1.15;
-      }
-
-      .tab-panel p {
-        margin-top: 11px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .tags {
-        gap: 6px;
-        margin-top: 21px;
-      }
-
-      .tag {
-        padding: 5px 8px;
-        font-size: 7px;
-      }
-
       .flow-node {
         padding: 13px 20px;
         font-size: 10px;
@@ -2995,10 +2774,6 @@
 
       .pricing-card {
         padding: 28px 22px;
-      }
-
-      .pricing-amount {
-        font-size: 32px;
       }
 
       .final-cta {
@@ -3138,14 +2913,6 @@
         width: calc(100% - 24px);
       }
 
-      .tab-content {
-        padding: 24px 17px;
-      }
-
-      .tab-button {
-        font-size: 7px;
-      }
-
       .custom-option {
         padding: 16px;
       }
@@ -3280,6 +3047,25 @@
       background: #000;
     }
 
+    /* FIX: demo modal no-video state */
+    .demo-no-video {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 60px 30px;
+      color: rgba(255,255,255,.4);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .demo-no-video strong {
+      color: rgba(255,255,255,.75);
+      font-size: 14px;
+      display: block;
+    }
+
     @media(max-width:620px) {
 
       .demo-modal {
@@ -3330,7 +3116,7 @@
        BACKGROUND
   ========================================================== -->
 
-  <div class="background">
+  <div class="background" aria-hidden="true">
 
     <div class="background-grid"></div>
 
@@ -3341,23 +3127,23 @@
   </div>
 
   <!-- =========================================================
-       CURSOR
+       CURSOR (hidden on touch devices via CSS)
   ========================================================== -->
 
-  <div class="cursor"></div>
-  <div class="cursor-ring"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- =========================================================
        NAVBAR
   ========================================================== -->
 
-  <header class="navbar">
+  <header class="navbar" role="banner">
 
     <div class="container nav-inner">
 
-      <a href="#" class="brand">
+      <a href="#" class="brand" aria-label="AutFlow Studio — home">
 
-        <div class="brand-mark">
+        <div class="brand-mark" aria-hidden="true">
           <span>A</span>
         </div>
 
@@ -3375,7 +3161,7 @@
 
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
 
         <a href="#product">
           The System
@@ -3405,13 +3191,20 @@
       <button
         class="mobile-menu-button"
         id="mobileMenuButton"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
       >
         ☰
       </button>
 
     </div>
 
-    <div class="mobile-menu" id="mobileMenu">
+    <nav
+      class="mobile-menu"
+      id="mobileMenu"
+      aria-label="Mobile navigation"
+    >
 
       <a href="#product">
         The System
@@ -3436,1196 +3229,391 @@
         Discuss Your Lead Flow
       </a>
 
-    </div>
+    </nav>
 
   </header>
 
   <!-- =========================================================
-       HERO
+       MAIN CONTENT
   ========================================================== -->
 
-  <section class="hero">
+  <main>
 
-    <div class="hero-orbit">
-      <div class="orbit-dot"></div>
-    </div>
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
 
-    <div class="container">
+    <section class="hero" aria-labelledby="hero-heading">
 
-      <div class="hero-content">
-
-        <div class="status-pill hero-animate">
-
-          <span class="status-dot"></span>
-
-          CUSTOM AI LEAD-TO-APPOINTMENT SYSTEMS
-
-        </div>
-
-        <h1 class="hero-title">
-
-          <span class="line">
-            <span class="line-inner">
-              Stop Losing Inquiries
-            </span>
-          </span>
-
-          <span class="line">
-            <span class="line-inner">
-              Before They Become
-            </span>
-          </span>
-
-          <span class="line">
-            <span class="line-inner muted">
-              Booked Appointments.
-            </span>
-          </span>
-
-        </h1>
-
-        <p class="hero-description hero-animate">
-
-          AutFlow Studio builds a custom system around your inbound lead workflow, from first inquiry through follow-up and booking. It's configured around your business, rules, and tools, and can expand as your needs grow.
-
-        </p>
-
-        <div class="hero-actions hero-animate">
-
-          <a
-            href="#get-started"
-            class="button button-primary magnetic"
-          >
-            Discuss Your Lead Flow
-            <span>→</span>
-          </a>
-
-          <button
-            type="button"
-            class="button button-secondary magnetic"
-            id="demoButton"
-          >
-            Watch The Demo
-            <span>▶</span>
-          </button>
-
-        </div>
-
+      <div class="hero-orbit" aria-hidden="true">
+        <div class="orbit-dot"></div>
       </div>
 
-      <!-- =====================================================
-           DASHBOARD
-      ====================================================== -->
+      <div class="container">
 
-      <div class="dashboard-wrapper">
+        <div class="hero-content">
 
-        <div class="dashboard-glow"></div>
+          <div class="status-pill hero-animate" aria-hidden="true">
 
-        <div class="dashboard">
+            <span class="status-dot"></span>
 
-          <div class="browser-bar">
-
-            <div class="browser-dots">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div class="browser-status">
-
-              <i></i>
-
-              SAMPLE DATA — ILLUSTRATIVE ONLY
-
-            </div>
-
-            <div class="browser-label">
-              ILLUSTRATIVE DASHBOARD
-            </div>
+            CUSTOM AI LEAD-TO-APPOINTMENT SYSTEMS
 
           </div>
 
-          <div class="dashboard-body">
-
-            <aside class="sidebar">
-
-              <div class="sidebar-title">
-                Your Business
-              </div>
-
-              <div class="sidebar-item active">
-                <span class="sidebar-icon"></span>
-                Inbox
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Leads
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Follow-Ups
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Appointments
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Team Handoff
-              </div>
-
-              <div class="sidebar-separator"></div>
-
-              <div class="sidebar-title">
-                Overview
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Lead Statuses
-              </div>
-
-            </aside>
-
-            <div class="dashboard-main">
-
-              <div class="dashboard-header">
-
-                <div>
-
-                  <div class="dashboard-eyebrow">
-                    Sample Data / Illustrative
-                  </div>
-
-                  <div class="dashboard-heading">
-                    From first inquiry to booked appointment.
-                  </div>
-
-                </div>
-
-                <div class="dashboard-filter">
-                  Sample view ↗
-                </div>
-
-              </div>
-
-              <div class="stats">
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Inquiries
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="142"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Qualified Leads
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="61"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Follow-Ups Sent
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="87"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Appointments
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="24"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="dashboard-grid">
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Lead Pipeline
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Illustrative statuses
-                  </div>
-
-                  <div class="project-list">
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        01
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Inquiry answered
-                        </div>
-
-                        <div class="project-status">
-                          RESPONDED
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        Sample
-                      </div>
-
-                    </div>
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        02
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Lead qualified
-                        </div>
-
-                        <div class="project-status">
-                          QUALIFIED
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        Sample
-                      </div>
-
-                    </div>
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        03
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Appointment booked
-                        </div>
-
-                        <div class="project-status">
-                          BOOKED
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        Sample
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Lead Statuses
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Illustrative trend
-                  </div>
-
-                  <div class="chart">
-
-                    <div class="bar" style="height:30%"></div>
-                    <div class="bar" style="height:48%"></div>
-                    <div class="bar" style="height:40%"></div>
-                    <div class="bar" style="height:65%"></div>
-                    <div class="bar" style="height:54%"></div>
-                    <div class="bar" style="height:74%"></div>
-                    <div class="bar" style="height:62%"></div>
-                    <div class="bar" style="height:85%"></div>
-                    <div class="bar" style="height:71%"></div>
-                    <div class="bar" style="height:96%"></div>
-                    <div class="bar" style="height:80%"></div>
-                    <div class="bar" style="height:100%"></div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       PROBLEM + ILLUSTRATIVE COST OF LOST INQUIRIES
-  ========================================================== -->
-
-  <section class="section-border">
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          THE PROBLEM
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Valuable Inquiries Go Cold
-          <br>
-
-          <span class="muted">
-            Before They Book.
-          </span>
-
-        </h2>
-
-        <p class="section-description centered">
-
-          Slow replies and missed follow-ups can lose an inquiry, and the revenue it might have brought.
-
-        </p>
-
-      </div>
-
-      <div class="center-heading reveal-scale" style="margin-top:55px;">
-
-        <span
-          class="small-tag"
-          style="color:rgba(255,255,255,.78); font-size:8px;"
-        >
-          ILLUSTRATIVE EXAMPLE — NOT ACTUAL CLIENT RESULTS
-        </span>
-
-      </div>
-
-      <div class="equation-row reveal-scale" style="margin-top:26px;">
-
-        <div class="flow-node">
-          100 INQUIRIES / MONTH
-        </div>
-
-        <div class="flow-arrow">→</div>
-
-        <div class="flow-node">
-          10 MISSED
-        </div>
-
-        <div class="flow-arrow">→</div>
-
-        <div class="flow-node">
-          2 MIGHT CONVERT
-        </div>
-
-        <div class="flow-arrow">×</div>
-
-        <div class="flow-node">
-          $500 PER CUSTOMER
-        </div>
-
-        <div class="flow-arrow">=</div>
-
-        <div class="flow-node">
-          $1,000 POTENTIAL REVENUE
-        </div>
-
-      </div>
-
-      <p class="section-description centered reveal-scale" style="margin-top:34px;">
-        Hypothetical: 10 of 100 monthly inquiries are missed or never followed up, and 2 of them might have become $500 customers. This is potential revenue, not guaranteed lost profit or recovered revenue. Actual value depends on your lead volume, qualification, conversion rate, and customer value.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       THE SOLUTION
-  ========================================================== -->
-
-  <section
-    id="product"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="section-heading-grid">
-
-        <div class="reveal-left">
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-line"></span>
-
-            THE SOLUTION
-
-          </div>
-
-          <h2>
-
-            From First Inquiry
-
-            <span class="muted">
-              To Booked Appointment.
-            </span>
-          </h2>
-
-        </div>
-
-        <p class="section-description reveal-right">
-
-          A custom workflow, not a generic chatbot: Capture → Respond → Qualify → Follow Up → Book → Organize → Escalate When Needed.
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       FEATURES
-  ========================================================== -->
-
-  <section
-    id="capabilities"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="section-heading-grid">
-
-        <div class="reveal-left">
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-line"></span>
-
-            WHAT IT DOES
-
-          </div>
-
-          <h2>
-
-            Core Capabilities,
-
-            <span class="muted">
-              Configured To Fit.
-            </span>
-          </h2>
-
-        </div>
-
-        <p class="section-description reveal-right">
-
-          These work together as one workflow. Supported channels, CRMs, and booking tools depend on your setup.
-
-        </p>
-
-      </div>
-
-      <div class="feature-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◈
-          </div>
-
-          <div class="feature-title">
-            RESPOND FAST
-          </div>
-
-          <div class="feature-description">
-            Answers inquiries promptly using your approved information.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⌁
-          </div>
-
-          <div class="feature-title">
-            QUALIFY LEADS
-          </div>
-
-          <div class="feature-description">
-            Collects customer details and checks them against your criteria.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ↻
-          </div>
-
-          <div class="feature-title">
-            FOLLOW UP
-          </div>
-
-          <div class="feature-description">
-            Re-engages prospects who haven't booked, following your rules.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⚙
-          </div>
-
-          <div class="feature-title">
-            BOOK APPOINTMENTS
-          </div>
-
-          <div class="feature-description">
-            Helps eligible prospects book through supported integrations.
-          </div>
-
-          <div class="feature-badge">
-            Where Supported
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            $
-          </div>
-
-          <div class="feature-title">
-            ORGANIZE LEADS
-          </div>
-
-          <div class="feature-description">
-            Keeps conversations and lead statuses in an available CRM or dashboard.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ✦
-          </div>
-
-          <div class="feature-title">
-            HAND OFF TO YOUR TEAM
-          </div>
-
-          <div class="feature-description">
-            Passes complex cases to your staff for human judgment.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       CUSTOMIZATION AND EXPANDABILITY
-  ========================================================== -->
-
-  <section
-    id="customization"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          CUSTOMIZED
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Built Around Your Workflow.
-          <br>
-
-          <span class="muted">
-            Expandable As Your Needs Grow.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          These capabilities are the core, not a fixed feature list. Where technically feasible, more channels, rules, routing, reporting, and integrations can be added through separately scoped custom work.
-
-        </p>
-
-      </div>
-
-      <div class="steps-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Additional channels?
-          </div>
-
-          <div class="request-answer">
-            Added where supported.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Your own qualification rules?
-          </div>
-
-          <div class="request-answer">
-            Built to your criteria.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Routing, scheduling, or reporting?
-          </div>
-
-          <div class="request-answer">
-            Scoped around your process.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Other tools or custom steps?
-          </div>
-
-          <div class="request-answer">
-            Assessed case by case.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       SUITABILITY
-  ========================================================== -->
-
-  <section
-    id="comparison"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          WHO IT'S FOR
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Built For Steady
-          <br>
-
-          <span class="muted">
-            Inbound Inquiries.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          Any industry where timely replies matter and appointments carry real value.
-
-        </p>
-
-      </div>
-
-      <div class="pricing-grid reveal-scale">
-
-        <div class="pricing-card">
-
-          <div class="pricing-label">
-            IDEAL CUSTOMER
-          </div>
-
-          <div class="pricing-name">
-            Inquiry-Driven Businesses
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Steady inbound inquiries
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Timely replies and follow-ups matter
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Appointments have meaningful value
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="pricing-card featured">
-
-          <div class="pricing-label">
-            YOUR SETUP
-          </div>
-
-          <div class="pricing-name">
-            Works With Supported Tools
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Channels such as website forms, WhatsApp, Instagram, Facebook
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              CRMs and booking platforms
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Depends on your platforms, permissions, and APIs
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       CONTROL
-  ========================================================== -->
-
-  <section
-    id="revenue-opportunity"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="ownership-card ownership-parallax">
-
-        <div class="ownership-content">
-
-          <span class="small-tag">
-            YOU STAY IN CONTROL
-          </span>
-
-          <h2 style="margin-top:23px;">
-
-            Automated Where It Fits.
-
-            <br>
-
-            <span class="muted">
-              Human Where It Counts.
-            </span>
-          </h2>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Answers from company-approved information
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Follows your business-defined rules
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Hands cases needing human judgment to your team
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="workflow-visual">
-
-          <div class="workflow-box workflow-float">
-
-            <div class="workflow-header">
-
-              <span>
-                ◉ INQUIRY FLOW
+          <h1 class="hero-title" id="hero-heading">
+
+            <span class="line">
+              <span class="line-inner">
+                Stop Losing Inquiries
               </span>
-
-              <span class="workflow-active">
-                SAMPLE
-              </span>
-
-            </div>
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Inquiry received
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Answered from approved information
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Eligible lead helped to book
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Complex cases handed to your team
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       PROCESS — START WITH AN INITIAL VERSION
-  ========================================================== -->
-
-  <section
-    id="how-it-works"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          HOW IT WORKS
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Start With The Workflow
-          <br>
-
-          <span class="muted">
-            That Matters Most.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          We build an initial system around your biggest gap, then expand as your needs grow.
-
-        </p>
-
-      </div>
-
-      <div class="steps-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            01
-          </div>
-
-          <div class="feature-title">
-            UNDERSTAND
-          </div>
-
-          <div class="feature-description">
-            We review your current inquiry workflow and find where opportunities leak.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            02
-          </div>
-
-          <div class="feature-title">
-            CONFIGURE
-          </div>
-
-          <div class="feature-description">
-            We define an initial version and set up its replies, rules, and integrations.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            03
-          </div>
-
-          <div class="feature-title">
-            TEST
-          </div>
-
-          <div class="feature-description">
-            We test the agreed workflow before it goes live.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            04
-          </div>
-
-          <div class="feature-title">
-            DEPLOY
-          </div>
-
-          <div class="feature-description">
-            We launch the supported setup, then expand it as requirements develop.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       DISCOVERY CALL
-  ========================================================== -->
-
-  <section
-    id="preview"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="custom-card reveal-scale">
-
-        <div class="custom-grid">
-
-          <div class="custom-copy">
-
-            <span class="small-tag">
-              DISCOVERY CALL
             </span>
 
-            <h2 style="margin-top:23px;">
-
-              Discuss Your
-
-              <br>
-
-              <span class="muted">
-                Lead Flow First.
+            <span class="line">
+              <span class="line-inner">
+                Before They Become
               </span>
-            </h2>
+            </span>
 
-            <p class="custom-description">
-              We review how inquiries reach you today, where opportunities may be leaking, and what an initial custom system could cover.
-            </p>
+            <span class="line">
+              <span class="line-inner muted">
+                Booked Appointments.
+              </span>
+            </span>
+
+          </h1>
+
+          <p class="hero-description hero-animate">
+
+            AutFlow Studio builds a custom system around your inbound lead workflow, from first inquiry through follow-up and booking. It's configured around your business, rules, and tools, and can expand as your needs grow.
+
+          </p>
+
+          <div class="hero-actions hero-animate">
 
             <a
               href="#get-started"
               class="button button-primary magnetic"
             >
               Discuss Your Lead Flow
-              <span>→</span>
+              <span aria-hidden="true">→</span>
             </a>
+
+            <button
+              type="button"
+              class="button button-secondary magnetic"
+              id="demoButton"
+              aria-haspopup="dialog"
+            >
+              Watch The Demo
+              <span aria-hidden="true">▶</span>
+            </button>
 
           </div>
 
-          <div class="custom-options">
+        </div>
 
-            <div class="custom-option">
+        <!-- =====================================================
+             DASHBOARD — ILLUSTRATIVE ONLY
+        ====================================================== -->
 
-              <div class="custom-option-top">
+        <div class="dashboard-wrapper" aria-hidden="true">
 
-                <div class="custom-option-number">
-                  01
-                </div>
+          <div class="dashboard-glow"></div>
 
-                <div class="custom-option-label">
-                  ON THE<br>CALL
-                </div>
+          <div class="dashboard">
+
+            <div class="browser-bar">
+
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="browser-status">
+
+                <i></i>
+
+                SAMPLE DATA — ILLUSTRATIVE ONLY
 
               </div>
 
-              <h3>
-                Your Current Lead Workflow
-              </h3>
-
-              <div class="custom-option-features">
-                <span class="custom-option-feature">CHANNELS</span>
-                <span class="custom-option-feature">WHERE LEADS LEAK</span>
-                <span class="custom-option-feature">QUALIFICATION</span>
-                <span class="custom-option-feature">BOOKING RULES</span>
-                <span class="custom-option-feature">INTEGRATIONS</span>
+              <div class="browser-label">
+                ILLUSTRATIVE DASHBOARD
               </div>
 
-              <div class="custom-option-arrow">
-                →
+            </div>
+
+            <div class="dashboard-body">
+
+              <aside class="sidebar">
+
+                <div class="sidebar-title">
+                  Your Business
+                </div>
+
+                <div class="sidebar-item active">
+                  <span class="sidebar-icon"></span>
+                  Inbox
+                </div>
+
+                <div class="sidebar-item">
+                  <span class="sidebar-icon"></span>
+                  Leads
+                </div>
+
+                <div class="sidebar-item">
+                  <span class="sidebar-icon"></span>
+                  Follow-Ups
+                </div>
+
+                <div class="sidebar-item">
+                  <span class="sidebar-icon"></span>
+                  Appointments
+                </div>
+
+                <div class="sidebar-item">
+                  <span class="sidebar-icon"></span>
+                  Team Handoff
+                </div>
+
+                <div class="sidebar-separator"></div>
+
+                <div class="sidebar-title">
+                  Overview
+                </div>
+
+                <div class="sidebar-item">
+                  <span class="sidebar-icon"></span>
+                  Lead Statuses
+                </div>
+
+              </aside>
+
+              <div class="dashboard-main">
+
+                <div class="dashboard-header">
+
+                  <div>
+
+                    <div class="dashboard-eyebrow">
+                      Sample Data / Illustrative
+                    </div>
+
+                    <div class="dashboard-heading">
+                      From first inquiry to booked appointment.
+                    </div>
+
+                  </div>
+
+                  <div class="dashboard-filter">
+                    Sample view ↗
+                  </div>
+
+                </div>
+
+                <div class="stats">
+
+                  <div class="stat">
+
+                    <div class="stat-label">
+                      Inquiries
+                    </div>
+
+                    <div
+                      class="stat-value counter"
+                      data-value="142"
+                    >
+                      0
+                    </div>
+
+                    <div class="stat-change">
+                      Sample data
+                    </div>
+
+                  </div>
+
+                  <div class="stat">
+
+                    <div class="stat-label">
+                      Qualified Leads
+                    </div>
+
+                    <div
+                      class="stat-value counter"
+                      data-value="61"
+                    >
+                      0
+                    </div>
+
+                    <div class="stat-change">
+                      Sample data
+                    </div>
+
+                  </div>
+
+                  <div class="stat">
+
+                    <div class="stat-label">
+                      Follow-Ups Sent
+                    </div>
+
+                    <div
+                      class="stat-value counter"
+                      data-value="87"
+                    >
+                      0
+                    </div>
+
+                    <div class="stat-change">
+                      Sample data
+                    </div>
+
+                  </div>
+
+                  <div class="stat">
+
+                    <div class="stat-label">
+                      Appointments
+                    </div>
+
+                    <div
+                      class="stat-value counter"
+                      data-value="24"
+                    >
+                      0
+                    </div>
+
+                    <div class="stat-change">
+                      Sample data
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                  <div class="panel">
+
+                    <div class="panel-title">
+                      Lead Pipeline
+                    </div>
+
+                    <div class="panel-subtitle">
+                      Illustrative statuses
+                    </div>
+
+                    <div class="project-list">
+
+                      <div class="project">
+
+                        <div class="project-number">
+                          01
+                        </div>
+
+                        <div class="project-info">
+
+                          <div class="project-name">
+                            Inquiry answered
+                          </div>
+
+                          <div class="project-status">
+                            RESPONDED
+                          </div>
+
+                        </div>
+
+                        <div class="project-price">
+                          Sample
+                        </div>
+
+                      </div>
+
+                      <div class="project">
+
+                        <div class="project-number">
+                          02
+                        </div>
+
+                        <div class="project-info">
+
+                          <div class="project-name">
+                            Lead qualified
+                          </div>
+
+                          <div class="project-status">
+                            QUALIFIED
+                          </div>
+
+                        </div>
+
+                        <div class="project-price">
+                          Sample
+                        </div>
+
+                      </div>
+
+                      <div class="project">
+
+                        <div class="project-number">
+                          03
+                        </div>
+
+                        <div class="project-info">
+
+                          <div class="project-name">
+                            Appointment booked
+                          </div>
+
+                          <div class="project-status">
+                            BOOKED
+                          </div>
+
+                        </div>
+
+                        <div class="project-price">
+                          Sample
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="panel">
+
+                    <div class="panel-title">
+                      Lead Statuses
+                    </div>
+
+                    <div class="panel-subtitle">
+                      Illustrative trend
+                    </div>
+
+                    <div class="chart">
+
+                      <div class="bar" style="height:30%"></div>
+                      <div class="bar" style="height:48%"></div>
+                      <div class="bar" style="height:40%"></div>
+                      <div class="bar" style="height:65%"></div>
+                      <div class="bar" style="height:54%"></div>
+                      <div class="bar" style="height:74%"></div>
+                      <div class="bar" style="height:62%"></div>
+                      <div class="bar" style="height:85%"></div>
+                      <div class="bar" style="height:71%"></div>
+                      <div class="bar" style="height:96%"></div>
+                      <div class="bar" style="height:80%"></div>
+                      <div class="bar" style="height:100%"></div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
               </div>
 
             </div>
@@ -4636,56 +3624,287 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- =========================================================
+         PROBLEM + ILLUSTRATIVE COST OF LOST INQUIRIES
+    ========================================================== -->
 
-  <!-- =========================================================
-       FINAL CTA
-  ========================================================== -->
+    <section class="section-border" aria-labelledby="problem-heading">
 
-  <section
-    id="get-started"
-    class="final-cta"
-  >
+      <div class="container section-padding">
 
-    <div class="container">
+        <div class="center-heading reveal-scale">
 
-      <div class="reveal-scale">
+          <div class="eyebrow" aria-hidden="true">
 
-        <div class="final-icon">
-          ↗
+            <span class="eyebrow-line"></span>
+
+            THE PROBLEM
+
+            <span class="eyebrow-line"></span>
+
+          </div>
+
+          <h2 id="problem-heading">
+
+            Valuable Inquiries Go Cold
+            <br>
+
+            <span class="muted">
+              Before They Book.
+            </span>
+
+          </h2>
+
+          <p class="section-description centered">
+
+            Slow replies and missed follow-ups can lose an inquiry, and the revenue it might have brought.
+
+          </p>
+
         </div>
 
-        <h2>
+        <div class="center-heading reveal-scale" style="margin-top:55px;">
 
-          Ready To Stop
-          <br>
-
-          <span class="muted">
-            Losing Inquiries?
+          <span
+            class="small-tag"
+            style="color:rgba(255,255,255,.78); font-size:8px;"
+          >
+            ILLUSTRATIVE EXAMPLE — NOT ACTUAL CLIENT RESULTS
           </span>
-        </h2>
 
-        <p>
+        </div>
 
-          Fewer unanswered inquiries, more consistent follow-up, and less manual handling for your team.
+        <div class="equation-row reveal-scale" style="margin-top:26px;">
 
+          <div class="flow-node">
+            100 INQUIRIES / MONTH
+          </div>
+
+          <div class="flow-arrow" aria-hidden="true">→</div>
+
+          <div class="flow-node">
+            10 MISSED
+          </div>
+
+          <div class="flow-arrow" aria-hidden="true">→</div>
+
+          <div class="flow-node">
+            2 MIGHT CONVERT
+          </div>
+
+          <div class="flow-arrow" aria-hidden="true">×</div>
+
+          <div class="flow-node">
+            $500 PER CUSTOMER
+          </div>
+
+          <div class="flow-arrow" aria-hidden="true">=</div>
+
+          <div class="flow-node">
+            $1,000 POTENTIAL REVENUE
+          </div>
+
+        </div>
+
+        <p class="section-description centered reveal-scale" style="margin-top:34px;">
+          Hypothetical: 10 of 100 monthly inquiries are missed or never followed up, and 2 of them might have become $500 customers. This is potential revenue, not guaranteed lost profit or recovered revenue. Actual value depends on your lead volume, qualification, conversion rate, and customer value.
         </p>
 
-        <div class="final-actions">
+      </div>
 
-          <div class="hero-actions">
+    </section>
 
-            <a
-              href="https://wa.me/213676127853"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="button button-primary magnetic"
-            >
-              Discuss Your Lead Flow
-              <span>→</span>
-            </a>
+    <!-- =========================================================
+         THE SOLUTION
+    ========================================================== -->
+
+    <section
+      id="product"
+      class="section-border"
+      aria-labelledby="solution-heading"
+    >
+
+      <div class="container section-padding">
+
+        <div class="section-heading-grid">
+
+          <div class="reveal-left">
+
+            <div class="eyebrow" aria-hidden="true">
+
+              <span class="eyebrow-line"></span>
+
+              THE SOLUTION
+
+            </div>
+
+            <h2 id="solution-heading">
+
+              From First Inquiry
+
+              <span class="muted">
+                To Booked Appointment.
+              </span>
+            </h2>
+
+          </div>
+
+          <p class="section-description reveal-right">
+
+            A custom workflow, not a generic chatbot: Capture → Respond → Qualify → Follow Up → Book → Organize → Escalate When Needed.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         FEATURES
+    ========================================================== -->
+
+    <section
+      id="capabilities"
+      class="section-border"
+      aria-labelledby="capabilities-heading"
+    >
+
+      <div class="container section-padding">
+
+        <div class="section-heading-grid">
+
+          <div class="reveal-left">
+
+            <div class="eyebrow" aria-hidden="true">
+
+              <span class="eyebrow-line"></span>
+
+              WHAT IT DOES
+
+            </div>
+
+            <h2 id="capabilities-heading">
+
+              Core Capabilities,
+
+              <span class="muted">
+                Configured To Fit.
+              </span>
+            </h2>
+
+          </div>
+
+          <p class="section-description reveal-right">
+
+            These work together as one workflow. Supported channels, CRMs, and booking tools depend on your setup.
+
+          </p>
+
+        </div>
+
+        <div class="feature-grid reveal-scale">
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ◈
+            </div>
+
+            <div class="feature-title">
+              RESPOND FAST
+            </div>
+
+            <div class="feature-description">
+              Answers inquiries promptly using your approved information.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ⌁
+            </div>
+
+            <div class="feature-title">
+              QUALIFY LEADS
+            </div>
+
+            <div class="feature-description">
+              Collects customer details and checks them against your criteria.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ↻
+            </div>
+
+            <div class="feature-title">
+              FOLLOW UP
+            </div>
+
+            <div class="feature-description">
+              Re-engages prospects who haven't booked, following your rules.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ⚙
+            </div>
+
+            <div class="feature-title">
+              BOOK APPOINTMENTS
+            </div>
+
+            <div class="feature-description">
+              Helps eligible prospects book through supported integrations.
+            </div>
+
+            <div class="feature-badge">
+              Where Supported
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              $
+            </div>
+
+            <div class="feature-title">
+              ORGANIZE LEADS
+            </div>
+
+            <div class="feature-description">
+              Keeps conversations and lead statuses in an available CRM or dashboard.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ✦
+            </div>
+
+            <div class="feature-title">
+              HAND OFF TO YOUR TEAM
+            </div>
+
+            <div class="feature-description">
+              Passes complex cases to your staff for human judgment.
+            </div>
 
           </div>
 
@@ -4693,27 +3912,627 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- =========================================================
+         CUSTOMIZATION AND EXPANDABILITY
+    ========================================================== -->
+
+    <section
+      id="customization"
+      class="section-border"
+      aria-labelledby="customization-heading"
+    >
+
+      <div class="container section-padding">
+
+        <div class="center-heading reveal-scale">
+
+          <div class="eyebrow" aria-hidden="true">
+
+            <span class="eyebrow-line"></span>
+
+            CUSTOMIZED
+
+            <span class="eyebrow-line"></span>
+
+          </div>
+
+          <h2 id="customization-heading">
+
+            Built Around Your Workflow.
+            <br>
+
+            <span class="muted">
+              Expandable As Your Needs Grow.
+            </span>
+          </h2>
+
+          <p class="section-description centered">
+
+            These capabilities are the core, not a fixed feature list. Where technically feasible, more channels, rules, routing, reporting, and integrations can be added through separately scoped custom work.
+
+          </p>
+
+        </div>
+
+        <div class="steps-grid reveal-scale">
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ?
+            </div>
+
+            <div class="feature-title">
+              Additional channels?
+            </div>
+
+            <div class="request-answer">
+              Added where supported.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ?
+            </div>
+
+            <div class="feature-title">
+              Your own qualification rules?
+            </div>
+
+            <div class="request-answer">
+              Built to your criteria.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ?
+            </div>
+
+            <div class="feature-title">
+              Routing, scheduling, or reporting?
+            </div>
+
+            <div class="request-answer">
+              Scoped around your process.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              ?
+            </div>
+
+            <div class="feature-title">
+              Other tools or custom steps?
+            </div>
+
+            <div class="request-answer">
+              Assessed case by case.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         SUITABILITY
+    ========================================================== -->
+
+    <section
+      id="comparison"
+      class="section-border"
+      aria-labelledby="comparison-heading"
+    >
+
+      <div class="container section-padding">
+
+        <div class="center-heading reveal-scale">
+
+          <div class="eyebrow" aria-hidden="true">
+
+            <span class="eyebrow-line"></span>
+
+            WHO IT'S FOR
+
+            <span class="eyebrow-line"></span>
+
+          </div>
+
+          <h2 id="comparison-heading">
+
+            Built For Steady
+            <br>
+
+            <span class="muted">
+              Inbound Inquiries.
+            </span>
+          </h2>
+
+          <p class="section-description centered">
+
+            Any industry where timely replies matter and appointments carry real value.
+
+          </p>
+
+        </div>
+
+        <div class="pricing-grid reveal-scale">
+
+          <div class="pricing-card">
+
+            <div class="pricing-label">
+              IDEAL CUSTOMER
+            </div>
+
+            <div class="pricing-name">
+              Inquiry-Driven Businesses
+            </div>
+
+            <div class="check-list">
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Steady inbound inquiries
+              </div>
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Timely replies and follow-ups matter
+              </div>
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Appointments have meaningful value
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="pricing-card featured">
+
+            <div class="pricing-label">
+              YOUR SETUP
+            </div>
+
+            <div class="pricing-name">
+              Works With Supported Tools
+            </div>
+
+            <div class="check-list">
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Channels such as website forms, WhatsApp, Instagram, Facebook
+              </div>
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                CRMs and booking platforms
+              </div>
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Depends on your platforms, permissions, and APIs
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         CONTROL
+    ========================================================== -->
+
+    <section
+      id="revenue-opportunity"
+      class="section-border"
+      aria-labelledby="control-heading"
+    >
+
+      <div class="container section-padding">
+
+        <div class="ownership-card ownership-parallax">
+
+          <div class="ownership-content">
+
+            <span class="small-tag">
+              YOU STAY IN CONTROL
+            </span>
+
+            <h2 id="control-heading" style="margin-top:23px;">
+
+              Automated Where It Fits.
+
+              <br>
+
+              <span class="muted">
+                Human Where It Counts.
+              </span>
+            </h2>
+
+            <div class="check-list">
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Answers from company-approved information
+              </div>
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Follows your business-defined rules
+              </div>
+
+              <div class="check-item">
+                <span class="check" aria-hidden="true">✓</span>
+                Hands cases needing human judgment to your team
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="workflow-visual" aria-hidden="true">
+
+            <div class="workflow-box workflow-float">
+
+              <div class="workflow-header">
+
+                <span>
+                  ◉ INQUIRY FLOW
+                </span>
+
+                <span class="workflow-active">
+                  SAMPLE
+                </span>
+
+              </div>
+
+              <div class="workflow-steps">
+
+                <div class="workflow-step">
+                  <span class="workflow-step-dot"></span>
+                  Inquiry received
+                </div>
+
+                <div class="workflow-step">
+                  <span class="workflow-step-dot"></span>
+                  Answered from approved information
+                </div>
+
+                <div class="workflow-step">
+                  <span class="workflow-step-dot"></span>
+                  Eligible lead helped to book
+                </div>
+
+                <div class="workflow-step">
+                  <span class="workflow-step-dot"></span>
+                  Complex cases handed to your team
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         PROCESS — HOW IT WORKS
+    ========================================================== -->
+
+    <section
+      id="how-it-works"
+      class="section-border"
+      aria-labelledby="process-heading"
+    >
+
+      <div class="container section-padding">
+
+        <div class="center-heading reveal-scale">
+
+          <div class="eyebrow" aria-hidden="true">
+
+            <span class="eyebrow-line"></span>
+
+            HOW IT WORKS
+
+            <span class="eyebrow-line"></span>
+
+          </div>
+
+          <h2 id="process-heading">
+
+            Start With The Workflow
+            <br>
+
+            <span class="muted">
+              That Matters Most.
+            </span>
+          </h2>
+
+          <p class="section-description centered">
+
+            We build an initial system around your biggest gap, then expand as your needs grow.
+
+          </p>
+
+        </div>
+
+        <div class="steps-grid reveal-scale">
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              01
+            </div>
+
+            <div class="feature-title">
+              UNDERSTAND
+            </div>
+
+            <div class="feature-description">
+              We review your current inquiry workflow and find where opportunities leak.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              02
+            </div>
+
+            <div class="feature-title">
+              CONFIGURE
+            </div>
+
+            <div class="feature-description">
+              We define an initial version and set up its replies, rules, and integrations.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              03
+            </div>
+
+            <div class="feature-title">
+              TEST
+            </div>
+
+            <div class="feature-description">
+              We test the agreed workflow before it goes live.
+            </div>
+
+          </div>
+
+          <div class="feature-card feature-3d">
+
+            <div class="feature-icon" aria-hidden="true">
+              04
+            </div>
+
+            <div class="feature-title">
+              DEPLOY
+            </div>
+
+            <div class="feature-description">
+              We launch the supported setup, then expand it as requirements develop.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         DISCOVERY CALL
+    ========================================================== -->
+
+    <section
+      id="preview"
+      class="section-border"
+      aria-labelledby="discovery-heading"
+    >
+
+      <div class="container section-padding">
+
+        <div class="custom-card reveal-scale">
+
+          <div class="custom-grid">
+
+            <div class="custom-copy">
+
+              <span class="small-tag">
+                DISCOVERY CALL
+              </span>
+
+              <h2 id="discovery-heading" style="margin-top:23px;">
+
+                Discuss Your
+
+                <br>
+
+                <span class="muted">
+                  Lead Flow First.
+                </span>
+              </h2>
+
+              <p class="custom-description">
+                We review how inquiries reach you today, where opportunities may be leaking, and what an initial custom system could cover.
+              </p>
+
+              <a
+                href="#get-started"
+                class="button button-primary magnetic"
+              >
+                Discuss Your Lead Flow
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+            <div class="custom-options">
+
+              <div class="custom-option">
+
+                <div class="custom-option-top">
+
+                  <div class="custom-option-number" aria-hidden="true">
+                    01
+                  </div>
+
+                  <div class="custom-option-label">
+                    ON THE<br>CALL
+                  </div>
+
+                </div>
+
+                <h3>
+                  Your Current Lead Workflow
+                </h3>
+
+                <div class="custom-option-features">
+                  <span class="custom-option-feature">CHANNELS</span>
+                  <span class="custom-option-feature">WHERE LEADS LEAK</span>
+                  <span class="custom-option-feature">QUALIFICATION</span>
+                  <span class="custom-option-feature">BOOKING RULES</span>
+                  <span class="custom-option-feature">INTEGRATIONS</span>
+                </div>
+
+                <div class="custom-option-arrow" aria-hidden="true">
+                  →
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         FINAL CTA
+    ========================================================== -->
+
+    <section
+      id="get-started"
+      class="final-cta"
+      aria-labelledby="cta-heading"
+    >
+
+      <div class="container">
+
+        <div class="reveal-scale">
+
+          <div class="final-icon" aria-hidden="true">
+            ↗
+          </div>
+
+          <h2 id="cta-heading">
+
+            Ready To Stop
+            <br>
+
+            <span class="muted">
+              Losing Inquiries?
+            </span>
+          </h2>
+
+          <p>
+
+            Fewer unanswered inquiries, more consistent follow-up, and less manual handling for your team.
+
+          </p>
+
+          <div class="final-actions">
+
+            <div class="hero-actions">
+
+              <!--
+                CONTACT LINK: points to WhatsApp number +213676127853.
+                Replace with your preferred contact method if needed:
+                - A scheduling link (e.g. Calendly): href="https://calendly.com/yourname/discovery"
+                - An email: href="mailto:hello@autflowstudio.com"
+                - A contact form: href="#contact"
+              -->
+              <a
+                href="https://wa.me/213676127853"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button-primary magnetic"
+              >
+                Discuss Your Lead Flow
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
 
   <!-- =========================================================
        DEMO MODAL
-       NOTE: confirm the demo video below matches the current offer.
+       NOTE: Replace the video src with your actual demo video URL.
+       Current URL: https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4
+       Update the Cloudinary cloud name (jb9xczzz) and video path to match
+       your account. The video will gracefully show an error message if
+       the source is unavailable.
   ========================================================== -->
 
   <div
     class="demo-modal"
     id="demoModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="demoModalLabel"
     aria-hidden="true"
   >
 
-    <div
-      class="demo-modal-content"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="demoModalLabel"
-    >
+    <div class="demo-modal-content">
 
       <div class="demo-modal-header">
 
@@ -4735,7 +4554,7 @@
 
       </div>
 
-      <div class="demo-video-wrap">
+      <div class="demo-video-wrap" id="demoVideoWrap">
 
         <video
           class="demo-video"
@@ -4745,12 +4564,14 @@
           preload="metadata"
         >
 
+          <!--
+            ACTION REQUIRED: Replace this URL with your actual demo video.
+            Cloud name "jb9xczzz" and path "/vloom.mp4" must be updated.
+          -->
           <source
             src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4"
             type="video/mp4"
           >
-
-          Your browser does not support the demo video.
 
         </video>
 
@@ -4764,7 +4585,7 @@
        FOOTER
   ========================================================== -->
 
-  <footer>
+  <footer role="contentinfo">
 
     <div class="container">
 
@@ -4772,7 +4593,7 @@
 
         <div class="footer-brand">
 
-          <div class="footer-mark">
+          <div class="footer-mark" aria-hidden="true">
             A
           </div>
 
@@ -4822,6 +4643,10 @@
 
     /* =========================================================
        LENIS
+       FIX: removed the duplicate requestAnimationFrame loop.
+       Lenis is now driven exclusively by the GSAP ticker to
+       prevent double-ticking, which caused scroll jitter and
+       wasted CPU cycles.
     ========================================================== */
 
     const lenis = new Lenis({
@@ -4831,26 +4656,11 @@
       touchMultiplier: 1.1
     });
 
-    function raf(time) {
-
-      lenis.raf(time);
-
-      requestAnimationFrame(raf);
-
-    }
-
-    requestAnimationFrame(raf);
-
-    /* =========================================================
-       CONNECT LENIS TO GSAP
-    ========================================================== */
-
+    /* Connect Lenis to GSAP ticker (single tick source) */
     lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
-
       lenis.raf(time * 1000);
-
     });
 
     gsap.ticker.lagSmoothing(0);
@@ -4859,67 +4669,39 @@
        NAVBAR
     ========================================================== */
 
-    const navbar =
-      document.querySelector(".navbar");
+    const navbar = document.querySelector(".navbar");
 
     ScrollTrigger.create({
-
       start: "top -60",
-
-      onEnter: () => {
-        navbar.classList.add("scrolled");
-      },
-
-      onLeaveBack: () => {
-        navbar.classList.remove("scrolled");
-      }
-
+      onEnter: () => { navbar.classList.add("scrolled"); },
+      onLeaveBack: () => { navbar.classList.remove("scrolled"); }
     });
 
     /* =========================================================
        HERO INTRO
     ========================================================== */
 
-    const heroTimeline =
-      gsap.timeline({
-        defaults: {
-          ease: "power4.out"
-        }
-      });
+    const heroTimeline = gsap.timeline({
+      defaults: { ease: "power4.out" }
+    });
 
     heroTimeline
       .from(".hero-title .line-inner", {
-
         yPercent: 110,
-
         duration: 1.15,
-
         stagger: .09
-
       })
-
       .from(".hero-animate", {
-
         y: 25,
-
         opacity: 0,
-
         duration: .8,
-
         stagger: .1
-
       }, "-=.65")
-
       .from(".dashboard-wrapper", {
-
         y: 90,
-
         opacity: 0,
-
         scale: .94,
-
         duration: 1.4
-
       }, "-=.45");
 
     /* =========================================================
@@ -4927,15 +4709,10 @@
     ========================================================== */
 
     gsap.to(".hero-orbit", {
-
       rotation: 360,
-
       duration: 80,
-
       repeat: -1,
-
       ease: "none"
-
     });
 
     /* =========================================================
@@ -4943,25 +4720,15 @@
     ========================================================== */
 
     gsap.to(".hero-content", {
-
       y: -120,
-
       opacity: .35,
-
       ease: "none",
-
       scrollTrigger: {
-
         trigger: ".hero",
-
         start: "top top",
-
         end: "bottom top",
-
         scrub: true
-
       }
-
     });
 
     /* =========================================================
@@ -4969,29 +4736,17 @@
     ========================================================== */
 
     gsap.to(".dashboard", {
-
       y: 110,
-
       rotateX: 0,
-
       scale: .93,
-
       opacity: .45,
-
       ease: "none",
-
       scrollTrigger: {
-
         trigger: ".dashboard-wrapper",
-
         start: "top 65%",
-
         end: "bottom 20%",
-
         scrub: 1.2
-
       }
-
     });
 
     /* =========================================================
@@ -4999,25 +4754,15 @@
     ========================================================== */
 
     gsap.to(".dashboard-glow", {
-
       scale: 1.35,
-
       opacity: .8,
-
       ease: "none",
-
       scrollTrigger: {
-
         trigger: ".dashboard-wrapper",
-
         start: "top bottom",
-
         end: "bottom top",
-
         scrub: true
-
       }
-
     });
 
     /* =========================================================
@@ -5025,69 +4770,39 @@
     ========================================================== */
 
     gsap.to(".glow-1", {
-
       y: 500,
-
       scale: 1.5,
-
       ease: "none",
-
       scrollTrigger: {
-
         trigger: "body",
-
         start: "top top",
-
         end: "bottom bottom",
-
         scrub: 2
-
       }
-
     });
 
     gsap.to(".glow-2", {
-
       y: -300,
-
       x: 150,
-
       ease: "none",
-
       scrollTrigger: {
-
         trigger: "body",
-
         start: "top top",
-
         end: "bottom bottom",
-
         scrub: 2
-
       }
-
     });
 
     gsap.to(".glow-3", {
-
       y: -400,
-
       x: -150,
-
       ease: "none",
-
       scrollTrigger: {
-
         trigger: "body",
-
         start: "top top",
-
         end: "bottom bottom",
-
         scrub: 2
-
       }
-
     });
 
     /* =========================================================
@@ -5095,55 +4810,31 @@
     ========================================================== */
 
     gsap.utils.toArray(".reveal-left").forEach(element => {
-
       gsap.from(element, {
-
         x: -70,
-
         opacity: 0,
-
         duration: 1.1,
-
         ease: "power4.out",
-
         scrollTrigger: {
-
           trigger: element,
-
           start: "top 82%",
-
           once: true
-
         }
-
       });
-
     });
 
     gsap.utils.toArray(".reveal-right").forEach(element => {
-
       gsap.from(element, {
-
         x: 70,
-
         opacity: 0,
-
         duration: 1.1,
-
         ease: "power4.out",
-
         scrollTrigger: {
-
           trigger: element,
-
           start: "top 82%",
-
           once: true
-
         }
-
       });
-
     });
 
     /* =========================================================
@@ -5151,152 +4842,87 @@
     ========================================================== */
 
     gsap.from(".feature-card", {
-
       y: 80,
-
       opacity: 0,
-
       scale: .94,
-
       duration: 1,
-
       stagger: .1,
-
       ease: "power4.out",
-
       scrollTrigger: {
-
         trigger: ".feature-grid",
-
         start: "top 78%",
-
         once: true
-
       }
-
     });
 
     /* =========================================================
        FEATURE 3D TILT
     ========================================================== */
 
-    document
-      .querySelectorAll(".feature-3d")
-      .forEach(card => {
+    document.querySelectorAll(".feature-3d").forEach(card => {
 
-        card.addEventListener("mousemove", event => {
+      card.addEventListener("mousemove", event => {
 
-          if (window.innerWidth < 900) {
-            return;
-          }
+        if (window.innerWidth < 900) { return; }
 
-          const rect =
-            card.getBoundingClientRect();
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
 
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const centerX =
-            rect.width / 2;
-
-          const centerY =
-            rect.height / 2;
-
-          const rotateX =
-            (y - centerY) / 20;
-
-          const rotateY =
-            (centerX - x) / 20;
-
-          gsap.to(card, {
-
-            rotateX: rotateX,
-
-            rotateY: rotateY,
-
-            scale: 1.025,
-
-            duration: .4,
-
-            ease: "power2.out",
-
-            overwrite: true
-
-          });
-
-        });
-
-        card.addEventListener("mouseleave", () => {
-
-          gsap.to(card, {
-
-            rotateX: 0,
-
-            rotateY: 0,
-
-            scale: 1,
-
-            duration: .7,
-
-            ease: "elastic.out(1,.5)"
-
-          });
-
+        gsap.to(card, {
+          rotateX: rotateX,
+          rotateY: rotateY,
+          scale: 1.025,
+          duration: .4,
+          ease: "power2.out",
+          overwrite: true
         });
 
       });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+          rotateX: 0,
+          rotateY: 0,
+          scale: 1,
+          duration: .7,
+          ease: "elastic.out(1,.5)"
+        });
+      });
+
+    });
 
     /* =========================================================
        OWNERSHIP SECTION
     ========================================================== */
 
     gsap.from(".ownership-content", {
-
       x: -80,
-
       opacity: 0,
-
       duration: 1.2,
-
       ease: "power4.out",
-
       scrollTrigger: {
-
         trigger: ".ownership-card",
-
         start: "top 78%",
-
         once: true
-
       }
-
     });
 
     gsap.from(".workflow-box", {
-
       x: 100,
-
       opacity: 0,
-
       scale: .8,
-
       duration: 1.2,
-
       ease: "power4.out",
-
       scrollTrigger: {
-
         trigger: ".ownership-card",
-
         start: "top 78%",
-
         once: true
-
       }
-
     });
 
     /* =========================================================
@@ -5304,479 +4930,308 @@
     ========================================================== */
 
     gsap.to(".workflow-float", {
-
       y: -20,
-
       duration: 2.7,
-
       repeat: -1,
-
       yoyo: true,
-
       ease: "sine.inOut"
-
     });
 
     /* =========================================================
        CENTER HEADINGS
     ========================================================== */
 
-    gsap.utils
-      .toArray(".reveal-scale")
-      .forEach(element => {
-
-        gsap.from(element, {
-
-          y: 60,
-
-          opacity: 0,
-
-          scale: .96,
-
-          duration: 1.1,
-
-          ease: "power4.out",
-
-          scrollTrigger: {
-
-            trigger: element,
-
-            start: "top 80%",
-
-            once: true
-
-          }
-
-        });
-
+    gsap.utils.toArray(".reveal-scale").forEach(element => {
+      gsap.from(element, {
+        y: 60,
+        opacity: 0,
+        scale: .96,
+        duration: 1.1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          once: true
+        }
       });
+    });
 
     /* =========================================================
        COUNTERS
     ========================================================== */
 
-    document
-      .querySelectorAll(".counter")
-      .forEach(counter => {
+    document.querySelectorAll(".counter").forEach(counter => {
 
-        const target =
-          Number(counter.dataset.value);
+      const target = Number(counter.dataset.value);
+      const isMoney = target > 1000;
+      const object = { value: 0 };
 
-        const isMoney =
-          target > 1000;
-
-        const object = {
-          value: 0
-        };
-
-        gsap.to(object, {
-
-          value: target,
-
-          duration: 1.8,
-
-          ease: "power2.out",
-
-          scrollTrigger: {
-
-            trigger: counter,
-
-            start: "top 85%",
-
-            once: true
-
-          },
-
-          onUpdate: () => {
-
-            const value =
-              Math.floor(object.value);
-
-            counter.textContent =
-              isMoney
-                ? "$" + value.toLocaleString()
-                : value.toLocaleString();
-
-          }
-
-        });
-
+      gsap.to(object, {
+        value: target,
+        duration: 1.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: counter,
+          start: "top 85%",
+          once: true
+        },
+        onUpdate: () => {
+          const value = Math.floor(object.value);
+          counter.textContent = isMoney
+            ? "$" + value.toLocaleString()
+            : value.toLocaleString();
+        }
       });
+
+    });
 
     /* =========================================================
        GROWTH BARS
     ========================================================== */
 
     gsap.from(".bar", {
-
       scaleY: 0,
-
       transformOrigin: "bottom",
-
       stagger: .05,
-
       duration: 1.2,
-
       ease: "power4.out",
-
       scrollTrigger: {
-
         trigger: ".chart",
-
         start: "top 85%",
-
         once: true
-
       }
-
     });
 
     /* =========================================================
        MAGNETIC BUTTONS
     ========================================================== */
 
-    document
-      .querySelectorAll(".magnetic")
-      .forEach(button => {
+    document.querySelectorAll(".magnetic").forEach(button => {
 
-        button.addEventListener("mousemove", event => {
+      button.addEventListener("mousemove", event => {
 
-          if (window.innerWidth < 900) {
-            return;
-          }
+        if (window.innerWidth < 900) { return; }
 
-          const rect =
-            button.getBoundingClientRect();
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const moveX = (x - rect.width / 2) * .13;
+        const moveY = (y - rect.height / 2) * .13;
 
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const moveX =
-            (x - rect.width / 2) * .13;
-
-          const moveY =
-            (y - rect.height / 2) * .13;
-
-          gsap.to(button, {
-
-            x: moveX,
-
-            y: moveY,
-
-            duration: .35,
-
-            ease: "power3.out"
-
-          });
-
-        });
-
-        button.addEventListener("mouseleave", () => {
-
-          gsap.to(button, {
-
-            x: 0,
-
-            y: 0,
-
-            duration: .7,
-
-            ease: "elastic.out(1,.4)"
-
-          });
-
+        gsap.to(button, {
+          x: moveX,
+          y: moveY,
+          duration: .35,
+          ease: "power3.out"
         });
 
       });
+
+      button.addEventListener("mouseleave", () => {
+        gsap.to(button, {
+          x: 0,
+          y: 0,
+          duration: .7,
+          ease: "elastic.out(1,.4)"
+        });
+      });
+
+    });
 
     /* =========================================================
        CUSTOM CURSOR
     ========================================================== */
 
-    const cursor =
-      document.querySelector(".cursor");
+    const cursor = document.querySelector(".cursor");
+    const cursorRing = document.querySelector(".cursor-ring");
 
-    const cursorRing =
-      document.querySelector(".cursor-ring");
+    if (cursor && cursorRing) {
 
-    let mouseX = 0;
-    let mouseY = 0;
+      let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
-    let ringX = 0;
-    let ringY = 0;
+      window.addEventListener("mousemove", event => {
 
-    window.addEventListener("mousemove", event => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
 
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
-      gsap.to(cursor, {
-
-        x: mouseX,
-
-        y: mouseY,
-
-        duration: .08,
-
-        overwrite: true
+        gsap.to(cursor, {
+          x: mouseX,
+          y: mouseY,
+          duration: .08,
+          overwrite: true
+        });
 
       });
 
-    });
+      gsap.ticker.add(() => {
+        ringX += (mouseX - ringX) * .12;
+        ringY += (mouseY - ringY) * .12;
+        cursorRing.style.left = ringX + "px";
+        cursorRing.style.top = ringY + "px";
+      });
 
-    gsap.ticker.add(() => {
+      /* Cursor hover scaling */
+      document
+        .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
+        .forEach(element => {
 
-      ringX +=
-        (mouseX - ringX) * .12;
+          element.addEventListener("mouseenter", () => {
+            gsap.to(cursorRing, {
+              scale: 1.6,
+              borderColor: "rgba(255,255,255,.7)",
+              duration: .25
+            });
+          });
 
-      ringY +=
-        (mouseY - ringY) * .12;
-
-      cursorRing.style.left =
-        ringX + "px";
-
-      cursorRing.style.top =
-        ringY + "px";
-
-    });
-
-    /* =========================================================
-       CURSOR HOVER
-    ========================================================== */
-
-    document
-      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
-      .forEach(element => {
-
-        element.addEventListener("mouseenter", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1.6,
-
-            borderColor:
-              "rgba(255,255,255,.7)",
-
-            duration: .25
-
+          element.addEventListener("mouseleave", () => {
+            gsap.to(cursorRing, {
+              scale: 1,
+              borderColor: "rgba(255,255,255,.4)",
+              duration: .25
+            });
           });
 
         });
 
-        element.addEventListener("mouseleave", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1,
-
-            borderColor:
-              "rgba(255,255,255,.4)",
-
-            duration: .25
-
-          });
-
-        });
-
-      });
+    }
 
     /* =========================================================
        MOBILE MENU
     ========================================================== */
 
-    const menuButton =
-      document.getElementById(
-        "mobileMenuButton"
-      );
-
-    const mobileMenu =
-      document.getElementById(
-        "mobileMenu"
-      );
+    const menuButton = document.getElementById("mobileMenuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
 
     menuButton.addEventListener("click", () => {
 
-      mobileMenu.classList.toggle("active");
+      const isOpen = mobileMenu.classList.toggle("active");
 
-      document.body.classList.toggle(
-        "menu-open"
-      );
+      document.body.classList.toggle("menu-open", isOpen);
 
-      menuButton.textContent =
-        mobileMenu.classList.contains("active")
-          ? "×"
-          : "☰";
+      menuButton.textContent = isOpen ? "×" : "☰";
+
+      /* FIX: keep aria-expanded in sync */
+      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
 
     });
 
-    document
-      .querySelectorAll(".mobile-menu a")
-      .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-          mobileMenu.classList.remove("active");
-
-          document.body.classList.remove(
-            "menu-open"
-          );
-
-          menuButton.textContent = "☰";
-
-        });
-
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        document.body.classList.remove("menu-open");
+        menuButton.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation menu");
       });
+    });
 
     /* =========================================================
        SMOOTH ANCHOR SCROLL
     ========================================================== */
 
-    document
-      .querySelectorAll('a[href^="#"]')
-      .forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-        anchor.addEventListener("click", event => {
+      anchor.addEventListener("click", event => {
 
-          const targetId =
-            anchor.getAttribute("href");
+        const targetId = anchor.getAttribute("href");
 
-          if (
-            !targetId ||
-            targetId === "#"
-          ) {
-            return;
-          }
+        if (!targetId || targetId === "#") { return; }
 
-          const target =
-            document.querySelector(targetId);
+        const target = document.querySelector(targetId);
 
-          if (!target) {
-            return;
-          }
+        if (!target) { return; }
 
-          event.preventDefault();
+        event.preventDefault();
 
-          lenis.scrollTo(target, {
-
-            offset: -80,
-
-            duration: 1.3
-
-          });
-
+        lenis.scrollTo(target, {
+          offset: -80,
+          duration: 1.3
         });
 
       });
 
+    });
+
     /* =========================================================
        DEMO MODAL
+       FIX: video error handling — shows a clear message if the
+       video source cannot be loaded, rather than an empty black box.
     ========================================================== */
 
-    const demoButton =
-      document.getElementById("demoButton");
+    const demoButton = document.getElementById("demoButton");
+    const demoModal = document.getElementById("demoModal");
+    const demoModalClose = document.getElementById("demoModalClose");
+    const demoVideo = document.getElementById("demoVideo");
+    const demoVideoWrap = document.getElementById("demoVideoWrap");
 
-    const demoModal =
-      document.getElementById("demoModal");
+    let videoErrorShown = false;
 
-    const demoModalClose =
-      document.getElementById("demoModalClose");
-
-    const demoVideo =
-      document.getElementById("demoVideo");
+    /* Show a fallback message if the video fails to load */
+    demoVideo.addEventListener("error", () => {
+      if (videoErrorShown) { return; }
+      videoErrorShown = true;
+      demoVideoWrap.innerHTML = `
+        <div class="demo-no-video">
+          <strong>Demo video coming soon</strong>
+          The demo video is not yet available. Please use the contact button below to reach out directly and we can walk you through the system.
+        </div>
+      `;
+    });
 
     function openDemo() {
-
       demoModal.classList.add("active");
+      demoModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
 
-      demoModal.setAttribute(
-        "aria-hidden",
-        "false"
-      );
+      if (!videoErrorShown) {
+        demoVideo.currentTime = 0;
+        demoVideo.load();
+        demoVideo.play().catch(() => {});
+      }
 
-      document.body.classList.add(
-        "menu-open"
-      );
-
-      demoVideo.currentTime = 0;
-
-      demoVideo.load();
-
-      demoVideo.play().catch(() => {});
-
+      /* Move focus into the modal for keyboard users */
+      demoModalClose.focus();
     }
 
     function closeDemo() {
-
       demoModal.classList.remove("active");
+      demoModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
 
-      demoModal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
+      if (!videoErrorShown) {
+        demoVideo.pause();
+      }
 
-      document.body.classList.remove(
-        "menu-open"
-      );
-
-      demoVideo.pause();
-
+      /* Return focus to the trigger button */
+      demoButton.focus();
     }
 
-    demoButton.addEventListener(
-      "click",
-      openDemo
-    );
+    demoButton.addEventListener("click", openDemo);
+    demoModalClose.addEventListener("click", closeDemo);
 
-    demoModalClose.addEventListener(
-      "click",
-      closeDemo
-    );
+    demoModal.addEventListener("click", event => {
+      if (event.target === demoModal) { closeDemo(); }
+    });
 
-    demoModal.addEventListener(
-      "click",
-      event => {
-
-        if (event.target === demoModal) {
-          closeDemo();
-        }
-
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && demoModal.classList.contains("active")) {
+        closeDemo();
       }
-    );
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape" &&
-          demoModal.classList.contains("active")
-        ) {
-
-          closeDemo();
-
-        }
-
-      }
-    );
+    });
 
     /* =========================================================
        YEAR
     ========================================================== */
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     /* =========================================================
-       REFRESH SCROLLTRIGGER
+       REFRESH SCROLLTRIGGER ON LOAD
     ========================================================== */
 
     window.addEventListener("load", () => {
-
       ScrollTrigger.refresh();
-
     });
 
   </script>

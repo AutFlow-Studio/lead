@@ -11,32 +11,29 @@
 
   <meta
     name="description"
-    content="A custom-built AI system for your inbound lead workflow, from first inquiry through qualification, follow-up, and booking. Configured around your business and expandable as your needs grow."
+    content="AutFlow Studio builds a custom AI system around your inbound lead workflow, from first inquiry through qualification, follow-up, and booking. Configured around your business and expandable as your needs grow."
   >
 
-  <!-- =========================================================
-       FONTS
-  ========================================================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AutFlow Studio — Custom AI Lead-To-Appointment Systems">
+  <meta property="og:description" content="A custom system for your inbound lead workflow, from first inquiry through follow-up and booking. Configured around your business, rules, and tools.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AutFlow Studio — Custom AI Lead-To-Appointment Systems">
+  <meta name="twitter:description" content="A custom system for your inbound lead workflow, from first inquiry through follow-up and booking.">
 
+  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
 
-  <!-- =========================================================
-       GSAP
-  ========================================================== -->
-
+  <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
-  <!-- =========================================================
-       LENIS SMOOTH SCROLL
-  ========================================================== -->
-
+  <!-- LENIS SMOOTH SCROLL -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
@@ -52,7 +49,6 @@
     }
 
     html {
-      scroll-behavior: auto;
       width: 100%;
       overflow-x: hidden;
     }
@@ -66,7 +62,6 @@
       line-height: 1.5;
       width: 100%;
       min-width: 0;
-
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -81,9 +76,14 @@
       color: inherit;
     }
 
-    button {
-      border: none;
+    button,
+    input,
+    textarea {
       font: inherit;
+      border: none;
+    }
+
+    button {
       cursor: pointer;
     }
 
@@ -98,17 +98,14 @@
       color: #000;
     }
 
+    :focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
     /* =========================================================
        GLOBAL
     ========================================================== */
-
-    :root {
-      --white: #fff;
-      --muted: rgba(255,255,255,.42);
-      --soft: rgba(255,255,255,.08);
-      --border: rgba(255,255,255,.09);
-      --panel: rgba(255,255,255,.025);
-    }
 
     .container {
       width: min(1180px, calc(100% - 48px));
@@ -125,7 +122,7 @@
     }
 
     /* =========================================================
-       CUSTOM CURSOR
+       CURSOR
     ========================================================== */
 
     .cursor {
@@ -167,26 +164,11 @@
     .background-grid {
       position: absolute;
       inset: 0;
-
       background-image:
-        linear-gradient(
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        );
-
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
       background-size: 70px 70px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 80%
-        );
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
     }
 
     .glow {
@@ -231,35 +213,23 @@
       left: 0;
       width: 100%;
       z-index: 500;
-
       border-bottom: 1px solid transparent;
-
       background: rgba(5,5,5,.25);
-
-      backdrop-filter: blur(0);
-      -webkit-backdrop-filter: blur(0);
-
-      transition:
-        background .4s ease,
-        border-color .4s ease,
-        backdrop-filter .4s ease;
+      transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
     }
 
     .navbar.scrolled {
       background: rgba(5,5,5,.75);
       border-color: rgba(255,255,255,.07);
-
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
     }
 
     .nav-inner {
       height: 78px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       min-width: 0;
     }
 
@@ -274,22 +244,12 @@
       width: 38px;
       height: 38px;
       flex: 0 0 38px;
-
       display: grid;
       place-items: center;
-
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 11px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.1),
-          rgba(255,255,255,.025)
-        );
-
-      box-shadow:
-        0 0 40px rgba(255,255,255,.035);
+      background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.025));
+      box-shadow: 0 0 40px rgba(255,255,255,.035);
     }
 
     .brand-mark span {
@@ -335,19 +295,12 @@
 
     .nav-button {
       padding: 11px 19px;
-
       border-radius: 999px;
-
       background: #fff;
       color: #000;
-
       font-size: 10px;
       font-weight: 700;
-
-      transition:
-        transform .25s ease,
-        background .25s ease;
-
+      transition: transform .25s ease, background .25s ease;
       white-space: nowrap;
     }
 
@@ -358,16 +311,14 @@
 
     .mobile-menu-button {
       display: none;
-
       width: 40px;
       height: 40px;
       flex: 0 0 40px;
-
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 10px;
-
       background: rgba(255,255,255,.04);
-      color: white;
+      color: #fff;
+      font-size: 16px;
     }
 
     .mobile-menu {
@@ -380,10 +331,8 @@
 
     .hero {
       min-height: 100vh;
-
       padding-top: 175px;
       padding-bottom: 100px;
-
       position: relative;
       overflow: hidden;
     }
@@ -392,7 +341,6 @@
       max-width: 900px;
       margin: auto;
       text-align: center;
-
       position: relative;
       z-index: 2;
       min-width: 0;
@@ -402,16 +350,11 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-
       padding: 8px 14px;
-
       border: 1px solid rgba(255,255,255,.09);
       border-radius: 999px;
-
       background: rgba(255,255,255,.035);
-
       color: rgba(255,255,255,.62);
-
       font-size: 8px;
       text-transform: uppercase;
       letter-spacing: .18em;
@@ -422,30 +365,18 @@
       width: 6px;
       height: 6px;
       flex: 0 0 6px;
-
       border-radius: 50%;
-
       background: #66e394;
-
-      box-shadow:
-        0 0 15px rgba(102,227,148,.7);
+      box-shadow: 0 0 15px rgba(102,227,148,.7);
     }
 
     .hero-title {
       margin-top: 28px;
-
       font-family: "Space Grotesk";
-
       font-size: clamp(52px, 7.4vw, 92px);
-
       line-height: .95;
-
       letter-spacing: -.07em;
-
       font-weight: 600;
-
-      overflow-wrap: normal;
-      word-break: normal;
     }
 
     .hero-title .line {
@@ -463,23 +394,17 @@
 
     .hero-description {
       max-width: 650px;
-
       margin: 32px auto 0;
-
       color: rgba(255,255,255,.64);
-
       font-size: 15px;
-
       line-height: 1.9;
     }
 
     .hero-actions {
       margin-top: 34px;
-
       display: flex;
       justify-content: center;
       gap: 10px;
-
       flex-wrap: wrap;
     }
 
@@ -488,20 +413,12 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-
       min-height: 48px;
-
       padding: 0 23px;
-
       border-radius: 999px;
-
       font-size: 11px;
       font-weight: 600;
-
-      transition:
-        background .3s ease,
-        border-color .3s ease;
-
+      transition: background .3s ease, border-color .3s ease, color .3s ease;
       max-width: 100%;
       text-align: center;
     }
@@ -509,6 +426,10 @@
     .button-primary {
       background: #fff;
       color: #000;
+    }
+
+    .button-primary:hover {
+      background: #e9e9e9;
     }
 
     .button-secondary {
@@ -522,128 +443,88 @@
       color: #fff;
     }
 
-    /* =========================================================
-       HERO ORBIT
-    ========================================================== */
+    .button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
 
     .hero-orbit {
       position: absolute;
-
       width: 950px;
       height: 950px;
-
       left: 50%;
       top: 360px;
-
       transform: translateX(-50%);
-
       border: 1px solid rgba(255,255,255,.025);
-
       border-radius: 50%;
-
       pointer-events: none;
     }
 
     .hero-orbit::before {
       content: "";
-
       position: absolute;
-
       inset: 80px;
-
       border: 1px solid rgba(255,255,255,.02);
-
       border-radius: 50%;
     }
 
     .orbit-dot {
       position: absolute;
-
       width: 6px;
       height: 6px;
-
       border-radius: 50%;
-
-      background: white;
-
-      box-shadow:
-        0 0 20px rgba(255,255,255,.7);
-
+      background: #fff;
+      box-shadow: 0 0 20px rgba(255,255,255,.7);
       left: 50%;
       top: 0;
     }
 
     /* =========================================================
-       DASHBOARD
+       DASHBOARD (illustrative)
     ========================================================== */
 
     .dashboard-wrapper {
       position: relative;
-
       width: 100%;
       max-width: 1120px;
-
       margin: 100px auto 0;
-
       perspective: 1400px;
       min-width: 0;
     }
 
     .dashboard-glow {
       position: absolute;
-
       width: 800px;
       height: 350px;
-
       left: 50%;
       top: 50%;
-
       transform: translate(-50%,-50%);
-
       border-radius: 50%;
-
       background: rgba(255,255,255,.035);
-
       filter: blur(100px);
-
       max-width: 90vw;
     }
 
     .dashboard {
       position: relative;
-
       width: 100%;
-      max-width: 100%;
-
       border: 1px solid rgba(255,255,255,.12);
-
       border-radius: 20px;
-
       overflow: hidden;
-
       background: #090909;
-
-      box-shadow:
-        0 70px 150px rgba(0,0,0,.75),
-        0 0 100px rgba(255,255,255,.025);
-
+      box-shadow: 0 70px 150px rgba(0,0,0,.75), 0 0 100px rgba(255,255,255,.025);
       transform-origin: center top;
-
       will-change: transform;
     }
 
     .browser-bar {
       min-height: 45px;
       height: 45px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 12px;
-
       padding: 0 16px;
-
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
@@ -656,9 +537,7 @@
     .browser-dots span {
       width: 8px;
       height: 8px;
-
       border-radius: 50%;
-
       background: rgba(255,255,255,.13);
     }
 
@@ -666,11 +545,8 @@
       display: flex;
       align-items: center;
       gap: 7px;
-
       color: rgba(255,255,255,.7);
-
       font-size: 9px;
-
       min-width: 0;
       text-align: center;
     }
@@ -679,47 +555,35 @@
       width: 6px;
       height: 6px;
       flex: 0 0 6px;
-
       border-radius: 50%;
-
       background: #5cdf8d;
     }
 
     .browser-label {
       color: rgba(255,255,255,.5);
-
       font-size: 8px;
-
       letter-spacing: .2em;
-
       white-space: nowrap;
     }
 
     .dashboard-body {
       display: grid;
       grid-template-columns: 210px minmax(0, 1fr);
-
       min-height: 460px;
       min-width: 0;
     }
 
     .sidebar {
       padding: 22px 15px;
-
       border-right: 1px solid rgba(255,255,255,.07);
-
       min-width: 0;
     }
 
     .sidebar-title {
       margin-bottom: 14px;
-
       color: rgba(255,255,255,.4);
-
       font-size: 7px;
-
       letter-spacing: .2em;
-
       text-transform: uppercase;
     }
 
@@ -727,17 +591,11 @@
       display: flex;
       align-items: center;
       gap: 9px;
-
       padding: 10px;
-
       margin-bottom: 3px;
-
       border-radius: 8px;
-
       color: rgba(255,255,255,.5);
-
       font-size: 9px;
-
       transition: .25s ease;
     }
 
@@ -755,19 +613,14 @@
       width: 12px;
       height: 12px;
       flex: 0 0 12px;
-
       border: 1px solid currentColor;
-
       border-radius: 3px;
-
       opacity: .6;
     }
 
     .sidebar-separator {
       height: 1px;
-
       background: rgba(255,255,255,.06);
-
       margin: 27px 0 18px;
     }
 
@@ -781,7 +634,6 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-
       gap: 20px;
       min-width: 0;
     }
@@ -792,106 +644,75 @@
 
     .dashboard-eyebrow {
       color: rgba(255,255,255,.5);
-
       font-size: 7px;
-
       letter-spacing: .2em;
-
       text-transform: uppercase;
     }
 
     .dashboard-heading {
       margin-top: 7px;
-
       font-size: 23px;
-
       letter-spacing: -.04em;
-
       overflow-wrap: break-word;
     }
 
     .dashboard-filter {
       padding: 8px 11px;
-
       border: 1px solid rgba(255,255,255,.08);
-
       border-radius: 7px;
-
       color: rgba(255,255,255,.5);
-
       font-size: 7px;
-
       flex: 0 0 auto;
       white-space: nowrap;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
-
+      grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 9px;
-
       margin-top: 28px;
     }
 
     .stat {
       padding: 15px;
-
       border: 1px solid rgba(255,255,255,.07);
-
       border-radius: 11px;
-
       background: rgba(255,255,255,.018);
-
       min-width: 0;
     }
 
     .stat-label {
       color: rgba(255,255,255,.42);
-
       font-size: 7px;
-
       overflow-wrap: break-word;
     }
 
     .stat-value {
       margin-top: 6px;
-
       font-size: 17px;
-
       white-space: nowrap;
     }
 
     .stat-change {
       margin-top: 3px;
-
       color: #62db8b;
-
       font-size: 7px;
-
       overflow-wrap: break-word;
     }
 
     .dashboard-grid {
       display: grid;
       grid-template-columns: minmax(0,1.5fr) minmax(0,1fr);
-
       gap: 11px;
-
       margin-top: 12px;
-
       min-width: 0;
     }
 
     .panel {
       padding: 17px;
-
       border: 1px solid rgba(255,255,255,.07);
-
       border-radius: 12px;
-
       background: rgba(255,255,255,.018);
-
       min-width: 0;
     }
 
@@ -901,11 +722,8 @@
 
     .panel-subtitle {
       margin-top: 3px;
-
       color: rgba(255,255,255,.42);
-
       font-size: 7px;
-
       overflow-wrap: break-word;
     }
 
@@ -913,7 +731,6 @@
       display: flex;
       flex-direction: column;
       gap: 7px;
-
       margin-top: 17px;
     }
 
@@ -921,15 +738,10 @@
       display: flex;
       align-items: center;
       gap: 10px;
-
       padding: 9px;
-
       border: 1px solid rgba(255,255,255,.05);
-
       border-radius: 8px;
-
       background: rgba(0,0,0,.25);
-
       min-width: 0;
     }
 
@@ -937,16 +749,11 @@
       width: 27px;
       height: 27px;
       flex: 0 0 27px;
-
       display: grid;
       place-items: center;
-
       border-radius: 6px;
-
       background: rgba(255,255,255,.05);
-
       color: rgba(255,255,255,.45);
-
       font-size: 7px;
     }
 
@@ -957,9 +764,7 @@
 
     .project-name {
       color: rgba(255,255,255,.8);
-
       font-size: 8px;
-
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -967,39 +772,29 @@
 
     .project-status {
       margin-top: 2px;
-
       color: rgba(255,255,255,.4);
-
       font-size: 6px;
     }
 
     .project-price {
       color: rgba(255,255,255,.6);
-
       font-size: 8px;
-
       flex: 0 0 auto;
       white-space: nowrap;
     }
 
     .chart {
       height: 115px;
-
       display: flex;
       align-items: flex-end;
-
       gap: 6px;
-
       margin-top: 25px;
     }
 
     .bar {
       flex: 1;
-
       min-height: 4px;
-
       border-radius: 4px 4px 0 0;
-
       background: rgba(255,255,255,.12);
     }
 
@@ -1010,9 +805,7 @@
     .section-heading-grid {
       display: grid;
       grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
       gap: 80px;
-
       align-items: end;
     }
 
@@ -1024,15 +817,10 @@
       display: flex;
       align-items: center;
       gap: 8px;
-
       margin-bottom: 19px;
-
       color: rgba(255,255,255,.45);
-
       font-size: 8px;
-
       text-transform: uppercase;
-
       letter-spacing: .22em;
     }
 
@@ -1040,21 +828,15 @@
       width: 27px;
       height: 1px;
       flex: 0 0 27px;
-
       background: rgba(255,255,255,.3);
     }
 
     h2 {
       font-family: "Space Grotesk";
-
-      font-size: clamp(40px,5vw,60px);
-
+      font-size: clamp(40px, 5vw, 60px);
       line-height: 1;
-
       letter-spacing: -.06em;
-
       font-weight: 600;
-
       overflow-wrap: break-word;
     }
 
@@ -1064,11 +846,8 @@
 
     .section-description {
       max-width: 500px;
-
       color: rgba(255,255,255,.6);
-
       font-size: 13px;
-
       line-height: 1.9;
     }
 
@@ -1078,62 +857,65 @@
       text-align: center;
     }
 
+    .center-heading {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      min-width: 0;
+    }
+
+    .center-heading .eyebrow {
+      justify-content: center;
+    }
+
     /* =========================================================
-       FEATURES
+       CARDS
     ========================================================== */
 
-    .feature-grid {
+    .feature-grid,
+    .steps-grid,
+    .split-grid {
       display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-
       gap: 13px;
-
       margin-top: 65px;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(4, minmax(0,1fr));
+    }
+
+    .split-grid {
+      grid-template-columns: repeat(2, minmax(0,1fr));
     }
 
     .feature-card {
       position: relative;
-
       min-height: 230px;
-
       padding: 28px;
-
       overflow: hidden;
-
       border: 1px solid rgba(255,255,255,.07);
-
       border-radius: 17px;
-
       background: rgba(255,255,255,.018);
-
       transform-style: preserve-3d;
-
       will-change: transform;
-
-      transition:
-        border-color .3s ease,
-        background .3s ease;
-
+      transition: border-color .3s ease, background .3s ease;
       min-width: 0;
     }
 
     .feature-card::after {
       content: "";
-
       position: absolute;
-
       width: 180px;
       height: 180px;
-
       top: -100px;
       right: -100px;
-
       border-radius: 50%;
-
       background: rgba(255,255,255,.035);
-
       filter: blur(35px);
-
       transition: .4s ease;
     }
 
@@ -1150,115 +932,167 @@
       width: 43px;
       height: 43px;
       flex: 0 0 43px;
-
       display: grid;
       place-items: center;
-
       border: 1px solid rgba(255,255,255,.1);
-
       border-radius: 11px;
-
       background: rgba(255,255,255,.04);
-
       font-size: 15px;
     }
 
     .feature-title {
       margin-top: 28px;
-
       font-family: "Space Grotesk";
-
       font-size: 15px;
-
       overflow-wrap: break-word;
     }
 
     .feature-description {
       margin-top: 10px;
-
       color: rgba(255,255,255,.55);
-
       font-size: 10px;
-
       line-height: 1.8;
     }
 
-    .feature-card .check-list {
-      margin-top: 22px;
-    }
-
-    /* =========================================================
-       FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW (NEW)
-    ========================================================== */
-
     .feature-badge {
       display: inline-block;
-
       margin-top: 14px;
-
       padding: 5px 9px;
-
       border: 1px solid rgba(255,255,255,.1);
-
       border-radius: 999px;
-
       background: rgba(255,255,255,.03);
-
       color: rgba(255,255,255,.65);
-
       font-size: 6.5px;
-
       letter-spacing: .14em;
-
       text-transform: uppercase;
     }
 
     .request-answer {
       margin-top: 18px;
-
       font-family: "Space Grotesk";
-
       font-size: 18px;
-
       font-weight: 600;
-
       letter-spacing: -.02em;
-
       color: #fff;
     }
+
+    .small-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      color: rgba(255,255,255,.55);
+      font-size: 7px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      max-width: 100%;
+    }
+
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-top: 28px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.72);
+      font-size: 10px;
+      min-width: 0;
+    }
+
+    .check {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.07);
+      font-size: 9px;
+    }
+
+    /* =========================================================
+       SEQUENCE (workflow steps)
+    ========================================================== */
+
+    .sequence {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 60px;
+    }
+
+    .sequence li {
+      padding: 14px 22px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+      font-family: "Space Grotesk";
+      font-size: 12px;
+      letter-spacing: .03em;
+      color: rgba(255,255,255,.82);
+    }
+
+    .sequence .arrow {
+      color: rgba(255,255,255,.4);
+      font-size: 14px;
+    }
+
+    .sequence-note {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    /* =========================================================
+       EQUATION (illustrative)
+    ========================================================== */
 
     .equation-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-
       gap: 16px;
+      margin-top: 26px;
+    }
 
-      margin-top: 55px;
+    .flow-node {
+      padding: 16px 30px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+      font-family: "Space Grotesk";
+      font-size: 12px;
+      letter-spacing: .03em;
+      color: rgba(255,255,255,.82);
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .flow-arrow {
+      color: rgba(255,255,255,.4);
+      font-size: 14px;
+      line-height: 1;
     }
 
     /* =========================================================
-       OWNERSHIP / PRIMARY OFFER
+       OWNERSHIP
     ========================================================== */
 
     .ownership-card {
       display: grid;
       grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
       overflow: hidden;
-
       border: 1px solid rgba(255,255,255,.08);
-
       border-radius: 25px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.01)
-        );
-
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
       min-width: 0;
     }
 
@@ -1267,140 +1101,34 @@
       min-width: 0;
     }
 
-    .small-tag {
-      display: inline-block;
-
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
-
-      max-width: 100%;
-    }
-
-    .ownership-content p {
-      max-width: 480px;
-
-      margin-top: 24px;
-
-      color: rgba(255,255,255,.5);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .ownership-note {
-      max-width: 480px;
-
-      margin-top: 22px;
-
-      color: rgba(255,255,255,.28);
-
-      font-size: 10px;
-
-      line-height: 1.8;
-
-      font-style: italic;
-    }
-
-    .check-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 11px;
-
-      margin-top: 28px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      color: rgba(255,255,255,.72);
-
-      font-size: 10px;
-
-      min-width: 0;
-    }
-
-    .check {
-      width: 20px;
-      height: 20px;
-      flex: 0 0 20px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.07);
-
-      font-size: 9px;
-    }
-
     .workflow-visual {
       min-height: 440px;
-
       position: relative;
-
       overflow: hidden;
-
       border-left: 1px solid rgba(255,255,255,.07);
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.065),
-          transparent 60%
-        );
-
+      background: radial-gradient(circle at center, rgba(255,255,255,.065), transparent 60%);
       min-width: 0;
     }
 
     .workflow-box {
       position: absolute;
-
       left: 50%;
       top: 50%;
-
       width: min(290px, calc(100% - 40px));
-
       transform: translate(-50%,-50%);
-
       padding: 20px;
-
       border: 1px solid rgba(255,255,255,.1);
-
       border-radius: 17px;
-
       background: rgba(7,7,7,.88);
-
-      box-shadow:
-        0 35px 90px rgba(0,0,0,.65);
-
+      box-shadow: 0 35px 90px rgba(0,0,0,.65);
       backdrop-filter: blur(15px);
     }
 
     .workflow-header {
       display: flex;
       justify-content: space-between;
-
       gap: 10px;
-
       color: rgba(255,255,255,.55);
-
       font-size: 8px;
     }
 
@@ -1412,9 +1140,7 @@
     .workflow-steps {
       display: flex;
       flex-direction: column;
-
       gap: 6px;
-
       margin-top: 18px;
     }
 
@@ -1422,19 +1148,12 @@
       display: flex;
       align-items: center;
       gap: 9px;
-
       padding: 11px;
-
       border: 1px solid rgba(255,255,255,.05);
-
       border-radius: 8px;
-
       background: rgba(255,255,255,.018);
-
       color: rgba(255,255,255,.62);
-
       font-size: 8px;
-
       min-width: 0;
     }
 
@@ -1442,9 +1161,7 @@
       width: 5px;
       height: 5px;
       flex: 0 0 5px;
-
       border-radius: 50%;
-
       background: rgba(255,255,255,.2);
     }
 
@@ -1453,309 +1170,38 @@
     }
 
     /* =========================================================
-       TABS
-    ========================================================== */
-
-    .center-heading {
-      max-width: 800px;
-
-      margin: auto;
-
-      text-align: center;
-
-      min-width: 0;
-    }
-
-    .center-heading .eyebrow {
-      justify-content: center;
-    }
-
-    .tabs {
-      max-width: 760px;
-
-      margin: 55px auto 0;
-
-      min-width: 0;
-    }
-
-    .tab-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      padding: 4px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.025);
-    }
-
-    .tab-button {
-      padding: 12px;
-
-      border-radius: 8px;
-
-      background: transparent;
-
-      color: rgba(255,255,255,.3);
-
-      font-size: 10px;
-
-      transition: .25s ease;
-
-      min-width: 0;
-    }
-
-    .tab-button.active {
-      background: #fff;
-      color: #000;
-    }
-
-    .tab-content {
-      min-height: 300px;
-
-      margin-top: 12px;
-
-      padding: 45px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.018);
-
-      min-width: 0;
-    }
-
-    .tab-panel {
-      display: none;
-      min-width: 0;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    .tab-icon {
-      width: 47px;
-      height: 47px;
-      flex: 0 0 47px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.09);
-
-      border-radius: 13px;
-
-      background: rgba(255,255,255,.045);
-
-      font-size: 16px;
-    }
-
-    .tab-panel h3 {
-      margin-top: 22px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 24px;
-
-      font-weight: 500;
-
-      letter-spacing: -.04em;
-
-      overflow-wrap: break-word;
-    }
-
-    .tab-panel p {
-      max-width: 590px;
-
-      margin-top: 13px;
-
-      color: rgba(255,255,255,.36);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 25px;
-    }
-
-    .tag {
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.02);
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 8px;
-
-      max-width: 100%;
-    }
-
-    /* =========================================================
-       WHITE-LABEL MODEL FLOW + PILL ROWS
-    ========================================================== */
-
-    .flow-diagram {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      gap: 12px;
-
-      margin-top: 60px;
-    }
-
-    .flow-node {
-      padding: 16px 30px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 999px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.05),
-          rgba(255,255,255,.015)
-        );
-
-      font-family: "Space Grotesk";
-
-      font-size: 12px;
-
-      letter-spacing: .03em;
-
-      color: rgba(255,255,255,.82);
-
-      text-align: center;
-
-      max-width: 100%;
-    }
-
-    .flow-arrow {
-      color: rgba(255,255,255,.4);
-
-      font-size: 14px;
-      line-height: 1;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      gap: 9px;
-
-      margin-top: 40px;
-    }
-
-    /* =========================================================
-       TEAM / CLIENT SPLIT
-    ========================================================== */
-
-    .split-grid {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
-
-    .split-grid .feature-card {
-      min-height: 0;
-    }
-
-    .split-grid .feature-card .check-list {
-      margin-top: 22px;
-    }
-
-    .split-grid .check-item {
-      color: rgba(255,255,255,.4);
-      font-size: 9px;
-    }
-
-    /* =========================================================
-       HOW IT WORKS / 4-UP STEP STYLE GRIDS
-    ========================================================== */
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
-
-    .steps-grid .feature-card {
-      min-height: 200px;
-    }
-
-    /* =========================================================
-       CUSTOM SOFTWARE OPTIONS
+       DISCOVERY / CONTACT
     ========================================================== */
 
     .custom-card {
       position: relative;
-
       overflow: hidden;
-
       padding: 65px;
-
       border: 1px solid rgba(255,255,255,.08);
-
       border-radius: 25px;
-
       background: #080808;
-
       min-width: 0;
     }
 
     .custom-card::before {
       content: "";
-
       position: absolute;
-
       width: 500px;
       height: 500px;
-
       right: -150px;
       top: -200px;
-
       border-radius: 50%;
-
       background: rgba(255,255,255,.035);
-
       filter: blur(100px);
-
       pointer-events: none;
     }
 
     .custom-grid {
       position: relative;
-
       display: grid;
       grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
       gap: 70px;
-
-      align-items: center;
-
+      align-items: start;
       min-width: 0;
     }
 
@@ -1763,324 +1209,132 @@
       min-width: 0;
     }
 
+    .custom-copy h2 {
+      margin-top: 23px;
+    }
+
     .custom-description {
       max-width: 510px;
-
       margin-top: 22px;
-
       color: rgba(255,255,255,.58);
-
       font-size: 12px;
-
       line-height: 1.9;
     }
 
-    .custom-copy .button {
-      margin-top: 30px;
-    }
-
-    .custom-options {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-
-      min-width: 0;
-    }
-
-    .custom-option {
-      position: relative;
-
-      padding: 22px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 17px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.035),
-          rgba(255,255,255,.012)
-        );
-
-      overflow: hidden;
-
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease,
-        box-shadow .35s ease;
-
-      min-width: 0;
-    }
-
-    .custom-option::before {
-      content: "";
-
-      position: absolute;
-
-      width: 170px;
-      height: 170px;
-
-      top: -100px;
-      right: -80px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(35px);
-
-      transition: .4s ease;
-    }
-
-    .custom-option:hover {
-      transform: translateY(-4px);
-
-      border-color: rgba(255,255,255,.18);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.018)
-        );
-
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
-    }
-
-    .custom-option:hover::before {
-      background: rgba(255,255,255,.075);
-    }
-
-    .custom-option-top {
-      position: relative;
-
+    .covers-list {
+      margin-top: 28px;
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      gap: 15px;
-
-      min-width: 0;
+      flex-wrap: wrap;
+      gap: 7px;
     }
 
-    .custom-option-number {
-      width: 36px;
-      height: 36px;
-      flex: 0 0 36px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 10px;
-
-      background: rgba(255,255,255,.045);
-
-      color: rgba(255,255,255,.65);
-
-      font-family: "DM Mono";
-
+    .covers-list span {
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      background: rgba(255,255,255,.02);
+      color: rgba(255,255,255,.55);
       font-size: 8px;
     }
 
-    .custom-option-label {
-      color: rgba(255,255,255,.45);
-
-      font-size: 7px;
-
-      letter-spacing: .18em;
-
-      text-transform: uppercase;
-
-      text-align: right;
-
-      line-height: 1.5;
-    }
-
-    .custom-option h3 {
-      position: relative;
-
-      margin-top: 18px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 19px;
-
-      line-height: 1.15;
-
-      letter-spacing: -.035em;
-
-      font-weight: 500;
-
-      max-width: 410px;
-    }
-
-    .custom-option p {
-      position: relative;
-
-      margin-top: 10px;
-
-      color: rgba(255,255,255,.5);
-
-      font-size: 9px;
-
-      line-height: 1.8;
-
-      max-width: 450px;
-    }
-
-    .custom-option-features {
-      position: relative;
-
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 6px;
-
-      margin-top: 16px;
-    }
-
-    .custom-option-feature {
-      padding: 5px 8px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.018);
-
-      color: rgba(255,255,255,.58);
-
-      font-size: 6px;
-
-      letter-spacing: .03em;
-    }
-
-    .custom-option-arrow {
-      position: relative;
-
-      display: flex;
-      justify-content: flex-end;
-
-      margin-top: 17px;
-
-      color: rgba(255,255,255,.28);
-
-      font-size: 15px;
-
-      transition:
-        color .3s ease,
-        transform .3s ease;
-    }
-
-    .custom-option:hover .custom-option-arrow {
-      color: #fff;
-      transform: translateX(4px);
-    }
-
-    /* =========================================================
-       PRICING
-    ========================================================== */
-
-    .pricing-grid {
+    .form {
       display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 16px;
-      margin-top: 65px;
-    }
-
-    .pricing-card {
-      position: relative;
-      padding: 42px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 22px;
-      background: rgba(255,255,255,.018);
-      overflow: hidden;
+      gap: 14px;
       min-width: 0;
     }
 
-    .pricing-card.featured {
-      border-color: rgba(255,255,255,.22);
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.015)
-        );
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    .pricing-badge {
-      position: absolute;
-      top: 22px;
-      right: 22px;
-      padding: 6px 10px;
-      border: 1px solid rgba(102,227,148,.35);
-      border-radius: 999px;
-      background: rgba(102,227,148,.08);
-      color: #7be8a4;
-      font-size: 7px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+    .field {
+      min-width: 0;
     }
 
-    .pricing-label {
-      color: rgba(255,255,255,.45);
-      font-size: 7px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: rgba(255,255,255,.75);
+      font-size: 11px;
     }
 
-    .pricing-name {
-      margin-top: 14px;
-      font-family: "Space Grotesk";
-      font-size: 21px;
-      letter-spacing: -.03em;
+    .field .req {
+      color: rgba(255,255,255,.4);
     }
 
-    .pricing-price {
-      margin-top: 16px;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .pricing-amount {
-      font-family: "Space Grotesk";
-      font-size: 40px;
-      letter-spacing: -.03em;
-    }
-
-    .pricing-cadence {
-      color: rgba(255,255,255,.3);
-      font-size: 10px;
-    }
-
-    .pricing-sub {
-      margin-top: 6px;
-      color: rgba(255,255,255,.32);
-      font-size: 9px;
-    }
-
-    .pricing-desc {
-      margin-top: 18px;
-      color: rgba(255,255,255,.5);
-      font-size: 10px;
-      line-height: 1.8;
-      max-width: 400px;
-    }
-
-    .pricing-card .check-list {
-      margin-top: 24px;
-    }
-
-    .pricing-card .button {
-      margin-top: 28px;
+    .field input,
+    .field textarea {
       width: 100%;
+      padding: 13px 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 10px;
+      background: rgba(255,255,255,.03);
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(255,255,255,.3);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,.5);
+    }
+
+    .field input:focus-visible,
+    .field textarea:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .field.has-error input,
+    .field.has-error textarea {
+      border-color: #ff9a9a;
+    }
+
+    .field-error {
+      min-height: 16px;
+      margin-top: 5px;
+      color: #ff9a9a;
+      font-size: 10px;
+    }
+
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .form-status {
+      min-height: 18px;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .form-status.success {
+      color: #7be8a4;
+    }
+
+    .form-status.error {
+      color: #ff9a9a;
+    }
+
+    .form-note {
+      color: rgba(255,255,255,.4);
+      font-size: 10px;
+      line-height: 1.7;
     }
 
     /* =========================================================
@@ -2089,63 +1343,30 @@
 
     .final-cta {
       padding: 160px 0;
-
       text-align: center;
     }
 
     .final-icon {
       width: 50px;
       height: 50px;
-
       display: grid;
       place-items: center;
-
       margin: 0 auto 25px;
-
       border: 1px solid rgba(255,255,255,.1);
-
       border-radius: 14px;
-
       background: rgba(255,255,255,.04);
     }
 
     .final-cta p {
       max-width: 550px;
-
       margin: 25px auto 0;
-
       color: rgba(255,255,255,.55);
-
       font-size: 12px;
-
       line-height: 1.9;
     }
 
-    .final-actions {
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-
-      gap: 12px;
-
+    .final-cta .hero-actions {
       margin-top: 30px;
-    }
-
-    .final-actions .hero-actions {
-      margin-top: 0;
-    }
-
-    .availability {
-      color: rgba(255,255,255,.18);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
-
-      max-width: 100%;
     }
 
     /* =========================================================
@@ -2158,20 +1379,16 @@
 
     .footer-inner {
       min-height: 140px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       min-width: 0;
     }
 
     .footer-brand {
       display: flex;
       align-items: center;
-
       gap: 10px;
-
       min-width: 0;
     }
 
@@ -2179,18 +1396,12 @@
       width: 32px;
       height: 32px;
       flex: 0 0 32px;
-
       display: grid;
       place-items: center;
-
       border: 1px solid rgba(255,255,255,.1);
-
       border-radius: 9px;
-
       font-family: "Space Grotesk";
-
       font-size: 11px;
-
       font-weight: 700;
     }
 
@@ -2200,32 +1411,21 @@
 
     .footer-tagline {
       margin-top: 3px;
-
       color: rgba(255,255,255,.4);
-
       font-size: 7px;
-
       text-transform: uppercase;
-
       letter-spacing: .15em;
-
       overflow-wrap: break-word;
     }
 
     .footer-bottom {
       display: flex;
       justify-content: space-between;
-
       gap: 20px;
-
       padding: 18px 0;
-
       border-top: 1px solid rgba(255,255,255,.05);
-
       color: rgba(255,255,255,.38);
-
       font-size: 7px;
-
       min-width: 0;
     }
 
@@ -2238,7 +1438,7 @@
        RESPONSIVE — TABLET
     ========================================================== */
 
-    @media(max-width:1100px) {
+    @media (max-width: 1100px) {
 
       .container {
         width: min(100% - 40px, 1180px);
@@ -2252,10 +1452,7 @@
         gap: 50px;
       }
 
-      .ownership-content {
-        padding: 50px;
-      }
-
+      .ownership-content,
       .custom-card {
         padding: 50px;
       }
@@ -2289,11 +1486,7 @@
       }
 
       .steps-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .pricing-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0,1fr));
       }
     }
 
@@ -2301,7 +1494,7 @@
        RESPONSIVE — TABLET / MOBILE NAV
     ========================================================== */
 
-    @media(max-width:900px) {
+    @media (max-width: 900px) {
 
       .nav-links,
       .nav-button {
@@ -2314,17 +1507,11 @@
 
       .mobile-menu.active {
         display: flex;
-
         flex-direction: column;
-
         gap: 18px;
-
         padding: 22px 24px 28px;
-
         border-top: 1px solid rgba(255,255,255,.06);
-
         background: rgba(5,5,5,.96);
-
         max-height: calc(100vh - 78px);
         overflow-y: auto;
       }
@@ -2336,15 +1523,10 @@
 
       .mobile-menu .mobile-cta {
         padding: 13px;
-
         border-radius: 10px;
-
         background: #fff;
-
         color: #000;
-
         text-align: center;
-
         font-weight: 700;
       }
 
@@ -2370,14 +1552,15 @@
       .workflow-visual {
         border-left: none;
         border-top: 1px solid rgba(255,255,255,.07);
+        min-height: 390px;
       }
 
       .feature-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
+        grid-template-columns: repeat(2, minmax(0,1fr));
       }
 
       .stats {
-        grid-template-columns: repeat(2,minmax(0,1fr));
+        grid-template-columns: repeat(2, minmax(0,1fr));
       }
 
       .dashboard-grid {
@@ -2396,17 +1579,13 @@
       .custom-grid {
         gap: 35px;
       }
-
-      .workflow-visual {
-        min-height: 390px;
-      }
     }
 
     /* =========================================================
        RESPONSIVE — SMALL TABLETS
     ========================================================== */
 
-    @media(max-width:760px) {
+    @media (max-width: 760px) {
 
       .container {
         width: calc(100% - 32px);
@@ -2475,16 +1654,9 @@
         padding: 24px;
       }
 
-      .ownership-content {
-        padding: 42px 30px;
-      }
-
+      .ownership-content,
       .custom-card {
         padding: 42px 30px;
-      }
-
-      .tab-content {
-        padding: 35px;
       }
 
       .final-cta {
@@ -2498,13 +1670,17 @@
       .steps-grid {
         grid-template-columns: 1fr;
       }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* =========================================================
        RESPONSIVE — MOBILE
     ========================================================== */
 
-    @media(max-width:620px) {
+    @media (max-width: 620px) {
 
       .container {
         width: calc(100% - 30px);
@@ -2563,10 +1739,6 @@
         font-size: clamp(38px, 12vw, 52px);
         letter-spacing: -.065em;
         line-height: .98;
-      }
-
-      .hero-title .line-inner {
-        max-width: 100%;
       }
 
       .hero-description {
@@ -2628,10 +1800,6 @@
         display: none;
       }
 
-      .dashboard-body {
-        min-height: 0;
-      }
-
       .dashboard-main {
         padding: 14px;
       }
@@ -2658,7 +1826,7 @@
       }
 
       .stats {
-        grid-template-columns: repeat(2,minmax(0,1fr));
+        grid-template-columns: repeat(2, minmax(0,1fr));
         gap: 6px;
         margin-top: 20px;
       }
@@ -2814,13 +1982,7 @@
       }
 
       .ownership-content h2 {
-        margin-top: 20px !important;
-      }
-
-      .ownership-content p {
         margin-top: 20px;
-        font-size: 10px;
-        line-height: 1.85;
       }
 
       .check-list {
@@ -2867,68 +2029,24 @@
         font-size: 7px;
       }
 
-      .center-heading .eyebrow {
-        gap: 5px;
-      }
-
-      .tabs {
+      .sequence {
+        gap: 7px;
         margin-top: 40px;
       }
 
-      .tab-buttons {
-        gap: 2px;
-        padding: 3px;
-        border-radius: 10px;
-      }
-
-      .tab-button {
-        padding: 11px 7px;
-        font-size: 8px;
-        line-height: 1.25;
-      }
-
-      .tab-content {
-        min-height: 0;
-        padding: 28px 20px;
-        border-radius: 14px;
-      }
-
-      .tab-icon {
-        width: 43px;
-        height: 43px;
-        flex-basis: 43px;
-      }
-
-      .tab-panel h3 {
-        margin-top: 19px;
-        font-size: 20px;
-        line-height: 1.15;
-      }
-
-      .tab-panel p {
-        margin-top: 11px;
+      .sequence li {
+        padding: 10px 14px;
         font-size: 10px;
-        line-height: 1.85;
       }
 
-      .tags {
-        gap: 6px;
-        margin-top: 21px;
-      }
-
-      .tag {
-        padding: 5px 8px;
-        font-size: 7px;
+      .equation-row {
+        margin-top: 22px;
+        gap: 10px;
       }
 
       .flow-node {
         padding: 13px 20px;
         font-size: 10px;
-      }
-
-      .pill-row {
-        margin-top: 30px;
-        gap: 7px;
       }
 
       .custom-card {
@@ -2946,61 +2064,6 @@
         line-height: 1.85;
       }
 
-      .custom-options {
-        gap: 8px;
-      }
-
-      .custom-option {
-        padding: 18px;
-        border-radius: 14px;
-      }
-
-      .custom-option-number {
-        width: 32px;
-        height: 32px;
-        flex-basis: 32px;
-        border-radius: 9px;
-        font-size: 7px;
-      }
-
-      .custom-option-label {
-        font-size: 6px;
-      }
-
-      .custom-option h3 {
-        margin-top: 15px;
-        font-size: 17px;
-      }
-
-      .custom-option p {
-        margin-top: 8px;
-        font-size: 8px;
-        line-height: 1.75;
-      }
-
-      .custom-option-features {
-        margin-top: 13px;
-        gap: 5px;
-      }
-
-      .custom-option-feature {
-        padding: 4px 7px;
-        font-size: 5.5px;
-      }
-
-      .custom-option-arrow {
-        margin-top: 13px;
-        font-size: 13px;
-      }
-
-      .pricing-card {
-        padding: 28px 22px;
-      }
-
-      .pricing-amount {
-        font-size: 32px;
-      }
-
       .final-cta {
         padding: 95px 0;
       }
@@ -3015,17 +2078,6 @@
         margin-top: 21px;
         font-size: 10px;
         line-height: 1.85;
-      }
-
-      .final-actions {
-        margin-top: 26px;
-        gap: 10px;
-      }
-
-      .availability {
-        font-size: 6px;
-        letter-spacing: .13em;
-        text-align: center;
       }
 
       .footer-inner {
@@ -3054,7 +2106,7 @@
        RESPONSIVE — VERY SMALL PHONES
     ========================================================== */
 
-    @media(max-width:380px) {
+    @media (max-width: 380px) {
 
       .container {
         width: calc(100% - 24px);
@@ -3138,174 +2190,8 @@
         width: calc(100% - 24px);
       }
 
-      .tab-content {
-        padding: 24px 17px;
-      }
-
-      .tab-button {
-        font-size: 7px;
-      }
-
-      .custom-option {
-        padding: 16px;
-      }
-
-      .custom-option h3 {
-        font-size: 16px;
-      }
-
-      .custom-option p {
-        font-size: 7.5px;
-      }
-
       .final-cta {
         padding: 85px 0;
-      }
-    }
-
-    /* =========================================================
-       DEMO MODAL
-    ========================================================== */
-
-    .demo-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0,0,0,.78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity .35s ease, visibility .35s ease;
-    }
-
-    .demo-modal.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    .demo-modal-content {
-      position: relative;
-      width: min(900px, 100%);
-      max-width: 100%;
-      max-height: calc(100vh - 48px);
-
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      overflow: hidden;
-      background: #090909;
-      box-shadow:
-        0 50px 140px rgba(0,0,0,.8),
-        0 0 100px rgba(255,255,255,.04);
-
-      transform: translateY(24px) scale(.96);
-
-      transition:
-        transform .45s cubic-bezier(.16,1,.3,1);
-    }
-
-    .demo-modal.active .demo-modal-content {
-      transform: translateY(0) scale(1);
-    }
-
-    .demo-modal-header {
-      min-height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 0 14px 0 17px;
-
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .demo-modal-label {
-      color: rgba(255,255,255,.5);
-      font-size: 8px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .demo-modal-close {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 9px;
-
-      background: rgba(255,255,255,.035);
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 17px;
-
-      transition: .25s ease;
-    }
-
-    .demo-modal-close:hover {
-      color: #fff;
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.16);
-    }
-
-    .demo-video-wrap {
-      background: #000;
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      max-height: calc(100vh - 100px);
-    }
-
-    .demo-video {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      background: #000;
-    }
-
-    @media(max-width:620px) {
-
-      .demo-modal {
-        padding: 15px;
-      }
-
-      .demo-modal-content {
-        border-radius: 15px;
-        max-height: calc(100vh - 30px);
-      }
-
-      .demo-modal-header {
-        min-height: 44px;
-        padding-left: 13px;
-        padding-right: 10px;
-      }
-
-      .demo-modal-label {
-        font-size: 6px;
-        letter-spacing: .14em;
-      }
-
-      .demo-modal-close {
-        width: 30px;
-        height: 30px;
-        flex-basis: 30px;
       }
     }
 
@@ -3313,11 +2199,14 @@
        REDUCED MOTION
     ========================================================== */
 
-    @media(prefers-reduced-motion:reduce) {
+    @media (prefers-reduced-motion: reduce) {
 
-      * {
+      *,
+      *::before,
+      *::after {
         animation: none !important;
         transition: none !important;
+        scroll-behavior: auto !important;
       }
     }
 
@@ -3326,78 +2215,51 @@
 
 <body>
 
-  <!-- =========================================================
-       BACKGROUND
-  ========================================================== -->
-
-  <div class="background">
-
+  <!-- BACKGROUND -->
+  <div class="background" aria-hidden="true">
     <div class="background-grid"></div>
-
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
     <div class="glow glow-3"></div>
-
   </div>
 
-  <!-- =========================================================
-       CURSOR
-  ========================================================== -->
+  <!-- CURSOR -->
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
-  <div class="cursor"></div>
-  <div class="cursor-ring"></div>
-
-  <!-- =========================================================
-       NAVBAR
-  ========================================================== -->
-
+  <!-- NAVBAR -->
   <header class="navbar">
 
     <div class="container nav-inner">
 
-      <a href="#" class="brand">
+      <a href="#top" class="brand" aria-label="AutFlow Studio home">
 
         <div class="brand-mark">
           <span>A</span>
         </div>
 
         <div>
-
           <div class="brand-name">
             AutFlow <span>Studio</span>
           </div>
-
           <div class="brand-subtitle">
             AI Lead-To-Appointment Systems
           </div>
-
         </div>
 
       </a>
 
-      <nav class="nav-links">
-
-        <a href="#product">
-          The System
-        </a>
-
-        <a href="#capabilities">
-          What It Does
-        </a>
-
-        <a href="#comparison">
-          Who It's For
-        </a>
-
-        <a href="#preview">
-          Discovery Call
-        </a>
-
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#product">The Workflow</a>
+        <a href="#capabilities">What It Does</a>
+        <a href="#fit">Who It's For</a>
+        <a href="#how-it-works">How It Works</a>
       </nav>
 
       <a
-        href="#get-started"
+        href="#discovery"
         class="nav-button magnetic"
+        data-cta="primary"
       >
         Discuss Your Lead Flow
       </a>
@@ -3405,1227 +2267,230 @@
       <button
         class="mobile-menu-button"
         id="mobileMenuButton"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
       >
         ☰
       </button>
 
     </div>
 
-    <div class="mobile-menu" id="mobileMenu">
-
-      <a href="#product">
-        The System
-      </a>
-
-      <a href="#capabilities">
-        What It Does
-      </a>
-
-      <a href="#comparison">
-        Who It's For
-      </a>
-
-      <a href="#preview">
-        Discovery Call
-      </a>
-
-      <a
-        href="#get-started"
-        class="mobile-cta"
-      >
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+      <a href="#product">The Workflow</a>
+      <a href="#capabilities">What It Does</a>
+      <a href="#fit">Who It's For</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#discovery" class="mobile-cta" data-cta="primary">
         Discuss Your Lead Flow
       </a>
-
-    </div>
+    </nav>
 
   </header>
 
-  <!-- =========================================================
-       HERO
-  ========================================================== -->
+  <main id="top">
 
-  <section class="hero">
+    <!-- HERO -->
+    <section class="hero">
 
-    <div class="hero-orbit">
-      <div class="orbit-dot"></div>
-    </div>
-
-    <div class="container">
-
-      <div class="hero-content">
-
-        <div class="status-pill hero-animate">
-
-          <span class="status-dot"></span>
-
-          CUSTOM AI LEAD-TO-APPOINTMENT SYSTEMS
-
-        </div>
-
-        <h1 class="hero-title">
-
-          <span class="line">
-            <span class="line-inner">
-              Stop Losing Inquiries
-            </span>
-          </span>
-
-          <span class="line">
-            <span class="line-inner">
-              Before They Become
-            </span>
-          </span>
-
-          <span class="line">
-            <span class="line-inner muted">
-              Booked Appointments.
-            </span>
-          </span>
-
-        </h1>
-
-        <p class="hero-description hero-animate">
-
-          AutFlow Studio builds a custom system around your inbound lead workflow, from first inquiry through follow-up and booking. It's configured around your business, rules, and tools, and can expand as your needs grow.
-
-        </p>
-
-        <div class="hero-actions hero-animate">
-
-          <a
-            href="#get-started"
-            class="button button-primary magnetic"
-          >
-            Discuss Your Lead Flow
-            <span>→</span>
-          </a>
-
-          <button
-            type="button"
-            class="button button-secondary magnetic"
-            id="demoButton"
-          >
-            Watch The Demo
-            <span>▶</span>
-          </button>
-
-        </div>
-
+      <div class="hero-orbit" aria-hidden="true">
+        <div class="orbit-dot"></div>
       </div>
 
-      <!-- =====================================================
-           DASHBOARD
-      ====================================================== -->
+      <div class="container">
 
-      <div class="dashboard-wrapper">
+        <div class="hero-content">
 
-        <div class="dashboard-glow"></div>
-
-        <div class="dashboard">
-
-          <div class="browser-bar">
-
-            <div class="browser-dots">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div class="browser-status">
-
-              <i></i>
-
-              SAMPLE DATA — ILLUSTRATIVE ONLY
-
-            </div>
-
-            <div class="browser-label">
-              ILLUSTRATIVE DASHBOARD
-            </div>
-
+          <div class="status-pill hero-animate">
+            <span class="status-dot"></span>
+            Custom AI Lead-To-Appointment Systems
           </div>
 
-          <div class="dashboard-body">
-
-            <aside class="sidebar">
-
-              <div class="sidebar-title">
-                Your Business
-              </div>
-
-              <div class="sidebar-item active">
-                <span class="sidebar-icon"></span>
-                Inbox
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Leads
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Follow-Ups
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Appointments
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Team Handoff
-              </div>
-
-              <div class="sidebar-separator"></div>
-
-              <div class="sidebar-title">
-                Overview
-              </div>
-
-              <div class="sidebar-item">
-                <span class="sidebar-icon"></span>
-                Lead Statuses
-              </div>
-
-            </aside>
-
-            <div class="dashboard-main">
-
-              <div class="dashboard-header">
-
-                <div>
-
-                  <div class="dashboard-eyebrow">
-                    Sample Data / Illustrative
-                  </div>
-
-                  <div class="dashboard-heading">
-                    From first inquiry to booked appointment.
-                  </div>
-
-                </div>
-
-                <div class="dashboard-filter">
-                  Sample view ↗
-                </div>
-
-              </div>
-
-              <div class="stats">
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Inquiries
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="142"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Qualified Leads
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="61"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Follow-Ups Sent
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="87"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-                <div class="stat">
-
-                  <div class="stat-label">
-                    Appointments
-                  </div>
-
-                  <div
-                    class="stat-value counter"
-                    data-value="24"
-                  >
-                    0
-                  </div>
-
-                  <div class="stat-change">
-                    Sample data
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="dashboard-grid">
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Lead Pipeline
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Illustrative statuses
-                  </div>
-
-                  <div class="project-list">
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        01
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Inquiry answered
-                        </div>
-
-                        <div class="project-status">
-                          RESPONDED
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        Sample
-                      </div>
-
-                    </div>
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        02
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Lead qualified
-                        </div>
-
-                        <div class="project-status">
-                          QUALIFIED
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        Sample
-                      </div>
-
-                    </div>
-
-                    <div class="project">
-
-                      <div class="project-number">
-                        03
-                      </div>
-
-                      <div class="project-info">
-
-                        <div class="project-name">
-                          Appointment booked
-                        </div>
-
-                        <div class="project-status">
-                          BOOKED
-                        </div>
-
-                      </div>
-
-                      <div class="project-price">
-                        Sample
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="panel">
-
-                  <div class="panel-title">
-                    Lead Statuses
-                  </div>
-
-                  <div class="panel-subtitle">
-                    Illustrative trend
-                  </div>
-
-                  <div class="chart">
-
-                    <div class="bar" style="height:30%"></div>
-                    <div class="bar" style="height:48%"></div>
-                    <div class="bar" style="height:40%"></div>
-                    <div class="bar" style="height:65%"></div>
-                    <div class="bar" style="height:54%"></div>
-                    <div class="bar" style="height:74%"></div>
-                    <div class="bar" style="height:62%"></div>
-                    <div class="bar" style="height:85%"></div>
-                    <div class="bar" style="height:71%"></div>
-                    <div class="bar" style="height:96%"></div>
-                    <div class="bar" style="height:80%"></div>
-                    <div class="bar" style="height:100%"></div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       PROBLEM + ILLUSTRATIVE COST OF LOST INQUIRIES
-  ========================================================== -->
-
-  <section class="section-border">
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          THE PROBLEM
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Valuable Inquiries Go Cold
-          <br>
-
-          <span class="muted">
-            Before They Book.
-          </span>
-
-        </h2>
-
-        <p class="section-description centered">
-
-          Slow replies and missed follow-ups can lose an inquiry, and the revenue it might have brought.
-
-        </p>
-
-      </div>
-
-      <div class="center-heading reveal-scale" style="margin-top:55px;">
-
-        <span
-          class="small-tag"
-          style="color:rgba(255,255,255,.78); font-size:8px;"
-        >
-          ILLUSTRATIVE EXAMPLE — NOT ACTUAL CLIENT RESULTS
-        </span>
-
-      </div>
-
-      <div class="equation-row reveal-scale" style="margin-top:26px;">
-
-        <div class="flow-node">
-          100 INQUIRIES / MONTH
-        </div>
-
-        <div class="flow-arrow">→</div>
-
-        <div class="flow-node">
-          10 MISSED
-        </div>
-
-        <div class="flow-arrow">→</div>
-
-        <div class="flow-node">
-          2 MIGHT CONVERT
-        </div>
-
-        <div class="flow-arrow">×</div>
-
-        <div class="flow-node">
-          $500 PER CUSTOMER
-        </div>
-
-        <div class="flow-arrow">=</div>
-
-        <div class="flow-node">
-          $1,000 POTENTIAL REVENUE
-        </div>
-
-      </div>
-
-      <p class="section-description centered reveal-scale" style="margin-top:34px;">
-        Hypothetical: 10 of 100 monthly inquiries are missed or never followed up, and 2 of them might have become $500 customers. This is potential revenue, not guaranteed lost profit or recovered revenue. Actual value depends on your lead volume, qualification, conversion rate, and customer value.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       THE SOLUTION
-  ========================================================== -->
-
-  <section
-    id="product"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="section-heading-grid">
-
-        <div class="reveal-left">
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-line"></span>
-
-            THE SOLUTION
-
-          </div>
-
-          <h2>
-
-            From First Inquiry
-
-            <span class="muted">
-              To Booked Appointment.
-            </span>
-          </h2>
-
-        </div>
-
-        <p class="section-description reveal-right">
-
-          A custom workflow, not a generic chatbot: Capture → Respond → Qualify → Follow Up → Book → Organize → Escalate When Needed.
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       FEATURES
-  ========================================================== -->
-
-  <section
-    id="capabilities"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="section-heading-grid">
-
-        <div class="reveal-left">
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-line"></span>
-
-            WHAT IT DOES
-
-          </div>
-
-          <h2>
-
-            Core Capabilities,
-
-            <span class="muted">
-              Configured To Fit.
-            </span>
-          </h2>
-
-        </div>
-
-        <p class="section-description reveal-right">
-
-          These work together as one workflow. Supported channels, CRMs, and booking tools depend on your setup.
-
-        </p>
-
-      </div>
-
-      <div class="feature-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◈
-          </div>
-
-          <div class="feature-title">
-            RESPOND FAST
-          </div>
-
-          <div class="feature-description">
-            Answers inquiries promptly using your approved information.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⌁
-          </div>
-
-          <div class="feature-title">
-            QUALIFY LEADS
-          </div>
-
-          <div class="feature-description">
-            Collects customer details and checks them against your criteria.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ↻
-          </div>
-
-          <div class="feature-title">
-            FOLLOW UP
-          </div>
-
-          <div class="feature-description">
-            Re-engages prospects who haven't booked, following your rules.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⚙
-          </div>
-
-          <div class="feature-title">
-            BOOK APPOINTMENTS
-          </div>
-
-          <div class="feature-description">
-            Helps eligible prospects book through supported integrations.
-          </div>
-
-          <div class="feature-badge">
-            Where Supported
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            $
-          </div>
-
-          <div class="feature-title">
-            ORGANIZE LEADS
-          </div>
-
-          <div class="feature-description">
-            Keeps conversations and lead statuses in an available CRM or dashboard.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ✦
-          </div>
-
-          <div class="feature-title">
-            HAND OFF TO YOUR TEAM
-          </div>
-
-          <div class="feature-description">
-            Passes complex cases to your staff for human judgment.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       CUSTOMIZATION AND EXPANDABILITY
-  ========================================================== -->
-
-  <section
-    id="customization"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          CUSTOMIZED
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Built Around Your Workflow.
-          <br>
-
-          <span class="muted">
-            Expandable As Your Needs Grow.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          These capabilities are the core, not a fixed feature list. Where technically feasible, more channels, rules, routing, reporting, and integrations can be added through separately scoped custom work.
-
-        </p>
-
-      </div>
-
-      <div class="steps-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Additional channels?
-          </div>
-
-          <div class="request-answer">
-            Added where supported.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Your own qualification rules?
-          </div>
-
-          <div class="request-answer">
-            Built to your criteria.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Routing, scheduling, or reporting?
-          </div>
-
-          <div class="request-answer">
-            Scoped around your process.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ?
-          </div>
-
-          <div class="feature-title">
-            Other tools or custom steps?
-          </div>
-
-          <div class="request-answer">
-            Assessed case by case.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       SUITABILITY
-  ========================================================== -->
-
-  <section
-    id="comparison"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          WHO IT'S FOR
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Built For Steady
-          <br>
-
-          <span class="muted">
-            Inbound Inquiries.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          Any industry where timely replies matter and appointments carry real value.
-
-        </p>
-
-      </div>
-
-      <div class="pricing-grid reveal-scale">
-
-        <div class="pricing-card">
-
-          <div class="pricing-label">
-            IDEAL CUSTOMER
-          </div>
-
-          <div class="pricing-name">
-            Inquiry-Driven Businesses
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Steady inbound inquiries
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Timely replies and follow-ups matter
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Appointments have meaningful value
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="pricing-card featured">
-
-          <div class="pricing-label">
-            YOUR SETUP
-          </div>
-
-          <div class="pricing-name">
-            Works With Supported Tools
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Channels such as website forms, WhatsApp, Instagram, Facebook
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              CRMs and booking platforms
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Depends on your platforms, permissions, and APIs
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       CONTROL
-  ========================================================== -->
-
-  <section
-    id="revenue-opportunity"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="ownership-card ownership-parallax">
-
-        <div class="ownership-content">
-
-          <span class="small-tag">
-            YOU STAY IN CONTROL
-          </span>
-
-          <h2 style="margin-top:23px;">
-
-            Automated Where It Fits.
-
-            <br>
-
-            <span class="muted">
-              Human Where It Counts.
-            </span>
-          </h2>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Answers from company-approved information
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Follows your business-defined rules
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Hands cases needing human judgment to your team
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="workflow-visual">
-
-          <div class="workflow-box workflow-float">
-
-            <div class="workflow-header">
-
-              <span>
-                ◉ INQUIRY FLOW
-              </span>
-
-              <span class="workflow-active">
-                SAMPLE
-              </span>
-
-            </div>
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Inquiry received
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Answered from approved information
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Eligible lead helped to book
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Complex cases handed to your team
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       PROCESS — START WITH AN INITIAL VERSION
-  ========================================================== -->
-
-  <section
-    id="how-it-works"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          HOW IT WORKS
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Start With The Workflow
-          <br>
-
-          <span class="muted">
-            That Matters Most.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          We build an initial system around your biggest gap, then expand as your needs grow.
-
-        </p>
-
-      </div>
-
-      <div class="steps-grid reveal-scale">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            01
-          </div>
-
-          <div class="feature-title">
-            UNDERSTAND
-          </div>
-
-          <div class="feature-description">
-            We review your current inquiry workflow and find where opportunities leak.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            02
-          </div>
-
-          <div class="feature-title">
-            CONFIGURE
-          </div>
-
-          <div class="feature-description">
-            We define an initial version and set up its replies, rules, and integrations.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            03
-          </div>
-
-          <div class="feature-title">
-            TEST
-          </div>
-
-          <div class="feature-description">
-            We test the agreed workflow before it goes live.
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            04
-          </div>
-
-          <div class="feature-title">
-            DEPLOY
-          </div>
-
-          <div class="feature-description">
-            We launch the supported setup, then expand it as requirements develop.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- =========================================================
-       DISCOVERY CALL
-  ========================================================== -->
-
-  <section
-    id="preview"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="custom-card reveal-scale">
-
-        <div class="custom-grid">
-
-          <div class="custom-copy">
-
-            <span class="small-tag">
-              DISCOVERY CALL
-            </span>
-
-            <h2 style="margin-top:23px;">
-
-              Discuss Your
-
-              <br>
-
-              <span class="muted">
-                Lead Flow First.
-              </span>
-            </h2>
-
-            <p class="custom-description">
-              We review how inquiries reach you today, where opportunities may be leaking, and what an initial custom system could cover.
-            </p>
+          <h1 class="hero-title">
+            <span class="line"><span class="line-inner">Stop Losing Inquiries</span></span>
+            <span class="line"><span class="line-inner">Before They Become</span></span>
+            <span class="line"><span class="line-inner muted">Booked Appointments.</span></span>
+          </h1>
+
+          <p class="hero-description hero-animate">
+            AutFlow Studio builds a custom system around your inbound lead workflow, from first inquiry through follow-up and booking. It's configured around your business, rules, and tools, and can expand as your needs grow.
+          </p>
+
+          <div class="hero-actions hero-animate">
 
             <a
-              href="#get-started"
+              href="#discovery"
               class="button button-primary magnetic"
+              data-cta="primary"
             >
               Discuss Your Lead Flow
-              <span>→</span>
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <a
+              href="#product"
+              class="button button-secondary magnetic"
+            >
+              See How It Works
+              <span aria-hidden="true">↓</span>
             </a>
 
           </div>
 
-          <div class="custom-options">
+        </div>
 
-            <div class="custom-option">
+        <!-- DASHBOARD (ILLUSTRATIVE) -->
+        <div class="dashboard-wrapper" role="img" aria-label="Illustrative dashboard with sample data. Not actual client results.">
 
-              <div class="custom-option-top">
+          <div class="dashboard-glow"></div>
 
-                <div class="custom-option-number">
-                  01
-                </div>
+          <div class="dashboard">
 
-                <div class="custom-option-label">
-                  ON THE<br>CALL
-                </div>
+            <div class="browser-bar">
 
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
 
-              <h3>
-                Your Current Lead Workflow
-              </h3>
-
-              <div class="custom-option-features">
-                <span class="custom-option-feature">CHANNELS</span>
-                <span class="custom-option-feature">WHERE LEADS LEAK</span>
-                <span class="custom-option-feature">QUALIFICATION</span>
-                <span class="custom-option-feature">BOOKING RULES</span>
-                <span class="custom-option-feature">INTEGRATIONS</span>
+              <div class="browser-status">
+                <i></i>
+                SAMPLE DATA — ILLUSTRATIVE ONLY
               </div>
 
-              <div class="custom-option-arrow">
-                →
+              <div class="browser-label">
+                ILLUSTRATIVE DASHBOARD
+              </div>
+
+            </div>
+
+            <div class="dashboard-body">
+
+              <aside class="sidebar">
+
+                <div class="sidebar-title">Your Business</div>
+
+                <div class="sidebar-item active"><span class="sidebar-icon"></span>Inbox</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Leads</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Follow-Ups</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Appointments</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Team Handoff</div>
+
+                <div class="sidebar-separator"></div>
+
+                <div class="sidebar-title">Overview</div>
+
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Lead Statuses</div>
+
+              </aside>
+
+              <div class="dashboard-main">
+
+                <div class="dashboard-header">
+
+                  <div>
+                    <div class="dashboard-eyebrow">Sample Data / Illustrative</div>
+                    <div class="dashboard-heading">From first inquiry to booked appointment.</div>
+                  </div>
+
+                  <div class="dashboard-filter">Sample view</div>
+
+                </div>
+
+                <div class="stats">
+
+                  <div class="stat">
+                    <div class="stat-label">Inquiries</div>
+                    <div class="stat-value counter" data-value="142">142</div>
+                    <div class="stat-change">Sample data</div>
+                  </div>
+
+                  <div class="stat">
+                    <div class="stat-label">Qualified Leads</div>
+                    <div class="stat-value counter" data-value="61">61</div>
+                    <div class="stat-change">Sample data</div>
+                  </div>
+
+                  <div class="stat">
+                    <div class="stat-label">Follow-Ups Sent</div>
+                    <div class="stat-value counter" data-value="87">87</div>
+                    <div class="stat-change">Sample data</div>
+                  </div>
+
+                  <div class="stat">
+                    <div class="stat-label">Appointments</div>
+                    <div class="stat-value counter" data-value="24">24</div>
+                    <div class="stat-change">Sample data</div>
+                  </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                  <div class="panel">
+
+                    <div class="panel-title">Lead Pipeline</div>
+                    <div class="panel-subtitle">Illustrative statuses</div>
+
+                    <div class="project-list">
+
+                      <div class="project">
+                        <div class="project-number">01</div>
+                        <div class="project-info">
+                          <div class="project-name">Inquiry answered</div>
+                          <div class="project-status">RESPONDED</div>
+                        </div>
+                        <div class="project-price">Sample</div>
+                      </div>
+
+                      <div class="project">
+                        <div class="project-number">02</div>
+                        <div class="project-info">
+                          <div class="project-name">Lead qualified</div>
+                          <div class="project-status">QUALIFIED</div>
+                        </div>
+                        <div class="project-price">Sample</div>
+                      </div>
+
+                      <div class="project">
+                        <div class="project-number">03</div>
+                        <div class="project-info">
+                          <div class="project-name">Appointment booked</div>
+                          <div class="project-status">BOOKED</div>
+                        </div>
+                        <div class="project-price">Sample</div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="panel">
+
+                    <div class="panel-title">Lead Statuses</div>
+                    <div class="panel-subtitle">Illustrative trend</div>
+
+                    <div class="chart" aria-hidden="true">
+                      <div class="bar" style="height:30%"></div>
+                      <div class="bar" style="height:48%"></div>
+                      <div class="bar" style="height:40%"></div>
+                      <div class="bar" style="height:65%"></div>
+                      <div class="bar" style="height:54%"></div>
+                      <div class="bar" style="height:74%"></div>
+                      <div class="bar" style="height:62%"></div>
+                      <div class="bar" style="height:85%"></div>
+                      <div class="bar" style="height:71%"></div>
+                      <div class="bar" style="height:96%"></div>
+                      <div class="bar" style="height:80%"></div>
+                      <div class="bar" style="height:100%"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+
               </div>
 
             </div>
@@ -4636,55 +2501,551 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- PROBLEM -->
+    <section class="section-border">
 
-  <!-- =========================================================
-       FINAL CTA
-  ========================================================== -->
+      <div class="container section-padding">
 
-  <section
-    id="get-started"
-    class="final-cta"
-  >
+        <div class="center-heading reveal-scale">
 
-    <div class="container">
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            The Problem
+            <span class="eyebrow-line"></span>
+          </div>
 
-      <div class="reveal-scale">
+          <h2>
+            Valuable Inquiries Go Cold
+            <br>
+            <span class="muted">Before They Book.</span>
+          </h2>
 
-        <div class="final-icon">
-          ↗
+          <p class="section-description centered">
+            Slow replies and missed follow-ups can lose an inquiry, and the revenue it might have brought.
+          </p>
+
         </div>
 
-        <h2>
-
-          Ready To Stop
-          <br>
-
-          <span class="muted">
-            Losing Inquiries?
+        <div class="center-heading reveal-scale" style="margin-top:55px;">
+          <span class="small-tag" style="color:rgba(255,255,255,.78);">
+            Hypothetical example — not actual client results
           </span>
-        </h2>
+        </div>
 
-        <p>
+        <div class="equation-row reveal-scale" aria-label="Hypothetical example calculation">
 
-          Fewer unanswered inquiries, more consistent follow-up, and less manual handling for your team.
+          <div class="flow-node">100 inquiries / month</div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node">10 missed</div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-node">2 might convert</div>
+          <div class="flow-arrow" aria-hidden="true">×</div>
+          <div class="flow-node">$500 per customer</div>
+          <div class="flow-arrow" aria-hidden="true">=</div>
+          <div class="flow-node">$1,000 potential revenue</div>
 
+        </div>
+
+        <p class="section-description centered reveal-scale" style="margin-top:34px;">
+          Assumptions: 10 of 100 monthly inquiries are missed or never followed up, and 2 of those might have become $500 customers. This is potential revenue, not guaranteed lost profit or recovered revenue. Your actual value depends on lead volume, qualification, conversion rate, and customer value.
         </p>
 
-        <div class="final-actions">
+      </div>
+
+    </section>
+
+    <!-- THE WORKFLOW -->
+    <section id="product" class="section-border">
+
+      <div class="container section-padding">
+
+        <div class="section-heading-grid">
+
+          <div class="reveal-left">
+
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              The Workflow
+            </div>
+
+            <h2>
+              From First Inquiry
+              <span class="muted">To Booked Appointment.</span>
+            </h2>
+
+          </div>
+
+          <p class="section-description reveal-right">
+            A coordinated workflow, not a set of disconnected AI features. Each step hands off to the next, and complex or sensitive cases go to your team at any point.
+          </p>
+
+        </div>
+
+        <ol class="sequence reveal-scale" aria-label="Workflow sequence">
+          <li>Capture</li>
+          <li class="arrow" aria-hidden="true">→</li>
+          <li>Respond</li>
+          <li class="arrow" aria-hidden="true">→</li>
+          <li>Qualify</li>
+          <li class="arrow" aria-hidden="true">→</li>
+          <li>Follow Up</li>
+          <li class="arrow" aria-hidden="true">→</li>
+          <li>Book</li>
+          <li class="arrow" aria-hidden="true">→</li>
+          <li>Organize</li>
+          <li class="arrow" aria-hidden="true">→</li>
+          <li>Escalate When Needed</li>
+        </ol>
+
+        <p class="section-description centered sequence-note reveal-scale">
+          The exact rules, channels, and integrations are defined with you before anything goes live.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities" class="section-border">
+
+      <div class="container section-padding">
+
+        <div class="section-heading-grid">
+
+          <div class="reveal-left">
+
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              What It Does
+            </div>
+
+            <h2>
+              Core Capabilities,
+              <span class="muted">Configured To Fit.</span>
+            </h2>
+
+          </div>
+
+          <p class="section-description reveal-right">
+            These work together as one workflow. Supported channels, CRMs, and booking tools depend on your setup and permissions.
+          </p>
+
+        </div>
+
+        <div class="feature-grid reveal-scale">
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">◈</div>
+            <div class="feature-title">RESPOND FAST</div>
+            <div class="feature-description">
+              Answers inquiries promptly using information you have approved.
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">⌁</div>
+            <div class="feature-title">QUALIFY LEADS</div>
+            <div class="feature-description">
+              Collects prospect details and checks them against your criteria.
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">↻</div>
+            <div class="feature-title">FOLLOW UP</div>
+            <div class="feature-description">
+              Re-engages prospects who haven't booked, following the rules you agree on.
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">⚙</div>
+            <div class="feature-title">BOOK APPOINTMENTS</div>
+            <div class="feature-description">
+              Helps eligible prospects book through supported scheduling integrations.
+            </div>
+            <div class="feature-badge">Where supported</div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">$</div>
+            <div class="feature-title">ORGANIZE LEADS</div>
+            <div class="feature-description">
+              Keeps conversations and lead statuses in an available CRM or dashboard.
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">✦</div>
+            <div class="feature-title">HAND OFF TO YOUR TEAM</div>
+            <div class="feature-description">
+              Passes complex or sensitive cases to your staff for human judgment.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CUSTOMIZATION -->
+    <section id="customization" class="section-border">
+
+      <div class="container section-padding">
+
+        <div class="center-heading reveal-scale">
+
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            Customized
+            <span class="eyebrow-line"></span>
+          </div>
+
+          <h2>
+            Built Around Your Workflow.
+            <br>
+            <span class="muted">Expandable As Your Needs Grow.</span>
+          </h2>
+
+          <p class="section-description centered">
+            The capabilities above are the core, not a fixed feature list. Where technically feasible, more channels, rules, routing, reporting, and integrations can be added through separately scoped work.
+          </p>
+
+        </div>
+
+        <div class="steps-grid reveal-scale">
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">Additional channels?</div>
+            <div class="request-answer">Added where supported.</div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">Your own qualification rules?</div>
+            <div class="request-answer">Built to your criteria.</div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">Routing, scheduling, or reporting?</div>
+            <div class="request-answer">Scoped around your process.</div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">Other tools or custom steps?</div>
+            <div class="request-answer">Assessed case by case.</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CONTROL -->
+    <section class="section-border">
+
+      <div class="container section-padding">
+
+        <div class="ownership-card">
+
+          <div class="ownership-content">
+
+            <span class="small-tag">You stay in control</span>
+
+            <h2 style="margin-top:23px;">
+              Automated Where It Fits.
+              <br>
+              <span class="muted">Human Where It Counts.</span>
+            </h2>
+
+            <div class="check-list">
+              <div class="check-item"><span class="check">✓</span>Answers from information you have approved</div>
+              <div class="check-item"><span class="check">✓</span>Follows the qualification and follow-up rules you define</div>
+              <div class="check-item"><span class="check">✓</span>Hands cases needing human judgment to your team</div>
+            </div>
+
+          </div>
+
+          <div class="workflow-visual" aria-hidden="true">
+
+            <div class="workflow-box workflow-float">
+
+              <div class="workflow-header">
+                <span>◉ INQUIRY FLOW</span>
+                <span class="workflow-active">SAMPLE</span>
+              </div>
+
+              <div class="workflow-steps">
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Inquiry received</div>
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Answered from approved information</div>
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Eligible lead helped to book</div>
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Complex cases handed to your team</div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <section id="fit" class="section-border">
+
+      <div class="container section-padding">
+
+        <div class="center-heading reveal-scale">
+
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            Who It's For
+            <span class="eyebrow-line"></span>
+          </div>
+
+          <h2>
+            Built For Steady
+            <br>
+            <span class="muted">Inbound Inquiries.</span>
+          </h2>
+
+          <p class="section-description centered">
+            Best suited to businesses where timely replies matter and each qualified appointment carries real value. It is not a fit for every company.
+          </p>
+
+        </div>
+
+        <div class="split-grid reveal-scale">
+
+          <div class="feature-card feature-3d">
+            <div class="feature-title">Likely a good fit if</div>
+            <div class="check-list">
+              <div class="check-item"><span class="check">✓</span>You receive a steady volume of inbound inquiries</div>
+              <div class="check-item"><span class="check">✓</span>Slow replies or missed follow-ups are costing you opportunities</div>
+              <div class="check-item"><span class="check">✓</span>Each qualified appointment has meaningful value</div>
+              <div class="check-item"><span class="check">✓</span>You have a defined sales or booking process to build on</div>
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-title">Depends on your setup</div>
+            <div class="check-list">
+              <div class="check-item"><span class="check">✓</span>Channels such as website forms, WhatsApp, Instagram, or Facebook, where supported</div>
+              <div class="check-item"><span class="check">✓</span>CRMs and scheduling tools with the APIs and permissions needed</div>
+              <div class="check-item"><span class="check">✓</span>Complex integrations may require separate scoping</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROCESS -->
+    <section id="how-it-works" class="section-border">
+
+      <div class="container section-padding">
+
+        <div class="center-heading reveal-scale">
+
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span>
+            How It Works
+            <span class="eyebrow-line"></span>
+          </div>
+
+          <h2>
+            Start With The Workflow
+            <br>
+            <span class="muted">That Matters Most.</span>
+          </h2>
+
+          <p class="section-description centered">
+            We build an initial system around your biggest gap, then expand it as your needs develop.
+          </p>
+
+        </div>
+
+        <div class="steps-grid reveal-scale">
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">01</div>
+            <div class="feature-title">UNDERSTAND</div>
+            <div class="feature-description">
+              We review your current inquiry workflow and identify the most important operational gap.
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">02</div>
+            <div class="feature-title">CONFIGURE</div>
+            <div class="feature-description">
+              We define the initial scope, response rules, qualification logic, and supported integrations.
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">03</div>
+            <div class="feature-title">TEST</div>
+            <div class="feature-description">
+              We test the agreed workflow and expected edge cases before deployment.
+            </div>
+          </div>
+
+          <div class="feature-card feature-3d">
+            <div class="feature-icon" aria-hidden="true">04</div>
+            <div class="feature-title">DEPLOY</div>
+            <div class="feature-description">
+              We launch the agreed setup. Any continuing support or expansion is defined separately.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- DISCOVERY + CONTACT -->
+    <section id="discovery" class="section-border">
+
+      <div class="container section-padding">
+
+        <div class="custom-card reveal-scale">
+
+          <div class="custom-grid">
+
+            <div class="custom-copy">
+
+              <span class="small-tag">Discovery conversation</span>
+
+              <h2>
+                Discuss Your
+                <br>
+                <span class="muted">Lead Flow First.</span>
+              </h2>
+
+              <p class="custom-description">
+                We review where inquiries arrive today, where response or follow-up may be inconsistent, what an initial system could reasonably automate, and which tools and integrations are relevant.
+              </p>
+
+              <div class="covers-list" aria-label="Topics covered">
+                <span>Where inquiries arrive</span>
+                <span>Where follow-up slips</span>
+                <span>What to automate first</span>
+                <span>Tools and integrations</span>
+              </div>
+
+            </div>
+
+            <div>
+
+              <form
+                class="form"
+                id="discoveryForm"
+                novalidate
+              >
+
+                <div class="field" id="field-name">
+                  <label for="name">Full name <span class="req">*</span></label>
+                  <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+                  <div class="field-error" id="name-error" role="alert"></div>
+                </div>
+
+                <div class="form-row">
+
+                  <div class="field" id="field-email">
+                    <label for="email">Business email <span class="req">*</span></label>
+                    <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+                    <div class="field-error" id="email-error" role="alert"></div>
+                  </div>
+
+                  <div class="field" id="field-company">
+                    <label for="company">Company name <span class="req">*</span></label>
+                    <input id="company" name="company" type="text" autocomplete="organization" required aria-describedby="company-error">
+                    <div class="field-error" id="company-error" role="alert"></div>
+                  </div>
+
+                </div>
+
+                <div class="field" id="field-challenge">
+                  <label for="challenge">Current lead-handling challenge <span class="req">*</span></label>
+                  <textarea id="challenge" name="challenge" required aria-describedby="challenge-error" placeholder="For example: inquiries from our website and WhatsApp sometimes wait hours for a reply."></textarea>
+                  <div class="field-error" id="challenge-error" role="alert"></div>
+                </div>
+
+                <!-- Honeypot: hidden from people, often filled by bots -->
+                <div class="hp-field" aria-hidden="true">
+                  <label for="website">Leave this field empty</label>
+                  <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+
+                <button
+                  type="submit"
+                  class="button button-primary magnetic"
+                  id="formSubmit"
+                  data-cta="primary"
+                >
+                  Discuss Your Lead Flow
+                  <span aria-hidden="true">→</span>
+                </button>
+
+                <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+                <p class="form-note">
+                  Your details are used only to respond to this request.
+                </p>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta section-border">
+
+      <div class="container">
+
+        <div class="reveal-scale">
+
+          <div class="final-icon" aria-hidden="true">↗</div>
+
+          <h2>
+            Ready To Stop
+            <br>
+            <span class="muted">Losing Inquiries?</span>
+          </h2>
+
+          <p>
+            Fewer unanswered inquiries, more consistent follow-up, and less manual handling for your team.
+          </p>
 
           <div class="hero-actions">
 
             <a
-              href="https://wa.me/213676127853"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#discovery"
               class="button button-primary magnetic"
+              data-cta="primary"
             >
               Discuss Your Lead Flow
-              <span>→</span>
+              <span aria-hidden="true">→</span>
             </a>
 
           </div>
@@ -4693,77 +3054,11 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+  </main>
 
-  <!-- =========================================================
-       DEMO MODAL
-       NOTE: confirm the demo video below matches the current offer.
-  ========================================================== -->
-
-  <div
-    class="demo-modal"
-    id="demoModal"
-    aria-hidden="true"
-  >
-
-    <div
-      class="demo-modal-content"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="demoModalLabel"
-    >
-
-      <div class="demo-modal-header">
-
-        <span
-          class="demo-modal-label"
-          id="demoModalLabel"
-        >
-          AutFlow Studio / Demo
-        </span>
-
-        <button
-          type="button"
-          class="demo-modal-close"
-          id="demoModalClose"
-          aria-label="Close demo"
-        >
-          ×
-        </button>
-
-      </div>
-
-      <div class="demo-video-wrap">
-
-        <video
-          class="demo-video"
-          id="demoVideo"
-          controls
-          playsinline
-          preload="metadata"
-        >
-
-          <source
-            src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4"
-            type="video/mp4"
-          >
-
-          Your browser does not support the demo video.
-
-        </video>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
-
+  <!-- FOOTER -->
   <footer>
 
     <div class="container">
@@ -4772,20 +3067,11 @@
 
         <div class="footer-brand">
 
-          <div class="footer-mark">
-            A
-          </div>
+          <div class="footer-mark" aria-hidden="true">A</div>
 
           <div>
-
-            <div class="footer-name">
-              AutFlow Studio
-            </div>
-
-            <div class="footer-tagline">
-              Custom AI lead-to-appointment systems
-            </div>
-
+            <div class="footer-name">AutFlow Studio</div>
+            <div class="footer-tagline">Custom AI lead-to-appointment systems</div>
           </div>
 
         </div>
@@ -4793,990 +3079,490 @@
       </div>
 
       <div class="footer-bottom">
-
-        <span>
-          © <span id="year"></span> AutFlow Studio
-        </span>
-
-        <span>
-          Built around your business, rules, and supported tools.
-        </span>
-
+        <span>© <span id="year"></span> AutFlow Studio</span>
+        <span>Built around your business, rules, and supported tools.</span>
       </div>
 
     </div>
 
   </footer>
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
-
+  <!-- JAVASCRIPT -->
   <script>
 
     /* =========================================================
-       GSAP
+       SITE CONFIGURATION
+       Set these before launch. Leave empty rather than inventing values.
+       bookingUrl:  an existing scheduling link (e.g. your Calendly URL).
+                    If set, all primary CTAs open it in a new tab.
+       formEndpoint: a URL that accepts POST JSON and returns a 2xx status
+                    (e.g. a Formspree form, or your own serverless function).
+                    Until it is set, the form shows an honest "not connected"
+                    message instead of claiming success.
     ========================================================== */
 
-    gsap.registerPlugin(ScrollTrigger);
+    const SITE_CONFIG = {
+      bookingUrl: "",
+      formEndpoint: ""
+    };
+
+    const prefersReducedMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* =========================================================
-       LENIS
+       PRIMARY CTAs → booking link (if configured)
     ========================================================== */
 
-    const lenis = new Lenis({
-      duration: 1.15,
-      smoothWheel: true,
-      wheelMultiplier: .85,
-      touchMultiplier: 1.1
-    });
-
-    function raf(time) {
-
-      lenis.raf(time);
-
-      requestAnimationFrame(raf);
-
+    if (SITE_CONFIG.bookingUrl) {
+      document.querySelectorAll('a[data-cta="primary"]').forEach(link => {
+        link.href = SITE_CONFIG.bookingUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      });
     }
 
-    requestAnimationFrame(raf);
-
     /* =========================================================
-       CONNECT LENIS TO GSAP
+       LENIS + GSAP (optional: the page works without them)
     ========================================================== */
 
-    lenis.on("scroll", ScrollTrigger.update);
+    let lenis = null;
 
-    gsap.ticker.add((time) => {
-
-      lenis.raf(time * 1000);
-
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    /* =========================================================
-       NAVBAR
-    ========================================================== */
-
-    const navbar =
-      document.querySelector(".navbar");
-
-    ScrollTrigger.create({
-
-      start: "top -60",
-
-      onEnter: () => {
-        navbar.classList.add("scrolled");
-      },
-
-      onLeaveBack: () => {
-        navbar.classList.remove("scrolled");
-      }
-
-    });
-
-    /* =========================================================
-       HERO INTRO
-    ========================================================== */
-
-    const heroTimeline =
-      gsap.timeline({
-        defaults: {
-          ease: "power4.out"
-        }
-      });
-
-    heroTimeline
-      .from(".hero-title .line-inner", {
-
-        yPercent: 110,
-
+    if (window.Lenis && !prefersReducedMotion) {
+      lenis = new Lenis({
         duration: 1.15,
-
-        stagger: .09
-
-      })
-
-      .from(".hero-animate", {
-
-        y: 25,
-
-        opacity: 0,
-
-        duration: .8,
-
-        stagger: .1
-
-      }, "-=.65")
-
-      .from(".dashboard-wrapper", {
-
-        y: 90,
-
-        opacity: 0,
-
-        scale: .94,
-
-        duration: 1.4
-
-      }, "-=.45");
-
-    /* =========================================================
-       HERO ORBIT ROTATION
-    ========================================================== */
-
-    gsap.to(".hero-orbit", {
-
-      rotation: 360,
-
-      duration: 80,
-
-      repeat: -1,
-
-      ease: "none"
-
-    });
-
-    /* =========================================================
-       HERO PARALLAX
-    ========================================================== */
-
-    gsap.to(".hero-content", {
-
-      y: -120,
-
-      opacity: .35,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".hero",
-
-        start: "top top",
-
-        end: "bottom top",
-
-        scrub: true
-
-      }
-
-    });
-
-    /* =========================================================
-       DASHBOARD SCROLL ANIMATION
-    ========================================================== */
-
-    gsap.to(".dashboard", {
-
-      y: 110,
-
-      rotateX: 0,
-
-      scale: .93,
-
-      opacity: .45,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".dashboard-wrapper",
-
-        start: "top 65%",
-
-        end: "bottom 20%",
-
-        scrub: 1.2
-
-      }
-
-    });
-
-    /* =========================================================
-       DASHBOARD GLOW
-    ========================================================== */
-
-    gsap.to(".dashboard-glow", {
-
-      scale: 1.35,
-
-      opacity: .8,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: ".dashboard-wrapper",
-
-        start: "top bottom",
-
-        end: "bottom top",
-
-        scrub: true
-
-      }
-
-    });
-
-    /* =========================================================
-       BACKGROUND GLOWS
-    ========================================================== */
-
-    gsap.to(".glow-1", {
-
-      y: 500,
-
-      scale: 1.5,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
-    });
-
-    gsap.to(".glow-2", {
-
-      y: -300,
-
-      x: 150,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
-    });
-
-    gsap.to(".glow-3", {
-
-      y: -400,
-
-      x: -150,
-
-      ease: "none",
-
-      scrollTrigger: {
-
-        trigger: "body",
-
-        start: "top top",
-
-        end: "bottom bottom",
-
-        scrub: 2
-
-      }
-
-    });
-
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================== */
-
-    gsap.utils.toArray(".reveal-left").forEach(element => {
-
-      gsap.from(element, {
-
-        x: -70,
-
-        opacity: 0,
-
-        duration: 1.1,
-
-        ease: "power4.out",
-
-        scrollTrigger: {
-
-          trigger: element,
-
-          start: "top 82%",
-
-          once: true
-
-        }
-
+        smoothWheel: true,
+        wheelMultiplier: .85,
+        touchMultiplier: 1.1
       });
 
-    });
+      const raf = time => {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      };
+      requestAnimationFrame(raf);
+    }
 
-    gsap.utils.toArray(".reveal-right").forEach(element => {
+    const hasGsap = Boolean(window.gsap && window.ScrollTrigger);
 
-      gsap.from(element, {
+    if (hasGsap) {
+      gsap.registerPlugin(ScrollTrigger);
 
-        x: 70,
-
-        opacity: 0,
-
-        duration: 1.1,
-
-        ease: "power4.out",
-
-        scrollTrigger: {
-
-          trigger: element,
-
-          start: "top 82%",
-
-          once: true
-
-        }
-
-      });
-
-    });
-
-    /* =========================================================
-       FEATURE CARDS STAGGER
-    ========================================================== */
-
-    gsap.from(".feature-card", {
-
-      y: 80,
-
-      opacity: 0,
-
-      scale: .94,
-
-      duration: 1,
-
-      stagger: .1,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".feature-grid",
-
-        start: "top 78%",
-
-        once: true
-
+      if (lenis) {
+        lenis.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add(time => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
       }
+    }
 
-    });
-
-    /* =========================================================
-       FEATURE 3D TILT
-    ========================================================== */
-
-    document
-      .querySelectorAll(".feature-3d")
-      .forEach(card => {
-
-        card.addEventListener("mousemove", event => {
-
-          if (window.innerWidth < 900) {
-            return;
-          }
-
-          const rect =
-            card.getBoundingClientRect();
-
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const centerX =
-            rect.width / 2;
-
-          const centerY =
-            rect.height / 2;
-
-          const rotateX =
-            (y - centerY) / 20;
-
-          const rotateY =
-            (centerX - x) / 20;
-
-          gsap.to(card, {
-
-            rotateX: rotateX,
-
-            rotateY: rotateY,
-
-            scale: 1.025,
-
-            duration: .4,
-
-            ease: "power2.out",
-
-            overwrite: true
-
-          });
-
-        });
-
-        card.addEventListener("mouseleave", () => {
-
-          gsap.to(card, {
-
-            rotateX: 0,
-
-            rotateY: 0,
-
-            scale: 1,
-
-            duration: .7,
-
-            ease: "elastic.out(1,.5)"
-
-          });
-
-        });
-
-      });
-
-    /* =========================================================
-       OWNERSHIP SECTION
-    ========================================================== */
-
-    gsap.from(".ownership-content", {
-
-      x: -80,
-
-      opacity: 0,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".ownership-card",
-
-        start: "top 78%",
-
-        once: true
-
+    /* Scroll to an anchor, respecting the fixed header */
+    function scrollToTarget(target) {
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -80, duration: 1.3 });
+      } else {
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: prefersReducedMotion ? "auto" : "smooth" });
       }
+    }
 
-    });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", event => {
+        const targetId = anchor.getAttribute("href");
+        if (!targetId || targetId === "#") return;
 
-    gsap.from(".workflow-box", {
+        const target = document.querySelector(targetId);
+        if (!target) return;
 
-      x: 100,
-
-      opacity: 0,
-
-      scale: .8,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".ownership-card",
-
-        start: "top 78%",
-
-        once: true
-
-      }
-
-    });
-
-    /* =========================================================
-       WORKFLOW FLOAT
-    ========================================================== */
-
-    gsap.to(".workflow-float", {
-
-      y: -20,
-
-      duration: 2.7,
-
-      repeat: -1,
-
-      yoyo: true,
-
-      ease: "sine.inOut"
-
-    });
-
-    /* =========================================================
-       CENTER HEADINGS
-    ========================================================== */
-
-    gsap.utils
-      .toArray(".reveal-scale")
-      .forEach(element => {
-
-        gsap.from(element, {
-
-          y: 60,
-
-          opacity: 0,
-
-          scale: .96,
-
-          duration: 1.1,
-
-          ease: "power4.out",
-
-          scrollTrigger: {
-
-            trigger: element,
-
-            start: "top 80%",
-
-            once: true
-
-          }
-
-        });
-
+        event.preventDefault();
+        scrollToTarget(target);
       });
-
-    /* =========================================================
-       COUNTERS
-    ========================================================== */
-
-    document
-      .querySelectorAll(".counter")
-      .forEach(counter => {
-
-        const target =
-          Number(counter.dataset.value);
-
-        const isMoney =
-          target > 1000;
-
-        const object = {
-          value: 0
-        };
-
-        gsap.to(object, {
-
-          value: target,
-
-          duration: 1.8,
-
-          ease: "power2.out",
-
-          scrollTrigger: {
-
-            trigger: counter,
-
-            start: "top 85%",
-
-            once: true
-
-          },
-
-          onUpdate: () => {
-
-            const value =
-              Math.floor(object.value);
-
-            counter.textContent =
-              isMoney
-                ? "$" + value.toLocaleString()
-                : value.toLocaleString();
-
-          }
-
-        });
-
-      });
-
-    /* =========================================================
-       GROWTH BARS
-    ========================================================== */
-
-    gsap.from(".bar", {
-
-      scaleY: 0,
-
-      transformOrigin: "bottom",
-
-      stagger: .05,
-
-      duration: 1.2,
-
-      ease: "power4.out",
-
-      scrollTrigger: {
-
-        trigger: ".chart",
-
-        start: "top 85%",
-
-        once: true
-
-      }
-
     });
 
     /* =========================================================
-       MAGNETIC BUTTONS
+       NAVBAR SCROLL STATE
     ========================================================== */
 
-    document
-      .querySelectorAll(".magnetic")
-      .forEach(button => {
+    const navbar = document.querySelector(".navbar");
 
-        button.addEventListener("mousemove", event => {
+    const updateNavbar = () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 60);
+    };
 
-          if (window.innerWidth < 900) {
-            return;
-          }
-
-          const rect =
-            button.getBoundingClientRect();
-
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const moveX =
-            (x - rect.width / 2) * .13;
-
-          const moveY =
-            (y - rect.height / 2) * .13;
-
-          gsap.to(button, {
-
-            x: moveX,
-
-            y: moveY,
-
-            duration: .35,
-
-            ease: "power3.out"
-
-          });
-
-        });
-
-        button.addEventListener("mouseleave", () => {
-
-          gsap.to(button, {
-
-            x: 0,
-
-            y: 0,
-
-            duration: .7,
-
-            ease: "elastic.out(1,.4)"
-
-          });
-
-        });
-
-      });
-
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================== */
-
-    const cursor =
-      document.querySelector(".cursor");
-
-    const cursorRing =
-      document.querySelector(".cursor-ring");
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let ringX = 0;
-    let ringY = 0;
-
-    window.addEventListener("mousemove", event => {
-
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
-      gsap.to(cursor, {
-
-        x: mouseX,
-
-        y: mouseY,
-
-        duration: .08,
-
-        overwrite: true
-
-      });
-
-    });
-
-    gsap.ticker.add(() => {
-
-      ringX +=
-        (mouseX - ringX) * .12;
-
-      ringY +=
-        (mouseY - ringY) * .12;
-
-      cursorRing.style.left =
-        ringX + "px";
-
-      cursorRing.style.top =
-        ringY + "px";
-
-    });
-
-    /* =========================================================
-       CURSOR HOVER
-    ========================================================== */
-
-    document
-      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
-      .forEach(element => {
-
-        element.addEventListener("mouseenter", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1.6,
-
-            borderColor:
-              "rgba(255,255,255,.7)",
-
-            duration: .25
-
-          });
-
-        });
-
-        element.addEventListener("mouseleave", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1,
-
-            borderColor:
-              "rgba(255,255,255,.4)",
-
-            duration: .25
-
-          });
-
-        });
-
-      });
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    updateNavbar();
 
     /* =========================================================
        MOBILE MENU
     ========================================================== */
 
-    const menuButton =
-      document.getElementById(
-        "mobileMenuButton"
-      );
+    const menuButton = document.getElementById("mobileMenuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
 
-    const mobileMenu =
-      document.getElementById(
-        "mobileMenu"
-      );
+    const setMenu = open => {
+      mobileMenu.classList.toggle("active", open);
+      document.body.classList.toggle("menu-open", open);
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      menuButton.textContent = open ? "×" : "☰";
+    };
 
     menuButton.addEventListener("click", () => {
-
-      mobileMenu.classList.toggle("active");
-
-      document.body.classList.toggle(
-        "menu-open"
-      );
-
-      menuButton.textContent =
-        mobileMenu.classList.contains("active")
-          ? "×"
-          : "☰";
-
+      setMenu(!mobileMenu.classList.contains("active"));
     });
 
-    document
-      .querySelectorAll(".mobile-menu a")
-      .forEach(link => {
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => setMenu(false));
+    });
 
-        link.addEventListener("click", () => {
-
-          mobileMenu.classList.remove("active");
-
-          document.body.classList.remove(
-            "menu-open"
-          );
-
-          menuButton.textContent = "☰";
-
-        });
-
-      });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && mobileMenu.classList.contains("active")) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
     /* =========================================================
-       SMOOTH ANCHOR SCROLL
+       CONTACT FORM
     ========================================================== */
 
-    document
-      .querySelectorAll('a[href^="#"]')
-      .forEach(anchor => {
+    const form = document.getElementById("discoveryForm");
+    const submitButton = document.getElementById("formSubmit");
+    const statusEl = document.getElementById("formStatus");
 
-        anchor.addEventListener("click", event => {
+    const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-          const targetId =
-            anchor.getAttribute("href");
+    const fields = {
+      name: {
+        label: "Please enter your full name.",
+        check: v => v.length >= 2
+      },
+      email: {
+        label: "Please enter a valid business email address.",
+        check: v => EMAIL_PATTERN.test(v)
+      },
+      company: {
+        label: "Please enter your company name.",
+        check: v => v.length >= 2
+      },
+      challenge: {
+        label: "Please briefly describe your current lead-handling challenge.",
+        check: v => v.length >= 10
+      }
+    };
 
-          if (
-            !targetId ||
-            targetId === "#"
-          ) {
-            return;
+    function setFieldError(name, message) {
+      const wrapper = document.getElementById("field-" + name);
+      const errorEl = document.getElementById(name + "-error");
+      const input = form.elements[name];
+
+      wrapper.classList.toggle("has-error", Boolean(message));
+      errorEl.textContent = message || "";
+      input.setAttribute("aria-invalid", String(Boolean(message)));
+    }
+
+    function validateForm() {
+      let firstInvalid = null;
+
+      Object.entries(fields).forEach(([name, rule]) => {
+        const value = form.elements[name].value.trim();
+        const valid = value !== "" && rule.check(value);
+
+        setFieldError(name, valid ? "" : rule.label);
+
+        if (!valid && !firstInvalid) {
+          firstInvalid = form.elements[name];
+        }
+      });
+
+      if (firstInvalid) firstInvalid.focus();
+
+      return !firstInvalid;
+    }
+
+    /* Clear each field's error once the user edits it */
+    Object.keys(fields).forEach(name => {
+      form.elements[name].addEventListener("input", () => {
+        if (form.elements[name].getAttribute("aria-invalid") === "true") {
+          setFieldError(name, "");
+        }
+      });
+    });
+
+    function showStatus(type, message) {
+      statusEl.className = "form-status " + type;
+      statusEl.textContent = message;
+    }
+
+    let isSubmitting = false;
+    let isSent = false;
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      if (isSubmitting || isSent) return;
+
+      /* Honeypot tripped: pretend success without sending */
+      if (form.elements.website.value) {
+        isSent = true;
+        showStatus("success", "Thanks. Your request has been received.");
+        return;
+      }
+
+      if (!validateForm()) {
+        showStatus("error", "Please correct the highlighted fields.");
+        return;
+      }
+
+      if (!SITE_CONFIG.formEndpoint) {
+        showStatus(
+          "error",
+          "Online submission is not connected on this site yet, so your request was not sent. Please try again later."
+        );
+        return;
+      }
+
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending…";
+      showStatus("", "");
+
+      const payload = {
+        name: form.elements.name.value.trim(),
+        email: form.elements.email.value.trim(),
+        company: form.elements.company.value.trim(),
+        challenge: form.elements.challenge.value.trim(),
+        page: window.location.href
+      };
+
+      try {
+        const response = await fetch(SITE_CONFIG.formEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Request failed with status " + response.status);
+        }
+
+        isSent = true;
+        form.reset();
+        submitButton.textContent = "Request sent";
+        showStatus("success", "Thanks. We've received your request and will be in touch about your lead workflow.");
+      } catch (error) {
+        isSubmitting = false;
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Discuss Your Lead Flow <span aria-hidden="true">→</span>';
+        showStatus("error", "Something went wrong and your request was not sent. Please try again.");
+      }
+    });
+
+    /* =========================================================
+       ANIMATIONS (skipped for reduced motion or if GSAP is unavailable)
+    ========================================================== */
+
+    if (hasGsap && !prefersReducedMotion) {
+
+      /* Hero intro */
+      gsap.timeline({ defaults: { ease: "power4.out" } })
+        .from(".hero-title .line-inner", { yPercent: 110, duration: 1.15, stagger: .09 })
+        .from(".hero-animate", { y: 25, opacity: 0, duration: .8, stagger: .1 }, "-=.65")
+        .from(".dashboard-wrapper", { y: 90, opacity: 0, scale: .94, duration: 1.4 }, "-=.45");
+
+      gsap.to(".hero-orbit", { rotation: 360, duration: 80, repeat: -1, ease: "none" });
+
+      gsap.to(".hero-content", {
+        y: -120,
+        opacity: .35,
+        ease: "none",
+        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+      });
+
+      gsap.to(".dashboard", {
+        y: 110,
+        scale: .93,
+        opacity: .45,
+        ease: "none",
+        scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 65%", end: "bottom 20%", scrub: 1.2 }
+      });
+
+      gsap.to(".dashboard-glow", {
+        scale: 1.35,
+        opacity: .8,
+        ease: "none",
+        scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true }
+      });
+
+      [[".glow-1", { y: 500, scale: 1.5 }],
+       [".glow-2", { y: -300, x: 150 }],
+       [".glow-3", { y: -400, x: -150 }]].forEach(([selector, props]) => {
+        gsap.to(selector, {
+          ...props,
+          ease: "none",
+          scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
+        });
+      });
+
+      gsap.utils.toArray(".reveal-left").forEach(el => {
+        gsap.from(el, {
+          x: -70, opacity: 0, duration: 1.1, ease: "power4.out",
+          scrollTrigger: { trigger: el, start: "top 82%", once: true }
+        });
+      });
+
+      gsap.utils.toArray(".reveal-right").forEach(el => {
+        gsap.from(el, {
+          x: 70, opacity: 0, duration: 1.1, ease: "power4.out",
+          scrollTrigger: { trigger: el, start: "top 82%", once: true }
+        });
+      });
+
+      gsap.utils.toArray(".reveal-scale").forEach(el => {
+        gsap.from(el, {
+          y: 60, opacity: 0, scale: .96, duration: 1.1, ease: "power4.out",
+          scrollTrigger: { trigger: el, start: "top 80%", once: true }
+        });
+      });
+
+      gsap.from(".feature-card", {
+        y: 80, opacity: 0, scale: .94, duration: 1, stagger: .1, ease: "power4.out",
+        scrollTrigger: { trigger: ".feature-grid", start: "top 78%", once: true }
+      });
+
+      gsap.from(".ownership-content", {
+        x: -80, opacity: 0, duration: 1.2, ease: "power4.out",
+        scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
+      });
+
+      gsap.from(".workflow-box", {
+        x: 100, opacity: 0, scale: .8, duration: 1.2, ease: "power4.out",
+        scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
+      });
+
+      gsap.to(".workflow-float", { y: -20, duration: 2.7, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+      gsap.from(".bar", {
+        scaleY: 0, transformOrigin: "bottom", stagger: .05, duration: 1.2, ease: "power4.out",
+        scrollTrigger: { trigger: ".chart", start: "top 85%", once: true }
+      });
+
+      /* Counters */
+      document.querySelectorAll(".counter").forEach(counter => {
+        const target = Number(counter.dataset.value);
+        const state = { value: 0 };
+
+        gsap.to(state, {
+          value: target,
+          duration: 1.8,
+          ease: "power2.out",
+          scrollTrigger: { trigger: counter, start: "top 85%", once: true },
+          onUpdate: () => {
+            counter.textContent = Math.floor(state.value).toLocaleString();
           }
+        });
+      });
 
-          const target =
-            document.querySelector(targetId);
+      /* Ambient floating for the workflow card is kept; cursor effects below */
+    }
 
-          if (!target) {
-            return;
-          }
+    /* =========================================================
+       HOVER EFFECTS (pointer devices only, motion not reduced)
+    ========================================================== */
 
-          event.preventDefault();
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-          lenis.scrollTo(target, {
+    if (hasGsap && canHover && !prefersReducedMotion) {
 
-            offset: -80,
+      /* 3D tilt on feature cards */
+      document.querySelectorAll(".feature-3d").forEach(card => {
+        card.addEventListener("mousemove", event => {
+          if (window.innerWidth < 900) return;
 
-            duration: 1.3
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
 
+          gsap.to(card, {
+            rotateX: (y - rect.height / 2) / 20,
+            rotateY: (rect.width / 2 - x) / 20,
+            scale: 1.025,
+            duration: .4,
+            ease: "power2.out",
+            overwrite: true
           });
-
         });
 
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, { rotateX: 0, rotateY: 0, scale: 1, duration: .7, ease: "elastic.out(1,.5)" });
+        });
       });
 
-    /* =========================================================
-       DEMO MODAL
-    ========================================================== */
+      /* Magnetic buttons */
+      document.querySelectorAll(".magnetic").forEach(button => {
+        button.addEventListener("mousemove", event => {
+          if (window.innerWidth < 900) return;
 
-    const demoButton =
-      document.getElementById("demoButton");
+          const rect = button.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
 
-    const demoModal =
-      document.getElementById("demoModal");
+          gsap.to(button, {
+            x: (x - rect.width / 2) * .13,
+            y: (y - rect.height / 2) * .13,
+            duration: .35,
+            ease: "power3.out"
+          });
+        });
 
-    const demoModalClose =
-      document.getElementById("demoModalClose");
+        button.addEventListener("mouseleave", () => {
+          gsap.to(button, { x: 0, y: 0, duration: .7, ease: "elastic.out(1,.4)" });
+        });
+      });
 
-    const demoVideo =
-      document.getElementById("demoVideo");
+      /* Custom cursor */
+      const cursor = document.querySelector(".cursor");
+      const cursorRing = document.querySelector(".cursor-ring");
 
-    function openDemo() {
+      let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
-      demoModal.classList.add("active");
+      window.addEventListener("mousemove", event => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+        gsap.to(cursor, { x: mouseX, y: mouseY, duration: .08, overwrite: true });
+      });
 
-      demoModal.setAttribute(
-        "aria-hidden",
-        "false"
-      );
+      gsap.ticker.add(() => {
+        ringX += (mouseX - ringX) * .12;
+        ringY += (mouseY - ringY) * .12;
+        cursorRing.style.left = ringX + "px";
+        cursorRing.style.top = ringY + "px";
+      });
 
-      document.body.classList.add(
-        "menu-open"
-      );
-
-      demoVideo.currentTime = 0;
-
-      demoVideo.load();
-
-      demoVideo.play().catch(() => {});
-
+      document.querySelectorAll("a, button, .feature-card").forEach(element => {
+        element.addEventListener("mouseenter", () => {
+          gsap.to(cursorRing, { scale: 1.6, borderColor: "rgba(255,255,255,.7)", duration: .25 });
+        });
+        element.addEventListener("mouseleave", () => {
+          gsap.to(cursorRing, { scale: 1, borderColor: "rgba(255,255,255,.4)", duration: .25 });
+        });
+      });
+    } else {
+      /* Hide the custom cursor entirely when it isn't used */
+      document.querySelectorAll(".cursor, .cursor-ring").forEach(el => {
+        el.style.display = "none";
+      });
     }
 
-    function closeDemo() {
-
-      demoModal.classList.remove("active");
-
-      demoModal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-      document.body.classList.remove(
-        "menu-open"
-      );
-
-      demoVideo.pause();
-
-    }
-
-    demoButton.addEventListener(
-      "click",
-      openDemo
-    );
-
-    demoModalClose.addEventListener(
-      "click",
-      closeDemo
-    );
-
-    demoModal.addEventListener(
-      "click",
-      event => {
-
-        if (event.target === demoModal) {
-          closeDemo();
-        }
-
-      }
-    );
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape" &&
-          demoModal.classList.contains("active")
-        ) {
-
-          closeDemo();
-
-        }
-
-      }
-    );
-
     /* =========================================================
-       YEAR
+       FOOTER YEAR + SCROLLTRIGGER REFRESH
     ========================================================== */
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    /* =========================================================
-       REFRESH SCROLLTRIGGER
-    ========================================================== */
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     window.addEventListener("load", () => {
-
-      ScrollTrigger.refresh();
-
+      if (hasGsap) ScrollTrigger.refresh();
     });
 
   </script>

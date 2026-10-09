@@ -3,468 +3,504 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutFlow Studio — Custom Freight Invoice Audit System. Review What Gets Flagged.</title>
+<title>AutFlow Studio — Custom AI Lead-to-Appointment Systems</title>
 <link rel="icon" type="image/png" href="./AutFlow-logo.png">
 <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
-<meta name="description" content="AutFlow Studio builds a custom freight invoice audit system around your carriers, contracts, rate structures, billing rules, and workflow, so your team reviews flagged items instead of every invoice.">
+<meta name="description" content="Custom AI systems that respond to inbound inquiries, qualify leads, follow up, and help them book appointments — built around your business.">
+
+<!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto;width:100%;overflow-x:hidden}
-body{margin:0;background:#050505;color:#fff;font-family:"Inter",sans-serif;overflow-x:hidden;line-height:1.5;width:100%;min-width:0}
-body.menu-open{overflow:hidden}
-a{text-decoration:none;color:inherit}
-button{border:none;font:inherit;cursor:pointer}
-img,video,svg{max-width:100%}
-::selection{background:#fff;color:#000}
-a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
-:root{--white:#fff;--muted:rgba(255,255,255,.42);--soft:rgba(255,255,255,.08);--border:rgba(255,255,255,.09);--panel:rgba(255,255,255,.025)}
-.container{width:min(1180px,calc(100% - 48px));margin:auto;min-width:0}
-.section-border{border-top:1px solid rgba(255,255,255,.07)}
-.section-padding{padding:140px 0}
 
-/* CURSOR */
-.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
-.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(255,255,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+<!-- LENIS SMOOTH SCROLL -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<style>
+
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: auto; width: 100%; overflow-x: hidden; }
+body { margin: 0; background: #050505; color: #fff; font-family: "Inter", sans-serif; overflow-x: hidden; line-height: 1.5; width: 100%; min-width: 0; }
+body.menu-open { overflow: hidden; }
+a { text-decoration: none; color: inherit; }
+button { border: none; font: inherit; cursor: pointer; }
+img, video, svg { max-width: 100%; }
+::selection { background: #fff; color: #000; }
+
+/* GLOBAL */
+:root { --white: #fff; --muted: rgba(255,255,255,.42); --soft: rgba(255,255,255,.08); --border: rgba(255,255,255,.09); --panel: rgba(255,255,255,.025); }
+.container { width: min(1180px, calc(100% - 48px)); margin: auto; min-width: 0; }
+.section-border { border-top: 1px solid rgba(255,255,255,.07); }
+.section-padding { padding: 140px 0; }
+
+/* CUSTOM CURSOR */
+.cursor { position: fixed; width: 10px; height: 10px; border-radius: 50%; background: #fff; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); mix-blend-mode: difference; }
+.cursor-ring { position: fixed; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
 
 /* BACKGROUND */
-.background{position:fixed;inset:0;z-index:-10;overflow:hidden;background:#050505;pointer-events:none}
-.background-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
-.glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45}
-.glow-1{width:650px;height:650px;top:-300px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.055)}
-.glow-2{width:400px;height:400px;top:900px;left:-200px;background:rgba(255,255,255,.025)}
-.glow-3{width:450px;height:450px;top:1600px;right:-200px;background:rgba(255,255,255,.025)}
+.background { position: fixed; inset: 0; z-index: -10; overflow: hidden; background: #050505; pointer-events: none; }
+.background-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 70px 70px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
+.glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .45; }
+.glow-1 { width: 650px; height: 650px; top: -300px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,.055); }
+.glow-2 { width: 400px; height: 400px; top: 900px; left: -200px; background: rgba(255,255,255,.025); }
+.glow-3 { width: 450px; height: 450px; top: 1600px; right: -200px; background: rgba(255,255,255,.025); }
 
 /* NAVBAR */
-.navbar{position:fixed;top:0;left:0;width:100%;z-index:500;border-bottom:1px solid transparent;background:rgba(5,5,5,.25);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);transition:background .4s ease,border-color .4s ease,backdrop-filter .4s ease}
-.navbar.scrolled{background:rgba(5,5,5,.75);border-color:rgba(255,255,255,.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;min-width:0}
-.brand{display:flex;align-items:center;gap:12px;min-width:0}
-.brand-mark{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.025));box-shadow:0 0 40px rgba(255,255,255,.035)}
-.brand-mark span{font-family:"Space Grotesk";font-weight:700}
-.brand-name{font-family:"Space Grotesk";font-size:14px;font-weight:600;white-space:nowrap}
-.brand-name span{color:rgba(255,255,255,.35)}
-.brand-subtitle{font-size:7px;letter-spacing:.25em;color:rgba(255,255,255,.25);text-transform:uppercase;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:34px}
-.nav-links a{font-size:11px;color:rgba(255,255,255,.42);transition:color .25s ease;white-space:nowrap}
-.nav-links a:hover{color:#fff}
-.nav-button{padding:11px 19px;border-radius:999px;background:#fff;color:#000;font-size:10px;font-weight:700;transition:transform .25s ease,background .25s ease;white-space:nowrap}
-.nav-button:hover{transform:translateY(-2px);background:#e9e9e9}
-.mobile-menu-button{display:none;width:40px;height:40px;flex:0 0 40px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.04);color:white}
-.mobile-menu{display:none}
+.navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 500; border-bottom: 1px solid transparent; background: rgba(5,5,5,.25); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease; }
+.navbar.scrolled { background: rgba(5,5,5,.75); border-color: rgba(255,255,255,.07); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.nav-inner { height: 78px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-mark { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.12); border-radius: 11px; background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.025)); box-shadow: 0 0 40px rgba(255,255,255,.035); }
+.brand-mark span { font-family: "Space Grotesk"; font-weight: 700; }
+.brand-name { font-family: "Space Grotesk"; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.brand-name span { color: rgba(255,255,255,.35); }
+.brand-subtitle { font-size: 7px; letter-spacing: .25em; color: rgba(255,255,255,.25); text-transform: uppercase; white-space: nowrap; }
+.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links a { font-size: 11px; color: rgba(255,255,255,.42); transition: color .25s ease; white-space: nowrap; }
+.nav-links a:hover { color: #fff; }
+.nav-button { padding: 11px 19px; border-radius: 999px; background: #fff; color: #000; font-size: 10px; font-weight: 700; transition: transform .25s ease, background .25s ease; white-space: nowrap; }
+.nav-button:hover { transform: translateY(-2px); background: #e9e9e9; }
+.mobile-menu-button { display: none; width: 40px; height: 40px; flex: 0 0 40px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.04); color: white; }
+.mobile-menu { display: none; }
 
 /* HERO */
-.hero{min-height:100vh;padding-top:175px;padding-bottom:100px;position:relative;overflow:hidden}
-.hero-content{max-width:900px;margin:auto;text-align:center;position:relative;z-index:2;min-width:0}
-.status-pill{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.42);font-size:8px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
-.status-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#66e394;box-shadow:0 0 15px rgba(102,227,148,.7)}
-.hero-title{margin-top:28px;font-family:"Space Grotesk";font-size:clamp(52px,7.4vw,92px);line-height:.95;letter-spacing:-.07em;font-weight:600;overflow-wrap:normal;word-break:normal}
-.hero-title .line{display:block;overflow:hidden}
-.hero-title .line-inner{display:block}
-.hero-title .muted{color:rgba(255,255,255,.32)}
-.hero-description{max-width:650px;margin:32px auto 0;color:rgba(255,255,255,.4);font-size:15px;line-height:1.9}
-.hero-actions{margin-top:34px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 23px;border-radius:999px;font-size:11px;font-weight:600;transition:background .3s ease,border-color .3s ease;max-width:100%;text-align:center}
-.button-primary{background:#fff;color:#000}
-.button-secondary{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
-.button-secondary:hover{border-color:rgba(255,255,255,.2);color:#fff}
-.hero-orbit{position:absolute;width:950px;height:950px;left:50%;top:360px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.025);border-radius:50%;pointer-events:none}
-.hero-orbit::before{content:"";position:absolute;inset:80px;border:1px solid rgba(255,255,255,.02);border-radius:50%}
-.orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:white;box-shadow:0 0 20px rgba(255,255,255,.7);left:50%;top:0}
+.hero { min-height: 100vh; padding-top: 175px; padding-bottom: 100px; position: relative; overflow: hidden; }
+.hero-content { max-width: 900px; margin: auto; text-align: center; position: relative; z-index: 2; min-width: 0; }
+.status-pill { display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.09); border-radius: 999px; background: rgba(255,255,255,.035); color: rgba(255,255,255,.42); font-size: 8px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
+.status-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #66e394; box-shadow: 0 0 15px rgba(102,227,148,.7); }
+.hero-title { margin-top: 28px; font-family: "Space Grotesk"; font-size: clamp(52px, 7.4vw, 92px); line-height: .95; letter-spacing: -.07em; font-weight: 600; overflow-wrap: normal; word-break: normal; }
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line-inner { display: block; }
+.hero-title .muted { color: rgba(255,255,255,.32); }
+.hero-description { max-width: 650px; margin: 32px auto 0; color: rgba(255,255,255,.4); font-size: 15px; line-height: 1.9; }
+.hero-actions { margin-top: 34px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 23px; border-radius: 999px; font-size: 11px; font-weight: 600; transition: background .3s ease, border-color .3s ease; max-width: 100%; text-align: center; }
+.button-primary { background: #fff; color: #000; }
+.button-secondary { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
+.button-secondary:hover { border-color: rgba(255,255,255,.2); color: #fff; }
+
+/* HERO ORBIT */
+.hero-orbit { position: absolute; width: 950px; height: 950px; left: 50%; top: 360px; transform: translateX(-50%); border: 1px solid rgba(255,255,255,.025); border-radius: 50%; pointer-events: none; }
+.hero-orbit::before { content: ""; position: absolute; inset: 80px; border: 1px solid rgba(255,255,255,.02); border-radius: 50%; }
+.orbit-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: white; box-shadow: 0 0 20px rgba(255,255,255,.7); left: 50%; top: 0; }
 
 /* DASHBOARD */
-.dashboard-wrapper{position:relative;width:100%;max-width:1120px;margin:100px auto 0;perspective:1400px;min-width:0}
-.dashboard-glow{position:absolute;width:800px;height:350px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);max-width:90vw}
-.dashboard{position:relative;width:100%;max-width:100%;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 70px 150px rgba(0,0,0,.75),0 0 100px rgba(255,255,255,.025);transform-origin:center top;will-change:transform}
-.browser-bar{min-height:45px;height:45px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.07)}
-.browser-dots{display:flex;gap:6px;flex:0 0 auto}
-.browser-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.13)}
-.browser-status{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.4);font-size:8px;min-width:0;text-align:center}
-.browser-status i{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#5cdf8d}
-.browser-label{color:rgba(255,255,255,.32);font-size:8px;letter-spacing:.2em;white-space:nowrap}
-.dashboard-body{display:grid;grid-template-columns:210px minmax(0,1fr);min-height:460px;min-width:0}
-.sidebar{padding:22px 15px;border-right:1px solid rgba(255,255,255,.07);min-width:0}
-.sidebar-title{margin-bottom:14px;color:rgba(255,255,255,.2);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
-.sidebar-item{display:flex;align-items:center;gap:9px;padding:10px;margin-bottom:3px;border-radius:8px;color:rgba(255,255,255,.32);font-size:9px;transition:.25s ease}
-.sidebar-item:hover{background:rgba(255,255,255,.035);color:#fff}
-.sidebar-item.active{background:rgba(255,255,255,.065);color:#fff}
-.sidebar-icon{width:12px;height:12px;flex:0 0 12px;border:1px solid currentColor;border-radius:3px;opacity:.6}
-.sidebar-separator{height:1px;background:rgba(255,255,255,.06);margin:27px 0 18px}
-.dashboard-main{padding:28px;min-width:0;overflow:hidden}
-.dashboard-header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;min-width:0}
-.dashboard-header>div:first-child{min-width:0}
-.dashboard-eyebrow{color:rgba(255,255,255,.22);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
-.dashboard-heading{margin-top:7px;font-size:23px;letter-spacing:-.04em;overflow-wrap:break-word}
-.dashboard-filter{padding:8px 11px;border:1px solid rgba(255,255,255,.08);border-radius:7px;color:rgba(255,255,255,.3);font-size:7px;flex:0 0 auto;white-space:nowrap}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:28px}
-.stat{padding:15px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:rgba(255,255,255,.018);min-width:0}
-.stat-label{color:rgba(255,255,255,.2);font-size:7px;overflow-wrap:break-word}
-.stat-value{margin-top:6px;font-size:17px;white-space:nowrap}
-.stat-change{margin-top:3px;color:#62db8b;font-size:7px;overflow-wrap:break-word}
-.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:11px;margin-top:12px;min-width:0}
-.panel{padding:17px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.018);min-width:0}
-.panel-title{font-size:9px}
-.panel-subtitle{margin-top:3px;color:rgba(255,255,255,.2);font-size:7px;overflow-wrap:break-word}
-.project-list{display:flex;flex-direction:column;gap:7px;margin-top:17px}
-.project{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid rgba(255,255,255,.05);border-radius:8px;background:rgba(0,0,0,.25);min-width:0}
-.project-number{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:6px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.3);font-size:7px}
-.project-info{flex:1;min-width:0}
-.project-name{color:rgba(255,255,255,.65);font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.project-status{margin-top:2px;color:rgba(255,255,255,.18);font-size:6px}
-.project-price{color:rgba(255,255,255,.4);font-size:8px;flex:0 0 auto;white-space:nowrap}
-.chart{height:115px;display:flex;align-items:flex-end;gap:6px;margin-top:25px}
-.bar{flex:1;min-height:4px;border-radius:4px 4px 0 0;background:rgba(255,255,255,.12)}
-
-/* SECTION HEADINGS */
-.section-heading-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:end}
-.section-heading-grid>*{min-width:0}
-.eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:19px;color:rgba(255,255,255,.24);font-size:8px;text-transform:uppercase;letter-spacing:.22em}
-.eyebrow-line{width:27px;height:1px;flex:0 0 27px;background:rgba(255,255,255,.3)}
-h2{font-family:"Space Grotesk";font-size:clamp(40px,5vw,60px);line-height:1;letter-spacing:-.06em;font-weight:600;overflow-wrap:break-word}
-h2 .muted{color:rgba(255,255,255,.32)}
-.section-description{max-width:500px;color:rgba(255,255,255,.38);font-size:13px;line-height:1.9}
-.section-description.centered{max-width:620px;margin:24px auto 0;text-align:center}
+.dashboard-wrapper { position: relative; width: 100%; max-width: 1120px; margin: 100px auto 0; perspective: 1400px; min-width: 0; }
+.dashboard-glow { position: absolute; width: 800px; height: 350px; left: 50%; top: 50%; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(100px); max-width: 90vw; }
+.dashboard { position: relative; width: 100%; max-width: 100%; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden; background: #090909; box-shadow: 0 70px 150px rgba(0,0,0,.75), 0 0 100px rgba(255,255,255,.025); transform-origin: center top; will-change: transform; }
+.browser-bar { min-height: 45px; height: 45px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.browser-dots { display: flex; gap: 6px; flex: 0 0 auto; }
+.browser-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.13); }
+.browser-status { display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,.4); font-size: 8px; min-width: 0; text-align: center; }
+.browser-status i { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #5cdf8d; }
+.browser-label { color: rgba(255,255,255,.32); font-size: 8px; letter-spacing: .2em; white-space: nowrap; }
+.dashboard-body { display: grid; grid-template-columns: 210px minmax(0, 1fr); min-height: 460px; min-width: 0; }
+.sidebar { padding: 22px 15px; border-right: 1px solid rgba(255,255,255,.07); min-width: 0; }
+.sidebar-title { margin-bottom: 14px; color: rgba(255,255,255,.2); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
+.sidebar-item { display: flex; align-items: center; gap: 9px; padding: 10px; margin-bottom: 3px; border-radius: 8px; color: rgba(255,255,255,.32); font-size: 9px; transition: .25s ease; }
+.sidebar-item:hover { background: rgba(255,255,255,.035); color: #fff; }
+.sidebar-item.active { background: rgba(255,255,255,.065); color: #fff; }
+.sidebar-icon { width: 12px; height: 12px; flex: 0 0 12px; border: 1px solid currentColor; border-radius: 3px; opacity: .6; }
+.sidebar-separator { height: 1px; background: rgba(255,255,255,.06); margin: 27px 0 18px; }
+.dashboard-main { padding: 28px; min-width: 0; overflow: hidden; }
+.dashboard-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; min-width: 0; }
+.dashboard-header > div:first-child { min-width: 0; }
+.dashboard-eyebrow { color: rgba(255,255,255,.22); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
+.dashboard-heading { margin-top: 7px; font-size: 23px; letter-spacing: -.04em; overflow-wrap: break-word; }
+.dashboard-filter { padding: 8px 11px; border: 1px solid rgba(255,255,255,.08); border-radius: 7px; color: rgba(255,255,255,.3); font-size: 7px; flex: 0 0 auto; white-space: nowrap; }
+.stats { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; margin-top: 28px; }
+.stat { padding: 15px; border: 1px solid rgba(255,255,255,.07); border-radius: 11px; background: rgba(255,255,255,.018); min-width: 0; }
+.stat-label { color: rgba(255,255,255,.2); font-size: 7px; overflow-wrap: break-word; }
+.stat-value { margin-top: 6px; font-size: 17px; white-space: nowrap; }
+.stat-change { margin-top: 3px; color: #62db8b; font-size: 7px; overflow-wrap: break-word; }
+.dashboard-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 11px; margin-top: 12px; min-width: 0; }
+.panel { padding: 17px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(255,255,255,.018); min-width: 0; }
+.panel-title { font-size: 9px; }
+.panel-subtitle { margin-top: 3px; color: rgba(255,255,255,.2); font-size: 7px; overflow-wrap: break-word; }
+.project-list { display: flex; flex-direction: column; gap: 7px; margin-top: 17px; }
+.project { display: flex; align-items: center; gap: 10px; padding: 9px; border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(0,0,0,.25); min-width: 0; }
+.project-number { width: 27px; height: 27px; flex: 0 0 27px; display: grid; place-items: center; border-radius: 6px; background: rgba(255,255,255,.05); color: rgba(255,255,255,.3); font-size: 7px; }
+.project-info { flex: 1; min-width: 0; }
+.project-name { color: rgba(255,255,255,.65); font-size: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.project-status { margin-top: 2px; color: rgba(255,255,255,.18); font-size: 6px; }
+.project-price { color: rgba(255,255,255,.4); font-size: 8px; flex: 0 0 auto; white-space: nowrap; }
+.chart { height: 115px; display: flex; align-items: flex-end; gap: 6px; margin-top: 25px; }
+.bar { flex: 1; min-height: 4px; border-radius: 4px 4px 0 0; background: rgba(255,255,255,.12); }
+  /* SECTION HEADINGS */
+.section-heading-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 80px; align-items: end; }
+.section-heading-grid > * { min-width: 0; }
+.eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 19px; color: rgba(255,255,255,.24); font-size: 8px; text-transform: uppercase; letter-spacing: .22em; }
+.eyebrow-line { width: 27px; height: 1px; flex: 0 0 27px; background: rgba(255,255,255,.3); }
+h2 { font-family: "Space Grotesk"; font-size: clamp(40px,5vw,60px); line-height: 1; letter-spacing: -.06em; font-weight: 600; overflow-wrap: break-word; }
+h2 .muted { color: rgba(255,255,255,.32); }
+.section-description { max-width: 500px; color: rgba(255,255,255,.38); font-size: 13px; line-height: 1.9; }
+.section-description.centered { max-width: 620px; margin: 24px auto 0; text-align: center; }
 
 /* FEATURES */
-.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:65px}
-.feature-card{position:relative;min-height:230px;padding:28px;overflow:hidden;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.018);transform-style:preserve-3d;will-change:transform;transition:border-color .3s ease,background .3s ease;min-width:0}
-.feature-card::after{content:"";position:absolute;width:180px;height:180px;top:-100px;right:-100px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(35px);transition:.4s ease}
-.feature-card:hover{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.035)}
-.feature-card:hover::after{background:rgba(255,255,255,.09)}
-.feature-icon{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.04);font-size:15px}
-.feature-title{margin-top:28px;font-family:"Space Grotesk";font-size:15px;overflow-wrap:break-word}
-.feature-description{margin-top:10px;color:rgba(255,255,255,.3);font-size:10px;line-height:1.8}
-.feature-card .check-list{margin-top:22px}
-.request-answer{margin-top:18px;font-family:"Space Grotesk";font-size:18px;font-weight:600;letter-spacing:-.02em;color:#fff}
-.equation-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;margin-top:55px}
+.feature-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
+.feature-card { position: relative; min-height: 230px; padding: 28px; overflow: hidden; border: 1px solid rgba(255,255,255,.07); border-radius: 17px; background: rgba(255,255,255,.018); transform-style: preserve-3d; will-change: transform; transition: border-color .3s ease, background .3s ease; min-width: 0; }
+.feature-card::after { content: ""; position: absolute; width: 180px; height: 180px; top: -100px; right: -100px; border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease; }
+.feature-card:hover { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.035); }
+.feature-card:hover::after { background: rgba(255,255,255,.09); }
+.feature-icon { width: 43px; height: 43px; flex: 0 0 43px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: rgba(255,255,255,.04); font-size: 15px; }
+.feature-title { margin-top: 28px; font-family: "Space Grotesk"; font-size: 15px; overflow-wrap: break-word; }
+.feature-description { margin-top: 10px; color: rgba(255,255,255,.3); font-size: 10px; line-height: 1.8; }
+.feature-card .check-list { margin-top: 22px; }
+
+/* FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW */
+.feature-badge { display: inline-block; margin-top: 14px; padding: 5px 9px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.03); color: rgba(255,255,255,.48); font-size: 6.5px; letter-spacing: .14em; text-transform: uppercase; }
+.request-answer { margin-top: 18px; font-family: "Space Grotesk"; font-size: 18px; font-weight: 600; letter-spacing: -.02em; color: #fff; }
+.equation-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin-top: 55px; }
 
 /* OWNERSHIP */
-.ownership-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.01));min-width:0}
-.ownership-content{padding:65px;min-width:0}
-.small-tag{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.08);border-radius:999px;color:rgba(255,255,255,.3);font-size:7px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
-.ownership-content p{max-width:480px;margin-top:24px;color:rgba(255,255,255,.35);font-size:12px;line-height:1.9}
-.ownership-note{max-width:480px;margin-top:22px;color:rgba(255,255,255,.28);font-size:10px;line-height:1.8;font-style:italic}
-.check-list{display:flex;flex-direction:column;gap:11px;margin-top:28px}
-.check-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.55);font-size:10px;min-width:0}
-.check{width:20px;height:20px;flex:0 0 20px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.07);font-size:9px}
-.workflow-visual{min-height:440px;position:relative;overflow:hidden;border-left:1px solid rgba(255,255,255,.07);background:radial-gradient(circle at center,rgba(255,255,255,.065),transparent 60%);min-width:0}
-.workflow-box{position:absolute;left:50%;top:50%;width:min(290px,calc(100% - 40px));transform:translate(-50%,-50%);padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:17px;background:rgba(7,7,7,.88);box-shadow:0 35px 90px rgba(0,0,0,.65);backdrop-filter:blur(15px)}
-.workflow-header{display:flex;justify-content:space-between;gap:10px;color:rgba(255,255,255,.35);font-size:8px}
-.workflow-active{color:#60dc8b;white-space:nowrap}
-.workflow-steps{display:flex;flex-direction:column;gap:6px;margin-top:18px}
-.workflow-step{display:flex;align-items:center;gap:9px;padding:11px;border:1px solid rgba(255,255,255,.05);border-radius:8px;background:rgba(255,255,255,.018);color:rgba(255,255,255,.37);font-size:8px;min-width:0}
-.workflow-step-dot{width:5px;height:5px;flex:0 0 5px;border-radius:50%;background:rgba(255,255,255,.2)}
-.workflow-step:last-child .workflow-step-dot{background:#fff}
+.ownership-card { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); overflow: hidden; border: 1px solid rgba(255,255,255,.08); border-radius: 25px; background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01)); min-width: 0; }
+.ownership-content { padding: 65px; min-width: 0; }
+.small-tag { display: inline-block; padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px; color: rgba(255,255,255,.3); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
+.ownership-content p { max-width: 480px; margin-top: 24px; color: rgba(255,255,255,.35); font-size: 12px; line-height: 1.9; }
+.ownership-note { max-width: 480px; margin-top: 22px; color: rgba(255,255,255,.28); font-size: 10px; line-height: 1.8; font-style: italic; }
+.check-list { display: flex; flex-direction: column; gap: 11px; margin-top: 28px; }
+.check-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.55); font-size: 10px; min-width: 0; }
+.check { width: 20px; height: 20px; flex: 0 0 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.07); font-size: 9px; }
+.workflow-visual { min-height: 440px; position: relative; overflow: hidden; border-left: 1px solid rgba(255,255,255,.07); background: radial-gradient(circle at center, rgba(255,255,255,.065), transparent 60%); min-width: 0; }
+.workflow-box { position: absolute; left: 50%; top: 50%; width: min(290px, calc(100% - 40px)); transform: translate(-50%,-50%); padding: 20px; border: 1px solid rgba(255,255,255,.1); border-radius: 17px; background: rgba(7,7,7,.88); box-shadow: 0 35px 90px rgba(0,0,0,.65); backdrop-filter: blur(15px); }
+.workflow-header { display: flex; justify-content: space-between; gap: 10px; color: rgba(255,255,255,.35); font-size: 8px; }
+.workflow-active { color: #60dc8b; white-space: nowrap; }
+.workflow-steps { display: flex; flex-direction: column; gap: 6px; margin-top: 18px; }
+.workflow-step { display: flex; align-items: center; gap: 9px; padding: 11px; border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.37); font-size: 8px; min-width: 0; }
+.workflow-step-dot { width: 5px; height: 5px; flex: 0 0 5px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.workflow-step:last-child .workflow-step-dot { background: #fff; }
 
-/* CENTER HEADING */
-.center-heading{max-width:800px;margin:auto;text-align:center;min-width:0}
-.center-heading .eyebrow{justify-content:center}
+/* TABS */
+.center-heading { max-width: 800px; margin: auto; text-align: center; min-width: 0; }
+.center-heading .eyebrow { justify-content: center; }
+.tabs { max-width: 760px; margin: 55px auto 0; min-width: 0; }
+.tab-buttons { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(255,255,255,.025); }
+.tab-button { padding: 12px; border-radius: 8px; background: transparent; color: rgba(255,255,255,.3); font-size: 10px; transition: .25s ease; min-width: 0; }
+.tab-button.active { background: #fff; color: #000; }
+.tab-content { min-height: 300px; margin-top: 12px; padding: 45px; border: 1px solid rgba(255,255,255,.07); border-radius: 17px; background: rgba(255,255,255,.018); min-width: 0; }
+.tab-panel { display: none; min-width: 0; }
+.tab-panel.active { display: block; }
+.tab-icon { width: 47px; height: 47px; flex: 0 0 47px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.09); border-radius: 13px; background: rgba(255,255,255,.045); font-size: 16px; }
+.tab-panel h3 { margin-top: 22px; font-family: "Space Grotesk"; font-size: 24px; font-weight: 500; letter-spacing: -.04em; overflow-wrap: break-word; }
+.tab-panel p { max-width: 590px; margin-top: 13px; color: rgba(255,255,255,.36); font-size: 12px; line-height: 1.9; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 25px; }
+.tag { padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px; background: rgba(255,255,255,.02); color: rgba(255,255,255,.4); font-size: 8px; max-width: 100%; }
 
-/* FLOW + PILLS */
-.flow-diagram{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:60px}
-.flow-node{padding:16px 30px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.015));font-family:"Space Grotesk";font-size:12px;letter-spacing:.03em;color:rgba(255,255,255,.75);text-align:center;max-width:100%}
-.flow-arrow{color:rgba(255,255,255,.22);font-size:14px;line-height:1}
-.flow-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:55px}
-.pill-row{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:40px}
+/* FLOW DIAGRAM + PILL ROWS */
+.flow-diagram { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 60px; }
+.flow-node { padding: 16px 30px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); font-family: "Space Grotesk"; font-size: 12px; letter-spacing: .03em; color: rgba(255,255,255,.75); text-align: center; max-width: 100%; }
+.flow-arrow { color: rgba(255,255,255,.22); font-size: 14px; line-height: 1; }
+.pill-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 40px; }
 
-/* GRIDS */
-.steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:65px}
-.steps-grid .feature-card{min-height:200px}
-.process-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px;margin-top:65px}
-.process-grid .feature-card{min-height:260px;padding:24px}
-.process-grid .feature-description{font-size:9.5px}
-.process-grid .check-list{gap:7px;margin-top:16px}
-.process-grid .check-item{font-size:8.5px;color:rgba(255,255,255,.4);align-items:flex-start}
-.process-grid .check{width:16px;height:16px;flex-basis:16px;font-size:7px}
-.process-grid .feature-card.highlight{border-color:rgba(255,255,255,.2);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
-.process-tagline{margin-top:40px;text-align:center;font-family:"Space Grotesk";font-size:18px;letter-spacing:-.02em;color:rgba(255,255,255,.7)}
-.process-tagline span{color:rgba(255,255,255,.32)}
-.split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:65px}
-.split-grid .feature-card{min-height:0}
-.split-grid .check-item{color:rgba(255,255,255,.4);font-size:9px}
-.engage-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:65px}
-.engage-grid .feature-card{min-height:0;padding:24px}
-.engage-grid .feature-icon{font-size:11px;font-family:"DM Mono"}
-.engage-grid .feature-title{margin-top:20px}
+/* SPLIT GRID */
+.split-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
+.split-grid .feature-card { min-height: 0; }
+.split-grid .feature-card .check-list { margin-top: 22px; }
+.split-grid .check-item { color: rgba(255,255,255,.4); font-size: 9px; }
 
-/* SPECIALIST STRIP */
-.who-card{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:48px 55px;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));min-width:0}
-.who-copy{min-width:0}
-.who-copy p{max-width:520px;margin-top:20px;color:rgba(255,255,255,.36);font-size:12px;line-height:1.9}
-.who-copy h2{font-size:clamp(34px,4vw,48px);margin-top:20px}
-.who-card .button{flex:0 0 auto}
+/* STEP GRIDS */
+.steps-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
+.steps-grid .feature-card { min-height: 200px; }
 
-/* CUSTOM */
-.custom-card{position:relative;overflow:hidden;padding:65px;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:#080808;min-width:0}
-.custom-card::before{content:"";position:absolute;width:500px;height:500px;right:-150px;top:-200px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);pointer-events:none}
-.custom-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:70px;align-items:center;min-width:0}
-.custom-copy{min-width:0}
-.custom-description{max-width:510px;margin-top:22px;color:rgba(255,255,255,.37);font-size:12px;line-height:1.9}
-.custom-copy .button{margin-top:30px}
-.custom-options{display:grid;grid-template-columns:1fr;gap:10px;min-width:0}
-.custom-option{position:relative;padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.012));overflow:hidden;transition:transform .35s ease,border-color .35s ease,background .35s ease,box-shadow .35s ease;min-width:0}
-.custom-option::before{content:"";position:absolute;width:170px;height:170px;top:-100px;right:-80px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(35px);transition:.4s ease}
-.custom-option:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 25px 70px rgba(0,0,0,.35)}
-.custom-option:hover::before{background:rgba(255,255,255,.075)}
-.custom-option-top{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:15px;min-width:0}
-.custom-option-number{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.045);color:rgba(255,255,255,.65);font-family:"DM Mono";font-size:8px}
-.custom-option-label{color:rgba(255,255,255,.22);font-size:7px;letter-spacing:.18em;text-transform:uppercase;text-align:right;line-height:1.5}
-.custom-option h3{position:relative;margin-top:18px;font-family:"Space Grotesk";font-size:19px;line-height:1.15;letter-spacing:-.035em;font-weight:500;max-width:410px}
-.custom-option p{position:relative;margin-top:10px;color:rgba(255,255,255,.32);font-size:9px;line-height:1.8;max-width:450px}
-.custom-option-features{position:relative;display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-.custom-option-feature{padding:5px 8px;border:1px solid rgba(255,255,255,.07);border-radius:999px;background:rgba(255,255,255,.018);color:rgba(255,255,255,.34);font-size:6px;letter-spacing:.03em}
-.custom-option-arrow{position:relative;display:flex;justify-content:flex-end;margin-top:17px;color:rgba(255,255,255,.28);font-size:15px;transition:color .3s ease,transform .3s ease}
-.custom-option:hover .custom-option-arrow{color:#fff;transform:translateX(4px)}
+/* CUSTOM CARD (FIRST STEP) */
+.custom-card { position: relative; overflow: hidden; padding: 65px; border: 1px solid rgba(255,255,255,.08); border-radius: 25px; background: #080808; min-width: 0; }
+.custom-card::before { content: ""; position: absolute; width: 500px; height: 500px; right: -150px; top: -200px; border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(100px); pointer-events: none; }
+.custom-grid { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 70px; align-items: center; min-width: 0; }
+.custom-copy { min-width: 0; }
+.custom-description { max-width: 510px; margin-top: 22px; color: rgba(255,255,255,.37); font-size: 12px; line-height: 1.9; }
+.custom-copy .button { margin-top: 30px; }
+.custom-options { display: grid; grid-template-columns: 1fr; gap: 10px; min-width: 0; }
+.custom-option { position: relative; padding: 22px; border: 1px solid rgba(255,255,255,.08); border-radius: 17px; background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); overflow: hidden; transition: transform .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease; min-width: 0; }
+.custom-option::before { content: ""; position: absolute; width: 170px; height: 170px; top: -100px; right: -80px; border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease; }
+.custom-option:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.18); background: linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.018)); box-shadow: 0 25px 70px rgba(0,0,0,.35); }
+.custom-option:hover::before { background: rgba(255,255,255,.075); }
+.custom-option-top { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; min-width: 0; }
+.custom-option-number { width: 36px; height: 36px; flex: 0 0 36px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.045); color: rgba(255,255,255,.65); font-family: "DM Mono"; font-size: 8px; }
+.custom-option-label { color: rgba(255,255,255,.22); font-size: 7px; letter-spacing: .18em; text-transform: uppercase; text-align: right; line-height: 1.5; }
+.custom-option h3 { position: relative; margin-top: 18px; font-family: "Space Grotesk"; font-size: 19px; line-height: 1.15; letter-spacing: -.035em; font-weight: 500; max-width: 410px; }
+.custom-option p { position: relative; margin-top: 10px; color: rgba(255,255,255,.32); font-size: 9px; line-height: 1.8; max-width: 450px; }
+.custom-option-features { position: relative; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.custom-option-feature { padding: 5px 8px; border: 1px solid rgba(255,255,255,.07); border-radius: 999px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.34); font-size: 6px; letter-spacing: .03em; }
+.custom-option-arrow { position: relative; display: flex; justify-content: flex-end; margin-top: 17px; color: rgba(255,255,255,.28); font-size: 15px; transition: color .3s ease, transform .3s ease; }
+.custom-option:hover .custom-option-arrow { color: #fff; transform: translateX(4px); }
 
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:65px}
-.pricing-card{position:relative;padding:42px;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.018);overflow:hidden;min-width:0}
-.pricing-card.featured{border-color:rgba(255,255,255,.22);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
-.pricing-badge{position:absolute;top:22px;right:22px;padding:6px 10px;border:1px solid rgba(102,227,148,.35);border-radius:999px;background:rgba(102,227,148,.08);color:#7be8a4;font-size:7px;letter-spacing:.16em;text-transform:uppercase}
-.pricing-label{color:rgba(255,255,255,.28);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
-.pricing-name{margin-top:14px;font-family:"Space Grotesk";font-size:21px;letter-spacing:-.03em}
-.pricing-desc{margin-top:18px;color:rgba(255,255,255,.35);font-size:10px;line-height:1.8;max-width:400px}
-.pricing-card .check-list{margin-top:24px}
+/* PRICING / FIT CARDS */
+.pricing-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 65px; }
+.pricing-card { position: relative; padding: 42px; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; background: rgba(255,255,255,.018); overflow: hidden; min-width: 0; }
+.pricing-card.featured { border-color: rgba(255,255,255,.22); background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015)); }
+.pricing-badge { position: absolute; top: 22px; right: 22px; padding: 6px 10px; border: 1px solid rgba(102,227,148,.35); border-radius: 999px; background: rgba(102,227,148,.08); color: #7be8a4; font-size: 7px; letter-spacing: .16em; text-transform: uppercase; }
+.pricing-label { color: rgba(255,255,255,.28); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
+.pricing-name { margin-top: 14px; font-family: "Space Grotesk"; font-size: 21px; letter-spacing: -.03em; }
+.pricing-price { margin-top: 16px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.pricing-amount { font-family: "Space Grotesk"; font-size: 40px; letter-spacing: -.03em; }
+.pricing-cadence { color: rgba(255,255,255,.3); font-size: 10px; }
+.pricing-sub { margin-top: 6px; color: rgba(255,255,255,.32); font-size: 9px; }
+.pricing-desc { margin-top: 18px; color: rgba(255,255,255,.35); font-size: 10px; line-height: 1.8; max-width: 400px; }
+.pricing-card .check-list { margin-top: 24px; }
+.pricing-card .button { margin-top: 28px; width: 100%; }
 
 /* FINAL CTA */
-.final-cta{padding:160px 0;text-align:center}
-.final-icon{width:50px;height:50px;display:grid;place-items:center;margin:0 auto 25px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.04)}
-.final-cta p{max-width:550px;margin:25px auto 0;color:rgba(255,255,255,.32);font-size:12px;line-height:1.9}
-.final-actions{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px}
-.final-actions .hero-actions{margin-top:0}
-.availability{color:rgba(255,255,255,.18);font-size:7px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
+.final-cta { padding: 160px 0; text-align: center; }
+.final-icon { width: 50px; height: 50px; display: grid; place-items: center; margin: 0 auto 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.04); }
+.final-cta p { max-width: 550px; margin: 25px auto 0; color: rgba(255,255,255,.32); font-size: 12px; line-height: 1.9; }
+.final-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 30px; }
+.final-actions .hero-actions { margin-top: 0; }
+.availability { color: rgba(255,255,255,.18); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
 
 /* FOOTER */
-footer{border-top:1px solid rgba(255,255,255,.07)}
-.footer-inner{min-height:140px;display:flex;align-items:center;justify-content:space-between;min-width:0}
-.footer-brand{display:flex;align-items:center;gap:10px;min-width:0}
-.footer-mark{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:9px;font-family:"Space Grotesk";font-size:11px;font-weight:700}
-.footer-name{font-size:11px}
-.footer-tagline{margin-top:3px;color:rgba(255,255,255,.18);font-size:7px;text-transform:uppercase;letter-spacing:.15em;overflow-wrap:break-word}
-.footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.16);font-size:7px;min-width:0}
-.footer-bottom span{min-width:0;overflow-wrap:break-word}
+footer { border-top: 1px solid rgba(255,255,255,.07); }
+.footer-inner { min-height: 140px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
+.footer-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.footer-mark { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 9px; font-family: "Space Grotesk"; font-size: 11px; font-weight: 700; }
+.footer-name { font-size: 11px; }
+.footer-tagline { margin-top: 3px; color: rgba(255,255,255,.18); font-size: 7px; text-transform: uppercase; letter-spacing: .15em; overflow-wrap: break-word; }
+.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.05); color: rgba(255,255,255,.16); font-size: 7px; min-width: 0; }
+.footer-bottom span { min-width: 0; overflow-wrap: break-word; }
+  /* RESPONSIVE — TABLET */
+@media(max-width:1100px) {
+  .container { width: min(100% - 40px, 1180px); }
+  .nav-links { gap: 22px; }
+  .section-heading-grid { gap: 50px; }
+  .ownership-content { padding: 50px; }
+  .custom-card { padding: 50px; }
+  .custom-grid { gap: 45px; }
+  .dashboard-main { padding: 22px; }
+  .dashboard-heading { font-size: 20px; }
+  .stats { gap: 7px; }
+  .stat { padding: 12px; }
+  .dashboard-grid { gap: 8px; }
+  .panel { padding: 14px; }
+  .steps-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .pricing-grid { grid-template-columns: 1fr; }
+}
 
-/* MODAL (shared pattern) */
-.demo-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
-.demo-modal.active{opacity:1;visibility:visible;pointer-events:auto}
-.demo-modal-content{position:relative;width:min(900px,100%);max-width:100%;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 50px 140px rgba(0,0,0,.8),0 0 100px rgba(255,255,255,.04);transform:translateY(24px) scale(.96);transition:transform .45s cubic-bezier(.16,1,.3,1)}
-.demo-modal.active .demo-modal-content{transform:translateY(0) scale(1)}
-.demo-modal-header{flex:0 0 auto;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px 0 17px;border-bottom:1px solid rgba(255,255,255,.07)}
-.demo-modal-label{color:rgba(255,255,255,.35);font-size:8px;letter-spacing:.2em;text-transform:uppercase;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.demo-modal-close{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.55);font-size:17px;transition:.25s ease}
-.demo-modal-close:hover{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
-.specialist-body{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);overflow-y:auto;overscroll-behavior:contain;min-height:0}
-.specialist-photo{position:relative;min-height:420px;background:#050505;border-right:1px solid rgba(255,255,255,.07)}
-.specialist-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.specialist-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.55),transparent 45%);pointer-events:none}
-.specialist-info{padding:44px 40px;min-width:0}
-.specialist-info h3{margin-top:20px;font-family:"Space Grotesk";font-size:34px;line-height:1.05;letter-spacing:-.05em;font-weight:600;overflow-wrap:break-word}
-.specialist-role{margin-top:10px;color:rgba(255,255,255,.7);font-size:12px}
-.specialist-company{margin-top:3px;color:rgba(255,255,255,.3);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
-.specialist-info p{margin-top:22px;color:rgba(255,255,255,.4);font-size:12px;line-height:1.9}
-.specialist-info .button{margin-top:28px}
+/* RESPONSIVE — TABLET / MOBILE NAV */
+@media(max-width:900px) {
+  .nav-links, .nav-button { display: none; }
+  .mobile-menu-button { display: block; }
+  .mobile-menu.active { display: flex; flex-direction: column; gap: 18px; padding: 22px 24px 28px; border-top: 1px solid rgba(255,255,255,.06); background: rgba(5,5,5,.96); max-height: calc(100vh - 78px); overflow-y: auto; }
+  .mobile-menu a { color: rgba(255,255,255,.6); font-size: 13px; }
+  .mobile-menu .mobile-cta { padding: 13px; border-radius: 10px; background: #fff; color: #000; text-align: center; font-weight: 700; }
+  .dashboard-body { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .section-heading-grid, .ownership-card, .custom-grid, .split-grid { grid-template-columns: 1fr; }
+  .section-heading-grid { align-items: start; }
+  .workflow-visual { border-left: none; border-top: 1px solid rgba(255,255,255,.07); }
+  .feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-main { padding: 22px; }
+  .hero-orbit { width: 800px; height: 800px; }
+  .custom-grid { gap: 35px; }
+  .workflow-visual { min-height: 390px; }
+}
 
-/* RESPONSIVE */
-@media(max-width:1100px){
-.container{width:min(100% - 40px,1180px)}
-.nav-links{gap:22px}
-.section-heading-grid{gap:50px}
-.ownership-content{padding:50px}
-.custom-card{padding:50px}
-.custom-grid{gap:45px}
-.dashboard-main{padding:22px}
-.dashboard-heading{font-size:20px}
-.stats{gap:7px}
-.stat{padding:12px}
-.dashboard-grid{gap:8px}
-.panel{padding:14px}
-.steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.process-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.engage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.pricing-grid{grid-template-columns:1fr}
+/* RESPONSIVE — SMALL TABLETS */
+@media(max-width:760px) {
+  .container { width: calc(100% - 32px); }
+  .nav-inner { height: 72px; }
+  .mobile-menu.active { max-height: calc(100vh - 72px); }
+  .hero { padding-top: 125px; padding-bottom: 70px; }
+  .hero-title { font-size: clamp(46px, 10vw, 64px); }
+  .hero-description { max-width: 600px; font-size: 13px; line-height: 1.8; }
+  .dashboard-wrapper { margin-top: 70px; }
+  .dashboard { border-radius: 16px; }
+  .browser-bar { padding: 0 12px; }
+  .browser-status { font-size: 7px; }
+  .dashboard-main { padding: 18px; }
+  .dashboard-heading { font-size: 18px; }
+  .section-padding { padding: 105px 0; }
+  .section-heading-grid { gap: 35px; }
+  h2 { font-size: clamp(38px, 8vw, 52px); }
+  .feature-card { padding: 24px; }
+  .ownership-content { padding: 42px 30px; }
+  .custom-card { padding: 42px 30px; }
+  .tab-content { padding: 35px; }
+  .final-cta { padding: 120px 0; }
+  .footer-bottom { gap: 12px; }
+  .steps-grid { grid-template-columns: 1fr; }
 }
-@media(max-width:900px){
-.nav-links,.nav-button{display:none}
-.mobile-menu-button{display:block}
-.mobile-menu.active{display:flex;flex-direction:column;gap:18px;padding:22px 24px 28px;border-top:1px solid rgba(255,255,255,.06);background:rgba(5,5,5,.96);max-height:calc(100vh - 78px);overflow-y:auto}
-.mobile-menu a{color:rgba(255,255,255,.6);font-size:13px}
-.mobile-menu .mobile-cta{padding:13px;border-radius:10px;background:#fff;color:#000;text-align:center;font-weight:700}
-.dashboard-body{grid-template-columns:1fr}
-.sidebar{display:none}
-.section-heading-grid,.ownership-card,.custom-grid,.split-grid{grid-template-columns:1fr}
-.section-heading-grid{align-items:start}
-.workflow-visual{border-left:none;border-top:1px solid rgba(255,255,255,.07);min-height:390px}
-.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-.dashboard-grid{grid-template-columns:1fr}
-.hero-orbit{width:800px;height:800px}
-.custom-grid{gap:35px}
-.who-card{flex-direction:column;align-items:flex-start;padding:42px 34px}
-.specialist-body{grid-template-columns:1fr}
-.specialist-photo{min-height:0;aspect-ratio:4/4.2;max-height:380px;border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+
+/* RESPONSIVE — MOBILE */
+@media(max-width:620px) {
+  .container { width: calc(100% - 30px); max-width: none; }
+  .cursor, .cursor-ring { display: none; }
+  .brand { gap: 9px; }
+  .brand-mark { width: 35px; height: 35px; flex-basis: 35px; border-radius: 10px; }
+  .brand-name { font-size: 13px; }
+  .brand-subtitle { font-size: 6px; letter-spacing: .18em; }
+  .hero { padding-top: 125px; padding-bottom: 65px; }
+  .hero-orbit { width: 620px; height: 620px; top: 410px; }
+  .hero-orbit::before { inset: 55px; }
+  .status-pill { padding: 7px 11px; gap: 7px; font-size: 7px; letter-spacing: .12em; }
+  .hero-title { margin-top: 24px; font-size: clamp(38px, 12vw, 52px); letter-spacing: -.065em; line-height: .98; }
+  .hero-title .line-inner { max-width: 100%; }
+  .hero-description { margin-top: 25px; font-size: 12px; line-height: 1.85; }
+  .hero-actions { margin-top: 28px; flex-direction: column; width: 100%; gap: 9px; }
+  .button { width: 100%; min-height: 48px; padding: 0 18px; font-size: 10px; }
+  .dashboard-wrapper { margin-top: 55px; width: 100%; }
+  .dashboard { border-radius: 14px; }
+  .browser-bar { height: 40px; min-height: 40px; padding: 0 10px; }
+  .browser-dots { gap: 5px; }
+  .browser-dots span { width: 7px; height: 7px; }
+  .browser-status { font-size: 6px; gap: 5px; }
+  .browser-status i { width: 5px; height: 5px; flex-basis: 5px; }
+  .browser-label { display: none; }
+  .dashboard-body { min-height: 0; }
+  .dashboard-main { padding: 14px; }
+  .dashboard-header { align-items: flex-start; gap: 10px; }
+  .dashboard-eyebrow { font-size: 6px; letter-spacing: .15em; }
+  .dashboard-heading { margin-top: 5px; font-size: 16px; line-height: 1.2; }
+  .dashboard-filter { padding: 7px 8px; font-size: 6px; }
+  .stats { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; margin-top: 20px; }
+  .stat { padding: 10px; border-radius: 9px; }
+  .stat-label { font-size: 6px; }
+  .stat-value { margin-top: 5px; font-size: 14px; }
+  .stat-change { font-size: 6px; }
+  .dashboard-grid { grid-template-columns: 1fr; gap: 7px; margin-top: 8px; }
+  .panel { padding: 12px; border-radius: 10px; }
+  .panel-title { font-size: 8px; }
+  .panel-subtitle { font-size: 6px; }
+  .project-list { gap: 5px; margin-top: 12px; }
+  .project { gap: 7px; padding: 7px; }
+  .project-number { width: 23px; height: 23px; flex-basis: 23px; font-size: 6px; }
+  .project-name { font-size: 7px; }
+  .project-status { font-size: 5px; }
+  .project-price { font-size: 7px; }
+  .chart { height: 90px; gap: 4px; margin-top: 18px; }
+  .section-padding { padding: 85px 0; }
+  .section-heading-grid { gap: 28px; }
+  .eyebrow { gap: 6px; margin-bottom: 15px; font-size: 7px; letter-spacing: .16em; }
+  .eyebrow-line { width: 22px; flex-basis: 22px; }
+  h2 { font-size: clamp(36px, 11vw, 48px); line-height: .98; }
+  .section-description { font-size: 11px; line-height: 1.85; }
+  .feature-grid { grid-template-columns: 1fr; gap: 9px; margin-top: 38px; }
+  .feature-card { min-height: 0; padding: 24px; border-radius: 15px; }
+  .feature-icon { width: 40px; height: 40px; flex-basis: 40px; }
+  .feature-title { margin-top: 22px; font-size: 13px; line-height: 1.35; }
+  .feature-description { margin-top: 9px; font-size: 9px; line-height: 1.75; }
+  .request-answer { margin-top: 14px; font-size: 15px; }
+  .ownership-card { border-radius: 19px; }
+  .ownership-content { padding: 34px 23px; }
+  .small-tag { font-size: 6px; letter-spacing: .14em; }
+  .ownership-content h2 { margin-top: 20px !important; }
+  .ownership-content p { margin-top: 20px; font-size: 10px; line-height: 1.85; }
+  .check-list { gap: 10px; margin-top: 23px; }
+  .check-item { align-items: flex-start; gap: 8px; font-size: 9px; line-height: 1.5; }
+  .check { margin-top: 1px; width: 18px; height: 18px; flex-basis: 18px; font-size: 8px; }
+  .workflow-visual { min-height: 350px; }
+  .workflow-box { width: calc(100% - 34px); padding: 16px; border-radius: 14px; }
+  .workflow-header { font-size: 7px; }
+  .workflow-steps { margin-top: 14px; gap: 5px; }
+  .workflow-step { padding: 10px; font-size: 7px; }
+  .center-heading .eyebrow { gap: 5px; }
+  .tabs { margin-top: 40px; }
+  .tab-buttons { gap: 2px; padding: 3px; border-radius: 10px; }
+  .tab-button { padding: 11px 7px; font-size: 8px; line-height: 1.25; }
+  .tab-content { min-height: 0; padding: 28px 20px; border-radius: 14px; }
+  .tab-icon { width: 43px; height: 43px; flex-basis: 43px; }
+  .tab-panel h3 { margin-top: 19px; font-size: 20px; line-height: 1.15; }
+  .tab-panel p { margin-top: 11px; font-size: 10px; line-height: 1.85; }
+  .tags { gap: 6px; margin-top: 21px; }
+  .tag { padding: 5px 8px; font-size: 7px; }
+  .flow-node { padding: 13px 20px; font-size: 10px; }
+  .pill-row { margin-top: 30px; gap: 7px; }
+  .custom-card { padding: 34px 23px; border-radius: 19px; }
+  .custom-grid { gap: 30px; }
+  .custom-description { margin-top: 19px; font-size: 10px; line-height: 1.85; }
+  .custom-options { gap: 8px; }
+  .custom-option { padding: 18px; border-radius: 14px; }
+  .custom-option-number { width: 32px; height: 32px; flex-basis: 32px; border-radius: 9px; font-size: 7px; }
+  .custom-option-label { font-size: 6px; }
+  .custom-option h3 { margin-top: 15px; font-size: 17px; }
+  .custom-option p { margin-top: 8px; font-size: 8px; line-height: 1.75; }
+  .custom-option-features { margin-top: 13px; gap: 5px; }
+  .custom-option-feature { padding: 4px 7px; font-size: 5.5px; }
+  .custom-option-arrow { margin-top: 13px; font-size: 13px; }
+  .pricing-card { padding: 28px 22px; }
+  .pricing-amount { font-size: 32px; }
+  .final-cta { padding: 95px 0; }
+  .final-icon { width: 46px; height: 46px; margin-bottom: 21px; }
+  .final-cta p { margin-top: 21px; font-size: 10px; line-height: 1.85; }
+  .final-actions { margin-top: 26px; gap: 10px; }
+  .availability { font-size: 6px; letter-spacing: .13em; text-align: center; }
+  .footer-inner { min-height: 0; padding: 32px 0; flex-direction: column; align-items: flex-start; gap: 25px; }
+  .footer-tagline { font-size: 6px; letter-spacing: .12em; }
+  .footer-bottom { flex-direction: column; gap: 8px; padding: 15px 0; font-size: 6px; line-height: 1.6; }
 }
-@media(max-width:760px){
-.container{width:calc(100% - 32px)}
-.nav-inner{height:72px}
-.mobile-menu.active{max-height:calc(100vh - 72px)}
-.hero{padding-top:125px;padding-bottom:70px}
-.hero-title{font-size:clamp(46px,10vw,64px)}
-.hero-description{max-width:600px;font-size:13px;line-height:1.8}
-.dashboard-wrapper{margin-top:70px}
-.dashboard{border-radius:16px}
-.browser-bar{padding:0 12px}
-.browser-status{font-size:7px}
-.dashboard-main{padding:18px}
-.dashboard-heading{font-size:18px}
-.section-padding{padding:105px 0}
-.section-heading-grid{gap:35px}
-h2{font-size:clamp(38px,8vw,52px)}
-.feature-card{padding:24px}
-.ownership-content{padding:42px 30px}
-.custom-card{padding:42px 30px}
-.final-cta{padding:120px 0}
-.footer-bottom{gap:12px}
-.steps-grid,.process-grid,.engage-grid{grid-template-columns:1fr}
+
+/* RESPONSIVE — VERY SMALL PHONES */
+@media(max-width:380px) {
+  .container { width: calc(100% - 24px); }
+  .brand-name { font-size: 12px; }
+  .brand-subtitle { font-size: 5px; }
+  .mobile-menu-button { width: 37px; height: 37px; flex-basis: 37px; }
+  .hero { padding-top: 115px; }
+  .hero-title { font-size: 36px; }
+  .hero-description { font-size: 11px; }
+  .status-pill { font-size: 6px; letter-spacing: .09em; }
+  .browser-status { font-size: 5px; }
+  .dashboard-main { padding: 11px; }
+  .dashboard-heading { font-size: 14px; }
+  .dashboard-filter { font-size: 5px; padding: 6px; }
+  .stat { padding: 8px; }
+  .stat-value { font-size: 12px; }
+  .project { gap: 5px; }
+  .project-price { font-size: 6px; }
+  .feature-card { padding: 21px; }
+  .ownership-content, .custom-card { padding-left: 20px; padding-right: 20px; }
+  .workflow-box { width: calc(100% - 24px); }
+  .tab-content { padding: 24px 17px; }
+  .tab-button { font-size: 7px; }
+  .custom-option { padding: 16px; }
+  .custom-option h3 { font-size: 16px; }
+  .custom-option p { font-size: 7.5px; }
+  .final-cta { padding: 85px 0; }
 }
-@media(max-width:620px){
-.container{width:calc(100% - 30px);max-width:none}
-.cursor,.cursor-ring{display:none}
-.brand{gap:9px}
-.brand-mark{width:35px;height:35px;flex-basis:35px;border-radius:10px}
-.brand-name{font-size:13px}
-.brand-subtitle{font-size:6px;letter-spacing:.18em}
-.hero-orbit{width:620px;height:620px;top:410px}
-.hero-orbit::before{inset:55px}
-.status-pill{padding:7px 11px;gap:7px;font-size:7px;letter-spacing:.12em}
-.hero-title{margin-top:24px;font-size:clamp(38px,12vw,52px);letter-spacing:-.065em;line-height:.98}
-.hero-description{margin-top:25px;font-size:12px;line-height:1.85}
-.hero-actions{margin-top:28px;flex-direction:column;width:100%;gap:9px}
-.button{width:100%;min-height:48px;padding:0 18px;font-size:10px}
-.dashboard-wrapper{margin-top:55px}
-.dashboard{border-radius:14px}
-.browser-bar{height:40px;min-height:40px;padding:0 10px}
-.browser-dots{gap:5px}
-.browser-dots span{width:7px;height:7px}
-.browser-status{font-size:6px;gap:5px}
-.browser-status i{width:5px;height:5px;flex-basis:5px}
-.browser-label{display:none}
-.dashboard-body{min-height:0}
-.dashboard-main{padding:14px}
-.dashboard-header{align-items:flex-start;gap:10px}
-.dashboard-eyebrow{font-size:6px;letter-spacing:.15em}
-.dashboard-heading{margin-top:5px;font-size:16px;line-height:1.2}
-.dashboard-filter{padding:7px 8px;font-size:6px}
-.stats{gap:6px;margin-top:20px}
-.stat{padding:10px;border-radius:9px}
-.stat-label{font-size:6px}
-.stat-value{margin-top:5px;font-size:14px}
-.stat-change{font-size:6px}
-.dashboard-grid{gap:7px;margin-top:8px}
-.panel{padding:12px;border-radius:10px}
-.panel-title{font-size:8px}
-.panel-subtitle{font-size:6px}
-.project-list{gap:5px;margin-top:12px}
-.project{gap:7px;padding:7px}
-.project-number{width:23px;height:23px;flex-basis:23px;font-size:6px}
-.project-name{font-size:7px}
-.project-status{font-size:5px}
-.project-price{font-size:7px}
-.chart{height:90px;gap:4px;margin-top:18px}
-.section-padding{padding:85px 0}
-.section-heading-grid{gap:28px}
-.eyebrow{gap:6px;margin-bottom:15px;font-size:7px;letter-spacing:.16em}
-.eyebrow-line{width:22px;flex-basis:22px}
-h2{font-size:clamp(36px,11vw,48px);line-height:.98}
-.section-description{font-size:11px;line-height:1.85}
-.feature-grid{grid-template-columns:1fr;gap:9px;margin-top:38px}
-.steps-grid,.process-grid,.engage-grid,.split-grid{margin-top:38px;gap:9px}
-.feature-card,.process-grid .feature-card{min-height:0;padding:24px;border-radius:15px}
-.feature-icon{width:40px;height:40px;flex-basis:40px}
-.feature-title{margin-top:22px;font-size:13px;line-height:1.35}
-.feature-description,.process-grid .feature-description{margin-top:9px;font-size:9px;line-height:1.75}
-.request-answer{margin-top:14px;font-size:15px}
-.process-tagline{font-size:15px}
-.ownership-card{border-radius:19px}
-.ownership-content{padding:34px 23px}
-.small-tag{font-size:6px;letter-spacing:.14em}
-.ownership-content h2{margin-top:20px!important}
-.ownership-content p{margin-top:20px;font-size:10px;line-height:1.85}
-.check-list{gap:10px;margin-top:23px}
-.check-item{align-items:flex-start;gap:8px;font-size:9px;line-height:1.5}
-.check{margin-top:1px;width:18px;height:18px;flex-basis:18px;font-size:8px}
-.workflow-visual{min-height:350px}
-.workflow-box{width:calc(100% - 34px);padding:16px;border-radius:14px}
-.workflow-header{font-size:7px}
-.workflow-steps{margin-top:14px;gap:5px}
-.workflow-step{padding:10px;font-size:7px}
-.flow-node{padding:13px 20px;font-size:10px}
-.who-card{padding:34px 23px;border-radius:19px;gap:28px}
-.who-copy p{font-size:10px;line-height:1.85}
-.custom-card{padding:34px 23px;border-radius:19px}
-.custom-grid{gap:30px}
-.custom-description{margin-top:19px;font-size:10px;line-height:1.85}
-.custom-options{gap:8px}
-.custom-option{padding:18px;border-radius:14px}
-.custom-option-number{width:32px;height:32px;flex-basis:32px;border-radius:9px;font-size:7px}
-.custom-option-label{font-size:6px}
-.custom-option h3{margin-top:15px;font-size:17px}
-.custom-option p{margin-top:8px;font-size:8px;line-height:1.75}
-.custom-option-features{margin-top:13px;gap:5px}
-.custom-option-feature{padding:4px 7px;font-size:5.5px}
-.custom-option-arrow{margin-top:13px;font-size:13px}
-.pricing-card{padding:28px 22px}
-.final-cta{padding:95px 0}
-.final-icon{width:46px;height:46px;margin-bottom:21px}
-.final-cta p{margin-top:21px;font-size:10px;line-height:1.85}
-.final-actions{margin-top:26px;gap:10px}
-.availability{font-size:6px;letter-spacing:.13em;text-align:center}
-.footer-inner{min-height:0;padding:32px 0;flex-direction:column;align-items:flex-start;gap:25px}
-.footer-tagline{font-size:6px;letter-spacing:.12em}
-.footer-bottom{flex-direction:column;gap:8px;padding:15px 0;font-size:6px;line-height:1.6}
-.demo-modal{padding:15px}
-.demo-modal-content{border-radius:15px;max-height:calc(100vh - 30px);max-height:calc(100dvh - 30px)}
-.demo-modal-header{min-height:44px;padding-left:13px;padding-right:10px}
-.demo-modal-label{font-size:6px;letter-spacing:.14em}
-.demo-modal-close{width:30px;height:30px;flex-basis:30px}
-.specialist-photo{max-height:300px}
-.specialist-info{padding:28px 22px 30px}
-.specialist-info h3{font-size:28px}
-.specialist-info p{font-size:11px;line-height:1.85}
+
+/* DEMO MODAL */
+.demo-modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s ease, visibility .35s ease; }
+.demo-modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
+.demo-modal-content { position: relative; width: min(900px, 100%); max-width: 100%; max-height: calc(100vh - 48px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden; background: #090909; box-shadow: 0 50px 140px rgba(0,0,0,.8), 0 0 100px rgba(255,255,255,.04); transform: translateY(24px) scale(.96); transition: transform .45s cubic-bezier(.16,1,.3,1); }
+.demo-modal.active .demo-modal-content { transform: translateY(0) scale(1); }
+.demo-modal-header { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 14px 0 17px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.demo-modal-label { color: rgba(255,255,255,.35); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.demo-modal-close { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.08); border-radius: 9px; background: rgba(255,255,255,.035); color: rgba(255,255,255,.55); font-size: 17px; transition: .25s ease; }
+.demo-modal-close:hover { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+.demo-video-wrap { background: #000; aspect-ratio: 16 / 9; width: 100%; max-height: calc(100vh - 100px); }
+.demo-video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
+@media(max-width:620px) {
+  .demo-modal { padding: 15px; }
+  .demo-modal-content { border-radius: 15px; max-height: calc(100vh - 30px); }
+  .demo-modal-header { min-height: 44px; padding-left: 13px; padding-right: 10px; }
+  .demo-modal-label { font-size: 6px; letter-spacing: .14em; }
+  .demo-modal-close { width: 30px; height: 30px; flex-basis: 30px; }
 }
-@media(max-width:380px){
-.container{width:calc(100% - 24px)}
-.brand-name{font-size:12px}
-.brand-subtitle{font-size:5px}
-.mobile-menu-button{width:37px;height:37px;flex-basis:37px}
-.hero{padding-top:115px}
-.hero-title{font-size:36px}
-.hero-description{font-size:11px}
-.status-pill{font-size:6px;letter-spacing:.09em}
-.browser-status{font-size:5px}
-.dashboard-main{padding:11px}
-.dashboard-heading{font-size:14px}
-.dashboard-filter{font-size:5px;padding:6px}
-.stat{padding:8px}
-.stat-value{font-size:12px}
-.feature-card{padding:21px}
-.ownership-content,.custom-card{padding-left:20px;padding-right:20px}
-.workflow-box{width:calc(100% - 24px)}
-.custom-option{padding:16px}
-.custom-option h3{font-size:16px}
-.custom-option p{font-size:7.5px}
-.final-cta{padding:85px 0}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce) {
+  * { animation: none !important; transition: none !important; }
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
 </style>
 </head>
+
 <body>
 
-<div class="background"><div class="background-grid"></div><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+<!-- BACKGROUND -->
+<div class="background">
+  <div class="background-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+</div>
+
+<!-- CURSOR -->
 <div class="cursor"></div>
 <div class="cursor-ring"></div>
 
@@ -475,45 +511,42 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <div class="brand-mark"><span>A</span></div>
       <div>
         <div class="brand-name">AutFlow <span>Studio</span></div>
-        <div class="brand-subtitle">Freight Invoice Auditing</div>
+        <div class="brand-subtitle">Lead-to-Appointment Systems</div>
       </div>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#how-it-works">How It Works</a>
-      <a href="#capabilities">What We Solve</a>
-      <a href="#implementation">Implementation</a>
-      <a href="#data">Your Data</a>
+    <nav class="nav-links">
+      <a href="#product">The Solution</a>
+      <a href="#capabilities">What It Does</a>
+      <a href="#comparison">Is It A Fit?</a>
+      <a href="#preview">How We Start</a>
     </nav>
-    <a href="#get-started" class="nav-button magnetic">Get Started</a>
-    <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <a href="#get-started" class="nav-button magnetic">Discuss Your Lead Flow</a>
+    <button class="mobile-menu-button" id="mobileMenuButton">☰</button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#how-it-works">How It Works</a>
-    <a href="#capabilities">What We Solve</a>
-    <a href="#implementation">Implementation</a>
-    <a href="#data">Your Data</a>
-    <a href="#get-started" class="mobile-cta">Get Started</a>
+    <a href="#product">The Solution</a>
+    <a href="#capabilities">What It Does</a>
+    <a href="#comparison">Is It A Fit?</a>
+    <a href="#preview">How We Start</a>
+    <a href="#get-started" class="mobile-cta">Discuss Your Lead Flow</a>
   </div>
 </header>
-
-<main>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-orbit"><div class="orbit-dot"></div></div>
   <div class="container">
     <div class="hero-content">
-      <div class="status-pill hero-animate"><span class="status-dot"></span>FREIGHT INVOICE AUDITING FOR MID-MARKET COMPANIES</div>
+      <div class="status-pill hero-animate"><span class="status-dot"></span>CUSTOM AI LEAD-TO-APPOINTMENT SYSTEMS</div>
       <h1 class="hero-title">
-        <span class="line"><span class="line-inner">Don't Check Every Invoice.</span></span>
-        <span class="line"><span class="line-inner">Review What Gets Flagged.</span></span>
-        <span class="line"><span class="line-inner muted">Freight Billing, Audited.</span></span>
+        <span class="line"><span class="line-inner">Stop Losing Inquiries</span></span>
+        <span class="line"><span class="line-inner">Before They Become</span></span>
+        <span class="line"><span class="line-inner muted">Booked Appointments.</span></span>
       </h1>
-      <p class="hero-description hero-animate">We build and configure a freight audit system around your carriers, contracts, rate structures, billing rules, and internal workflow — so your team can systematically identify and review potential billing discrepancies across its freight operation.</p>
-      <p class="hero-description hero-animate" style="margin-top:18px;">Give us your freight invoices. The system reviews them at scale, checks them against your rates, contracts, and billing rules, and flags potential discrepancies for your team to investigate and resolve.</p>
+      <p class="hero-description hero-animate">We build a custom system that replies to inbound inquiries, qualifies leads, follows up, and helps eligible leads book — configured around your services, rules, and tools.</p>
       <div class="hero-actions hero-animate">
-        <a href="#get-started" class="button button-primary magnetic">Start Your Freight Audit System <span>→</span></a>
-        <button type="button" class="button button-secondary magnetic" id="specialistButton" aria-haspopup="dialog" aria-controls="specialistModal">Meet the Specialist <span aria-hidden="true">→</span></button>
+        <a href="#get-started" class="button button-primary magnetic">Discuss Your Lead Flow<span>→</span></a>
+        <button type="button" class="button button-secondary magnetic" id="demoButton">Watch The Demo<span>▶</span></button>
       </div>
     </div>
 
@@ -523,50 +556,61 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <div class="dashboard">
         <div class="browser-bar">
           <div class="browser-dots"><span></span><span></span><span></span></div>
-          <div class="browser-status"><i></i>ILLUSTRATIVE AUDIT PREVIEW</div>
-          <div class="browser-label">ILLUSTRATIVE SAMPLE — NOT CLIENT RESULTS</div>
+          <div class="browser-status"><i></i>SAMPLE VIEW — ILLUSTRATIVE DATA</div>
+          <div class="browser-label">SAMPLE LEAD DASHBOARD</div>
         </div>
         <div class="dashboard-body">
           <aside class="sidebar">
-            <div class="sidebar-title">Audit Workspace</div>
-            <div class="sidebar-item active"><span class="sidebar-icon"></span>Audit Overview</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Carriers</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Invoices</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Flagged Items</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Human Verification</div>
+            <div class="sidebar-title">Your Business</div>
+            <div class="sidebar-item active"><span class="sidebar-icon"></span>Overview</div>
+            <div class="sidebar-item"><span class="sidebar-icon"></span>Leads</div>
+            <div class="sidebar-item"><span class="sidebar-icon"></span>Pipeline</div>
+            <div class="sidebar-item"><span class="sidebar-icon"></span>Follow-Ups</div>
+            <div class="sidebar-item"><span class="sidebar-icon"></span>Conversations</div>
             <div class="sidebar-separator"></div>
-            <div class="sidebar-title">Reporting</div>
-            <div class="sidebar-item"><span class="sidebar-icon"></span>Findings Report</div>
+            <div class="sidebar-title">Team</div>
+            <div class="sidebar-item"><span class="sidebar-icon"></span>Team Handoffs</div>
           </aside>
           <div class="dashboard-main">
             <div class="dashboard-header">
               <div>
-                <div class="dashboard-eyebrow">Illustrative Sample / Audit View</div>
-                <div class="dashboard-heading">Review what the system flags.</div>
+                <div class="dashboard-eyebrow">Your Business / Lead Dashboard</div>
+                <div class="dashboard-heading">Every inquiry, status, and follow-up in one view.</div>
               </div>
-              <div class="dashboard-filter">Sample period ↗</div>
+              <div class="dashboard-filter">Sample view ↗</div>
             </div>
             <div class="stats">
-              <div class="stat"><div class="stat-label">Invoices Processed</div><div class="stat-value counter" data-value="640">0</div><div class="stat-change">Sample data</div></div>
-              <div class="stat"><div class="stat-label">Flagged For Review</div><div class="stat-value counter" data-value="38">0</div><div class="stat-change">Potential discrepancies</div></div>
-              <div class="stat"><div class="stat-label">Verified By A Person</div><div class="stat-value counter" data-value="21">0</div><div class="stat-change">Before reporting</div></div>
-              <div class="stat"><div class="stat-label">Potential Impact</div><div class="stat-value counter" data-value="18400">$0</div><div class="stat-change">Illustrative only</div></div>
+              <div class="stat"><div class="stat-label">New Inquiries</div><div class="stat-value counter" data-value="128">0</div><div class="stat-change">Replied to</div></div>
+              <div class="stat"><div class="stat-label">Qualified Leads</div><div class="stat-value counter" data-value="46">0</div><div class="stat-change">Details collected</div></div>
+              <div class="stat"><div class="stat-label">Appointments Booked</div><div class="stat-value counter" data-value="31">0</div><div class="stat-change">Confirmed</div></div>
+              <div class="stat"><div class="stat-label">Awaiting Follow-Up</div><div class="stat-value counter" data-value="12">0</div><div class="stat-change">Open leads</div></div>
             </div>
             <div class="dashboard-grid">
               <div class="panel">
-                <div class="panel-title">Flagged Items</div>
-                <div class="panel-subtitle">Sample data — potential discrepancies only</div>
+                <div class="panel-title">Inquiry Pipeline</div>
+                <div class="panel-subtitle">Where each inquiry stands</div>
                 <div class="project-list">
-                  <div class="project"><div class="project-number">01</div><div class="project-info"><div class="project-name">Rate above contract</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$1,240</div></div>
-                  <div class="project"><div class="project-number">02</div><div class="project-info"><div class="project-name">Possible duplicate invoice</div><div class="project-status">UNDER REVIEW</div></div><div class="project-price">$860</div></div>
-                  <div class="project"><div class="project-number">03</div><div class="project-info"><div class="project-name">Unexpected accessorial charge</div><div class="project-status">REQUIRES VERIFICATION</div></div><div class="project-price">$410</div></div>
+                  <div class="project"><div class="project-number">01</div><div class="project-info"><div class="project-name">Inquiry received</div><div class="project-status">RESPONDED</div></div><div class="project-price">New</div></div>
+                  <div class="project"><div class="project-number">02</div><div class="project-info"><div class="project-name">Lead qualified</div><div class="project-status">DETAILS COLLECTED</div></div><div class="project-price">Qualified</div></div>
+                  <div class="project"><div class="project-number">03</div><div class="project-info"><div class="project-name">Appointment booked</div><div class="project-status">CONFIRMED</div></div><div class="project-price">Booked</div></div>
                 </div>
               </div>
               <div class="panel">
-                <div class="panel-title">Potential Impact</div>
-                <div class="panel-subtitle">By month, illustrative</div>
+                <div class="panel-title">Team Workload</div>
+                <div class="panel-subtitle">Inquiries over time (sample)</div>
                 <div class="chart">
-                  <div class="bar" style="height:30%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:54%"></div><div class="bar" style="height:74%"></div><div class="bar" style="height:62%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:71%"></div><div class="bar" style="height:96%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:100%"></div>
+                  <div class="bar" style="height:30%"></div>
+                  <div class="bar" style="height:48%"></div>
+                  <div class="bar" style="height:40%"></div>
+                  <div class="bar" style="height:65%"></div>
+                  <div class="bar" style="height:54%"></div>
+                  <div class="bar" style="height:74%"></div>
+                  <div class="bar" style="height:62%"></div>
+                  <div class="bar" style="height:85%"></div>
+                  <div class="bar" style="height:71%"></div>
+                  <div class="bar" style="height:96%"></div>
+                  <div class="bar" style="height:80%"></div>
+                  <div class="bar" style="height:100%"></div>
                 </div>
               </div>
             </div>
@@ -582,139 +626,153 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
   <div class="container section-padding">
     <div class="center-heading reveal-scale">
       <div class="eyebrow"><span class="eyebrow-line"></span>THE PROBLEM<span class="eyebrow-line"></span></div>
-      <h2>Freight Billing Discrepancies <br><span class="muted">Can Stay Hidden.</span></h2>
-      <p class="section-description centered">Manual review can't cover every freight invoice. A single billing error may be small. Repeated across hundreds of invoices, thousands of shipments, multiple carriers, and multiple facilities, small discrepancies add up to meaningful financial leakage. The problem is rarely one huge mistake. It is small errors, repeated at scale.</p>
+      <h2>Inquiries Get Lost<br><span class="muted">Between Message And Booking.</span></h2>
+      <p class="section-description centered">When inquiries arrive faster than a team can handle them, replies slow down, follow-ups get skipped, and unqualified chats use up staff time. Some of those leads never reach a booking.</p>
     </div>
   </div>
 </section>
 
-<!-- PREVIEW EXPLANATION -->
+<!-- SOLUTION -->
 <section id="product" class="section-border">
   <div class="container section-padding">
     <div class="section-heading-grid">
       <div class="reveal-left">
-        <div class="eyebrow"><span class="eyebrow-line"></span>THE PREVIEW ABOVE</div>
-        <h2>An Illustration, <span class="muted">Not A Result.</span></h2>
+        <div class="eyebrow"><span class="eyebrow-line"></span>THE SOLUTION</div>
+        <h2>From First Message <span class="muted">To Booked Appointment.</span></h2>
       </div>
-      <p class="section-description reveal-right">The preview above uses sample data to show how freight invoices are processed, checked, flagged, and organized for human review inside the audit system. It does not represent a client or a real finding.</p>
+      <p class="section-description reveal-right">Respond → Qualify → Follow Up → Book → Organize. The system answers each inquiry, collects the details your team needs, follows up with leads who haven't booked, helps eligible leads schedule, and keeps every status in one place.</p>
     </div>
   </div>
 </section>
-
-<!-- WHAT WE SOLVE -->
+<!-- CAPABILITIES -->
 <section id="capabilities" class="section-border">
   <div class="container section-padding">
     <div class="section-heading-grid">
       <div class="reveal-left">
-        <div class="eyebrow"><span class="eyebrow-line"></span>WHAT WE SOLVE</div>
-        <h2>The Discrepancies We <span class="muted">Look For.</span></h2>
+        <div class="eyebrow"><span class="eyebrow-line"></span>WHAT IT DOES</div>
+        <h2>Built To Handle <span class="muted">Every Inquiry.</span></h2>
       </div>
-      <p class="section-description reveal-right">Carrier invoices can contain many kinds of billing issues. These are the categories the system is configured to check against your contracts and billing rules. Each flag is a potential discrepancy until it has been verified.</p>
+      <p class="section-description reveal-right">Each system is configured for your business. What it includes depends on your needs and the integrations available.</p>
     </div>
     <div class="feature-grid reveal-scale">
-      <div class="feature-card feature-3d"><div class="feature-icon">↻</div><div class="feature-title">RATE MISMATCHES</div><div class="feature-description">Charges that differ from negotiated contract rates or rate sheets.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">⇄</div><div class="feature-title">DUPLICATE CHARGES</div><div class="feature-description">The same invoice or shipment reference billed more than once.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">⌁</div><div class="feature-title">ACCESSORIAL CHARGES</div><div class="feature-description">Unexpected or unauthorized accessorial charges added to an invoice.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">◷</div><div class="feature-title">FUEL CHARGES</div><div class="feature-description">Fuel charges that do not match the agreed schedule or contract terms.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">◈</div><div class="feature-title">WEIGHT & QUANTITY</div><div class="feature-description">Billed weights or quantities that are inconsistent with shipment records.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">⎘</div><div class="feature-title">OTHER BILLING ANOMALIES</div><div class="feature-description">Other irregularities measured against contracts and billing rules.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">◈</div><div class="feature-title">RESPOND FAST</div><div class="feature-description">Replies to new inquiries quickly, using information about your services that you approve.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">⌁</div><div class="feature-title">QUALIFY LEADS</div><div class="feature-description">Collects customer details and applies your qualification criteria, so your team sees who is worth their time.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">↻</div><div class="feature-title">FOLLOW UP</div><div class="feature-description">Follows up with leads who haven't booked, using rules you set.</div><div class="feature-badge">Your Follow-Up Rules</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">⚙</div><div class="feature-title">BOOK APPOINTMENTS</div><div class="feature-description">Helps eligible leads book appointments, where your booking setup supports it.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">$</div><div class="feature-title">ORGANIZE LEADS</div><div class="feature-description">Keeps lead statuses and conversations organized in your CRM or dashboard.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">✦</div><div class="feature-title">HAND OFF TO YOUR TEAM</div><div class="feature-description">Passes questions and cases it shouldn't handle to your staff.</div><div class="feature-badge">Human Review</div></div>
     </div>
+    <p class="section-description centered reveal-scale" style="margin-top:34px;">Booking and CRM connections depend on the tools you already use.</p>
   </div>
 </section>
 
-<!-- WHO THIS IS FOR -->
+<!-- CUSTOMIZATION -->
 <section id="customization" class="section-border">
   <div class="container section-padding">
     <div class="center-heading reveal-scale">
-      <div class="eyebrow"><span class="eyebrow-line"></span>WHO THIS IS FOR<span class="eyebrow-line"></span></div>
-      <h2>Built For Companies With <br><span class="muted">Significant Freight Spend.</span></h2>
-      <p class="section-description centered">Manufacturers, distributors, importers, wholesalers, and other mid-market companies that use multiple carriers and process large invoice volumes. Typical decision-makers include the CFO, Controller, VP Finance, Director of Logistics, and VP Supply Chain.</p>
+      <div class="eyebrow"><span class="eyebrow-line"></span>CUSTOMIZATION<span class="eyebrow-line"></span></div>
+      <h2>Configured Around<br><span class="muted">Your Business.</span></h2>
+      <p class="section-description centered">Each system is built around your brand, services, approved information, qualification criteria, booking rules, and the tools you use. Integrations depend on what each platform supports.</p>
     </div>
     <div class="steps-grid reveal-scale">
-      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">Manufacturers and distributors with multiple carriers?</div><div class="request-answer">A good fit.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">Importers and wholesalers with large invoice volumes?</div><div class="request-answer">A good fit.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">CFO, Controller, or Finance Director?</div><div class="request-answer">See the impact.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">Logistics, Transportation, or Supply Chain lead?</div><div class="request-answer">See the detail.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">Which questions can it answer?</div><div class="request-answer">Your approved information.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">Who counts as a qualified lead?</div><div class="request-answer">Your criteria.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">When can a lead book?</div><div class="request-answer">Your booking rules.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">?</div><div class="feature-title">Which channels and tools?</div><div class="request-answer">Where supported.</div></div>
     </div>
+    <p class="section-description centered reveal-scale" style="margin-top:34px;">Possible channels include website forms, WhatsApp, Instagram, and Facebook, depending on supported integrations.</p>
   </div>
 </section>
 
-<!-- ECONOMICS -->
+<!-- FIT -->
 <section id="comparison" class="section-border">
   <div class="container section-padding">
     <div class="center-heading reveal-scale">
-      <div class="eyebrow"><span class="eyebrow-line"></span>THE ECONOMICS<span class="eyebrow-line"></span></div>
-      <h2>Small Discrepancies, <br><span class="muted">Repeated At Scale.</span></h2>
-      <p class="section-description centered">For a company spending millions on freight, a typical $5K–$10K engagement to build and configure a custom freight audit system can be economically rational if the potential discrepancies it identifies materially exceed the cost. The figures below are illustrative calculations, not guaranteed savings.</p>
+      <div class="eyebrow"><span class="eyebrow-line"></span>IS IT A FIT?<span class="eyebrow-line"></span></div>
+      <h2>Built For Businesses<br><span class="muted">With Steady Inbound Demand.</span></h2>
+      <p class="section-description centered">Best suited to companies where inquiries have real value and a team is handling them.</p>
     </div>
     <div class="equation-row reveal-scale">
-      <div class="flow-node">AUTOMATED CHECKS</div><div class="flow-arrow">+</div>
-      <div class="flow-node">HUMAN VERIFICATION</div><div class="flow-arrow">=</div>
-      <div class="flow-node">A CLEAR REPORT</div>
+      <div class="flow-node">INQUIRY</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">QUALIFIED LEAD</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">BOOKED APPOINTMENT</div>
     </div>
     <div class="pricing-grid reveal-scale">
       <div class="pricing-card">
-        <div class="pricing-label">TYPICAL ENGAGEMENT</div>
-        <div class="pricing-name">$5K–$10K, Depending On Scope</div>
-        <p class="pricing-desc">Typical engagements range from $5K–$10K. The exact price depends on the scope of the system and the audit:</p>
+        <div class="pricing-label">WHO IT'S FOR</div>
+        <div class="pricing-name">Signs Your Business Is Ready</div>
+        <div class="pricing-price"><span class="pricing-amount">Good Fit</span></div>
+        <div class="pricing-sub">What we look for</div>
+        <p class="pricing-desc">Your business is likely a candidate if most of these apply.</p>
         <div class="check-list">
-          <div class="check-item"><span class="check">✓</span>Number of carriers</div>
-          <div class="check-item"><span class="check">✓</span>Number of invoices and audit period</div>
-          <div class="check-item"><span class="check">✓</span>Freight volume</div>
-          <div class="check-item"><span class="check">✓</span>Data complexity and overall scope</div>
+          <div class="check-item"><span class="check">✓</span>Inquiries arrive steadily from ads, forms, or messaging apps</div>
+          <div class="check-item"><span class="check">✓</span>Your team spends time answering and sorting them</div>
+          <div class="check-item"><span class="check">✓</span>Some leads wait too long for a reply or follow-up</div>
+          <div class="check-item"><span class="check">✓</span>You have a booking or scheduling process</div>
+          <div class="check-item"><span class="check">✓</span>Each appointment is worth meaningful revenue to you</div>
         </div>
+        <a href="#get-started" class="button button-secondary magnetic">Discuss Your Lead Flow</a>
       </div>
       <div class="pricing-card featured">
-        <div class="pricing-badge">ILLUSTRATIVE</div>
-        <div class="pricing-label">THE MATH</div>
-        <div class="pricing-name">Hypothetical Billing Leakage</div>
-        <p class="pricing-desc">Industry estimates commonly place potential freight-audit recovery in the low-single-digit percentage range, although actual results vary significantly by company, carrier, contract, shipment volume, and billing practices.</p>
+        <div class="pricing-badge">CUSTOM BUILD</div>
+        <div class="pricing-label">WHAT WE BUILD</div>
+        <div class="pricing-name">Your Lead-to-Appointment System</div>
+        <div class="pricing-price"><span class="pricing-amount">Custom Scope</span></div>
+        <div class="pricing-sub">Scoped and quoted after a discovery call.</div>
+        <p class="pricing-desc">A custom system built around your business, from first inquiry to booked appointment.</p>
         <div class="check-list">
-          <div class="check-item"><span class="check">✓</span>$2M annual freight: 2% = $40K, 4% = $80K</div>
-          <div class="check-item"><span class="check">✓</span>$5M annual freight: 2% = $100K, 4% = $200K</div>
-          <div class="check-item"><span class="check">✓</span>$10M annual freight: 2% = $200K, 4% = $400K</div>
-          <div class="check-item"><span class="check">✓</span>The audit system determines whether meaningful discrepancies actually exist</div>
+          <div class="check-item"><span class="check">✓</span>Replies to inquiries using your approved information</div>
+          <div class="check-item"><span class="check">✓</span>Collects details and qualifies leads against your criteria</div>
+          <div class="check-item"><span class="check">✓</span>Follows up with leads who haven't booked</div>
+          <div class="check-item"><span class="check">✓</span>Helps eligible leads book appointments, where supported</div>
+          <div class="check-item"><span class="check">✓</span>Organizes statuses in your CRM or dashboard, with team handoff</div>
         </div>
+        <a href="#get-started" class="button button-primary magnetic">Discuss Your Lead Flow</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- METHOD -->
-<section id="method" class="section-border">
+<!-- TRUST & CONTROL -->
+<section id="revenue-opportunity" class="section-border">
   <div class="container section-padding">
     <div class="center-heading reveal-scale">
-      <div class="eyebrow"><span class="eyebrow-line"></span>THE METHOD<span class="eyebrow-line"></span></div>
-      <h2>Software Finds Exceptions. <br><span class="muted">People Verify Findings.</span></h2>
-      <p class="section-description centered">The system combines AI-assisted document extraction, deterministic financial rules, and automated checks, followed by human verification. The software is not the product. The audit is. It reduces manual checking so your team can focus on exceptions.</p>
+      <div class="eyebrow"><span class="eyebrow-line"></span>TRUST & CONTROL<span class="eyebrow-line"></span></div>
+      <h2>Your Team Stays<br><span class="muted">In Control.</span></h2>
+      <p class="section-description centered">The system handles the routine first steps. Your team handles everything that needs judgment.</p>
     </div>
     <div class="flow-diagram reveal-scale">
-      <div class="flow-node">SOFTWARE FINDS THE EXCEPTIONS</div><div class="flow-arrow">↓</div>
-      <div class="flow-node">RULES VALIDATE THE NUMBERS</div><div class="flow-arrow">↓</div>
-      <div class="flow-node">HUMAN REVIEW VALIDATES THE FINDING</div><div class="flow-arrow">↓</div>
-      <div class="flow-node">YOU RECEIVE A CLEAR REPORT</div>
+      <div class="flow-node">INQUIRY ARRIVES</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">ANSWERED FROM YOUR APPROVED INFORMATION</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">QUALIFIED AND OFFERED A BOOKING</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-node">UNCLEAR CASES GO TO YOUR TEAM</div>
     </div>
     <div class="ownership-card ownership-parallax" style="margin-top:70px;">
       <div class="ownership-content">
-        <span class="small-tag">NOT A BLIND AUTOMATED SYSTEM</span>
-        <h2 style="margin-top:23px;">Flagged By Software. <br><span class="muted">Verified By People.</span></h2>
-        <p>Not every flagged item is an error. Potential discrepancies are reviewed before they are treated as confirmed findings, so your team receives a report it can act on.</p>
+        <span class="small-tag">COMMON CONCERNS</span>
+        <h2 style="margin-top:23px;">Answers You Approve.<br><span class="muted">Handoffs You Control.</span></h2>
+        <p>These are the concerns we expect from business owners, and how the system is built to address them.</p>
         <div class="check-list">
-          <div class="check-item"><span class="check">✓</span>AI-assisted extraction structures the invoice data</div>
-          <div class="check-item"><span class="check">✓</span>Deterministic rules check rates, duplicates, and charges</div>
-          <div class="check-item"><span class="check">✓</span>Automated checks organize potential discrepancies</div>
-          <div class="check-item"><span class="check">✓</span>Human verification comes before anything is reported</div>
+          <div class="check-item"><span class="check">✓</span>Accuracy: answers come from information you approve</div>
+          <div class="check-item"><span class="check">✓</span>Fit: configured to your services, rules, and brand</div>
+          <div class="check-item"><span class="check">✓</span>Tools: connects to supported CRMs and channels</div>
+          <div class="check-item"><span class="check">✓</span>Control: your team takes over when needed</div>
         </div>
-        <p class="ownership-note">Each finding shows the invoice, the charge, the difference, and the reason it was flagged.</p>
+        <p class="ownership-note">Handoff rules and accuracy checks are set up and tested with you before launch.</p>
       </div>
       <div class="workflow-visual">
         <div class="workflow-box workflow-float">
-          <div class="workflow-header"><span>◉ EXAMPLE AUDIT FLOW</span><span class="workflow-active">SAMPLE</span></div>
+          <div class="workflow-header"><span>◉ LEAD RECORD</span><span class="workflow-active">SAMPLE</span></div>
           <div class="workflow-steps">
-            <div class="workflow-step"><span class="workflow-step-dot"></span>Carrier invoice received</div>
-            <div class="workflow-step"><span class="workflow-step-dot"></span>Rates and rules checked</div>
-            <div class="workflow-step"><span class="workflow-step-dot"></span>Potential discrepancy flagged</div>
-            <div class="workflow-step"><span class="workflow-step-dot"></span>Person verifies before reporting</div>
+            <div class="workflow-step"><span class="workflow-step-dot"></span>Source: Website form</div>
+            <div class="workflow-step"><span class="workflow-step-dot"></span>Status: Qualified</div>
+            <div class="workflow-step"><span class="workflow-step-dot"></span>Follow-up: Scheduled</div>
+            <div class="workflow-step"><span class="workflow-step-dot"></span>Handoff: Team notified</div>
           </div>
         </div>
       </div>
@@ -722,182 +780,55 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
   </div>
 </section>
 
-<!-- HOW IT WORKS (METHODOLOGY) -->
+<!-- HOW IT WORKS -->
 <section id="how-it-works" class="section-border">
   <div class="container section-padding">
     <div class="center-heading reveal-scale">
-      <div class="eyebrow"><span class="eyebrow-line"></span>THE AUDIT PROCESS<span class="eyebrow-line"></span></div>
+      <div class="eyebrow"><span class="eyebrow-line"></span>HOW WE BUILD IT<span class="eyebrow-line"></span></div>
       <h2>How It Works.</h2>
-      <p class="section-description centered">Invoices → automated checks → flagged exceptions → human verification → report.</p>
     </div>
     <div class="steps-grid reveal-scale">
-      <div class="feature-card feature-3d"><div class="feature-icon">01</div><div class="feature-title">COLLECT & CONFIGURE</div><div class="feature-description">You provide freight invoices from your carriers, plus contracts, rate sheets, shipment records, and billing information where available. The system is configured around your carriers, rates, and billing rules.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">02</div><div class="feature-title">EXTRACT & CHECK</div><div class="feature-description">The system extracts and structures invoice data, then checks rates, duplicates, accessorials, weights, and quantities.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">03</div><div class="feature-title">VERIFY</div><div class="feature-description">Potential discrepancies are organized, then reviewed by a person before being treated as confirmed findings.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">04</div><div class="feature-title">REPORT</div><div class="feature-description">You receive the invoice, charge, difference, reason for the flag, supporting information, and potential financial impact — so your team can investigate and resolve the relevant billing issues.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">01</div><div class="feature-title">UNDERSTAND</div><div class="feature-description">We map how inquiries reach you today and where they stall before booking.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">02</div><div class="feature-title">CONFIGURE</div><div class="feature-description">We set up the system around your information, qualification rules, and booking rules.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">03</div><div class="feature-title">TEST</div><div class="feature-description">We test the workflow and adjust it before it goes live.</div></div>
+      <div class="feature-card feature-3d"><div class="feature-icon">04</div><div class="feature-title">DEPLOY</div><div class="feature-description">We launch it with the integrations supported for your setup.</div></div>
     </div>
   </div>
 </section>
 
-<!-- IMPLEMENTATION -->
-<section id="implementation" class="section-border">
-  <div class="container section-padding">
-    <div class="center-heading reveal-scale">
-      <div class="eyebrow"><span class="eyebrow-line"></span>HOW IMPLEMENTATION WORKS<span class="eyebrow-line"></span></div>
-      <h2>From Scope <br><span class="muted">To Audit.</span></h2>
-      <p class="section-description centered">What happens after you decide to work with us: scope, configure, audit, verify, report. A customized implementation — not a generic software sign-up.</p>
-    </div>
-    <div class="flow-row reveal-scale">
-      <div class="flow-node">SCOPE</div><div class="flow-arrow">→</div>
-      <div class="flow-node">CONFIGURE</div><div class="flow-arrow">→</div>
-      <div class="flow-node">AUDIT</div><div class="flow-arrow">→</div>
-      <div class="flow-node">VERIFY</div><div class="flow-arrow">→</div>
-      <div class="flow-node">REPORT</div>
-    </div>
-    <div class="process-grid reveal-scale">
-      <div class="feature-card feature-3d">
-        <div class="feature-icon">01</div>
-        <div class="feature-title">SCOPE & CONFIGURE</div>
-        <div class="feature-description">We review your freight operation and establish the initial structure around:</div>
-        <div class="check-list">
-          <div class="check-item"><span class="check">✓</span>Carriers and contracts</div>
-          <div class="check-item"><span class="check">✓</span>Rate structures and billing rules</div>
-          <div class="check-item"><span class="check">✓</span>Invoice formats and freight data</div>
-          <div class="check-item"><span class="check">✓</span>Internal workflow</div>
-        </div>
-      </div>
-      <div class="feature-card feature-3d">
-        <div class="feature-icon">02</div>
-        <div class="feature-title">CONTROLLED SETUP</div>
-        <div class="feature-description">The audit environment is configured specifically for your operation. This is a customized implementation around your actual carriers, rates, and rules — not a generic SaaS sign-up.</div>
-      </div>
-      <div class="feature-card feature-3d">
-        <div class="feature-icon">03</div>
-        <div class="feature-title">EXTRACT & CHECK</div>
-        <div class="feature-description">Invoices are processed at scale. Relevant data is extracted and checked against:</div>
-        <div class="check-list">
-          <div class="check-item"><span class="check">✓</span>Rates, contracts, expected charges</div>
-          <div class="check-item"><span class="check">✓</span>Duplicate-charge logic</div>
-          <div class="check-item"><span class="check">✓</span>Accessorial and fuel-charge rules</div>
-          <div class="check-item"><span class="check">✓</span>Weight and quantity information</div>
-        </div>
-      </div>
-      <div class="feature-card feature-3d highlight">
-        <div class="feature-icon">04</div>
-        <div class="feature-title">HUMAN VERIFICATION</div>
-        <div class="feature-description">The system does not declare every flagged item an error. Software identifies potential discrepancies; a person reviews and verifies the important findings before they are reported as confirmed issues.</div>
-      </div>
-      <div class="feature-card feature-3d">
-        <div class="feature-icon">05</div>
-        <div class="feature-title">REPORT & RESOLVE</div>
-        <div class="feature-description">Verified findings are organized into a clear audit report so you can investigate, resolve, and recover legitimate discrepancies where appropriate. Recovery is not guaranteed.</div>
-      </div>
-    </div>
-    <p class="process-tagline">Software Finds Exceptions. <span>People Verify Findings.</span></p>
-
-    <!-- RISK CONTROL -->
-    <div class="split-grid reveal-scale" style="margin-top:90px;">
-      <div class="feature-card">
-        <span class="small-tag">YOU STAY IN CONTROL</span>
-        <h2 style="margin-top:23px;font-size:clamp(32px,4vw,44px);">A Controlled Process, <span class="muted">Not A Leap Of Faith.</span></h2>
-        <p class="section-description" style="margin-top:20px;">You do not have to hand over everything blindly and hope the system works. The engagement is structured so that each stage is defined before the next begins.</p>
-      </div>
-      <div class="feature-card">
-        <div class="check-list" style="margin-top:0;gap:16px;">
-          <div class="check-item"><span class="check">✓</span>Scope is defined up front</div>
-          <div class="check-item"><span class="check">✓</span>The system is configured around your operation</div>
-          <div class="check-item"><span class="check">✓</span>The audit process is established before invoices are reviewed at scale</div>
-          <div class="check-item"><span class="check">✓</span>Findings are reviewed by a person before they are reported</div>
-          <div class="check-item"><span class="check">✓</span>You receive structured outputs your team can act on</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DATA -->
-<section id="data" class="section-border">
-  <div class="container section-padding">
-    <div class="section-heading-grid">
-      <div class="reveal-left">
-        <div class="eyebrow"><span class="eyebrow-line"></span>DATA HANDLING</div>
-        <h2>Your Data Stays <span class="muted">Under Your Control.</span></h2>
-      </div>
-      <p class="section-description reveal-right">Freight invoices and rate information can contain sensitive commercial data. The audit environment can be configured to run locally on your own machine or within your controlled environment, so working files can remain with you rather than being uploaded to a public SaaS dashboard.</p>
-    </div>
-    <div class="feature-grid reveal-scale">
-      <div class="feature-card feature-3d"><div class="feature-icon">▣</div><div class="feature-title">LOCAL AUDIT ENVIRONMENT</div><div class="feature-description">Designed around a customer-controlled environment instead of a shared online dashboard.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">◧</div><div class="feature-title">LESS UNNECESSARY EXPOSURE</div><div class="feature-description">The goal is to avoid needlessly exposing freight invoices, carrier billing information, contracts, rate sheets, shipping data, and financial information.</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">✎</div><div class="feature-title">AGREED EXPECTATIONS</div><div class="feature-description">Data-handling and confidentiality expectations are discussed and defined before implementation begins. No system can promise zero risk; the aim is a clearly controlled setup.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ENGAGEMENT -->
-<section id="engagement" class="section-border">
-  <div class="container section-padding">
-    <div class="center-heading reveal-scale">
-      <div class="eyebrow"><span class="eyebrow-line"></span>HOW WE ENGAGE<span class="eyebrow-line"></span></div>
-      <h2>A Controlled <br><span class="muted">B2B Engagement.</span></h2>
-      <p class="section-description centered">Before implementation begins, the engagement can establish the following, in writing where appropriate.</p>
-    </div>
-    <div class="engage-grid reveal-scale">
-      <div class="feature-card feature-3d"><div class="feature-icon">01</div><div class="feature-title">Defined scope</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">02</div><div class="feature-title">Deliverables</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">03</div><div class="feature-title">Implementation requirements</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">04</div><div class="feature-title">Timeline</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">05</div><div class="feature-title">Payment terms</div></div>
-      <div class="feature-card feature-3d"><div class="feature-icon">06</div><div class="feature-title">Data-handling expectations and NDA where appropriate</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- BUILD AROUND YOUR OPERATION -->
+<!-- FIRST STEP -->
 <section id="preview" class="section-border">
   <div class="container section-padding">
     <div class="custom-card reveal-scale">
       <div class="custom-grid">
         <div class="custom-copy">
-          <span class="small-tag">IMPLEMENTATION</span>
-          <h2 style="margin-top:23px;">Build A System <br><span class="muted">Around Your Operation.</span></h2>
-          <p class="custom-description">The system is configured around the way your business handles freight billing — from carrier agreements and rate structures to billing rules, shipment data, and internal audit requirements. It is established according to your workflow and expanded to cover the relevant parts of your freight operation. No specific amount of savings is promised.</p>
-          <a href="#get-started" class="button button-primary magnetic">Start Your Freight Audit System <span>→</span></a>
+          <span class="small-tag">FIRST STEP</span>
+          <h2 style="margin-top:23px;">We Start By Mapping<br><span class="muted">Your Inquiry Flow.</span></h2>
+          <div class="pricing-price" style="margin-top:22px;">
+            <span class="pricing-amount">Discovery Call</span>
+            <span class="pricing-cadence">a conversation about how your inquiries are handled</span>
+          </div>
+          <p class="custom-description">Before anything is built, we look at how inquiries reach you, who handles them, and where they stall before booking. That shapes what your system needs to do.</p>
+          <a href="#get-started" class="button button-primary magnetic">Discuss Your Lead Flow<span>→</span></a>
         </div>
         <div class="custom-options">
           <div class="custom-option">
-            <div class="custom-option-top"><div class="custom-option-number">01</div><div class="custom-option-label">TAILORED<br>TO YOU</div></div>
-            <h3>Configured Around Your Freight Operation</h3>
-            <p>Each system is built around your actual carriers, contracts, and billing rules, so your team works from one centralized place to review flagged items.</p>
-            <div class="custom-option-features">
-              <span class="custom-option-feature">CARRIERS</span><span class="custom-option-feature">CONTRACTS & NEGOTIATED RATES</span><span class="custom-option-feature">RATE STRUCTURES</span><span class="custom-option-feature">BILLING RULES</span><span class="custom-option-feature">SHIPMENT DATA</span><span class="custom-option-feature">ACCESSORIAL RULES</span><span class="custom-option-feature">FUEL-CHARGE STRUCTURES</span><span class="custom-option-feature">INTERNAL WORKFLOW</span>
+            <div class="custom-option-top">
+              <div class="custom-option-number">01</div>
+              <div class="custom-option-label">FIRST<br>STEP</div>
             </div>
-            <div class="custom-option-arrow">→</div>
-          </div>
-          <div class="custom-option">
-            <div class="custom-option-top"><div class="custom-option-number">02</div><div class="custom-option-label">STARTING<br>POINT</div></div>
-            <h3>Still Defining The Scope?</h3>
-            <p>There's no need to define everything immediately. We can begin by establishing the initial structure of the system, so you have a clear view of how it will fit your operation, then develop it into the complete solution for the business.</p>
+            <h3>Map Inquiry To Booking</h3>
+            <p>We review your channels, qualification criteria, booking process, and current tools.</p>
             <div class="custom-option-features">
-              <span class="custom-option-feature">INITIAL SYSTEM STRUCTURE</span><span class="custom-option-feature">TAILORED TO YOUR BUSINESS</span><span class="custom-option-feature">CENTRALIZED FREIGHT AUDIT SYSTEM</span>
+              <span class="custom-option-feature">INQUIRY CHANNELS</span>
+              <span class="custom-option-feature">QUALIFICATION RULES</span>
+              <span class="custom-option-feature">BOOKING PROCESS</span>
+              <span class="custom-option-feature">CURRENT TOOLS</span>
             </div>
             <div class="custom-option-arrow">→</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO IS BEHIND IT -->
-<section id="specialist" class="section-border">
-  <div class="container section-padding">
-    <div class="who-card reveal-scale">
-      <div class="who-copy">
-        <span class="small-tag">WHO IS BEHIND IT</span>
-        <h2>Abderrahmen Hud <br><span class="muted">AutFlow Studio.</span></h2>
-        <p>Freight Audit & Recovery Specialist. Every system is built and configured personally, around your operation.</p>
-      </div>
-      <button type="button" class="button button-secondary magnetic" id="specialistButton2" aria-haspopup="dialog" aria-controls="specialistModal">Meet the Specialist <span aria-hidden="true">→</span></button>
     </div>
   </div>
 </section>
@@ -907,44 +838,35 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
   <div class="container">
     <div class="reveal-scale">
       <div class="final-icon">↗</div>
-      <h2>A Freight Audit System <br><span class="muted">Built Around Your Business.</span></h2>
-      <p>Tell us about your carriers, contracts, and how your team handles freight billing. We'll configure a centralized audit system around your operation, so your team can review flagged items instead of every invoice.</p>
+      <h2>Ready To Improve<br><span class="muted">Inbound Lead Handling?</span></h2>
+      <p>Tell us how inquiries reach your business today. We'll discuss whether a custom lead-to-appointment system fits.</p>
       <div class="final-actions">
         <div class="hero-actions">
-          <a href="https://wa.me/213676127853" target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">Start Your Freight Audit System <span>→</span></a>
+          <a href="https://wa.me/213676127853" target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">Discuss Your Lead Flow<span>→</span></a>
         </div>
-        <span class="availability">TYPICAL ENGAGEMENTS $5K–$10K — NO GUARANTEED SAVINGS</span>
+        <span class="availability">EVERY SYSTEM IS CUSTOM-BUILT FOR THE BUSINESS</span>
       </div>
     </div>
   </div>
 </section>
 
-</main>
-
-<!-- SPECIALIST MODAL -->
-<div class="demo-modal" id="specialistModal" aria-hidden="true">
-  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="specialistModalLabel" data-lenis-prevent>
+<!-- DEMO MODAL -->
+<div class="demo-modal" id="demoModal" aria-hidden="true">
+  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel">
     <div class="demo-modal-header">
-      <span class="demo-modal-label" id="specialistModalLabel">AutFlow Studio / Meet the Specialist</span>
-      <button type="button" class="demo-modal-close" id="specialistModalClose" aria-label="Close introduction">×</button>
+      <span class="demo-modal-label" id="demoModalLabel">AutFlow Studio / System Demo</span>
+      <button type="button" class="demo-modal-close" id="demoModalClose" aria-label="Close demo">×</button>
     </div>
-    <div class="specialist-body">
-      <div class="specialist-photo">
-        <img src="./kadem.png" alt="Portrait of Abderrahmen Hud, Freight Audit & Recovery Specialist at AutFlow Studio" loading="lazy">
-      </div>
-      <div class="specialist-info">
-        <span class="small-tag">THE PERSON BEHIND THE SERVICE</span>
-        <h3>Abderrahmen Hud</h3>
-        <div class="specialist-role">Freight Audit & Recovery Specialist</div>
-        <div class="specialist-company">AutFlow Studio</div>
-        <p>Abderrahmen Hud is the founder of AutFlow Studio, where he focuses on building and configuring custom freight invoice audit systems for companies that need tighter control over freight billing.</p>
-        <p>His work combines structured financial checks, automation, document processing, and human verification to turn large volumes of freight invoices into a controlled audit process. He built the service because freight discrepancies can stay hidden across large invoice volumes, and manual review rarely covers every invoice.</p>
-        <a href="#get-started" class="button button-primary" id="specialistCta">Start Your Freight Audit System <span>→</span></a>
-      </div>
+    <div class="demo-video-wrap">
+      <video class="demo-video" id="demoVideo" controls playsinline preload="metadata">
+        <source src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4" type="video/mp4">
+        Your browser does not support the demo video.
+      </video>
     </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -952,158 +874,449 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
         <div class="footer-mark">A</div>
         <div>
           <div class="footer-name">AutFlow Studio</div>
-          <div class="footer-tagline">Custom freight invoice audit systems, supported by software and automation.</div>
+          <div class="footer-tagline">Custom AI lead-to-appointment systems</div>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> AutFlow Studio</span>
-      <span>Flagged items are potential discrepancies until verified. Results vary and savings are not guaranteed.</span>
+      <span>Built around your brand, services, rules, and supported integrations.</span>
     </div>
   </div>
 </footer>
 
+<!-- JAVASCRIPT -->
 <script>
+
+/* GSAP */
 gsap.registerPlugin(ScrollTrigger);
 
-const lenis = new Lenis({ duration: 1.15, smoothWheel: true, wheelMultiplier: .85, touchMultiplier: 1.1 });
-function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+/* LENIS */
+const lenis = new Lenis({
+  duration: 1.15,
+  smoothWheel: true,
+  wheelMultiplier: .85,
+  touchMultiplier: 1.1
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
 requestAnimationFrame(raf);
+
+/* CONNECT LENIS TO GSAP */
 lenis.on("scroll", ScrollTrigger.update);
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
 gsap.ticker.lagSmoothing(0);
 
+/* NAVBAR */
 const navbar = document.querySelector(".navbar");
-ScrollTrigger.create({ start: "top -60", onEnter: () => navbar.classList.add("scrolled"), onLeaveBack: () => navbar.classList.remove("scrolled") });
 
-gsap.timeline({ defaults: { ease: "power4.out" } })
+ScrollTrigger.create({
+  start: "top -60",
+  onEnter: () => { navbar.classList.add("scrolled"); },
+  onLeaveBack: () => { navbar.classList.remove("scrolled"); }
+});
+
+/* HERO INTRO */
+const heroTimeline = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+heroTimeline
   .from(".hero-title .line-inner", { yPercent: 110, duration: 1.15, stagger: .09 })
   .from(".hero-animate", { y: 25, opacity: 0, duration: .8, stagger: .1 }, "-=.65")
   .from(".dashboard-wrapper", { y: 90, opacity: 0, scale: .94, duration: 1.4 }, "-=.45");
 
+/* HERO ORBIT ROTATION */
 gsap.to(".hero-orbit", { rotation: 360, duration: 80, repeat: -1, ease: "none" });
-gsap.to(".hero-content", { y: -120, opacity: .35, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-gsap.to(".dashboard", { y: 110, rotateX: 0, scale: .93, opacity: .45, ease: "none", scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 65%", end: "bottom 20%", scrub: 1.2 } });
-gsap.to(".dashboard-glow", { scale: 1.35, opacity: .8, ease: "none", scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true } });
-gsap.to(".glow-1", { y: 500, scale: 1.5, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
-gsap.to(".glow-2", { y: -300, x: 150, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
-gsap.to(".glow-3", { y: -400, x: -150, ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 } });
 
-gsap.utils.toArray(".reveal-left").forEach(el => gsap.from(el, { x: -70, opacity: 0, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 82%", once: true } }));
-gsap.utils.toArray(".reveal-right").forEach(el => gsap.from(el, { x: 70, opacity: 0, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 82%", once: true } }));
-
-/* FEATURE CARDS — each grid animates when it scrolls into view */
-gsap.utils.toArray(".feature-grid, .steps-grid, .process-grid, .engage-grid, .split-grid").forEach(grid => {
-  const cards = grid.querySelectorAll(".feature-card");
-  if (!cards.length) { return; }
-  gsap.from(cards, { y: 60, opacity: 0, scale: .96, duration: 1, stagger: .08, ease: "power4.out", scrollTrigger: { trigger: grid, start: "top 82%", once: true } });
+/* HERO PARALLAX */
+gsap.to(".hero-content", {
+  y: -120,
+  opacity: .35,
+  ease: "none",
+  scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
 });
 
+/* DASHBOARD SCROLL ANIMATION */
+gsap.to(".dashboard", {
+  y: 110,
+  rotateX: 0,
+  scale: .93,
+  opacity: .45,
+  ease: "none",
+  scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 65%", end: "bottom 20%", scrub: 1.2 }
+});
+
+/* DASHBOARD GLOW */
+gsap.to(".dashboard-glow", {
+  scale: 1.35,
+  opacity: .8,
+  ease: "none",
+  scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true }
+});
+
+/* BACKGROUND GLOWS */
+gsap.to(".glow-1", {
+  y: 500,
+  scale: 1.5,
+  ease: "none",
+  scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
+});
+
+gsap.to(".glow-2", {
+  y: -300,
+  x: 150,
+  ease: "none",
+  scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
+});
+
+gsap.to(".glow-3", {
+  y: -400,
+  x: -150,
+  ease: "none",
+  scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
+});
+
+/* SECTION HEADINGS */
+gsap.utils.toArray(".reveal-left").forEach(element => {
+  gsap.from(element, {
+    x: -70,
+    opacity: 0,
+    duration: 1.1,
+    ease: "power4.out",
+    scrollTrigger: { trigger: element, start: "top 82%", once: true }
+  });
+});
+
+gsap.utils.toArray(".reveal-right").forEach(element => {
+  gsap.from(element, {
+    x: 70,
+    opacity: 0,
+    duration: 1.1,
+    ease: "power4.out",
+    scrollTrigger: { trigger: element, start: "top 82%", once: true }
+  });
+});
+
+/* FEATURE CARDS STAGGER */
+gsap.from(".feature-card", {
+  y: 80,
+  opacity: 0,
+  scale: .94,
+  duration: 1,
+  stagger: .1,
+  ease: "power4.out",
+  scrollTrigger: { trigger: ".feature-grid", start: "top 78%", once: true }
+});
+
+/* FEATURE 3D TILT */
 document.querySelectorAll(".feature-3d").forEach(card => {
+
   card.addEventListener("mousemove", event => {
-    if (window.innerWidth < 900) { return; }
+
+    if (window.innerWidth < 900) {
+      return;
+    }
+
     const rect = card.getBoundingClientRect();
-    const x = event.clientX - rect.left, y = event.clientY - rect.top;
-    gsap.to(card, { rotateX: (y - rect.height / 2) / 20, rotateY: (rect.width / 2 - x) / 20, scale: 1.025, duration: .4, ease: "power2.out", overwrite: true });
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+
+    gsap.to(card, {
+      rotateX: rotateX,
+      rotateY: rotateY,
+      scale: 1.025,
+      duration: .4,
+      ease: "power2.out",
+      overwrite: true
+    });
+
   });
-  card.addEventListener("mouseleave", () => gsap.to(card, { rotateX: 0, rotateY: 0, scale: 1, duration: .7, ease: "elastic.out(1,.5)" }));
+
+  card.addEventListener("mouseleave", () => {
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      scale: 1,
+      duration: .7,
+      ease: "elastic.out(1,.5)"
+    });
+  });
+
 });
 
-gsap.from(".ownership-content", { x: -80, opacity: 0, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true } });
-gsap.from(".workflow-box", { x: 100, opacity: 0, scale: .8, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true } });
-gsap.to(".workflow-float", { y: -20, duration: 2.7, repeat: -1, yoyo: true, ease: "sine.inOut" });
+/* OWNERSHIP SECTION */
+gsap.from(".ownership-content", {
+  x: -80,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power4.out",
+  scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
+});
 
-gsap.utils.toArray(".reveal-scale").forEach(el => gsap.from(el, { y: 60, opacity: 0, scale: .96, duration: 1.1, ease: "power4.out", scrollTrigger: { trigger: el, start: "top 80%", once: true } }));
+gsap.from(".workflow-box", {
+  x: 100,
+  opacity: 0,
+  scale: .8,
+  duration: 1.2,
+  ease: "power4.out",
+  scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
+});
 
+/* WORKFLOW FLOAT */
+gsap.to(".workflow-float", {
+  y: -20,
+  duration: 2.7,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut"
+});
+
+/* CENTER HEADINGS */
+gsap.utils.toArray(".reveal-scale").forEach(element => {
+  gsap.from(element, {
+    y: 60,
+    opacity: 0,
+    scale: .96,
+    duration: 1.1,
+    ease: "power4.out",
+    scrollTrigger: { trigger: element, start: "top 80%", once: true }
+  });
+});
+
+/* COUNTERS */
 document.querySelectorAll(".counter").forEach(counter => {
-  const target = Number(counter.dataset.value), isMoney = target > 1000, obj = { value: 0 };
-  gsap.to(obj, { value: target, duration: 1.8, ease: "power2.out", scrollTrigger: { trigger: counter, start: "top 85%", once: true },
-    onUpdate: () => { const v = Math.floor(obj.value); counter.textContent = isMoney ? "$" + v.toLocaleString() : v.toLocaleString(); } });
-});
 
-gsap.from(".bar", { scaleY: 0, transformOrigin: "bottom", stagger: .05, duration: 1.2, ease: "power4.out", scrollTrigger: { trigger: ".chart", start: "top 85%", once: true } });
+  const target = Number(counter.dataset.value);
+  const isMoney = target > 1000;
+  const object = { value: 0 };
 
-document.querySelectorAll(".magnetic").forEach(button => {
-  button.addEventListener("mousemove", event => {
-    if (window.innerWidth < 900) { return; }
-    const rect = button.getBoundingClientRect();
-    gsap.to(button, { x: (event.clientX - rect.left - rect.width / 2) * .13, y: (event.clientY - rect.top - rect.height / 2) * .13, duration: .35, ease: "power3.out" });
+  gsap.to(object, {
+    value: target,
+    duration: 1.8,
+    ease: "power2.out",
+    scrollTrigger: { trigger: counter, start: "top 85%", once: true },
+    onUpdate: () => {
+      const value = Math.floor(object.value);
+      counter.textContent = isMoney
+        ? "$" + value.toLocaleString()
+        : value.toLocaleString();
+    }
   });
-  button.addEventListener("mouseleave", () => gsap.to(button, { x: 0, y: 0, duration: .7, ease: "elastic.out(1,.4)" }));
+
 });
 
-const cursor = document.querySelector(".cursor"), cursorRing = document.querySelector(".cursor-ring");
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-window.addEventListener("mousemove", event => { mouseX = event.clientX; mouseY = event.clientY; gsap.to(cursor, { x: mouseX, y: mouseY, duration: .08, overwrite: true }); });
-gsap.ticker.add(() => { ringX += (mouseX - ringX) * .12; ringY += (mouseY - ringY) * .12; cursorRing.style.left = ringX + "px"; cursorRing.style.top = ringY + "px"; });
-document.querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card").forEach(el => {
-  el.addEventListener("mouseenter", () => gsap.to(cursorRing, { scale: 1.6, borderColor: "rgba(255,255,255,.7)", duration: .25 }));
-  el.addEventListener("mouseleave", () => gsap.to(cursorRing, { scale: 1, borderColor: "rgba(255,255,255,.4)", duration: .25 }));
+/* GROWTH BARS */
+gsap.from(".bar", {
+  scaleY: 0,
+  transformOrigin: "bottom",
+  stagger: .05,
+  duration: 1.2,
+  ease: "power4.out",
+  scrollTrigger: { trigger: ".chart", start: "top 85%", once: true }
 });
+
+/* MAGNETIC BUTTONS */
+document.querySelectorAll(".magnetic").forEach(button => {
+
+  button.addEventListener("mousemove", event => {
+
+    if (window.innerWidth < 900) {
+      return;
+    }
+
+    const rect = button.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const moveX = (x - rect.width / 2) * .13;
+    const moveY = (y - rect.height / 2) * .13;
+
+    gsap.to(button, {
+      x: moveX,
+      y: moveY,
+      duration: .35,
+      ease: "power3.out"
+    });
+
+  });
+
+  button.addEventListener("mouseleave", () => {
+    gsap.to(button, {
+      x: 0,
+      y: 0,
+      duration: .7,
+      ease: "elastic.out(1,.4)"
+    });
+  });
+
+});
+
+/* CUSTOM CURSOR */
+const cursor = document.querySelector(".cursor");
+const cursorRing = document.querySelector(".cursor-ring");
+
+let mouseX = 0;
+let mouseY = 0;
+let ringX = 0;
+let ringY = 0;
+
+window.addEventListener("mousemove", event => {
+
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+
+  gsap.to(cursor, {
+    x: mouseX,
+    y: mouseY,
+    duration: .08,
+    overwrite: true
+  });
+
+});
+
+gsap.ticker.add(() => {
+  ringX += (mouseX - ringX) * .12;
+  ringY += (mouseY - ringY) * .12;
+  cursorRing.style.left = ringX + "px";
+  cursorRing.style.top = ringY + "px";
+});
+
+/* CURSOR HOVER */
+document
+  .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
+  .forEach(element => {
+
+    element.addEventListener("mouseenter", () => {
+      gsap.to(cursorRing, {
+        scale: 1.6,
+        borderColor: "rgba(255,255,255,.7)",
+        duration: .25
+      });
+    });
+
+    element.addEventListener("mouseleave", () => {
+      gsap.to(cursorRing, {
+        scale: 1,
+        borderColor: "rgba(255,255,255,.4)",
+        duration: .25
+      });
+    });
+
+  });
 
 /* MOBILE MENU */
-const menuButton = document.getElementById("mobileMenuButton"), mobileMenu = document.getElementById("mobileMenu");
+const menuButton = document.getElementById("mobileMenuButton");
+const mobileMenu = document.getElementById("mobileMenu");
+
 menuButton.addEventListener("click", () => {
+
   mobileMenu.classList.toggle("active");
   document.body.classList.toggle("menu-open");
-  const open = mobileMenu.classList.contains("active");
-  menuButton.textContent = open ? "×" : "☰";
-  menuButton.setAttribute("aria-expanded", open);
-});
-document.querySelectorAll(".mobile-menu a").forEach(link => link.addEventListener("click", () => {
-  mobileMenu.classList.remove("active"); document.body.classList.remove("menu-open"); menuButton.textContent = "☰"; menuButton.setAttribute("aria-expanded", "false");
-}));
 
-/* SMOOTH ANCHORS */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", event => {
-    const id = anchor.getAttribute("href");
-    if (!id || id === "#") { return; }
-    const target = document.querySelector(id);
-    if (!target) { return; }
-    event.preventDefault();
-    lenis.scrollTo(target, { offset: -80, duration: 1.3 });
+  menuButton.textContent = mobileMenu.classList.contains("active") ? "×" : "☰";
+
+});
+
+document.querySelectorAll(".mobile-menu a").forEach(link => {
+
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+    document.body.classList.remove("menu-open");
+    menuButton.textContent = "☰";
   });
+
 });
 
-/* SPECIALIST MODAL */
-const modal = document.getElementById("specialistModal");
-const modalClose = document.getElementById("specialistModalClose");
-let lastFocus = null;
+/* SMOOTH ANCHOR SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-function openSpecialist() {
-  lastFocus = document.activeElement;
-  modal.classList.add("active");
-  modal.setAttribute("aria-hidden", "false");
+  anchor.addEventListener("click", event => {
+
+    const targetId = anchor.getAttribute("href");
+
+    if (!targetId || targetId === "#") {
+      return;
+    }
+
+    const target = document.querySelector(targetId);
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+
+    lenis.scrollTo(target, {
+      offset: -80,
+      duration: 1.3
+    });
+
+  });
+
+});
+
+/* DEMO MODAL */
+const demoButton = document.getElementById("demoButton");
+const demoModal = document.getElementById("demoModal");
+const demoModalClose = document.getElementById("demoModalClose");
+const demoVideo = document.getElementById("demoVideo");
+
+function openDemo() {
+
+  demoModal.classList.add("active");
+  demoModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("menu-open");
-  lenis.stop();
-  setTimeout(() => modalClose.focus(), 50);
+
+  demoVideo.currentTime = 0;
+  demoVideo.load();
+  demoVideo.play().catch(() => {});
+
 }
-function closeSpecialist() {
-  modal.classList.remove("active");
-  modal.setAttribute("aria-hidden", "true");
+
+function closeDemo() {
+
+  demoModal.classList.remove("active");
+  demoModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("menu-open");
-  lenis.start();
-  if (lastFocus) { lastFocus.focus(); }
+
+  demoVideo.pause();
+
 }
-document.getElementById("specialistButton").addEventListener("click", openSpecialist);
-document.getElementById("specialistButton2").addEventListener("click", openSpecialist);
-modalClose.addEventListener("click", closeSpecialist);
-modal.addEventListener("click", e => { if (e.target === modal) { closeSpecialist(); } });
-document.getElementById("specialistCta").addEventListener("click", () => { lastFocus = null; closeSpecialist(); });
-document.addEventListener("keydown", event => {
-  if (!modal.classList.contains("active")) { return; }
-  if (event.key === "Escape") { closeSpecialist(); return; }
-  if (event.key === "Tab") {
-    const f = modal.querySelectorAll("a[href], button");
-    const first = f[0], last = f[f.length - 1];
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+
+demoButton.addEventListener("click", openDemo);
+demoModalClose.addEventListener("click", closeDemo);
+
+demoModal.addEventListener("click", event => {
+  if (event.target === demoModal) {
+    closeDemo();
   }
 });
 
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && demoModal.classList.contains("active")) {
+    closeDemo();
+  }
+});
+
+/* YEAR */
 document.getElementById("year").textContent = new Date().getFullYear();
-window.addEventListener("load", () => ScrollTrigger.refresh());
+
+/* REFRESH SCROLLTRIGGER */
+window.addEventListener("load", () => {
+  ScrollTrigger.refresh();
+});
+
 </script>
+
 </body>
 </html>

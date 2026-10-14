@@ -4,29 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <title>AutFlow Studio — Custom Software &amp; Workflow Automation by Abderrahmen Hud</title>
+  <title>AutFlow Studio — Focused Software &amp; Workflow Automation by Abderrahmen Hud</title>
 
-  <!-- FIX: favicon path documented — replace AutFlow-logo.png with your actual logo file -->
+  <!-- Favicon: replace AutFlow-logo.png with your actual logo file -->
   <link rel="icon" type="image/png" href="./AutFlow-logo.png">
   <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
   <meta
     name="description"
-    content="AutFlow Studio, led by Abderrahmen Hud, designs and builds custom software, AI-assisted tools, and workflow automation that reduce repetitive manual work and connect the tools a business already uses."
+    content="AutFlow Studio, led by Abderrahmen Hud, turns clearly defined operational problems into practical software: focused digital tools, workflow automation, and custom systems that connect the tools a business already uses."
   >
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AutFlow Studio — Custom Software &amp; Workflow Automation by Abderrahmen Hud">
-  <meta property="og:description" content="Custom software, AI-assisted tools, and workflow automation that reduce repetitive manual work and connect the tools a business already uses.">
+  <meta property="og:title" content="AutFlow Studio — Focused Software &amp; Workflow Automation by Abderrahmen Hud">
+  <meta property="og:description" content="From a clearly defined problem to working software: focused digital tools, workflow automation, and custom systems that connect the tools a business already uses.">
   <meta property="og:image" content="./AutFlow-logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AutFlow Studio — Custom Software &amp; Workflow Automation by Abderrahmen Hud">
-  <meta name="twitter:description" content="Custom software, AI-assisted tools, and workflow automation built around the way your business actually works.">
-
-  <!-- =========================================================
-       FONTS
-  ========================================================== -->
+  <meta name="twitter:title" content="AutFlow Studio — Focused Software &amp; Workflow Automation by Abderrahmen Hud">
+  <meta name="twitter:description" content="From a clearly defined problem to working software: focused tools, workflow automation, and custom systems built around how your business actually works.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,3106 +32,407 @@
     rel="stylesheet"
   >
 
-  <!-- =========================================================
-       GSAP
-  ========================================================== -->
-
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-
-  <!-- =========================================================
-       LENIS SMOOTH SCROLL
-  ========================================================== -->
-
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <style>
-
-    /* =========================================================
-       RESET
-    ========================================================== */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: auto;
-      width: 100%;
-      overflow-x: hidden;
-      /* Safe area insets for phones with notch/home bar */
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
-
-    body {
-      margin: 0;
-      background: #050505;
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      overflow-x: hidden;
-      line-height: 1.5;
-      width: 100%;
-      min-width: 0;
-
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
-
-    body.menu-open {
-      overflow: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      border: none;
-      font: inherit;
-      cursor: pointer;
-    }
-
-    img,
-    video,
-    svg {
-      max-width: 100%;
-    }
-
-    ::selection {
-      background: #fff;
-      color: #000;
-    }
-
-    /* FIX: Keyboard focus visibility — accessibility requirement */
-    :focus-visible {
-      outline: 2px solid rgba(255,255,255,.7);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    /* =========================================================
-       GLOBAL
-    ========================================================== */
-
-    :root {
-      --white: #fff;
-      --muted: rgba(255,255,255,.42);
-      --soft: rgba(255,255,255,.08);
-      --border: rgba(255,255,255,.09);
-      --panel: rgba(255,255,255,.025);
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 48px));
-      margin: auto;
-      min-width: 0;
-    }
-
-    .section-border {
-      border-top: 1px solid rgba(255,255,255,.07);
-    }
-
-    .section-padding {
-      padding: 140px 0;
-    }
-
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================== */
-
-    .cursor {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fff;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-    }
-
-    .cursor-ring {
-      position: fixed;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255,255,255,.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-    }
-
-    /* =========================================================
-       BACKGROUND
-    ========================================================== */
-
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -10;
-      overflow: hidden;
-      background: #050505;
-      pointer-events: none;
-    }
-
-    .background-grid {
-      position: absolute;
-      inset: 0;
-
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.025) 1px,
-          transparent 1px
-        );
-
-      background-size: 70px 70px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 80%
-        );
-    }
-
-    .glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: .45;
-    }
-
-    .glow-1 {
-      width: 650px;
-      height: 650px;
-      top: -300px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,.055);
-    }
-
-    .glow-2 {
-      width: 400px;
-      height: 400px;
-      top: 900px;
-      left: -200px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .glow-3 {
-      width: 450px;
-      height: 450px;
-      top: 1600px;
-      right: -200px;
-      background: rgba(255,255,255,.025);
-    }
-
-    /* =========================================================
-       NAVBAR
-    ========================================================== */
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 500;
-
-      border-bottom: 1px solid transparent;
-
-      background: rgba(5,5,5,.25);
-
-      backdrop-filter: blur(0);
-      -webkit-backdrop-filter: blur(0);
-
-      transition:
-        background .4s ease,
-        border-color .4s ease,
-        backdrop-filter .4s ease;
-    }
-
-    .navbar.scrolled {
-      background: rgba(5,5,5,.75);
-      border-color: rgba(255,255,255,.07);
-
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-
-    .nav-inner {
-      height: 78px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      min-width: 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      flex: 0 0 38px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 11px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.1),
-          rgba(255,255,255,.025)
-        );
-
-      box-shadow:
-        0 0 40px rgba(255,255,255,.035);
-    }
-
-    .brand-mark span {
-      font-family: "Space Grotesk";
-      font-weight: 700;
-    }
-
-    .brand-name {
-      font-family: "Space Grotesk";
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .brand-name span {
-      color: rgba(255,255,255,.5);
-    }
-
-    .brand-subtitle {
-      font-size: 7px;
-      letter-spacing: .25em;
-      color: rgba(255,255,255,.45);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-    }
-
-    .nav-links a {
-      font-size: 11px;
-      color: rgba(255,255,255,.62);
-      transition: color .25s ease;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
-    .nav-button {
-      padding: 11px 19px;
-
-      border-radius: 999px;
-
-      background: #fff;
-      color: #000;
-
-      font-size: 10px;
-      font-weight: 700;
-
-      transition:
-        transform .25s ease,
-        background .25s ease;
-
-      white-space: nowrap;
-    }
-
-    .nav-button:hover {
-      transform: translateY(-2px);
-      background: #e9e9e9;
-    }
-
-    .mobile-menu-button {
-      display: none;
-
-      width: 40px;
-      height: 40px;
-      flex: 0 0 40px;
-
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 10px;
-
-      background: rgba(255,255,255,.04);
-      color: white;
-    }
-
-    .mobile-menu {
-      display: none;
-    }
-
-    /* =========================================================
-       HERO
-    ========================================================== */
-
-    .hero {
-      min-height: 100vh;
-
-      padding-top: 175px;
-      padding-bottom: 100px;
-
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-content {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-
-      position: relative;
-      z-index: 2;
-      min-width: 0;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 8px 14px;
-
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.035);
-
-      color: rgba(255,255,255,.62);
-
-      font-size: 8px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      max-width: 100%;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      flex: 0 0 6px;
-
-      border-radius: 50%;
-
-      background: #66e394;
-
-      box-shadow:
-        0 0 15px rgba(102,227,148,.7);
-    }
-
-    .hero-title {
-      margin-top: 28px;
-
-      font-family: "Space Grotesk";
-
-      font-size: clamp(52px, 7.4vw, 92px);
-
-      line-height: .95;
-
-      letter-spacing: -.07em;
-
-      font-weight: 600;
-
-      overflow-wrap: normal;
-      word-break: normal;
-    }
-
-    .hero-title .line {
-      display: block;
-      overflow: hidden;
-    }
-
-    .hero-title .line-inner {
-      display: block;
-    }
-
-    .hero-title .muted {
-      color: rgba(255,255,255,.48);
-    }
-
-    .hero-description {
-      max-width: 650px;
-
-      margin: 32px auto 0;
-
-      color: rgba(255,255,255,.64);
-
-      font-size: 15px;
-
-      line-height: 1.9;
-    }
-
-    .hero-actions {
-      margin-top: 34px;
-
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      min-height: 48px;
-
-      padding: 0 23px;
-
-      border-radius: 999px;
-
-      font-size: 11px;
-      font-weight: 600;
-
-      transition:
-        background .3s ease,
-        border-color .3s ease;
-
-      max-width: 100%;
-      text-align: center;
-    }
-
-    .button-primary {
-      background: #fff;
-      color: #000;
-    }
-
-    .button-secondary {
-      background: rgba(255,255,255,.035);
-      border: 1px solid rgba(255,255,255,.1);
-      color: rgba(255,255,255,.75);
-    }
-
-    .button-secondary:hover {
-      border-color: rgba(255,255,255,.2);
-      color: #fff;
-    }
-
-    /* =========================================================
-       HERO ORBIT
-    ========================================================== */
-
-    .hero-orbit {
-      position: absolute;
-
-      width: 950px;
-      height: 950px;
-
-      left: 50%;
-      top: 360px;
-
-      transform: translateX(-50%);
-
-      border: 1px solid rgba(255,255,255,.025);
-
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-    .hero-orbit::before {
-      content: "";
-
-      position: absolute;
-
-      inset: 80px;
-
-      border: 1px solid rgba(255,255,255,.02);
-
-      border-radius: 50%;
-    }
-
-    .orbit-dot {
-      position: absolute;
-
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: white;
-
-      box-shadow:
-        0 0 20px rgba(255,255,255,.7);
-
-      left: 50%;
-      top: 0;
-    }
-
-    /* =========================================================
-       DASHBOARD
-    ========================================================== */
-
-    .dashboard-wrapper {
-      position: relative;
-
-      width: 100%;
-      max-width: 1120px;
-
-      margin: 100px auto 0;
-
-      perspective: 1400px;
-      min-width: 0;
-    }
-
-    .dashboard-glow {
-      position: absolute;
-
-      width: 800px;
-      height: 350px;
-
-      left: 50%;
-      top: 50%;
-
-      transform: translate(-50%,-50%);
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(100px);
-
-      max-width: 90vw;
-    }
-
-    .dashboard {
-      position: relative;
-
-      width: 100%;
-      max-width: 100%;
-
-      border: 1px solid rgba(255,255,255,.12);
-
-      border-radius: 20px;
-
-      overflow: hidden;
-
-      background: #090909;
-
-      box-shadow:
-        0 70px 150px rgba(0,0,0,.75),
-        0 0 100px rgba(255,255,255,.025);
-
-      transform-origin: center top;
-
-      will-change: transform;
-    }
-
-    .browser-bar {
-      min-height: 45px;
-      height: 45px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 0 16px;
-
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .browser-dots {
-      display: flex;
-      gap: 6px;
-      flex: 0 0 auto;
-    }
-
-    .browser-dots span {
-      width: 8px;
-      height: 8px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.13);
-    }
-
-    .browser-status {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
-      color: rgba(255,255,255,.7);
-
-      font-size: 9px;
-
-      min-width: 0;
-      text-align: center;
-    }
-
-    .browser-status i {
-      width: 6px;
-      height: 6px;
-      flex: 0 0 6px;
-
-      border-radius: 50%;
-
-      background: #5cdf8d;
-    }
-
-    .browser-label {
-      color: rgba(255,255,255,.5);
-
-      font-size: 8px;
-
-      letter-spacing: .2em;
-
-      white-space: nowrap;
-    }
-
-    .dashboard-body {
-      display: grid;
-      grid-template-columns: 210px minmax(0, 1fr);
-
-      min-height: 460px;
-      min-width: 0;
-    }
-
-    .sidebar {
-      padding: 22px 15px;
-
-      border-right: 1px solid rgba(255,255,255,.07);
-
-      min-width: 0;
-    }
-
-    .sidebar-title {
-      margin-bottom: 14px;
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 7px;
-
-      letter-spacing: .2em;
-
-      text-transform: uppercase;
-    }
-
-    .sidebar-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 10px;
-
-      margin-bottom: 3px;
-
-      border-radius: 8px;
-
-      color: rgba(255,255,255,.5);
-
-      font-size: 9px;
-
-      transition: .25s ease;
-    }
-
-    .sidebar-item:hover {
-      background: rgba(255,255,255,.035);
-      color: #fff;
-    }
-
-    .sidebar-item.active {
-      background: rgba(255,255,255,.065);
-      color: #fff;
-    }
-
-    .sidebar-icon {
-      width: 12px;
-      height: 12px;
-      flex: 0 0 12px;
-
-      border: 1px solid currentColor;
-
-      border-radius: 3px;
-
-      opacity: .6;
-    }
-
-    .sidebar-separator {
-      height: 1px;
-
-      background: rgba(255,255,255,.06);
-
-      margin: 27px 0 18px;
-    }
-
-    .dashboard-main {
-      padding: 28px;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-
-      gap: 20px;
-      min-width: 0;
-    }
-
-    .dashboard-header > div:first-child {
-      min-width: 0;
-    }
-
-    .dashboard-eyebrow {
-      color: rgba(255,255,255,.5);
-
-      font-size: 7px;
-
-      letter-spacing: .2em;
-
-      text-transform: uppercase;
-    }
-
-    .dashboard-heading {
-      margin-top: 7px;
-
-      font-size: 23px;
-
-      letter-spacing: -.04em;
-
-      overflow-wrap: break-word;
-    }
-
-    .dashboard-filter {
-      padding: 8px 11px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 7px;
-
-      color: rgba(255,255,255,.5);
-
-      font-size: 7px;
-
-      flex: 0 0 auto;
-      white-space: nowrap;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
-
-      gap: 9px;
-
-      margin-top: 28px;
-    }
-
-    .stat {
-      padding: 15px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.018);
-
-      min-width: 0;
-    }
-
-    .stat-label {
-      color: rgba(255,255,255,.42);
-
-      font-size: 7px;
-
-      overflow-wrap: break-word;
-    }
-
-    .stat-value {
-      margin-top: 6px;
-
-      font-size: 17px;
-
-      white-space: nowrap;
-    }
-
-    .stat-change {
-      margin-top: 3px;
-
-      color: #62db8b;
-
-      font-size: 7px;
-
-      overflow-wrap: break-word;
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1.5fr) minmax(0,1fr);
-
-      gap: 11px;
-
-      margin-top: 12px;
-
-      min-width: 0;
-    }
-
-    .panel {
-      padding: 17px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,.018);
-
-      min-width: 0;
-    }
-
-    .panel-title {
-      font-size: 9px;
-    }
-
-    .panel-subtitle {
-      margin-top: 3px;
-
-      color: rgba(255,255,255,.42);
-
-      font-size: 7px;
-
-      overflow-wrap: break-word;
-    }
-
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-
-      margin-top: 17px;
-    }
-
-    .project {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      padding: 9px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      border-radius: 8px;
-
-      background: rgba(0,0,0,.25);
-
-      min-width: 0;
-    }
-
-    .project-number {
-      width: 27px;
-      height: 27px;
-      flex: 0 0 27px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 6px;
-
-      background: rgba(255,255,255,.05);
-
-      color: rgba(255,255,255,.45);
-
-      font-size: 7px;
-    }
-
-    .project-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .project-name {
-      color: rgba(255,255,255,.8);
-
-      font-size: 8px;
-
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .project-status {
-      margin-top: 2px;
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 6px;
-    }
-
-    .project-price {
-      color: rgba(255,255,255,.6);
-
-      font-size: 8px;
-
-      flex: 0 0 auto;
-      white-space: nowrap;
-    }
-
-    .chart {
-      height: 115px;
-
-      display: flex;
-      align-items: flex-end;
-
-      gap: 6px;
-
-      margin-top: 25px;
-    }
-
-    .bar {
-      flex: 1;
-
-      min-height: 4px;
-
-      border-radius: 4px 4px 0 0;
-
-      background: rgba(255,255,255,.12);
-    }
-
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================== */
-
-    .section-heading-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
-      gap: 80px;
-
-      align-items: end;
-    }
-
-    .section-heading-grid > * {
-      min-width: 0;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      margin-bottom: 19px;
-
-      color: rgba(255,255,255,.45);
-
-      font-size: 8px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .22em;
-    }
-
-    .eyebrow-line {
-      width: 27px;
-      height: 1px;
-      flex: 0 0 27px;
-
-      background: rgba(255,255,255,.3);
-    }
-
-    h2 {
-      font-family: "Space Grotesk";
-
-      font-size: clamp(40px,5vw,60px);
-
-      line-height: 1;
-
-      letter-spacing: -.06em;
-
-      font-weight: 600;
-
-      overflow-wrap: break-word;
-    }
-
-    h2 .muted {
-      color: rgba(255,255,255,.48);
-    }
-
-    .section-description {
-      max-width: 500px;
-
-      color: rgba(255,255,255,.6);
-
-      font-size: 13px;
-
-      line-height: 1.9;
-    }
-
-    .section-description.centered {
-      max-width: 620px;
-      margin: 24px auto 0;
-      text-align: center;
-    }
-
-    /* =========================================================
-       FEATURES
-    ========================================================== */
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
-
-    .feature-card {
-      position: relative;
-
-      min-height: 230px;
-
-      padding: 28px;
-
-      overflow: hidden;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 17px;
-
-      background: rgba(255,255,255,.018);
-
-      transform-style: preserve-3d;
-
-      will-change: transform;
-
-      transition:
-        border-color .3s ease,
-        background .3s ease;
-
-      min-width: 0;
-    }
-
-    .feature-card::after {
-      content: "";
-
-      position: absolute;
-
-      width: 180px;
-      height: 180px;
-
-      top: -100px;
-      right: -100px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(35px);
-
-      transition: .4s ease;
-    }
-
-    .feature-card:hover {
-      border-color: rgba(255,255,255,.16);
-      background: rgba(255,255,255,.035);
-    }
-
-    .feature-card:hover::after {
-      background: rgba(255,255,255,.09);
-    }
-
-    .feature-icon {
-      width: 43px;
-      height: 43px;
-      flex: 0 0 43px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.04);
-
-      font-size: 15px;
-    }
-
-    .feature-title {
-      margin-top: 28px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 15px;
-
-      overflow-wrap: break-word;
-    }
-
-    .feature-description {
-      margin-top: 10px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 10px;
-
-      line-height: 1.8;
-    }
-
-    .feature-card .check-list {
-      margin-top: 22px;
-    }
-
-    /* =========================================================
-       FEATURE BADGES / REQUEST ANSWERS / EQUATION ROW
-    ========================================================== */
-
-    .feature-badge {
-      display: inline-block;
-
-      margin-top: 14px;
-
-      padding: 5px 9px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.03);
-
-      color: rgba(255,255,255,.65);
-
-      font-size: 6.5px;
-
-      letter-spacing: .14em;
-
-      text-transform: uppercase;
-    }
-
-    .request-answer {
-      margin-top: 18px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 18px;
-
-      font-weight: 600;
-
-      letter-spacing: -.02em;
-
-      color: #fff;
-    }
-
-    .equation-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-
-      gap: 16px;
-
-      margin-top: 55px;
-    }
-
-    /* =========================================================
-       OWNERSHIP / PRIMARY OFFER
-    ========================================================== */
-
-    .ownership-card {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
-      overflow: hidden;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 25px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.01)
-        );
-
-      min-width: 0;
-    }
-
-    .ownership-content {
-      padding: 65px;
-      min-width: 0;
-    }
-
-    .small-tag {
-      display: inline-block;
-
-      padding: 6px 10px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 999px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
-
-      max-width: 100%;
-    }
-
-    .ownership-content p {
-      max-width: 480px;
-
-      margin-top: 24px;
-
-      color: rgba(255,255,255,.5);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .ownership-note {
-      max-width: 480px;
-
-      margin-top: 22px;
-
-      color: rgba(255,255,255,.28);
-
-      font-size: 10px;
-
-      line-height: 1.8;
-
-      font-style: italic;
-    }
-
-    .check-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 11px;
-
-      margin-top: 28px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      color: rgba(255,255,255,.72);
-
-      font-size: 10px;
-
-      min-width: 0;
-    }
-
-    .check {
-      width: 20px;
-      height: 20px;
-      flex: 0 0 20px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.07);
-
-      font-size: 9px;
-    }
-
-    .workflow-visual {
-      min-height: 440px;
-
-      position: relative;
-
-      overflow: hidden;
-
-      border-left: 1px solid rgba(255,255,255,.07);
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.065),
-          transparent 60%
-        );
-
-      min-width: 0;
-    }
-
-    .workflow-box {
-      position: absolute;
-
-      left: 50%;
-      top: 50%;
-
-      width: min(290px, calc(100% - 40px));
-
-      transform: translate(-50%,-50%);
-
-      padding: 20px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 17px;
-
-      background: rgba(7,7,7,.88);
-
-      box-shadow:
-        0 35px 90px rgba(0,0,0,.65);
-
-      backdrop-filter: blur(15px);
-    }
-
-    .workflow-header {
-      display: flex;
-      justify-content: space-between;
-
-      gap: 10px;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 8px;
-    }
-
-    .workflow-active {
-      color: #60dc8b;
-      white-space: nowrap;
-    }
-
-    .workflow-steps {
-      display: flex;
-      flex-direction: column;
-
-      gap: 6px;
-
-      margin-top: 18px;
-    }
-
-    .workflow-step {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 11px;
-
-      border: 1px solid rgba(255,255,255,.05);
-
-      border-radius: 8px;
-
-      background: rgba(255,255,255,.018);
-
-      color: rgba(255,255,255,.62);
-
-      font-size: 8px;
-
-      min-width: 0;
-    }
-
-    .workflow-step-dot {
-      width: 5px;
-      height: 5px;
-      flex: 0 0 5px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.2);
-    }
-
-    .workflow-step:last-child .workflow-step-dot {
-      background: #fff;
-    }
-
-    /* =========================================================
-       TABS (CSS retained — not currently used in HTML)
-    ========================================================== */
-
-    .center-heading {
-      max-width: 800px;
-
-      margin: auto;
-
-      text-align: center;
-
-      min-width: 0;
-    }
-
-    .center-heading .eyebrow {
-      justify-content: center;
-    }
-
-    /* =========================================================
-       WHITE-LABEL MODEL FLOW + PILL ROWS
-    ========================================================== */
-
-    .flow-diagram {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      gap: 12px;
-
-      margin-top: 60px;
-    }
-
-    .flow-node {
-      padding: 16px 30px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 999px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.05),
-          rgba(255,255,255,.015)
-        );
-
-      font-family: "Space Grotesk";
-
-      font-size: 12px;
-
-      letter-spacing: .03em;
-
-      color: rgba(255,255,255,.82);
-
-      text-align: center;
-
-      max-width: 100%;
-    }
-
-    .flow-arrow {
-      color: rgba(255,255,255,.4);
-
-      font-size: 14px;
-      line-height: 1;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      gap: 9px;
-
-      margin-top: 40px;
-    }
-
-    /* =========================================================
-       TEAM / CLIENT SPLIT
-    ========================================================== */
-
-    .split-grid {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
-
-    .split-grid .feature-card {
-      min-height: 0;
-    }
-
-    .split-grid .feature-card .check-list {
-      margin-top: 22px;
-    }
-
-    .split-grid .check-item {
-      color: rgba(255,255,255,.4);
-      font-size: 9px;
-    }
-
-    /* =========================================================
-       HOW IT WORKS / 4-UP STEP STYLE GRIDS
-    ========================================================== */
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
-
-      gap: 13px;
-
-      margin-top: 65px;
-    }
-
-    .steps-grid .feature-card {
-      min-height: 200px;
-    }
-
-    /* =========================================================
-       CUSTOM SOFTWARE OPTIONS
-    ========================================================== */
-
-    .custom-card {
-      position: relative;
-
-      overflow: hidden;
-
-      padding: 65px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 25px;
-
-      background: #080808;
-
-      min-width: 0;
-    }
-
-    .custom-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      right: -150px;
-      top: -200px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(100px);
-
-      pointer-events: none;
-    }
-
-    .custom-grid {
-      position: relative;
-
-      display: grid;
-      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-
-      gap: 70px;
-
-      align-items: center;
-
-      min-width: 0;
-    }
-
-    .custom-copy {
-      min-width: 0;
-    }
-
-    .custom-description {
-      max-width: 510px;
-
-      margin-top: 22px;
-
-      color: rgba(255,255,255,.58);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .custom-copy .button {
-      margin-top: 30px;
-    }
-
-    .custom-options {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-
-      min-width: 0;
-    }
-
-    .custom-option {
-      position: relative;
-
-      padding: 22px;
-
-      border: 1px solid rgba(255,255,255,.08);
-
-      border-radius: 17px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.035),
-          rgba(255,255,255,.012)
-        );
-
-      overflow: hidden;
-
-      transition:
-        transform .35s ease,
-        border-color .35s ease,
-        background .35s ease,
-        box-shadow .35s ease;
-
-      min-width: 0;
-    }
-
-    .custom-option::before {
-      content: "";
-
-      position: absolute;
-
-      width: 170px;
-      height: 170px;
-
-      top: -100px;
-      right: -80px;
-
-      border-radius: 50%;
-
-      background: rgba(255,255,255,.035);
-
-      filter: blur(35px);
-
-      transition: .4s ease;
-    }
-
-    .custom-option:hover {
-      transform: translateY(-4px);
-
-      border-color: rgba(255,255,255,.18);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.018)
-        );
-
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
-    }
-
-    .custom-option:hover::before {
-      background: rgba(255,255,255,.075);
-    }
-
-    .custom-option-top {
-      position: relative;
-
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      gap: 15px;
-
-      min-width: 0;
-    }
-
-    .custom-option-number {
-      width: 36px;
-      height: 36px;
-      flex: 0 0 36px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 10px;
-
-      background: rgba(255,255,255,.045);
-
-      color: rgba(255,255,255,.65);
-
-      font-family: "DM Mono";
-
-      font-size: 8px;
-    }
-
-    .custom-option-label {
-      color: rgba(255,255,255,.45);
-
-      font-size: 7px;
-
-      letter-spacing: .18em;
-
-      text-transform: uppercase;
-
-      text-align: right;
-
-      line-height: 1.5;
-    }
-
-    .custom-option h3 {
-      position: relative;
-
-      margin-top: 18px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 19px;
-
-      line-height: 1.15;
-
-      letter-spacing: -.035em;
-
-      font-weight: 500;
-
-      max-width: 410px;
-    }
-
-    .custom-option p {
-      position: relative;
-
-      margin-top: 10px;
-
-      color: rgba(255,255,255,.5);
-
-      font-size: 9px;
-
-      line-height: 1.8;
-
-      max-width: 450px;
-    }
-
-    .custom-option-features {
-      position: relative;
-
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 6px;
-
-      margin-top: 16px;
-    }
-
-    .custom-option-feature {
-      padding: 5px 8px;
-
-      border: 1px solid rgba(255,255,255,.07);
-
-      border-radius: 999px;
-
-      background: rgba(255,255,255,.018);
-
-      color: rgba(255,255,255,.58);
-
-      font-size: 6px;
-
-      letter-spacing: .03em;
-    }
-
-    .custom-option-arrow {
-      position: relative;
-
-      display: flex;
-      justify-content: flex-end;
-
-      margin-top: 17px;
-
-      color: rgba(255,255,255,.28);
-
-      font-size: 15px;
-
-      transition:
-        color .3s ease,
-        transform .3s ease;
-    }
-
-    .custom-option:hover .custom-option-arrow {
-      color: #fff;
-      transform: translateX(4px);
-    }
-
-    /* =========================================================
-       SUITABILITY / WHO IT'S FOR
-    ========================================================== */
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 16px;
-      margin-top: 65px;
-    }
-
-    .pricing-card {
-      position: relative;
-      padding: 42px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 22px;
-      background: rgba(255,255,255,.018);
-      overflow: hidden;
-      min-width: 0;
-    }
-
-    .pricing-card.featured {
-      border-color: rgba(255,255,255,.22);
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.015)
-        );
-    }
-
-    .pricing-label {
-      color: rgba(255,255,255,.45);
-      font-size: 7px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    .pricing-name {
-      margin-top: 14px;
-      font-family: "Space Grotesk";
-      font-size: 21px;
-      letter-spacing: -.03em;
-    }
-
-    .pricing-card .check-list {
-      margin-top: 24px;
-    }
-
-    /* =========================================================
-       FINAL CTA
-    ========================================================== */
-
-    .final-cta {
-      padding: 160px 0;
-
-      text-align: center;
-    }
-
-    .final-icon {
-      width: 50px;
-      height: 50px;
-
-      display: grid;
-      place-items: center;
-
-      margin: 0 auto 25px;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 14px;
-
-      background: rgba(255,255,255,.04);
-    }
-
-    .final-cta p {
-      max-width: 550px;
-
-      margin: 25px auto 0;
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .final-actions {
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-
-      gap: 12px;
-
-      margin-top: 30px;
-    }
-
-    .final-actions .hero-actions {
-      margin-top: 0;
-    }
-
-    .availability {
-      color: rgba(255,255,255,.18);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .18em;
-
-      max-width: 100%;
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================== */
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,.07);
-    }
-
-    .footer-inner {
-      min-height: 140px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      min-width: 0;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      min-width: 0;
-    }
-
-    .footer-mark {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.1);
-
-      border-radius: 9px;
-
-      font-family: "Space Grotesk";
-
-      font-size: 11px;
-
-      font-weight: 700;
-    }
-
-    .footer-name {
-      font-size: 11px;
-    }
-
-    .footer-tagline {
-      margin-top: 3px;
-
-      color: rgba(255,255,255,.4);
-
-      font-size: 7px;
-
-      text-transform: uppercase;
-
-      letter-spacing: .15em;
-
-      overflow-wrap: break-word;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding: 18px 0;
-
-      border-top: 1px solid rgba(255,255,255,.05);
-
-      color: rgba(255,255,255,.38);
-
-      font-size: 7px;
-
-      min-width: 0;
-    }
-
-    .footer-bottom span {
-      min-width: 0;
-      overflow-wrap: break-word;
-    }
-
-    /* =========================================================
-       RESPONSIVE — TABLET
-    ========================================================== */
-
-    @media(max-width:1100px) {
-
-      .container {
-        width: min(100% - 40px, 1180px);
-      }
-
-      .nav-links {
-        gap: 22px;
-      }
-
-      .section-heading-grid {
-        gap: 50px;
-      }
-
-      .ownership-content {
-        padding: 50px;
-      }
-
-      .custom-card {
-        padding: 50px;
-      }
-
-      .custom-grid {
-        gap: 45px;
-      }
-
-      .dashboard-main {
-        padding: 22px;
-      }
-
-      .dashboard-heading {
-        font-size: 20px;
-      }
-
-      .stats {
-        gap: 7px;
-      }
-
-      .stat {
-        padding: 12px;
-      }
-
-      .dashboard-grid {
-        gap: 8px;
-      }
-
-      .panel {
-        padding: 14px;
-      }
-
-      .steps-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* =========================================================
-       RESPONSIVE — TABLET / MOBILE NAV
-    ========================================================== */
-
-    @media(max-width:900px) {
-
-      .nav-links,
-      .nav-button {
-        display: none;
-      }
-
-      .mobile-menu-button {
-        display: block;
-      }
-
-      .mobile-menu.active {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 18px;
-
-        padding: 22px 24px 28px;
-
-        border-top: 1px solid rgba(255,255,255,.06);
-
-        background: rgba(5,5,5,.96);
-
-        max-height: calc(100vh - 78px);
-        overflow-y: auto;
-      }
-
-      .mobile-menu a {
-        color: rgba(255,255,255,.7);
-        font-size: 13px;
-      }
-
-      .mobile-menu .mobile-cta {
-        padding: 13px;
-
-        border-radius: 10px;
-
-        background: #fff;
-
-        color: #000;
-
-        text-align: center;
-
-        font-weight: 700;
-      }
-
-      .dashboard-body {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        display: none;
-      }
-
-      .section-heading-grid,
-      .ownership-card,
-      .custom-grid,
-      .split-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-heading-grid {
-        align-items: start;
-      }
-
-      .workflow-visual {
-        border-left: none;
-        border-top: 1px solid rgba(255,255,255,.07);
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .stats {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .dashboard-main {
-        padding: 22px;
-      }
-
-      .hero-orbit {
-        width: 800px;
-        height: 800px;
-      }
-
-      .custom-grid {
-        gap: 35px;
-      }
-
-      .workflow-visual {
-        min-height: 390px;
-      }
-    }
-
-    /* =========================================================
-       RESPONSIVE — SMALL TABLETS
-    ========================================================== */
-
-    @media(max-width:760px) {
-
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .nav-inner {
-        height: 72px;
-      }
-
-      .mobile-menu.active {
-        max-height: calc(100vh - 72px);
-      }
-
-      .hero {
-        padding-top: 125px;
-        padding-bottom: 70px;
-      }
-
-      .hero-title {
-        font-size: clamp(46px, 10vw, 64px);
-      }
-
-      .hero-description {
-        max-width: 600px;
-        font-size: 13px;
-        line-height: 1.8;
-      }
-
-      .dashboard-wrapper {
-        margin-top: 70px;
-      }
-
-      .dashboard {
-        border-radius: 16px;
-      }
-
-      .browser-bar {
-        padding: 0 12px;
-      }
-
-      .browser-status {
-        font-size: 8px;
-      }
-
-      .dashboard-main {
-        padding: 18px;
-      }
-
-      .dashboard-heading {
-        font-size: 18px;
-      }
-
-      .section-padding {
-        padding: 105px 0;
-      }
-
-      .section-heading-grid {
-        gap: 35px;
-      }
-
-      h2 {
-        font-size: clamp(38px, 8vw, 52px);
-      }
-
-      .feature-card {
-        padding: 24px;
-      }
-
-      .ownership-content {
-        padding: 42px 30px;
-      }
-
-      .custom-card {
-        padding: 42px 30px;
-      }
-
-      .final-cta {
-        padding: 120px 0;
-      }
-
-      .footer-bottom {
-        gap: 12px;
-      }
-
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* =========================================================
-       RESPONSIVE — MOBILE
-    ========================================================== */
-
-    @media(max-width:620px) {
-
-      .container {
-        width: calc(100% - 30px);
-        max-width: none;
-      }
-
-      .cursor,
-      .cursor-ring {
-        display: none;
-      }
-
-      .brand {
-        gap: 9px;
-      }
-
-      .brand-mark {
-        width: 35px;
-        height: 35px;
-        flex-basis: 35px;
-        border-radius: 10px;
-      }
-
-      .brand-name {
-        font-size: 13px;
-      }
-
-      .brand-subtitle {
-        font-size: 6px;
-        letter-spacing: .18em;
-      }
-
-      .hero {
-        padding-top: 125px;
-        padding-bottom: 65px;
-      }
-
-      .hero-orbit {
-        width: 620px;
-        height: 620px;
-        top: 410px;
-      }
-
-      .hero-orbit::before {
-        inset: 55px;
-      }
-
-      .status-pill {
-        padding: 7px 11px;
-        gap: 7px;
-        font-size: 7px;
-        letter-spacing: .12em;
-      }
-
-      .hero-title {
-        margin-top: 24px;
-        font-size: clamp(38px, 12vw, 52px);
-        letter-spacing: -.065em;
-        line-height: .98;
-      }
-
-      .hero-title .line-inner {
-        max-width: 100%;
-      }
-
-      .hero-description {
-        margin-top: 25px;
-        font-size: 12px;
-        line-height: 1.85;
-      }
-
-      .hero-actions {
-        margin-top: 28px;
-        flex-direction: column;
-        width: 100%;
-        gap: 9px;
-      }
-
-      .button {
-        width: 100%;
-        min-height: 48px;
-        padding: 0 18px;
-        font-size: 10px;
-      }
-
-      .dashboard-wrapper {
-        margin-top: 55px;
-        width: 100%;
-      }
-
-      .dashboard {
-        border-radius: 14px;
-      }
-
-      .browser-bar {
-        height: 40px;
-        min-height: 40px;
-        padding: 0 10px;
-      }
-
-      .browser-dots {
-        gap: 5px;
-      }
-
-      .browser-dots span {
-        width: 7px;
-        height: 7px;
-      }
-
-      .browser-status {
-        font-size: 7px;
-        gap: 5px;
-      }
-
-      .browser-status i {
-        width: 5px;
-        height: 5px;
-        flex-basis: 5px;
-      }
-
-      .browser-label {
-        display: none;
-      }
-
-      .dashboard-body {
-        min-height: 0;
-      }
-
-      .dashboard-main {
-        padding: 14px;
-      }
-
-      .dashboard-header {
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .dashboard-eyebrow {
-        font-size: 6px;
-        letter-spacing: .15em;
-      }
-
-      .dashboard-heading {
-        margin-top: 5px;
-        font-size: 16px;
-        line-height: 1.2;
-      }
-
-      .dashboard-filter {
-        padding: 7px 8px;
-        font-size: 6px;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-        gap: 6px;
-        margin-top: 20px;
-      }
-
-      .stat {
-        padding: 10px;
-        border-radius: 9px;
-      }
-
-      .stat-label {
-        font-size: 6px;
-      }
-
-      .stat-value {
-        margin-top: 5px;
-        font-size: 14px;
-      }
-
-      .stat-change {
-        font-size: 6px;
-      }
-
-      .dashboard-grid {
-        grid-template-columns: 1fr;
-        gap: 7px;
-        margin-top: 8px;
-      }
-
-      .panel {
-        padding: 12px;
-        border-radius: 10px;
-      }
-
-      .panel-title {
-        font-size: 8px;
-      }
-
-      .panel-subtitle {
-        font-size: 6px;
-      }
-
-      .project-list {
-        gap: 5px;
-        margin-top: 12px;
-      }
-
-      .project {
-        gap: 7px;
-        padding: 7px;
-      }
-
-      .project-number {
-        width: 23px;
-        height: 23px;
-        flex-basis: 23px;
-        font-size: 6px;
-      }
-
-      .project-name {
-        font-size: 7px;
-      }
-
-      .project-status {
-        font-size: 5px;
-      }
-
-      .project-price {
-        font-size: 7px;
-      }
-
-      .chart {
-        height: 90px;
-        gap: 4px;
-        margin-top: 18px;
-      }
-
-      .section-padding {
-        padding: 85px 0;
-      }
-
-      .section-heading-grid {
-        gap: 28px;
-      }
-
-      .eyebrow {
-        gap: 6px;
-        margin-bottom: 15px;
-        font-size: 7px;
-        letter-spacing: .16em;
-      }
-
-      .eyebrow-line {
-        width: 22px;
-        flex-basis: 22px;
-      }
-
-      h2 {
-        font-size: clamp(36px, 11vw, 48px);
-        line-height: .98;
-      }
-
-      .section-description {
-        font-size: 11px;
-        line-height: 1.85;
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 9px;
-        margin-top: 38px;
-      }
-
-      .feature-card {
-        min-height: 0;
-        padding: 24px;
-        border-radius: 15px;
-      }
-
-      .feature-icon {
-        width: 40px;
-        height: 40px;
-        flex-basis: 40px;
-      }
-
-      .feature-title {
-        margin-top: 22px;
-        font-size: 13px;
-        line-height: 1.35;
-      }
-
-      .feature-description {
-        margin-top: 9px;
-        font-size: 9px;
-        line-height: 1.75;
-      }
-
-      .request-answer {
-        margin-top: 14px;
-        font-size: 15px;
-      }
-
-      .ownership-card {
-        border-radius: 19px;
-      }
-
-      .ownership-content {
-        padding: 34px 23px;
-      }
-
-      .small-tag {
-        font-size: 6px;
-        letter-spacing: .14em;
-      }
-
-      .ownership-content h2 {
-        margin-top: 20px !important;
-      }
-
-      .ownership-content p {
-        margin-top: 20px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .check-list {
-        gap: 10px;
-        margin-top: 23px;
-      }
-
-      .check-item {
-        align-items: flex-start;
-        gap: 8px;
-        font-size: 9px;
-        line-height: 1.5;
-      }
-
-      .check {
-        margin-top: 1px;
-        width: 18px;
-        height: 18px;
-        flex-basis: 18px;
-        font-size: 8px;
-      }
-
-      .workflow-visual {
-        min-height: 350px;
-      }
-
-      .workflow-box {
-        width: calc(100% - 34px);
-        padding: 16px;
-        border-radius: 14px;
-      }
-
-      .workflow-header {
-        font-size: 7px;
-      }
-
-      .workflow-steps {
-        margin-top: 14px;
-        gap: 5px;
-      }
-
-      .workflow-step {
-        padding: 10px;
-        font-size: 7px;
-      }
-
-      .center-heading .eyebrow {
-        gap: 5px;
-      }
-
-      .flow-node {
-        padding: 13px 20px;
-        font-size: 10px;
-      }
-
-      .pill-row {
-        margin-top: 30px;
-        gap: 7px;
-      }
-
-      .custom-card {
-        padding: 34px 23px;
-        border-radius: 19px;
-      }
-
-      .custom-grid {
-        gap: 30px;
-      }
-
-      .custom-description {
-        margin-top: 19px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .custom-options {
-        gap: 8px;
-      }
-
-      .custom-option {
-        padding: 18px;
-        border-radius: 14px;
-      }
-
-      .custom-option-number {
-        width: 32px;
-        height: 32px;
-        flex-basis: 32px;
-        border-radius: 9px;
-        font-size: 7px;
-      }
-
-      .custom-option-label {
-        font-size: 6px;
-      }
-
-      .custom-option h3 {
-        margin-top: 15px;
-        font-size: 17px;
-      }
-
-      .custom-option p {
-        margin-top: 8px;
-        font-size: 8px;
-        line-height: 1.75;
-      }
-
-      .custom-option-features {
-        margin-top: 13px;
-        gap: 5px;
-      }
-
-      .custom-option-feature {
-        padding: 4px 7px;
-        font-size: 5.5px;
-      }
-
-      .custom-option-arrow {
-        margin-top: 13px;
-        font-size: 13px;
-      }
-
-      .pricing-card {
-        padding: 28px 22px;
-      }
-
-      .final-cta {
-        padding: 95px 0;
-      }
-
-      .final-icon {
-        width: 46px;
-        height: 46px;
-        margin-bottom: 21px;
-      }
-
-      .final-cta p {
-        margin-top: 21px;
-        font-size: 10px;
-        line-height: 1.85;
-      }
-
-      .final-actions {
-        margin-top: 26px;
-        gap: 10px;
-      }
-
-      .availability {
-        font-size: 6px;
-        letter-spacing: .13em;
-        text-align: center;
-      }
-
-      .footer-inner {
-        min-height: 0;
-        padding: 32px 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 25px;
-      }
-
-      .footer-tagline {
-        font-size: 6px;
-        letter-spacing: .12em;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 8px;
-        padding: 15px 0;
-        font-size: 6px;
-        line-height: 1.6;
-      }
-    }
-
-    /* =========================================================
-       RESPONSIVE — VERY SMALL PHONES
-    ========================================================== */
-
-    @media(max-width:380px) {
-
-      .container {
-        width: calc(100% - 24px);
-      }
-
-      .brand-name {
-        font-size: 12px;
-      }
-
-      .brand-subtitle {
-        font-size: 5px;
-      }
-
-      .mobile-menu-button {
-        width: 37px;
-        height: 37px;
-        flex-basis: 37px;
-      }
-
-      .hero {
-        padding-top: 115px;
-      }
-
-      .hero-title {
-        font-size: 36px;
-      }
-
-      .hero-description {
-        font-size: 11px;
-      }
-
-      .status-pill {
-        font-size: 6px;
-        letter-spacing: .09em;
-      }
-
-      .browser-status {
-        font-size: 6px;
-      }
-
-      .dashboard-main {
-        padding: 11px;
-      }
-
-      .dashboard-heading {
-        font-size: 14px;
-      }
-
-      .dashboard-filter {
-        font-size: 5px;
-        padding: 6px;
-      }
-
-      .stat {
-        padding: 8px;
-      }
-
-      .stat-value {
-        font-size: 12px;
-      }
-
-      .project {
-        gap: 5px;
-      }
-
-      .project-price {
-        font-size: 6px;
-      }
-
-      .feature-card {
-        padding: 21px;
-      }
-
-      .ownership-content,
-      .custom-card {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .workflow-box {
-        width: calc(100% - 24px);
-      }
-
-      .custom-option {
-        padding: 16px;
-      }
-
-      .custom-option h3 {
-        font-size: 16px;
-      }
-
-      .custom-option p {
-        font-size: 7.5px;
-      }
-
-      .final-cta {
-        padding: 85px 0;
-      }
-    }
-
-    /* =========================================================
-       DEMO MODAL
-    ========================================================== */
-
-    .demo-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0,0,0,.78);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity .35s ease, visibility .35s ease;
-    }
-
-    .demo-modal.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    .demo-modal-content {
-      position: relative;
-      width: min(900px, 100%);
-      max-width: 100%;
-      max-height: calc(100vh - 48px);
-
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      overflow: hidden;
-      background: #090909;
-      box-shadow:
-        0 50px 140px rgba(0,0,0,.8),
-        0 0 100px rgba(255,255,255,.04);
-
-      transform: translateY(24px) scale(.96);
-
-      transition:
-        transform .45s cubic-bezier(.16,1,.3,1);
-    }
-
-    .demo-modal.active .demo-modal-content {
-      transform: translateY(0) scale(1);
-    }
-
-    .demo-modal-header {
-      min-height: 48px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 12px;
-
-      padding: 0 14px 0 17px;
-
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .demo-modal-label {
-      color: rgba(255,255,255,.5);
-      font-size: 8px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .demo-modal-close {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 9px;
-
-      background: rgba(255,255,255,.035);
-
-      color: rgba(255,255,255,.55);
-
-      font-size: 17px;
-
-      transition: .25s ease;
-    }
-
-    .demo-modal-close:hover {
-      color: #fff;
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.16);
-    }
-
-    .demo-video-wrap {
-      background: #000;
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      max-height: calc(100vh - 100px);
-    }
-
-    .demo-video {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-      background: #000;
-    }
-
-    /* FIX: demo modal no-video state */
-    .demo-no-video {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      padding: 60px 30px;
-      color: rgba(255,255,255,.4);
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .demo-no-video strong {
-      color: rgba(255,255,255,.75);
-      font-size: 14px;
-      display: block;
-    }
-
-    @media(max-width:620px) {
-
-      .demo-modal {
-        padding: 15px;
-      }
-
-      .demo-modal-content {
-        border-radius: 15px;
-        max-height: calc(100vh - 30px);
-      }
-
-      .demo-modal-header {
-        min-height: 44px;
-        padding-left: 13px;
-        padding-right: 10px;
-      }
-
-      .demo-modal-label {
-        font-size: 6px;
-        letter-spacing: .14em;
-      }
-
-      .demo-modal-close {
-        width: 30px;
-        height: 30px;
-        flex-basis: 30px;
-      }
-    }
-
-    /* =========================================================
-       REDUCED MOTION
-    ========================================================== */
-
-    @media(prefers-reduced-motion:reduce) {
-
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:auto;width:100%;overflow-x:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+    body{margin:0;background:#050505;color:#fff;font-family:"Inter",sans-serif;overflow-x:hidden;line-height:1.5;width:100%;min-width:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+    body.menu-open{overflow:hidden}
+    a{text-decoration:none;color:inherit}
+    button{border:none;font:inherit;cursor:pointer}
+    img,video,svg{max-width:100%}
+    ::selection{background:#fff;color:#000}
+    :focus-visible{outline:2px solid rgba(255,255,255,.7);outline-offset:3px;border-radius:4px}
+    :root{--white:#fff;--muted:rgba(255,255,255,.42);--soft:rgba(255,255,255,.08);--border:rgba(255,255,255,.09);--panel:rgba(255,255,255,.025)}
+    .container{width:min(1180px,calc(100% - 48px));margin:auto;min-width:0}
+    .section-border{border-top:1px solid rgba(255,255,255,.07)}
+    .section-padding{padding:140px 0}
+    .cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
+    .cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(255,255,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
+    .background{position:fixed;inset:0;z-index:-10;overflow:hidden;background:#050505;pointer-events:none}
+    .background-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+    .glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45}
+    .glow-1{width:650px;height:650px;top:-300px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.055)}
+    .glow-2{width:400px;height:400px;top:900px;left:-200px;background:rgba(255,255,255,.025)}
+    .glow-3{width:450px;height:450px;top:1600px;right:-200px;background:rgba(255,255,255,.025)}
+    .navbar{position:fixed;top:0;left:0;width:100%;z-index:500;border-bottom:1px solid transparent;background:rgba(5,5,5,.25);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);transition:background .4s ease,border-color .4s ease,backdrop-filter .4s ease}
+    .navbar.scrolled{background:rgba(5,5,5,.75);border-color:rgba(255,255,255,.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    .nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;min-width:0}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand-mark{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.025));box-shadow:0 0 40px rgba(255,255,255,.035)}
+    .brand-mark span{font-family:"Space Grotesk";font-weight:700}
+    .brand-name{font-family:"Space Grotesk";font-size:14px;font-weight:600;white-space:nowrap}
+    .brand-name span{color:rgba(255,255,255,.5)}
+    .brand-subtitle{font-size:7px;letter-spacing:.25em;color:rgba(255,255,255,.45);text-transform:uppercase;white-space:nowrap}
+    .nav-links{display:flex;align-items:center;gap:34px}
+    .nav-links a{font-size:11px;color:rgba(255,255,255,.62);transition:color .25s ease;white-space:nowrap}
+    .nav-links a:hover{color:#fff}
+    .nav-button{padding:11px 19px;border-radius:999px;background:#fff;color:#000;font-size:10px;font-weight:700;transition:transform .25s ease,background .25s ease;white-space:nowrap}
+    .nav-button:hover{transform:translateY(-2px);background:#e9e9e9}
+    .mobile-menu-button{display:none;width:40px;height:40px;flex:0 0 40px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.04);color:white}
+    .mobile-menu{display:none}
+    .hero{min-height:100vh;padding-top:175px;padding-bottom:100px;position:relative;overflow:hidden}
+    .hero-content{max-width:900px;margin:auto;text-align:center;position:relative;z-index:2;min-width:0}
+    .status-pill{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.62);font-size:8px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
+    .status-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#66e394;box-shadow:0 0 15px rgba(102,227,148,.7)}
+    .hero-title{margin-top:28px;font-family:"Space Grotesk";font-size:clamp(52px,7.4vw,92px);line-height:.95;letter-spacing:-.07em;font-weight:600;overflow-wrap:normal;word-break:normal}
+    .hero-title .line{display:block;overflow:hidden}
+    .hero-title .line-inner{display:block}
+    .hero-title .muted{color:rgba(255,255,255,.48)}
+    .hero-description{max-width:650px;margin:32px auto 0;color:rgba(255,255,255,.64);font-size:15px;line-height:1.9}
+    .hero-actions{margin-top:34px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 23px;border-radius:999px;font-size:11px;font-weight:600;transition:background .3s ease,border-color .3s ease;max-width:100%;text-align:center}
+    .button-primary{background:#fff;color:#000}
+    .button-secondary{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75)}
+    .button-secondary:hover{border-color:rgba(255,255,255,.2);color:#fff}
+    .hero-orbit{position:absolute;width:950px;height:950px;left:50%;top:360px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.025);border-radius:50%;pointer-events:none}
+    .hero-orbit::before{content:"";position:absolute;inset:80px;border:1px solid rgba(255,255,255,.02);border-radius:50%}
+    .orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:white;box-shadow:0 0 20px rgba(255,255,255,.7);left:50%;top:0}
+    .dashboard-wrapper{position:relative;width:100%;max-width:1120px;margin:100px auto 0;perspective:1400px;min-width:0}
+    .dashboard-glow{position:absolute;width:800px;height:350px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);max-width:90vw}
+    .dashboard{position:relative;width:100%;max-width:100%;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 70px 150px rgba(0,0,0,.75),0 0 100px rgba(255,255,255,.025);transform-origin:center top;will-change:transform}
+    .browser-bar{min-height:45px;height:45px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.07)}
+    .browser-dots{display:flex;gap:6px;flex:0 0 auto}
+    .browser-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.13)}
+    .browser-status{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.7);font-size:9px;min-width:0;text-align:center}
+    .browser-status i{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#5cdf8d}
+    .browser-label{color:rgba(255,255,255,.5);font-size:8px;letter-spacing:.2em;white-space:nowrap}
+    .dashboard-body{display:grid;grid-template-columns:210px minmax(0,1fr);min-height:460px;min-width:0}
+    .sidebar{padding:22px 15px;border-right:1px solid rgba(255,255,255,.07);min-width:0}
+    .sidebar-title{margin-bottom:14px;color:rgba(255,255,255,.4);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
+    .sidebar-item{display:flex;align-items:center;gap:9px;padding:10px;margin-bottom:3px;border-radius:8px;color:rgba(255,255,255,.5);font-size:9px;transition:.25s ease}
+    .sidebar-item:hover{background:rgba(255,255,255,.035);color:#fff}
+    .sidebar-item.active{background:rgba(255,255,255,.065);color:#fff}
+    .sidebar-icon{width:12px;height:12px;flex:0 0 12px;border:1px solid currentColor;border-radius:3px;opacity:.6}
+    .sidebar-separator{height:1px;background:rgba(255,255,255,.06);margin:27px 0 18px}
+    .dashboard-main{padding:28px;min-width:0;overflow:hidden}
+    .dashboard-header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;min-width:0}
+    .dashboard-header>div:first-child{min-width:0}
+    .dashboard-eyebrow{color:rgba(255,255,255,.5);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
+    .dashboard-heading{margin-top:7px;font-size:23px;letter-spacing:-.04em;overflow-wrap:break-word}
+    .dashboard-filter{padding:8px 11px;border:1px solid rgba(255,255,255,.08);border-radius:7px;color:rgba(255,255,255,.5);font-size:7px;flex:0 0 auto;white-space:nowrap}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:28px}
+    .stat{padding:15px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:rgba(255,255,255,.018);min-width:0}
+    .stat-label{color:rgba(255,255,255,.42);font-size:7px;overflow-wrap:break-word}
+    .stat-value{margin-top:6px;font-size:17px;white-space:nowrap}
+    .stat-change{margin-top:3px;color:#62db8b;font-size:7px;overflow-wrap:break-word}
+    .dashboard-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:11px;margin-top:12px;min-width:0}
+    .panel{padding:17px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.018);min-width:0}
+    .panel-title{font-size:9px}
+    .panel-subtitle{margin-top:3px;color:rgba(255,255,255,.42);font-size:7px;overflow-wrap:break-word}
+    .project-list{display:flex;flex-direction:column;gap:7px;margin-top:17px}
+    .project{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid rgba(255,255,255,.05);border-radius:8px;background:rgba(0,0,0,.25);min-width:0}
+    .project-number{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:6px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.45);font-size:7px}
+    .project-info{flex:1;min-width:0}
+    .project-name{color:rgba(255,255,255,.8);font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .project-status{margin-top:2px;color:rgba(255,255,255,.4);font-size:6px}
+    .project-price{color:rgba(255,255,255,.6);font-size:8px;flex:0 0 auto;white-space:nowrap}
+    .chart{height:115px;display:flex;align-items:flex-end;gap:6px;margin-top:25px}
+    .bar{flex:1;min-height:4px;border-radius:4px 4px 0 0;background:rgba(255,255,255,.12)}
+    .section-heading-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:end}
+    .section-heading-grid>*{min-width:0}
+    .eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:19px;color:rgba(255,255,255,.45);font-size:8px;text-transform:uppercase;letter-spacing:.22em}
+    .eyebrow-line{width:27px;height:1px;flex:0 0 27px;background:rgba(255,255,255,.3)}
+    h2{font-family:"Space Grotesk";font-size:clamp(40px,5vw,60px);line-height:1;letter-spacing:-.06em;font-weight:600;overflow-wrap:break-word}
+    h2 .muted{color:rgba(255,255,255,.48)}
+    .section-description{max-width:500px;color:rgba(255,255,255,.6);font-size:13px;line-height:1.9}
+    .section-description.centered{max-width:620px;margin:24px auto 0;text-align:center}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:65px}
+    .feature-card{position:relative;min-height:230px;padding:28px;overflow:hidden;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.018);transform-style:preserve-3d;will-change:transform;transition:border-color .3s ease,background .3s ease;min-width:0}
+    .feature-card::after{content:"";position:absolute;width:180px;height:180px;top:-100px;right:-100px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(35px);transition:.4s ease}
+    .feature-card:hover{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.035)}
+    .feature-card:hover::after{background:rgba(255,255,255,.09)}
+    .feature-icon{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.04);font-size:15px}
+    .feature-title{margin-top:28px;font-family:"Space Grotesk";font-size:15px;overflow-wrap:break-word}
+    .feature-description{margin-top:10px;color:rgba(255,255,255,.55);font-size:10px;line-height:1.8}
+    .feature-card .check-list{margin-top:22px}
+    .feature-badge{display:inline-block;margin-top:14px;padding:5px 9px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.03);color:rgba(255,255,255,.65);font-size:6.5px;letter-spacing:.14em;text-transform:uppercase}
+    .request-answer{margin-top:18px;font-family:"Space Grotesk";font-size:18px;font-weight:600;letter-spacing:-.02em;color:#fff}
+    .equation-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;margin-top:55px}
+    .ownership-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.01));min-width:0}
+    .ownership-content{padding:65px;min-width:0}
+    .small-tag{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.08);border-radius:999px;color:rgba(255,255,255,.55);font-size:7px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
+    .ownership-content p{max-width:480px;margin-top:24px;color:rgba(255,255,255,.5);font-size:12px;line-height:1.9}
+    .ownership-note{max-width:480px;margin-top:22px;color:rgba(255,255,255,.28);font-size:10px;line-height:1.8;font-style:italic}
+    .check-list{display:flex;flex-direction:column;gap:11px;margin-top:28px}
+    .check-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.72);font-size:10px;min-width:0}
+    .check{width:20px;height:20px;flex:0 0 20px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.07);font-size:9px}
+    .workflow-visual{min-height:440px;position:relative;overflow:hidden;border-left:1px solid rgba(255,255,255,.07);background:radial-gradient(circle at center,rgba(255,255,255,.065),transparent 60%);min-width:0}
+    .workflow-box{position:absolute;left:50%;top:50%;width:min(290px,calc(100% - 40px));transform:translate(-50%,-50%);padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:17px;background:rgba(7,7,7,.88);box-shadow:0 35px 90px rgba(0,0,0,.65);backdrop-filter:blur(15px)}
+    .workflow-header{display:flex;justify-content:space-between;gap:10px;color:rgba(255,255,255,.55);font-size:8px}
+    .workflow-active{color:#60dc8b;white-space:nowrap}
+    .workflow-steps{display:flex;flex-direction:column;gap:6px;margin-top:18px}
+    .workflow-step{display:flex;align-items:center;gap:9px;padding:11px;border:1px solid rgba(255,255,255,.05);border-radius:8px;background:rgba(255,255,255,.018);color:rgba(255,255,255,.62);font-size:8px;min-width:0}
+    .workflow-step-dot{width:5px;height:5px;flex:0 0 5px;border-radius:50%;background:rgba(255,255,255,.2)}
+    .workflow-step:last-child .workflow-step-dot{background:#fff}
+    .center-heading{max-width:800px;margin:auto;text-align:center;min-width:0}
+    .center-heading .eyebrow{justify-content:center}
+    .flow-diagram{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:60px}
+    .flow-node{padding:16px 30px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.015));font-family:"Space Grotesk";font-size:12px;letter-spacing:.03em;color:rgba(255,255,255,.82);text-align:center;max-width:100%}
+    .flow-arrow{color:rgba(255,255,255,.4);font-size:14px;line-height:1}
+    .pill-row{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:40px}
+    .split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:65px}
+    .split-grid .feature-card{min-height:0}
+    .split-grid .feature-card .check-list{margin-top:22px}
+    .split-grid .check-item{color:rgba(255,255,255,.4);font-size:9px}
+    .steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:65px}
+    .steps-grid .feature-card{min-height:200px}
+    .custom-card{position:relative;overflow:hidden;padding:65px;border:1px solid rgba(255,255,255,.08);border-radius:25px;background:#080808;min-width:0}
+    .custom-card::before{content:"";position:absolute;width:500px;height:500px;right:-150px;top:-200px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);pointer-events:none}
+    .custom-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:70px;align-items:center;min-width:0}
+    .custom-copy{min-width:0}
+    .custom-description{max-width:510px;margin-top:22px;color:rgba(255,255,255,.58);font-size:12px;line-height:1.9}
+    .custom-copy .button{margin-top:30px}
+    .custom-options{display:grid;grid-template-columns:1fr;gap:10px;min-width:0}
+    .custom-option{position:relative;padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.012));overflow:hidden;transition:transform .35s ease,border-color .35s ease,background .35s ease,box-shadow .35s ease;min-width:0}
+    .custom-option::before{content:"";position:absolute;width:170px;height:170px;top:-100px;right:-80px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(35px);transition:.4s ease}
+    .custom-option:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 25px 70px rgba(0,0,0,.35)}
+    .custom-option:hover::before{background:rgba(255,255,255,.075)}
+    .custom-option-top{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:15px;min-width:0}
+    .custom-option-number{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.045);color:rgba(255,255,255,.65);font-family:"DM Mono";font-size:8px}
+    .custom-option-label{color:rgba(255,255,255,.45);font-size:7px;letter-spacing:.18em;text-transform:uppercase;text-align:right;line-height:1.5}
+    .custom-option h3{position:relative;margin-top:18px;font-family:"Space Grotesk";font-size:19px;line-height:1.15;letter-spacing:-.035em;font-weight:500;max-width:410px}
+    .custom-option p{position:relative;margin-top:10px;color:rgba(255,255,255,.5);font-size:9px;line-height:1.8;max-width:450px}
+    .custom-option-features{position:relative;display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+    .custom-option-feature{padding:5px 8px;border:1px solid rgba(255,255,255,.07);border-radius:999px;background:rgba(255,255,255,.018);color:rgba(255,255,255,.58);font-size:6px;letter-spacing:.03em}
+    .custom-option-arrow{position:relative;display:flex;justify-content:flex-end;margin-top:17px;color:rgba(255,255,255,.28);font-size:15px;transition:color .3s ease,transform .3s ease}
+    .custom-option:hover .custom-option-arrow{color:#fff;transform:translateX(4px)}
+    .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:65px}
+    .pricing-card{position:relative;padding:42px;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.018);overflow:hidden;min-width:0}
+    .pricing-card.featured{border-color:rgba(255,255,255,.22);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
+    .pricing-label{color:rgba(255,255,255,.45);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
+    .pricing-name{margin-top:14px;font-family:"Space Grotesk";font-size:21px;letter-spacing:-.03em}
+    .pricing-card .check-list{margin-top:24px}
+    .final-cta{padding:160px 0;text-align:center}
+    .final-icon{width:50px;height:50px;display:grid;place-items:center;margin:0 auto 25px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.04)}
+    .final-cta p{max-width:550px;margin:25px auto 0;color:rgba(255,255,255,.55);font-size:12px;line-height:1.9}
+    .final-actions{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px}
+    .final-actions .hero-actions{margin-top:0}
+    .availability{color:rgba(255,255,255,.18);font-size:7px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
+    footer{border-top:1px solid rgba(255,255,255,.07)}
+    .footer-inner{min-height:140px;display:flex;align-items:center;justify-content:space-between;min-width:0}
+    .footer-brand{display:flex;align-items:center;gap:10px;min-width:0}
+    .footer-mark{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:9px;font-family:"Space Grotesk";font-size:11px;font-weight:700}
+    .footer-name{font-size:11px}
+    .footer-tagline{margin-top:3px;color:rgba(255,255,255,.4);font-size:7px;text-transform:uppercase;letter-spacing:.15em;overflow-wrap:break-word}
+    .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.38);font-size:7px;min-width:0}
+    .footer-bottom span{min-width:0;overflow-wrap:break-word}
+    @media(max-width:1100px){
+      .container{width:min(100% - 40px,1180px)}
+      .nav-links{gap:22px}
+      .section-heading-grid{gap:50px}
+      .ownership-content{padding:50px}
+      .custom-card{padding:50px}
+      .custom-grid{gap:45px}
+      .dashboard-main{padding:22px}
+      .dashboard-heading{font-size:20px}
+      .stats{gap:7px}
+      .stat{padding:12px}
+      .dashboard-grid{gap:8px}
+      .panel{padding:14px}
+      .steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .pricing-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:900px){
+      .nav-links,.nav-button{display:none}
+      .mobile-menu-button{display:block}
+      .mobile-menu.active{display:flex;flex-direction:column;gap:18px;padding:22px 24px 28px;border-top:1px solid rgba(255,255,255,.06);background:rgba(5,5,5,.96);max-height:calc(100vh - 78px);overflow-y:auto}
+      .mobile-menu a{color:rgba(255,255,255,.7);font-size:13px}
+      .mobile-menu .mobile-cta{padding:13px;border-radius:10px;background:#fff;color:#000;text-align:center;font-weight:700}
+      .dashboard-body{grid-template-columns:1fr}
+      .sidebar{display:none}
+      .section-heading-grid,.ownership-card,.custom-grid,.split-grid{grid-template-columns:1fr}
+      .section-heading-grid{align-items:start}
+      .workflow-visual{border-left:none;border-top:1px solid rgba(255,255,255,.07)}
+      .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .dashboard-grid{grid-template-columns:1fr}
+      .dashboard-main{padding:22px}
+      .hero-orbit{width:800px;height:800px}
+      .custom-grid{gap:35px}
+      .workflow-visual{min-height:390px}
+    }
+    @media(max-width:760px){
+      .container{width:calc(100% - 32px)}
+      .nav-inner{height:72px}
+      .mobile-menu.active{max-height:calc(100vh - 72px)}
+      .hero{padding-top:125px;padding-bottom:70px}
+      .hero-title{font-size:clamp(46px,10vw,64px)}
+      .hero-description{max-width:600px;font-size:13px;line-height:1.8}
+      .dashboard-wrapper{margin-top:70px}
+      .dashboard{border-radius:16px}
+      .browser-bar{padding:0 12px}
+      .browser-status{font-size:8px}
+      .dashboard-main{padding:18px}
+      .dashboard-heading{font-size:18px}
+      .section-padding{padding:105px 0}
+      .section-heading-grid{gap:35px}
+      h2{font-size:clamp(38px,8vw,52px)}
+      .feature-card{padding:24px}
+      .ownership-content{padding:42px 30px}
+      .custom-card{padding:42px 30px}
+      .final-cta{padding:120px 0}
+      .footer-bottom{gap:12px}
+      .steps-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .container{width:calc(100% - 30px);max-width:none}
+      .cursor,.cursor-ring{display:none}
+      .brand{gap:9px}
+      .brand-mark{width:35px;height:35px;flex-basis:35px;border-radius:10px}
+      .brand-name{font-size:13px}
+      .brand-subtitle{font-size:6px;letter-spacing:.18em}
+      .hero{padding-top:125px;padding-bottom:65px}
+      .hero-orbit{width:620px;height:620px;top:410px}
+      .hero-orbit::before{inset:55px}
+      .status-pill{padding:7px 11px;gap:7px;font-size:7px;letter-spacing:.12em}
+      .hero-title{margin-top:24px;font-size:clamp(38px,12vw,52px);letter-spacing:-.065em;line-height:.98}
+      .hero-title .line-inner{max-width:100%}
+      .hero-description{margin-top:25px;font-size:12px;line-height:1.85}
+      .hero-actions{margin-top:28px;flex-direction:column;width:100%;gap:9px}
+      .button{width:100%;min-height:48px;padding:0 18px;font-size:10px}
+      .dashboard-wrapper{margin-top:55px;width:100%}
+      .dashboard{border-radius:14px}
+      .browser-bar{height:40px;min-height:40px;padding:0 10px}
+      .browser-dots{gap:5px}
+      .browser-dots span{width:7px;height:7px}
+      .browser-status{font-size:7px;gap:5px}
+      .browser-status i{width:5px;height:5px;flex-basis:5px}
+      .browser-label{display:none}
+      .dashboard-body{min-height:0}
+      .dashboard-main{padding:14px}
+      .dashboard-header{align-items:flex-start;gap:10px}
+      .dashboard-eyebrow{font-size:6px;letter-spacing:.15em}
+      .dashboard-heading{margin-top:5px;font-size:16px;line-height:1.2}
+      .dashboard-filter{padding:7px 8px;font-size:6px}
+      .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:20px}
+      .stat{padding:10px;border-radius:9px}
+      .stat-label{font-size:6px}
+      .stat-value{margin-top:5px;font-size:14px}
+      .stat-change{font-size:6px}
+      .dashboard-grid{grid-template-columns:1fr;gap:7px;margin-top:8px}
+      .panel{padding:12px;border-radius:10px}
+      .panel-title{font-size:8px}
+      .panel-subtitle{font-size:6px}
+      .project-list{gap:5px;margin-top:12px}
+      .project{gap:7px;padding:7px}
+      .project-number{width:23px;height:23px;flex-basis:23px;font-size:6px}
+      .project-name{font-size:7px}
+      .project-status{font-size:5px}
+      .project-price{font-size:7px}
+      .chart{height:90px;gap:4px;margin-top:18px}
+      .section-padding{padding:85px 0}
+      .section-heading-grid{gap:28px}
+      .eyebrow{gap:6px;margin-bottom:15px;font-size:7px;letter-spacing:.16em}
+      .eyebrow-line{width:22px;flex-basis:22px}
+      h2{font-size:clamp(36px,11vw,48px);line-height:.98}
+      .section-description{font-size:11px;line-height:1.85}
+      .feature-grid{grid-template-columns:1fr;gap:9px;margin-top:38px}
+      .feature-card{min-height:0;padding:24px;border-radius:15px}
+      .feature-icon{width:40px;height:40px;flex-basis:40px}
+      .feature-title{margin-top:22px;font-size:13px;line-height:1.35}
+      .feature-description{margin-top:9px;font-size:9px;line-height:1.75}
+      .request-answer{margin-top:14px;font-size:15px}
+      .ownership-card{border-radius:19px}
+      .ownership-content{padding:34px 23px}
+      .small-tag{font-size:6px;letter-spacing:.14em}
+      .ownership-content h2{margin-top:20px !important}
+      .ownership-content p{margin-top:20px;font-size:10px;line-height:1.85}
+      .check-list{gap:10px;margin-top:23px}
+      .check-item{align-items:flex-start;gap:8px;font-size:9px;line-height:1.5}
+      .check{margin-top:1px;width:18px;height:18px;flex-basis:18px;font-size:8px}
+      .workflow-visual{min-height:350px}
+      .workflow-box{width:calc(100% - 34px);padding:16px;border-radius:14px}
+      .workflow-header{font-size:7px}
+      .workflow-steps{margin-top:14px;gap:5px}
+      .workflow-step{padding:10px;font-size:7px}
+      .center-heading .eyebrow{gap:5px}
+      .flow-node{padding:13px 20px;font-size:10px}
+      .pill-row{margin-top:30px;gap:7px}
+      .custom-card{padding:34px 23px;border-radius:19px}
+      .custom-grid{gap:30px}
+      .custom-description{margin-top:19px;font-size:10px;line-height:1.85}
+      .custom-options{gap:8px}
+      .custom-option{padding:18px;border-radius:14px}
+      .custom-option-number{width:32px;height:32px;flex-basis:32px;border-radius:9px;font-size:7px}
+      .custom-option-label{font-size:6px}
+      .custom-option h3{margin-top:15px;font-size:17px}
+      .custom-option p{margin-top:8px;font-size:8px;line-height:1.75}
+      .custom-option-features{margin-top:13px;gap:5px}
+      .custom-option-feature{padding:4px 7px;font-size:5.5px}
+      .custom-option-arrow{margin-top:13px;font-size:13px}
+      .pricing-card{padding:28px 22px}
+      .final-cta{padding:95px 0}
+      .final-icon{width:46px;height:46px;margin-bottom:21px}
+      .final-cta p{margin-top:21px;font-size:10px;line-height:1.85}
+      .final-actions{margin-top:26px;gap:10px}
+      .availability{font-size:6px;letter-spacing:.13em;text-align:center}
+      .footer-inner{min-height:0;padding:32px 0;flex-direction:column;align-items:flex-start;gap:25px}
+      .footer-tagline{font-size:6px;letter-spacing:.12em}
+      .footer-bottom{flex-direction:column;gap:8px;padding:15px 0;font-size:6px;line-height:1.6}
+    }
+    @media(max-width:380px){
+      .container{width:calc(100% - 24px)}
+      .brand-name{font-size:12px}
+      .brand-subtitle{font-size:5px}
+      .mobile-menu-button{width:37px;height:37px;flex-basis:37px}
+      .hero{padding-top:115px}
+      .hero-title{font-size:36px}
+      .hero-description{font-size:11px}
+      .status-pill{font-size:6px;letter-spacing:.09em}
+      .browser-status{font-size:6px}
+      .dashboard-main{padding:11px}
+      .dashboard-heading{font-size:14px}
+      .dashboard-filter{font-size:5px;padding:6px}
+      .stat{padding:8px}
+      .stat-value{font-size:12px}
+      .project{gap:5px}
+      .project-price{font-size:6px}
+      .feature-card{padding:21px}
+      .ownership-content,.custom-card{padding-left:20px;padding-right:20px}
+      .workflow-box{width:calc(100% - 24px)}
+      .custom-option{padding:16px}
+      .custom-option h3{font-size:16px}
+      .custom-option p{font-size:7.5px}
+      .final-cta{padding:85px 0}
+    }
+    .demo-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
+    .demo-modal.active{opacity:1;visibility:visible;pointer-events:auto}
+    .demo-modal-content{position:relative;width:min(900px,100%);max-width:100%;max-height:calc(100vh - 48px);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 50px 140px rgba(0,0,0,.8),0 0 100px rgba(255,255,255,.04);transform:translateY(24px) scale(.96);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+    .demo-modal.active .demo-modal-content{transform:translateY(0) scale(1)}
+    .demo-modal-header{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px 0 17px;border-bottom:1px solid rgba(255,255,255,.07)}
+    .demo-modal-label{color:rgba(255,255,255,.5);font-size:8px;letter-spacing:.2em;text-transform:uppercase;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .demo-modal-close{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);border-radius:9px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.55);font-size:17px;transition:.25s ease}
+    .demo-modal-close:hover{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
+    .demo-video-wrap{background:#000;aspect-ratio:16 / 9;width:100%;max-height:calc(100vh - 100px)}
+    .demo-video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+    .demo-no-video{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:60px 30px;color:rgba(255,255,255,.4);font-size:11px;text-align:center}
+    .demo-no-video strong{color:rgba(255,255,255,.75);font-size:14px;display:block}
+    @media(max-width:620px){
+      .demo-modal{padding:15px}
+      .demo-modal-content{border-radius:15px;max-height:calc(100vh - 30px)}
+      .demo-modal-header{min-height:44px;padding-left:13px;padding-right:10px}
+      .demo-modal-label{font-size:6px;letter-spacing:.14em}
+      .demo-modal-close{width:30px;height:30px;flex-basis:30px}
+    }
+    @media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
   </style>
 </head>
 
 <body>
 
-  <!-- =========================================================
-       BACKGROUND
-  ========================================================== -->
-
   <div class="background" aria-hidden="true">
-
     <div class="background-grid"></div>
-
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
     <div class="glow glow-3"></div>
-
   </div>
-
-  <!-- =========================================================
-       CURSOR (hidden on touch devices via CSS)
-  ========================================================== -->
 
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
-
-  <!-- =========================================================
-       NAVBAR
-  ========================================================== -->
 
   <header class="navbar" role="banner">
 
@@ -3148,37 +445,21 @@
         </div>
 
         <div>
-
           <div class="brand-name">
             AutFlow <span>Studio</span>
           </div>
-
           <div class="brand-subtitle">
             Software &amp; Automation Studio
           </div>
-
         </div>
 
       </a>
 
       <nav class="nav-links" aria-label="Primary navigation">
-
-        <a href="#product">
-          Approach
-        </a>
-
-        <a href="#capabilities">
-          Capabilities
-        </a>
-
-        <a href="#comparison">
-          Who It's For
-        </a>
-
-        <a href="#preview">
-          Discovery Call
-        </a>
-
+        <a href="#product">Approach</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#comparison">Who It's For</a>
+        <a href="#preview">Discovery Call</a>
       </nav>
 
       <a
@@ -3205,43 +486,23 @@
       id="mobileMenu"
       aria-label="Mobile navigation"
     >
-
-      <a href="#product">
-        Approach
-      </a>
-
-      <a href="#capabilities">
-        Capabilities
-      </a>
-
-      <a href="#comparison">
-        Who It's For
-      </a>
-
-      <a href="#preview">
-        Discovery Call
-      </a>
-
+      <a href="#product">Approach</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#comparison">Who It's For</a>
+      <a href="#preview">Discovery Call</a>
       <a
         href="#get-started"
         class="mobile-cta"
       >
         Discuss Your Project
       </a>
-
     </nav>
 
   </header>
 
-  <!-- =========================================================
-       MAIN CONTENT
-  ========================================================== -->
-
   <main>
 
-    <!-- =========================================================
-         HERO
-    ========================================================== -->
+    <!-- HERO -->
 
     <section class="hero" aria-labelledby="hero-heading">
 
@@ -3254,39 +515,34 @@
         <div class="hero-content">
 
           <div class="status-pill hero-animate" aria-hidden="true">
-
             <span class="status-dot"></span>
-
-            CUSTOM SOFTWARE &amp; WORKFLOW AUTOMATION
-
+            PROBLEM-FIRST SOFTWARE &amp; AUTOMATION
           </div>
 
           <h1 class="hero-title" id="hero-heading">
 
             <span class="line">
               <span class="line-inner">
-                Practical Software
+                Define The Problem.
               </span>
             </span>
 
             <span class="line">
               <span class="line-inner">
-                And Automation
+                Build The Software.
               </span>
             </span>
 
             <span class="line">
               <span class="line-inner muted">
-                For Real Problems.
+                Put It To Work.
               </span>
             </span>
 
           </h1>
 
           <p class="hero-description hero-animate">
-
-            AutFlow Studio, led by Abderrahmen Hud, designs and builds custom software and workflow automation that reduce repetitive manual work, connect the tools a business already uses, and keep information organized and visible.
-
+            AutFlow Studio, led by Abderrahmen Hud, turns clearly defined operational problems into working software: focused digital tools, automated workflows, and custom systems that connect the tools a business already uses. Whether the answer is a small tool or a tailored system, the starting point is the same: a real problem, understood first.
           </p>
 
           <div class="hero-actions hero-animate">
@@ -3312,9 +568,7 @@
 
         </div>
 
-        <!-- =====================================================
-             DASHBOARD — ILLUSTRATIVE ONLY
-        ====================================================== -->
+        <!-- DASHBOARD — ILLUSTRATIVE ONLY -->
 
         <div class="dashboard-wrapper" aria-hidden="true">
 
@@ -3331,11 +585,8 @@
               </div>
 
               <div class="browser-status">
-
                 <i></i>
-
                 SAMPLE DATA — ILLUSTRATIVE ONLY
-
               </div>
 
               <div class="browser-label">
@@ -3348,45 +599,19 @@
 
               <aside class="sidebar">
 
-                <div class="sidebar-title">
-                  Your Business
-                </div>
+                <div class="sidebar-title">Your Business</div>
 
-                <div class="sidebar-item active">
-                  <span class="sidebar-icon"></span>
-                  Inbox
-                </div>
-
-                <div class="sidebar-item">
-                  <span class="sidebar-icon"></span>
-                  Leads
-                </div>
-
-                <div class="sidebar-item">
-                  <span class="sidebar-icon"></span>
-                  Follow-Ups
-                </div>
-
-                <div class="sidebar-item">
-                  <span class="sidebar-icon"></span>
-                  Appointments
-                </div>
-
-                <div class="sidebar-item">
-                  <span class="sidebar-icon"></span>
-                  Team Handoff
-                </div>
+                <div class="sidebar-item active"><span class="sidebar-icon"></span>Inbox</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Leads</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Follow-Ups</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Appointments</div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Team Handoff</div>
 
                 <div class="sidebar-separator"></div>
 
-                <div class="sidebar-title">
-                  Overview
-                </div>
+                <div class="sidebar-title">Overview</div>
 
-                <div class="sidebar-item">
-                  <span class="sidebar-icon"></span>
-                  Lead Statuses
-                </div>
+                <div class="sidebar-item"><span class="sidebar-icon"></span>Lead Statuses</div>
 
               </aside>
 
@@ -3395,99 +620,38 @@
                 <div class="dashboard-header">
 
                   <div>
-
-                    <div class="dashboard-eyebrow">
-                      Sample Data / Illustrative
-                    </div>
-
-                    <div class="dashboard-heading">
-                      One example: from first inquiry to booked appointment.
-                    </div>
-
+                    <div class="dashboard-eyebrow">Sample Data / Illustrative</div>
+                    <div class="dashboard-heading">One example: from first inquiry to booked appointment.</div>
                   </div>
 
-                  <div class="dashboard-filter">
-                    Sample view ↗
-                  </div>
+                  <div class="dashboard-filter">Sample view ↗</div>
 
                 </div>
 
                 <div class="stats">
 
                   <div class="stat">
-
-                    <div class="stat-label">
-                      Inquiries
-                    </div>
-
-                    <div
-                      class="stat-value counter"
-                      data-value="142"
-                    >
-                      0
-                    </div>
-
-                    <div class="stat-change">
-                      Sample data
-                    </div>
-
+                    <div class="stat-label">Inquiries</div>
+                    <div class="stat-value counter" data-value="142">0</div>
+                    <div class="stat-change">Sample data</div>
                   </div>
 
                   <div class="stat">
-
-                    <div class="stat-label">
-                      Qualified Leads
-                    </div>
-
-                    <div
-                      class="stat-value counter"
-                      data-value="61"
-                    >
-                      0
-                    </div>
-
-                    <div class="stat-change">
-                      Sample data
-                    </div>
-
+                    <div class="stat-label">Qualified Leads</div>
+                    <div class="stat-value counter" data-value="61">0</div>
+                    <div class="stat-change">Sample data</div>
                   </div>
 
                   <div class="stat">
-
-                    <div class="stat-label">
-                      Follow-Ups Sent
-                    </div>
-
-                    <div
-                      class="stat-value counter"
-                      data-value="87"
-                    >
-                      0
-                    </div>
-
-                    <div class="stat-change">
-                      Sample data
-                    </div>
-
+                    <div class="stat-label">Follow-Ups Sent</div>
+                    <div class="stat-value counter" data-value="87">0</div>
+                    <div class="stat-change">Sample data</div>
                   </div>
 
                   <div class="stat">
-
-                    <div class="stat-label">
-                      Appointments
-                    </div>
-
-                    <div
-                      class="stat-value counter"
-                      data-value="24"
-                    >
-                      0
-                    </div>
-
-                    <div class="stat-change">
-                      Sample data
-                    </div>
-
+                    <div class="stat-label">Appointments</div>
+                    <div class="stat-value counter" data-value="24">0</div>
+                    <div class="stat-change">Sample data</div>
                   </div>
 
                 </div>
@@ -3496,86 +660,36 @@
 
                   <div class="panel">
 
-                    <div class="panel-title">
-                      Lead Pipeline
-                    </div>
-
-                    <div class="panel-subtitle">
-                      Illustrative statuses
-                    </div>
+                    <div class="panel-title">Lead Pipeline</div>
+                    <div class="panel-subtitle">Illustrative statuses</div>
 
                     <div class="project-list">
 
                       <div class="project">
-
-                        <div class="project-number">
-                          01
-                        </div>
-
+                        <div class="project-number">01</div>
                         <div class="project-info">
-
-                          <div class="project-name">
-                            Inquiry answered
-                          </div>
-
-                          <div class="project-status">
-                            RESPONDED
-                          </div>
-
+                          <div class="project-name">Inquiry answered</div>
+                          <div class="project-status">RESPONDED</div>
                         </div>
-
-                        <div class="project-price">
-                          Sample
-                        </div>
-
+                        <div class="project-price">Sample</div>
                       </div>
 
                       <div class="project">
-
-                        <div class="project-number">
-                          02
-                        </div>
-
+                        <div class="project-number">02</div>
                         <div class="project-info">
-
-                          <div class="project-name">
-                            Lead qualified
-                          </div>
-
-                          <div class="project-status">
-                            QUALIFIED
-                          </div>
-
+                          <div class="project-name">Lead qualified</div>
+                          <div class="project-status">QUALIFIED</div>
                         </div>
-
-                        <div class="project-price">
-                          Sample
-                        </div>
-
+                        <div class="project-price">Sample</div>
                       </div>
 
                       <div class="project">
-
-                        <div class="project-number">
-                          03
-                        </div>
-
+                        <div class="project-number">03</div>
                         <div class="project-info">
-
-                          <div class="project-name">
-                            Appointment booked
-                          </div>
-
-                          <div class="project-status">
-                            BOOKED
-                          </div>
-
+                          <div class="project-name">Appointment booked</div>
+                          <div class="project-status">BOOKED</div>
                         </div>
-
-                        <div class="project-price">
-                          Sample
-                        </div>
-
+                        <div class="project-price">Sample</div>
                       </div>
 
                     </div>
@@ -3584,16 +698,10 @@
 
                   <div class="panel">
 
-                    <div class="panel-title">
-                      Lead Statuses
-                    </div>
-
-                    <div class="panel-subtitle">
-                      Illustrative trend
-                    </div>
+                    <div class="panel-title">Lead Statuses</div>
+                    <div class="panel-subtitle">Illustrative trend</div>
 
                     <div class="chart">
-
                       <div class="bar" style="height:30%"></div>
                       <div class="bar" style="height:48%"></div>
                       <div class="bar" style="height:40%"></div>
@@ -3606,7 +714,6 @@
                       <div class="bar" style="height:96%"></div>
                       <div class="bar" style="height:80%"></div>
                       <div class="bar" style="height:100%"></div>
-
                     </div>
 
                   </div>
@@ -3625,9 +732,7 @@
 
     </section>
 
-    <!-- =========================================================
-         PROBLEM + ILLUSTRATIVE COST OF MANUAL WORK
-    ========================================================== -->
+    <!-- PROBLEM + ILLUSTRATIVE COST OF MANUAL WORK -->
 
     <section class="section-border" aria-labelledby="problem-heading">
 
@@ -3636,75 +741,44 @@
         <div class="center-heading reveal-scale">
 
           <div class="eyebrow" aria-hidden="true">
-
             <span class="eyebrow-line"></span>
-
             THE PROBLEM
-
             <span class="eyebrow-line"></span>
-
           </div>
 
           <h2 id="problem-heading">
-
             Repetitive Work Quietly
             <br>
-
             <span class="muted">
               Consumes Your Week.
             </span>
-
           </h2>
 
           <p class="section-description centered">
-
-            Manual handoffs, disconnected tools, and scattered information slow operations down, introduce avoidable errors, and make it hard to see what is actually happening.
-
+            Manual handoffs, disconnected tools, and scattered information slow operations down, introduce avoidable errors, and hide what is actually happening. Much of it can be fixed once the problem is defined precisely.
           </p>
 
         </div>
 
         <div class="center-heading reveal-scale" style="margin-top:55px;">
-
           <span
             class="small-tag"
             style="color:rgba(255,255,255,.78); font-size:8px;"
           >
             ILLUSTRATIVE EXAMPLE — NOT ACTUAL CLIENT RESULTS
           </span>
-
         </div>
 
         <div class="equation-row reveal-scale" style="margin-top:26px;">
-
-          <div class="flow-node">
-            20 TASKS / DAY
-          </div>
-
+          <div class="flow-node">20 TASKS / DAY</div>
           <div class="flow-arrow" aria-hidden="true">×</div>
-
-          <div class="flow-node">
-            5 MIN EACH
-          </div>
-
+          <div class="flow-node">5 MIN EACH</div>
           <div class="flow-arrow" aria-hidden="true">=</div>
-
-          <div class="flow-node">
-            100 MIN / DAY
-          </div>
-
+          <div class="flow-node">100 MIN / DAY</div>
           <div class="flow-arrow" aria-hidden="true">×</div>
-
-          <div class="flow-node">
-            22 WORKDAYS
-          </div>
-
+          <div class="flow-node">22 WORKDAYS</div>
           <div class="flow-arrow" aria-hidden="true">=</div>
-
-          <div class="flow-node">
-            ≈ 37 HOURS / MONTH
-          </div>
-
+          <div class="flow-node">≈ 37 HOURS / MONTH</div>
         </div>
 
         <p class="section-description centered reveal-scale" style="margin-top:34px;">
@@ -3715,9 +789,7 @@
 
     </section>
 
-    <!-- =========================================================
-         THE SOLUTION
-    ========================================================== -->
+    <!-- THE APPROACH -->
 
     <section
       id="product"
@@ -3732,17 +804,12 @@
           <div class="reveal-left">
 
             <div class="eyebrow" aria-hidden="true">
-
               <span class="eyebrow-line"></span>
-
               THE APPROACH
-
             </div>
 
             <h2 id="solution-heading">
-
               From Manual Process
-
               <span class="muted">
                 To Working System.
               </span>
@@ -3751,9 +818,7 @@
           </div>
 
           <p class="section-description reveal-right">
-
-            Custom-built systems designed around how your business actually works, not generic templates: Capture → Process → Connect → Organize → Report → Hand Off When Needed.
-
+            The method is the same whether the result is a focused tool or a custom system: define the problem precisely, build only what it needs, and make it usable by the people who run it. In practice: Capture → Process → Connect → Organize → Report → Hand Off When Needed.
           </p>
 
         </div>
@@ -3762,9 +827,7 @@
 
     </section>
 
-    <!-- =========================================================
-         FEATURES
-    ========================================================== -->
+    <!-- CAPABILITIES -->
 
     <section
       id="capabilities"
@@ -3779,17 +842,12 @@
           <div class="reveal-left">
 
             <div class="eyebrow" aria-hidden="true">
-
               <span class="eyebrow-line"></span>
-
               CAPABILITIES
-
             </div>
 
             <h2 id="capabilities-heading">
-
               Engineered Around
-
               <span class="muted">
                 The Problem.
               </span>
@@ -3798,9 +856,7 @@
           </div>
 
           <p class="section-description reveal-right">
-
-            Six capabilities, used together or individually. Scope depends on your tools, data, and requirements.
-
+            Six capabilities, used together or individually, each described by what it does inside a process. Scope depends on your tools, data, and requirements.
           </p>
 
         </div>
@@ -3808,103 +864,52 @@
         <div class="feature-grid reveal-scale">
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ◈
-            </div>
-
-            <div class="feature-title">
-              CUSTOM SOFTWARE
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">◈</div>
+            <div class="feature-title">CUSTOM SOFTWARE</div>
             <div class="feature-description">
-              Web applications and internal tools designed around a specific process, rather than a template that almost fits.
+              Web applications and internal tools built around one specific process: the forms, records, and approvals involved, and the logic that connects them.
             </div>
-
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ⌁
-            </div>
-
-            <div class="feature-title">
-              AI WHERE IT HELPS
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">⌁</div>
+            <div class="feature-title">AI WHERE IT HELPS</div>
             <div class="feature-description">
-              AI components for classifying, extracting, and drafting, used only where they improve the result and paired with human review where accuracy matters.
+              AI for classifying, extracting, and drafting, used only where it improves the result. Where accuracy matters, a person reviews the output before anything is acted on.
             </div>
-
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ↻
-            </div>
-
-            <div class="feature-title">
-              WORKFLOW AUTOMATION
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">↻</div>
+            <div class="feature-title">WORKFLOW AUTOMATION</div>
             <div class="feature-description">
-              Repetitive multi-step processes turned into rule-based automations with clear handling for exceptions and failures.
+              Repeatable multi-step processes turned into rule-based automations, with defined handling for exceptions and failures.
             </div>
-
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ⚙
-            </div>
-
-            <div class="feature-title">
-              SYSTEMS INTEGRATION
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">⚙</div>
+            <div class="feature-title">SYSTEMS INTEGRATION</div>
             <div class="feature-description">
               Connects separate tools, spreadsheets, and platforms so information moves between them without being re-entered by hand.
             </div>
-
-            <div class="feature-badge">
-              Where Supported
-            </div>
-
+            <div class="feature-badge">Where Supported</div>
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              $
-            </div>
-
-            <div class="feature-title">
-              DATA ORGANIZATION
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">$</div>
+            <div class="feature-title">DATA ORGANIZATION</div>
             <div class="feature-description">
-              Keeps records, history, and status in one structured place instead of spread across inboxes, chats, and files.
+              Structured collection and validation against your own rules, so records, history, and status live in one place instead of across inboxes and chats.
             </div>
-
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ✦
-            </div>
-
-            <div class="feature-title">
-              OPERATIONAL VISIBILITY
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">✦</div>
+            <div class="feature-title">OPERATIONAL VISIBILITY</div>
             <div class="feature-description">
-              Dashboards and reports that show what is happening, what is stuck, and what needs attention.
+              Dashboards and reports that show what is happening, what is stuck, and what needs a decision.
             </div>
-
           </div>
 
         </div>
@@ -3913,9 +918,7 @@
 
     </section>
 
-    <!-- =========================================================
-         CUSTOMIZATION AND EXPANDABILITY
-    ========================================================== -->
+    <!-- FOCUSED OR CUSTOM -->
 
     <section
       id="customization"
@@ -3928,29 +931,21 @@
         <div class="center-heading reveal-scale">
 
           <div class="eyebrow" aria-hidden="true">
-
             <span class="eyebrow-line"></span>
-
             FOCUSED OR CUSTOM
-
             <span class="eyebrow-line"></span>
-
           </div>
 
           <h2 id="customization-heading">
-
-            Built Around Your Workflow.
+            Focused Tools Or
             <br>
-
             <span class="muted">
-              Expandable As Your Needs Grow.
+              Customized Systems.
             </span>
           </h2>
 
           <p class="section-description centered">
-
-            Some problems suit a focused solution for one clear use case. More complex requirements, such as company-specific logic, additional integrations, or advanced reporting, are handled as separately scoped custom work where technically feasible.
-
+            Some problems call for a focused tool that does one job well. Others need company-specific logic, more integrations, or advanced reporting, scoped as custom work where technically feasible. Focused software products of the studio's own are part of its direction; none has been released yet.
           </p>
 
         </div>
@@ -3958,67 +953,27 @@
         <div class="steps-grid reveal-scale">
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ?
-            </div>
-
-            <div class="feature-title">
-              A single, well-defined task?
-            </div>
-
-            <div class="request-answer">
-              Focused solution.
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">A single, well-defined task?</div>
+            <div class="request-answer">Focused tool.</div>
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ?
-            </div>
-
-            <div class="feature-title">
-              Your own rules and logic?
-            </div>
-
-            <div class="request-answer">
-              Built to your criteria.
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">Your own rules and logic?</div>
+            <div class="request-answer">Built to your criteria.</div>
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ?
-            </div>
-
-            <div class="feature-title">
-              More integrations or reporting?
-            </div>
-
-            <div class="request-answer">
-              Scoped around your process.
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">More integrations or reporting?</div>
+            <div class="request-answer">Scoped around your process.</div>
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              ?
-            </div>
-
-            <div class="feature-title">
-              Something unusual?
-            </div>
-
-            <div class="request-answer">
-              Assessed case by case.
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">?</div>
+            <div class="feature-title">Something unusual?</div>
+            <div class="request-answer">Assessed case by case.</div>
           </div>
 
         </div>
@@ -4027,9 +982,7 @@
 
     </section>
 
-    <!-- =========================================================
-         SUITABILITY
-    ========================================================== -->
+    <!-- WHO IT'S FOR -->
 
     <section
       id="comparison"
@@ -4042,29 +995,21 @@
         <div class="center-heading reveal-scale">
 
           <div class="eyebrow" aria-hidden="true">
-
             <span class="eyebrow-line"></span>
-
             WHO IT'S FOR
-
             <span class="eyebrow-line"></span>
-
           </div>
 
           <h2 id="comparison-heading">
-
             Built For Businesses
             <br>
-
             <span class="muted">
               With Repetitive Work.
             </span>
           </h2>
 
           <p class="section-description centered">
-
-            Any operation that depends on repeated manual steps, scattered information, or tools that do not talk to each other.
-
+            Any operation that relies on repeated manual steps, scattered information, or tools that do not talk to each other.
           </p>
 
         </div>
@@ -4073,62 +1018,26 @@
 
           <div class="pricing-card">
 
-            <div class="pricing-label">
-              IDEAL CUSTOMER
-            </div>
-
-            <div class="pricing-name">
-              Operations-Heavy Businesses
-            </div>
+            <div class="pricing-label">IDEAL CUSTOMER</div>
+            <div class="pricing-name">Operations-Heavy Businesses</div>
 
             <div class="check-list">
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Recurring tasks that consume staff time
-              </div>
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Information spread across inboxes, chats, and spreadsheets
-              </div>
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                A process that needs to scale without more manual effort
-              </div>
-
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Recurring tasks that consume staff time</div>
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Information spread across inboxes, chats, and spreadsheets</div>
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>A process that needs to scale without more manual effort</div>
             </div>
 
           </div>
 
           <div class="pricing-card featured">
 
-            <div class="pricing-label">
-              YOUR SETUP
-            </div>
-
-            <div class="pricing-name">
-              Works With Your Existing Tools
-            </div>
+            <div class="pricing-label">YOUR SETUP</div>
+            <div class="pricing-name">Works With Your Existing Tools</div>
 
             <div class="check-list">
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Website forms, messaging platforms, spreadsheets, CRMs, and calendars
-              </div>
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Custom web applications and AI components where they add value
-              </div>
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Feasibility depends on your platforms, permissions, and APIs
-              </div>
-
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Website forms, messaging platforms, spreadsheets, CRMs, and calendars</div>
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Custom web applications and AI components where they add value</div>
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Feasibility depends on your platforms, permissions, and APIs</div>
             </div>
 
           </div>
@@ -4139,9 +1048,7 @@
 
     </section>
 
-    <!-- =========================================================
-         CONTROL
-    ========================================================== -->
+    <!-- CONTROL -->
 
     <section
       id="revenue-opportunity"
@@ -4155,38 +1062,20 @@
 
           <div class="ownership-content">
 
-            <span class="small-tag">
-              YOU STAY IN CONTROL
-            </span>
+            <span class="small-tag">YOU STAY IN CONTROL</span>
 
             <h2 id="control-heading" style="margin-top:23px;">
-
               Automated Where It Fits.
-
               <br>
-
               <span class="muted">
                 Human Where It Counts.
               </span>
             </h2>
 
             <div class="check-list">
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Works from company-approved information
-              </div>
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Follows your business-defined rules
-              </div>
-
-              <div class="check-item">
-                <span class="check" aria-hidden="true">✓</span>
-                Escalates to a person whenever judgment is needed
-              </div>
-
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Works from information your business has approved</div>
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Checks inputs against rules your business defines</div>
+              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Hands off to a person whenever judgment is needed</div>
             </div>
 
           </div>
@@ -4196,39 +1085,15 @@
             <div class="workflow-box workflow-float">
 
               <div class="workflow-header">
-
-                <span>
-                  ◉ EXAMPLE WORKFLOW
-                </span>
-
-                <span class="workflow-active">
-                  SAMPLE
-                </span>
-
+                <span>◉ EXAMPLE WORKFLOW</span>
+                <span class="workflow-active">SAMPLE</span>
               </div>
 
               <div class="workflow-steps">
-
-                <div class="workflow-step">
-                  <span class="workflow-step-dot"></span>
-                  Request received
-                </div>
-
-                <div class="workflow-step">
-                  <span class="workflow-step-dot"></span>
-                  Details extracted and checked
-                </div>
-
-                <div class="workflow-step">
-                  <span class="workflow-step-dot"></span>
-                  Routed by your rules
-                </div>
-
-                <div class="workflow-step">
-                  <span class="workflow-step-dot"></span>
-                  Exceptions sent to a person
-                </div>
-
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Request received</div>
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Details extracted and checked</div>
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Routed by your rules</div>
+                <div class="workflow-step"><span class="workflow-step-dot"></span>Exceptions sent to a person</div>
               </div>
 
             </div>
@@ -4241,9 +1106,7 @@
 
     </section>
 
-    <!-- =========================================================
-         PROCESS — HOW IT WORKS
-    ========================================================== -->
+    <!-- PROCESS -->
 
     <section
       id="how-it-works"
@@ -4256,29 +1119,21 @@
         <div class="center-heading reveal-scale">
 
           <div class="eyebrow" aria-hidden="true">
-
             <span class="eyebrow-line"></span>
-
             HOW IT WORKS
-
             <span class="eyebrow-line"></span>
-
           </div>
 
           <h2 id="process-heading">
-
             A Clear Process,
             <br>
-
             <span class="muted">
               From Brief To Delivery.
             </span>
           </h2>
 
           <p class="section-description centered">
-
-            Each project follows the same disciplined path: understand the problem, design the system, build it, and verify that it holds up in real use.
-
+            Each project follows the same path: understand the problem, define the right solution, build and connect it, then test and refine it until it is usable in daily work.
           </p>
 
         </div>
@@ -4286,67 +1141,35 @@
         <div class="steps-grid reveal-scale">
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              01
-            </div>
-
-            <div class="feature-title">
-              UNDERSTAND
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">01</div>
+            <div class="feature-title">UNDERSTAND</div>
             <div class="feature-description">
               The current process, tools, and constraints are mapped before anything is designed.
             </div>
-
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              02
-            </div>
-
-            <div class="feature-title">
-              DESIGN
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">02</div>
+            <div class="feature-title">DEFINE</div>
             <div class="feature-description">
-              The workflow and architecture are chosen for reliability, maintainability, and fit, not novelty.
+              The solution is scoped to the problem: what to build, what to connect, and what stays with a person. Reliability and fit come before novelty.
             </div>
-
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              03
-            </div>
-
-            <div class="feature-title">
-              BUILD &amp; INTEGRATE
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">03</div>
+            <div class="feature-title">BUILD &amp; INTEGRATE</div>
             <div class="feature-description">
               The system is implemented and connected to the tools you already use.
             </div>
-
           </div>
 
           <div class="feature-card feature-3d">
-
-            <div class="feature-icon" aria-hidden="true">
-              04
-            </div>
-
-            <div class="feature-title">
-              TEST &amp; REFINE
-            </div>
-
+            <div class="feature-icon" aria-hidden="true">04</div>
+            <div class="feature-title">TEST &amp; REFINE</div>
             <div class="feature-description">
-              Edge cases, failures, and handoffs are checked, then the system is adjusted based on how it performs in practice.
+              Edge cases, failures, and handoffs are checked, then the system is adjusted and delivered in a usable state.
             </div>
-
           </div>
 
         </div>
@@ -4355,9 +1178,7 @@
 
     </section>
 
-    <!-- =========================================================
-         DISCOVERY CALL
-    ========================================================== -->
+    <!-- DISCOVERY CALL -->
 
     <section
       id="preview"
@@ -4373,23 +1194,18 @@
 
             <div class="custom-copy">
 
-              <span class="small-tag">
-                DISCOVERY CALL
-              </span>
+              <span class="small-tag">DISCOVERY CALL</span>
 
               <h2 id="discovery-heading" style="margin-top:23px;">
-
                 Discuss Your
-
                 <br>
-
                 <span class="muted">
                   Problem First.
                 </span>
               </h2>
 
               <p class="custom-description">
-                A first conversation covers how the work is done today, where time or information is being lost, and what a suitable system could look like. Some problems suit a focused solution; others call for custom work.
+                A first conversation covers how the work is done today, where time or information is being lost, and whether the answer is a focused tool or a custom system. There is no fixed package to fit you into.
               </p>
 
               <a
@@ -4408,9 +1224,7 @@
 
                 <div class="custom-option-top">
 
-                  <div class="custom-option-number" aria-hidden="true">
-                    01
-                  </div>
+                  <div class="custom-option-number" aria-hidden="true">01</div>
 
                   <div class="custom-option-label">
                     ON THE<br>CALL
@@ -4418,9 +1232,7 @@
 
                 </div>
 
-                <h3>
-                  Your Current Process
-                </h3>
+                <h3>Your Current Process</h3>
 
                 <div class="custom-option-features">
                   <span class="custom-option-feature">WORKFLOW</span>
@@ -4430,9 +1242,7 @@
                   <span class="custom-option-feature">INTEGRATIONS</span>
                 </div>
 
-                <div class="custom-option-arrow" aria-hidden="true">
-                  →
-                </div>
+                <div class="custom-option-arrow" aria-hidden="true">→</div>
 
               </div>
 
@@ -4446,9 +1256,7 @@
 
     </section>
 
-    <!-- =========================================================
-         FINAL CTA
-    ========================================================== -->
+    <!-- FINAL CTA -->
 
     <section
       id="get-started"
@@ -4460,24 +1268,18 @@
 
         <div class="reveal-scale">
 
-          <div class="final-icon" aria-hidden="true">
-            ↗
-          </div>
+          <div class="final-icon" aria-hidden="true">↗</div>
 
           <h2 id="cta-heading">
-
             Have A Process
             <br>
-
             <span class="muted">
               Worth Fixing?
             </span>
           </h2>
 
           <p>
-
-            Describe the process, the tools involved, and what is slowing it down. Intended benefits of a well-designed system: less repetitive work, fewer avoidable errors, and clearer visibility. Outcomes depend on your situation and are not guaranteed in advance.
-
+            Describe the process, the tools involved, and what is slowing it down. The aim of a well-designed system is less repetitive work, fewer avoidable errors, and clearer visibility. Outcomes depend on your situation and are not guaranteed in advance.
           </p>
 
           <div class="final-actions">
@@ -4513,14 +1315,12 @@
 
   </main>
 
-  <!-- =========================================================
-       DEMO MODAL
-       NOTE: Replace the video src with your actual demo video URL.
-       Current URL: https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4
-       Update the Cloudinary cloud name (jb9xczzz) and video path to match
-       your account. The video will gracefully show an error message if
-       the source is unavailable.
-  ========================================================== -->
+  <!--
+    DEMO MODAL
+    NOTE: Replace the video src with your actual demo video URL.
+    Current URL: https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4
+    The video shows a graceful message if the source is unavailable.
+  -->
 
   <div
     class="demo-modal"
@@ -4562,16 +1362,10 @@
           playsinline
           preload="metadata"
         >
-
-          <!--
-            ACTION REQUIRED: Replace this URL with your actual demo video.
-            Cloud name "jb9xczzz" and path "/vloom.mp4" must be updated.
-          -->
           <source
             src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4"
             type="video/mp4"
           >
-
         </video>
 
       </div>
@@ -4579,10 +1373,6 @@
     </div>
 
   </div>
-
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
 
   <footer role="contentinfo">
 
@@ -4592,20 +1382,13 @@
 
         <div class="footer-brand">
 
-          <div class="footer-mark" aria-hidden="true">
-            A
-          </div>
+          <div class="footer-mark" aria-hidden="true">A</div>
 
           <div>
-
-            <div class="footer-name">
-              AutFlow Studio
-            </div>
-
+            <div class="footer-name">AutFlow Studio</div>
             <div class="footer-tagline">
-              Custom software &amp; workflow automation
+              Focused software &amp; workflow automation
             </div>
-
           </div>
 
         </div>
@@ -4628,26 +1411,11 @@
 
   </footer>
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
-
   <script>
-
-    /* =========================================================
-       GSAP
-    ========================================================== */
 
     gsap.registerPlugin(ScrollTrigger);
 
-    /* =========================================================
-       LENIS
-       FIX: removed the duplicate requestAnimationFrame loop.
-       Lenis is now driven exclusively by the GSAP ticker to
-       prevent double-ticking, which caused scroll jitter and
-       wasted CPU cycles.
-    ========================================================== */
-
+    /* Lenis is driven exclusively by the GSAP ticker (single tick source) */
     const lenis = new Lenis({
       duration: 1.15,
       smoothWheel: true,
@@ -4655,7 +1423,6 @@
       touchMultiplier: 1.1
     });
 
-    /* Connect Lenis to GSAP ticker (single tick source) */
     lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
@@ -4664,10 +1431,7 @@
 
     gsap.ticker.lagSmoothing(0);
 
-    /* =========================================================
-       NAVBAR
-    ========================================================== */
-
+    /* NAVBAR */
     const navbar = document.querySelector(".navbar");
 
     ScrollTrigger.create({
@@ -4676,10 +1440,7 @@
       onLeaveBack: () => { navbar.classList.remove("scrolled"); }
     });
 
-    /* =========================================================
-       HERO INTRO
-    ========================================================== */
-
+    /* HERO INTRO */
     const heroTimeline = gsap.timeline({
       defaults: { ease: "power4.out" }
     });
@@ -4703,10 +1464,7 @@
         duration: 1.4
       }, "-=.45");
 
-    /* =========================================================
-       HERO ORBIT ROTATION
-    ========================================================== */
-
+    /* HERO ORBIT ROTATION */
     gsap.to(".hero-orbit", {
       rotation: 360,
       duration: 80,
@@ -4714,10 +1472,7 @@
       ease: "none"
     });
 
-    /* =========================================================
-       HERO PARALLAX
-    ========================================================== */
-
+    /* HERO PARALLAX */
     gsap.to(".hero-content", {
       y: -120,
       opacity: .35,
@@ -4730,10 +1485,7 @@
       }
     });
 
-    /* =========================================================
-       DASHBOARD SCROLL ANIMATION
-    ========================================================== */
-
+    /* DASHBOARD SCROLL ANIMATION */
     gsap.to(".dashboard", {
       y: 110,
       rotateX: 0,
@@ -4748,10 +1500,7 @@
       }
     });
 
-    /* =========================================================
-       DASHBOARD GLOW
-    ========================================================== */
-
+    /* DASHBOARD GLOW */
     gsap.to(".dashboard-glow", {
       scale: 1.35,
       opacity: .8,
@@ -4764,10 +1513,7 @@
       }
     });
 
-    /* =========================================================
-       BACKGROUND GLOWS
-    ========================================================== */
-
+    /* BACKGROUND GLOWS */
     gsap.to(".glow-1", {
       y: 500,
       scale: 1.5,
@@ -4804,10 +1550,7 @@
       }
     });
 
-    /* =========================================================
-       SECTION HEADINGS
-    ========================================================== */
-
+    /* SECTION HEADINGS */
     gsap.utils.toArray(".reveal-left").forEach(element => {
       gsap.from(element, {
         x: -70,
@@ -4836,10 +1579,7 @@
       });
     });
 
-    /* =========================================================
-       FEATURE CARDS STAGGER
-    ========================================================== */
-
+    /* FEATURE CARDS STAGGER */
     gsap.from(".feature-card", {
       y: 80,
       opacity: 0,
@@ -4854,10 +1594,7 @@
       }
     });
 
-    /* =========================================================
-       FEATURE 3D TILT
-    ========================================================== */
-
+    /* FEATURE 3D TILT */
     document.querySelectorAll(".feature-3d").forEach(card => {
 
       card.addEventListener("mousemove", event => {
@@ -4895,10 +1632,7 @@
 
     });
 
-    /* =========================================================
-       OWNERSHIP SECTION
-    ========================================================== */
-
+    /* OWNERSHIP SECTION */
     gsap.from(".ownership-content", {
       x: -80,
       opacity: 0,
@@ -4924,10 +1658,7 @@
       }
     });
 
-    /* =========================================================
-       WORKFLOW FLOAT
-    ========================================================== */
-
+    /* WORKFLOW FLOAT */
     gsap.to(".workflow-float", {
       y: -20,
       duration: 2.7,
@@ -4936,10 +1667,7 @@
       ease: "sine.inOut"
     });
 
-    /* =========================================================
-       CENTER HEADINGS
-    ========================================================== */
-
+    /* CENTER HEADINGS */
     gsap.utils.toArray(".reveal-scale").forEach(element => {
       gsap.from(element, {
         y: 60,
@@ -4955,10 +1683,7 @@
       });
     });
 
-    /* =========================================================
-       COUNTERS
-    ========================================================== */
-
+    /* COUNTERS */
     document.querySelectorAll(".counter").forEach(counter => {
 
       const target = Number(counter.dataset.value);
@@ -4984,10 +1709,7 @@
 
     });
 
-    /* =========================================================
-       GROWTH BARS
-    ========================================================== */
-
+    /* GROWTH BARS */
     gsap.from(".bar", {
       scaleY: 0,
       transformOrigin: "bottom",
@@ -5001,10 +1723,7 @@
       }
     });
 
-    /* =========================================================
-       MAGNETIC BUTTONS
-    ========================================================== */
-
+    /* MAGNETIC BUTTONS */
     document.querySelectorAll(".magnetic").forEach(button => {
 
       button.addEventListener("mousemove", event => {
@@ -5037,10 +1756,7 @@
 
     });
 
-    /* =========================================================
-       CUSTOM CURSOR
-    ========================================================== */
-
+    /* CUSTOM CURSOR */
     const cursor = document.querySelector(".cursor");
     const cursorRing = document.querySelector(".cursor-ring");
 
@@ -5069,7 +1785,6 @@
         cursorRing.style.top = ringY + "px";
       });
 
-      /* Cursor hover scaling */
       document
         .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
         .forEach(element => {
@@ -5094,10 +1809,7 @@
 
     }
 
-    /* =========================================================
-       MOBILE MENU
-    ========================================================== */
-
+    /* MOBILE MENU */
     const menuButton = document.getElementById("mobileMenuButton");
     const mobileMenu = document.getElementById("mobileMenu");
 
@@ -5109,7 +1821,6 @@
 
       menuButton.textContent = isOpen ? "×" : "☰";
 
-      /* FIX: keep aria-expanded in sync */
       menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
       menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
 
@@ -5125,10 +1836,7 @@
       });
     });
 
-    /* =========================================================
-       SMOOTH ANCHOR SCROLL
-    ========================================================== */
-
+    /* SMOOTH ANCHOR SCROLL */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
       anchor.addEventListener("click", event => {
@@ -5152,12 +1860,7 @@
 
     });
 
-    /* =========================================================
-       DEMO MODAL
-       FIX: video error handling — shows a clear message if the
-       video source cannot be loaded, rather than an empty black box.
-    ========================================================== */
-
+    /* DEMO MODAL (video error handling shows a clear message instead of an empty box) */
     const demoButton = document.getElementById("demoButton");
     const demoModal = document.getElementById("demoModal");
     const demoModalClose = document.getElementById("demoModalClose");
@@ -5166,7 +1869,6 @@
 
     let videoErrorShown = false;
 
-    /* Show a fallback message if the video fails to load */
     demoVideo.addEventListener("error", () => {
       if (videoErrorShown) { return; }
       videoErrorShown = true;
@@ -5189,7 +1891,6 @@
         demoVideo.play().catch(() => {});
       }
 
-      /* Move focus into the modal for keyboard users */
       demoModalClose.focus();
     }
 
@@ -5202,7 +1903,6 @@
         demoVideo.pause();
       }
 
-      /* Return focus to the trigger button */
       if (demoButton) { demoButton.focus(); }
     }
 
@@ -5219,16 +1919,10 @@
       }
     });
 
-    /* =========================================================
-       YEAR
-    ========================================================== */
-
+    /* YEAR */
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    /* =========================================================
-       REFRESH SCROLLTRIGGER ON LOAD
-    ========================================================== */
-
+    /* REFRESH SCROLLTRIGGER ON LOAD */
     window.addEventListener("load", () => {
       ScrollTrigger.refresh();
     });

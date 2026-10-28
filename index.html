@@ -11,7 +11,7 @@
 
   <meta
     name="description"
-    content="Product launch creative for software and AI companies: polished UI motion videos, launch messaging, social assets, and marketing pages."
+    content="AutFlow Studio creates product motion-design videos, social media creative, clear product messaging, and complete websites for software and AI products."
   >
 
   <!-- =========================================================
@@ -132,7 +132,8 @@
       background: #fff;
       pointer-events: none;
       z-index: 9999;
-      transform: translate(-50%, -50%);
+      translate: -50% -50%;
+      opacity: 0;
       mix-blend-mode: difference;
     }
 
@@ -144,7 +145,8 @@
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
-      transform: translate(-50%, -50%);
+      translate: -50% -50%;
+      opacity: 0;
     }
 
     /* =========================================================
@@ -1940,6 +1942,8 @@
 
     .pricing-card {
       position: relative;
+      display: flex;
+      flex-direction: column;
       padding: 42px;
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 22px;
@@ -2021,10 +2025,21 @@
 
     .pricing-card .check-list {
       margin-top: 24px;
+      margin-bottom: 0;
+    }
+
+    .pricing-card .check-item {
+      align-items: flex-start;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .pricing-card .check {
+      margin-top: 1px;
     }
 
     .pricing-card .button {
-      margin-top: 28px;
+      margin-top: auto;
       width: 100%;
     }
 
@@ -3103,6 +3118,31 @@
       }
     }
 
+    /* Touch-first devices use native touch/pointer feedback, not the desktop cursor. */
+    @media (hover: none), (pointer: coarse) {
+      .cursor,
+      .cursor-ring {
+        display: none !important;
+      }
+
+      .mobile-menu-button {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+      }
+
+      .portfolio-menu-dialog .demo-modal-close {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+      }
+
+      .portfolio-back-button,
+      .portfolio-copy-button {
+        min-height: 46px;
+      }
+    }
+
     /* =========================================================
        DEMO MODAL
     ========================================================== */
@@ -3116,6 +3156,7 @@
       justify-content: center;
       padding: 24px;
       background: rgba(0,0,0,.78);
+      overscroll-behavior: contain;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       opacity: 0;
@@ -3132,9 +3173,13 @@
 
     .demo-modal-content {
       position: relative;
+      display: flex;
+      flex-direction: column;
       width: min(900px, 100%);
       max-width: 100%;
       max-height: calc(100vh - 48px);
+      max-height: calc(100dvh - 48px);
+      min-height: 0;
 
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 20px;
@@ -3148,6 +3193,23 @@
 
       transition:
         transform .45s cubic-bezier(.16,1,.3,1);
+    }
+
+    .demo-modal-header { flex: 0 0 auto; }
+    .portfolio-modal-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      scrollbar-gutter: stable;
+    }
+
+    @media (max-width: 620px) {
+      .demo-modal { align-items: center; padding: 10px; }
+      .demo-modal-content { max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px); }
+      .portfolio-modal-body { padding-bottom: max(17px, env(safe-area-inset-bottom)); }
     }
 
     .demo-modal.active .demo-modal-content {
@@ -3250,6 +3312,63 @@
     }
 
     /* =========================================================
+       COMPACT PORTFOLIO MODAL — extends the existing modal system
+    ========================================================== */
+    .portfolio-menu-dialog { width: min(440px, 100%); max-height: calc(100vh - 48px); max-height: calc(100dvh - 48px); overflow: hidden; }
+    .portfolio-menu-dialog .demo-modal-header { min-height: 54px; }
+    .portfolio-back-button { border: 0; padding: 7px 8px 7px 0; background: transparent; color: rgba(255,255,255,.7); font: inherit; font-size: 12px; cursor: pointer; }
+    .portfolio-back-button:hover,.portfolio-back-button:focus-visible { color: #fff; }
+    .portfolio-back-button:focus-visible,.portfolio-option-button:focus-visible { outline: 2px solid rgba(255,255,255,.85); outline-offset: 3px; }
+    .portfolio-modal-body { padding: 22px; }
+    .portfolio-modal-description { margin: 0 0 19px; color: rgba(255,255,255,.55); font-size: .82rem; line-height: 1.6; }
+    .portfolio-option-list { display: flex; flex-direction: column; gap: 9px; }
+    .portfolio-option-button { width: 100%; min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 16px; border: 1px solid rgba(255,255,255,.11); border-radius: 11px; background: rgba(255,255,255,.035); color: rgba(255,255,255,.9); text-align: left; font: inherit; font-size: .9rem; cursor: pointer; transition: background .22s ease, border-color .22s ease, transform .22s ease, color .22s ease; }
+    .portfolio-option-button:hover:not(:disabled) { background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.28); transform: translateY(-1px); color: #fff; }
+    .portfolio-option-button:active:not(:disabled) { transform: translateY(0) scale(.995); }
+    .portfolio-option-button:disabled { cursor: not-allowed; opacity: .42; }
+    .portfolio-option-arrow { color: rgba(255,255,255,.48); font-size: 1rem; }
+    .portfolio-video-wrap { border-radius: 10px; overflow: hidden; }
+    .portfolio-video-wrap[hidden],.portfolio-modal-panel[hidden],.portfolio-back-button[hidden] { display: none !important; }
+
+    .portfolio-project-heading { margin: 0 0 7px; color: #f5f2eb; font: 600 1.18rem/1.3 "Space Grotesk", sans-serif; letter-spacing: -.025em; }
+    .portfolio-option-title,.portfolio-option-subtitle { display: block; }
+    .portfolio-option-title { font-weight: 600; }
+    .portfolio-option-subtitle { margin-top: 4px; color: rgba(255,255,255,.48); font-size: .73rem; font-weight: 400; line-height: 1.4; }
+    .portfolio-video-option { justify-content: flex-start; min-height: 91px; }
+    .portfolio-video-option-copy { flex: 1; min-width: 0; }
+    .portfolio-play-icon { margin-left: auto; }
+    .portfolio-image-status { padding: 8px 0; color: rgba(255,255,255,.52); font-size: .75rem; line-height: 1.5; }
+    .portfolio-image-status[hidden] { display: none; }
+    .portfolio-video-wrap { margin-top: 12px; }
+    .portfolio-video-wrap video { display: block; width: 100%; height: auto; max-height: 55vh; background: #000; }
+    .portfolio-video-load-status { margin: 8px 0 10px; min-height: 1.2em; color: rgba(255,255,255,.48); font-size: .74rem; line-height: 1.5; }
+    .portfolio-video-load-status:empty { display: none; }
+    .portfolio-thumbnail-state[hidden] { display: none !important; }
+    .portfolio-thumbnail-image-wrap { display: grid; place-items: center; width: 100%; min-height: 120px; max-height: 55vh; overflow: auto; border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: #080808; }
+    .portfolio-thumbnail-image-wrap img { display: block; width: 100%; height: auto; max-height: 55vh; object-fit: contain; }
+    .portfolio-thumbnail-toggle { margin-top: 2px; min-height: 38px; }
+
+    .portfolio-post-preview { display: flex; flex-direction: column; gap: 15px; }
+    .portfolio-post-image-wrap { position: relative; display: grid; place-items: center; min-height: 150px; max-height: 48vh; overflow: auto; border: 1px solid rgba(255,255,255,.09); border-radius: 10px; background: rgba(0,0,0,.25); }
+    .portfolio-post-image-wrap img { display: block; width: 100%; max-height: 48vh; object-fit: contain; }
+    .portfolio-post-image-wrap img:not([src]),.portfolio-post-image-wrap img[src=""] { display: none; }
+    .portfolio-post-copy { min-width: 0; }
+    .portfolio-post-copy h3 { margin: 0 0 8px; color: #f5f2eb; font: 600 .96rem/1.35 "Space Grotesk", sans-serif; }
+    .portfolio-post-copy p { margin: 0 0 10px; color: rgba(255,255,255,.78); font-size: .8rem; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .portfolio-post-copy .portfolio-post-hashtags { color: rgba(255,255,255,.52); }
+    .portfolio-post-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 12px 0 7px; }
+    .portfolio-copy-button { padding: 9px 12px; border: 1px solid rgba(255,255,255,.17); border-radius: 8px; background: rgba(255,255,255,.06); color: #fff; font-size: .76rem; cursor: pointer; }
+    .portfolio-copy-button:hover,.portfolio-copy-button:focus-visible { background: rgba(255,255,255,.12); }
+    .portfolio-copy-status { color: rgba(255,255,255,.55); font-size: .7rem; }
+    .portfolio-open-image { display: inline-block; margin-top: 3px; color: rgba(255,255,255,.62); font-size: .75rem; text-decoration: underline; text-underline-offset: 3px; }
+    @media(max-width:620px) {
+      .portfolio-project-heading { font-size: 1.05rem; }
+      .portfolio-video-preview { min-height: 130px; }
+      .portfolio-post-image-wrap,.portfolio-post-image-wrap img { max-height: 36vh; }
+      .portfolio-post-copy p { font-size: .78rem; }
+    }
+
+    /* =========================================================
        REDUCED MOTION
     ========================================================== */
 
@@ -3318,7 +3437,7 @@
           </div>
 
           <div class="brand-subtitle">
-            Custom Operating Systems For Agencies
+            Product Launch Creative for Software & AI
           </div>
 
         </div>
@@ -3327,21 +3446,9 @@
 
       <nav class="nav-links">
 
-        <a href="#product">
-          Packages
-        </a>
+        <a href="#pricing">Packages</a>
 
-        <a href="#customization">
-          Process
-        </a>
-
-        <a href="#ai-auto-reply">
-          Launch Pro
-        </a>
-
-        <a href="#pricing">
-          Pricing
-        </a>
+        <a href="#how-it-works">Process</a>
 
       </nav>
 
@@ -3363,21 +3470,9 @@
 
     <div class="mobile-menu" id="mobileMenu">
 
-      <a href="#product">
-        Packages
-      </a>
+      <a href="#pricing">Packages</a>
 
-      <a href="#customization">
-        Process
-      </a>
-
-      <a href="#ai-auto-reply">
-        Launch Pro
-      </a>
-
-      <a href="#pricing">
-        Pricing
-      </a>
+      <a href="#how-it-works">Process</a>
 
       <a
         href="#get-started"
@@ -3436,7 +3531,7 @@
 
         <p class="hero-description hero-animate">
 
-          AutFlow Studio helps software and AI teams explain what makes their product valuable through polished UI motion videos, focused launch messaging, social assets, and responsive marketing pages. A clearer product story gives people a better reason to pay attention. Launch Essentials covers your custom operations. Launch Pro adds AI you can use internally, and offer as a new service to your own clients.
+          Product motion-design videos, social creative, clear messaging, and complete websites for software and AI launches.
 
         </p>
 
@@ -3454,9 +3549,11 @@
             type="button"
             class="button button-secondary magnetic"
             id="demoButton"
+            aria-haspopup="dialog"
+            aria-controls="demoModal"
           >
-            View The Product Story
-            <span>▶</span>
+            See a Previous Project
+            <span>→</span>
           </button>
 
         </div>
@@ -3485,12 +3582,12 @@
 
               <i></i>
 
-              PRODUCT STORY PREVIEW
+              LAUNCH CREATIVE PREVIEW
 
             </div>
 
             <div class="browser-label">
-              THE CREATIVE SYSTEM — SHAPE THE STORYD FROM HERE
+              MOTION · WEB · SOCIAL
             </div>
 
           </div>
@@ -3500,7 +3597,7 @@
             <aside class="sidebar">
 
               <div class="sidebar-title">
-                Your Agency
+                Product Launch
               </div>
 
               <div class="sidebar-item active">
@@ -3510,7 +3607,7 @@
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Clients
+                Projects
               </div>
 
               <div class="sidebar-item">
@@ -3520,23 +3617,23 @@
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Follow-Ups
+                Social Posts
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                AI Layer (Revenue OS)
+                Motion Design
               </div>
 
               <div class="sidebar-separator"></div>
 
               <div class="sidebar-title">
-                Team & Finance
+                Website
               </div>
 
               <div class="sidebar-item">
                 <span class="sidebar-icon"></span>
-                Workload Analytics
+                Product messaging Creative overview
               </div>
 
             </aside>
@@ -3548,17 +3645,17 @@
                 <div>
 
                   <div class="dashboard-eyebrow">
-                    Your Agency / Client OS
+                    Your Product / Launch Story
                   </div>
 
                   <div class="dashboard-heading">
-                    Built around how your agency actually runs.
+                    Built around your product story.
                   </div>
 
                 </div>
 
                 <div class="dashboard-filter">
-                  Product experience view ↗
+                  Launch creative preview ↗
                 </div>
 
               </div>
@@ -3568,7 +3665,7 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Product Story
+                    Product Launch
                   </div>
 
                   <div
@@ -3652,7 +3749,7 @@
                   </div>
 
                   <div class="panel-subtitle">
-                    Projects moving without the chaos
+                    One clear product story
                   </div>
 
                   <div class="project-list">
@@ -3670,7 +3767,7 @@
                         </div>
 
                         <div class="project-status">
-                          AUTOMATED
+                          MOTION
                         </div>
 
                       </div>
@@ -3694,7 +3791,7 @@
                         </div>
 
                         <div class="project-status">
-                          ACTIVE
+                          SOCIAL
                         </div>
 
                       </div>
@@ -3714,11 +3811,11 @@
                       <div class="project-info">
 
                         <div class="project-name">
-                          Landing page
+                          Complete website
                         </div>
 
                         <div class="project-status">
-                          CONVERTING
+                          WEBSITE
                         </div>
 
                       </div>
@@ -3736,11 +3833,11 @@
                 <div class="panel">
 
                   <div class="panel-title">
-                    Business Team & Finance
+                    Launch Website
                   </div>
 
                   <div class="panel-subtitle">
-                    Workload Analytics over time
+                    Product messaging Creative overview over time
                   </div>
 
                   <div class="chart">
@@ -3780,44 +3877,7 @@
        PROBLEM FRAMING
   ========================================================== -->
 
-  <section class="section-border">
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          THE COST OF AN UNCLEAR PRODUCT STORY
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Your Audience Shouldn’t Have To Guess
-          <br>
-
-          <span class="muted">
-            What Your Product Actually Does.
-          </span>
-
-        </h2>
-
-        <p class="section-description centered">
-
-          A useful product can still be difficult to explain in a crowded market. When the value is buried in feature lists or a confusing first impression, potential users may never understand why it matters. Strong product presentation turns complex interfaces into a story people can follow and gives your launch materials a more consistent voice.
-
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
+  
 
   <!-- =========================================================
        PRODUCT / FOUNDATION — THE CREATIVE SYSTEM
@@ -3906,7 +3966,7 @@
           </div>
 
           <div class="feature-description">
-            Platform-ready posts and vertical video adaptations help tell the same product story across relevant channels.
+            Social media posts help tell the same product story across relevant channels.
           </div>
 
         </div>
@@ -3918,11 +3978,11 @@
           </div>
 
           <div class="feature-title">
-            04 — MARKETING PAGE
+            04 — COMPLETE WEBSITE
           </div>
 
           <div class="feature-description">
-            A responsive landing page in Launch Pro gives visitors a focused place to understand the product and take the next step.
+            A complete website in Launch Pro gives visitors a focused place to understand the product and take the next step.
           </div>
 
         </div>
@@ -3938,7 +3998,7 @@
           </div>
 
           <div class="feature-description">
-            A coherent visual language across video, thumbnails, social posts, and sharing imagery makes the launch feel considered.
+            A coherent visual language across video and social posts makes the launch feel considered.
           </div>
 
         </div>
@@ -3962,7 +4022,7 @@
       </div>
 
       <p class="section-description centered reveal-scale" style="margin-top:34px;">
-        The scope depends on the package you choose. Deliverables are designed to work together while staying grounded in your actual product.
+        The scope depends on the package you choose. Launch-ready assets are designed to work together while staying grounded in your actual product.
       </p>
 
     </div>
@@ -3986,14 +4046,14 @@
 
           <span class="eyebrow-line"></span>
 
-          OUR PROCESS
+          THE PROCESS
 
           <span class="eyebrow-line"></span>
 
         </div>
 
         <h2>
-          From Product Context to Launch Assets.
+          From Product Context to Launch-Ready Creative.
         </h2>
 
       </div>
@@ -4059,7 +4119,7 @@
           </div>
 
           <div class="feature-description">
-            We prepare the final assets for the agreed placements and check the landing page, links, and buttons when included.
+            We prepare the final assets for the agreed placements and check the website, links, and buttons when included.
           </div>
 
         </div>
@@ -4074,385 +4134,25 @@
        WHAT YOU RECEIVE — TEAM / CLIENT SPLIT
   ========================================================== */-->
 
-  <section class="section-border">
-
-    <div class="container section-padding">
-
-      <div class="section-heading-grid">
-
-        <div class="reveal-left">
-
-          <div class="eyebrow">
-
-            <span class="eyebrow-line"></span>
-
-            DESIGNED TO WORK TOGETHER
-
-          </div>
-
-          <h2>
-
-            One Consistent Story.
-
-            <span class="muted">
-              Across Launch Channels.
-            </span>
-
-          </h2>
-
-        </div>
-
-        <p class="section-description reveal-right">
-
-          A launch is more than one video. The right combination of motion, messaging, and social assets helps people encounter a consistent explanation of your product wherever they see it.
-
-        </p>
-
-      </div>
-
-      <div class="split-grid">
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ⚙
-          </div>
-
-          <div class="feature-title">
-            CORE LAUNCH ASSETS
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Operations
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Projects & tasks
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Workload
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Follow-ups
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Finance & reporting
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              AI layer, used internally (Revenue OS)
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="feature-card feature-3d">
-
-          <div class="feature-icon">
-            ◈
-          </div>
-
-          <div class="feature-title">
-            ADDITIONAL IN LAUNCH PRO
-          </div>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Branded portal
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Projects & approvals
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Deliverables
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Communication
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Reports & relevant workflows
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              AI layer, offered as your add-on service (Revenue OS)
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+  
 
   <!-- =========================================================
        PROCESS — THE CENTRAL DIFFERENTIATOR
   ========================================================== -->
 
-  <section
-    id="customization"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          WHAT WE SHAPE THE STORY
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Make Your Product Easier
-          <br>
-
-          <span class="muted">
-            To Understand.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          We focus on the product’s real value: what it does, who it helps, and why the experience matters. Creative choices follow your actual interface and brand instead of adding unsupported features or empty hype.
-
-        </p>
-
-      </div>
-
-      <div class="pill-row reveal-scale">
-
-        <span class="tag">UI MOTION VIDEOS</span>
-        <span class="tag">PRODUCT MESSAGING</span>
-        <span class="tag">SOCIAL MEDIA ASSETS</span>
-        <span class="tag">VIDEO THUMBNAIL</span>
-        <span class="tag">SOCIAL SHARING IMAGE</span>
-        <span class="tag">RESPONSIVE LANDING PAGE</span>
-
-      </div>
-
-    </div>
-
-  </section>
+  
 
   <!-- =========================================================
        THE MODEL: TWO PARTS
   ========================================================== -->
 
-  <section class="section-border">
-
-    <div class="container section-padding">
-
-      <div class="center-heading reveal-scale">
-
-        <div class="eyebrow">
-
-          <span class="eyebrow-line"></span>
-
-          PACKAGE OVERVIEW
-
-          <span class="eyebrow-line"></span>
-
-        </div>
-
-        <h2>
-
-          Two Packages. One Goal.
-          <br>
-
-          <span class="muted">
-            A Clearer Product Story.
-          </span>
-        </h2>
-
-        <p class="section-description centered">
-
-          Choose Launch Essentials for a focused set of launch assets, or Launch Pro for a broader campaign with more video angles, vertical adaptations, and a responsive landing page.
-
-        </p>
-
-      </div>
-
-      <div class="flow-diagram reveal-scale">
-
-        <div class="flow-node">
-          YOUR AGENCY
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          YOUR CUSTOM SYSTEM (+ AI WITH LAUNCH PRO)
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          USED INTERNALLY, AND OFFERED TO YOUR CLIENTS
-        </div>
-
-        <div class="flow-arrow">↓</div>
-
-        <div class="flow-node">
-          A NEW REVENUE LINE FOR YOUR AGENCY
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+  
 
   <!-- =========================================================
        AI AUTO-REPLY FEATURE SECTION — THE EXPANSION
   ========================================================== -->
 
-  <section id="ai-auto-reply">
-
-    <div class="container">
-
-      <div class="ownership-card ownership-parallax">
-
-        <div class="ownership-content">
-
-          <span class="small-tag">
-            THE PRODUCT STORY
-          </span>
-
-          <h2 style="margin-top:23px;">
-
-            Your Product. Your Audience.
-
-            <br>
-
-            <span class="muted">
-              A Clearer First Impression.
-            </span>
-          </h2>
-
-          <p>
-
-            Product UI motion can turn a complicated interface into a short, guided story. We focus on the moments that best explain the experience and connect them to a concise message about the product’s value.
-
-          </p>
-
-          <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Demonstrates key product moments
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Keeps the story focused on real value
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Uses your actual product interface
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Supports a consistent launch message
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Creates useful assets for launch channels
-            </div>
-
-          </div>
-
-          <p class="ownership-note">
-
-            No unsupported features or fabricated UI states: supplied product visuals remain the source of truth throughout the creative process.
-
-          </p>
-
-        </div>
-
-        <div class="workflow-visual">
-
-          <div class="workflow-box workflow-float">
-
-            <div class="workflow-header">
-
-              <span>
-                ◉ AI LAYER
-              </span>
-
-              <span class="workflow-active">
-                ACTIVE
-              </span>
-
-            </div>
-
-            <div class="workflow-steps">
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Product interface
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Key moment highlighted
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Value communicated clearly
-              </div>
-
-              <div class="workflow-step">
-                <span class="workflow-step-dot"></span>
-                Ready to share
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+  
 
   <!-- =========================================================
        PRICING
@@ -4479,17 +4179,17 @@
 
         <h2>
 
-          Choose Your Launch Scope.
+          Choose Your Launch Package.
           <br>
 
           <span class="muted">
-            Clear Deliverables. Clear Pricing.
+            Clear scope. Clear pricing.
           </span>
         </h2>
 
         <p class="section-description centered">
 
-          Both packages combine product storytelling and launch-ready creative. Launch Pro adds more video coverage, vertical adaptations, and a responsive marketing landing page.
+          Choose focused launch content or a fuller package with motion-design videos, social posts, and a complete website.
 
         </p>
 
@@ -4498,233 +4198,42 @@
       <div class="pricing-grid reveal-scale">
 
         <div class="pricing-card">
-
-          <div class="pricing-label">
-            PACKAGE 01
-          </div>
-
-          <div class="pricing-name">
-            Launch Essentials
-          </div>
-
-          <div class="pricing-price">
-            <span class="pricing-amount">$249</span>
-          </div>
-
-          <div class="pricing-sub">
-            Launch package
-          </div>
-
-          <p class="pricing-desc">
-            A focused launch set: two UI motion videos, social posts, a thumbnail, a sharing image, and refined core messaging.
-          </p>
-
+          <div class="pricing-label">PACKAGE 01</div>
+          <div class="pricing-name">Launch Essentials</div>
+          <div class="pricing-price"><span class="pricing-amount">$249</span></div>
+          <div class="pricing-sub">Launch package</div>
+          <p class="pricing-desc">Focused launch content to communicate your product’s value clearly and professionally.</p>
           <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Two product UI motion videos (30–45 sec and 10–15 sec)
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Three social media posts
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              One video thumbnail
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              One social sharing image
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Refined product headline, description, and core messaging
-            </div>
-
+            <div class="check-item"><span class="check">✓</span>1 motion-design video + matching thumbnail</div>
+            <div class="check-item"><span class="check">✓</span>3 social media posts</div>
+            <div class="check-item"><span class="check">✓</span>Product headline, description, and core messaging refinement</div>
+            <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
           </div>
-
-          <a
-            href="#get-started"
-            class="button button-secondary magnetic"
-          >
-            Choose Launch Essentials
-          </a>
-
+          <a href="#get-started" class="button button-secondary magnetic">Choose Launch Essentials</a>
         </div>
 
         <div class="pricing-card featured">
-
-          <div class="pricing-badge">
-            MORE COMPLETE LAUNCH
-          </div>
-
-          <div class="pricing-label">
-            PACKAGE 02
-          </div>
-
-          <div class="pricing-name">
-            Launch Pro
-          </div>
-
-          <div class="pricing-price">
-            <span class="pricing-amount">$499</span>
-          </div>
-
-          <div class="pricing-sub">
-            Launch package. No recurring fees.
-          </div>
-
-          <p class="pricing-desc">
-            A broader launch package with three UI motion videos, vertical adaptations, eight social posts, and a responsive marketing landing page.
-          </p>
-
+          <div class="pricing-badge">MORE COMPLETE LAUNCH</div>
+          <div class="pricing-label">PACKAGE 02</div>
+          <div class="pricing-name">Launch Pro</div>
+          <div class="pricing-price"><span class="pricing-amount">$499</span></div>
+          <div class="pricing-sub">Launch package</div>
+          <p class="pricing-desc">A complete launch package with motion-design videos, social media posts, and a complete website.</p>
           <div class="check-list">
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Three product UI motion videos exploring different messaging angles (30–45 sec, 10–15 sec, 30–45 sec)
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Three vertical adaptations for Reels, TikTok, and Shorts
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Eight social media posts in total
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              One responsive marketing landing page
-            </div>
-
-            <div class="check-item">
-              <span class="check">✓</span>
-              Refined core messaging, thumbnail, social sharing image, and basic page/link/button checks
-            </div>
-
+            <div class="check-item"><span class="check">✓</span>3 motion-design videos, each with its matching thumbnail</div>
+            <div class="check-item"><span class="check">✓</span>8 social media posts</div>
+            <div class="check-item"><span class="check">✓</span>1 complete website</div>
+            <div class="check-item"><span class="check">✓</span>Product headline, description, and core messaging refinement</div>
+            <div class="check-item"><span class="check">✓</span>Basic website, link, and button checks</div>
+            <div class="check-item"><span class="check">✓</span>3 free revision rounds for every included deliverable</div>
           </div>
-
-          <a
-            href="#get-started"
-            class="button button-primary magnetic"
-          >
-            Choose Launch Pro
-          </a>
-
+          <a href="#get-started" class="button button-primary magnetic">Choose Launch Pro</a>
         </div>
 
       </div>
-
     </div>
 
   </section>
-
-  <!-- =========================================================
-       LAUNCH SUPPORT — PACKAGE DETAILS
-  ========================================================== -->
-
-  <section
-    id="preview"
-    class="section-border"
-  >
-
-    <div class="container section-padding">
-
-      <div class="custom-card reveal-scale">
-
-        <div class="custom-grid">
-
-          <div class="custom-copy">
-
-            <span class="small-tag">
-              A CLEARER FIRST IMPRESSION
-            </span>
-
-            <h2 style="margin-top:23px;">
-
-              Help Your Product
-
-              <br>
-
-              <span class="muted">
-                Make Its Value Clear.
-              </span>
-            </h2>
-
-            <div class="pricing-price" style="margin-top:22px;">
-              <span class="pricing-amount">Launch</span>
-              <span class="pricing-cadence">assets scoped to your package</span>
-            </div>
-
-            <p class="custom-description">
-              Your launch materials should make the product easier to understand at a glance. Choose the package that fits your launch needs, with messaging and visuals built around the product you actually have.
-            </p>
-
-            <a
-              href="#get-started"
-              class="button button-primary magnetic"
-            >
-              Compare Packages
-              <span>→</span>
-            </a>
-
-          </div>
-
-          <div class="custom-options">
-
-            <div class="custom-option">
-
-              <div class="custom-option-top">
-
-                <div class="custom-option-number">
-                  01
-                </div>
-
-                <div class="custom-option-label">
-                  LAUNCH<br>READY
-                </div>
-
-              </div>
-
-              <h3>
-                Your Product, Clearly Presented
-              </h3>
-
-              <p>
-                Product UI motion, concise messaging, and supporting visuals help create a coherent story for launch day and beyond.
-              </p>
-
-              <div class="custom-option-features">
-                <span class="custom-option-feature">PRODUCT UI</span>
-                <span class="custom-option-feature">CLEAR MESSAGE</span>
-                <span class="custom-option-feature">SOCIAL ASSETS</span>
-                <span class="custom-option-feature">PACKAGE-BASED SCOPE</span>
-              </div>
-
-              <div class="custom-option-arrow">
-                →
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
   <!-- =========================================================
        FINAL CTA
   ========================================================== -->
@@ -4743,19 +4252,11 @@
         </div>
 
         <h2>
-
-          Make Your Product
-          <br>
-
-          <span class="muted">
-            Easier To Understand.
-          </span>
+          Ready to Make Your Product Stand Out?
         </h2>
 
         <p>
-
-          Choose Launch Essentials for the core launch assets, or Launch Pro for a more complete package with additional video angles, vertical adaptations, and a responsive landing page.
-
+          Let’s turn your product into a launch-ready presentation with motion videos, social content, and a website built to communicate its value.
         </p>
 
         <div class="final-actions">
@@ -4763,13 +4264,13 @@
           <div class="hero-actions">
 
             <a
-              href="https://wa.me/213676127853"
+              href="https://www.instagram.com/autflow.vm/"
               target="_blank"
               rel="noopener noreferrer"
               class="button button-primary magnetic"
             >
-              Explore Packages
-              <span>→</span>
+              Start My Product Launch
+              <span>↗</span>
             </a>
 
           </div>
@@ -4787,65 +4288,71 @@
   </section>
 
   <!-- =========================================================
-       DEMO MODAL
+       DISTILBOOK PREVIOUS PROJECT MODAL
   ========================================================== -->
-
-  <div
-    class="demo-modal"
-    id="demoModal"
-    aria-hidden="true"
-  >
-
-    <div
-      class="demo-modal-content"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="demoModalLabel"
-    >
-
+  <div class="demo-modal portfolio-menu-modal" id="demoModal" aria-hidden="true">
+    <div class="demo-modal-content portfolio-menu-dialog" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel" aria-describedby="portfolioModalDescription" tabindex="-1">
       <div class="demo-modal-header">
-
-        <span
-          class="demo-modal-label"
-          id="demoModalLabel"
-        >
-          AutFlow Studio / Product Story Preview
-        </span>
-
-        <button
-          type="button"
-          class="demo-modal-close"
-          id="demoModalClose"
-          aria-label="Close product story preview"
-        >
-          ×
-        </button>
-
+        <button type="button" class="portfolio-back-button" id="portfolioBack" aria-label="Go back" hidden>← Back</button>
+        <span class="demo-modal-label" id="demoModalLabel">Previous Project: DistilBook</span>
+        <button type="button" class="demo-modal-close" id="demoModalClose" aria-label="Close project showcase">×</button>
       </div>
+      <div class="portfolio-modal-body">
+        <h2 class="portfolio-project-heading" id="portfolioProjectHeading">Previous Project: DistilBook</h2>
+        <p class="portfolio-modal-description" id="portfolioModalDescription">Explore a website, motion-design video, and social media campaign created for DistilBook.</p>
 
-      <div class="demo-video-wrap">
+        <section class="portfolio-modal-panel" id="portfolioMainPanel" aria-label="DistilBook project options">
+          <div class="portfolio-option-list">
+            <button type="button" class="portfolio-option-button" id="websiteOption">
+              <span><span class="portfolio-option-title">Website</span><span class="portfolio-option-subtitle">Visit the DistilBook website</span></span><span class="portfolio-option-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="portfolio-option-button portfolio-video-option" id="motionVideoOption">
+              <span class="portfolio-video-option-copy"><span class="portfolio-option-title">Motion-Design Video</span><span class="portfolio-option-subtitle">Watch the DistilBook project video</span></span><span class="portfolio-option-arrow portfolio-play-icon" aria-hidden="true">▶</span>
+            </button>
+            <button type="button" class="portfolio-option-button" id="socialPostsOption">
+              <span><span class="portfolio-option-title">Social Media Posts</span><span class="portfolio-option-subtitle">Browse all eight campaign posts</span></span><span class="portfolio-option-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
 
-        <video
-          class="demo-video"
-          id="demoVideo"
-          controls
-          playsinline
-          preload="metadata"
-        >
+        <section class="portfolio-modal-panel" id="portfolioMotionPanel" aria-label="DistilBook motion-design video" hidden>
+          <div class="demo-video-wrap portfolio-video-wrap" id="portfolioVideoWrap">
+            <video class="demo-video" id="demoVideo" controls playsinline preload="metadata" aria-label="DistilBook motion-design video">Your browser does not support video playback.</video>
+          </div>
+          <p class="portfolio-video-load-status" id="videoLoadStatus" role="status" aria-live="polite">Loading motion-design video…</p>
+          <div class="portfolio-thumbnail-state" id="portfolioThumbnailState" hidden>
+            <div class="portfolio-thumbnail-image-wrap">
+              <img id="portfolioVideoPoster" alt="DistilBook motion-design video thumbnail" loading="lazy">
+            </div>
+            <p class="portfolio-image-status" id="videoPosterStatus" role="status">Loading thumbnail…</p>
+          </div>
+          <button type="button" class="portfolio-copy-button portfolio-thumbnail-toggle" id="toggleVideoThumbnail" aria-pressed="false">View Thumbnail</button>
+        </section>
 
-          <source
-            src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4"
-            type="video/mp4"
-          >
+        <section class="portfolio-modal-panel" id="portfolioSocialPanel" aria-label="DistilBook social media posts" hidden>
+          <div class="portfolio-option-list" id="socialPostButtons"></div>
+        </section>
 
-          Your browser does not support the demo video.
-
-        </video>
-
+        <section class="portfolio-modal-panel" id="portfolioPostPreviewPanel" aria-label="Social media post preview" hidden>
+          <div class="portfolio-post-preview">
+            <div class="portfolio-post-image-wrap">
+              <div class="portfolio-image-status" id="postImageStatus" role="status">Loading post image…</div>
+              <img id="postPreviewImage" alt="" loading="lazy">
+            </div>
+            <div class="portfolio-post-copy">
+              <h3 id="postPreviewTitle"></h3>
+              <p id="postPreviewCaption"></p>
+              <p id="postPreviewHashtags" class="portfolio-post-hashtags"></p>
+              <div class="portfolio-post-actions">
+                <button type="button" class="portfolio-copy-button" id="copyPostCaption">Copy caption + hashtags</button>
+                <span id="copyPostStatus" class="portfolio-copy-status" role="status" aria-live="polite"></span>
+              </div>
+              <a class="portfolio-open-image" id="openPostImage" href="#" target="_blank" rel="noopener noreferrer">Open image in new tab ↗</a>
+            </div>
+          </div>
+        </section>
       </div>
-
     </div>
-
   </div>
 
   <!-- =========================================================
@@ -4871,7 +4378,7 @@
             </div>
 
             <div class="footer-tagline">
-              Product launch creative for software and AI companies
+              Product launch creative for software and AI products
             </div>
 
           </div>
@@ -4887,7 +4394,7 @@
         </span>
 
         <span>
-          Product UI motion, launch-ready social assets, and clear messaging for software and AI products.
+          Product motion-design videos, social creative, clear messaging, and complete websites for software and AI products.
         </span>
 
       </div>
@@ -5582,94 +5089,63 @@
 
     /* =========================================================
        CUSTOM CURSOR
+       Keep the dot and ring on the same viewport coordinates. The previous
+       implementation moved the dot immediately but eased the ring separately,
+       allowing the dot to leave the circle during fast movement and scrolling.
     ========================================================== */
 
-    const cursor =
-      document.querySelector(".cursor");
+    const cursor = document.querySelector(".cursor");
+    const cursorRing = document.querySelector(".cursor-ring");
+    const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const cursorHoverTargets = "a, button, .feature-card, .custom-option, .pricing-card";
 
-    const cursorRing =
-      document.querySelector(".cursor-ring");
+    function updateCustomCursor(event) {
+      const x = `${event.clientX}px`;
+      const y = `${event.clientY}px`;
+      cursor.style.left = x;
+      cursor.style.top = y;
+      cursorRing.style.left = x;
+      cursorRing.style.top = y;
+      cursor.style.opacity = "1";
+      cursorRing.style.opacity = "1";
+    }
 
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let ringX = 0;
-    let ringY = 0;
-
-    window.addEventListener("mousemove", event => {
-
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
-      gsap.to(cursor, {
-
-        x: mouseX,
-
-        y: mouseY,
-
-        duration: .08,
-
+    function setCursorHoverState(isHovering) {
+      gsap.to(cursorRing, {
+        scale: isHovering ? 1.6 : 1,
+        borderColor: isHovering ? "rgba(255,255,255,.7)" : "rgba(255,255,255,.4)",
+        duration: .25,
         overwrite: true
+      });
+    }
 
+    if (finePointerQuery.matches) {
+      window.addEventListener("pointermove", event => {
+        if (event.pointerType === "touch") return;
+        updateCustomCursor(event);
+      }, { passive: true });
+
+      document.addEventListener("pointerover", event => {
+        if (event.pointerType === "touch") return;
+        const target = event.target instanceof Element ? event.target.closest(cursorHoverTargets) : null;
+        const related = event.relatedTarget instanceof Element ? event.relatedTarget.closest(cursorHoverTargets) : null;
+        if (target && target !== related) setCursorHoverState(true);
       });
 
-    });
-
-    gsap.ticker.add(() => {
-
-      ringX +=
-        (mouseX - ringX) * .12;
-
-      ringY +=
-        (mouseY - ringY) * .12;
-
-      cursorRing.style.left =
-        ringX + "px";
-
-      cursorRing.style.top =
-        ringY + "px";
-
-    });
-
-    /* =========================================================
-       CURSOR HOVER
-    ========================================================== */
-
-    document
-      .querySelectorAll("a, button, .feature-card, .custom-option, .pricing-card")
-      .forEach(element => {
-
-        element.addEventListener("mouseenter", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1.6,
-
-            borderColor:
-              "rgba(255,255,255,.7)",
-
-            duration: .25
-
-          });
-
-        });
-
-        element.addEventListener("mouseleave", () => {
-
-          gsap.to(cursorRing, {
-
-            scale: 1,
-
-            borderColor:
-              "rgba(255,255,255,.4)",
-
-            duration: .25
-
-          });
-
-        });
-
+      document.addEventListener("pointerout", event => {
+        if (event.pointerType === "touch") return;
+        const target = event.target instanceof Element ? event.target.closest(cursorHoverTargets) : null;
+        const related = event.relatedTarget instanceof Element ? event.relatedTarget.closest(cursorHoverTargets) : null;
+        if (target && target !== related) setCursorHoverState(false);
       });
+
+      finePointerQuery.addEventListener?.("change", event => {
+        if (!event.matches) {
+          cursor.style.opacity = "0";
+          cursorRing.style.opacity = "0";
+        }
+      });
+    }
 
     /* =========================================================
        MOBILE MENU
@@ -5760,95 +5236,356 @@
       });
 
     /* =========================================================
-       DEMO MODAL
+       DISTILBOOK SHOWCASE CONFIGURATION
+       Update post image URLs/copy here if the supplied assets change.
     ========================================================== */
+    const portfolioConfig = {
+      websiteUrl: "https://distilbook.com/",
+      motionVideoUrl: "https://res.cloudinary.com/jb9xczzz/video/upload/v1793186280/x-downloader.com_9qv6Kv.mp4",
+      motionThumbnailUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793186281/vi4.png",
+      socialPosts: [
+        {
+          label: "Post 01 — Hero Announcement",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188891/01-hero-announcement.png",
+          caption: "Meet DistilBook. 📚\n\nGive it a PDF, and it gives you back an explainer video where every idea is hand-illustrated and narrated. You can start from a Word file, notes, a link, or just a topic. It’s built for anyone who wants to teach, explain, or share what’s on the page. Free to try.",
+          hashtags: "#DistilBook #ExplainerVideo #SaaS #AIVideo #ProductLaunch"
+        },
+        {
+          label: "Post 02 — The Problem",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188891/02-the-problem.png",
+          caption: "Think about the best teacher you ever had. They didn’t hand you a wall of text. They picked up a marker and drew the idea. Most of what we share still looks like the page: dense, flat, and easy to skim past. If your best material lives in a document, it deserves better than a download link.",
+          hashtags: "#Teaching #Education #ContentCreation #Learning #VisualCommunication"
+        },
+        {
+          label: "Post 03 — The Solution",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188890/03-the-solution.png",
+          caption: "Here’s what that looks like in practice. DistilBook reads your material, then draws each idea as the narration reaches it. Take a chapter on photosynthesis: the roots, the water, and the stem all appear on screen as the voice explains them. You get the clarity of a whiteboard lesson without redrawing everything by hand.",
+          hashtags: "#DistilBook #ExplainerVideos #EdTech #VisualLearning #AITools"
+        },
+        {
+          label: "Post 04 — Key Differentiator",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188889/04-key-differentiator.png",
+          caption: "A lot of video tools lean on stock clips and talking avatars. DistilBook takes another route: every scene is illustrated from your own content. Choose a hand-drawn whiteboard look or full motion graphics, and what you see on screen is tied to what your document actually says.",
+          hashtags: "#DistilBook #MotionGraphics #Whiteboard #VideoCreation #ContentStrategy"
+        },
+        {
+          label: "Post 05 — Product Experience",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188889/05-product-experience.png",
+          caption: "The workflow is short enough to explain in three words. Add your material. Edit the narration script. Watch it get drawn. Each step has its own screen, so you always know where you are and what’s next. Upload a PDF, Word file, notes, or a web link, and the product takes it from there.",
+          hashtags: "#DistilBook #ProductDemo #UX #SaaS #WorkflowDesign"
+        },
+        {
+          label: "Post 06 — The Benefit",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188889/06-the-benefit.png",
+          caption: "Explainer videos have a reputation for taking forever. With DistilBook, you can reach your first narrated slide in about six minutes. That’s a quick way to find out whether an idea works on screen before you invest more time in it. Take a document you already have and see how far six minutes gets you.",
+          hashtags: "#DistilBook #ContentCreation #VideoMarketing #Productivity #ExplainerVideo"
+        },
+        {
+          label: "Post 07 — Common Question",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188888/07-common-question.png",
+          caption: "A fair question we expect: “What if the AI misreads my material?” You stay in control. The narration script comes first, and you can edit any line you like. DistilBook doesn’t start drawing until you approve it. So the first thing you review is the words, not a finished video you have to fix afterwards.",
+          hashtags: "#DistilBook #AIVideo #CreatorTools #ContentCreation #SaaS"
+        },
+        {
+          label: "Post 08 — Call to Action",
+          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188888/08-launch-cta.png",
+          caption: "Got a PDF sitting in a folder somewhere? Use it as your test. DistilBook is free to try, with no card needed, and you can export in 16:9 for YouTube and courses or 9:16 for Shorts and Reels. It narrates in 19 languages, too. Start at distilbook.com and see your own material drawn. ✏️",
+          hashtags: "#DistilBook #FreeToTry #ExplainerVideo #Shorts #Reels"
+        }
+      ]
+    };
 
-    const demoButton =
-      document.getElementById("demoButton");
+    const demoButton = document.getElementById("demoButton");
+    const demoModal = document.getElementById("demoModal");
+    const demoModalClose = document.getElementById("demoModalClose");
+    const demoVideo = document.getElementById("demoVideo");
+    const portfolioDialog = demoModal.querySelector("[role='dialog']");
+    const portfolioModalBody = demoModal.querySelector(".portfolio-modal-body");
+    const portfolioBack = document.getElementById("portfolioBack");
+    const portfolioMainPanel = document.getElementById("portfolioMainPanel");
+    const portfolioSocialPanel = document.getElementById("portfolioSocialPanel");
+    const portfolioMotionPanel = document.getElementById("portfolioMotionPanel");
+    const portfolioPostPreviewPanel = document.getElementById("portfolioPostPreviewPanel");
+    const portfolioModalDescription = document.getElementById("portfolioModalDescription");
+    const portfolioProjectHeading = document.getElementById("portfolioProjectHeading");
+    const motionVideoOption = document.getElementById("motionVideoOption");
+    const websiteOption = document.getElementById("websiteOption");
+    const socialPostsOption = document.getElementById("socialPostsOption");
+    const socialPostButtons = document.getElementById("socialPostButtons");
+    const portfolioVideoPoster = document.getElementById("portfolioVideoPoster");
+    const videoPosterStatus = document.getElementById("videoPosterStatus");
+    const videoLoadStatus = document.getElementById("videoLoadStatus");
+    const portfolioThumbnailState = document.getElementById("portfolioThumbnailState");
+    const toggleVideoThumbnail = document.getElementById("toggleVideoThumbnail");
+    const portfolioVideoWrap = document.getElementById("portfolioVideoWrap");
+    const postPreviewImage = document.getElementById("postPreviewImage");
+    const postImageStatus = document.getElementById("postImageStatus");
+    const postPreviewTitle = document.getElementById("postPreviewTitle");
+    const postPreviewCaption = document.getElementById("postPreviewCaption");
+    const postPreviewHashtags = document.getElementById("postPreviewHashtags");
+    const copyPostCaption = document.getElementById("copyPostCaption");
+    const copyPostStatus = document.getElementById("copyPostStatus");
+    const openPostImage = document.getElementById("openPostImage");
+    let portfolioView = "main";
+    let previousPortfolioFocus = null;
+    let activePost = null;
+    let lockedScrollY = 0;
+    let previousBodyPosition = "";
+    let previousBodyTop = "";
+    let previousBodyWidth = "";
+    let previousBodyOverflow = "";
+    let showingVideoThumbnail = false;
+    let videoSourceConfigured = false;
+    const portfolioScrollPositions = { main: 0, motion: 0, social: 0, post: 0 };
 
-    const demoModal =
-      document.getElementById("demoModal");
+    const viewDescriptions = {
+      main: "Explore a website, motion-design video, and social media campaign created for DistilBook.",
+      motion: "Watch the motion-design video created for the DistilBook project.",
+      social: "Select one of the eight DistilBook campaign posts to inspect its image and copy.",
+      post: "Review the selected social post, caption, and hashtags."
+    };
 
-    const demoModalClose =
-      document.getElementById("demoModalClose");
+    function focusViewStart(view) {
+      const targets = {
+        main: websiteOption,
+        motion: toggleVideoThumbnail,
+        social: socialPostButtons.querySelector("button:not(:disabled)"),
+        post: copyPostCaption
+      };
+      const target = targets[view] || portfolioBack || demoModalClose;
+      if (target && !target.disabled && !target.hidden) target.focus({ preventScroll: true });
+      else demoModalClose.focus({ preventScroll: true });
+    }
 
-    const demoVideo =
-      document.getElementById("demoVideo");
+    function setPortfolioView(view) {
+      if (portfolioView && portfolioModalBody) {
+        portfolioScrollPositions[portfolioView] = portfolioModalBody.scrollTop;
+      }
+      portfolioView = view;
+      portfolioMainPanel.hidden = view !== "main";
+      portfolioSocialPanel.hidden = view !== "social";
+      portfolioMotionPanel.hidden = view !== "motion";
+      portfolioPostPreviewPanel.hidden = view !== "post";
+      portfolioBack.hidden = view === "main";
+      portfolioProjectHeading.hidden = view !== "main";
+      portfolioModalDescription.hidden = view === "post";
+      portfolioModalDescription.textContent = viewDescriptions[view] || viewDescriptions.main;
+      const labels = {
+        main: "Previous Project: DistilBook",
+        motion: "DistilBook / Motion-Design Video",
+        social: "DistilBook / Social Media Posts",
+        post: activePost ? activePost.label : "DistilBook / Social Post"
+      };
+      document.getElementById("demoModalLabel").textContent = labels[view];
+      if (view !== "motion") demoVideo.pause();
+      if (view !== "post") copyPostStatus.textContent = "";
+      requestAnimationFrame(() => {
+        portfolioModalBody.scrollTop = portfolioScrollPositions[view] || 0;
+        focusViewStart(view);
+      });
+    }
+
+    function lockBackgroundScroll() {
+      lockedScrollY = window.scrollY || window.pageYOffset || 0;
+      previousBodyPosition = document.body.style.position;
+      previousBodyTop = document.body.style.top;
+      previousBodyWidth = document.body.style.width;
+      previousBodyOverflow = document.body.style.overflow;
+      document.body.classList.add("menu-open");
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${lockedScrollY}px`;
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+    }
+
+    function unlockBackgroundScroll() {
+      document.body.classList.remove("menu-open");
+      document.body.style.position = previousBodyPosition;
+      document.body.style.top = previousBodyTop;
+      document.body.style.width = previousBodyWidth;
+      document.body.style.overflow = previousBodyOverflow;
+      window.scrollTo(0, lockedScrollY);
+    }
 
     function openDemo() {
-
+      previousPortfolioFocus = document.activeElement;
+      lockBackgroundScroll();
+      setPortfolioView("main");
       demoModal.classList.add("active");
-
-      demoModal.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-      document.body.classList.add(
-        "menu-open"
-      );
-
-      demoVideo.currentTime = 0;
-
-      demoVideo.load();
-
-      demoVideo.play().catch(() => {});
-
+      demoModal.setAttribute("aria-hidden", "false");
+      focusViewStart("main");
     }
 
     function closeDemo() {
-
       demoModal.classList.remove("active");
-
-      demoModal.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-      document.body.classList.remove(
-        "menu-open"
-      );
-
+      demoModal.setAttribute("aria-hidden", "true");
+      unlockBackgroundScroll();
       demoVideo.pause();
-
+      demoVideo.removeAttribute("src");
+      demoVideo.load();
+      videoSourceConfigured = false;
+      showingVideoThumbnail = false;
+      portfolioThumbnailState.hidden = true;
+      portfolioVideoWrap.hidden = false;
+      toggleVideoThumbnail.textContent = "View Thumbnail";
+      toggleVideoThumbnail.setAttribute("aria-pressed", "false");
+      videoLoadStatus.textContent = "";
+      activePost = null;
+      Object.keys(portfolioScrollPositions).forEach(view => { portfolioScrollPositions[view] = 0; });
+      if (previousPortfolioFocus && typeof previousPortfolioFocus.focus === "function") previousPortfolioFocus.focus({ preventScroll: true });
     }
 
-    demoButton.addEventListener(
-      "click",
-      openDemo
-    );
+    function setImageState(img, status, url, loadingText, failureText) {
+      img.onload = () => { status.hidden = true; img.hidden = false; };
+      img.onerror = () => {
+        img.hidden = true;
+        status.hidden = false;
+        status.textContent = failureText;
+      };
+      img.hidden = false;
+      status.hidden = false;
+      status.textContent = loadingText;
+      img.src = url;
+    }
 
-    demoModalClose.addEventListener(
-      "click",
-      closeDemo
-    );
+    setImageState(portfolioVideoPoster, videoPosterStatus, portfolioConfig.motionThumbnailUrl, "Loading thumbnail…", "The supplied thumbnail could not be loaded. Please try again later.");
 
-    demoModal.addEventListener(
-      "click",
-      event => {
+    function resetVideoThumbnailToggle() {
+      showingVideoThumbnail = false;
+      portfolioThumbnailState.hidden = true;
+      portfolioVideoWrap.hidden = false;
+      toggleVideoThumbnail.textContent = "View Thumbnail";
+      toggleVideoThumbnail.setAttribute("aria-pressed", "false");
+    }
 
-        if (event.target === demoModal) {
-          closeDemo();
-        }
-
+    function openMotionVideo() {
+      setPortfolioView("motion");
+      resetVideoThumbnailToggle();
+      const url = portfolioConfig.motionVideoUrl.trim();
+      if (!url) {
+        videoLoadStatus.textContent = "The motion-design video URL has not been configured yet.";
+        demoVideo.removeAttribute("src");
+        demoVideo.load();
+        videoSourceConfigured = false;
+        return;
       }
-    );
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape" &&
-          demoModal.classList.contains("active")
-        ) {
-
-          closeDemo();
-
-        }
-
+      if (!videoSourceConfigured || demoVideo.currentSrc !== url) {
+        demoVideo.src = url;
+        demoVideo.load();
+        videoSourceConfigured = true;
       }
-    );
+      videoLoadStatus.textContent = "Loading motion-design video…";
+    }
+
+    demoVideo.addEventListener("loadedmetadata", () => { videoLoadStatus.textContent = ""; });
+    demoVideo.addEventListener("canplay", () => { videoLoadStatus.textContent = ""; });
+    demoVideo.addEventListener("error", () => {
+      videoLoadStatus.textContent = "The video could not be loaded. Check your connection and try again.";
+    });
+
+    toggleVideoThumbnail.addEventListener("click", () => {
+      if (!showingVideoThumbnail) {
+        demoVideo.pause();
+        portfolioVideoWrap.hidden = true;
+        portfolioThumbnailState.hidden = false;
+        showingVideoThumbnail = true;
+        toggleVideoThumbnail.textContent = "Back to Video";
+        toggleVideoThumbnail.setAttribute("aria-pressed", "true");
+      } else {
+        portfolioThumbnailState.hidden = true;
+        portfolioVideoWrap.hidden = false;
+        showingVideoThumbnail = false;
+        toggleVideoThumbnail.textContent = "View Thumbnail";
+        toggleVideoThumbnail.setAttribute("aria-pressed", "false");
+      }
+    });
+
+    function renderSocialPosts() {
+      socialPostButtons.replaceChildren();
+      portfolioConfig.socialPosts.forEach((post, index) => {
+        const button = document.createElement("button");
+        const label = document.createElement("span");
+        const status = document.createElement("span");
+        button.type = "button";
+        button.className = "portfolio-option-button";
+        label.textContent = post.label;
+        button.appendChild(label);
+        status.className = "portfolio-option-arrow";
+        status.setAttribute("aria-hidden", "true");
+        status.textContent = "→";
+        button.appendChild(status);
+        button.addEventListener("click", () => openPostPreview(index));
+        socialPostButtons.appendChild(button);
+      });
+    }
+
+    function openPostPreview(index) {
+      activePost = portfolioConfig.socialPosts[index];
+      if (!activePost) return;
+      setPortfolioView("post");
+      postPreviewTitle.textContent = activePost.label;
+      postPreviewCaption.textContent = activePost.caption;
+      postPreviewHashtags.textContent = activePost.hashtags;
+      copyPostStatus.textContent = "";
+      openPostImage.href = activePost.imageUrl;
+      openPostImage.hidden = !activePost.imageUrl;
+      setImageState(postPreviewImage, postImageStatus, activePost.imageUrl, "Loading post image…", "This image could not be loaded. Use ‘Open image in new tab’ to try the original URL.");
+      postPreviewImage.alt = activePost.label + " social media creative";
+    }
+
+    copyPostCaption.addEventListener("click", async () => {
+      if (!activePost) return;
+      const textToCopy = `${activePost.caption}\n\n${activePost.hashtags}`;
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        copyPostStatus.textContent = "Caption and hashtags copied.";
+      } catch (error) {
+        const temp = document.createElement("textarea");
+        temp.value = textToCopy;
+        temp.setAttribute("readonly", "");
+        temp.style.position = "fixed";
+        temp.style.opacity = "0";
+        document.body.appendChild(temp);
+        temp.select();
+        const copied = document.execCommand("copy");
+        temp.remove();
+        copyPostStatus.textContent = copied ? "Caption and hashtags copied." : "Copy was blocked by this browser.";
+      }
+    });
+
+    renderSocialPosts();
+    motionVideoOption.addEventListener("click", openMotionVideo);
+    websiteOption.addEventListener("click", () => {
+      const url = portfolioConfig.websiteUrl.trim();
+      if (url) window.open(url, "_blank", "noopener,noreferrer");
+    });
+    socialPostsOption.addEventListener("click", () => setPortfolioView("social"));
+    portfolioBack.addEventListener("click", () => {
+      if (portfolioView === "post") setPortfolioView("social");
+      else setPortfolioView("main");
+    });
+    demoButton.addEventListener("click", openDemo);
+    demoModalClose.addEventListener("click", closeDemo);
+    demoModal.addEventListener("click", event => { if (event.target === demoModal) closeDemo(); });
+
+    document.addEventListener("keydown", event => {
+      if (!demoModal.classList.contains("active")) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        if (portfolioView === "post") setPortfolioView("social");
+        else if (portfolioView !== "main") setPortfolioView("main");
+        else closeDemo();
+        return;
+      }
+      if (event.key === "Tab") {
+        const focusable = Array.from(portfolioDialog.querySelectorAll('button:not(:disabled):not([hidden]), a[href]:not([hidden]), video[controls], [tabindex]:not([tabindex="-1"])')).filter(el => !el.closest("[hidden]") && el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
 
     /* =========================================================
        YEAR

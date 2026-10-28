@@ -4310,7 +4310,7 @@
               <span class="portfolio-video-option-copy"><span class="portfolio-option-title">Motion-Design Video</span><span class="portfolio-option-subtitle">Watch the DistilBook project video</span></span><span class="portfolio-option-arrow portfolio-play-icon" aria-hidden="true">▶</span>
             </button>
             <button type="button" class="portfolio-option-button" id="socialPostsOption">
-              <span><span class="portfolio-option-title">Social Media Posts</span><span class="portfolio-option-subtitle">Browse all eight campaign posts</span></span><span class="portfolio-option-arrow" aria-hidden="true">→</span>
+              <span><span class="portfolio-option-title">Social Media Posts</span><span class="portfolio-option-subtitle">3 selected posts from an 8-post campaign</span></span><span class="portfolio-option-arrow" aria-hidden="true">→</span>
             </button>
           </div>
         </section>
@@ -4330,6 +4330,8 @@
         </section>
 
         <section class="portfolio-modal-panel" id="portfolioSocialPanel" aria-label="DistilBook social media posts" hidden>
+          <h3 class="portfolio-project-heading">Selected Social Media Posts</h3>
+          <p class="portfolio-modal-description">3 selected posts from an 8-post campaign.</p>
           <div class="portfolio-option-list" id="socialPostButtons"></div>
         </section>
 
@@ -5242,31 +5244,13 @@
     const portfolioConfig = {
       websiteUrl: "https://distilbook.com/",
       motionVideoUrl: "https://res.cloudinary.com/jb9xczzz/video/upload/v1793186280/x-downloader.com_9qv6Kv.mp4",
-      motionThumbnailUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793186281/vi4.png",
+      motionThumbnailUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793214655/distilbook-video-thumbnail.png",
       socialPosts: [
         {
           label: "Post 01 — Hero Announcement",
           imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188891/01-hero-announcement.png",
           caption: "Meet DistilBook. 📚\n\nGive it a PDF, and it gives you back an explainer video where every idea is hand-illustrated and narrated. You can start from a Word file, notes, a link, or just a topic. It’s built for anyone who wants to teach, explain, or share what’s on the page. Free to try.",
           hashtags: "#DistilBook #ExplainerVideo #SaaS #AIVideo #ProductLaunch"
-        },
-        {
-          label: "Post 02 — The Problem",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188891/02-the-problem.png",
-          caption: "Think about the best teacher you ever had. They didn’t hand you a wall of text. They picked up a marker and drew the idea. Most of what we share still looks like the page: dense, flat, and easy to skim past. If your best material lives in a document, it deserves better than a download link.",
-          hashtags: "#Teaching #Education #ContentCreation #Learning #VisualCommunication"
-        },
-        {
-          label: "Post 03 — The Solution",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188890/03-the-solution.png",
-          caption: "Here’s what that looks like in practice. DistilBook reads your material, then draws each idea as the narration reaches it. Take a chapter on photosynthesis: the roots, the water, and the stem all appear on screen as the voice explains them. You get the clarity of a whiteboard lesson without redrawing everything by hand.",
-          hashtags: "#DistilBook #ExplainerVideos #EdTech #VisualLearning #AITools"
-        },
-        {
-          label: "Post 04 — Key Differentiator",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188889/04-key-differentiator.png",
-          caption: "A lot of video tools lean on stock clips and talking avatars. DistilBook takes another route: every scene is illustrated from your own content. Choose a hand-drawn whiteboard look or full motion graphics, and what you see on screen is tied to what your document actually says.",
-          hashtags: "#DistilBook #MotionGraphics #Whiteboard #VideoCreation #ContentStrategy"
         },
         {
           label: "Post 05 — Product Experience",
@@ -5279,18 +5263,6 @@
           imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188889/06-the-benefit.png",
           caption: "Explainer videos have a reputation for taking forever. With DistilBook, you can reach your first narrated slide in about six minutes. That’s a quick way to find out whether an idea works on screen before you invest more time in it. Take a document you already have and see how far six minutes gets you.",
           hashtags: "#DistilBook #ContentCreation #VideoMarketing #Productivity #ExplainerVideo"
-        },
-        {
-          label: "Post 07 — Common Question",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188888/07-common-question.png",
-          caption: "A fair question we expect: “What if the AI misreads my material?” You stay in control. The narration script comes first, and you can edit any line you like. DistilBook doesn’t start drawing until you approve it. So the first thing you review is the words, not a finished video you have to fix afterwards.",
-          hashtags: "#DistilBook #AIVideo #CreatorTools #ContentCreation #SaaS"
-        },
-        {
-          label: "Post 08 — Call to Action",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188888/08-launch-cta.png",
-          caption: "Got a PDF sitting in a folder somewhere? Use it as your test. DistilBook is free to try, with no card needed, and you can export in 16:9 for YouTube and courses or 9:16 for Shorts and Reels. It narrates in 19 languages, too. Start at distilbook.com and see your own material drawn. ✏️",
-          hashtags: "#DistilBook #FreeToTry #ExplainerVideo #Shorts #Reels"
         }
       ]
     };
@@ -5341,7 +5313,7 @@
     const viewDescriptions = {
       main: "Explore a website, motion-design video, and social media campaign created for DistilBook.",
       motion: "Watch the motion-design video created for the DistilBook project.",
-      social: "Select one of the eight DistilBook campaign posts to inspect its image and copy.",
+      social: "Choose a selected post to inspect its image and copy.",
       post: "Review the selected social post, caption, and hashtags."
     };
 

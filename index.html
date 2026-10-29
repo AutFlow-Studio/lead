@@ -3348,24 +3348,11 @@
     .portfolio-thumbnail-image-wrap img { display: block; width: 100%; height: auto; max-height: 55vh; object-fit: contain; }
     .portfolio-thumbnail-toggle { margin-top: 2px; min-height: 38px; }
 
-    .portfolio-post-preview { display: flex; flex-direction: column; gap: 15px; }
-    .portfolio-post-image-wrap { position: relative; display: grid; place-items: center; min-height: 150px; max-height: 48vh; overflow: auto; border: 1px solid rgba(255,255,255,.09); border-radius: 10px; background: rgba(0,0,0,.25); }
-    .portfolio-post-image-wrap img { display: block; width: 100%; max-height: 48vh; object-fit: contain; }
-    .portfolio-post-image-wrap img:not([src]),.portfolio-post-image-wrap img[src=""] { display: none; }
-    .portfolio-post-copy { min-width: 0; }
-    .portfolio-post-copy h3 { margin: 0 0 8px; color: #f5f2eb; font: 600 .96rem/1.35 "Space Grotesk", sans-serif; }
-    .portfolio-post-copy p { margin: 0 0 10px; color: rgba(255,255,255,.78); font-size: .8rem; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
-    .portfolio-post-copy .portfolio-post-hashtags { color: rgba(255,255,255,.52); }
-    .portfolio-post-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 12px 0 7px; }
     .portfolio-copy-button { padding: 9px 12px; border: 1px solid rgba(255,255,255,.17); border-radius: 8px; background: rgba(255,255,255,.06); color: #fff; font-size: .76rem; cursor: pointer; }
     .portfolio-copy-button:hover,.portfolio-copy-button:focus-visible { background: rgba(255,255,255,.12); }
-    .portfolio-copy-status { color: rgba(255,255,255,.55); font-size: .7rem; }
-    .portfolio-open-image { display: inline-block; margin-top: 3px; color: rgba(255,255,255,.62); font-size: .75rem; text-decoration: underline; text-underline-offset: 3px; }
     @media(max-width:620px) {
       .portfolio-project-heading { font-size: 1.05rem; }
       .portfolio-video-preview { min-height: 130px; }
-      .portfolio-post-image-wrap,.portfolio-post-image-wrap img { max-height: 36vh; }
-      .portfolio-post-copy p { font-size: .78rem; }
     }
 
     /* =========================================================
@@ -4189,7 +4176,7 @@
 
         <p class="section-description centered">
 
-          Choose focused launch content or a fuller package with motion-design videos, social posts, and a complete website.
+          Choose focused launch content or a fuller package with motion-design videos, short-form social media videos, and a complete website.
 
         </p>
 
@@ -4205,7 +4192,7 @@
           <p class="pricing-desc">Premium product UI motion and social content for a clear, professional product launch.</p>
           <div class="check-list">
             <div class="check-item"><span class="check">✓</span>1 premium, professionally crafted product UI motion video</div>
-            <div class="check-item"><span class="check">✓</span>3 professional social media posts designed for the product or brand</div>
+            <div class="check-item"><span class="check">✓</span>3 professionally crafted short-form social media videos designed for the product or brand</div>
             <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
           </div>
           <a href="#get-started" class="button button-secondary magnetic">Choose Motion Launch</a>
@@ -4215,13 +4202,12 @@
           <div class="pricing-badge">COMPLETE LAUNCH</div>
           <div class="pricing-label">PACKAGE 02</div>
           <div class="pricing-name">Complete Launch</div>
-          <div class="pricing-price"><span class="pricing-amount">$499</span></div>
+          <div class="pricing-price"><span class="pricing-amount">$599</span></div>
           <div class="pricing-sub">Launch package</div>
-          <p class="pricing-desc">A complete product launch package with premium motion videos, social posts, and a fully functional website.</p>
+          <p class="pricing-desc">A complete product launch package with premium motion videos, short-form social media videos, and a fully functional website.</p>
           <div class="check-list">
-            <div class="check-item"><span class="check">✓</span>3 premium, professionally crafted product UI motion videos</div>
-            <div class="check-item"><span class="check">✓</span>3 professional social media posts designed for the product or brand</div>
-            <div class="check-item"><span class="check">✓</span>1 complete, professional, fully functional website</div>
+            <div class="check-item"><span class="check">✓</span>1 premium, professionally crafted product UI motion video</div>
+            <div class="check-item"><span class="check">✓</span>12 professionally crafted short-form social media videos designed for the product or brand</div>
             <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
           </div>
           <a href="#get-started" class="button button-primary magnetic">Choose Complete Launch</a>
@@ -4273,7 +4259,7 @@
           </div>
 
           <span class="availability">
-            MOTION LAUNCH $249 • COMPLETE LAUNCH $499
+            MOTION LAUNCH $249 • COMPLETE LAUNCH $799
           </span>
 
         </div>
@@ -4296,7 +4282,7 @@
       </div>
       <div class="portfolio-modal-body">
         <h2 class="portfolio-project-heading" id="portfolioProjectHeading">Previous Project: DistilBook</h2>
-        <p class="portfolio-modal-description" id="portfolioModalDescription">Explore a website, motion-design video, and social media campaign created for DistilBook.</p>
+        <p class="portfolio-modal-description" id="portfolioModalDescription">Explore the DistilBook website and product motion-design video.</p>
 
         <section class="portfolio-modal-panel" id="portfolioMainPanel" aria-label="DistilBook project options">
           <div class="portfolio-option-list">
@@ -4305,9 +4291,6 @@
             </button>
             <button type="button" class="portfolio-option-button portfolio-video-option" id="motionVideoOption">
               <span class="portfolio-video-option-copy"><span class="portfolio-option-title">Motion-Design Video</span><span class="portfolio-option-subtitle">Watch the DistilBook project video</span></span><span class="portfolio-option-arrow portfolio-play-icon" aria-hidden="true">▶</span>
-            </button>
-            <button type="button" class="portfolio-option-button" id="socialPostsOption">
-              <span><span class="portfolio-option-title">Social Media Posts</span><span class="portfolio-option-subtitle">3 social media posts designed for a cohesive product launch</span></span><span class="portfolio-option-arrow" aria-hidden="true">→</span>
             </button>
           </div>
         </section>
@@ -4326,30 +4309,6 @@
           <button type="button" class="portfolio-copy-button portfolio-thumbnail-toggle" id="toggleVideoThumbnail" aria-pressed="false">View Thumbnail</button>
         </section>
 
-        <section class="portfolio-modal-panel" id="portfolioSocialPanel" aria-label="DistilBook social media posts" hidden>
-          <h3 class="portfolio-project-heading">Selected Social Media Posts</h3>
-          <p class="portfolio-modal-description">3 social media posts designed for a cohesive product launch.</p>
-          <div class="portfolio-option-list" id="socialPostButtons"></div>
-        </section>
-
-        <section class="portfolio-modal-panel" id="portfolioPostPreviewPanel" aria-label="Social media post preview" hidden>
-          <div class="portfolio-post-preview">
-            <div class="portfolio-post-image-wrap">
-              <div class="portfolio-image-status" id="postImageStatus" role="status">Loading post image…</div>
-              <img id="postPreviewImage" alt="" loading="lazy">
-            </div>
-            <div class="portfolio-post-copy">
-              <h3 id="postPreviewTitle"></h3>
-              <p id="postPreviewCaption"></p>
-              <p id="postPreviewHashtags" class="portfolio-post-hashtags"></p>
-              <div class="portfolio-post-actions">
-                <button type="button" class="portfolio-copy-button" id="copyPostCaption">Copy caption + hashtags</button>
-                <span id="copyPostStatus" class="portfolio-copy-status" role="status" aria-live="polite"></span>
-              </div>
-              <a class="portfolio-open-image" id="openPostImage" href="#" target="_blank" rel="noopener noreferrer">Open image in new tab ↗</a>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   </div>
@@ -5236,32 +5195,13 @@
 
     /* =========================================================
        DISTILBOOK SHOWCASE CONFIGURATION
-       Update post image URLs/copy here if the supplied assets change.
+       Keep the supplied website and motion-video assets as the portfolio source of truth.
     ========================================================== */
     const portfolioConfig = {
       websiteUrl: "https://distilbook.com/",
       motionVideoUrl: "https://res.cloudinary.com/jb9xczzz/video/upload/v1793186280/x-downloader.com_9qv6Kv.mp4",
       motionThumbnailUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793214655/distilbook-video-thumbnail.png",
-      socialPosts: [
-        {
-          label: "Post 01 — Product Announcement",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188891/01-hero-announcement.png",
-          caption: "Meet DistilBook. 📚\n\nGive it a PDF, and it gives you back an explainer video where every idea is hand-illustrated and narrated. You can start from a Word file, notes, a link, or just a topic. It’s built for anyone who wants to teach, explain, or share what’s on the page. Free to try.",
-          hashtags: "#DistilBook #ExplainerVideo #SaaS #AIVideo #ProductLaunch"
-        },
-        {
-          label: "Post 02 — How It Works",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188889/05-product-experience.png",
-          caption: "The workflow is short enough to explain in three words. Add your material. Edit the narration script. Watch it get drawn. Each step has its own screen, so you always know where you are and what’s next. Upload a PDF, Word file, notes, or a web link, and the product takes it from there.",
-          hashtags: "#DistilBook #ProductDemo #UX #SaaS #WorkflowDesign"
-        },
-        {
-          label: "Post 03 — The Key Benefit",
-          imageUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793188889/06-the-benefit.png",
-          caption: "Explainer videos have a reputation for taking forever. With DistilBook, you can reach your first narrated slide in about six minutes. That’s a quick way to find out whether an idea works on screen before you invest more time in it. Take a document you already have and see how far six minutes gets you.",
-          hashtags: "#DistilBook #ContentCreation #VideoMarketing #Productivity #ExplainerVideo"
-        }
-      ]
+
     };
 
     const demoButton = document.getElementById("demoButton");
@@ -5272,32 +5212,19 @@
     const portfolioModalBody = demoModal.querySelector(".portfolio-modal-body");
     const portfolioBack = document.getElementById("portfolioBack");
     const portfolioMainPanel = document.getElementById("portfolioMainPanel");
-    const portfolioSocialPanel = document.getElementById("portfolioSocialPanel");
     const portfolioMotionPanel = document.getElementById("portfolioMotionPanel");
-    const portfolioPostPreviewPanel = document.getElementById("portfolioPostPreviewPanel");
     const portfolioModalDescription = document.getElementById("portfolioModalDescription");
     const portfolioProjectHeading = document.getElementById("portfolioProjectHeading");
     const motionVideoOption = document.getElementById("motionVideoOption");
     const websiteOption = document.getElementById("websiteOption");
-    const socialPostsOption = document.getElementById("socialPostsOption");
-    const socialPostButtons = document.getElementById("socialPostButtons");
     const portfolioVideoPoster = document.getElementById("portfolioVideoPoster");
     const videoPosterStatus = document.getElementById("videoPosterStatus");
     const videoLoadStatus = document.getElementById("videoLoadStatus");
     const portfolioThumbnailState = document.getElementById("portfolioThumbnailState");
     const toggleVideoThumbnail = document.getElementById("toggleVideoThumbnail");
     const portfolioVideoWrap = document.getElementById("portfolioVideoWrap");
-    const postPreviewImage = document.getElementById("postPreviewImage");
-    const postImageStatus = document.getElementById("postImageStatus");
-    const postPreviewTitle = document.getElementById("postPreviewTitle");
-    const postPreviewCaption = document.getElementById("postPreviewCaption");
-    const postPreviewHashtags = document.getElementById("postPreviewHashtags");
-    const copyPostCaption = document.getElementById("copyPostCaption");
-    const copyPostStatus = document.getElementById("copyPostStatus");
-    const openPostImage = document.getElementById("openPostImage");
     let portfolioView = "main";
     let previousPortfolioFocus = null;
-    let activePost = null;
     let lockedScrollY = 0;
     let previousBodyPosition = "";
     let previousBodyTop = "";
@@ -5305,52 +5232,38 @@
     let previousBodyOverflow = "";
     let showingVideoThumbnail = false;
     let videoSourceConfigured = false;
-    const portfolioScrollPositions = { main: 0, motion: 0, social: 0, post: 0 };
+    const portfolioScrollPositions = { main: 0, motion: 0 };
 
     const viewDescriptions = {
-      main: "Explore a website, motion-design video, and social media campaign created for DistilBook.",
-      motion: "Watch the motion-design video created for the DistilBook project.",
-      social: "Choose a selected post to inspect its image and copy.",
-      post: "Review the selected social post, caption, and hashtags."
+      main: "Explore the DistilBook website and product motion-design video.",
+      motion: "Watch the motion-design video created for the DistilBook project."
     };
 
     function focusViewStart(view) {
-      const targets = {
-        main: websiteOption,
-        motion: toggleVideoThumbnail,
-        social: socialPostButtons.querySelector("button:not(:disabled)"),
-        post: copyPostCaption
-      };
-      const target = targets[view] || portfolioBack || demoModalClose;
+      const target = view === "motion" ? toggleVideoThumbnail : (view === "main" ? websiteOption : demoModalClose);
       if (target && !target.disabled && !target.hidden) target.focus({ preventScroll: true });
       else demoModalClose.focus({ preventScroll: true });
     }
 
     function setPortfolioView(view) {
-      if (portfolioView && portfolioModalBody) {
+      if (portfolioModalBody) {
         portfolioScrollPositions[portfolioView] = portfolioModalBody.scrollTop;
       }
-      portfolioView = view;
-      portfolioMainPanel.hidden = view !== "main";
-      portfolioSocialPanel.hidden = view !== "social";
-      portfolioMotionPanel.hidden = view !== "motion";
-      portfolioPostPreviewPanel.hidden = view !== "post";
-      portfolioBack.hidden = view === "main";
-      portfolioProjectHeading.hidden = view !== "main";
-      portfolioModalDescription.hidden = view === "post";
-      portfolioModalDescription.textContent = viewDescriptions[view] || viewDescriptions.main;
+      portfolioView = view === "motion" ? "motion" : "main";
+      portfolioMainPanel.hidden = portfolioView !== "main";
+      portfolioMotionPanel.hidden = portfolioView !== "motion";
+      portfolioBack.hidden = portfolioView === "main";
+      portfolioProjectHeading.hidden = portfolioView !== "main";
+      portfolioModalDescription.textContent = viewDescriptions[portfolioView];
       const labels = {
         main: "Previous Project: DistilBook",
-        motion: "DistilBook / Motion-Design Video",
-        social: "DistilBook / Social Media Posts",
-        post: activePost ? activePost.label : "DistilBook / Social Post"
+        motion: "DistilBook / Motion-Design Video"
       };
-      document.getElementById("demoModalLabel").textContent = labels[view];
-      if (view !== "motion") demoVideo.pause();
-      if (view !== "post") copyPostStatus.textContent = "";
+      document.getElementById("demoModalLabel").textContent = labels[portfolioView];
+      if (portfolioView !== "motion") demoVideo.pause();
       requestAnimationFrame(() => {
-        portfolioModalBody.scrollTop = portfolioScrollPositions[view] || 0;
-        focusViewStart(view);
+        portfolioModalBody.scrollTop = portfolioScrollPositions[portfolioView] || 0;
+        focusViewStart(portfolioView);
       });
     }
 
@@ -5399,7 +5312,6 @@
       toggleVideoThumbnail.textContent = "View Thumbnail";
       toggleVideoThumbnail.setAttribute("aria-pressed", "false");
       videoLoadStatus.textContent = "";
-      activePost = null;
       Object.keys(portfolioScrollPositions).forEach(view => { portfolioScrollPositions[view] = 0; });
       if (previousPortfolioFocus && typeof previousPortfolioFocus.focus === "function") previousPortfolioFocus.focus({ preventScroll: true });
     }
@@ -5469,70 +5381,12 @@
       }
     });
 
-    function renderSocialPosts() {
-      socialPostButtons.replaceChildren();
-      portfolioConfig.socialPosts.forEach((post, index) => {
-        const button = document.createElement("button");
-        const label = document.createElement("span");
-        const status = document.createElement("span");
-        button.type = "button";
-        button.className = "portfolio-option-button";
-        label.textContent = post.label;
-        button.appendChild(label);
-        status.className = "portfolio-option-arrow";
-        status.setAttribute("aria-hidden", "true");
-        status.textContent = "→";
-        button.appendChild(status);
-        button.addEventListener("click", () => openPostPreview(index));
-        socialPostButtons.appendChild(button);
-      });
-    }
-
-    function openPostPreview(index) {
-      activePost = portfolioConfig.socialPosts[index];
-      if (!activePost) return;
-      setPortfolioView("post");
-      postPreviewTitle.textContent = activePost.label;
-      postPreviewCaption.textContent = activePost.caption;
-      postPreviewHashtags.textContent = activePost.hashtags;
-      copyPostStatus.textContent = "";
-      openPostImage.href = activePost.imageUrl;
-      openPostImage.hidden = !activePost.imageUrl;
-      setImageState(postPreviewImage, postImageStatus, activePost.imageUrl, "Loading post image…", "This image could not be loaded. Use ‘Open image in new tab’ to try the original URL.");
-      postPreviewImage.alt = activePost.label + " social media creative";
-    }
-
-    copyPostCaption.addEventListener("click", async () => {
-      if (!activePost) return;
-      const textToCopy = `${activePost.caption}\n\n${activePost.hashtags}`;
-      try {
-        await navigator.clipboard.writeText(textToCopy);
-        copyPostStatus.textContent = "Caption and hashtags copied.";
-      } catch (error) {
-        const temp = document.createElement("textarea");
-        temp.value = textToCopy;
-        temp.setAttribute("readonly", "");
-        temp.style.position = "fixed";
-        temp.style.opacity = "0";
-        document.body.appendChild(temp);
-        temp.select();
-        const copied = document.execCommand("copy");
-        temp.remove();
-        copyPostStatus.textContent = copied ? "Caption and hashtags copied." : "Copy was blocked by this browser.";
-      }
-    });
-
-    renderSocialPosts();
     motionVideoOption.addEventListener("click", openMotionVideo);
     websiteOption.addEventListener("click", () => {
       const url = portfolioConfig.websiteUrl.trim();
       if (url) window.open(url, "_blank", "noopener,noreferrer");
     });
-    socialPostsOption.addEventListener("click", () => setPortfolioView("social"));
-    portfolioBack.addEventListener("click", () => {
-      if (portfolioView === "post") setPortfolioView("social");
-      else setPortfolioView("main");
-    });
+    portfolioBack.addEventListener("click", () => setPortfolioView("main"));
     demoButton.addEventListener("click", openDemo);
     demoModalClose.addEventListener("click", closeDemo);
     demoModal.addEventListener("click", event => { if (event.target === demoModal) closeDemo(); });
@@ -5541,8 +5395,7 @@
       if (!demoModal.classList.contains("active")) return;
       if (event.key === "Escape") {
         event.preventDefault();
-        if (portfolioView === "post") setPortfolioView("social");
-        else if (portfolioView !== "main") setPortfolioView("main");
+        if (portfolioView !== "main") setPortfolioView("main");
         else closeDemo();
         return;
       }

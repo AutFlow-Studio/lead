@@ -3343,10 +3343,6 @@
     .portfolio-video-wrap video { display: block; width: 100%; height: auto; max-height: 55vh; background: #000; }
     .portfolio-video-load-status { margin: 8px 0 10px; min-height: 1.2em; color: rgba(255,255,255,.48); font-size: .74rem; line-height: 1.5; }
     .portfolio-video-load-status:empty { display: none; }
-    .portfolio-thumbnail-state[hidden] { display: none !important; }
-    .portfolio-thumbnail-image-wrap { display: grid; place-items: center; width: 100%; min-height: 120px; max-height: 55vh; overflow: auto; border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: #080808; }
-    .portfolio-thumbnail-image-wrap img { display: block; width: 100%; height: auto; max-height: 55vh; object-fit: contain; }
-    .portfolio-thumbnail-toggle { margin-top: 2px; min-height: 38px; }
 
     .portfolio-copy-button { padding: 9px 12px; border: 1px solid rgba(255,255,255,.17); border-radius: 8px; background: rgba(255,255,255,.06); color: #fff; font-size: .76rem; cursor: pointer; }
     .portfolio-copy-button:hover,.portfolio-copy-button:focus-visible { background: rgba(255,255,255,.12); }
@@ -3539,7 +3535,7 @@
             aria-haspopup="dialog"
             aria-controls="demoModal"
           >
-            See a Previous Project
+            View a Previous Project
             <span>→</span>
           </button>
 
@@ -4194,6 +4190,7 @@
             <div class="check-item"><span class="check">✓</span>1 premium, professionally crafted product UI motion video (30–90 seconds)</div>
             <div class="check-item"><span class="check">✓</span>3 professionally crafted short-form social media videos designed for the product or brand (15–30 seconds)</div>
             <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
+            <div class="check-item"><span class="check">✓</span>Custom thumbnail/cover image included for every video.</div>
           </div>
           <a href="#get-started" class="button button-secondary magnetic">Choose Motion Launch</a>
         </div>
@@ -4208,7 +4205,9 @@
           <div class="check-list">
             <div class="check-item"><span class="check">✓</span>1 premium, professionally crafted product UI motion video (30–90 seconds)</div>
             <div class="check-item"><span class="check">✓</span>12 professionally crafted short-form social media videos designed for the product or brand (15–30 seconds)</div>
+            <div class="check-item"><span class="check">✓</span>1 complete, professional, fully functional website</div>
             <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
+            <div class="check-item"><span class="check">✓</span>Custom thumbnail/cover image included for every video.</div>
           </div>
           <a href="#get-started" class="button button-primary magnetic">Choose Complete Launch</a>
         </div>
@@ -4300,13 +4299,7 @@
             <video class="demo-video" id="demoVideo" controls playsinline preload="metadata" aria-label="DistilBook motion-design video">Your browser does not support video playback.</video>
           </div>
           <p class="portfolio-video-load-status" id="videoLoadStatus" role="status" aria-live="polite">Loading motion-design video…</p>
-          <div class="portfolio-thumbnail-state" id="portfolioThumbnailState" hidden>
-            <div class="portfolio-thumbnail-image-wrap">
-              <img id="portfolioVideoPoster" alt="DistilBook motion-design video thumbnail" loading="lazy">
-            </div>
-            <p class="portfolio-image-status" id="videoPosterStatus" role="status">Loading thumbnail…</p>
-          </div>
-          <button type="button" class="portfolio-copy-button portfolio-thumbnail-toggle" id="toggleVideoThumbnail" aria-pressed="false">View Thumbnail</button>
+
         </section>
 
       </div>
@@ -5200,7 +5193,6 @@
     const portfolioConfig = {
       websiteUrl: "https://distilbook.com/",
       motionVideoUrl: "https://res.cloudinary.com/jb9xczzz/video/upload/v1793186280/x-downloader.com_9qv6Kv.mp4",
-      motionThumbnailUrl: "https://res.cloudinary.com/jb9xczzz/image/upload/v1793214655/distilbook-video-thumbnail.png",
 
     };
 
@@ -5217,11 +5209,7 @@
     const portfolioProjectHeading = document.getElementById("portfolioProjectHeading");
     const motionVideoOption = document.getElementById("motionVideoOption");
     const websiteOption = document.getElementById("websiteOption");
-    const portfolioVideoPoster = document.getElementById("portfolioVideoPoster");
-    const videoPosterStatus = document.getElementById("videoPosterStatus");
     const videoLoadStatus = document.getElementById("videoLoadStatus");
-    const portfolioThumbnailState = document.getElementById("portfolioThumbnailState");
-    const toggleVideoThumbnail = document.getElementById("toggleVideoThumbnail");
     const portfolioVideoWrap = document.getElementById("portfolioVideoWrap");
     let portfolioView = "main";
     let previousPortfolioFocus = null;
@@ -5230,7 +5218,6 @@
     let previousBodyTop = "";
     let previousBodyWidth = "";
     let previousBodyOverflow = "";
-    let showingVideoThumbnail = false;
     let videoSourceConfigured = false;
     const portfolioScrollPositions = { main: 0, motion: 0 };
 
@@ -5240,7 +5227,7 @@
     };
 
     function focusViewStart(view) {
-      const target = view === "motion" ? toggleVideoThumbnail : (view === "main" ? websiteOption : demoModalClose);
+      const target = view === "motion" ? demoVideo : (view === "main" ? websiteOption : demoModalClose);
       if (target && !target.disabled && !target.hidden) target.focus({ preventScroll: true });
       else demoModalClose.focus({ preventScroll: true });
     }
@@ -5306,42 +5293,13 @@
       demoVideo.removeAttribute("src");
       demoVideo.load();
       videoSourceConfigured = false;
-      showingVideoThumbnail = false;
-      portfolioThumbnailState.hidden = true;
-      portfolioVideoWrap.hidden = false;
-      toggleVideoThumbnail.textContent = "View Thumbnail";
-      toggleVideoThumbnail.setAttribute("aria-pressed", "false");
       videoLoadStatus.textContent = "";
       Object.keys(portfolioScrollPositions).forEach(view => { portfolioScrollPositions[view] = 0; });
       if (previousPortfolioFocus && typeof previousPortfolioFocus.focus === "function") previousPortfolioFocus.focus({ preventScroll: true });
     }
 
-    function setImageState(img, status, url, loadingText, failureText) {
-      img.onload = () => { status.hidden = true; img.hidden = false; };
-      img.onerror = () => {
-        img.hidden = true;
-        status.hidden = false;
-        status.textContent = failureText;
-      };
-      img.hidden = false;
-      status.hidden = false;
-      status.textContent = loadingText;
-      img.src = url;
-    }
-
-    setImageState(portfolioVideoPoster, videoPosterStatus, portfolioConfig.motionThumbnailUrl, "Loading thumbnail…", "The supplied thumbnail could not be loaded. Please try again later.");
-
-    function resetVideoThumbnailToggle() {
-      showingVideoThumbnail = false;
-      portfolioThumbnailState.hidden = true;
-      portfolioVideoWrap.hidden = false;
-      toggleVideoThumbnail.textContent = "View Thumbnail";
-      toggleVideoThumbnail.setAttribute("aria-pressed", "false");
-    }
-
     function openMotionVideo() {
       setPortfolioView("motion");
-      resetVideoThumbnailToggle();
       const url = portfolioConfig.motionVideoUrl.trim();
       if (!url) {
         videoLoadStatus.textContent = "The motion-design video URL has not been configured yet.";
@@ -5362,23 +5320,6 @@
     demoVideo.addEventListener("canplay", () => { videoLoadStatus.textContent = ""; });
     demoVideo.addEventListener("error", () => {
       videoLoadStatus.textContent = "The video could not be loaded. Check your connection and try again.";
-    });
-
-    toggleVideoThumbnail.addEventListener("click", () => {
-      if (!showingVideoThumbnail) {
-        demoVideo.pause();
-        portfolioVideoWrap.hidden = true;
-        portfolioThumbnailState.hidden = false;
-        showingVideoThumbnail = true;
-        toggleVideoThumbnail.textContent = "Back to Video";
-        toggleVideoThumbnail.setAttribute("aria-pressed", "true");
-      } else {
-        portfolioThumbnailState.hidden = true;
-        portfolioVideoWrap.hidden = false;
-        showingVideoThumbnail = false;
-        toggleVideoThumbnail.textContent = "View Thumbnail";
-        toggleVideoThumbnail.setAttribute("aria-pressed", "false");
-      }
     });
 
     motionVideoOption.addEventListener("click", openMotionVideo);

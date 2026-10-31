@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AutFlow Studio — Product Launch Creative for Software & AI</title>
+  <title>AutFlow Studio — Product Motion & Launch Content Studio</title>
 
   <link rel="icon" type="image/png" href="./AutFlow-logo.png">
   <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
 
   <meta
     name="description"
-    content="AutFlow Studio creates product motion-design videos, social media creative, clear product messaging, and complete websites for software and AI products."
+    content="AutFlow Studio is a Product Motion & Launch Content Studio creating premium product UI motion videos, short-form social videos, launch visuals, and complete websites for SaaS, AI, and technology brands."
   >
 
   <!-- =========================================================
@@ -3344,6 +3344,107 @@
     .portfolio-video-load-status { margin: 8px 0 10px; min-height: 1.2em; color: rgba(255,255,255,.48); font-size: .74rem; line-height: 1.5; }
     .portfolio-video-load-status:empty { display: none; }
 
+    /* =========================================================
+       PRICING BREAKDOWN MODALS
+       Uses the existing modal visual language without changing
+       the styling or behavior of the portfolio showcase.
+    ========================================================== */
+    .pricing-breakdown-trigger {
+      align-self: flex-start;
+      margin-top: 10px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: rgba(255,255,255,.48);
+      font: inherit;
+      font-size: 9px;
+      line-height: 1.5;
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.22);
+      text-underline-offset: 4px;
+      cursor: pointer;
+      transition: color .22s ease, text-decoration-color .22s ease;
+    }
+    .pricing-breakdown-trigger:hover,
+    .pricing-breakdown-trigger:focus-visible {
+      color: #fff;
+      text-decoration-color: rgba(255,255,255,.75);
+    }
+    .pricing-breakdown-trigger:focus-visible {
+      outline: 2px solid rgba(255,255,255,.75);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    .pricing-breakdown-dialog {
+      width: min(500px, 100%);
+    }
+    .pricing-breakdown-body {
+      padding: 22px;
+    }
+    .pricing-breakdown-intro {
+      margin: 0 0 17px;
+      color: rgba(255,255,255,.5);
+      font-size: .78rem;
+      line-height: 1.6;
+    }
+    .pricing-breakdown-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .pricing-breakdown-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,.075);
+      color: rgba(255,255,255,.78);
+      font-size: .8rem;
+      line-height: 1.5;
+    }
+    .pricing-breakdown-item {
+      min-width: 0;
+    }
+    .pricing-breakdown-value {
+      flex: 0 0 auto;
+      color: rgba(255,255,255,.88);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: .82rem;
+      white-space: nowrap;
+    }
+    .pricing-breakdown-total {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 20px;
+    }
+    .pricing-breakdown-original {
+      color: rgba(255,255,255,.36);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: .95rem;
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+    }
+    .pricing-breakdown-final {
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+    @media (max-width: 620px) {
+      .pricing-breakdown-body { padding: 18px; }
+      .pricing-breakdown-row { gap: 12px; font-size: .75rem; }
+      .pricing-breakdown-value { font-size: .78rem; }
+      .pricing-breakdown-final { font-size: 1.4rem; }
+    }
+
     .portfolio-copy-button { padding: 9px 12px; border: 1px solid rgba(255,255,255,.17); border-radius: 8px; background: rgba(255,255,255,.06); color: #fff; font-size: .76rem; cursor: pointer; }
     .portfolio-copy-button:hover,.portfolio-copy-button:focus-visible { background: rgba(255,255,255,.12); }
     @media(max-width:620px) {
@@ -3420,7 +3521,7 @@
           </div>
 
           <div class="brand-subtitle">
-            Product Launch Creative for Software & AI
+            Product Motion & Launch Content Studio
           </div>
 
         </div>
@@ -3428,6 +3529,8 @@
       </a>
 
       <nav class="nav-links">
+
+        <a href="#product">Services</a>
 
         <a href="#pricing">Packages</a>
 
@@ -3439,7 +3542,7 @@
         href="#get-started"
         class="nav-button magnetic"
       >
-        Start a Conversation
+        Let’s Talk
       </a>
 
       <button
@@ -3453,6 +3556,8 @@
 
     <div class="mobile-menu" id="mobileMenu">
 
+      <a href="#product">Services</a>
+
       <a href="#pricing">Packages</a>
 
       <a href="#how-it-works">Process</a>
@@ -3461,7 +3566,7 @@
         href="#get-started"
         class="mobile-cta"
       >
-        Start a Conversation
+        Let’s Talk
       </a>
 
     </div>
@@ -3486,7 +3591,7 @@
 
           <span class="status-dot"></span>
 
-          PRODUCT LAUNCH CREATIVE FOR SOFTWARE & AI
+          PRODUCT MOTION & LAUNCH CONTENT STUDIO
 
         </div>
 
@@ -3494,19 +3599,19 @@
 
           <span class="line">
             <span class="line-inner">
-              Your Product Deserves
+              Make Your Product
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner">
-              A Clear First Impression.
+              Impossible to Ignore.
             </span>
           </span>
 
           <span class="line">
             <span class="line-inner muted">
-              Launch With Clarity.
+              Premium Motion. Clear Story.
             </span>
           </span>
 
@@ -3514,30 +3619,28 @@
 
         <p class="hero-description hero-animate">
 
-          Product motion-design videos, social creative, clear messaging, and complete websites for software and AI launches.
+          Premium product motion videos and launch-ready content designed to showcase your product, communicate its value, and make your brand stand out.
 
         </p>
 
         <div class="hero-actions hero-animate">
 
           <a
-            href="#get-started"
+            href="#pricing"
             class="button button-primary magnetic"
           >
             Explore Packages
             <span>→</span>
           </a>
 
-          <button
-            type="button"
+          <a
+            href="#get-started"
             class="button button-secondary magnetic"
-            id="demoButton"
-            aria-haspopup="dialog"
-            aria-controls="demoModal"
           >
-            View a Previous Project
-            <span>→</span>
-          </button>
+            Let’s Talk
+            <span>↗</span>
+          </a>
+
 
         </div>
 
@@ -3648,7 +3751,7 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Product Launch
+                    Product Revenue
                   </div>
 
                   <div
@@ -3667,7 +3770,7 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Videos
+                    Videos Delivered
                   </div>
 
                   <div
@@ -3705,7 +3808,7 @@
                 <div class="stat">
 
                   <div class="stat-label">
-                    Launch Assets
+                    Launch Revenue
                   </div>
 
                   <div
@@ -3716,7 +3819,7 @@
                   </div>
 
                   <div class="stat-change">
-                    4 opportunities
+                    4 Opportunities
                   </div>
 
                 </div>
@@ -3887,10 +3990,10 @@
 
           <h2>
 
-            What You Saw Above
+            Product Motion & Launch Content
 
             <span class="muted">
-              Is The Starting Point.
+              Made to Tell Your Story.
             </span>
           </h2>
 
@@ -3898,7 +4001,7 @@
 
         <p class="section-description reveal-right">
 
-          We shape launch assets around your actual product interface and the message you need to communicate. Each deliverable has a job: make the product easier to understand, create a consistent impression, and give your team useful assets to share.
+          We turn real product interfaces and brand assets into clear, polished motion and launch content. From product demonstrations to short-form videos, every asset is designed to explain the product, communicate its value, and create a consistent brand presentation.
 
         </p>
 
@@ -3913,11 +4016,11 @@
           </div>
 
           <div class="feature-title">
-            01 — PRODUCT UI MOTION
+            01 — PREMIUM PRODUCT MOTION
           </div>
 
           <div class="feature-description">
-            Motion-led product videos make key interface moments easier to follow and help demonstrate how the product works.
+            Premium UI animation and product demonstrations that make software features easier to understand and showcase the experience with clarity.
           </div>
 
         </div>
@@ -3929,11 +4032,11 @@
           </div>
 
           <div class="feature-title">
-            02 — LAUNCH MESSAGING
+            02 — SHORT-FORM SOCIAL VIDEOS
           </div>
 
           <div class="feature-description">
-            Refine the headline, description, and core message so the value is clearer and more consistent across launch materials.
+            Short-form videos crafted for social platforms, turning key product moments and benefits into concise, shareable content.
           </div>
 
         </div>
@@ -3945,11 +4048,11 @@
           </div>
 
           <div class="feature-title">
-            03 — SOCIAL ASSETS
+            03 — PRODUCT LAUNCH VISUALS
           </div>
 
           <div class="feature-description">
-            Social media posts help tell the same product story across relevant channels.
+            A coordinated visual direction for launch content, helping every video and brand touchpoint feel connected.
           </div>
 
         </div>
@@ -3965,7 +4068,7 @@
           </div>
 
           <div class="feature-description">
-            A complete website in Launch Pro gives visitors a focused place to understand the product and take the next step.
+            A complete, professional, fully functional website is included in the Complete Launch package.
           </div>
 
         </div>
@@ -3977,11 +4080,11 @@
           </div>
 
           <div class="feature-title">
-            05 — VISUAL CONSISTENCY
+            05 — CONSISTENT VISUAL DIRECTION
           </div>
 
           <div class="feature-description">
-            A coherent visual language across video and social posts makes the launch feel considered.
+            Consistent motion, typography, and visual direction help your product presentation feel polished across channels.
           </div>
 
         </div>
@@ -3993,11 +4096,11 @@
           </div>
 
           <div class="feature-title">
-            06 — BUILT FROM YOUR REAL UI
+            06 — PRODUCT-ACCURATE STORYTELLING
           </div>
 
           <div class="feature-description">
-            We use your supplied product interface and brand assets as the source of truth rather than inventing features your product does not have.
+            We build from your actual product interface and supplied brand assets, keeping demonstrations accurate to the experience you offer.
           </div>
 
         </div>
@@ -4005,7 +4108,7 @@
       </div>
 
       <p class="section-description centered reveal-scale" style="margin-top:34px;">
-        The scope depends on the package you choose. Launch-ready assets are designed to work together while staying grounded in your actual product.
+        Motion Launch includes 3 short-form videos. Complete Launch expands that to 12 and adds a complete, fully functional website.
       </p>
 
     </div>
@@ -4036,7 +4139,7 @@
         </div>
 
         <h2>
-          From Product Context to Launch-Ready Creative.
+          From Product Story to Launch-Ready Content.
         </h2>
 
       </div>
@@ -4054,7 +4157,7 @@
           </div>
 
           <div class="feature-description">
-            We review your product, audience, positioning, existing UI, and the key message your launch needs to communicate.
+            We get to know your product, audience, visual identity, and the message your launch needs to communicate.
           </div>
 
         </div>
@@ -4070,7 +4173,7 @@
           </div>
 
           <div class="feature-description">
-            We refine the headline, description, and creative direction so the product story is focused before production begins.
+            We shape the creative direction and product narrative before motion and video production begins.
           </div>
 
         </div>
@@ -4086,7 +4189,7 @@
           </div>
 
           <div class="feature-description">
-            We produce the agreed UI motion videos and supporting launch assets using your actual product visuals.
+            We craft your product motion video and short-form social videos using your actual product visuals.
           </div>
 
         </div>
@@ -4102,7 +4205,7 @@
           </div>
 
           <div class="feature-description">
-            We prepare the final assets for the agreed placements and check the website, links, and buttons when included.
+            We prepare the final videos and included website for launch, reviewing the agreed deliverables and key links.
           </div>
 
         </div>
@@ -4132,7 +4235,7 @@
   
 
   <!-- =========================================================
-       AI AUTO-REPLY FEATURE SECTION — THE EXPANSION
+       PRODUCT LAUNCH CONTENT
   ========================================================== -->
 
   
@@ -4172,7 +4275,7 @@
 
         <p class="section-description centered">
 
-          Choose focused launch content or a fuller package with motion-design videos, short-form social media videos, and a complete website.
+          Both packages include a premium product motion video. Complete Launch adds 12 short-form videos and a complete, fully functional website.
 
         </p>
 
@@ -4183,33 +4286,35 @@
         <div class="pricing-card">
           <div class="pricing-label">PACKAGE 01</div>
           <div class="pricing-name">Motion Launch</div>
-          <div class="pricing-price"><span class="pricing-amount">$249</span></div>
+          <div class="pricing-price"><span class="pricing-amount">$449</span></div>
           <div class="pricing-sub">Launch package</div>
-          <p class="pricing-desc">Premium product UI motion and social content for a clear, professional product launch.</p>
+          
+          <p class="pricing-desc">Premium product motion and short-form content for a clear, professional product launch.</p>
           <div class="check-list">
             <div class="check-item"><span class="check">✓</span>1 premium, professionally crafted product UI motion video (30–90 seconds)</div>
             <div class="check-item"><span class="check">✓</span>3 professionally crafted short-form social media videos designed for the product or brand (15–30 seconds)</div>
             <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
-            <div class="check-item"><span class="check">✓</span>Custom thumbnail/cover image included for every video.</div>
+            <div class="check-item"><span class="check">✓</span>Custom thumbnail/cover image included for every video</div>
           </div>
-          <a href="#get-started" class="button button-secondary magnetic">Choose Motion Launch</a>
+          <button type="button" class="button button-secondary magnetic" data-pricing-modal-open="motionPricingModal" aria-haspopup="dialog" aria-controls="motionPricingModal">View Price Breakdown</button>
         </div>
 
         <div class="pricing-card featured">
           <div class="pricing-badge">COMPLETE LAUNCH</div>
           <div class="pricing-label">PACKAGE 02</div>
           <div class="pricing-name">Complete Launch</div>
-          <div class="pricing-price"><span class="pricing-amount">$599</span></div>
+          <div class="pricing-price"><span class="pricing-amount">$1,499</span></div>
           <div class="pricing-sub">Launch package</div>
-          <p class="pricing-desc">A complete product launch package with premium motion videos, short-form social media videos, and a fully functional website.</p>
+          
+          <p class="pricing-desc">A complete product launch package combining premium motion, short-form social content, and a professional website.</p>
           <div class="check-list">
             <div class="check-item"><span class="check">✓</span>1 premium, professionally crafted product UI motion video (30–90 seconds)</div>
             <div class="check-item"><span class="check">✓</span>12 professionally crafted short-form social media videos designed for the product or brand (15–30 seconds)</div>
             <div class="check-item"><span class="check">✓</span>1 complete, professional, fully functional website</div>
             <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
-            <div class="check-item"><span class="check">✓</span>Custom thumbnail/cover image included for every video.</div>
+            <div class="check-item"><span class="check">✓</span>Custom thumbnail/cover image included for every video</div>
           </div>
-          <a href="#get-started" class="button button-primary magnetic">Choose Complete Launch</a>
+          <button type="button" class="button button-primary magnetic" data-pricing-modal-open="completePricingModal" aria-haspopup="dialog" aria-controls="completePricingModal">View Price Breakdown</button>
         </div>
 
       </div>
@@ -4234,11 +4339,11 @@
         </div>
 
         <h2>
-          Ready to Make Your Product Stand Out?
+          Ready to Make Your Product Impossible to Ignore?
         </h2>
 
         <p>
-          Let’s turn your product into a launch-ready presentation with motion videos, social content, and a website built to communicate its value.
+          Let’s create premium product motion and launch content that shows what makes your product valuable.
         </p>
 
         <div class="final-actions">
@@ -4246,19 +4351,19 @@
           <div class="hero-actions">
 
             <a
-              href="https://www.instagram.com/autflow.vm/"
+              href="https://www.instagram.com/autflow.ah/"
               target="_blank"
               rel="noopener noreferrer"
               class="button button-primary magnetic"
             >
-              Start My Product Launch
+              Let’s Talk
               <span>↗</span>
             </a>
 
           </div>
 
           <span class="availability">
-            MOTION LAUNCH $249 • COMPLETE LAUNCH $599
+            MOTION LAUNCH $449 • COMPLETE LAUNCH $1,499
           </span>
 
         </div>
@@ -4270,17 +4375,65 @@
   </section>
 
   <!-- =========================================================
+       PRICING BREAKDOWN MODALS
+  ========================================================== -->
+  <div class="demo-modal pricing-breakdown-modal" id="motionPricingModal" aria-hidden="true">
+    <div class="demo-modal-content pricing-breakdown-dialog" role="dialog" aria-modal="true" aria-labelledby="motionPricingTitle" tabindex="-1">
+      <div class="demo-modal-header">
+        <span class="demo-modal-label" id="motionPricingTitle">Motion Launch / Price Breakdown</span>
+        <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close Motion Launch price breakdown">×</button>
+      </div>
+      <div class="portfolio-modal-body pricing-breakdown-body">
+        <p class="pricing-breakdown-intro">Itemized pricing for the Motion Launch package.</p>
+        <ul class="pricing-breakdown-list">
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Premium Product UI Motion Video (30–90 seconds)</span><span class="pricing-breakdown-value">$300</span></li>
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 Short-Form Videos ($45 each)</span><span class="pricing-breakdown-value">$135</span></li>
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">4 Custom Video Thumbnails ($10 each)</span><span class="pricing-breakdown-value">$40</span></li>
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 Revision Rounds</span><span class="pricing-breakdown-value">Included</span></li>
+        </ul>
+        <div class="pricing-breakdown-total" aria-label="Original total $475, package price $449">
+          <span class="pricing-breakdown-original">$475</span>
+          <strong class="pricing-breakdown-final">$449</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-modal pricing-breakdown-modal" id="completePricingModal" aria-hidden="true">
+    <div class="demo-modal-content pricing-breakdown-dialog" role="dialog" aria-modal="true" aria-labelledby="completePricingTitle" tabindex="-1">
+      <div class="demo-modal-header">
+        <span class="demo-modal-label" id="completePricingTitle">Complete Launch / Price Breakdown</span>
+        <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close Complete Launch price breakdown">×</button>
+      </div>
+      <div class="portfolio-modal-body pricing-breakdown-body">
+        <p class="pricing-breakdown-intro">Itemized pricing for the Complete Launch package.</p>
+        <ul class="pricing-breakdown-list">
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Premium Product UI Motion Video (30–90 seconds)</span><span class="pricing-breakdown-value">$300</span></li>
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">12 Short-Form Videos ($45 each)</span><span class="pricing-breakdown-value">$540</span></li>
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Professional Website (up to 5 pages)</span><span class="pricing-breakdown-value">$600</span></li>
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">13 Custom Video Thumbnails ($10 each)</span><span class="pricing-breakdown-value">$130</span></li>
+          <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 Revision Rounds</span><span class="pricing-breakdown-value">Included</span></li>
+        </ul>
+        <div class="pricing-breakdown-total" aria-label="Original total $1,570, package price $1,499">
+          <span class="pricing-breakdown-original">$1,570</span>
+          <strong class="pricing-breakdown-final">$1,499</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
        DISTILBOOK PREVIOUS PROJECT MODAL
   ========================================================== -->
   <div class="demo-modal portfolio-menu-modal" id="demoModal" aria-hidden="true">
     <div class="demo-modal-content portfolio-menu-dialog" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel" aria-describedby="portfolioModalDescription" tabindex="-1">
       <div class="demo-modal-header">
         <button type="button" class="portfolio-back-button" id="portfolioBack" aria-label="Go back" hidden>← Back</button>
-        <span class="demo-modal-label" id="demoModalLabel">Previous Project: DistilBook</span>
+        <span class="demo-modal-label" id="demoModalLabel">DistilBook Project</span>
         <button type="button" class="demo-modal-close" id="demoModalClose" aria-label="Close project showcase">×</button>
       </div>
       <div class="portfolio-modal-body">
-        <h2 class="portfolio-project-heading" id="portfolioProjectHeading">Previous Project: DistilBook</h2>
+        <h2 class="portfolio-project-heading" id="portfolioProjectHeading">DistilBook Project</h2>
         <p class="portfolio-modal-description" id="portfolioModalDescription">Explore the DistilBook website and product motion-design video.</p>
 
         <section class="portfolio-modal-panel" id="portfolioMainPanel" aria-label="DistilBook project options">
@@ -4329,7 +4482,7 @@
             </div>
 
             <div class="footer-tagline">
-              Product launch creative for software and AI products
+              Product Motion & Launch Content Studio
             </div>
 
           </div>
@@ -4345,7 +4498,7 @@
         </span>
 
         <span>
-          Product motion-design videos, social creative, clear messaging, and complete websites for software and AI products.
+          Premium product motion videos, short-form social content, and complete launch websites for SaaS, AI, and technology brands.
         </span>
 
       </div>
@@ -5243,7 +5396,7 @@
       portfolioProjectHeading.hidden = portfolioView !== "main";
       portfolioModalDescription.textContent = viewDescriptions[portfolioView];
       const labels = {
-        main: "Previous Project: DistilBook",
+        main: "DistilBook Project",
         motion: "DistilBook / Motion-Design Video"
       };
       document.getElementById("demoModalLabel").textContent = labels[portfolioView];
@@ -5328,9 +5481,74 @@
       if (url) window.open(url, "_blank", "noopener,noreferrer");
     });
     portfolioBack.addEventListener("click", () => setPortfolioView("main"));
-    demoButton.addEventListener("click", openDemo);
+    if (demoButton) demoButton.addEventListener("click", openDemo);
     demoModalClose.addEventListener("click", closeDemo);
     demoModal.addEventListener("click", event => { if (event.target === demoModal) closeDemo(); });
+
+    /* =========================================================
+       PRICING BREAKDOWN MODAL INTERACTIONS
+    ========================================================== */
+    const pricingModalTriggers = document.querySelectorAll("[data-pricing-modal-open]");
+    let activePricingModal = null;
+    let previousPricingFocus = null;
+
+    function openPricingModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (!modal || activePricingModal) return;
+      activePricingModal = modal;
+      previousPricingFocus = document.activeElement;
+      lockBackgroundScroll();
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      const closeButton = modal.querySelector("[data-pricing-modal-close]");
+      if (closeButton) closeButton.focus({ preventScroll: true });
+    }
+
+    function closePricingModal() {
+      if (!activePricingModal) return;
+      const modalToClose = activePricingModal;
+      activePricingModal = null;
+      modalToClose.classList.remove("active");
+      modalToClose.setAttribute("aria-hidden", "true");
+      unlockBackgroundScroll();
+      if (previousPricingFocus && typeof previousPricingFocus.focus === "function") {
+        previousPricingFocus.focus({ preventScroll: true });
+      }
+      previousPricingFocus = null;
+    }
+
+    pricingModalTriggers.forEach(trigger => {
+      trigger.addEventListener("click", () => openPricingModal(trigger.dataset.pricingModalOpen));
+    });
+
+    document.querySelectorAll(".pricing-breakdown-modal").forEach(modal => {
+      modal.querySelector("[data-pricing-modal-close]").addEventListener("click", closePricingModal);
+      modal.addEventListener("click", event => {
+        if (event.target === modal) closePricingModal();
+      });
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!activePricingModal) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closePricingModal();
+        return;
+      }
+      if (event.key === "Tab") {
+        const focusable = Array.from(activePricingModal.querySelectorAll('button:not(:disabled), a[href], [tabindex]:not([tabindex="-1"])')).filter(el => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    });
 
     document.addEventListener("keydown", event => {
       if (!demoModal.classList.contains("active")) return;

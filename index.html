@@ -58,7 +58,8 @@ img,video,svg{max-width:100%}
 .mobile-menu{display:none}
 
 /* HERO */
-.hero{min-height:100vh;padding-top:175px;padding-bottom:100px;position:relative;overflow:hidden}
+.hero{min-height:100vh;min-height:100svh;padding-top:150px;padding-bottom:110px;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero>.container{position:relative;z-index:2}
 .hero-content{max-width:900px;margin:auto;text-align:center;position:relative;z-index:2;min-width:0}
 .status-pill{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.5);font-size:9px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
 .status-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#66e394;box-shadow:0 0 15px rgba(102,227,148,.7)}
@@ -72,7 +73,7 @@ img,video,svg{max-width:100%}
 .button-primary{background:#fff;color:#000}
 .button-secondary{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
 .button-secondary:hover{border-color:rgba(255,255,255,.2);color:#fff}
-.hero-orbit{position:absolute;width:950px;height:950px;left:50%;top:360px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.025);border-radius:50%;pointer-events:none}
+.hero-orbit{position:absolute;width:950px;height:950px;left:50%;top:50%;margin-top:-475px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.025);border-radius:50%;pointer-events:none}
 .hero-orbit::before{content:"";position:absolute;inset:80px;border:1px solid rgba(255,255,255,.02);border-radius:50%}
 .orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 20px rgba(255,255,255,.7);left:50%;top:0}
 
@@ -97,21 +98,6 @@ img,video,svg{max-width:100%}
 .candle{width:84px;height:70px;border-radius:6px 6px 14px 14px;background:linear-gradient(100deg,#2c2c2c,#555 40%,#222);border:1px solid rgba(255,255,255,.14);box-shadow:0 22px 44px rgba(0,0,0,.55)}
 .candle::before{content:"";position:absolute;left:50%;top:-34px;width:10px;height:26px;margin-left:-5px;border-radius:50% 50% 50% 50%/70% 70% 30% 30%;background:linear-gradient(#fff6c8,#ffb347);box-shadow:0 0 36px 10px rgba(255,180,80,.45)}
 .candle::after{content:"";position:absolute;left:50%;top:-8px;width:2px;height:10px;margin-left:-1px;background:#111}
-
-/* HERO STAGE */
-.stage-wrapper{position:relative;width:100%;max-width:1120px;margin:100px auto 0;perspective:1400px;min-width:0}
-.stage-glow{position:absolute;width:800px;height:350px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);max-width:90vw}
-.stage{position:relative;width:100%;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 70px 150px rgba(0,0,0,.75),0 0 100px rgba(255,255,255,.025);transform-origin:center top;will-change:transform}
-.stage-bar{min-height:45px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 18px;border-bottom:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.3);font-size:9px;letter-spacing:.18em;text-transform:uppercase}
-.stage-bar i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#e6574a;margin-right:8px;box-shadow:0 0 10px rgba(230,87,74,.7)}
-.stage-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:400px;background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,.1),transparent 62%)}
-.stage-cell{position:relative;border-right:1px solid rgba(255,255,255,.05)}
-.stage-cell:last-child{border-right:none}
-.stage-cell:nth-child(2){background:radial-gradient(circle at 50% 40%,rgba(255,214,150,.12),transparent 65%)}
-.stage-timeline{display:flex;align-items:center;gap:14px;padding:14px 18px;border-top:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.35);font-size:10px;font-family:"DM Mono"}
-.stage-track{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden}
-.stage-track span{display:block;height:100%;width:38%;background:#fff;border-radius:3px}
-.stage-note{margin-top:14px;text-align:center;color:rgba(255,255,255,.28);font-size:10px}
 
 /* HEADINGS */
 .section-heading-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:end}
@@ -141,7 +127,7 @@ h2 .muted{color:rgba(255,255,255,.32)}
 
 /* WORK */
 .work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:65px}
-.work-tile{position:relative;border:1px solid rgba(255,255,255,.07);border-radius:17px;overflow:hidden;background:#080808;min-width:0;transition:border-color .3s ease}
+.work-tile{position:relative;border:1px solid rgba(255,255,255,.07);border-radius:17px;overflow:hidden;background:#080808;min-width:0;cursor:pointer;transition:border-color .3s ease}
 .work-tile:hover{border-color:rgba(255,255,255,.18)}
 .work-visual{height:290px;background:radial-gradient(circle at 50% 38%,var(--tint,rgba(255,255,255,.12)),transparent 66%)}
 .work-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-top:1px solid rgba(255,255,255,.06)}
@@ -156,7 +142,16 @@ h2 .muted{color:rgba(255,255,255,.32)}
 .work-visual::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:var(--go);transform:scale(var(--gs));background:radial-gradient(circle at 50% 46%,var(--gc),transparent 62%);will-change:transform,opacity}
 .work-visual .art{z-index:1}
 .work-visual .item,.work-visual .ground{will-change:transform}
+.work-video{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s ease;pointer-events:none}
+.work-video.on{opacity:1}
 .work-tile:focus-visible{outline:2px solid rgba(255,255,255,.7);outline-offset:3px}
+
+/* WORK PREVIEW MODAL */
+.work-modal .demo-modal-content{width:min(640px,100%)}
+.work-modal .work-preview{height:min(52vh,380px)}
+.work-modal .work-preview .art{transform:scale(1.5)}
+.work-preview-video{display:block;width:100%;max-height:min(60vh,420px);background:#000}
+.work-modal .work-meta .button{min-height:40px;padding:0 18px;flex:0 0 auto}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:65px}
@@ -168,6 +163,7 @@ h2 .muted{color:rgba(255,255,255,.32)}
 .pricing-price{margin-top:16px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .pricing-amount{font-family:"Space Grotesk";font-size:46px;letter-spacing:-.03em}
 .pricing-was{color:rgba(255,255,255,.34);font-family:"Space Grotesk";font-size:20px;text-decoration:line-through}
+.pricing-arrow{color:rgba(255,255,255,.34);font-family:"Space Grotesk";font-size:20px}
 .pricing-sub{margin-top:6px;color:rgba(255,255,255,.5);font-size:12px}
 .pricing-save{margin-top:6px;color:#7be8a4;font-size:12px}
 .pricing-desc{margin-top:18px;color:rgba(255,255,255,.5);font-size:13px;line-height:1.8;max-width:420px}
@@ -195,7 +191,7 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.3);font-size:10px;min-width:0}
 .footer-bottom span{min-width:0;overflow-wrap:break-word}
 
-/* PRICING BREAKDOWN MODAL */
+/* MODALS (pricing breakdown + work preview) */
 .demo-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.78);overscroll-behavior:contain;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
 .demo-modal.active{opacity:1;visibility:visible;pointer-events:auto}
 .demo-modal-content{position:relative;display:flex;flex-direction:column;width:min(500px,100%);max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 50px 140px rgba(0,0,0,.8),0 0 100px rgba(255,255,255,.04);transform:translateY(24px) scale(.96);transition:transform .45s cubic-bezier(.16,1,.3,1)}
@@ -233,17 +229,15 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .mobile-menu .mobile-cta{padding:13px;border-radius:10px;background:#fff;color:#000;text-align:center;font-weight:700}
 .section-heading-grid{grid-template-columns:1fr;align-items:start}
 .feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.hero-orbit{width:800px;height:800px}
+.hero-orbit{width:800px;height:800px;margin-top:-400px}
 }
 @media(max-width:760px){
 .container{width:calc(100% - 32px)}
 .nav-inner{height:72px}
 .mobile-menu.active{max-height:calc(100vh - 72px)}
-.hero{padding-top:125px;padding-bottom:70px}
+.hero{padding-top:125px;padding-bottom:80px}
 .hero-title{font-size:clamp(46px,10vw,64px)}
 .hero-description{max-width:600px;font-size:14px;line-height:1.8}
-.stage-wrapper{margin-top:70px}
-.stage{border-radius:16px}
 .section-padding{padding:105px 0}
 .section-heading-grid{gap:35px}
 h2{font-size:clamp(38px,8vw,52px)}
@@ -258,17 +252,13 @@ h2{font-size:clamp(38px,8vw,52px)}
 .brand-mark{width:35px;height:35px;flex-basis:35px;border-radius:10px}
 .brand-name{font-size:13px}
 .brand-subtitle{font-size:6px;letter-spacing:.14em}
-.hero-orbit{width:620px;height:620px;top:410px}
+.hero-orbit{width:620px;height:620px;margin-top:-310px}
 .hero-orbit::before{inset:55px}
 .status-pill{padding:7px 11px;gap:7px;font-size:8px;letter-spacing:.1em}
 .hero-title{margin-top:24px;font-size:clamp(38px,12vw,52px);letter-spacing:-.065em;line-height:.98}
 .hero-description{margin-top:25px;font-size:13px;line-height:1.85}
 .hero-actions{margin-top:28px;flex-direction:column;width:100%;gap:9px}
 .button{width:100%;min-height:48px;padding:0 18px;font-size:12px}
-.stage-wrapper{margin-top:55px}
-.stage-body{height:240px}
-.stage-bar{min-height:40px;padding:0 12px;font-size:7px;letter-spacing:.12em}
-.art{transform:scale(.62)}
 .section-padding{padding:85px 0}
 .eyebrow{font-size:8px;letter-spacing:.16em}
 h2{font-size:clamp(36px,11vw,48px);line-height:.98}
@@ -278,7 +268,6 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 .feature-title{margin-top:22px;font-size:15px}
 .steps-grid,.work-grid,.pricing-grid{margin-top:38px}
 .work-visual{height:250px}
-.work-visual .art{transform:none}
 .pricing-card{padding:28px 22px}
 .pricing-amount{font-size:38px}
 .pricing-badge{position:static;align-self:flex-start;margin-bottom:14px}
@@ -292,6 +281,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 .pricing-breakdown-row{gap:12px;font-size:.8rem}
 .pricing-breakdown-final{font-size:1.5rem}
 .demo-modal-label{font-size:8px;letter-spacing:.12em}
+.work-modal .work-meta .button{width:auto}
 }
 @media(max-width:380px){
 .container{width:calc(100% - 24px)}
@@ -361,20 +351,6 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
         <a href="#pricing" class="button button-secondary magnetic">Choose Your Package <span>↗</span></a>
       </div>
     </div>
-
-    <div class="stage-wrapper">
-      <div class="stage-glow"></div>
-      <div class="stage">
-        <div class="stage-bar"><span><i></i>Product Reveal</span><span>Concept Preview</span></div>
-        <div class="stage-body">
-          <div class="stage-cell"><div class="art"><div class="ground"></div><div class="item bottle"></div></div></div>
-          <div class="stage-cell"><div class="art"><div class="ground"></div><div class="item flacon"></div></div></div>
-          <div class="stage-cell"><div class="art"><div class="ground"></div><div class="item ring"></div></div></div>
-        </div>
-        <div class="stage-timeline"><span>0:00</span><div class="stage-track"><span></span></div><span>0:15</span></div>
-      </div>
-      <p class="stage-note">Conceptual visuals. Not a client project.</p>
-    </div>
   </div>
 </section>
 
@@ -430,15 +406,16 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <h2>Product shots that <span class="muted">command attention.</span></h2>
       <p class="section-description centered">Product reveals, close-up details, premium lighting, and product-focused motion, shaped for short-form advertising.</p>
     </div>
+    <!-- To use a real product video, add data-video="path/to/file.mp4" to a .work-tile. It will play from the start on hover and in the preview. -->
     <div class="work-grid reveal-scale">
-      <div class="work-tile"><div class="work-visual" style="--tint:rgba(255,255,255,.14)"><div class="art"><div class="ground"></div><div class="item bottle"></div></div></div><div class="work-meta"><div><div class="work-title">Skincare Serum</div><div class="work-sub">Product reveal</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile"><div class="work-visual" style="--tint:rgba(255,200,130,.16)"><div class="art"><div class="ground"></div><div class="item flacon"></div></div></div><div class="work-meta"><div><div class="work-title">Fragrance</div><div class="work-sub">Cinematic lighting</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile"><div class="work-visual" style="--tint:rgba(140,190,255,.14)"><div class="art"><div class="ground"></div><div class="item case"></div></div></div><div class="work-meta"><div><div class="work-title">Consumer Electronics</div><div class="work-sub">Close-up detail</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile"><div class="work-visual" style="--tint:rgba(230,200,110,.15)"><div class="art"><div class="ground"></div><div class="item ring"></div></div></div><div class="work-meta"><div><div class="work-title">Jewelry</div><div class="work-sub">Sparkle & macro</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile"><div class="work-visual" style="--tint:rgba(190,140,90,.16)"><div class="art"><div class="ground"></div><div class="item bag"></div></div></div><div class="work-meta"><div><div class="work-title">Fashion Accessory</div><div class="work-sub">Short-form ad</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile"><div class="work-visual" style="--tint:rgba(255,170,90,.15)"><div class="art"><div class="ground"></div><div class="item candle"></div></div></div><div class="work-meta"><div><div class="work-title">Home & Lifestyle</div><div class="work-sub">Mood-led campaign</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Skincare Serum"><div class="work-visual" style="--tint:rgba(255,255,255,.14)"><div class="art"><div class="ground"></div><div class="item bottle"></div></div></div><div class="work-meta"><div><div class="work-title">Skincare Serum</div><div class="work-sub">Product reveal</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Fragrance"><div class="work-visual" style="--tint:rgba(255,200,130,.16)"><div class="art"><div class="ground"></div><div class="item flacon"></div></div></div><div class="work-meta"><div><div class="work-title">Fragrance</div><div class="work-sub">Cinematic lighting</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Consumer Electronics"><div class="work-visual" style="--tint:rgba(140,190,255,.14)"><div class="art"><div class="ground"></div><div class="item case"></div></div></div><div class="work-meta"><div><div class="work-title">Consumer Electronics</div><div class="work-sub">Close-up detail</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Jewelry"><div class="work-visual" style="--tint:rgba(230,200,110,.15)"><div class="art"><div class="ground"></div><div class="item ring"></div></div></div><div class="work-meta"><div><div class="work-title">Jewelry</div><div class="work-sub">Sparkle & macro</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Fashion Accessory"><div class="work-visual" style="--tint:rgba(190,140,90,.16)"><div class="art"><div class="ground"></div><div class="item bag"></div></div></div><div class="work-meta"><div><div class="work-title">Fashion Accessory</div><div class="work-sub">Short-form ad</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Home & Lifestyle"><div class="work-visual" style="--tint:rgba(255,170,90,.15)"><div class="art"><div class="ground"></div><div class="item candle"></div></div></div><div class="work-meta"><div><div class="work-title">Home & Lifestyle</div><div class="work-sub">Mood-led campaign</div></div><span class="work-badge">Concept</span></div></div>
     </div>
-    <p class="work-note">These are conceptual demonstration visuals, not commissioned client projects. Ask us for sample videos relevant to your product category.</p>
+    <p class="work-note">These are conceptual demonstration visuals, not commissioned client projects. Hover or tap a card to preview. Ask us for sample videos relevant to your product category.</p>
   </div>
 </section>
 
@@ -463,46 +440,50 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
   <div class="container section-padding">
     <div class="center-heading reveal-scale">
       <div class="eyebrow"><span class="eyebrow-line"></span>Packages<span class="eyebrow-line"></span></div>
-      <h2>Simple pricing. <br><span class="muted">One video or ten.</span></h2>
-      <p class="section-description centered">Two clear options. No subscriptions, no retainers.</p>
+      <h2>Simple pricing. <br><span class="muted">Three videos or ten.</span></h2>
+      <p class="section-description centered">Two clear one-time packages. No subscriptions, no retainers.</p>
     </div>
     <div class="pricing-grid reveal-scale">
 
       <div class="pricing-card">
         <div class="pricing-label">Option 01</div>
-        <div class="pricing-name">Single Product Ad</div>
-        <div class="pricing-price"><span class="pricing-amount">$99</span></div>
-        <div class="pricing-sub">1 video</div>
-        <p class="pricing-desc">A premium product advertising video crafted to showcase your product through cinematic visuals and professional motion design.</p>
+        <div class="pricing-name">Starter Pack</div>
+        <div class="pricing-price"><span class="pricing-was" aria-label="Regular price $300">$300</span><span class="pricing-arrow" aria-hidden="true">→</span><span class="pricing-amount">$199</span></div>
+        <div class="pricing-sub">3 videos · one-time package</div>
+        <div class="pricing-save">Save $101 compared to 3 individual videos at $100.</div>
+        <p class="pricing-desc">For brands that want to start with professional product advertising: three premium videos, each with its own creative approach.</p>
         <div class="check-list">
-          <div class="check-item"><span class="check">✓</span>1 premium product advertising video</div>
-          <div class="check-item"><span class="check">✓</span>Video duration: 15–60 seconds</div>
-          <div class="check-item"><span class="check">✓</span>Custom visuals tailored to the product and brand</div>
+          <div class="check-item"><span class="check">✓</span>3 premium product advertising videos</div>
+          <div class="check-item"><span class="check">✓</span>Each video: 15–60 seconds</div>
+          <div class="check-item"><span class="check">✓</span>Product-focused creative direction</div>
+          <div class="check-item"><span class="check">✓</span>Distinct creative approaches for the three videos</div>
           <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
-          <div class="check-item"><span class="check">✓</span>Custom thumbnail / cover image included</div>
+          <div class="check-item"><span class="check">✓</span>Custom thumbnail / cover image for every video</div>
         </div>
         <div class="pricing-actions">
-          <button type="button" class="button button-secondary" data-pricing-modal-open="singlePricingModal" aria-haspopup="dialog" aria-controls="singlePricingModal">View Price Breakdown</button>
+          <button type="button" class="button button-secondary" data-pricing-modal-open="starterPricingModal" aria-haspopup="dialog" aria-controls="starterPricingModal">View Price Breakdown</button>
         </div>
       </div>
 
       <div class="pricing-card featured">
-        <div class="pricing-badge">Save $291 · 29% off</div>
-        <div class="pricing-label">Option 02</div>
-        <div class="pricing-name">Product Ad Bundle</div>
-        <div class="pricing-price"><span class="pricing-amount">$699</span><span class="pricing-was" aria-label="Regular price $990">$990</span></div>
-        <div class="pricing-sub">10 videos · $69.90 per video</div>
-        <div class="pricing-save">You save $291 compared to 10 single ads.</div>
-        <p class="pricing-desc">A collection of 10 premium product advertising videos, giving your brand more creative content and multiple opportunities to promote its products.</p>
+        <div class="pricing-badge">Best value · Save $401</div>
+        <div class="pricing-label">Option 02 · Recommended</div>
+        <div class="pricing-name">Complete Campaign</div>
+        <div class="pricing-price"><span class="pricing-was" aria-label="Regular price $1,000">$1,000</span><span class="pricing-arrow" aria-hidden="true">→</span><span class="pricing-amount">$599</span></div>
+        <div class="pricing-sub">10 videos · $59.90 per video · one-time package</div>
+        <div class="pricing-save">Save $401 compared to 10 individual videos at $100.</div>
+        <p class="pricing-desc">For brands that need a broader advertising content library: ten premium videos with multiple creative angles and concepts.</p>
         <div class="check-list">
           <div class="check-item"><span class="check">✓</span>10 premium product advertising videos</div>
           <div class="check-item"><span class="check">✓</span>Each video: 15–60 seconds</div>
+          <div class="check-item"><span class="check">✓</span>Multiple creative angles and advertising concepts</div>
+          <div class="check-item"><span class="check">✓</span>Different hooks and visual approaches</div>
           <div class="check-item"><span class="check">✓</span>Product-focused creative direction</div>
           <div class="check-item"><span class="check">✓</span>3 free revision rounds</div>
           <div class="check-item"><span class="check">✓</span>Custom thumbnail / cover image for every video</div>
         </div>
         <div class="pricing-actions">
-          <button type="button" class="button button-secondary" data-pricing-modal-open="bundlePricingModal" aria-haspopup="dialog" aria-controls="bundlePricingModal">View Price Breakdown</button>
+          <button type="button" class="button button-primary" data-pricing-modal-open="campaignPricingModal" aria-haspopup="dialog" aria-controls="campaignPricingModal">View Price Breakdown</button>
         </div>
       </div>
 
@@ -521,47 +502,62 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
         <div class="hero-actions">
           <a href="https://www.instagram.com/autflow.ah/" target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">Let’s Create Something Great <span>↗</span></a>
         </div>
-        <span class="availability">Single Product Ad $99 • Product Ad Bundle $699</span>
+        <span class="availability">Starter Pack $199 • Complete Campaign $599</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PRICING BREAKDOWN MODALS -->
-<div class="demo-modal pricing-breakdown-modal" id="singlePricingModal" aria-hidden="true">
-  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="singlePricingTitle" tabindex="-1">
+<div class="demo-modal pricing-breakdown-modal" id="starterPricingModal" aria-hidden="true">
+  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="starterPricingTitle" tabindex="-1">
     <div class="demo-modal-header">
-      <span class="demo-modal-label" id="singlePricingTitle">Single Product Ad / Price Breakdown</span>
-      <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close Single Product Ad price breakdown">×</button>
+      <span class="demo-modal-label" id="starterPricingTitle">Starter Pack / Price Breakdown</span>
+      <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close Starter Pack price breakdown">×</button>
     </div>
     <div class="pricing-breakdown-body">
-      <p class="pricing-breakdown-intro">Itemized pricing for one product advertising video.</p>
+      <p class="pricing-breakdown-intro">Itemized pricing for 3 product advertising videos. One-time package.</p>
       <ul class="pricing-breakdown-list">
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Product advertising video</span><span class="pricing-breakdown-value">$99</span></li>
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Custom creative direction</span><span class="pricing-breakdown-value">Included</span></li>
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Custom cover image</span><span class="pricing-breakdown-value">Included</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 videos at individual pricing (3 × $100)</span><span class="pricing-breakdown-value">$300</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Starter Pack discount</span><span class="pricing-breakdown-value save">-$101</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Custom cover image for every video</span><span class="pricing-breakdown-value">Included</span></li>
         <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 revision rounds</span><span class="pricing-breakdown-value">Included</span></li>
       </ul>
-      <div class="pricing-breakdown-total"><span>Total</span><strong class="pricing-breakdown-final">$99</strong></div>
+      <div class="pricing-breakdown-total"><span>Total</span><strong class="pricing-breakdown-final">$199</strong></div>
     </div>
   </div>
 </div>
 
-<div class="demo-modal pricing-breakdown-modal" id="bundlePricingModal" aria-hidden="true">
-  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="bundlePricingTitle" tabindex="-1">
+<div class="demo-modal pricing-breakdown-modal" id="campaignPricingModal" aria-hidden="true">
+  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="campaignPricingTitle" tabindex="-1">
     <div class="demo-modal-header">
-      <span class="demo-modal-label" id="bundlePricingTitle">Product Ad Bundle / Price Breakdown</span>
-      <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close Product Ad Bundle price breakdown">×</button>
+      <span class="demo-modal-label" id="campaignPricingTitle">Complete Campaign / Price Breakdown</span>
+      <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close Complete Campaign price breakdown">×</button>
     </div>
     <div class="pricing-breakdown-body">
-      <p class="pricing-breakdown-intro">Itemized pricing for 10 product advertising videos.</p>
+      <p class="pricing-breakdown-intro">Itemized pricing for 10 product advertising videos. One-time package.</p>
       <ul class="pricing-breakdown-list">
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">10 videos at individual pricing (10 × $99)</span><span class="pricing-breakdown-value">$990</span></li>
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Bundle discount (29%)</span><span class="pricing-breakdown-value save">-$291</span></li>
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Custom cover images</span><span class="pricing-breakdown-value">Included</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">10 videos at individual pricing (10 × $100)</span><span class="pricing-breakdown-value">$1,000</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Complete Campaign discount</span><span class="pricing-breakdown-value save">-$401</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Custom cover image for every video</span><span class="pricing-breakdown-value">Included</span></li>
         <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 revision rounds</span><span class="pricing-breakdown-value">Included</span></li>
       </ul>
-      <div class="pricing-breakdown-total"><span>Total · $69.90 per video</span><strong class="pricing-breakdown-final">$699</strong></div>
+      <div class="pricing-breakdown-total"><span>Total · $59.90 per video</span><strong class="pricing-breakdown-final">$599</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK PREVIEW MODAL -->
+<div class="demo-modal work-modal" id="workModal" aria-hidden="true">
+  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="workModalTitle" tabindex="-1">
+    <div class="demo-modal-header">
+      <span class="demo-modal-label" id="workModalTitle">Product Preview</span>
+      <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close preview">×</button>
+    </div>
+    <div id="workPreviewStage"></div>
+    <div class="work-meta">
+      <div><div class="work-title" id="workModalName"></div><div class="work-sub" id="workModalSub"></div></div>
+      <button type="button" class="button button-secondary" id="workModalCta">Start a project</button>
     </div>
   </div>
 </div>
@@ -601,14 +597,10 @@ ScrollTrigger.create({start:"top -60",onEnter:()=>navbar.classList.add("scrolled
 /* HERO INTRO */
 gsap.timeline({defaults:{ease:"power4.out"}})
   .from(".hero-title .line-inner",{yPercent:110,duration:1.15,stagger:.09})
-  .from(".hero-animate",{y:25,opacity:0,duration:.8,stagger:.1},"-=.65")
-  .from(".stage-wrapper",{y:90,opacity:0,scale:.94,duration:1.4},"-=.45");
+  .from(".hero-animate",{y:25,opacity:0,duration:.8,stagger:.1},"-=.65");
 
 gsap.to(".hero-orbit",{rotation:360,duration:80,repeat:-1,ease:"none"});
 gsap.to(".hero-content",{y:-120,opacity:.35,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
-gsap.to(".stage",{y:110,scale:.93,opacity:.45,ease:"none",scrollTrigger:{trigger:".stage-wrapper",start:"top 65%",end:"bottom 20%",scrub:1.2}});
-gsap.to(".stage-glow",{scale:1.35,opacity:.8,ease:"none",scrollTrigger:{trigger:".stage-wrapper",start:"top bottom",end:"bottom top",scrub:true}});
-gsap.to(".stage-track span",{width:"92%",duration:6,ease:"none",repeat:-1,repeatDelay:1});
 
 /* BACKGROUND GLOWS */
 [[".glow-1",{y:500,scale:1.5}],[".glow-2",{y:-300,x:150}],[".glow-3",{y:-400,x:-150}]].forEach(([sel,vars])=>{
@@ -682,8 +674,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
   });
 });
 
-/* PRICING BREAKDOWN MODALS */
-let activeModal=null, prevFocus=null, lockedY=0;
+/* MODALS (pricing breakdown + work preview) */
+let activeModal=null, prevFocus=null, lockedY=0, onCloseCb=null;
 function lockScroll(){
   lockedY=window.scrollY||0;
   document.body.classList.add("menu-open");
@@ -696,24 +688,26 @@ function unlockScroll(){
   window.scrollTo(0,lockedY);
   lenis.start();
 }
-function openModal(id){
+function openModal(id,onClose){
   const m=document.getElementById(id);
-  if(!m||activeModal) return;
-  activeModal=m; prevFocus=document.activeElement;
+  if(!m||activeModal) return false;
+  activeModal=m; prevFocus=document.activeElement; onCloseCb=onClose||null;
   lockScroll();
   m.classList.add("active"); m.setAttribute("aria-hidden","false");
   m.querySelector("[data-pricing-modal-close]").focus({preventScroll:true});
+  return true;
 }
 function closeModal(){
   if(!activeModal) return;
   const m=activeModal; activeModal=null;
   m.classList.remove("active"); m.setAttribute("aria-hidden","true");
+  if(onCloseCb){onCloseCb();onCloseCb=null;}
   unlockScroll();
   if(prevFocus&&prevFocus.focus) prevFocus.focus({preventScroll:true});
   prevFocus=null;
 }
 document.querySelectorAll("[data-pricing-modal-open]").forEach(b=>b.addEventListener("click",()=>openModal(b.dataset.pricingModalOpen)));
-document.querySelectorAll(".pricing-breakdown-modal").forEach(m=>{
+document.querySelectorAll(".demo-modal").forEach(m=>{
   m.querySelector("[data-pricing-modal-close]").addEventListener("click",closeModal);
   m.addEventListener("click",e=>{if(e.target===m)closeModal();});
 });
@@ -721,7 +715,7 @@ document.addEventListener("keydown",e=>{
   if(!activeModal) return;
   if(e.key==="Escape"){e.preventDefault();closeModal();return;}
   if(e.key==="Tab"){
-    const f=Array.from(activeModal.querySelectorAll("button:not(:disabled), a[href]"));
+    const f=Array.from(activeModal.querySelectorAll("button:not(:disabled), a[href], video[controls]"));
     if(!f.length) return;
     const first=f[0], last=f[f.length-1];
     if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
@@ -729,115 +723,139 @@ document.addEventListener("keydown",e=>{
   }
 });
 
-/* WORK — CINEMATIC PRODUCT MOTION
-   Each card plays its own ~14 s six-shot "commercial" on hover (tap on touch):
-   01 reveal · 02 push-in · 03 angle change · 04 macro close-up · 05 orbit · 06 pull-back.
-   Camera = perspective transforms on the product + light/shadow/glint layers.
-   Transforms and opacity only: no layout shift. Cards are fully independent. */
+/* WORK — PRODUCT MOTION + PREVIEW
+   The product visuals are flat CSS concepts, so there are no real alternative camera angles to show.
+   Hover therefore plays a restrained camera move only: slow push-in, gentle horizontal drift,
+   a counter-moving shadow (parallax), a soft light bloom and one glint sweep. No 3D rotation.
+   If a tile has data-video="…", that real video plays from the start on hover and in the preview.
+   Click / tap / Enter opens the preview modal. Transforms and opacity only: no layout shift. */
 (function(){
   const reduceQuery=window.matchMedia("(prefers-reduced-motion: reduce)");
   const fineQuery=window.matchMedia("(hover: hover) and (pointer: fine)");
   const rnd=gsap.utils.random;
 
-  /* Per-product direction. fx/fy = macro focus point (px from product centre),
-     a = yaw amplitude, tilt = pitch, slide = lateral camera drift, spin = full 360 orbit */
+  /* c = light colour, dx = horizontal drift (px), flicker = candle flame light */
   const CFG={
-    bottle:{c:"rgba(255,255,255,.26)",fx:0,fy:-40,a:30,tilt:6,slide:10,spin:false,persp:800,org:"50% 62%"},
-    flacon:{c:"rgba(255,196,120,.38)",fx:0,fy:-36,a:26,tilt:5,slide:-12,spin:false,persp:900,org:"50% 70%"},
-    case:  {c:"rgba(140,190,255,.34)",fx:34,fy:12,a:34,tilt:14,slide:0,spin:false,persp:700,org:"50% 50%"},
-    ring:  {c:"rgba(255,226,140,.34)",fx:0,fy:-52,a:24,tilt:8,slide:0,spin:true,persp:800,org:"50% 50%"},
-    bag:   {c:"rgba(210,150,95,.34)",fx:0,fy:-4,a:22,tilt:4,slide:22,spin:false,persp:900,org:"50% 60%"},
-    candle:{c:"rgba(255,160,80,.4)",fx:0,fy:-48,a:0,tilt:0,slide:16,spin:false,persp:900,org:"50% 70%",flicker:true}
+    bottle:{c:"rgba(255,255,255,.26)",dx:7},
+    flacon:{c:"rgba(255,196,120,.38)",dx:-7},
+    case:  {c:"rgba(140,190,255,.34)",dx:8},
+    ring:  {c:"rgba(255,226,140,.34)",dx:6},
+    bag:   {c:"rgba(210,150,95,.34)",dx:9},
+    candle:{c:"rgba(255,160,80,.4)",dx:5,flicker:true}
   };
-  const foc=(s,c)=>({x:-c.fx*s,y:-c.fy*s});
+  const kindOf=item=>Object.keys(CFG).find(k=>item.classList.contains(k));
 
-  function build(item,gnd,v,c){
-    const tl=gsap.timeline({repeat:-1,repeatDelay:.15,defaults:{ease:"power2.inOut"}});
-    const glint=(at,d)=>tl
-      .fromTo(v,{"--sx":-130},{"--sx":130,duration:d,ease:"power2.inOut"},at)
-      .to(v,{"--so":1,duration:.25,ease:"power1.out"},at)
-      .to(v,{"--so":0,duration:.35,ease:"power1.in"},at+d-.35);
-    const light=(at,go,gs,d)=>{ if(!c.flicker) tl.to(v,{"--go":go,"--gs":gs,duration:d,ease:"sine.inOut"},at); };
-
-    tl.set(item,{opacity:0,scale:.88,x:0,y:18,rotationX:0,rotationY:0,rotationZ:0,transformPerspective:c.persp,transformOrigin:c.org},0)
-      .set(gnd,{opacity:0,scaleX:.7,x:0},0)
-      .set(v,{"--gc":c.c,"--go":0,"--gs":.8,"--so":0,"--sx":-130},0);
-
-    /* 01 reveal: product rises out of darkness under a building key light */
-    tl.to(item,{opacity:1,y:0,scale:1,duration:1.5,ease:"power3.out"},0)
-      .to(gnd,{opacity:1,scaleX:1,duration:1.5,ease:"power3.out"},0);
-    light(0,.7,.95,1.5); glint(.7,1.3);
-
-    /* 02 push-in: slow dolly toward the product with a slight yaw */
-    tl.to(item,{scale:1.4,y:-6,rotationY:c.a*.6,rotationX:-c.tilt*.4,x:c.slide*.4,duration:1.7},1.7);
-    tl.to(gnd,{scaleX:1.2,opacity:.85,duration:1.7},1.7); light(1.7,1,1.1,1.7);
-
-    /* 03 angle change: camera swings to the opposite side, higher vantage */
-    tl.to(item,{rotationY:-c.a,rotationX:-c.tilt,x:-c.slide,y:-4,scale:1.55,duration:1.8},3.5);
-    tl.to(gnd,{x:c.slide*.6,duration:1.8},3.5); light(3.5,1.1,1.15,1.8); glint(4.1,1.4);
-
-    /* 04 macro close-up: tight on a feature, then a slow creep */
-    tl.to(item,{scale:3.6,rotationY:-c.a*.2,rotationX:0,...foc(3.6,c),duration:1.6,ease:"power3.inOut"},5.4);
-    tl.to(gnd,{opacity:.15,duration:1.2},5.4);
-    tl.to(item,{scale:3.95,...foc(3.95,c),duration:1.5,ease:"none"},7);
-    light(5.4,1.25,1.25,1.6); glint(5.9,1.3);
-
-    /* 05 orbit: back out and travel around the product */
-    tl.to(item,{scale:1.7,x:0,y:-4,rotationX:-c.tilt*.5,rotationY:c.spin?360:c.a*1.1,duration:2.5,ease:"power2.inOut"},8.5);
-    tl.to(gnd,{opacity:.9,x:0,scaleX:1.15,duration:2.2},8.7); light(8.5,1.05,1.1,2.5); glint(9.4,1.4);
-
-    /* 06 pull-back: reveal the whole product, premium hero light, then fade to black */
-    tl.to(item,{scale:1.08,y:0,x:0,rotationX:0,rotationY:c.spin?360:0,duration:2,ease:"power3.inOut"},11.1);
-    tl.to(gnd,{opacity:1,scaleX:1.1,duration:2,ease:"power3.inOut"},11.1); light(11.1,1.3,1.2,2);
-    tl.to([item,gnd],{opacity:0,duration:.5,ease:"power1.in"},13.4);
-    tl.to(v,{"--go":0,duration:.5},13.4);
-
-    /* candle: living flame light instead of mid-sequence glow shifts */
+  /* ~8.4 s seamless loop: drift one way, drift back with a slightly closer framing, settle */
+  function camera(item,gnd,v,c){
+    const tl=gsap.timeline({repeat:-1,defaults:{ease:"sine.inOut"}});
+    gsap.set(v,{"--gc":c.c,"--gs":.85,"--sx":-130,"--so":0});
+    gsap.set(item,{transformOrigin:"50% 70%"});
+    const glint=at=>tl
+      .fromTo(v,{"--sx":-130},{"--sx":130,duration:1.6,ease:"power2.inOut"},at)
+      .to(v,{"--so":1,duration:.4,ease:"power1.out"},at)
+      .to(v,{"--so":0,duration:.5,ease:"power1.in"},at+1.1);
+    tl.to(item,{scale:1.06,x:-c.dx,y:-2,duration:2.8},0)
+      .to(item,{scale:1.12,x:c.dx,y:-3,duration:2.8},2.8)
+      .to(item,{scale:1,x:0,y:0,duration:2.8},5.6);
+    tl.to(gnd,{x:c.dx*.6,scaleX:1.05,duration:2.8},0)
+      .to(gnd,{x:-c.dx*.6,scaleX:1.08,duration:2.8},2.8)
+      .to(gnd,{x:0,scaleX:1,duration:2.8},5.6);
     if(c.flicker){
-      tl.to(v,{"--go":.9,"--gs":1.1,duration:1.2},.4);
-      for(let t=1.8;t<13.2;t+=.22) tl.to(v,{"--go":rnd(.8,1.4),"--gs":rnd(1.05,1.3),duration:.22,ease:"sine.inOut"},t);
+      gsap.set(v,{"--go":.85});
+      tl.to({},{duration:8.4},0);
+      for(let t=0;t<8.4;t+=.3) tl.call(()=>{ gsap.to(v,{"--go":rnd(.75,1.2),"--gs":rnd(1.02,1.18),duration:.3,ease:"sine.inOut",overwrite:"auto"}); },null,t);
+    }else{
+      tl.to(v,{"--go":.7,"--gs":.95,duration:2.8},0)
+        .to(v,{"--go":1,"--gs":1.08,duration:2.8},2.8)
+        .to(v,{"--go":.7,"--gs":.95,duration:2.8},5.6);
     }
+    glint(.6); glint(4.4);
     return tl;
   }
+  function settle(item,gnd,v){
+    gsap.to(item,{x:0,y:0,scale:1,duration:.9,ease:"power2.inOut"});
+    gsap.to(gnd,{x:0,scaleX:1,duration:.9,ease:"power2.inOut"});
+    gsap.to(v,{"--go":0,"--so":0,"--gs":.8,duration:.8,ease:"power2.out"});
+  }
 
+  /* Hover motion on each card */
   document.querySelectorAll(".work-tile").forEach(tile=>{
     const v=tile.querySelector(".work-visual");
     const item=v&&v.querySelector(".item");
     const gnd=v&&v.querySelector(".ground");
     if(!v||!item||!gnd) return;
-    const kind=Object.keys(CFG).find(k=>item.classList.contains(k));
-    if(!kind) return;
-    let tl=null;
+    const c=CFG[kindOf(item)];
+    if(!c) return;
+    let tl=null, vid=null;
 
+    if(tile.dataset.video){
+      vid=document.createElement("video");
+      vid.className="work-video"; vid.src=tile.dataset.video;
+      vid.muted=true; vid.loop=true; vid.playsInline=true; vid.preload="none"; vid.setAttribute("aria-hidden","true");
+      v.appendChild(vid);
+    }
     function start(){
       if(tl||reduceQuery.matches) return;
+      if(vid){ vid.currentTime=0; const p=vid.play(); if(p&&p.catch)p.catch(()=>{}); vid.classList.add("on"); tl=true; return; }
       gsap.killTweensOf([item,gnd,v]);
-      tl=build(item,gnd,v,CFG[kind]);
+      tl=camera(item,gnd,v,c);
     }
     function stop(){
       if(!tl) return;
+      if(vid){ vid.pause(); vid.classList.remove("on"); tl=null; return; }
       tl.kill(); tl=null;
       gsap.killTweensOf([item,gnd,v]);
-      const r=gsap.getProperty(item,"rotationY");
-      gsap.set(item,{rotationY:((r%360)+540)%360-180});
-      gsap.to(item,{opacity:1,x:0,y:0,scale:1,rotationX:0,rotationY:0,rotationZ:0,duration:.9,ease:"power3.inOut"});
-      gsap.to(gnd,{opacity:1,x:0,scaleX:1,duration:.9,ease:"power3.inOut"});
-      gsap.to(v,{"--go":0,"--so":0,"--gs":.8,duration:.8,ease:"power2.out"});
+      settle(item,gnd,v);
     }
+    tile._stop=stop;
 
-    /* Pointer devices: hover. Touch devices: tap the card to play / tap again to stop. */
     tile.addEventListener("mouseenter",()=>{ if(fineQuery.matches) start(); });
     tile.addEventListener("mouseleave",()=>{ if(fineQuery.matches) stop(); });
-    tile.addEventListener("click",()=>{ if(!fineQuery.matches) (tl?stop():start()); });
-    tile.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault(); tl?stop():start();} });
+    tile.addEventListener("click",()=>{ stop(); openPreview(tile,c); });
+    tile.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); stop(); openPreview(tile,c); } });
     tile.setAttribute("tabindex","0");
 
-    /* Pause when scrolled out of view (saves CPU/GPU) */
+    /* Stop when scrolled out of view (saves CPU/GPU) */
     if("IntersectionObserver" in window){
       new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) stop(); }),{threshold:0}).observe(tile);
     }
     reduceQuery.addEventListener&&reduceQuery.addEventListener("change",e=>{ if(e.matches) stop(); });
   });
+
+  /* Preview modal */
+  const stage=document.getElementById("workPreviewStage");
+  const nameEl=document.getElementById("workModalName"), subEl=document.getElementById("workModalSub");
+  const ctaBtn=document.getElementById("workModalCta");
+  ctaBtn.addEventListener("click",()=>{ closeModal(); lenis.scrollTo("#get-started",{offset:-80,duration:1.3}); });
+
+  function openPreview(tile,c){
+    const src=tile.querySelector(".work-visual");
+    stage.innerHTML="";
+    let pt=null, pv=null;
+    nameEl.textContent=tile.querySelector(".work-title").textContent;
+    subEl.textContent=tile.querySelector(".work-sub").textContent;
+    if(tile.dataset.video){
+      pv=document.createElement("video");
+      pv.className="work-preview-video"; pv.src=tile.dataset.video;
+      pv.controls=true; pv.autoplay=true; pv.muted=true; pv.loop=true; pv.playsInline=true;
+      stage.appendChild(pv);
+    }else{
+      const box=document.createElement("div");
+      box.className="work-visual work-preview";
+      box.style.cssText=src.getAttribute("style")||"";
+      box.innerHTML=src.innerHTML;
+      stage.appendChild(box);
+      const item=box.querySelector(".item"), gnd=box.querySelector(".ground");
+      const ok=openModal("workModal",()=>{
+        if(pt){pt.kill();pt=null;}
+        gsap.killTweensOf([item,gnd,box]);
+        stage.innerHTML="";
+      });
+      if(ok&&!reduceQuery.matches) pt=camera(item,gnd,box,c);
+      return;
+    }
+    openModal("workModal",()=>{ if(pv)pv.pause(); stage.innerHTML=""; });
+  }
 })();
 
 document.getElementById("year").textContent=new Date().getFullYear();

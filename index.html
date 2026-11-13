@@ -136,22 +136,24 @@ h2 .muted{color:rgba(255,255,255,.32)}
 .work-badge{flex:0 0 auto;padding:4px 9px;border:1px solid rgba(255,255,255,.1);border-radius:999px;color:rgba(255,255,255,.4);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
 .work-note{max-width:640px;margin:30px auto 0;text-align:center;color:rgba(255,255,255,.35);font-size:12px;line-height:1.8}
 
-/* WORK — HOVER-ACTIVATED PRODUCT MOTION (transform/opacity only, no layout impact) */
+/* WORK — INLINE CINEMATIC PRODUCT MOTION
+   Everything happens inside the existing .work-visual box (overflow hidden, fixed height).
+   Only transform / opacity are animated, so nothing can shift the layout. */
 .work-visual{position:relative;overflow:hidden;--sx:-130;--so:0;--go:0;--gs:.8;--gc:rgba(255,255,255,.22)}
 .work-visual::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:var(--so);transform:translate3d(calc(var(--sx) * 1%),0,0);background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.17) 47%,rgba(255,255,255,.05) 52%,transparent 62%);will-change:transform,opacity}
 .work-visual::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:var(--go);transform:scale(var(--gs));background:radial-gradient(circle at 50% 46%,var(--gc),transparent 62%);will-change:transform,opacity}
-.work-visual .art{z-index:1}
+.work-visual .art{z-index:1;transform-origin:50% 50%;will-change:transform}
 .work-visual .item,.work-visual .ground{will-change:transform}
 .work-video{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s ease;pointer-events:none}
 .work-video.on{opacity:1}
+.work-frame{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;will-change:transform,opacity}
+.cine-vig,.cine-fade,.cine-bar{position:absolute;pointer-events:none;opacity:0}
+.cine-vig{inset:0;z-index:3;background:radial-gradient(ellipse at 50% 48%,transparent 52%,rgba(0,0,0,.55) 100%)}
+.cine-fade{inset:0;z-index:4;background:#000}
+.cine-bar{left:0;right:0;height:8%;z-index:5;background:#050505;opacity:1;will-change:transform}
+.cine-bar.top{top:0;transform:translate3d(0,-101%,0)}
+.cine-bar.bottom{bottom:0;transform:translate3d(0,101%,0)}
 .work-tile:focus-visible{outline:2px solid rgba(255,255,255,.7);outline-offset:3px}
-
-/* WORK PREVIEW MODAL */
-.work-modal .demo-modal-content{width:min(640px,100%)}
-.work-modal .work-preview{height:min(52vh,380px)}
-.work-modal .work-preview .art{transform:scale(1.5)}
-.work-preview-video{display:block;width:100%;max-height:min(60vh,420px);background:#000}
-.work-modal .work-meta .button{min-height:40px;padding:0 18px;flex:0 0 auto}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:65px}
@@ -191,7 +193,7 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.3);font-size:10px;min-width:0}
 .footer-bottom span{min-width:0;overflow-wrap:break-word}
 
-/* MODALS (pricing breakdown + work preview) */
+/* MODALS (pricing breakdown only) */
 .demo-modal{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.78);overscroll-behavior:contain;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,visibility .35s ease}
 .demo-modal.active{opacity:1;visibility:visible;pointer-events:auto}
 .demo-modal-content{position:relative;display:flex;flex-direction:column;width:min(500px,100%);max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 50px 140px rgba(0,0,0,.8),0 0 100px rgba(255,255,255,.04);transform:translateY(24px) scale(.96);transition:transform .45s cubic-bezier(.16,1,.3,1)}
@@ -281,7 +283,6 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 .pricing-breakdown-row{gap:12px;font-size:.8rem}
 .pricing-breakdown-final{font-size:1.5rem}
 .demo-modal-label{font-size:8px;letter-spacing:.12em}
-.work-modal .work-meta .button{width:auto}
 }
 @media(max-width:380px){
 .container{width:calc(100% - 24px)}
@@ -406,14 +407,17 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
       <h2>Product shots that <span class="muted">command attention.</span></h2>
       <p class="section-description centered">Product reveals, close-up details, premium lighting, and product-focused motion, shaped for short-form advertising.</p>
     </div>
-    <!-- To use a real product video, add data-video="path/to/file.mp4" to a .work-tile. It will play from the start on hover and in the preview. -->
+    <!-- Real assets (optional, per .work-tile):
+         data-video="path/to/file.mp4"            plays inline from the start on hover / tap.
+         data-frames="a.jpg,b.jpg,c.jpg"           real multi-angle images, played as a slow crossfaded sequence.
+         With neither attribute the CSS product concept gets a controlled virtual-camera move (no fake 3D rotation). -->
     <div class="work-grid reveal-scale">
-      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Skincare Serum"><div class="work-visual" style="--tint:rgba(255,255,255,.14)"><div class="art"><div class="ground"></div><div class="item bottle"></div></div></div><div class="work-meta"><div><div class="work-title">Skincare Serum</div><div class="work-sub">Product reveal</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Fragrance"><div class="work-visual" style="--tint:rgba(255,200,130,.16)"><div class="art"><div class="ground"></div><div class="item flacon"></div></div></div><div class="work-meta"><div><div class="work-title">Fragrance</div><div class="work-sub">Cinematic lighting</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Consumer Electronics"><div class="work-visual" style="--tint:rgba(140,190,255,.14)"><div class="art"><div class="ground"></div><div class="item case"></div></div></div><div class="work-meta"><div><div class="work-title">Consumer Electronics</div><div class="work-sub">Close-up detail</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Jewelry"><div class="work-visual" style="--tint:rgba(230,200,110,.15)"><div class="art"><div class="ground"></div><div class="item ring"></div></div></div><div class="work-meta"><div><div class="work-title">Jewelry</div><div class="work-sub">Sparkle & macro</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Fashion Accessory"><div class="work-visual" style="--tint:rgba(190,140,90,.16)"><div class="art"><div class="ground"></div><div class="item bag"></div></div></div><div class="work-meta"><div><div class="work-title">Fashion Accessory</div><div class="work-sub">Short-form ad</div></div><span class="work-badge">Concept</span></div></div>
-      <div class="work-tile" role="button" aria-haspopup="dialog" aria-label="Preview: Home & Lifestyle"><div class="work-visual" style="--tint:rgba(255,170,90,.15)"><div class="art"><div class="ground"></div><div class="item candle"></div></div></div><div class="work-meta"><div><div class="work-title">Home & Lifestyle</div><div class="work-sub">Mood-led campaign</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-pressed="false" aria-label="Play motion preview: Skincare Serum"><div class="work-visual" style="--tint:rgba(255,255,255,.14)"><div class="art"><div class="ground"></div><div class="item bottle"></div></div></div><div class="work-meta"><div><div class="work-title">Skincare Serum</div><div class="work-sub">Product reveal</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-pressed="false" aria-label="Play motion preview: Fragrance"><div class="work-visual" style="--tint:rgba(255,200,130,.16)"><div class="art"><div class="ground"></div><div class="item flacon"></div></div></div><div class="work-meta"><div><div class="work-title">Fragrance</div><div class="work-sub">Cinematic lighting</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-pressed="false" aria-label="Play motion preview: Consumer Electronics"><div class="work-visual" style="--tint:rgba(140,190,255,.14)"><div class="art"><div class="ground"></div><div class="item case"></div></div></div><div class="work-meta"><div><div class="work-title">Consumer Electronics</div><div class="work-sub">Close-up detail</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-pressed="false" aria-label="Play motion preview: Jewelry"><div class="work-visual" style="--tint:rgba(230,200,110,.15)"><div class="art"><div class="ground"></div><div class="item ring"></div></div></div><div class="work-meta"><div><div class="work-title">Jewelry</div><div class="work-sub">Sparkle & macro</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-pressed="false" aria-label="Play motion preview: Fashion Accessory"><div class="work-visual" style="--tint:rgba(190,140,90,.16)"><div class="art"><div class="ground"></div><div class="item bag"></div></div></div><div class="work-meta"><div><div class="work-title">Fashion Accessory</div><div class="work-sub">Short-form ad</div></div><span class="work-badge">Concept</span></div></div>
+      <div class="work-tile" role="button" aria-pressed="false" aria-label="Play motion preview: Home & Lifestyle"><div class="work-visual" style="--tint:rgba(255,170,90,.15)"><div class="art"><div class="ground"></div><div class="item candle"></div></div></div><div class="work-meta"><div><div class="work-title">Home & Lifestyle</div><div class="work-sub">Mood-led campaign</div></div><span class="work-badge">Concept</span></div></div>
     </div>
     <p class="work-note">These are conceptual demonstration visuals, not commissioned client projects. Hover or tap a card to preview. Ask us for sample videos relevant to your product category.</p>
   </div>
@@ -547,21 +551,6 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
   </div>
 </div>
 
-<!-- WORK PREVIEW MODAL -->
-<div class="demo-modal work-modal" id="workModal" aria-hidden="true">
-  <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="workModalTitle" tabindex="-1">
-    <div class="demo-modal-header">
-      <span class="demo-modal-label" id="workModalTitle">Product Preview</span>
-      <button type="button" class="demo-modal-close" data-pricing-modal-close aria-label="Close preview">×</button>
-    </div>
-    <div id="workPreviewStage"></div>
-    <div class="work-meta">
-      <div><div class="work-title" id="workModalName"></div><div class="work-sub" id="workModalSub"></div></div>
-      <button type="button" class="button button-secondary" id="workModalCta">Start a project</button>
-    </div>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer>
   <div class="container">
@@ -674,8 +663,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
   });
 });
 
-/* MODALS (pricing breakdown + work preview) */
-let activeModal=null, prevFocus=null, lockedY=0, onCloseCb=null;
+/* MODALS (pricing breakdown only) */
+let activeModal=null, prevFocus=null, lockedY=0;
 function lockScroll(){
   lockedY=window.scrollY||0;
   document.body.classList.add("menu-open");
@@ -688,10 +677,10 @@ function unlockScroll(){
   window.scrollTo(0,lockedY);
   lenis.start();
 }
-function openModal(id,onClose){
+function openModal(id){
   const m=document.getElementById(id);
   if(!m||activeModal) return false;
-  activeModal=m; prevFocus=document.activeElement; onCloseCb=onClose||null;
+  activeModal=m; prevFocus=document.activeElement;
   lockScroll();
   m.classList.add("active"); m.setAttribute("aria-hidden","false");
   m.querySelector("[data-pricing-modal-close]").focus({preventScroll:true});
@@ -701,7 +690,6 @@ function closeModal(){
   if(!activeModal) return;
   const m=activeModal; activeModal=null;
   m.classList.remove("active"); m.setAttribute("aria-hidden","true");
-  if(onCloseCb){onCloseCb();onCloseCb=null;}
   unlockScroll();
   if(prevFocus&&prevFocus.focus) prevFocus.focus({preventScroll:true});
   prevFocus=null;
@@ -715,7 +703,7 @@ document.addEventListener("keydown",e=>{
   if(!activeModal) return;
   if(e.key==="Escape"){e.preventDefault();closeModal();return;}
   if(e.key==="Tab"){
-    const f=Array.from(activeModal.querySelectorAll("button:not(:disabled), a[href], video[controls]"));
+    const f=Array.from(activeModal.querySelectorAll("button:not(:disabled), a[href]"));
     if(!f.length) return;
     const first=f[0], last=f[f.length-1];
     if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
@@ -723,139 +711,188 @@ document.addEventListener("keydown",e=>{
   }
 });
 
-/* WORK — PRODUCT MOTION + PREVIEW
-   The product visuals are flat CSS concepts, so there are no real alternative camera angles to show.
-   Hover therefore plays a restrained camera move only: slow push-in, gentle horizontal drift,
-   a counter-moving shadow (parallax), a soft light bloom and one glint sweep. No 3D rotation.
-   If a tile has data-video="…", that real video plays from the start on hover and in the preview.
-   Click / tap / Enter opens the preview modal. Transforms and opacity only: no layout shift. */
+/* WORK — INLINE CINEMATIC PRODUCT MOTION
+   Each card plays a miniature product commercial INSIDE its own image area. No modal, popup, play button or navigation.
+   Honesty note: the products are flat CSS concepts, so there are no real extra angles to show. The "camera" is a virtual
+   camera over the artwork: a front-facing reveal, a lateral truck, two category-specific close-ups, a pull-back, with
+   restrained light, a glint sweep, letterbox bars and a vignette. There is NO fake 3D rotation.
+   Real assets win when present: data-video plays inline; data-frames (comma-separated real images) plays as a slow crossfade.
+   Desktop: hover starts / leave stops. Touch: tap toggles (only one card plays at a time; tapping elsewhere or scrolling away stops it).
+   Keyboard: focus starts, blur stops, Enter/Space toggles. Reduced motion: no motion, static card stays as is.
+   Only transform / opacity (and CSS light variables) are animated: the card box never changes size. */
 (function(){
   const reduceQuery=window.matchMedia("(prefers-reduced-motion: reduce)");
   const fineQuery=window.matchMedia("(hover: hover) and (pointer: fine)");
   const rnd=gsap.utils.random;
 
-  /* c = light colour, dx = horizontal drift (px), flicker = candle flame light */
+  /* shot = [scale, focusX, focusY, moveSeconds, holdSeconds]; focus is a px offset from the centre of the card's art area.
+     mk(): front reveal -> lateral truck -> close-up A -> close-up B -> wide pull-back -> settle on the hero frame (seamless loop). */
+  const mk=(a,b)=>[[1.1,-8,0,1.8,.5],[a[0],a[1],a[2],1.8,1.1],[b[0],b[1],b[2],1.7,1.1],[1.22,10,0,1.6,.4],[1,0,0,1.5,.2]];
   const CFG={
-    bottle:{c:"rgba(255,255,255,.26)",dx:7},
-    flacon:{c:"rgba(255,196,120,.38)",dx:-7},
-    case:  {c:"rgba(140,190,255,.34)",dx:8},
-    ring:  {c:"rgba(255,226,140,.34)",dx:6},
-    bag:   {c:"rgba(210,150,95,.34)",dx:9},
-    candle:{c:"rgba(255,160,80,.4)",dx:5,flicker:true}
+    bottle:{c:"rgba(255,255,255,.28)",dx:6, shots:mk([2.4,0,-66],[2.0,4,8])},          /* cap detail -> label / glass */
+    flacon:{c:"rgba(255,196,120,.4)", dx:-6,shots:mk([2.2,0,-64],[2.1,-6,2])},         /* cap detail -> label / amber glass */
+    case:  {c:"rgba(140,190,255,.36)",dx:7, shots:mk([2.6,0,8],[2.0,32,-4])},          /* status LED -> seam / surface */
+    ring:  {c:"rgba(255,226,140,.36)",dx:5, shots:mk([2.5,0,-52],[2.1,34,24])},        /* stone macro -> band reflection */
+    bag:   {c:"rgba(210,150,95,.36)", dx:7, shots:mk([2.5,0,-16],[2.1,-28,-40])},     /* clasp -> handle / material */
+    candle:{c:"rgba(255,160,80,.42)", dx:4, flicker:true,shots:mk([2.6,0,-56],[1.9,0,6])} /* flame -> vessel rim */
   };
   const kindOf=item=>Object.keys(CFG).find(k=>item.classList.contains(k));
+  const mkEl=(cls)=>{const d=document.createElement("div");d.className=cls;return d;};
 
-  /* ~8.4 s seamless loop: drift one way, drift back with a slightly closer framing, settle */
-  function camera(item,gnd,v,c){
-    const tl=gsap.timeline({repeat:-1,defaults:{ease:"sine.inOut"}});
-    gsap.set(v,{"--gc":c.c,"--gs":.85,"--sx":-130,"--so":0});
-    gsap.set(item,{transformOrigin:"50% 70%"});
-    const glint=at=>tl
-      .fromTo(v,{"--sx":-130},{"--sx":130,duration:1.6,ease:"power2.inOut"},at)
-      .to(v,{"--so":1,duration:.4,ease:"power1.out"},at)
-      .to(v,{"--so":0,duration:.5,ease:"power1.in"},at+1.1);
-    tl.to(item,{scale:1.06,x:-c.dx,y:-2,duration:2.8},0)
-      .to(item,{scale:1.12,x:c.dx,y:-3,duration:2.8},2.8)
-      .to(item,{scale:1,x:0,y:0,duration:2.8},5.6);
-    tl.to(gnd,{x:c.dx*.6,scaleX:1.05,duration:2.8},0)
-      .to(gnd,{x:-c.dx*.6,scaleX:1.08,duration:2.8},2.8)
-      .to(gnd,{x:0,scaleX:1,duration:2.8},5.6);
-    if(c.flicker){
-      gsap.set(v,{"--go":.85});
-      tl.to({},{duration:8.4},0);
-      for(let t=0;t<8.4;t+=.3) tl.call(()=>{ gsap.to(v,{"--go":rnd(.75,1.2),"--gs":rnd(1.02,1.18),duration:.3,ease:"sine.inOut",overwrite:"auto"}); },null,t);
-    }else{
-      tl.to(v,{"--go":.7,"--gs":.95,duration:2.8},0)
-        .to(v,{"--go":1,"--gs":1.08,duration:2.8},2.8)
-        .to(v,{"--go":.7,"--gs":.95,duration:2.8},5.6);
-    }
-    glint(.6); glint(4.4);
-    return tl;
-  }
-  function settle(item,gnd,v){
-    gsap.to(item,{x:0,y:0,scale:1,duration:.9,ease:"power2.inOut"});
-    gsap.to(gnd,{x:0,scaleX:1,duration:.9,ease:"power2.inOut"});
-    gsap.to(v,{"--go":0,"--so":0,"--gs":.8,duration:.8,ease:"power2.out"});
-  }
+  let current=null; /* the card currently playing */
+  const ctrls=[];
 
-  /* Hover motion on each card */
   document.querySelectorAll(".work-tile").forEach(tile=>{
     const v=tile.querySelector(".work-visual");
-    const item=v&&v.querySelector(".item");
-    const gnd=v&&v.querySelector(".ground");
-    if(!v||!item||!gnd) return;
+    const art=v&&v.querySelector(".art");
+    const item=art&&art.querySelector(".item");
+    const gnd=art&&art.querySelector(".ground");
+    if(!v||!art||!item||!gnd) return;
     const c=CFG[kindOf(item)];
     if(!c) return;
-    let tl=null, vid=null;
 
+    /* cinematic overlays (absolutely positioned inside the image area) */
+    const vig=mkEl("cine-vig"), fade=mkEl("cine-fade"), top=mkEl("cine-bar top"), bot=mkEl("cine-bar bottom");
+    v.append(vig,fade,top,bot);
+
+    /* optional real assets */
+    let vid=null, frames=[];
     if(tile.dataset.video){
       vid=document.createElement("video");
       vid.className="work-video"; vid.src=tile.dataset.video;
       vid.muted=true; vid.loop=true; vid.playsInline=true; vid.preload="none"; vid.setAttribute("aria-hidden","true");
       v.appendChild(vid);
+    }else if(tile.dataset.frames){
+      tile.dataset.frames.split(",").map(s=>s.trim()).filter(Boolean).forEach(src=>{
+        const im=document.createElement("img");
+        im.className="work-frame"; im.src=src; im.alt=""; im.decoding="async"; im.setAttribute("aria-hidden","true");
+        v.appendChild(im); frames.push(im);
+      });
     }
+
+    let tl=null, on=false;
+
+    function intro(){
+      gsap.killTweensOf([fade,vig,top,bot]);
+      gsap.set(fade,{opacity:.5});
+      gsap.to(fade,{opacity:0,duration:1.3,ease:"power2.out"});
+      gsap.to(vig,{opacity:1,duration:1,ease:"power2.out"});
+      gsap.to([top,bot],{yPercent:0,y:0,duration:.9,ease:"power3.out"});
+    }
+    function outro(){
+      gsap.killTweensOf([fade,vig,top,bot]);
+      gsap.to(fade,{opacity:0,duration:.4});
+      gsap.to(vig,{opacity:0,duration:.6,ease:"power2.out"});
+      gsap.to(top,{yPercent:-101,duration:.7,ease:"power2.inOut"});
+      gsap.to(bot,{yPercent:101,duration:.7,ease:"power2.inOut"});
+    }
+
+    function camera(){
+      gsap.killTweensOf([art,item,gnd,v]);
+      gsap.set(v,{"--gc":c.c,"--gs":.85,"--sx":-130,"--so":0,"--go":c.flicker?.85:.7});
+      const t=gsap.timeline({repeat:-1,defaults:{ease:"power2.inOut"}});
+      let at=0, sign=1;
+      const last=c.shots.length-1;
+      c.shots.forEach(([s,fx,fy,mv,hd],i)=>{
+        t.to(art,{scale:s,x:-fx*s,y:-fy*s,duration:mv},at);
+        if(!c.flicker){
+          const close=s>1.5;
+          t.to(v,{"--go":close?1:.72,"--gs":close?1.1:.95,duration:mv,ease:"sine.inOut"},at);
+        }
+        if(s>1.5){ /* glint sweep as each close-up lands */
+          const g=at+mv*.45;
+          t.fromTo(v,{"--sx":-130},{"--sx":130,duration:1.5,ease:"power2.inOut"},g)
+           .to(v,{"--so":1,duration:.35,ease:"power1.out"},g)
+           .to(v,{"--so":0,duration:.5,ease:"power1.in"},g+1);
+        }
+        /* slow drift during the hold keeps the camera alive without ever stopping dead */
+        if(i<last&&hd>0){
+          t.to(art,{x:-fx*s+c.dx*sign,duration:hd,ease:"sine.inOut"},at+mv);
+          t.to(gnd,{x:c.dx*.7*sign,duration:mv+hd,ease:"sine.inOut"},at);
+          sign=-sign;
+        }
+        at+=mv+hd;
+      });
+      t.to(gnd,{x:0,duration:1.2,ease:"sine.inOut"},at-1.4);
+      if(c.flicker){
+        for(let k=0;k<at;k+=.3) t.call(()=>{gsap.to(v,{"--go":rnd(.75,1.2),"--gs":rnd(1.02,1.18),duration:.3,ease:"sine.inOut",overwrite:"auto"});},null,k);
+      }
+      t.to({},{duration:.01},at); /* pad so the loop length equals the last shot */
+      return t;
+    }
+
+    function frameSeq(){
+      /* real multi-angle images: slow crossfade with a restrained push-in on each */
+      gsap.killTweensOf([art,...frames]);
+      gsap.set(frames,{opacity:0,scale:1.02});
+      const t=gsap.timeline({repeat:-1});
+      const step=2.6, n=frames.length;
+      frames.forEach((im,i)=>{
+        t.to(im,{opacity:1,duration:.9,ease:"power2.inOut"},i*step)
+         .to(im,{scale:1.1,duration:step+.9,ease:"none"},i*step)
+         .to(im,{opacity:0,duration:.9,ease:"power2.inOut"},(i+1)*step);
+      });
+      t.to({},{duration:.01},n*step);
+      gsap.to(art,{opacity:0,duration:.6,ease:"power2.out"});
+      gsap.set(frames[0],{opacity:1});
+      return t;
+    }
+
     function start(){
-      if(tl||reduceQuery.matches) return;
-      if(vid){ vid.currentTime=0; const p=vid.play(); if(p&&p.catch)p.catch(()=>{}); vid.classList.add("on"); tl=true; return; }
-      gsap.killTweensOf([item,gnd,v]);
-      tl=camera(item,gnd,v,c);
+      if(on||reduceQuery.matches) return;
+      on=true; tile.setAttribute("aria-pressed","true");
+      if(vid){
+        vid.currentTime=0; const p=vid.play(); if(p&&p.catch)p.catch(()=>{});
+        vid.classList.add("on"); intro(); return;
+      }
+      intro();
+      tl=frames.length?frameSeq():camera();
     }
     function stop(){
-      if(!tl) return;
-      if(vid){ vid.pause(); vid.classList.remove("on"); tl=null; return; }
-      tl.kill(); tl=null;
-      gsap.killTweensOf([item,gnd,v]);
-      settle(item,gnd,v);
+      if(!on) return;
+      on=false; tile.setAttribute("aria-pressed","false");
+      if(vid){ vid.pause(); vid.classList.remove("on"); outro(); return; }
+      if(tl){tl.kill();tl=null;}
+      gsap.killTweensOf([art,item,gnd,v,...frames]);
+      outro();
+      gsap.to(art,{x:0,y:0,scale:1,opacity:1,duration:.9,ease:"power2.inOut"});
+      gsap.to(gnd,{x:0,duration:.9,ease:"power2.inOut"});
+      gsap.to(v,{"--go":0,"--so":0,"--gs":.8,duration:.8,ease:"power2.out"});
+      if(frames.length) gsap.to(frames,{opacity:0,duration:.8,ease:"power2.out",onComplete:()=>gsap.set(frames,{scale:1.02})});
     }
-    tile._stop=stop;
+    const ctrl={start,stop,isOn:()=>on};
+    ctrls.push(ctrl);
+    const play=()=>{ if(current&&current!==ctrl) current.stop(); current=ctrl; ctrl.start(); };
+    const halt=()=>{ ctrl.stop(); if(current===ctrl) current=null; };
 
-    tile.addEventListener("mouseenter",()=>{ if(fineQuery.matches) start(); });
-    tile.addEventListener("mouseleave",()=>{ if(fineQuery.matches) stop(); });
-    tile.addEventListener("click",()=>{ stop(); openPreview(tile,c); });
-    tile.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); stop(); openPreview(tile,c); } });
+    /* desktop: hover */
+    tile.addEventListener("mouseenter",()=>{ if(fineQuery.matches) play(); });
+    tile.addEventListener("mouseleave",()=>{ if(fineQuery.matches) halt(); });
+    /* touch: tap toggles, inline */
+    tile.addEventListener("click",()=>{
+      if(fineQuery.matches) return;
+      ctrl.isOn()?halt():play();
+    });
+    /* keyboard */
     tile.setAttribute("tabindex","0");
+    tile.addEventListener("keydown",e=>{
+      if(e.key==="Enter"||e.key===" "){ e.preventDefault(); ctrl.isOn()?halt():play(); }
+    });
+    tile.addEventListener("focus",()=>{ if(tile.matches(":focus-visible")) play(); });
+    tile.addEventListener("blur",halt);
 
-    /* Stop when scrolled out of view (saves CPU/GPU) */
+    /* stop when scrolled out of view (saves CPU/GPU) */
     if("IntersectionObserver" in window){
-      new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) stop(); }),{threshold:0}).observe(tile);
+      new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) halt(); }),{threshold:0}).observe(tile);
     }
-    reduceQuery.addEventListener&&reduceQuery.addEventListener("change",e=>{ if(e.matches) stop(); });
+    if(reduceQuery.addEventListener) reduceQuery.addEventListener("change",e=>{ if(e.matches) halt(); });
   });
 
-  /* Preview modal */
-  const stage=document.getElementById("workPreviewStage");
-  const nameEl=document.getElementById("workModalName"), subEl=document.getElementById("workModalSub");
-  const ctaBtn=document.getElementById("workModalCta");
-  ctaBtn.addEventListener("click",()=>{ closeModal(); lenis.scrollTo("#get-started",{offset:-80,duration:1.3}); });
-
-  function openPreview(tile,c){
-    const src=tile.querySelector(".work-visual");
-    stage.innerHTML="";
-    let pt=null, pv=null;
-    nameEl.textContent=tile.querySelector(".work-title").textContent;
-    subEl.textContent=tile.querySelector(".work-sub").textContent;
-    if(tile.dataset.video){
-      pv=document.createElement("video");
-      pv.className="work-preview-video"; pv.src=tile.dataset.video;
-      pv.controls=true; pv.autoplay=true; pv.muted=true; pv.loop=true; pv.playsInline=true;
-      stage.appendChild(pv);
-    }else{
-      const box=document.createElement("div");
-      box.className="work-visual work-preview";
-      box.style.cssText=src.getAttribute("style")||"";
-      box.innerHTML=src.innerHTML;
-      stage.appendChild(box);
-      const item=box.querySelector(".item"), gnd=box.querySelector(".ground");
-      const ok=openModal("workModal",()=>{
-        if(pt){pt.kill();pt=null;}
-        gsap.killTweensOf([item,gnd,box]);
-        stage.innerHTML="";
-      });
-      if(ok&&!reduceQuery.matches) pt=camera(item,gnd,box,c);
-      return;
-    }
-    openModal("workModal",()=>{ if(pv)pv.pause(); stage.innerHTML=""; });
-  }
+  /* touch: tapping anywhere outside a product card returns the playing card to its static state */
+  document.addEventListener("click",e=>{
+    if(fineQuery.matches||!current) return;
+    if(!(e.target instanceof Element)||!e.target.closest(".work-tile")){ current.stop(); current=null; }
+  });
 })();
 
 document.getElementById("year").textContent=new Date().getFullYear();

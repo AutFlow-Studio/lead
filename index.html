@@ -215,6 +215,12 @@ footer{border-top:1px solid rgba(255,255,255,.07)}
 .pricing-breakdown-row.compact{align-items:center;padding:9px 0;font-size:.8rem}
 .pricing-breakdown-row.compact .was{margin-right:12px;color:rgba(255,255,255,.34);text-decoration:line-through;text-decoration-thickness:1px}
 .pricing-breakdown-row.compact .free{color:#7be8a4;font-weight:600}
+.pricing-breakdown-row.static-included{align-items:center;gap:12px}
+.static-creative-rate{display:block;margin-top:3px;color:rgba(255,255,255,.42);font-size:11px;line-height:1.4}
+.pricing-breakdown-value.static-creative-value{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.static-creative-formula{color:rgba(255,255,255,.58);font-family:"Inter",sans-serif;font-size:11px;white-space:nowrap}
+.static-creative-original{color:rgba(255,255,255,.34);text-decoration:line-through;text-decoration-thickness:1px}
+.pricing-breakdown-value.static-creative-value .free{font-size:1rem}
 .pricing-breakdown-total{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-top:20px}
 .pricing-breakdown-total span{color:rgba(255,255,255,.55);font-size:.85rem}
 .pricing-breakdown-final{color:#fff;font-family:"Space Grotesk",sans-serif;font-size:1.7rem;font-weight:600;letter-spacing:-.04em}
@@ -455,12 +461,12 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
     </div>
     <div class="pricing-grid reveal-scale">
 
-      <div class="pricing-card">
+      <div class="pricing-card" data-pricing-package="starter" data-video-quantity="3" data-static-quantity="3" data-video-unit-value="100" data-static-unit-value="30" data-selling-price="199">
         <div class="pricing-label">Option 01</div>
         <div class="pricing-name">Starter Pack</div>
-        <div class="pricing-price"><span class="pricing-was" aria-label="Regular price $300">$300</span><span class="pricing-arrow" aria-hidden="true">→</span><span class="pricing-amount">$199</span></div>
+        <div class="pricing-price"><span class="pricing-was" data-package-original-value aria-label="Original package value">$390</span><span class="pricing-arrow" aria-hidden="true">→</span><span class="pricing-amount">$199</span></div>
         <div class="pricing-sub">3 video ads + 3 static ads · one-time package</div>
-        <div class="pricing-save">Save $101 compared to 3 individual videos at $100.</div>
+        <div class="pricing-save" data-package-discount>Save $191 on the complete package.</div>
         <p class="pricing-desc">For brands that want to start testing better creatives: three product motion video ads and three static ad creatives, each with its own angle.</p>
         <div class="check-list">
           <div class="check-item"><span class="check">✓</span>3 premium product motion video ads</div>
@@ -476,13 +482,13 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
         </div>
       </div>
 
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Best value · Save $401</div>
+      <div class="pricing-card featured" data-pricing-package="campaign" data-video-quantity="10" data-static-quantity="10" data-video-unit-value="100" data-static-unit-value="30" data-selling-price="599">
+        <div class="pricing-badge" data-package-badge>Best value · Save $701</div>
         <div class="pricing-label">Option 02 · Recommended</div>
         <div class="pricing-name">Complete Campaign</div>
-        <div class="pricing-price"><span class="pricing-was" aria-label="Regular price $1,000">$1,000</span><span class="pricing-arrow" aria-hidden="true">→</span><span class="pricing-amount">$599</span></div>
+        <div class="pricing-price"><span class="pricing-was" data-package-original-value aria-label="Original package value">$1,300</span><span class="pricing-arrow" aria-hidden="true">→</span><span class="pricing-amount">$599</span></div>
         <div class="pricing-sub">10 video ads + 10 static ads · $59.90 per video · one-time package</div>
-        <div class="pricing-save">Save $401 compared to 10 individual videos at $100.</div>
+        <div class="pricing-save" data-package-discount>Save $701 on the complete package.</div>
         <p class="pricing-desc">For brands that need a full creative library: ten product motion video ads and ten static ad creatives, with multiple angles, hooks, and concepts to test.</p>
         <div class="check-list">
           <div class="check-item"><span class="check">✓</span>10 premium product motion video ads</div>
@@ -521,7 +527,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 </section>
 
 <!-- PRICING BREAKDOWN MODALS -->
-<div class="demo-modal pricing-breakdown-modal" id="starterPricingModal" aria-hidden="true">
+<div class="demo-modal pricing-breakdown-modal" id="starterPricingModal" aria-hidden="true" data-pricing-breakdown data-video-quantity="3" data-static-quantity="3" data-video-unit-value="100" data-static-unit-value="30" data-selling-price="199">
   <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="starterPricingTitle" tabindex="-1">
     <div class="demo-modal-header">
       <span class="demo-modal-label" id="starterPricingTitle">Starter Pack / Price Breakdown</span>
@@ -530,12 +536,21 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
     <div class="pricing-breakdown-body">
       <p class="pricing-breakdown-intro">Itemized pricing for 3 product motion video ads and 3 static ad creatives. One-time package.</p>
       <ul class="pricing-breakdown-list">
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 videos at individual pricing (3 × $100)</span><span class="pricing-breakdown-value">$300</span></li>
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Starter Pack discount</span><span class="pricing-breakdown-value save">-$101</span></li>
-        <li class="pricing-breakdown-group">Static ad creatives · included at no extra cost</li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 1</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 2</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 3</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
+        <li class="pricing-breakdown-row" data-video-value-row><span class="pricing-breakdown-item" data-video-value-label>3 videos at individual pricing (3 × $100)</span><span class="pricing-breakdown-value" data-video-original-value>$300</span></li>
+        <li class="pricing-breakdown-group">Static ad creatives · Included at no extra cost</li>
+        <li class="pricing-breakdown-row compact static-included" data-static-creative-quantity="3">
+          <span class="pricing-breakdown-item">
+            <span class="static-creative-label" data-static-creative-label>Static ad creatives × 3</span>
+            <small class="static-creative-rate">$30 per creative</small>
+          </span>
+          <span class="pricing-breakdown-value static-creative-value">
+            <span class="static-creative-formula" data-static-creative-formula>$30 × 3 =</span>
+            <s class="was static-creative-original" data-static-creative-original aria-label="Original value $90">$90</s>
+            <span class="free">$0</span>
+          </span>
+        </li>
+        <li class="pricing-breakdown-row" data-original-total-row><span class="pricing-breakdown-item">Total original value of priced deliverables</span><span class="pricing-breakdown-value" data-original-total-value>$390</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item" data-discount-label>Starter Pack discount</span><span class="pricing-breakdown-value save" data-total-discount>-$191</span></li>
         <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Custom cover image for every video</span><span class="pricing-breakdown-value">Included</span></li>
         <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 revision rounds</span><span class="pricing-breakdown-value">Included</span></li>
       </ul>
@@ -544,7 +559,7 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
   </div>
 </div>
 
-<div class="demo-modal pricing-breakdown-modal" id="campaignPricingModal" aria-hidden="true">
+<div class="demo-modal pricing-breakdown-modal" id="campaignPricingModal" aria-hidden="true" data-pricing-breakdown data-video-quantity="10" data-static-quantity="10" data-video-unit-value="100" data-static-unit-value="30" data-selling-price="599">
   <div class="demo-modal-content" role="dialog" aria-modal="true" aria-labelledby="campaignPricingTitle" tabindex="-1">
     <div class="demo-modal-header">
       <span class="demo-modal-label" id="campaignPricingTitle">Complete Campaign / Price Breakdown</span>
@@ -553,19 +568,21 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
     <div class="pricing-breakdown-body">
       <p class="pricing-breakdown-intro">Itemized pricing for 10 product motion video ads and 10 static ad creatives. One-time package.</p>
       <ul class="pricing-breakdown-list">
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">10 videos at individual pricing (10 × $100)</span><span class="pricing-breakdown-value">$1,000</span></li>
-        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Complete Campaign discount</span><span class="pricing-breakdown-value save">-$401</span></li>
-        <li class="pricing-breakdown-group">Static ad creatives · included at no extra cost</li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 1</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 2</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 3</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 4</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 5</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 6</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 7</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 8</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 9</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
-        <li class="pricing-breakdown-row compact"><span class="pricing-breakdown-item">Static ad creative × 10</span><span class="pricing-breakdown-value"><s class="was" aria-label="Regular price $30">$30</s><span class="free">$0</span></span></li>
+        <li class="pricing-breakdown-row" data-video-value-row><span class="pricing-breakdown-item" data-video-value-label>10 videos at individual pricing (10 × $100)</span><span class="pricing-breakdown-value" data-video-original-value>$1,000</span></li>
+        <li class="pricing-breakdown-group">Static ad creatives · Included at no extra cost</li>
+        <li class="pricing-breakdown-row compact static-included" data-static-creative-quantity="10">
+          <span class="pricing-breakdown-item">
+            <span class="static-creative-label" data-static-creative-label>Static ad creatives × 10</span>
+            <small class="static-creative-rate">$30 per creative</small>
+          </span>
+          <span class="pricing-breakdown-value static-creative-value">
+            <span class="static-creative-formula" data-static-creative-formula>$30 × 10 =</span>
+            <s class="was static-creative-original" data-static-creative-original aria-label="Original value $300">$300</s>
+            <span class="free">$0</span>
+          </span>
+        </li>
+        <li class="pricing-breakdown-row" data-original-total-row><span class="pricing-breakdown-item">Total original value of priced deliverables</span><span class="pricing-breakdown-value" data-original-total-value>$1,300</span></li>
+        <li class="pricing-breakdown-row"><span class="pricing-breakdown-item" data-discount-label>Complete Campaign discount</span><span class="pricing-breakdown-value save" data-total-discount>-$701</span></li>
         <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">Custom cover image for every video</span><span class="pricing-breakdown-value">Included</span></li>
         <li class="pricing-breakdown-row"><span class="pricing-breakdown-item">3 revision rounds</span><span class="pricing-breakdown-value">Included</span></li>
       </ul>
@@ -595,6 +612,61 @@ h2{font-size:clamp(36px,11vw,48px);line-height:.98}
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
+
+/* PACKAGE PRICING — calculate original deliverable value and discount from item quantities and unit values. */
+const formatUSD=value=>`$${value.toLocaleString("en-US")}`;
+document.querySelectorAll("[data-pricing-breakdown]").forEach(breakdown=>{
+  const videoQuantity=Number(breakdown.dataset.videoQuantity);
+  const staticQuantity=Number(breakdown.dataset.staticQuantity);
+  const videoUnitValue=Number(breakdown.dataset.videoUnitValue);
+  const staticUnitValue=Number(breakdown.dataset.staticUnitValue);
+  const sellingPrice=Number(breakdown.dataset.sellingPrice);
+  if(![videoQuantity,staticQuantity,videoUnitValue,staticUnitValue,sellingPrice].every(Number.isFinite)||videoQuantity<1||staticQuantity<0||videoUnitValue<0||staticUnitValue<0||sellingPrice<0) return;
+
+  const videoOriginalValue=videoQuantity*videoUnitValue;
+  const staticOriginalValue=staticQuantity*staticUnitValue;
+  const originalTotalValue=videoOriginalValue+staticOriginalValue;
+  const totalDiscount=originalTotalValue-sellingPrice;
+  const packageName=breakdown.id==="starterPricingModal"?"Starter Pack":"Complete Campaign";
+
+  const videoLabel=breakdown.querySelector("[data-video-value-label]");
+  const videoValue=breakdown.querySelector("[data-video-original-value]");
+  const staticSection=breakdown.querySelector("[data-static-creative-quantity]");
+  const staticLabel=staticSection?.querySelector("[data-static-creative-label]");
+  const staticFormula=staticSection?.querySelector("[data-static-creative-formula]");
+  const staticOriginal=staticSection?.querySelector("[data-static-creative-original]");
+  const originalTotal=breakdown.querySelector("[data-original-total-value]");
+  const discountLabel=breakdown.querySelector("[data-discount-label]");
+  const discountValue=breakdown.querySelector("[data-total-discount]");
+  const finalPrice=breakdown.querySelector(".pricing-breakdown-final");
+
+  if(videoLabel) videoLabel.textContent=`${videoQuantity} videos at individual pricing (${videoQuantity} × ${formatUSD(videoUnitValue)})`;
+  if(videoValue) videoValue.textContent=formatUSD(videoOriginalValue);
+  if(staticSection) staticSection.dataset.staticCreativeQuantity=String(staticQuantity);
+  if(staticLabel) staticLabel.textContent=`Static ad creatives × ${staticQuantity}`;
+  if(staticFormula) staticFormula.textContent=`${formatUSD(staticUnitValue)} × ${staticQuantity} =`;
+  if(staticOriginal){
+    staticOriginal.textContent=formatUSD(staticOriginalValue);
+    staticOriginal.setAttribute("aria-label",`Original value ${formatUSD(staticOriginalValue)}`);
+  }
+  if(originalTotal) originalTotal.textContent=formatUSD(originalTotalValue);
+  if(discountLabel) discountLabel.textContent=`${packageName} discount`;
+  if(discountValue) discountValue.textContent=`-${formatUSD(totalDiscount)}`;
+  if(finalPrice) finalPrice.textContent=formatUSD(sellingPrice);
+
+  const card=document.querySelector(`[data-pricing-package="${breakdown.id==="starterPricingModal"?"starter":"campaign"}"]`);
+  if(card){
+    const originalPrice=card.querySelector("[data-package-original-value]");
+    const discountText=card.querySelector("[data-package-discount]");
+    const badge=card.querySelector("[data-package-badge]");
+    if(originalPrice){
+      originalPrice.textContent=formatUSD(originalTotalValue);
+      originalPrice.setAttribute("aria-label",`Original package value ${formatUSD(originalTotalValue)}`);
+    }
+    if(discountText) discountText.textContent=`Save ${formatUSD(totalDiscount)} on the complete package.`;
+    if(badge) badge.textContent=`Best value · Save ${formatUSD(totalDiscount)}`;
+  }
+});
 
 /* LENIS */
 const lenis = new Lenis({duration:1.15,smoothWheel:true,wheelMultiplier:.85,touchMultiplier:1.1});

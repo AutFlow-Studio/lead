@@ -201,6 +201,36 @@
     .pricing-name { margin-top: 14px; font-family: "Space Grotesk"; font-size: 21px; letter-spacing: -.03em; }
     .pricing-card .check-list { margin-top: 24px; }
 
+    /* PRICE BREAKDOWN — CARD ADDITIONS */
+    .price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+    .price-old { font-family: "Space Grotesk"; font-size: 20px; color: rgba(255,255,255,.35); text-decoration: line-through; text-decoration-thickness: 1px; }
+    .price-arrow { color: rgba(255,255,255,.35); font-size: 14px; }
+    .price-main { font-family: "Space Grotesk"; font-size: clamp(38px, 5vw, 46px); font-weight: 500; letter-spacing: -.05em; line-height: 1; color: #fff; }
+    .price-meta { margin-top: 14px; color: rgba(255,255,255,.5); font-size: 9px; }
+    .price-save { margin-top: 6px; color: #62db8b; font-size: 9px; }
+    .pricing-card .feature-description { max-width: 400px; margin-top: 22px; }
+    .pricing-button { width: 100%; margin-top: 34px; }
+    .pricing-badge { position: absolute; top: 14px; right: 18px; padding: 6px 11px; border: 1px solid rgba(98,219,139,.35); border-radius: 999px; background: rgba(98,219,139,.08); color: #62db8b; font-size: 7px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+
+    /* PRICE BREAKDOWN — MODAL (reuses .demo-modal overlay) */
+    .price-modal .demo-modal-content { width: min(560px, 100%); display: flex; flex-direction: column; }
+    .price-modal-body { padding: 30px 30px 32px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; flex: 1 1 auto; }
+    .price-modal-title { margin-top: 10px; font-family: "Space Grotesk"; font-size: 24px; letter-spacing: -.04em; font-weight: 600; }
+    .price-modal-sub { margin-top: 6px; color: rgba(255,255,255,.5); font-size: 10px; line-height: 1.7; }
+    .price-items { margin-top: 24px; border-top: 1px solid rgba(255,255,255,.07); }
+    .price-item { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .price-item-info { min-width: 0; }
+    .price-item-name { color: rgba(255,255,255,.88); font-size: 11px; font-weight: 500; overflow-wrap: break-word; }
+    .price-item-desc { margin-top: 4px; color: rgba(255,255,255,.42); font-size: 9px; line-height: 1.7; overflow-wrap: break-word; }
+    .price-item-value { flex: 0 0 auto; font-family: "Space Grotesk"; font-size: 13px; color: rgba(255,255,255,.85); white-space: nowrap; }
+    .price-total { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0 4px; color: rgba(255,255,255,.55); font-size: 10px; }
+    .price-total-value { font-family: "Space Grotesk"; font-size: 16px; color: rgba(255,255,255,.55); text-decoration: line-through; text-decoration-thickness: 1px; }
+    .price-final { margin-top: 16px; padding: 22px; border: 1px solid rgba(255,255,255,.22); border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.015)); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .price-final-label { color: rgba(255,255,255,.55); font-size: 8px; letter-spacing: .18em; text-transform: uppercase; }
+    .price-final-save { margin-top: 6px; color: #62db8b; font-size: 9px; }
+    .price-final-value { font-family: "Space Grotesk"; font-size: 38px; font-weight: 500; letter-spacing: -.05em; line-height: 1; color: #fff; }
+    .price-note { margin-top: 16px; color: rgba(255,255,255,.36); font-size: 8px; line-height: 1.8; }
+
     /* FINAL CTA */
     .final-cta { padding: 160px 0; text-align: center; }
     .final-icon { width: 50px; height: 50px; display: grid; place-items: center; margin: 0 auto 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.04); }
@@ -352,6 +382,12 @@
       .workflow-step { padding: 10px; font-size: 7px; }
       .center-heading .eyebrow { gap: 5px; }
       .pricing-card { padding: 28px 22px; }
+      .pricing-badge { position: static; display: inline-block; margin-bottom: 16px; }
+      .price-row { margin-top: 20px; gap: 10px; }
+      .price-old { font-size: 16px; }
+      .price-main { font-size: 36px; }
+      .pricing-card .feature-description { margin-top: 18px; }
+      .pricing-button { margin-top: 26px; }
       .final-cta { padding: 95px 0; }
       .final-icon { width: 46px; height: 46px; margin-bottom: 21px; }
       .final-cta p { margin-top: 21px; font-size: 10px; line-height: 1.85; }
@@ -405,6 +441,11 @@
       .demo-modal-header { min-height: 44px; padding-left: 13px; padding-right: 10px; }
       .demo-modal-label { font-size: 6px; letter-spacing: .14em; }
       .demo-modal-close { width: 30px; height: 30px; flex-basis: 30px; }
+      .price-modal-body { padding: 22px 18px 24px; }
+      .price-modal-title { font-size: 20px; }
+      .price-item { gap: 12px; padding: 12px 0; }
+      .price-final { padding: 18px; }
+      .price-final-value { font-size: 32px; }
     }
 
     /* REDUCED MOTION */
@@ -653,22 +694,39 @@
 
         <div class="pricing-grid reveal-scale">
 
+          <!-- Card values (old price / saving) are filled from the same data as the modals, see PRICING DATA in the script. Static fallback numbers are verified: 6,100 - 4,997 = 1,103. -->
           <div class="pricing-card">
-            <div class="pricing-label">FOR FOUNDERS</div>
+            <div class="pricing-label">OPTION 01 · FOR FOUNDERS</div>
             <div class="pricing-name">Complete Startup Launch</div>
-            <div class="request-answer">$4,997</div>
+            <div class="price-row">
+              <span class="price-old" data-pkg-total="launch">$6,100</span>
+              <span class="price-arrow" aria-hidden="true">→</span>
+              <span class="price-main" data-pkg-price="launch">$4,997</span>
+            </div>
+            <div class="price-meta">6 deliverables · one-time package · fixed price</div>
+            <div class="price-save" data-pkg-save="launch">Save $1,103 on the complete package.</div>
             <div class="feature-description">
               A working MVP, professional website, brand identity, marketing videos, ad creatives, and launch preparation.
             </div>
+            <button type="button" class="button button-secondary pricing-button" data-price-open="launch">View Price Breakdown</button>
           </div>
 
+          <!-- Static fallback numbers are verified: 2,500 - 1,997 = 503. -->
           <div class="pricing-card featured">
-            <div class="pricing-label">FOR EXISTING BUSINESSES</div>
+            <span class="pricing-badge" data-pkg-badge="solutions">Best value · Save $503</span>
+            <div class="pricing-label">OPTION 02 · FOR EXISTING BUSINESSES</div>
             <div class="pricing-name">Custom Business Solutions</div>
-            <div class="request-answer">$1,997</div>
+            <div class="price-row">
+              <span class="price-old" data-pkg-total="solutions">$2,500</span>
+              <span class="price-arrow" aria-hidden="true">→</span>
+              <span class="price-main" data-pkg-price="solutions">$1,997</span>
+            </div>
+            <div class="price-meta">5 phases · one-time package · fixed price</div>
+            <div class="price-save" data-pkg-save="solutions">Save $503 on the complete package.</div>
             <div class="feature-description">
               A custom software, AI, and automation system built to solve a significant problem in your business.
             </div>
+            <button type="button" class="button button-primary pricing-button" data-price-open="solutions">View Price Breakdown</button>
           </div>
 
         </div>
@@ -895,6 +953,62 @@
     </section>
 
   </main>
+
+  <!-- PRICE BREAKDOWN MODAL — STARTUP LAUNCH (rows are rendered by script from PRICING DATA) -->
+  <div class="demo-modal price-modal" id="priceModal-launch" role="dialog" aria-modal="true" aria-labelledby="priceModalTitle-launch" aria-hidden="true">
+    <div class="demo-modal-content">
+      <div class="demo-modal-header">
+        <span class="demo-modal-label">Price Breakdown / Option 01</span>
+        <button type="button" class="demo-modal-close" data-price-close aria-label="Close price breakdown">×</button>
+      </div>
+      <div class="price-modal-body" data-lenis-prevent>
+        <div class="pricing-label">FOR FOUNDERS</div>
+        <div class="price-modal-title" id="priceModalTitle-launch">Complete Startup Launch</div>
+        <p class="price-modal-sub">Every deliverable in the package, with its estimated market value.</p>
+        <div class="price-items" data-pkg-items="launch"></div>
+        <div class="price-total">
+          <span>Total estimated value</span>
+          <span class="price-total-value" data-pkg-total="launch"></span>
+        </div>
+        <div class="price-final">
+          <div>
+            <div class="price-final-label">Your fixed package price</div>
+            <div class="price-final-save" data-pkg-save="launch"></div>
+          </div>
+          <div class="price-final-value" data-pkg-price="launch"></div>
+        </div>
+        <p class="price-note">Item values are estimates of typical market rates for comparable work, shown for transparency. The package is sold at the single fixed price above. Market success is not guaranteed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICE BREAKDOWN MODAL — BUSINESS SOLUTIONS -->
+  <div class="demo-modal price-modal" id="priceModal-solutions" role="dialog" aria-modal="true" aria-labelledby="priceModalTitle-solutions" aria-hidden="true">
+    <div class="demo-modal-content">
+      <div class="demo-modal-header">
+        <span class="demo-modal-label">Price Breakdown / Option 02</span>
+        <button type="button" class="demo-modal-close" data-price-close aria-label="Close price breakdown">×</button>
+      </div>
+      <div class="price-modal-body" data-lenis-prevent>
+        <div class="pricing-label">FOR EXISTING BUSINESSES</div>
+        <div class="price-modal-title" id="priceModalTitle-solutions">Custom Business Solutions</div>
+        <p class="price-modal-sub">Every phase of the project, with its estimated market value.</p>
+        <div class="price-items" data-pkg-items="solutions"></div>
+        <div class="price-total">
+          <span>Total estimated value</span>
+          <span class="price-total-value" data-pkg-total="solutions"></span>
+        </div>
+        <div class="price-final">
+          <div>
+            <div class="price-final-label">Your fixed package price</div>
+            <div class="price-final-save" data-pkg-save="solutions"></div>
+          </div>
+          <div class="price-final-value" data-pkg-price="solutions"></div>
+        </div>
+        <p class="price-note">Item values are estimates of typical market rates for comparable work, shown for transparency. The package is sold at the single fixed price above. Scope is defined together with you before work starts.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- DEMO MODAL
        NOTE: Replace the video src with your actual demo video URL.
@@ -1291,6 +1405,141 @@
       if (event.key === "Escape" && demoModal.classList.contains("active")) {
         closeDemo();
       }
+    });
+
+    /* ==========================================================
+       PRICING DATA — single source of truth for cards AND modals.
+       Edit values here only. Totals and savings are computed,
+       never typed by hand, so they cannot drift out of sync.
+       Package prices are fixed: Launch $4,997 · Solutions $1,997.
+       ========================================================== */
+    const PRICING = {
+      launch: {
+        price: 4997,
+        items: [
+          ["MVP development", "Functional, tested MVP with UI/UX, backend, authentication, and key integrations.", 3200],
+          ["Professional website", "Responsive, conversion-focused website with clear product messaging.", 900],
+          ["Brand identity", "Consistent visual identity across your product and presentation.", 600],
+          ["Marketing videos", "Product demonstrations and promotional videos.", 700],
+          ["Advertising creatives", "Static ad creatives and social media graphics.", 400],
+          ["Launch preparation", "Everything organized so you can launch and start acquiring users.", 300]
+        ]
+      },
+      solutions: {
+        price: 1997,
+        items: [
+          ["Problem discovery & workflow analysis", "Identify the problem and analyze how your business currently works.", 350],
+          ["Solution design", "Design the software, AI, and automation approach for your business.", 400],
+          ["Custom build", "Build the custom software, AI, and automation system.", 1100],
+          ["Workflow integration", "Integrate the system into your existing tools and processes.", 350],
+          ["Testing, deployment & delivery", "Test, deploy, and hand over the working solution.", 300]
+        ]
+      }
+    };
+
+    const fmt = n => "$" + n.toLocaleString("en-US");
+    const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    Object.keys(PRICING).forEach(key => {
+
+      const pkg = PRICING[key];
+      const total = pkg.items.reduce((sum, item) => sum + item[2], 0);
+      const saving = total - pkg.price;
+
+      /* Safety net: never show a "saving" unless the numbers genuinely support it */
+      const showSaving = saving > 0;
+
+      const rows = document.querySelector('[data-pkg-items="' + key + '"]');
+      if (rows) {
+        rows.innerHTML = pkg.items.map(item =>
+          '<div class="price-item">' +
+            '<div class="price-item-info">' +
+              '<div class="price-item-name">' + esc(item[0]) + '</div>' +
+              '<div class="price-item-desc">' + esc(item[1]) + '</div>' +
+            '</div>' +
+            '<div class="price-item-value">' + fmt(item[2]) + '</div>' +
+          '</div>'
+        ).join("");
+      }
+
+      document.querySelectorAll('[data-pkg-price="' + key + '"]').forEach(el => { el.textContent = fmt(pkg.price); });
+      document.querySelectorAll('[data-pkg-total="' + key + '"]').forEach(el => { el.textContent = fmt(total); });
+
+      document.querySelectorAll('[data-pkg-save="' + key + '"]').forEach(el => {
+        el.textContent = showSaving ? "You save " + fmt(saving) + " vs. estimated value." : "";
+      });
+
+      /* Cards: hide the strike-through value when there is no real saving */
+      if (!showSaving) {
+        document.querySelectorAll('.pricing-card [data-pkg-total="' + key + '"], .pricing-card [data-pkg-total="' + key + '"] + .price-arrow').forEach(el => { el.style.display = "none"; });
+      }
+
+      document.querySelectorAll('[data-pkg-badge="' + key + '"]').forEach(el => {
+        if (showSaving) { el.textContent = "Best value · Save " + fmt(saving); } else { el.style.display = "none"; }
+      });
+
+      if (showSaving) {
+        document.querySelectorAll('.pricing-card .price-save[data-pkg-save="' + key + '"]').forEach(el => {
+          el.textContent = "Save " + fmt(saving) + " on the complete package.";
+        });
+      }
+
+      console.assert(total - saving === pkg.price, "Pricing mismatch for " + key);
+
+    });
+
+    /* PRICE BREAKDOWN MODALS */
+    let activePriceModal = null;
+    let lastPriceTrigger = null;
+
+    function openPriceModal(key, trigger) {
+      const modal = document.getElementById("priceModal-" + key);
+      if (!modal) { return; }
+
+      lastPriceTrigger = trigger || null;
+      activePriceModal = modal;
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+      lenis.stop();
+
+      const body = modal.querySelector(".price-modal-body");
+      if (body) { body.scrollTop = 0; }
+
+      const closeButton = modal.querySelector("[data-price-close]");
+      if (closeButton) { closeButton.focus(); }
+    }
+
+    function closePriceModal() {
+      if (!activePriceModal) { return; }
+
+      activePriceModal.classList.remove("active");
+      activePriceModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+      lenis.start();
+      activePriceModal = null;
+
+      if (lastPriceTrigger) { lastPriceTrigger.focus(); }
+    }
+
+    document.querySelectorAll("[data-price-open]").forEach(button => {
+      button.addEventListener("click", () => openPriceModal(button.dataset.priceOpen, button));
+    });
+
+    document.querySelectorAll(".price-modal").forEach(modal => {
+
+      modal.addEventListener("click", event => {
+        if (event.target === modal) { closePriceModal(); }
+      });
+
+      const closeButton = modal.querySelector("[data-price-close]");
+      if (closeButton) { closeButton.addEventListener("click", closePriceModal); }
+
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && activePriceModal) { closePriceModal(); }
     });
 
     /* YEAR */

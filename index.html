@@ -1,1556 +1,792 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutFlow Studio — Complete Startup Launches & Custom Business Solutions</title>
+<link rel="icon" type="image/png" href="./AutFlow-logo.png">
+<link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
+<meta name="description" content="AutFlow Studio builds complete, launch-ready startups for founders ($4,997) and custom software, AI, and automation solutions for established businesses ($1,997).">
 
-  <title>AutFlow Studio — Startup Launches &amp; Custom Business Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon: replace AutFlow-logo.png with your actual logo file -->
-  <link rel="icon" type="image/png" href="./AutFlow-logo.png">
-  <link rel="shortcut icon" type="image/png" href="./AutFlow-logo.png">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
-  <meta name="description" content="AutFlow Studio builds complete startup launches for founders ($4,997) and custom software, AI, and automation solutions for existing businesses ($1,997).">
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto;width:100%;overflow-x:hidden}
+body{margin:0;background:#050505;color:#fff;font-family:"Inter",sans-serif;overflow-x:hidden;line-height:1.5;width:100%;min-width:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body.menu-open{overflow:hidden}
+a{text-decoration:none;color:inherit}
+button{border:none;font:inherit;cursor:pointer}
+img,video,svg{max-width:100%}
+::selection{background:#fff;color:#000}
+.container{width:min(1180px,calc(100% - 48px));margin:auto;min-width:0}
+.section-border{border-top:1px solid rgba(255,255,255,.07)}
+.section-padding{padding:140px 0}
 
-  <!-- Open Graph / Social sharing -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="AutFlow Studio — Startup Launches &amp; Custom Business Solutions">
-  <meta property="og:description" content="Complete Startup Launch — $4,997. Custom Business Solutions — $1,997.">
-  <meta property="og:image" content="./AutFlow-logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AutFlow Studio — Startup Launches &amp; Custom Business Solutions">
-  <meta name="twitter:description" content="Complete Startup Launch — $4,997. Custom Business Solutions — $1,997.">
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(255,255,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
 
-  <!-- FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+/* BACKGROUND */
+.background{position:fixed;inset:0;z-index:-10;overflow:hidden;background:#050505;pointer-events:none}
+.background-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+.glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45}
+.glow-1{width:650px;height:650px;top:-300px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.055)}
+.glow-2{width:400px;height:400px;top:900px;left:-200px;background:rgba(255,255,255,.025)}
+.glow-3{width:450px;height:450px;top:1600px;right:-200px;background:rgba(255,255,255,.025)}
 
-  <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:500;border-bottom:1px solid transparent;background:rgba(5,5,5,.25);transition:background .4s ease,border-color .4s ease,backdrop-filter .4s ease}
+.navbar.scrolled{background:rgba(5,5,5,.75);border-color:rgba(255,255,255,.07);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between;min-width:0}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.025));box-shadow:0 0 40px rgba(255,255,255,.035)}
+.brand-mark span{font-family:"Space Grotesk";font-weight:700}
+.brand-name{font-family:"Space Grotesk";font-size:14px;font-weight:600;white-space:nowrap}
+.brand-name span{color:rgba(255,255,255,.5)}
+.brand-subtitle{font-size:7px;letter-spacing:.25em;color:rgba(255,255,255,.45);text-transform:uppercase;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:11px;color:rgba(255,255,255,.62);transition:color .25s ease;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-button{padding:11px 19px;border-radius:999px;background:#fff;color:#000;font-size:10px;font-weight:700;transition:transform .25s ease,background .25s ease;white-space:nowrap}
+.nav-button:hover{transform:translateY(-2px);background:#e9e9e9}
+.mobile-menu-button{display:none;width:40px;height:40px;flex:0 0 40px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.04);color:#fff}
+.mobile-menu{display:none}
 
-  <!-- LENIS SMOOTH SCROLL -->
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+/* HERO */
+.hero{min-height:100vh;padding-top:175px;padding-bottom:100px;position:relative;overflow:hidden}
+.hero-content{max-width:900px;margin:auto;text-align:center;position:relative;z-index:2;min-width:0}
+.status-pill{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035);color:rgba(255,255,255,.62);font-size:8px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
+.status-dot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#66e394;box-shadow:0 0 15px rgba(102,227,148,.7)}
+.hero-title{margin-top:28px;font-family:"Space Grotesk";font-size:clamp(52px,7.4vw,92px);line-height:.95;letter-spacing:-.07em;font-weight:600}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line-inner{display:block}
+.hero-title .muted{color:rgba(255,255,255,.48)}
+.hero-description{max-width:650px;margin:32px auto 0;color:rgba(255,255,255,.64);font-size:15px;line-height:1.9}
+.hero-actions{margin-top:34px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 23px;border-radius:999px;font-size:11px;font-weight:600;transition:background .3s ease,border-color .3s ease;max-width:100%;text-align:center}
+.button-primary{background:#fff;color:#000}
+.button-secondary{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75)}
+.button-secondary:hover{border-color:rgba(255,255,255,.2);color:#fff}
+.hero-orbit{position:absolute;width:950px;height:950px;left:50%;top:360px;transform:translateX(-50%);border:1px solid rgba(255,255,255,.025);border-radius:50%;pointer-events:none}
+.hero-orbit::before{content:"";position:absolute;inset:80px;border:1px solid rgba(255,255,255,.02);border-radius:50%}
+.orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 20px rgba(255,255,255,.7);left:50%;top:0}
 
-  <style>
+/* OVERVIEW PANEL */
+.dashboard-wrapper{position:relative;width:100%;max-width:1120px;margin:100px auto 0;perspective:1400px;min-width:0}
+.dashboard-glow{position:absolute;width:800px;height:350px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.035);filter:blur(100px);max-width:90vw}
+.dashboard{position:relative;width:100%;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:#090909;box-shadow:0 70px 150px rgba(0,0,0,.75),0 0 100px rgba(255,255,255,.025);transform-origin:center top;will-change:transform}
+.browser-bar{min-height:45px;height:45px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;border-bottom:1px solid rgba(255,255,255,.07)}
+.browser-dots{display:flex;gap:6px;flex:0 0 auto}
+.browser-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.13)}
+.browser-status{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,.7);font-size:9px;min-width:0;text-align:center}
+.browser-status i{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#5cdf8d}
+.browser-label{color:rgba(255,255,255,.5);font-size:8px;letter-spacing:.2em;white-space:nowrap}
+.dashboard-body{display:grid;grid-template-columns:210px minmax(0,1fr);min-height:420px;min-width:0}
+.sidebar{padding:22px 15px;border-right:1px solid rgba(255,255,255,.07);min-width:0}
+.sidebar-title{margin-bottom:14px;color:rgba(255,255,255,.4);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
+.sidebar-item{display:flex;align-items:center;gap:9px;padding:10px;margin-bottom:3px;border-radius:8px;color:rgba(255,255,255,.5);font-size:9px;transition:.25s ease}
+.sidebar-item:hover{background:rgba(255,255,255,.035);color:#fff}
+.sidebar-item.active{background:rgba(255,255,255,.065);color:#fff}
+.sidebar-icon{width:12px;height:12px;flex:0 0 12px;border:1px solid currentColor;border-radius:3px;opacity:.6}
+.sidebar-separator{height:1px;background:rgba(255,255,255,.06);margin:27px 0 18px}
+.dashboard-main{padding:28px;min-width:0;overflow:hidden}
+.dashboard-header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;min-width:0}
+.dashboard-header>div:first-child{min-width:0}
+.dashboard-eyebrow{color:rgba(255,255,255,.5);font-size:7px;letter-spacing:.2em;text-transform:uppercase}
+.dashboard-heading{margin-top:7px;font-size:23px;letter-spacing:-.04em;overflow-wrap:break-word}
+.dashboard-filter{padding:8px 11px;border:1px solid rgba(255,255,255,.08);border-radius:7px;color:rgba(255,255,255,.5);font-size:7px;flex:0 0 auto;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:28px}
+.stat{padding:15px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:rgba(255,255,255,.018);min-width:0}
+.stat-label{color:rgba(255,255,255,.42);font-size:7px;overflow-wrap:break-word}
+.stat-value{margin-top:6px;font-size:17px;white-space:nowrap}
+.stat-change{margin-top:3px;color:#62db8b;font-size:7px;overflow-wrap:break-word}
+.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:11px;margin-top:12px;min-width:0}
+.panel{padding:17px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.018);min-width:0}
+.panel-title{font-size:9px}
+.panel-subtitle{margin-top:3px;color:rgba(255,255,255,.42);font-size:7px;overflow-wrap:break-word}
+.project-list{display:flex;flex-direction:column;gap:7px;margin-top:17px}
+.project{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid rgba(255,255,255,.05);border-radius:8px;background:rgba(0,0,0,.25);min-width:0}
+.project-number{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:6px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.45);font-size:7px}
+.project-info{flex:1;min-width:0}
+.project-name{color:rgba(255,255,255,.8);font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.project-status{margin-top:2px;color:rgba(255,255,255,.4);font-size:6px}
+.project-price{color:rgba(255,255,255,.6);font-size:8px;flex:0 0 auto;white-space:nowrap}
 
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: auto; width: 100%; overflow-x: hidden; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-    body { margin: 0; background: #050505; color: #fff; font-family: "Inter", sans-serif; overflow-x: hidden; line-height: 1.5; width: 100%; min-width: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-    body.menu-open { overflow: hidden; }
-    a { text-decoration: none; color: inherit; }
-    button { border: none; font: inherit; cursor: pointer; }
-    img, video, svg { max-width: 100%; }
-    ::selection { background: #fff; color: #000; }
-    :focus-visible { outline: 2px solid rgba(255,255,255,.7); outline-offset: 3px; border-radius: 4px; }
+/* HEADINGS */
+.section-heading-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:end}
+.section-heading-grid>*{min-width:0}
+.eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:19px;color:rgba(255,255,255,.45);font-size:8px;text-transform:uppercase;letter-spacing:.22em}
+.eyebrow-line{width:27px;height:1px;flex:0 0 27px;background:rgba(255,255,255,.3)}
+h2{font-family:"Space Grotesk";font-size:clamp(40px,5vw,60px);line-height:1;letter-spacing:-.06em;font-weight:600;overflow-wrap:break-word}
+h2 .muted{color:rgba(255,255,255,.48)}
+.section-description{max-width:500px;color:rgba(255,255,255,.6);font-size:13px;line-height:1.9}
+.section-description.centered{max-width:620px;margin:24px auto 0;text-align:center}
+.center-heading{max-width:800px;margin:auto;text-align:center;min-width:0}
+.center-heading .eyebrow{justify-content:center}
 
-    /* GLOBAL */
-    :root { --white: #fff; --muted: rgba(255,255,255,.42); --soft: rgba(255,255,255,.08); --border: rgba(255,255,255,.09); --panel: rgba(255,255,255,.025); }
-    .container { width: min(1180px, calc(100% - 48px)); margin: auto; min-width: 0; }
-    .section-border { border-top: 1px solid rgba(255,255,255,.07); }
-    .section-padding { padding: 140px 0; }
+/* CARDS */
+.feature-card{position:relative;min-height:200px;padding:28px;overflow:hidden;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.018);transform-style:preserve-3d;will-change:transform;transition:border-color .3s ease,background .3s ease;min-width:0}
+.feature-card::after{content:"";position:absolute;width:180px;height:180px;top:-100px;right:-100px;border-radius:50%;background:rgba(255,255,255,.035);filter:blur(35px);transition:.4s ease}
+.feature-card:hover{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.035)}
+.feature-card:hover::after{background:rgba(255,255,255,.09)}
+.feature-icon{width:43px;height:43px;flex:0 0 43px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.04);font-size:13px;font-family:"DM Mono"}
+.feature-title{margin-top:28px;font-family:"Space Grotesk";font-size:15px;overflow-wrap:break-word}
+.feature-description{margin-top:10px;color:rgba(255,255,255,.55);font-size:11px;line-height:1.8}
+.steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-top:65px}
+.small-tag{display:inline-block;padding:6px 10px;border:1px solid rgba(255,255,255,.08);border-radius:999px;color:rgba(255,255,255,.55);font-size:7px;text-transform:uppercase;letter-spacing:.18em;max-width:100%}
+.check-list{display:flex;flex-direction:column;gap:11px;margin-top:20px}
+.check-item{display:flex;align-items:flex-start;gap:10px;color:rgba(255,255,255,.72);font-size:11px;line-height:1.55;min-width:0}
+.check{width:20px;height:20px;flex:0 0 20px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.07);font-size:9px}
 
-    /* CUSTOM CURSOR */
-    .cursor { position: fixed; width: 10px; height: 10px; border-radius: 50%; background: #fff; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); mix-blend-mode: difference; }
-    .cursor-ring { position: fixed; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); }
+/* OFFERS */
+.offer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:65px}
+.offer-card{position:relative;display:flex;flex-direction:column;padding:46px;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.018);overflow:hidden;min-width:0}
+.offer-card.featured{border-color:rgba(255,255,255,.22);background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
+.offer-label{color:rgba(255,255,255,.45);font-size:8px;letter-spacing:.2em;text-transform:uppercase}
+.offer-name{margin-top:14px;font-family:"Space Grotesk";font-size:26px;letter-spacing:-.03em}
+.offer-price{margin-top:14px;font-family:"Space Grotesk";font-size:46px;letter-spacing:-.04em}
+.offer-desc{margin-top:16px;color:rgba(255,255,255,.58);font-size:12px;line-height:1.85}
+.offer-sub{margin-top:28px;color:rgba(255,255,255,.4);font-size:8px;letter-spacing:.2em;text-transform:uppercase}
+.offer-sub+.check-list{margin-top:14px}
+.offer-who{margin-top:10px;color:rgba(255,255,255,.7);font-size:11px;line-height:1.8}
+.offer-note{margin-top:22px;color:rgba(255,255,255,.38);font-size:10px;line-height:1.8;font-style:italic}
+.offer-card .button{margin-top:auto;width:100%}
+.offer-spacer{flex:1;min-height:28px}
 
-    /* BACKGROUND */
-    .background { position: fixed; inset: 0; z-index: -10; overflow: hidden; background: #050505; pointer-events: none; }
-    .background-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 70px 70px; mask-image: linear-gradient(to bottom, black, transparent 80%); }
-    .glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .45; }
-    .glow-1 { width: 650px; height: 650px; top: -300px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,.055); }
-    .glow-2 { width: 400px; height: 400px; top: 900px; left: -200px; background: rgba(255,255,255,.025); }
-    .glow-3 { width: 450px; height: 450px; top: 1600px; right: -200px; background: rgba(255,255,255,.025); }
+/* FAQ */
+.faq-list{max-width:800px;margin:60px auto 0;display:flex;flex-direction:column;gap:9px}
+.faq-item{border:1px solid rgba(255,255,255,.07);border-radius:14px;background:rgba(255,255,255,.018);transition:border-color .3s ease,background .3s ease}
+.faq-item[open]{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.03)}
+.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;font-family:"Space Grotesk";font-size:14px;cursor:pointer}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";flex:0 0 auto;color:rgba(255,255,255,.5);font-size:18px;transition:transform .3s ease}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{padding:0 24px 22px;color:rgba(255,255,255,.58);font-size:12px;line-height:1.9}
 
-    /* NAVBAR */
-    .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 500; border-bottom: 1px solid transparent; background: rgba(5,5,5,.25); backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease; }
-    .navbar.scrolled { background: rgba(5,5,5,.75); border-color: rgba(255,255,255,.07); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    .nav-inner { height: 78px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
-    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .brand-mark { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.12); border-radius: 11px; background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.025)); box-shadow: 0 0 40px rgba(255,255,255,.035); }
-    .brand-mark span { font-family: "Space Grotesk"; font-weight: 700; }
-    .brand-name { font-family: "Space Grotesk"; font-size: 14px; font-weight: 600; white-space: nowrap; }
-    .brand-name span { color: rgba(255,255,255,.5); }
-    .brand-subtitle { font-size: 7px; letter-spacing: .25em; color: rgba(255,255,255,.45); text-transform: uppercase; white-space: nowrap; }
-    .nav-links { display: flex; align-items: center; gap: 34px; }
-    .nav-links a { font-size: 11px; color: rgba(255,255,255,.62); transition: color .25s ease; white-space: nowrap; }
-    .nav-links a:hover { color: #fff; }
-    .nav-button { padding: 11px 19px; border-radius: 999px; background: #fff; color: #000; font-size: 10px; font-weight: 700; transition: transform .25s ease, background .25s ease; white-space: nowrap; }
-    .nav-button:hover { transform: translateY(-2px); background: #e9e9e9; }
-    .mobile-menu-button { display: none; width: 40px; height: 40px; flex: 0 0 40px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; background: rgba(255,255,255,.04); color: white; }
-    .mobile-menu { display: none; }
+/* FINAL CTA */
+.final-cta{padding:160px 0;text-align:center}
+.final-icon{width:50px;height:50px;display:grid;place-items:center;margin:0 auto 25px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.04)}
+.final-cta p{max-width:550px;margin:25px auto 0;color:rgba(255,255,255,.55);font-size:12px;line-height:1.9}
 
-    /* HERO */
-    .hero { min-height: 100vh; padding-top: 175px; padding-bottom: 100px; position: relative; overflow: hidden; }
-    .hero-content { max-width: 900px; margin: auto; text-align: center; position: relative; z-index: 2; min-width: 0; }
-    .status-pill { display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.09); border-radius: 999px; background: rgba(255,255,255,.035); color: rgba(255,255,255,.62); font-size: 8px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
-    .status-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #66e394; box-shadow: 0 0 15px rgba(102,227,148,.7); }
-    .hero-title { margin-top: 28px; font-family: "Space Grotesk"; font-size: clamp(52px, 7.4vw, 92px); line-height: .95; letter-spacing: -.07em; font-weight: 600; overflow-wrap: normal; word-break: normal; }
-    .hero-title .line { display: block; overflow: hidden; }
-    .hero-title .line-inner { display: block; }
-    .hero-title .muted { color: rgba(255,255,255,.48); }
-    .hero-description { max-width: 650px; margin: 32px auto 0; color: rgba(255,255,255,.64); font-size: 15px; line-height: 1.9; }
-    .hero-actions { margin-top: 34px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 23px; border-radius: 999px; font-size: 11px; font-weight: 600; transition: background .3s ease, border-color .3s ease; max-width: 100%; text-align: center; }
-    .button-primary { background: #fff; color: #000; }
-    .button-secondary { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.75); }
-    .button-secondary:hover { border-color: rgba(255,255,255,.2); color: #fff; }
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,.07)}
+.footer-inner{min-height:140px;display:flex;align-items:center;justify-content:space-between;min-width:0}
+.footer-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.footer-mark{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);border-radius:9px;font-family:"Space Grotesk";font-size:11px;font-weight:700}
+.footer-name{font-size:11px}
+.footer-tagline{margin-top:3px;color:rgba(255,255,255,.4);font-size:7px;text-transform:uppercase;letter-spacing:.15em;overflow-wrap:break-word}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.38);font-size:8px;min-width:0}
+.footer-bottom span{min-width:0;overflow-wrap:break-word}
 
-    /* HERO ORBIT */
-    .hero-orbit { position: absolute; width: 950px; height: 950px; left: 50%; top: 360px; transform: translateX(-50%); border: 1px solid rgba(255,255,255,.025); border-radius: 50%; pointer-events: none; }
-    .hero-orbit::before { content: ""; position: absolute; inset: 80px; border: 1px solid rgba(255,255,255,.02); border-radius: 50%; }
-    .orbit-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: white; box-shadow: 0 0 20px rgba(255,255,255,.7); left: 50%; top: 0; }
-
-    /* DASHBOARD */
-    .dashboard-wrapper { position: relative; width: 100%; max-width: 1120px; margin: 100px auto 0; perspective: 1400px; min-width: 0; }
-    .dashboard-glow { position: absolute; width: 800px; height: 350px; left: 50%; top: 50%; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(100px); max-width: 90vw; }
-    .dashboard { position: relative; width: 100%; max-width: 100%; border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden; background: #090909; box-shadow: 0 70px 150px rgba(0,0,0,.75), 0 0 100px rgba(255,255,255,.025); transform-origin: center top; will-change: transform; }
-    .browser-bar { min-height: 45px; height: 45px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; border-bottom: 1px solid rgba(255,255,255,.07); }
-    .browser-dots { display: flex; gap: 6px; flex: 0 0 auto; }
-    .browser-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.13); }
-    .browser-status { display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,.7); font-size: 9px; min-width: 0; text-align: center; }
-    .browser-status i { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #5cdf8d; }
-    .browser-label { color: rgba(255,255,255,.5); font-size: 8px; letter-spacing: .2em; white-space: nowrap; }
-    .dashboard-body { display: grid; grid-template-columns: 210px minmax(0, 1fr); min-height: 460px; min-width: 0; }
-    .sidebar { padding: 22px 15px; border-right: 1px solid rgba(255,255,255,.07); min-width: 0; }
-    .sidebar-title { margin-bottom: 14px; color: rgba(255,255,255,.4); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
-    .sidebar-item { display: flex; align-items: center; gap: 9px; padding: 10px; margin-bottom: 3px; border-radius: 8px; color: rgba(255,255,255,.5); font-size: 9px; transition: .25s ease; }
-    .sidebar-item:hover { background: rgba(255,255,255,.035); color: #fff; }
-    .sidebar-item.active { background: rgba(255,255,255,.065); color: #fff; }
-    .sidebar-icon { width: 12px; height: 12px; flex: 0 0 12px; border: 1px solid currentColor; border-radius: 3px; opacity: .6; }
-    .sidebar-separator { height: 1px; background: rgba(255,255,255,.06); margin: 27px 0 18px; }
-    .dashboard-main { padding: 28px; min-width: 0; overflow: hidden; }
-    .dashboard-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; min-width: 0; }
-    .dashboard-header > div:first-child { min-width: 0; }
-    .dashboard-eyebrow { color: rgba(255,255,255,.5); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
-    .dashboard-heading { margin-top: 7px; font-size: 23px; letter-spacing: -.04em; overflow-wrap: break-word; }
-    .dashboard-filter { padding: 8px 11px; border: 1px solid rgba(255,255,255,.08); border-radius: 7px; color: rgba(255,255,255,.5); font-size: 7px; flex: 0 0 auto; white-space: nowrap; }
-    .stats { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; margin-top: 28px; }
-    .stat { padding: 15px; border: 1px solid rgba(255,255,255,.07); border-radius: 11px; background: rgba(255,255,255,.018); min-width: 0; }
-    .stat-label { color: rgba(255,255,255,.42); font-size: 7px; overflow-wrap: break-word; }
-    .stat-value { margin-top: 6px; font-size: 17px; white-space: nowrap; }
-    .stat-change { margin-top: 3px; color: #62db8b; font-size: 7px; overflow-wrap: break-word; }
-    .dashboard-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 11px; margin-top: 12px; min-width: 0; }
-    .panel { padding: 17px; border: 1px solid rgba(255,255,255,.07); border-radius: 12px; background: rgba(255,255,255,.018); min-width: 0; }
-    .panel-title { font-size: 9px; }
-    .panel-subtitle { margin-top: 3px; color: rgba(255,255,255,.42); font-size: 7px; overflow-wrap: break-word; }
-    .project-list { display: flex; flex-direction: column; gap: 7px; margin-top: 17px; }
-    .project { display: flex; align-items: center; gap: 10px; padding: 9px; border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(0,0,0,.25); min-width: 0; }
-    .project-number { width: 27px; height: 27px; flex: 0 0 27px; display: grid; place-items: center; border-radius: 6px; background: rgba(255,255,255,.05); color: rgba(255,255,255,.45); font-size: 7px; }
-    .project-info { flex: 1; min-width: 0; }
-    .project-name { color: rgba(255,255,255,.8); font-size: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .project-status { margin-top: 2px; color: rgba(255,255,255,.4); font-size: 6px; }
-    .project-price { color: rgba(255,255,255,.6); font-size: 8px; flex: 0 0 auto; white-space: nowrap; }
-    .chart { height: 115px; display: flex; align-items: flex-end; gap: 6px; margin-top: 25px; }
-    .bar { flex: 1; min-height: 4px; border-radius: 4px 4px 0 0; background: rgba(255,255,255,.12); }
-
-    /* SECTION HEADINGS */
-    .section-heading-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 80px; align-items: end; }
-    .section-heading-grid > * { min-width: 0; }
-    .eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 19px; color: rgba(255,255,255,.45); font-size: 8px; text-transform: uppercase; letter-spacing: .22em; }
-    .eyebrow-line { width: 27px; height: 1px; flex: 0 0 27px; background: rgba(255,255,255,.3); }
-    h2 { font-family: "Space Grotesk"; font-size: clamp(40px,5vw,60px); line-height: 1; letter-spacing: -.06em; font-weight: 600; overflow-wrap: break-word; }
-    h2 .muted { color: rgba(255,255,255,.48); }
-    .section-description { max-width: 500px; color: rgba(255,255,255,.6); font-size: 13px; line-height: 1.9; }
-    .section-description.centered { max-width: 620px; margin: 24px auto 0; text-align: center; }
-
-    /* FEATURES */
-    .feature-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
-    .feature-card { position: relative; min-height: 230px; padding: 28px; overflow: hidden; border: 1px solid rgba(255,255,255,.07); border-radius: 17px; background: rgba(255,255,255,.018); transform-style: preserve-3d; will-change: transform; transition: border-color .3s ease, background .3s ease; min-width: 0; }
-    .feature-card::after { content: ""; position: absolute; width: 180px; height: 180px; top: -100px; right: -100px; border-radius: 50%; background: rgba(255,255,255,.035); filter: blur(35px); transition: .4s ease; }
-    .feature-card:hover { border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.035); }
-    .feature-card:hover::after { background: rgba(255,255,255,.09); }
-    .feature-icon { width: 43px; height: 43px; flex: 0 0 43px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: rgba(255,255,255,.04); font-size: 15px; }
-    .feature-title { margin-top: 28px; font-family: "Space Grotesk"; font-size: 15px; overflow-wrap: break-word; }
-    .feature-description { margin-top: 10px; color: rgba(255,255,255,.55); font-size: 10px; line-height: 1.8; }
-    .feature-card .check-list { margin-top: 22px; }
-    .request-answer { margin-top: 18px; font-family: "Space Grotesk"; font-size: 18px; font-weight: 600; letter-spacing: -.02em; color: #fff; }
-
-    /* OWNERSHIP / PROCESS CARD */
-    .ownership-card { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); overflow: hidden; border: 1px solid rgba(255,255,255,.08); border-radius: 25px; background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01)); min-width: 0; }
-    .ownership-content { padding: 65px; min-width: 0; }
-    .small-tag { display: inline-block; padding: 6px 10px; border: 1px solid rgba(255,255,255,.08); border-radius: 999px; color: rgba(255,255,255,.55); font-size: 7px; text-transform: uppercase; letter-spacing: .18em; max-width: 100%; }
-    .ownership-content p { max-width: 480px; margin-top: 24px; color: rgba(255,255,255,.5); font-size: 12px; line-height: 1.9; }
-    .check-list { display: flex; flex-direction: column; gap: 11px; margin-top: 28px; }
-    .check-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.72); font-size: 10px; min-width: 0; }
-    .check { width: 20px; height: 20px; flex: 0 0 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.07); font-size: 9px; }
-    .workflow-visual { min-height: 440px; position: relative; overflow: hidden; border-left: 1px solid rgba(255,255,255,.07); background: radial-gradient(circle at center, rgba(255,255,255,.065), transparent 60%); min-width: 0; }
-    .workflow-box { position: absolute; left: 50%; top: 50%; width: min(290px, calc(100% - 40px)); transform: translate(-50%,-50%); padding: 20px; border: 1px solid rgba(255,255,255,.1); border-radius: 17px; background: rgba(7,7,7,.88); box-shadow: 0 35px 90px rgba(0,0,0,.65); backdrop-filter: blur(15px); }
-    .workflow-header { display: flex; justify-content: space-between; gap: 10px; color: rgba(255,255,255,.55); font-size: 8px; }
-    .workflow-active { color: #60dc8b; white-space: nowrap; }
-    .workflow-steps { display: flex; flex-direction: column; gap: 6px; margin-top: 18px; }
-    .workflow-step { display: flex; align-items: center; gap: 9px; padding: 11px; border: 1px solid rgba(255,255,255,.05); border-radius: 8px; background: rgba(255,255,255,.018); color: rgba(255,255,255,.62); font-size: 8px; min-width: 0; }
-    .workflow-step-dot { width: 5px; height: 5px; flex: 0 0 5px; border-radius: 50%; background: rgba(255,255,255,.2); }
-    .workflow-step:last-child .workflow-step-dot { background: #fff; }
-
-    /* CENTERED HEADINGS */
-    .center-heading { max-width: 800px; margin: auto; text-align: center; min-width: 0; }
-    .center-heading .eyebrow { justify-content: center; }
-
-    /* 4-UP STEP GRID */
-    .steps-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 13px; margin-top: 65px; }
-    .steps-grid .feature-card { min-height: 200px; }
-
-    /* OFFER CARDS */
-    .pricing-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 65px; }
-    .pricing-card { position: relative; padding: 42px; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; background: rgba(255,255,255,.018); overflow: hidden; min-width: 0; }
-    .pricing-card.featured { border-color: rgba(255,255,255,.22); background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.015)); }
-    .pricing-label { color: rgba(255,255,255,.45); font-size: 7px; letter-spacing: .2em; text-transform: uppercase; }
-    .pricing-name { margin-top: 14px; font-family: "Space Grotesk"; font-size: 21px; letter-spacing: -.03em; }
-    .pricing-card .check-list { margin-top: 24px; }
-
-    /* PRICE BREAKDOWN — CARD ADDITIONS */
-    .price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
-    .price-old { font-family: "Space Grotesk"; font-size: 20px; color: rgba(255,255,255,.35); text-decoration: line-through; text-decoration-thickness: 1px; }
-    .price-arrow { color: rgba(255,255,255,.35); font-size: 14px; }
-    .price-main { font-family: "Space Grotesk"; font-size: clamp(38px, 5vw, 46px); font-weight: 500; letter-spacing: -.05em; line-height: 1; color: #fff; }
-    .price-meta { margin-top: 14px; color: rgba(255,255,255,.5); font-size: 9px; }
-    .price-save { margin-top: 6px; color: #62db8b; font-size: 9px; }
-    .pricing-card .feature-description { max-width: 400px; margin-top: 22px; }
-    .pricing-button { width: 100%; margin-top: 34px; }
-    .pricing-badge { position: absolute; top: 14px; right: 18px; padding: 6px 11px; border: 1px solid rgba(98,219,139,.35); border-radius: 999px; background: rgba(98,219,139,.08); color: #62db8b; font-size: 7px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
-
-    /* PRICE BREAKDOWN — MODAL (reuses .demo-modal overlay) */
-    .price-modal .demo-modal-content { width: min(560px, 100%); display: flex; flex-direction: column; }
-    .price-modal-body { padding: 30px 30px 32px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; flex: 1 1 auto; }
-    .price-modal-title { margin-top: 10px; font-family: "Space Grotesk"; font-size: 24px; letter-spacing: -.04em; font-weight: 600; }
-    .price-modal-sub { margin-top: 6px; color: rgba(255,255,255,.5); font-size: 10px; line-height: 1.7; }
-    .price-items { margin-top: 24px; border-top: 1px solid rgba(255,255,255,.07); }
-    .price-item { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
-    .price-item-info { min-width: 0; }
-    .price-item-name { color: rgba(255,255,255,.88); font-size: 11px; font-weight: 500; overflow-wrap: break-word; }
-    .price-item-desc { margin-top: 4px; color: rgba(255,255,255,.42); font-size: 9px; line-height: 1.7; overflow-wrap: break-word; }
-    .price-item-value { flex: 0 0 auto; font-family: "Space Grotesk"; font-size: 13px; color: rgba(255,255,255,.85); white-space: nowrap; }
-    .price-total { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0 4px; color: rgba(255,255,255,.55); font-size: 10px; }
-    .price-total-value { font-family: "Space Grotesk"; font-size: 16px; color: rgba(255,255,255,.55); text-decoration: line-through; text-decoration-thickness: 1px; }
-    .price-final { margin-top: 16px; padding: 22px; border: 1px solid rgba(255,255,255,.22); border-radius: 15px; background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.015)); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .price-final-label { color: rgba(255,255,255,.55); font-size: 8px; letter-spacing: .18em; text-transform: uppercase; }
-    .price-final-save { margin-top: 6px; color: #62db8b; font-size: 9px; }
-    .price-final-value { font-family: "Space Grotesk"; font-size: 38px; font-weight: 500; letter-spacing: -.05em; line-height: 1; color: #fff; }
-    .price-note { margin-top: 16px; color: rgba(255,255,255,.36); font-size: 8px; line-height: 1.8; }
-
-    /* FINAL CTA */
-    .final-cta { padding: 160px 0; text-align: center; }
-    .final-icon { width: 50px; height: 50px; display: grid; place-items: center; margin: 0 auto 25px; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(255,255,255,.04); }
-    .final-cta p { max-width: 550px; margin: 25px auto 0; color: rgba(255,255,255,.55); font-size: 12px; line-height: 1.9; }
-    .final-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 30px; }
-    .final-actions .hero-actions { margin-top: 0; }
-
-    /* FOOTER */
-    footer { border-top: 1px solid rgba(255,255,255,.07); }
-    .footer-inner { min-height: 140px; display: flex; align-items: center; justify-content: space-between; min-width: 0; }
-    .footer-brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-    .footer-mark { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.1); border-radius: 9px; font-family: "Space Grotesk"; font-size: 11px; font-weight: 700; }
-    .footer-name { font-size: 11px; }
-    .footer-tagline { margin-top: 3px; color: rgba(255,255,255,.4); font-size: 7px; text-transform: uppercase; letter-spacing: .15em; overflow-wrap: break-word; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; border-top: 1px solid rgba(255,255,255,.05); color: rgba(255,255,255,.38); font-size: 7px; min-width: 0; }
-    .footer-bottom span { min-width: 0; overflow-wrap: break-word; }
-
-    /* RESPONSIVE — TABLET */
-    @media(max-width:1100px) {
-      .container { width: min(100% - 40px, 1180px); }
-      .nav-links { gap: 22px; }
-      .section-heading-grid { gap: 50px; }
-      .ownership-content { padding: 50px; }
-      .dashboard-main { padding: 22px; }
-      .dashboard-heading { font-size: 20px; }
-      .stats { gap: 7px; }
-      .stat { padding: 12px; }
-      .dashboard-grid { gap: 8px; }
-      .panel { padding: 14px; }
-      .steps-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .pricing-grid { grid-template-columns: 1fr; }
-    }
-
-    /* RESPONSIVE — TABLET / MOBILE NAV */
-    @media(max-width:900px) {
-      .nav-links, .nav-button { display: none; }
-      .mobile-menu-button { display: block; }
-      .mobile-menu.active { display: flex; flex-direction: column; gap: 18px; padding: 22px 24px 28px; border-top: 1px solid rgba(255,255,255,.06); background: rgba(5,5,5,.96); max-height: calc(100vh - 78px); overflow-y: auto; }
-      .mobile-menu a { color: rgba(255,255,255,.7); font-size: 13px; }
-      .mobile-menu .mobile-cta { padding: 13px; border-radius: 10px; background: #fff; color: #000; text-align: center; font-weight: 700; }
-      .dashboard-body { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-      .section-heading-grid, .ownership-card { grid-template-columns: 1fr; }
-      .section-heading-grid { align-items: start; }
-      .workflow-visual { border-left: none; border-top: 1px solid rgba(255,255,255,.07); }
-      .feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .dashboard-grid { grid-template-columns: 1fr; }
-      .dashboard-main { padding: 22px; }
-      .hero-orbit { width: 800px; height: 800px; }
-      .workflow-visual { min-height: 390px; }
-    }
-
-    /* RESPONSIVE — SMALL TABLETS */
-    @media(max-width:760px) {
-      .container { width: calc(100% - 32px); }
-      .nav-inner { height: 72px; }
-      .mobile-menu.active { max-height: calc(100vh - 72px); }
-      .hero { padding-top: 125px; padding-bottom: 70px; }
-      .hero-title { font-size: clamp(46px, 10vw, 64px); }
-      .hero-description { max-width: 600px; font-size: 13px; line-height: 1.8; }
-      .dashboard-wrapper { margin-top: 70px; }
-      .dashboard { border-radius: 16px; }
-      .browser-bar { padding: 0 12px; }
-      .browser-status { font-size: 8px; }
-      .dashboard-main { padding: 18px; }
-      .dashboard-heading { font-size: 18px; }
-      .section-padding { padding: 105px 0; }
-      .section-heading-grid { gap: 35px; }
-      h2 { font-size: clamp(38px, 8vw, 52px); }
-      .feature-card { padding: 24px; }
-      .ownership-content { padding: 42px 30px; }
-      .final-cta { padding: 120px 0; }
-      .footer-bottom { gap: 12px; }
-      .steps-grid { grid-template-columns: 1fr; }
-    }
-
-    /* RESPONSIVE — MOBILE */
-    @media(max-width:620px) {
-      .container { width: calc(100% - 30px); max-width: none; }
-      .cursor, .cursor-ring { display: none; }
-      .brand { gap: 9px; }
-      .brand-mark { width: 35px; height: 35px; flex-basis: 35px; border-radius: 10px; }
-      .brand-name { font-size: 13px; }
-      .brand-subtitle { font-size: 6px; letter-spacing: .18em; }
-      .hero { padding-top: 125px; padding-bottom: 65px; }
-      .hero-orbit { width: 620px; height: 620px; top: 410px; }
-      .hero-orbit::before { inset: 55px; }
-      .status-pill { padding: 7px 11px; gap: 7px; font-size: 7px; letter-spacing: .12em; }
-      .hero-title { margin-top: 24px; font-size: clamp(38px, 12vw, 52px); letter-spacing: -.065em; line-height: .98; }
-      .hero-title .line-inner { max-width: 100%; }
-      .hero-description { margin-top: 25px; font-size: 12px; line-height: 1.85; }
-      .hero-actions { margin-top: 28px; flex-direction: column; width: 100%; gap: 9px; }
-      .button { width: 100%; min-height: 48px; padding: 0 18px; font-size: 10px; }
-      .dashboard-wrapper { margin-top: 55px; width: 100%; }
-      .dashboard { border-radius: 14px; }
-      .browser-bar { height: 40px; min-height: 40px; padding: 0 10px; }
-      .browser-dots { gap: 5px; }
-      .browser-dots span { width: 7px; height: 7px; }
-      .browser-status { font-size: 7px; gap: 5px; }
-      .browser-status i { width: 5px; height: 5px; flex-basis: 5px; }
-      .browser-label { display: none; }
-      .dashboard-body { min-height: 0; }
-      .dashboard-main { padding: 14px; }
-      .dashboard-header { align-items: flex-start; gap: 10px; }
-      .dashboard-eyebrow { font-size: 6px; letter-spacing: .15em; }
-      .dashboard-heading { margin-top: 5px; font-size: 16px; line-height: 1.2; }
-      .dashboard-filter { padding: 7px 8px; font-size: 6px; }
-      .stats { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; margin-top: 20px; }
-      .stat { padding: 10px; border-radius: 9px; }
-      .stat-label { font-size: 6px; }
-      .stat-value { margin-top: 5px; font-size: 14px; }
-      .stat-change { font-size: 6px; }
-      .dashboard-grid { grid-template-columns: 1fr; gap: 7px; margin-top: 8px; }
-      .panel { padding: 12px; border-radius: 10px; }
-      .panel-title { font-size: 8px; }
-      .panel-subtitle { font-size: 6px; }
-      .project-list { gap: 5px; margin-top: 12px; }
-      .project { gap: 7px; padding: 7px; }
-      .project-number { width: 23px; height: 23px; flex-basis: 23px; font-size: 6px; }
-      .project-name { font-size: 7px; }
-      .project-status { font-size: 5px; }
-      .project-price { font-size: 7px; }
-      .chart { height: 90px; gap: 4px; margin-top: 18px; }
-      .section-padding { padding: 85px 0; }
-      .section-heading-grid { gap: 28px; }
-      .eyebrow { gap: 6px; margin-bottom: 15px; font-size: 7px; letter-spacing: .16em; }
-      .eyebrow-line { width: 22px; flex-basis: 22px; }
-      h2 { font-size: clamp(36px, 11vw, 48px); line-height: .98; }
-      .section-description { font-size: 11px; line-height: 1.85; }
-      .feature-grid { grid-template-columns: 1fr; gap: 9px; margin-top: 38px; }
-      .feature-card { min-height: 0; padding: 24px; border-radius: 15px; }
-      .feature-icon { width: 40px; height: 40px; flex-basis: 40px; }
-      .feature-title { margin-top: 22px; font-size: 13px; line-height: 1.35; }
-      .feature-description { margin-top: 9px; font-size: 9px; line-height: 1.75; }
-      .request-answer { margin-top: 14px; font-size: 15px; }
-      .ownership-card { border-radius: 19px; }
-      .ownership-content { padding: 34px 23px; }
-      .small-tag { font-size: 6px; letter-spacing: .14em; }
-      .ownership-content h2 { margin-top: 20px !important; }
-      .ownership-content p { margin-top: 20px; font-size: 10px; line-height: 1.85; }
-      .check-list { gap: 10px; margin-top: 23px; }
-      .check-item { align-items: flex-start; gap: 8px; font-size: 9px; line-height: 1.5; }
-      .check { margin-top: 1px; width: 18px; height: 18px; flex-basis: 18px; font-size: 8px; }
-      .workflow-visual { min-height: 350px; }
-      .workflow-box { width: calc(100% - 34px); padding: 16px; border-radius: 14px; }
-      .workflow-header { font-size: 7px; }
-      .workflow-steps { margin-top: 14px; gap: 5px; }
-      .workflow-step { padding: 10px; font-size: 7px; }
-      .center-heading .eyebrow { gap: 5px; }
-      .pricing-card { padding: 28px 22px; }
-      .pricing-badge { position: static; display: inline-block; margin-bottom: 16px; }
-      .price-row { margin-top: 20px; gap: 10px; }
-      .price-old { font-size: 16px; }
-      .price-main { font-size: 36px; }
-      .pricing-card .feature-description { margin-top: 18px; }
-      .pricing-button { margin-top: 26px; }
-      .final-cta { padding: 95px 0; }
-      .final-icon { width: 46px; height: 46px; margin-bottom: 21px; }
-      .final-cta p { margin-top: 21px; font-size: 10px; line-height: 1.85; }
-      .final-actions { margin-top: 26px; gap: 10px; }
-      .footer-inner { min-height: 0; padding: 32px 0; flex-direction: column; align-items: flex-start; gap: 25px; }
-      .footer-tagline { font-size: 6px; letter-spacing: .12em; }
-      .footer-bottom { flex-direction: column; gap: 8px; padding: 15px 0; font-size: 6px; line-height: 1.6; }
-    }
-
-    /* RESPONSIVE — VERY SMALL PHONES */
-    @media(max-width:380px) {
-      .container { width: calc(100% - 24px); }
-      .brand-name { font-size: 12px; }
-      .brand-subtitle { font-size: 5px; }
-      .mobile-menu-button { width: 37px; height: 37px; flex-basis: 37px; }
-      .hero { padding-top: 115px; }
-      .hero-title { font-size: 36px; }
-      .hero-description { font-size: 11px; }
-      .status-pill { font-size: 6px; letter-spacing: .09em; }
-      .browser-status { font-size: 6px; }
-      .dashboard-main { padding: 11px; }
-      .dashboard-heading { font-size: 14px; }
-      .dashboard-filter { font-size: 5px; padding: 6px; }
-      .stat { padding: 8px; }
-      .stat-value { font-size: 12px; }
-      .project { gap: 5px; }
-      .project-price { font-size: 6px; }
-      .feature-card { padding: 21px; }
-      .ownership-content { padding-left: 20px; padding-right: 20px; }
-      .workflow-box { width: calc(100% - 24px); }
-      .final-cta { padding: 85px 0; }
-    }
-
-    /* DEMO MODAL */
-    .demo-modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,.78); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s ease, visibility .35s ease; }
-    .demo-modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
-    .demo-modal-content { position: relative; width: min(900px, 100%); max-width: 100%; max-height: calc(100vh - 48px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; overflow: hidden; background: #090909; box-shadow: 0 50px 140px rgba(0,0,0,.8), 0 0 100px rgba(255,255,255,.04); transform: translateY(24px) scale(.96); transition: transform .45s cubic-bezier(.16,1,.3,1); }
-    .demo-modal.active .demo-modal-content { transform: translateY(0) scale(1); }
-    .demo-modal-header { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 14px 0 17px; border-bottom: 1px solid rgba(255,255,255,.07); }
-    .demo-modal-label { color: rgba(255,255,255,.5); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .demo-modal-close { width: 32px; height: 32px; flex: 0 0 32px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.08); border-radius: 9px; background: rgba(255,255,255,.035); color: rgba(255,255,255,.55); font-size: 17px; transition: .25s ease; }
-    .demo-modal-close:hover { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
-    .demo-video-wrap { background: #000; aspect-ratio: 16 / 9; width: 100%; max-height: calc(100vh - 100px); }
-    .demo-video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
-    .demo-no-video { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 60px 30px; color: rgba(255,255,255,.4); font-size: 11px; text-align: center; }
-    .demo-no-video strong { color: rgba(255,255,255,.75); font-size: 14px; display: block; }
-
-    @media(max-width:620px) {
-      .demo-modal { padding: 15px; }
-      .demo-modal-content { border-radius: 15px; max-height: calc(100vh - 30px); }
-      .demo-modal-header { min-height: 44px; padding-left: 13px; padding-right: 10px; }
-      .demo-modal-label { font-size: 6px; letter-spacing: .14em; }
-      .demo-modal-close { width: 30px; height: 30px; flex-basis: 30px; }
-      .price-modal-body { padding: 22px 18px 24px; }
-      .price-modal-title { font-size: 20px; }
-      .price-item { gap: 12px; padding: 12px 0; }
-      .price-final { padding: 18px; }
-      .price-final-value { font-size: 32px; }
-    }
-
-    /* REDUCED MOTION */
-    @media(prefers-reduced-motion:reduce) {
-      * { animation: none !important; transition: none !important; }
-    }
-
-  </style>
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .container{width:min(100% - 40px,1180px)}
+  .nav-links{gap:22px}
+  .section-heading-grid{gap:50px}
+  .dashboard-main{padding:22px}
+  .dashboard-heading{font-size:20px}
+  .steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .offer-card{padding:38px}
+}
+@media(max-width:900px){
+  .nav-links,.nav-button{display:none}
+  .mobile-menu-button{display:block}
+  .mobile-menu.active{display:flex;flex-direction:column;gap:18px;padding:22px 24px 28px;border-top:1px solid rgba(255,255,255,.06);background:rgba(5,5,5,.96);max-height:calc(100vh - 78px);overflow-y:auto}
+  .mobile-menu a{color:rgba(255,255,255,.7);font-size:13px}
+  .mobile-menu .mobile-cta{padding:13px;border-radius:10px;background:#fff;color:#000;text-align:center;font-weight:700}
+  .dashboard-body{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .section-heading-grid,.offer-grid{grid-template-columns:1fr}
+  .section-heading-grid{align-items:start}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dashboard-grid{grid-template-columns:1fr}
+  .hero-orbit{width:800px;height:800px}
+}
+@media(max-width:760px){
+  .container{width:calc(100% - 32px)}
+  .nav-inner{height:72px}
+  .mobile-menu.active{max-height:calc(100vh - 72px)}
+  .hero{padding-top:125px;padding-bottom:70px}
+  .hero-title{font-size:clamp(46px,10vw,64px)}
+  .hero-description{max-width:600px;font-size:13px;line-height:1.8}
+  .dashboard-wrapper{margin-top:70px}
+  .dashboard{border-radius:16px}
+  .dashboard-main{padding:18px}
+  .dashboard-heading{font-size:18px}
+  .section-padding{padding:105px 0}
+  .section-heading-grid{gap:35px}
+  h2{font-size:clamp(38px,8vw,52px)}
+  .feature-card{padding:24px}
+  .final-cta{padding:120px 0}
+  .steps-grid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .container{width:calc(100% - 30px);max-width:none}
+  .cursor,.cursor-ring{display:none}
+  .brand{gap:9px}
+  .brand-mark{width:35px;height:35px;flex-basis:35px;border-radius:10px}
+  .brand-name{font-size:13px}
+  .brand-subtitle{font-size:6px;letter-spacing:.18em}
+  .hero-orbit{width:620px;height:620px;top:410px}
+  .hero-orbit::before{inset:55px}
+  .status-pill{padding:7px 11px;gap:7px;font-size:7px;letter-spacing:.12em}
+  .hero-title{margin-top:24px;font-size:clamp(38px,12vw,52px);letter-spacing:-.065em;line-height:.98}
+  .hero-description{margin-top:25px;font-size:12px;line-height:1.85}
+  .hero-actions{margin-top:28px;flex-direction:column;width:100%;gap:9px}
+  .button{width:100%;min-height:48px;padding:0 18px;font-size:10px}
+  .dashboard-wrapper{margin-top:55px}
+  .dashboard{border-radius:14px}
+  .browser-bar{height:40px;min-height:40px;padding:0 10px}
+  .browser-dots{gap:5px}
+  .browser-dots span{width:7px;height:7px}
+  .browser-status{font-size:7px;gap:5px}
+  .browser-label{display:none}
+  .dashboard-body{min-height:0}
+  .dashboard-main{padding:14px}
+  .dashboard-header{align-items:flex-start;gap:10px}
+  .dashboard-heading{margin-top:5px;font-size:16px;line-height:1.2}
+  .dashboard-filter{padding:7px 8px;font-size:6px}
+  .stats{gap:6px;margin-top:20px}
+  .stat{padding:10px;border-radius:9px}
+  .stat-label{font-size:6px}
+  .stat-value{margin-top:5px;font-size:14px}
+  .stat-change{font-size:6px}
+  .dashboard-grid{gap:7px;margin-top:8px}
+  .panel{padding:12px;border-radius:10px}
+  .project-list{gap:5px;margin-top:12px}
+  .project{gap:7px;padding:7px}
+  .project-number{width:23px;height:23px;flex-basis:23px;font-size:6px}
+  .project-name{font-size:7px}
+  .project-price{font-size:7px}
+  .section-padding{padding:85px 0}
+  .eyebrow{gap:6px;margin-bottom:15px;font-size:7px;letter-spacing:.16em}
+  .eyebrow-line{width:22px;flex-basis:22px}
+  h2{font-size:clamp(36px,11vw,48px);line-height:.98}
+  .section-description{font-size:11px;line-height:1.85}
+  .steps-grid{gap:9px;margin-top:38px}
+  .feature-card{min-height:0;padding:24px;border-radius:15px}
+  .feature-icon{width:40px;height:40px;flex-basis:40px}
+  .feature-title{margin-top:22px;font-size:13px;line-height:1.35}
+  .feature-description{margin-top:9px;font-size:10px;line-height:1.75}
+  .check-item{gap:8px;font-size:10px}
+  .check{width:18px;height:18px;flex-basis:18px;font-size:8px}
+  .offer-grid{margin-top:38px;gap:12px}
+  .offer-card{padding:30px 22px;border-radius:18px}
+  .offer-name{font-size:22px}
+  .offer-price{font-size:38px}
+  .offer-desc{font-size:11px}
+  .faq-list{margin-top:38px}
+  .faq-item summary{padding:17px 18px;font-size:13px}
+  .faq-item p{padding:0 18px 18px;font-size:11px}
+  .final-cta{padding:95px 0}
+  .final-icon{width:46px;height:46px;margin-bottom:21px}
+  .final-cta p{margin-top:21px;font-size:10px;line-height:1.85}
+  .footer-inner{min-height:0;padding:32px 0;flex-direction:column;align-items:flex-start;gap:25px}
+  .footer-tagline{font-size:6px;letter-spacing:.12em}
+  .footer-bottom{flex-direction:column;gap:8px;padding:15px 0;font-size:7px;line-height:1.6}
+}
+@media(max-width:380px){
+  .container{width:calc(100% - 24px)}
+  .brand-name{font-size:12px}
+  .brand-subtitle{font-size:5px}
+  .mobile-menu-button{width:37px;height:37px;flex-basis:37px}
+  .hero{padding-top:115px}
+  .hero-title{font-size:36px}
+  .hero-description{font-size:11px}
+  .status-pill{font-size:6px;letter-spacing:.09em}
+  .browser-status{font-size:6px}
+  .dashboard-main{padding:11px}
+  .dashboard-heading{font-size:14px}
+  .dashboard-filter{font-size:5px;padding:6px}
+  .stat{padding:8px}
+  .stat-value{font-size:12px}
+  .feature-card{padding:21px}
+  .offer-card{padding:26px 18px}
+  .final-cta{padding:85px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
 
 <body>
 
-  <!-- BACKGROUND -->
-  <div class="background" aria-hidden="true">
-    <div class="background-grid"></div>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
+<div class="background">
+  <div class="background-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
+</div>
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark"><span>A</span></div>
+      <div>
+        <div class="brand-name">AutFlow <span>Studio</span></div>
+        <div class="brand-subtitle">Startups &amp; Business Solutions</div>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How We Work</a>
+      <a href="#faq">FAQ</a>
+      <a href="#get-started">Contact</a>
+    </nav>
+    <a href="#get-started" class="nav-button magnetic">Start A Conversation</a>
+    <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Menu">☰</button>
   </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#how-it-works">How We Work</a>
+    <a href="#faq">FAQ</a>
+    <a href="#get-started">Contact</a>
+    <a href="#get-started" class="mobile-cta">Start A Conversation</a>
+  </div>
+</header>
 
-  <!-- CURSOR (hidden on touch devices via CSS) -->
-  <div class="cursor" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"></div>
-
-  <!-- NAVBAR -->
-  <header class="navbar" role="banner">
-
-    <div class="container nav-inner">
-
-      <a href="#" class="brand" aria-label="AutFlow Studio — home">
-        <div class="brand-mark" aria-hidden="true"><span>A</span></div>
-        <div>
-          <div class="brand-name">AutFlow <span>Studio</span></div>
-          <div class="brand-subtitle">Startups &amp; Business Systems</div>
-        </div>
-      </a>
-
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#product">Services</a>
-        <a href="#capabilities">Startup Launch</a>
-        <a href="#customization">Business Solutions</a>
-        <a href="#how-it-works">Process</a>
-      </nav>
-
-      <a href="#get-started" class="nav-button magnetic">Get Started</a>
-
-      <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orbit"><div class="orbit-dot"></div></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="status-pill hero-animate">
+        <span class="status-dot"></span>
+        STARTUP LAUNCHES &amp; CUSTOM BUSINESS SOLUTIONS
+      </div>
+      <h1 class="hero-title">
+        <span class="line"><span class="line-inner">From Startup Ideas</span></span>
+        <span class="line"><span class="line-inner muted">To Business Solutions.</span></span>
+      </h1>
+      <p class="hero-description hero-animate">
+        AutFlow Studio builds complete technology products for founders with an idea, and custom software, AI, and automation for established businesses with a real problem to solve.
+      </p>
+      <div class="hero-actions hero-animate">
+        <a href="#services" class="button button-primary magnetic">Explore Our Services <span>→</span></a>
+      </div>
     </div>
 
-    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-      <a href="#product">Services</a>
-      <a href="#capabilities">Startup Launch</a>
-      <a href="#customization">Business Solutions</a>
-      <a href="#how-it-works">Process</a>
-      <a href="#get-started" class="mobile-cta">Get Started</a>
-    </nav>
-
-  </header>
-
-  <main>
-
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-heading">
-
-      <div class="hero-orbit" aria-hidden="true"><div class="orbit-dot"></div></div>
-
-      <div class="container">
-
-        <div class="hero-content">
-
-          <div class="status-pill hero-animate" aria-hidden="true">
-            <span class="status-dot"></span>
-            TWO SERVICES. ONE STUDIO.
-          </div>
-
-          <h1 class="hero-title" id="hero-heading">
-            <span class="line"><span class="line-inner">Launch Your Startup.</span></span>
-            <span class="line"><span class="line-inner">Or Fix Your Business.</span></span>
-            <span class="line"><span class="line-inner muted">We Build Both.</span></span>
-          </h1>
-
-          <p class="hero-description hero-animate">
-            Complete startup launches for founders. Custom software, AI, and automation for existing businesses.
-          </p>
-
-          <div class="hero-actions hero-animate">
-            <a href="#get-started" class="button button-primary magnetic">
-              Get Started
-              <span aria-hidden="true">→</span>
-            </a>
-            <a href="#product" class="button button-secondary magnetic" id="demoButton">
-              See Services
-              <span aria-hidden="true">↓</span>
-            </a>
-          </div>
-
+    <div class="dashboard-wrapper">
+      <div class="dashboard-glow"></div>
+      <div class="dashboard">
+        <div class="browser-bar">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="browser-status"><i></i>TWO CORE SERVICES</div>
+          <div class="browser-label">AUTFLOW STUDIO</div>
         </div>
+        <div class="dashboard-body">
+          <aside class="sidebar">
+            <div class="sidebar-title">Services</div>
+            <a href="#startup-launch" class="sidebar-item active"><span class="sidebar-icon"></span>Startup Launch</a>
+            <a href="#business-solutions" class="sidebar-item"><span class="sidebar-icon"></span>Business Solutions</a>
+            <div class="sidebar-separator"></div>
+            <div class="sidebar-title">Company</div>
+            <a href="#how-it-works" class="sidebar-item"><span class="sidebar-icon"></span>How We Work</a>
+            <a href="#faq" class="sidebar-item"><span class="sidebar-icon"></span>FAQ</a>
+          </aside>
 
-        <!-- DASHBOARD — ILLUSTRATIVE ONLY -->
-        <div class="dashboard-wrapper" aria-hidden="true">
-
-          <div class="dashboard-glow"></div>
-
-          <div class="dashboard">
-
-            <div class="browser-bar">
-              <div class="browser-dots"><span></span><span></span><span></span></div>
-              <div class="browser-status"><i></i>SAMPLE DATA — ILLUSTRATIVE ONLY</div>
-              <div class="browser-label">ILLUSTRATIVE DASHBOARD</div>
+          <div class="dashboard-main">
+            <div class="dashboard-header">
+              <div>
+                <div class="dashboard-eyebrow">What We Build</div>
+                <div class="dashboard-heading">One studio. Two clear paths.</div>
+              </div>
+              <div class="dashboard-filter">Fixed-price packages</div>
             </div>
 
-            <div class="dashboard-body">
+            <div class="stats">
+              <div class="stat">
+                <div class="stat-label">Core Services</div>
+                <div class="stat-value counter" data-value="2">0</div>
+                <div class="stat-change">Startup Launch + Business Solutions</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Launch Deliverables</div>
+                <div class="stat-value counter" data-value="6">0</div>
+                <div class="stat-change">In one startup package</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Solution Phases</div>
+                <div class="stat-value counter" data-value="4">0</div>
+                <div class="stat-change">Analysis to implementation</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Process Steps</div>
+                <div class="stat-value counter" data-value="4">0</div>
+                <div class="stat-change">Understand to deliver</div>
+              </div>
+            </div>
 
-              <aside class="sidebar">
-                <div class="sidebar-title">Workspace</div>
-                <div class="sidebar-item active"><span class="sidebar-icon"></span>Projects</div>
-                <div class="sidebar-item"><span class="sidebar-icon"></span>Product</div>
-                <div class="sidebar-item"><span class="sidebar-icon"></span>Brand &amp; Assets</div>
-                <div class="sidebar-item"><span class="sidebar-icon"></span>Automations</div>
-                <div class="sidebar-item"><span class="sidebar-icon"></span>Delivery</div>
-                <div class="sidebar-separator"></div>
-                <div class="sidebar-title">Overview</div>
-                <div class="sidebar-item"><span class="sidebar-icon"></span>Status</div>
-              </aside>
-
-              <div class="dashboard-main">
-
-                <div class="dashboard-header">
-                  <div>
-                    <div class="dashboard-eyebrow">Sample Data / Illustrative</div>
-                    <div class="dashboard-heading">From idea to launch. From problem to system.</div>
-                  </div>
-                  <div class="dashboard-filter">Sample view ↗</div>
-                </div>
-
-                <div class="stats">
-                  <div class="stat">
-                    <div class="stat-label">Core Features</div>
-                    <div class="stat-value counter" data-value="42">0</div>
-                    <div class="stat-change">Sample data</div>
-                  </div>
-                  <div class="stat">
-                    <div class="stat-label">Automations</div>
-                    <div class="stat-value counter" data-value="18">0</div>
-                    <div class="stat-change">Sample data</div>
-                  </div>
-                  <div class="stat">
-                    <div class="stat-label">Launch Assets</div>
-                    <div class="stat-value counter" data-value="31">0</div>
-                    <div class="stat-change">Sample data</div>
-                  </div>
-                  <div class="stat">
-                    <div class="stat-label">Integrations</div>
-                    <div class="stat-value counter" data-value="9">0</div>
-                    <div class="stat-change">Sample data</div>
-                  </div>
-                </div>
-
-                <div class="dashboard-grid">
-
-                  <div class="panel">
-                    <div class="panel-title">Delivery Pipeline</div>
-                    <div class="panel-subtitle">Illustrative statuses</div>
-                    <div class="project-list">
-                      <div class="project">
-                        <div class="project-number">01</div>
-                        <div class="project-info">
-                          <div class="project-name">Product built</div>
-                          <div class="project-status">TESTED</div>
-                        </div>
-                        <div class="project-price">Sample</div>
-                      </div>
-                      <div class="project">
-                        <div class="project-number">02</div>
-                        <div class="project-info">
-                          <div class="project-name">Workflow automated</div>
-                          <div class="project-status">INTEGRATED</div>
-                        </div>
-                        <div class="project-price">Sample</div>
-                      </div>
-                      <div class="project">
-                        <div class="project-number">03</div>
-                        <div class="project-info">
-                          <div class="project-name">Solution delivered</div>
-                          <div class="project-status">LIVE</div>
-                        </div>
-                        <div class="project-price">Sample</div>
-                      </div>
+            <div class="dashboard-grid">
+              <div class="panel">
+                <div class="panel-title">Our Services</div>
+                <div class="panel-subtitle">Two offers, two different customers</div>
+                <div class="project-list">
+                  <div class="project">
+                    <div class="project-number">01</div>
+                    <div class="project-info">
+                      <div class="project-name">Complete Startup Launch</div>
+                      <div class="project-status">FOR FOUNDERS WITH AN IDEA</div>
                     </div>
+                    <div class="project-price">$4,997</div>
                   </div>
-
-                  <div class="panel">
-                    <div class="panel-title">Progress</div>
-                    <div class="panel-subtitle">Illustrative trend</div>
-                    <div class="chart">
-                      <div class="bar" style="height:30%"></div>
-                      <div class="bar" style="height:48%"></div>
-                      <div class="bar" style="height:40%"></div>
-                      <div class="bar" style="height:65%"></div>
-                      <div class="bar" style="height:54%"></div>
-                      <div class="bar" style="height:74%"></div>
-                      <div class="bar" style="height:62%"></div>
-                      <div class="bar" style="height:85%"></div>
-                      <div class="bar" style="height:71%"></div>
-                      <div class="bar" style="height:96%"></div>
-                      <div class="bar" style="height:80%"></div>
-                      <div class="bar" style="height:100%"></div>
+                  <div class="project">
+                    <div class="project-number">02</div>
+                    <div class="project-info">
+                      <div class="project-name">Business Solutions</div>
+                      <div class="project-status">FOR ESTABLISHED BUSINESSES</div>
                     </div>
+                    <div class="project-price">$1,997</div>
                   </div>
-
                 </div>
-
               </div>
 
+              <div class="panel">
+                <div class="panel-title">How We Work</div>
+                <div class="panel-subtitle">The same four steps, every project</div>
+                <div class="project-list">
+                  <div class="project"><div class="project-number">01</div><div class="project-info"><div class="project-name">Understand</div></div></div>
+                  <div class="project"><div class="project-number">02</div><div class="project-info"><div class="project-name">Plan</div></div></div>
+                  <div class="project"><div class="project-number">03</div><div class="project-info"><div class="project-name">Build</div></div></div>
+                  <div class="project"><div class="project-number">04</div><div class="project-info"><div class="project-name">Deliver</div></div></div>
+                </div>
+              </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
+    </div>
+  </div>
+</section>
 
-    </section>
+<!-- TWO CORE OFFERS -->
+<section id="services" class="section-border">
+  <div class="container section-padding">
+    <div class="center-heading reveal-scale">
+      <div class="eyebrow"><span class="eyebrow-line"></span>OUR SERVICES<span class="eyebrow-line"></span></div>
+      <h2>Two Services.<br><span class="muted">Built For Two Different Needs.</span></h2>
+      <p class="section-description centered">
+        Have a startup idea? Start with Offer 01. Already running a business with a costly problem? Start with Offer 02.
+      </p>
+    </div>
 
-    <!-- TWO SERVICES -->
-    <section id="product" class="section-border" aria-labelledby="solution-heading">
+    <div class="offer-grid reveal-scale">
 
-      <div class="container section-padding">
-
-        <div class="section-heading-grid">
-
-          <div class="reveal-left">
-            <div class="eyebrow" aria-hidden="true"><span class="eyebrow-line"></span>OUR SERVICES</div>
-            <h2 id="solution-heading">
-              Two Services.
-              <span class="muted">Clearly Priced.</span>
-            </h2>
-          </div>
-
-          <p class="section-description reveal-right">
-            Pick the one that fits where you are.
-          </p>
-
-        </div>
-
-        <div class="pricing-grid reveal-scale">
-
-          <!-- Card values (old price / saving) are filled from the same data as the modals, see PRICING DATA in the script. Static fallback numbers are verified: 6,100 - 4,997 = 1,103. -->
-          <div class="pricing-card">
-            <div class="pricing-label">OPTION 01 · FOR FOUNDERS</div>
-            <div class="pricing-name">Complete Startup Launch</div>
-            <div class="price-row">
-              <span class="price-old" data-pkg-total="launch">$6,100</span>
-              <span class="price-arrow" aria-hidden="true">→</span>
-              <span class="price-main" data-pkg-price="launch">$4,997</span>
-            </div>
-            <div class="price-meta">6 deliverables · one-time package · fixed price</div>
-            <div class="price-save" data-pkg-save="launch">Save $1,103 on the complete package.</div>
-            <div class="feature-description">
-              A working MVP, professional website, brand identity, marketing videos, ad creatives, and launch preparation.
-            </div>
-            <button type="button" class="button button-secondary pricing-button" data-price-open="launch">View Price Breakdown</button>
-          </div>
-
-          <!-- Static fallback numbers are verified: 2,500 - 1,997 = 503. -->
-          <div class="pricing-card featured">
-            <span class="pricing-badge" data-pkg-badge="solutions">Best value · Save $503</span>
-            <div class="pricing-label">OPTION 02 · FOR EXISTING BUSINESSES</div>
-            <div class="pricing-name">Custom Business Solutions</div>
-            <div class="price-row">
-              <span class="price-old" data-pkg-total="solutions">$2,500</span>
-              <span class="price-arrow" aria-hidden="true">→</span>
-              <span class="price-main" data-pkg-price="solutions">$1,997</span>
-            </div>
-            <div class="price-meta">5 phases · one-time package · fixed price</div>
-            <div class="price-save" data-pkg-save="solutions">Save $503 on the complete package.</div>
-            <div class="feature-description">
-              A custom software, AI, and automation system built to solve a significant problem in your business.
-            </div>
-            <button type="button" class="button button-primary pricing-button" data-price-open="solutions">View Price Breakdown</button>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- OFFER ONE — STARTUP LAUNCH -->
-    <section id="capabilities" class="section-border" aria-labelledby="capabilities-heading">
-
-      <div class="container section-padding">
-
-        <div class="section-heading-grid">
-
-          <div class="reveal-left">
-            <div class="eyebrow" aria-hidden="true"><span class="eyebrow-line"></span>COMPLETE STARTUP LAUNCH</div>
-            <h2 id="capabilities-heading">
-              Your Startup.
-              <span class="muted">Built, Branded, and Ready to Launch.</span>
-            </h2>
-          </div>
-
-          <p class="section-description reveal-right">
-            The full launch package, not just code. $4,997.
-          </p>
-
-        </div>
-
-        <div class="feature-grid reveal-scale">
-
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">◈</div>
-            <div class="feature-title">MVP DEVELOPMENT</div>
-            <div class="feature-description">A functional, tested MVP with professional UI/UX, backend, authentication, and key integrations.</div>
-          </div>
-
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">⌁</div>
-            <div class="feature-title">PROFESSIONAL WEBSITE</div>
-            <div class="feature-description">A responsive, conversion-focused website with clear product messaging.</div>
-          </div>
-
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">↻</div>
-            <div class="feature-title">BRAND IDENTITY</div>
-            <div class="feature-description">A consistent visual identity across your product and presentation.</div>
-          </div>
-
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">⚙</div>
-            <div class="feature-title">MARKETING VIDEOS</div>
-            <div class="feature-description">Product demonstrations and promotional videos.</div>
-          </div>
-
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">$</div>
-            <div class="feature-title">ADVERTISING CREATIVES</div>
-            <div class="feature-description">Static ad creatives and social media graphics.</div>
-          </div>
-
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">✦</div>
-            <div class="feature-title">LAUNCH PREPARATION</div>
-            <div class="feature-description">Everything organized so you can launch and start acquiring users.</div>
-          </div>
-
-        </div>
-
-        <p class="section-description centered reveal-scale" style="margin-top:34px;">
-          We deliver the product and launch assets. Market success is not guaranteed.
+      <!-- OFFER 01 -->
+      <div class="offer-card featured" id="startup-launch">
+        <div class="offer-label">OFFER 01 — FOR FOUNDERS</div>
+        <div class="offer-name">Complete Startup Launch</div>
+        <div class="offer-price">$4,997</div>
+        <p class="offer-desc">
+          Your startup, built and ready to launch. We deliver a functional MVP, your website, brand identity, marketing videos, and advertising creatives as one complete package. One partner, one package, everything your startup needs to launch.
         </p>
 
+        <div class="offer-sub">What's included</div>
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span><span><strong>Product Development</strong> — a real, working MVP with core features, a professional interface, sound architecture, essential integrations, and tested before delivery.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Professional Website</strong> — custom-designed, conversion-focused, responsive, with clear product messaging.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Brand Identity</strong> — visual direction and a consistent identity across product, website, and materials.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Marketing Video Production</strong> — promo and product demo videos with motion graphics and UI animation where appropriate.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Advertising &amp; Social Creatives</strong> — static ad creatives and social designs, on-brand and campaign-ready.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Launch Preparation</strong> — final testing, website deployment, launch readiness checks, and delivery of all agreed assets.</span></div>
+        </div>
+
+        <div class="offer-sub">Who it's for</div>
+        <p class="offer-who">Founders with a technology startup idea who want a professionally built, launch-ready product without coordinating separate freelancers for development, design, branding, and video.</p>
+
+        <div class="offer-sub">What you receive</div>
+        <p class="offer-who">A working MVP, a live website, a brand identity, marketing videos, and ad and social creatives, all agreed upfront.</p>
+
+        <p class="offer-note">If your product needs substantially more than a defined MVP scope, we'll discuss that separately before any work begins.</p>
+        <div class="offer-spacer"></div>
+        <a href="https://wa.me/213676127853?text=Hi%20AutFlow%2C%20I%27d%20like%20to%20start%20a%20Complete%20Startup%20Launch." target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">Start Your Startup Launch <span>→</span></a>
       </div>
 
-    </section>
+      <!-- OFFER 02 -->
+      <div class="offer-card" id="business-solutions">
+        <div class="offer-label">OFFER 02 — FOR ESTABLISHED BUSINESSES</div>
+        <div class="offer-name">Business Solutions</div>
+        <div class="offer-price">$1,997</div>
+        <p class="offer-desc">
+          Your business has a problem. We build the solution. From inefficient workflows to expensive manual operations, we design and build custom software, AI systems, and automation that solve real problems inside your business. Not generic software, but the system your business actually needs.
+        </p>
 
-    <!-- OFFER TWO — BUSINESS SOLUTIONS -->
-    <section id="customization" class="section-border" aria-labelledby="customization-heading">
-
-      <div class="container section-padding">
-
-        <div class="center-heading reveal-scale">
-
-          <div class="eyebrow" aria-hidden="true">
-            <span class="eyebrow-line"></span>
-            CUSTOM BUSINESS SOLUTIONS
-            <span class="eyebrow-line"></span>
-          </div>
-
-          <h2 id="customization-heading">
-            Your Business Has a Problem.
-            <br>
-            <span class="muted">We Build the System That Solves It.</span>
-          </h2>
-
-          <p class="section-description centered">
-            One complete solution for a real business problem. $1,997. Any industry. Examples:
-          </p>
-
+        <div class="offer-sub">What's included</div>
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span><span><strong>Business Problem Analysis</strong> — we study the existing process, pinpoint the operational problem and its bottlenecks, and define what the solution must achieve.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Custom Solution Architecture</strong> — the technical design, system workflows, suitable technologies, and planned integrations with your existing tools.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Custom Software &amp; AI Development</strong> — the software, AI functionality where appropriate, custom automation workflows, system integrations, and dashboards or interfaces when required.</span></div>
+          <div class="check-item"><span class="check">✓</span><span><strong>Testing &amp; Implementation</strong> — full-system testing, validation against the original problem, deployment into your workflow, plus handover documentation and usage guidance.</span></div>
         </div>
 
-        <div class="steps-grid reveal-scale">
+        <div class="offer-sub">Problems we solve</div>
+        <p class="offer-who">Repetitive manual work, operational bottlenecks, inefficient internal workflows, costly admin tasks, scattered information, slow customer response, data processing, and disconnected tools. Any industry, any size of established business.</p>
 
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">01</div>
-            <div class="feature-title">AI Customer Communication</div>
-            <div class="feature-description">Systems that handle customer conversations.</div>
-          </div>
+        <div class="offer-sub">Who it's for</div>
+        <p class="offer-who">Businesses already operating that have a specific problem costing them time, money, efficiency, or opportunities.</p>
 
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">02</div>
-            <div class="feature-title">Workflow &amp; Process Automation</div>
-            <div class="feature-description">Software that replaces repetitive manual work.</div>
-          </div>
+        <div class="offer-sub">What you receive</div>
+        <p class="offer-who">A complete, tested system built for your problem, deployed into your workflow with handover documentation.</p>
 
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">03</div>
-            <div class="feature-title">Data, Reporting &amp; Dashboards</div>
-            <div class="feature-description">Custom tools to collect, process, and manage information.</div>
-          </div>
-
-          <div class="feature-card feature-3d">
-            <div class="feature-icon" aria-hidden="true">04</div>
-            <div class="feature-title">Lead Management</div>
-            <div class="feature-description">Automated qualification and follow-up. One example of many.</div>
-          </div>
-
-        </div>
-
+        <p class="offer-note">If your problem requires substantially more work than the package covers, we'll scope that with you separately.</p>
+        <div class="offer-spacer"></div>
+        <a href="https://wa.me/213676127853?text=Hi%20AutFlow%2C%20I%27d%20like%20to%20discuss%20a%20business%20problem." target="_blank" rel="noopener noreferrer" class="button button-secondary magnetic">Discuss Your Business Problem <span>→</span></a>
       </div>
 
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- PROCESS -->
-    <section id="how-it-works" class="section-border" aria-labelledby="control-heading">
-
-      <div class="container section-padding">
-
-        <div class="ownership-card ownership-parallax">
-
-          <div class="ownership-content">
-
-            <span class="small-tag">BUSINESS SOLUTIONS PROCESS</span>
-
-            <h2 id="control-heading" style="margin-top:23px;">
-              From Problem
-              <br>
-              <span class="muted">To Working System.</span>
-            </h2>
-
-            <div class="check-list">
-              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Identify the problem</div>
-              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Analyze your workflow</div>
-              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Design a solution for your business</div>
-              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Build the software, AI, and automation</div>
-              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Integrate it into your workflow</div>
-              <div class="check-item"><span class="check" aria-hidden="true">✓</span>Test, deploy, and deliver</div>
-            </div>
-
-          </div>
-
-          <div class="workflow-visual" aria-hidden="true">
-
-            <div class="workflow-box workflow-float">
-
-              <div class="workflow-header">
-                <span>◉ DELIVERY FLOW</span>
-                <span class="workflow-active">SAMPLE</span>
-              </div>
-
-              <div class="workflow-steps">
-                <div class="workflow-step"><span class="workflow-step-dot"></span>Problem identified</div>
-                <div class="workflow-step"><span class="workflow-step-dot"></span>Workflow analyzed</div>
-                <div class="workflow-step"><span class="workflow-step-dot"></span>System built and integrated</div>
-                <div class="workflow-step"><span class="workflow-step-dot"></span>Tested and delivered</div>
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
+<!-- HOW WE WORK -->
+<section id="how-it-works" class="section-border">
+  <div class="container section-padding">
+    <div class="center-heading reveal-scale">
+      <div class="eyebrow"><span class="eyebrow-line"></span>HOW WE WORK<span class="eyebrow-line"></span></div>
+      <h2>A Straightforward<br><span class="muted">Process.</span></h2>
+      <p class="section-description centered">The same four steps apply whether we're launching your startup or solving a problem inside your business.</p>
+    </div>
+    <div class="steps-grid reveal-scale">
+      <div class="feature-card feature-3d">
+        <div class="feature-icon">01</div>
+        <div class="feature-title">UNDERSTAND</div>
+        <div class="feature-description">We learn your idea or the business problem you need solved.</div>
       </div>
-
-    </section>
-
-    <!-- FINAL CTA -->
-    <section id="get-started" class="final-cta" aria-labelledby="cta-heading">
-
-      <div class="container">
-
-        <div class="reveal-scale">
-
-          <div class="final-icon" aria-hidden="true">↗</div>
-
-          <h2 id="cta-heading">
-            Ready To Build?
-            <br>
-            <span class="muted">Let's Talk.</span>
-          </h2>
-
-          <p>Tell us what you need. We'll recommend the right service.</p>
-
-          <div class="final-actions">
-            <div class="hero-actions">
-              <!--
-                CONTACT LINK: WhatsApp +213676127853.
-                Alternatives: a scheduling link (https://calendly.com/yourname/discovery),
-                an email (mailto:hello@autflowstudio.com), or a contact form (#contact).
-              -->
-              <a href="https://wa.me/213676127853" target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">
-                Get Started
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
+      <div class="feature-card feature-3d">
+        <div class="feature-icon">02</div>
+        <div class="feature-title">PLAN</div>
+        <div class="feature-description">We define the scope and the solution before building begins.</div>
       </div>
-
-    </section>
-
-  </main>
-
-  <!-- PRICE BREAKDOWN MODAL — STARTUP LAUNCH (rows are rendered by script from PRICING DATA) -->
-  <div class="demo-modal price-modal" id="priceModal-launch" role="dialog" aria-modal="true" aria-labelledby="priceModalTitle-launch" aria-hidden="true">
-    <div class="demo-modal-content">
-      <div class="demo-modal-header">
-        <span class="demo-modal-label">Price Breakdown / Option 01</span>
-        <button type="button" class="demo-modal-close" data-price-close aria-label="Close price breakdown">×</button>
+      <div class="feature-card feature-3d">
+        <div class="feature-icon">03</div>
+        <div class="feature-title">BUILD</div>
+        <div class="feature-description">We design and develop the required product or system.</div>
       </div>
-      <div class="price-modal-body" data-lenis-prevent>
-        <div class="pricing-label">FOR FOUNDERS</div>
-        <div class="price-modal-title" id="priceModalTitle-launch">Complete Startup Launch</div>
-        <p class="price-modal-sub">Every deliverable in the package, with its estimated market value.</p>
-        <div class="price-items" data-pkg-items="launch"></div>
-        <div class="price-total">
-          <span>Total estimated value</span>
-          <span class="price-total-value" data-pkg-total="launch"></span>
-        </div>
-        <div class="price-final">
-          <div>
-            <div class="price-final-label">Your fixed package price</div>
-            <div class="price-final-save" data-pkg-save="launch"></div>
-          </div>
-          <div class="price-final-value" data-pkg-price="launch"></div>
-        </div>
-        <p class="price-note">Item values are estimates of typical market rates for comparable work, shown for transparency. The package is sold at the single fixed price above. Market success is not guaranteed.</p>
+      <div class="feature-card feature-3d">
+        <div class="feature-icon">04</div>
+        <div class="feature-title">DELIVER</div>
+        <div class="feature-description">We test, deploy, and hand over the completed work.</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- PRICE BREAKDOWN MODAL — BUSINESS SOLUTIONS -->
-  <div class="demo-modal price-modal" id="priceModal-solutions" role="dialog" aria-modal="true" aria-labelledby="priceModalTitle-solutions" aria-hidden="true">
-    <div class="demo-modal-content">
-      <div class="demo-modal-header">
-        <span class="demo-modal-label">Price Breakdown / Option 02</span>
-        <button type="button" class="demo-modal-close" data-price-close aria-label="Close price breakdown">×</button>
-      </div>
-      <div class="price-modal-body" data-lenis-prevent>
-        <div class="pricing-label">FOR EXISTING BUSINESSES</div>
-        <div class="price-modal-title" id="priceModalTitle-solutions">Custom Business Solutions</div>
-        <p class="price-modal-sub">Every phase of the project, with its estimated market value.</p>
-        <div class="price-items" data-pkg-items="solutions"></div>
-        <div class="price-total">
-          <span>Total estimated value</span>
-          <span class="price-total-value" data-pkg-total="solutions"></span>
-        </div>
-        <div class="price-final">
-          <div>
-            <div class="price-final-label">Your fixed package price</div>
-            <div class="price-final-save" data-pkg-save="solutions"></div>
-          </div>
-          <div class="price-final-value" data-pkg-price="solutions"></div>
-        </div>
-        <p class="price-note">Item values are estimates of typical market rates for comparable work, shown for transparency. The package is sold at the single fixed price above. Scope is defined together with you before work starts.</p>
+<!-- FAQ -->
+<section id="faq" class="section-border">
+  <div class="container section-padding">
+    <div class="center-heading reveal-scale">
+      <div class="eyebrow"><span class="eyebrow-line"></span>FAQ<span class="eyebrow-line"></span></div>
+      <h2>Questions,<br><span class="muted">Answered.</span></h2>
+    </div>
+
+    <div class="faq-list reveal-scale">
+      <details class="faq-item">
+        <summary>What is included in the Complete Startup Launch?</summary>
+        <p>A functional MVP, a professional website, brand identity, marketing videos, advertising and social media creatives, and launch preparation, delivered as one package for $4,997.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is the MVP a fully functional product?</summary>
+        <p>Yes. The MVP is a real, working product with core features and essential integrations, tested before delivery, not a prototype or static design. It is scoped as a minimum viable product, not a full-scale platform.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you build a product based on my idea?</summary>
+        <p>That's exactly what the Startup Launch is for. We start by understanding your idea, then define what the MVP should include before we build.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if my project requires a larger scope?</summary>
+        <p>If the work goes substantially beyond the package, we'll tell you upfront and discuss the additional scope separately. We won't silently promise unlimited work at the package price.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What types of business problems can you solve?</summary>
+        <p>Operational and business problems that cost you time, money, or opportunities: repetitive manual processes, bottlenecks, inefficient workflows, expensive admin tasks, poor information management, slow customer response, data processing, and disconnected tools. We work across industries, and we begin by studying your actual problem.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you build custom AI automation systems?</summary>
+        <p>Yes, where AI is the right fit. Business Solutions can include AI-powered functionality and custom automation workflows, designed around your specific problem.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you integrate with our existing software?</summary>
+        <p>We plan integrations with your existing tools as part of the solution architecture. Feasibility depends on the tools involved and the access they allow, and we'll confirm it while planning.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does the project process work?</summary>
+        <p>Every project follows four steps: understand your idea or problem, plan the scope and solution, build the product or system, then test, deploy, and hand over the finished work.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is pricing determined?</summary>
+        <p>We offer two packages: the Complete Startup Launch at $4,997 and Business Solutions at $1,997. If your project needs significantly more than a package covers, we'll discuss that scope with you separately.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="get-started" class="final-cta section-border">
+  <div class="container">
+    <div class="reveal-scale">
+      <div class="final-icon">↗</div>
+      <h2>Ready To Build<br><span class="muted">Something Real?</span></h2>
+      <p>Choose the path that fits and start a conversation. Founders launch with Offer 01, established businesses solve problems with Offer 02.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/213676127853?text=Hi%20AutFlow%2C%20I%27d%20like%20to%20start%20a%20Complete%20Startup%20Launch." target="_blank" rel="noopener noreferrer" class="button button-primary magnetic">Start Your Startup Launch <span>→</span></a>
+        <a href="https://wa.me/213676127853?text=Hi%20AutFlow%2C%20I%27d%20like%20to%20discuss%20a%20business%20problem." target="_blank" rel="noopener noreferrer" class="button button-secondary magnetic">Discuss Your Business Problem <span>→</span></a>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- DEMO MODAL
-       NOTE: Replace the video src with your actual demo video URL.
-       The modal opens only if #demoButton is a <button>; it is currently a link to #product,
-       so the modal is dormant (original behavior preserved). -->
-
-  <div class="demo-modal" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoModalLabel" aria-hidden="true">
-
-    <div class="demo-modal-content">
-
-      <div class="demo-modal-header">
-        <span class="demo-modal-label" id="demoModalLabel">AutFlow Studio / Demo</span>
-        <button type="button" class="demo-modal-close" id="demoModalClose" aria-label="Close demo">×</button>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-mark">A</div>
+        <div>
+          <div class="footer-name">AutFlow Studio</div>
+          <div class="footer-tagline">Startup launches &amp; custom business solutions</div>
+        </div>
       </div>
-
-      <div class="demo-video-wrap" id="demoVideoWrap">
-        <video class="demo-video" id="demoVideo" controls playsinline preload="metadata">
-          <source src="https://res.cloudinary.com/jb9xczzz/video/upload/v1789033848/vloom.mp4" type="video/mp4">
-        </video>
-      </div>
-
     </div>
-
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> AutFlow Studio</span>
+      <span>Complete Startup Launch — $4,997 · Business Solutions — $1,997</span>
+    </div>
   </div>
-
-  <!-- FOOTER -->
-  <footer role="contentinfo">
-
-    <div class="container">
-
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="footer-mark" aria-hidden="true">A</div>
-          <div>
-            <div class="footer-name">AutFlow Studio</div>
-            <div class="footer-tagline">Startup launches &amp; custom business solutions</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> AutFlow Studio</span>
-        <span>Complete Startup Launch — $4,997 · Custom Business Solutions — $1,997</span>
-      </div>
-
-    </div>
-
-  </footer>
-
-  <!-- JAVASCRIPT -->
-  <script>
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* LENIS — driven exclusively by the GSAP ticker */
-    const lenis = new Lenis({
-      duration: 1.15,
-      smoothWheel: true,
-      wheelMultiplier: .85,
-      touchMultiplier: 1.1
-    });
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    /* NAVBAR */
-    const navbar = document.querySelector(".navbar");
-
-    ScrollTrigger.create({
-      start: "top -60",
-      onEnter: () => { navbar.classList.add("scrolled"); },
-      onLeaveBack: () => { navbar.classList.remove("scrolled"); }
-    });
-
-    /* HERO INTRO */
-    const heroTimeline = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-    heroTimeline
-      .from(".hero-title .line-inner", { yPercent: 110, duration: 1.15, stagger: .09 })
-      .from(".hero-animate", { y: 25, opacity: 0, duration: .8, stagger: .1 }, "-=.65")
-      .from(".dashboard-wrapper", { y: 90, opacity: 0, scale: .94, duration: 1.4 }, "-=.45");
-
-    /* HERO ORBIT ROTATION */
-    gsap.to(".hero-orbit", { rotation: 360, duration: 80, repeat: -1, ease: "none" });
-
-    /* HERO PARALLAX */
-    gsap.to(".hero-content", {
-      y: -120,
-      opacity: .35,
-      ease: "none",
-      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
-    });
-
-    /* DASHBOARD SCROLL ANIMATION */
-    gsap.to(".dashboard", {
-      y: 110,
-      rotateX: 0,
-      scale: .93,
-      opacity: .45,
-      ease: "none",
-      scrollTrigger: { trigger: ".dashboard-wrapper", start: "top 65%", end: "bottom 20%", scrub: 1.2 }
-    });
-
-    /* DASHBOARD GLOW */
-    gsap.to(".dashboard-glow", {
-      scale: 1.35,
-      opacity: .8,
-      ease: "none",
-      scrollTrigger: { trigger: ".dashboard-wrapper", start: "top bottom", end: "bottom top", scrub: true }
-    });
-
-    /* BACKGROUND GLOWS */
-    gsap.to(".glow-1", {
-      y: 500, scale: 1.5, ease: "none",
-      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
-    });
-
-    gsap.to(".glow-2", {
-      y: -300, x: 150, ease: "none",
-      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
-    });
-
-    gsap.to(".glow-3", {
-      y: -400, x: -150, ease: "none",
-      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }
-    });
-
-    /* SECTION HEADINGS */
-    gsap.utils.toArray(".reveal-left").forEach(element => {
-      gsap.from(element, {
-        x: -70, opacity: 0, duration: 1.1, ease: "power4.out",
-        scrollTrigger: { trigger: element, start: "top 82%", once: true }
-      });
-    });
-
-    gsap.utils.toArray(".reveal-right").forEach(element => {
-      gsap.from(element, {
-        x: 70, opacity: 0, duration: 1.1, ease: "power4.out",
-        scrollTrigger: { trigger: element, start: "top 82%", once: true }
-      });
-    });
-
-    /* FEATURE CARDS STAGGER */
-    gsap.from(".feature-card", {
-      y: 80, opacity: 0, scale: .94, duration: 1, stagger: .1, ease: "power4.out",
-      scrollTrigger: { trigger: ".feature-grid", start: "top 78%", once: true }
-    });
-
-    /* FEATURE 3D TILT */
-    document.querySelectorAll(".feature-3d").forEach(card => {
-
-      card.addEventListener("mousemove", event => {
-
-        if (window.innerWidth < 900) { return; }
-
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-
-        gsap.to(card, {
-          rotateX: rotateX, rotateY: rotateY, scale: 1.025,
-          duration: .4, ease: "power2.out", overwrite: true
-        });
-
-      });
-
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, { rotateX: 0, rotateY: 0, scale: 1, duration: .7, ease: "elastic.out(1,.5)" });
-      });
-
-    });
-
-    /* PROCESS SECTION */
-    gsap.from(".ownership-content", {
-      x: -80, opacity: 0, duration: 1.2, ease: "power4.out",
-      scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
-    });
-
-    gsap.from(".workflow-box", {
-      x: 100, opacity: 0, scale: .8, duration: 1.2, ease: "power4.out",
-      scrollTrigger: { trigger: ".ownership-card", start: "top 78%", once: true }
-    });
-
-    /* WORKFLOW FLOAT */
-    gsap.to(".workflow-float", { y: -20, duration: 2.7, repeat: -1, yoyo: true, ease: "sine.inOut" });
-
-    /* CENTER HEADINGS */
-    gsap.utils.toArray(".reveal-scale").forEach(element => {
-      gsap.from(element, {
-        y: 60, opacity: 0, scale: .96, duration: 1.1, ease: "power4.out",
-        scrollTrigger: { trigger: element, start: "top 80%", once: true }
-      });
-    });
-
-    /* COUNTERS */
-    document.querySelectorAll(".counter").forEach(counter => {
-
-      const target = Number(counter.dataset.value);
-      const isMoney = target > 1000;
-      const object = { value: 0 };
-
-      gsap.to(object, {
-        value: target,
-        duration: 1.8,
-        ease: "power2.out",
-        scrollTrigger: { trigger: counter, start: "top 85%", once: true },
-        onUpdate: () => {
-          const value = Math.floor(object.value);
-          counter.textContent = isMoney ? "$" + value.toLocaleString() : value.toLocaleString();
-        }
-      });
-
-    });
-
-    /* GROWTH BARS */
-    gsap.from(".bar", {
-      scaleY: 0, transformOrigin: "bottom", stagger: .05, duration: 1.2, ease: "power4.out",
-      scrollTrigger: { trigger: ".chart", start: "top 85%", once: true }
-    });
-
-    /* MAGNETIC BUTTONS */
-    document.querySelectorAll(".magnetic").forEach(button => {
-
-      button.addEventListener("mousemove", event => {
-
-        if (window.innerWidth < 900) { return; }
-
-        const rect = button.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const moveX = (x - rect.width / 2) * .13;
-        const moveY = (y - rect.height / 2) * .13;
-
-        gsap.to(button, { x: moveX, y: moveY, duration: .35, ease: "power3.out" });
-
-      });
-
-      button.addEventListener("mouseleave", () => {
-        gsap.to(button, { x: 0, y: 0, duration: .7, ease: "elastic.out(1,.4)" });
-      });
-
-    });
-
-    /* CUSTOM CURSOR */
-    const cursor = document.querySelector(".cursor");
-    const cursorRing = document.querySelector(".cursor-ring");
-
-    if (cursor && cursorRing) {
-
-      let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-      window.addEventListener("mousemove", event => {
-
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-
-        gsap.to(cursor, { x: mouseX, y: mouseY, duration: .08, overwrite: true });
-
-      });
-
-      gsap.ticker.add(() => {
-        ringX += (mouseX - ringX) * .12;
-        ringY += (mouseY - ringY) * .12;
-        cursorRing.style.left = ringX + "px";
-        cursorRing.style.top = ringY + "px";
-      });
-
-      document
-        .querySelectorAll("a, button, .feature-card, .pricing-card")
-        .forEach(element => {
-
-          element.addEventListener("mouseenter", () => {
-            gsap.to(cursorRing, { scale: 1.6, borderColor: "rgba(255,255,255,.7)", duration: .25 });
-          });
-
-          element.addEventListener("mouseleave", () => {
-            gsap.to(cursorRing, { scale: 1, borderColor: "rgba(255,255,255,.4)", duration: .25 });
-          });
-
-        });
-
-    }
-
-    /* MOBILE MENU */
-    const menuButton = document.getElementById("mobileMenuButton");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    menuButton.addEventListener("click", () => {
-
-      const isOpen = mobileMenu.classList.toggle("active");
-
-      document.body.classList.toggle("menu-open", isOpen);
-
-      menuButton.textContent = isOpen ? "×" : "☰";
-      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
-
-    });
-
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-        document.body.classList.remove("menu-open");
-        menuButton.textContent = "☰";
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open navigation menu");
-      });
-    });
-
-    /* SMOOTH ANCHOR SCROLL */
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-      anchor.addEventListener("click", event => {
-
-        const targetId = anchor.getAttribute("href");
-
-        if (!targetId || targetId === "#") { return; }
-
-        const target = document.querySelector(targetId);
-
-        if (!target) { return; }
-
-        event.preventDefault();
-
-        lenis.scrollTo(target, { offset: -80, duration: 1.3 });
-
-      });
-
-    });
-
-    /* DEMO MODAL (video error handling retained) */
-    const demoButton = document.getElementById("demoButton");
-    const demoModal = document.getElementById("demoModal");
-    const demoModalClose = document.getElementById("demoModalClose");
-    const demoVideo = document.getElementById("demoVideo");
-    const demoVideoWrap = document.getElementById("demoVideoWrap");
-
-    let videoErrorShown = false;
-
-    demoVideo.addEventListener("error", () => {
-      if (videoErrorShown) { return; }
-      videoErrorShown = true;
-      demoVideoWrap.innerHTML = `
-        <div class="demo-no-video">
-          <strong>Demo video coming soon</strong>
-          The demo video is not yet available. Please use the contact button to reach out directly.
-        </div>
-      `;
-    });
-
-    function openDemo() {
-      demoModal.classList.add("active");
-      demoModal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("menu-open");
-
-      if (!videoErrorShown) {
-        demoVideo.currentTime = 0;
-        demoVideo.load();
-        demoVideo.play().catch(() => {});
-      }
-
-      demoModalClose.focus();
-    }
-
-    function closeDemo() {
-      demoModal.classList.remove("active");
-      demoModal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("menu-open");
-
-      if (!videoErrorShown) {
-        demoVideo.pause();
-      }
-
-      if (demoButton) { demoButton.focus(); }
-    }
-
-    if (demoButton && demoButton.tagName === "BUTTON") { demoButton.addEventListener("click", openDemo); }
-    demoModalClose.addEventListener("click", closeDemo);
-
-    demoModal.addEventListener("click", event => {
-      if (event.target === demoModal) { closeDemo(); }
-    });
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && demoModal.classList.contains("active")) {
-        closeDemo();
-      }
-    });
-
-    /* ==========================================================
-       PRICING DATA — single source of truth for cards AND modals.
-       Edit values here only. Totals and savings are computed,
-       never typed by hand, so they cannot drift out of sync.
-       Package prices are fixed: Launch $4,997 · Solutions $1,997.
-       ========================================================== */
-    const PRICING = {
-      launch: {
-        price: 4997,
-        items: [
-          ["MVP development", "Functional, tested MVP with UI/UX, backend, authentication, and key integrations.", 3200],
-          ["Professional website", "Responsive, conversion-focused website with clear product messaging.", 900],
-          ["Brand identity", "Consistent visual identity across your product and presentation.", 600],
-          ["Marketing videos", "Product demonstrations and promotional videos.", 700],
-          ["Advertising creatives", "Static ad creatives and social media graphics.", 400],
-          ["Launch preparation", "Everything organized so you can launch and start acquiring users.", 300]
-        ]
-      },
-      solutions: {
-        price: 1997,
-        items: [
-          ["Problem discovery & workflow analysis", "Identify the problem and analyze how your business currently works.", 350],
-          ["Solution design", "Design the software, AI, and automation approach for your business.", 400],
-          ["Custom build", "Build the custom software, AI, and automation system.", 1100],
-          ["Workflow integration", "Integrate the system into your existing tools and processes.", 350],
-          ["Testing, deployment & delivery", "Test, deploy, and hand over the working solution.", 300]
-        ]
-      }
-    };
-
-    const fmt = n => "$" + n.toLocaleString("en-US");
-    const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-    Object.keys(PRICING).forEach(key => {
-
-      const pkg = PRICING[key];
-      const total = pkg.items.reduce((sum, item) => sum + item[2], 0);
-      const saving = total - pkg.price;
-
-      /* Safety net: never show a "saving" unless the numbers genuinely support it */
-      const showSaving = saving > 0;
-
-      const rows = document.querySelector('[data-pkg-items="' + key + '"]');
-      if (rows) {
-        rows.innerHTML = pkg.items.map(item =>
-          '<div class="price-item">' +
-            '<div class="price-item-info">' +
-              '<div class="price-item-name">' + esc(item[0]) + '</div>' +
-              '<div class="price-item-desc">' + esc(item[1]) + '</div>' +
-            '</div>' +
-            '<div class="price-item-value">' + fmt(item[2]) + '</div>' +
-          '</div>'
-        ).join("");
-      }
-
-      document.querySelectorAll('[data-pkg-price="' + key + '"]').forEach(el => { el.textContent = fmt(pkg.price); });
-      document.querySelectorAll('[data-pkg-total="' + key + '"]').forEach(el => { el.textContent = fmt(total); });
-
-      document.querySelectorAll('[data-pkg-save="' + key + '"]').forEach(el => {
-        el.textContent = showSaving ? "You save " + fmt(saving) + " vs. estimated value." : "";
-      });
-
-      /* Cards: hide the strike-through value when there is no real saving */
-      if (!showSaving) {
-        document.querySelectorAll('.pricing-card [data-pkg-total="' + key + '"], .pricing-card [data-pkg-total="' + key + '"] + .price-arrow').forEach(el => { el.style.display = "none"; });
-      }
-
-      document.querySelectorAll('[data-pkg-badge="' + key + '"]').forEach(el => {
-        if (showSaving) { el.textContent = "Best value · Save " + fmt(saving); } else { el.style.display = "none"; }
-      });
-
-      if (showSaving) {
-        document.querySelectorAll('.pricing-card .price-save[data-pkg-save="' + key + '"]').forEach(el => {
-          el.textContent = "Save " + fmt(saving) + " on the complete package.";
-        });
-      }
-
-      console.assert(total - saving === pkg.price, "Pricing mismatch for " + key);
-
-    });
-
-    /* PRICE BREAKDOWN MODALS */
-    let activePriceModal = null;
-    let lastPriceTrigger = null;
-
-    function openPriceModal(key, trigger) {
-      const modal = document.getElementById("priceModal-" + key);
-      if (!modal) { return; }
-
-      lastPriceTrigger = trigger || null;
-      activePriceModal = modal;
-
-      modal.classList.add("active");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("menu-open");
-      lenis.stop();
-
-      const body = modal.querySelector(".price-modal-body");
-      if (body) { body.scrollTop = 0; }
-
-      const closeButton = modal.querySelector("[data-price-close]");
-      if (closeButton) { closeButton.focus(); }
-    }
-
-    function closePriceModal() {
-      if (!activePriceModal) { return; }
-
-      activePriceModal.classList.remove("active");
-      activePriceModal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("menu-open");
-      lenis.start();
-      activePriceModal = null;
-
-      if (lastPriceTrigger) { lastPriceTrigger.focus(); }
-    }
-
-    document.querySelectorAll("[data-price-open]").forEach(button => {
-      button.addEventListener("click", () => openPriceModal(button.dataset.priceOpen, button));
-    });
-
-    document.querySelectorAll(".price-modal").forEach(modal => {
-
-      modal.addEventListener("click", event => {
-        if (event.target === modal) { closePriceModal(); }
-      });
-
-      const closeButton = modal.querySelector("[data-price-close]");
-      if (closeButton) { closeButton.addEventListener("click", closePriceModal); }
-
-    });
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && activePriceModal) { closePriceModal(); }
-    });
-
-    /* YEAR */
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    /* REFRESH SCROLLTRIGGER ON LOAD */
-    window.addEventListener("load", () => {
-      ScrollTrigger.refresh();
-    });
-
-  </script>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* LENIS */
+const lenis = new Lenis({duration:1.15,smoothWheel:true,wheelMultiplier:.85,touchMultiplier:1.1});
+lenis.on("scroll",ScrollTrigger.update);
+gsap.ticker.add(time=>{lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+
+/* NAVBAR */
+const navbar=document.querySelector(".navbar");
+ScrollTrigger.create({start:"top -60",onEnter:()=>navbar.classList.add("scrolled"),onLeaveBack:()=>navbar.classList.remove("scrolled")});
+
+/* HERO INTRO */
+gsap.timeline({defaults:{ease:"power4.out"}})
+  .from(".hero-title .line-inner",{yPercent:110,duration:1.15,stagger:.09})
+  .from(".hero-animate",{y:25,opacity:0,duration:.8,stagger:.1},"-=.65")
+  .from(".dashboard-wrapper",{y:90,opacity:0,scale:.94,duration:1.4},"-=.45");
+
+gsap.to(".hero-orbit",{rotation:360,duration:80,repeat:-1,ease:"none"});
+
+gsap.to(".hero-content",{y:-120,opacity:.35,ease:"none",scrollTrigger:{trigger:".hero",start:"top top",end:"bottom top",scrub:true}});
+
+gsap.to(".dashboard",{y:110,rotateX:0,scale:.93,opacity:.45,ease:"none",scrollTrigger:{trigger:".dashboard-wrapper",start:"top 65%",end:"bottom 20%",scrub:1.2}});
+
+gsap.to(".dashboard-glow",{scale:1.35,opacity:.8,ease:"none",scrollTrigger:{trigger:".dashboard-wrapper",start:"top bottom",end:"bottom top",scrub:true}});
+
+/* BACKGROUND GLOWS */
+[[".glow-1",{y:500,scale:1.5}],[".glow-2",{y:-300,x:150}],[".glow-3",{y:-400,x:-150}]].forEach(([sel,vars])=>{
+  gsap.to(sel,{...vars,ease:"none",scrollTrigger:{trigger:"body",start:"top top",end:"bottom bottom",scrub:2}});
+});
+
+/* REVEALS */
+gsap.utils.toArray(".reveal-scale").forEach(el=>{
+  gsap.from(el,{y:60,opacity:0,scale:.96,duration:1.1,ease:"power4.out",scrollTrigger:{trigger:el,start:"top 80%",once:true}});
+});
+
+/* 3D TILT */
+document.querySelectorAll(".feature-3d").forEach(card=>{
+  card.addEventListener("mousemove",e=>{
+    if(window.innerWidth<900)return;
+    const r=card.getBoundingClientRect();
+    gsap.to(card,{rotateX:(e.clientY-r.top-r.height/2)/20,rotateY:(r.width/2-(e.clientX-r.left))/20,scale:1.025,duration:.4,ease:"power2.out",overwrite:true});
+  });
+  card.addEventListener("mouseleave",()=>{
+    gsap.to(card,{rotateX:0,rotateY:0,scale:1,duration:.7,ease:"elastic.out(1,.5)"});
+  });
+});
+
+/* COUNTERS */
+document.querySelectorAll(".counter").forEach(counter=>{
+  const target=Number(counter.dataset.value);
+  const obj={value:0};
+  gsap.to(obj,{value:target,duration:1.8,ease:"power2.out",scrollTrigger:{trigger:counter,start:"top 85%",once:true},
+    onUpdate:()=>{counter.textContent=Math.floor(obj.value).toLocaleString()},
+    onComplete:()=>{counter.textContent=target.toLocaleString()}});
+});
+
+/* MAGNETIC BUTTONS */
+document.querySelectorAll(".magnetic").forEach(btn=>{
+  btn.addEventListener("mousemove",e=>{
+    if(window.innerWidth<900)return;
+    const r=btn.getBoundingClientRect();
+    gsap.to(btn,{x:(e.clientX-r.left-r.width/2)*.13,y:(e.clientY-r.top-r.height/2)*.13,duration:.35,ease:"power3.out"});
+  });
+  btn.addEventListener("mouseleave",()=>{
+    gsap.to(btn,{x:0,y:0,duration:.7,ease:"elastic.out(1,.4)"});
+  });
+});
+
+/* CUSTOM CURSOR */
+const cursor=document.querySelector(".cursor");
+const cursorRing=document.querySelector(".cursor-ring");
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
+window.addEventListener("mousemove",e=>{
+  mouseX=e.clientX;mouseY=e.clientY;
+  gsap.to(cursor,{x:mouseX,y:mouseY,duration:.08,overwrite:true});
+});
+gsap.ticker.add(()=>{
+  ringX+=(mouseX-ringX)*.12;ringY+=(mouseY-ringY)*.12;
+  cursorRing.style.left=ringX+"px";cursorRing.style.top=ringY+"px";
+});
+document.querySelectorAll("a, button, summary, .feature-card, .offer-card").forEach(el=>{
+  el.addEventListener("mouseenter",()=>gsap.to(cursorRing,{scale:1.6,borderColor:"rgba(255,255,255,.7)",duration:.25}));
+  el.addEventListener("mouseleave",()=>gsap.to(cursorRing,{scale:1,borderColor:"rgba(255,255,255,.4)",duration:.25}));
+});
+
+/* MOBILE MENU */
+const menuButton=document.getElementById("mobileMenuButton");
+const mobileMenu=document.getElementById("mobileMenu");
+menuButton.addEventListener("click",()=>{
+  mobileMenu.classList.toggle("active");
+  document.body.classList.toggle("menu-open");
+  menuButton.textContent=mobileMenu.classList.contains("active")?"×":"☰";
+});
+document.querySelectorAll(".mobile-menu a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    mobileMenu.classList.remove("active");
+    document.body.classList.remove("menu-open");
+    menuButton.textContent="☰";
+  });
+});
+
+/* SMOOTH ANCHOR SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener("click",e=>{
+    const id=anchor.getAttribute("href");
+    if(!id||id==="#")return;
+    const target=document.querySelector(id);
+    if(!target)return;
+    e.preventDefault();
+    lenis.scrollTo(target,{offset:-80,duration:1.3});
+  });
+});
+
+/* FAQ: refresh trigger positions when items open/close */
+document.querySelectorAll(".faq-item").forEach(item=>{
+  item.addEventListener("toggle",()=>ScrollTrigger.refresh());
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+window.addEventListener("load",()=>ScrollTrigger.refresh());
+</script>
 
 </body>
 </html>
